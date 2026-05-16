@@ -1,0 +1,189 @@
+# PHASE 5.3: Production Kubernetes deployment with auto-scaling and health checks
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echocoder-app
+  namespace: default
+  labels:
+    app: echocoder
+    version: v1
+spec:
+  replicas: 3 # Start with 3 pods for high availability
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0 # Zero downtime deployment
+  selector:
+    matchLabels:
+      app: echocoder
+  template:
+    metadata:
+      labels:
+        app: echocoder
+        version: v1
+    spec:
+      # Pod disruption budget for high availability
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - echocoder
+                topologyKey: kubernetes.io/hostname
+
+      containers:
+        - name: app
+          image: echocoder:latest # Use your container registry
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+
+          # Environment variables
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: PORT
+              value: "3000"
+            - name: LOG_LEVEL
+              value: "info"
+
+            # Secrets from ConfigMap and Secret
+            - name: SUPABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: echocoder-config
+                  key: supabase-url
+            - name: ECHO_OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: echocoder-secrets
+                  key: openai-api-key
+            - name: SUPABASE_SERVICE_ROLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: echocoder-secrets
+                  key: supabase-service-role-key
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: echocoder-secrets
+                  key: sentry-dsn
+
+          # Health checks
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          # Resource limits
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+
+          # Security context
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1001
+            capabilities:
+              drop:
+                - ALL
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: backups
+              mountPath: /backups
+
+      # Volumes
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: backups
+          emptyDir: {} # Use persistent volume in production
+
+      # Pod security policy
+      securityContext:
+        fsGroup: 1001
+
+---
+# PHASE 5.1: Blue-Green Deployment helper - deploy both versions
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echocoder-app-blue
+  namespace: default
+  labels:
+    app: echocoder
+    version: blue
+spec:
+  replicas: 0 # Disabled by default, enable during deployments
+  selector:
+    matchLabels:
+      app: echocoder
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: echocoder
+        version: blue
+    spec:
+      containers:
+        - name: app
+          image: echocoder:latest
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echocoder-app-green
+  namespace: default
+  labels:
+    app: echocoder
+    version: green
+spec:
+  replicas: 0 # Disabled by default, enable during deployments
+  selector:
+    matchLabels:
+      app: echocoder
+      version: green
+  template:
+    metadata:
+      labels:
+        app: echocoder
+        version: green
+    spec:
+      containers:
+        - name: app
+          image: echocoder:latest
+          ports:
+            - containerPort: 3000

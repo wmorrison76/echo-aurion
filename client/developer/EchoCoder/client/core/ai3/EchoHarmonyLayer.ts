@@ -1,0 +1,70 @@
+import { CoreIdentity, EchoAi3Core } from "./EchoAi3Core";
+
+type ConsensusRecord = {
+  topic: string;
+  result: any;
+  timestamp: number;
+};
+
+type ProposalMap = Record<CoreIdentity, any>;
+
+export class EchoHarmonyLayer {
+  private static instance: EchoHarmonyLayer | null = null;
+  private history: ConsensusRecord[] = [];
+  private weights: Record<CoreIdentity, number> = {
+    Echo: 0.33,
+    Stratus: 0.33,
+    Argus: 0.34,
+  };
+
+  private constructor(private readonly core: EchoAi3Core) {
+    if (typeof window !== "undefined") {
+      // eslint-disable-next-line no-console
+      console.log("%c[EchoHarmony] Layer active", "color:#ffb300");
+    }
+    this.core.on("consensusRequest", (signal) => {
+      if (signal.data) {
+        this.resolveConsensus(signal.data as { topic: string; proposals: ProposalMap });
+      }
+    });
+  }
+
+  static initialize(core: EchoAi3Core) {
+    if (!this.instance) {
+      this.instance = new EchoHarmonyLayer(core);
+    }
+    return this.instance;
+  }
+
+  adjustWeights(feedback: Partial<Record<CoreIdentity, number>>) {
+    Object.entries(feedback).forEach(([key, value]) => {
+      if (value === undefined) return;
+      const clamped = Math.min(1, Math.max(0, value));
+      this.weights[key as CoreIdentity] = clamped;
+    });
+  }
+
+  resolveConsensus(data: { topic: string; proposals: ProposalMap }) {
+    const { topic, proposals } = data;
+    const result = this.calculateWeightedConsensus(proposals);
+    this.history.push({ topic, result, timestamp: Date.now() });
+    this.core.send({ from: "Echo", type: "consensusResolved", data: { topic, result }, timestamp: Date.now() });
+    return result;
+  }
+
+  getHistory() {
+    return [...this.history];
+  }
+
+  private calculateWeightedConsensus(proposals: ProposalMap) {
+    let sum = 0;
+    let total = 0;
+    Object.entries(proposals).forEach(([identity, value]) => {
+      const weight = this.weights[identity as CoreIdentity] ?? 0;
+      const numeric = typeof value === "number" ? value : 0;
+      sum += numeric * weight;
+      total += weight;
+    });
+    return total ? sum / total : 0;
+  }
+}

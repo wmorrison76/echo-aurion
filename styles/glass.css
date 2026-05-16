@@ -1,0 +1,215 @@
+/* Glass Design System */
+
+/* Dark mode - neon glow effects */
+.dark .glass-panel {
+  @apply backdrop-blur-[12px] border-[2px] bg-black/10;
+  border-color: hsl(var(--primary-hue) var(--primary-sat) 55%);
+  box-shadow: 0 0 18px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.35),
+              0 0 40px hsl(var(--primary-hue) var(--primary-sat) 20% / 0.2);
+}
+
+.dark .glass-card {
+  @apply backdrop-blur-[12px] border-[1px] bg-white/5;
+  border-color: hsl(var(--primary-hue) var(--primary-sat) 50% / 0.4);
+}
+
+.dark .glass-button {
+  @apply backdrop-blur-[8px] border-[1px] bg-black/20;
+  border-color: hsl(var(--primary-hue) var(--primary-sat) 50% / 0.5);
+  transition: all 200ms ease-out;
+}
+
+.dark .glass-button:hover {
+  @apply bg-black/30;
+  border-color: hsl(var(--primary-hue) var(--primary-sat) 60% / 0.6);
+  box-shadow: 0 0 12px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.25);
+}
+
+/* Light mode - frosted glass with drop shadow */
+.light .glass-panel {
+  @apply backdrop-blur-[12px] border-[2px] bg-white/60;
+  border-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.light .glass-card {
+  @apply backdrop-blur-[12px] border-[1px] bg-white/70;
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.light .glass-button {
+  @apply backdrop-blur-[8px] border-[1px] bg-white/50;
+  border-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: all 200ms ease-out;
+}
+
+.light .glass-button:hover {
+  @apply bg-white/70;
+  border-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Floating panel specific styles */
+.floating-panel {
+  @apply fixed rounded-lg overflow-hidden;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.dark .floating-panel {
+  border: 2px solid hsl(var(--primary-hue) var(--primary-sat) 55% / 0.5);
+  box-shadow: 0 0 0 1px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.3),
+              0 0 18px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.2),
+              0 0 40px hsl(var(--primary-hue) var(--primary-sat) 20% / 0.1);
+}
+
+.light .floating-panel {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.floating-panel-header {
+  @apply px-4 py-3 border-b flex items-center justify-between cursor-grab active:cursor-grabbing;
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+.dark .floating-panel-header {
+  border-color: hsl(var(--primary-hue) var(--primary-sat) 50% / 0.3);
+}
+
+.light .floating-panel-header {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth animations */
+.glass-panel,
+.glass-card,
+.floating-panel {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  filter: drop-shadow(0 0 12px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.4));
+}
+
+.dark .glass-panel:hover {
+  box-shadow: 0 0 18px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.45),
+              0 0 40px hsl(var(--primary-hue) var(--primary-sat) 20% / 0.25);
+}
+
+.light .glass-panel:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+/* Neon glow for dark mode accents */
+.neon-accent {
+  color: hsl(var(--primary-hue) var(--primary-sat) 60%);
+  text-shadow: 0 0 10px hsl(var(--primary-hue) var(--primary-sat) 55% / 0.5);
+}
+
+/* Glassmorphism overlay for modals */
+.glass-overlay {
+  @apply fixed inset-0;
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.6)
+  );
+  backdrop-filter: blur(4px);
+}
+
+/* Draggable element cursor feedback */
+.draggable-handle {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.draggable-handle:active {
+  @apply cursor-grabbing;
+}
+
+/* Resizable corner indicator */
+.resize-handle {
+  @apply absolute bottom-0 right-0 w-4 h-4 cursor-se-resize;
+  background: linear-gradient(135deg, transparent 50%, currentColor 50%);
+  opacity: 0.4;
+  transition: opacity 200ms ease-out;
+}
+
+.resize-handle:hover {
+  opacity: 0.8;
+}
+
+/* Animations for panel appearance */
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.panel-enter {
+  animation: panel-enter 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Minimize/Maximize animations */
+@keyframes panel-minimize {
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+.panel-minimizing {
+  animation: panel-minimize 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Glass effect for input fields */
+.glass-input {
+  @apply backdrop-blur-[8px] border-[1px] bg-black/10;
+  border-color: hsl(var(--primary-hue) var(--primary-sat) 50% / 0.4);
+}
+
+.dark .glass-input {
+  color: hsl(var(--primary-hue) 0% 90%);
+}
+
+.dark .glass-input::placeholder {
+  color: hsl(var(--primary-hue) 0% 50%);
+}
+
+.light .glass-input {
+  @apply bg-white/50;
+  border-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.light .glass-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  .glass-panel,
+  .glass-card,
+  .floating-panel,
+  .glass-button {
+    transition: none;
+  }
+
+  .panel-enter {
+    animation: none;
+  }
+
+  .panel-minimizing {
+    animation: none;
+  }
+}

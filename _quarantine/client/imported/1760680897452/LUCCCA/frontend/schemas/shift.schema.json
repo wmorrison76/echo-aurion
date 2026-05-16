@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Shift",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "empId": {
+      "type": "string"
+    },
+    "start": {
+      "type": "number"
+    },
+    "end": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "id",
+    "empId",
+    "start",
+    "end"
+  ]
+}

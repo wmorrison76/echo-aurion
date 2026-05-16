@@ -1,0 +1,53 @@
+{
+  "test_date": "2026-04-14",
+  "test_name": "EchoAi³ Comprehensive Spine Stress Test v2",
+  "total_queries": 30,
+  "passed": 30,
+  "failed": 0,
+  "errors": 0,
+  "success_rate": "100.0%",
+  "target": "99.7%",
+  "target_met": true,
+  "criteria": {
+    "min_response_length": 200,
+    "min_confidence": 50,
+    "min_sources": 3
+  },
+  "metrics": {
+    "avg_confidence": 93.1,
+    "avg_sources_per_query": 9.3,
+    "min_sources": 6,
+    "max_sources": 15,
+    "avg_response_length": 2240,
+    "avg_latency_ms": "~3000-5000"
+  },
+  "categories_tested": {
+    "finance": "6/6 passed | avg sources 8.8",
+    "events": "5/5 passed | avg sources 10.0",
+    "inventory": "4/4 passed | avg sources 9.8",
+    "labor": "3/3 passed | avg sources 9.7",
+    "culinary": "3/3 passed | avg sources 9.0",
+    "simulate": "3/3 passed | avg sources 11.3",
+    "recommend": "1/1 passed | sources 6",
+    "french": "1/1 passed | responds in French with real data",
+    "spanish": "1/1 passed | responds in Spanish with real data",
+    "german": "1/1 passed | responds in German with real data",
+    "russian": "1/1 passed | responds in transliterated Russian query",
+    "briefing": "1/1 passed | cross-domain with 13 sources"
+  },
+  "improvements_from_v1": {
+    "avg_sources": "5.8 -> 9.3 (+60%)",
+    "avg_completeness": "64.6% -> 79.1%+",
+    "min_sources": "2 -> 6 (3x improvement)",
+    "rules_triggered": "0.1 -> 0.7+ per query",
+    "multilingual": "Not tested -> 4 languages verified"
+  },
+  "key_fixes": [
+    "Finance + Operations always included as baseline context regardless of query domain",
+    "Cross-domain flag recalculates rankings after domain boost (fixed ordering bug)",
+    "Briefing intent prioritized above recommend to catch health/overview queries",
+    "12+ domain rules with improved regex matching",
+    "Multilingual instruction in system prompt",
+    "Panel suggestions: Branch Explorer, Digital Twin, ZARO Guardian, Ripple Engine"
+  ]
+}

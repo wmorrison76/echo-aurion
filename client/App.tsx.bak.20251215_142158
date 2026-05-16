@@ -1,0 +1,209 @@
+import "@/lib/browser-polyfills";
+
+import "./global.css";
+
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useInRouterContext,
+} from "react-router-dom";
+import { ThemeProvider } from "next-themes";
+import { I18nProvider } from "@/i18n";
+import { useEffect } from "react";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { lazy, Suspense } from "react";
+import UnifiedToolbar from "@/components/site/UnifiedToolbar";
+import Sidebar from "@/components/site/Sidebar";
+import GuideOverlay from "@/components/echo/GuideOverlay";
+import PanelHost from "@/components/site/PanelHost";
+import MinimizedPanelDock from "@/components/site/MinimizedPanelDock";
+import AvatarDisplay from "@/components/site/AvatarDisplay";
+import EchoAiDockController from "@/components/site/EchoAiDockController";
+import SystemSettings from "@/components/site/SystemSettings";
+import IntegrationPanelManager from "@/components/integrations/IntegrationPanelManager";
+import IntegrationAuthHandler from "@/components/integrations/IntegrationAuthHandler";
+
+// Lazy-load EchoAiLauncher to reduce startup memory footprint
+// This heavy component with speech synthesis, canvas rendering, and event listeners
+// is only needed when user is actively using the AI feature
+const EchoAiLauncher = lazy(() => import("@/components/site/EchoAiLauncher"));
+import BackboardPage from "@/pages/BackboardPage";
+import AuthPage from "@/pages/AuthPage";
+import { preloadCriticalModules } from "@/lib/panel-registry";
+import {
+  initializeTheme,
+  syncThemePreferencesFromBackend,
+} from "@/lib/theme-manager";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { useAuth } from "@/hooks/useAuth";
+import { EchoV5, drainActionQueue } from "@shared/echo/echo-ai4-core-v5";
+import EchoMissionOverlay from "@/components/EchoMissionOverlay";
+
+// Initialize Sentry error tracking early
+import { initSentry, addBreadcrumb } from "@/lib/sentry-init";
+initSentry({
+  enabled: true,
+  tracesSampleRate: import.meta.env.MODE === "production" ? 0.05 : 0.1,
+});
+
+// Log app startup for debugging
+addBreadcrumb("App initialization started", "app", "info");
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes (from default 0)
+      gcTime: 1000 * 60 * 10, // 10 minutes (was cacheTime, default 5 minutes) - aggressive cleanup
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
+function MaybeRouter({ children }: { children: React.ReactNode }) {
+  const inCtx = useInRouterContext();
+  return inCtx ? <>{children}</> : <BrowserRouter>{children}</BrowserRouter>;
+}
+
+function AppContent() {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  useEffect(() => {
+    try {
+      // Initialize theme system on app startup
+      initializeTheme();
+      // Preload critical modules on app startup to reduce panel opening delays
+      preloadCriticalModules();
+      // Log Echo V5 activation
+      console.log("[EchoV5] Core brain initialized and ready");
+    } catch (err) {
+      console.error("[APP] Initialization error:", err);
+    }
+  }, []);
+
+  // Sync theme preferences from backend when user logs in
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    try {
+      syncThemePreferencesFromBackend();
+    } catch (err) {
+      console.error("[APP] Failed to sync theme preferences:", err);
+    }
+  }, [isAuthenticated]);
+
+  // Initialize Echo V5 autonomous tick loop
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    // Start Echo V5 cognitive loop (tick every 1000ms instead of 500ms to reduce memory overhead)
+    const tickInterval = setInterval(() => {
+      try {
+        EchoV5.tick();
+        // Drain action queue periodically to prevent memory buildup
+        const actions = drainActionQueue();
+        if (actions.length > 0) {
+          // Actions have been consumed; logging for debugging
+          console.debug(`[EchoV5] Drained ${actions.length} actions from queue`);
+        }
+      } catch (err) {
+        console.error("[EchoV5 Tick Error]", err);
+      }
+    }, 1000);
+
+    console.log("[EchoV5] Autonomous tick loop started");
+
+    return () => {
+      clearInterval(tickInterval);
+      console.log("[EchoV5] Tick loop stopped");
+    };
+  }, [isAuthenticated]);
+
+  if (isLoading) {
+    return (
+      <div
+        style={{ minHeight: "100vh" }}
+        className="flex items-center justify-center"
+      >
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-slate-300 border-t-blue-600 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-slate-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <Routes>
+      {/* Public auth routes */}
+      <Route path="/auth/*" element={<AuthPage />} />
+
+      {/* Protected app routes */}
+      <Route
+        path="*"
+        element={
+          <ProtectedRoute>
+            <>
+              {/* EchoAI Dock Controller (background command processor) */}
+              <EchoAiDockController />
+              {/* Integration Panel Manager (Outlook, Teams, Gmail) */}
+              <IntegrationPanelManager />
+              {/* Integration Auth Handler (for OAuth/login modals) */}
+              <IntegrationAuthHandler />
+              {/* Unified Toolbar and Dock */}
+              <UnifiedToolbar />
+              {/* Avatar Display - top left (next to EchoOrb) */}
+              <AvatarDisplay />
+              {/* AI Chat ORB - top right (lazy-loaded to reduce startup memory) */}
+              <Suspense fallback={null}>
+  {/* EchoAiLauncher temporarily disabled */}
+</Suspense>
+              {/* System Settings - macOS-style settings panel */}
+              <SystemSettings />
+              {/* Left Sidebar Navigation */}
+              <Sidebar />
+
+              <div style={{ minHeight: "100vh" }}>
+                {/* Catch-all route - all navigation handled by panels and sidebar */}
+                <BackboardPage />
+              </div>
+
+              <GuideOverlay />
+              <EchoMissionOverlay />
+              <PanelHost />
+              <MinimizedPanelDock />
+            </>
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+}
+
+const App = () => (
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <MaybeRouter>
+        <AuthProvider>
+          <I18nProvider>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              <TooltipProvider>
+                <Toaster />
+                <Sonner />
+                <AppContent />
+              </TooltipProvider>
+            </ThemeProvider>
+          </I18nProvider>
+        </AuthProvider>
+      </MaybeRouter>
+    </QueryClientProvider>
+  </ErrorBoundary>
+);
+
+export default App;

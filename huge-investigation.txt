@@ -1,0 +1,59 @@
+=== Tip SHA of each (look for duplicates) ===
+f2a58e08fd6602218b70cf88ebfb1c10534df070  release/d63-snapshot  | fix(ci): restore tsconfig.smoke.json deleted by 2026-04-08 a
+f2a58e08fd6602218b70cf88ebfb1c10534df070  chore/preview-swap-and-shell-integration  | fix(ci): restore tsconfig.smoke.json deleted by 2026-04-08 a
+51b06f6b1c19c7c2c8d542e9be50794d1769778c  chore/D63-recovery-consolidated  | docs(recovery): D63 recovery checklist for Emergent — full i
+0884ab32126d4f7ff98e5cc3f0242bdce87cff12  claude/D31-D60-bulk-merge  | Merge D55-D60: PII sanitize + Dependabot/license/coverage/CH
+9fa1513a8b315a9ac42ca69e07a1063ac716cf5e  claude/D51-D52-chef-pnl-and-quarantine  | D52-followup: Salvage sommelier/liquor domain knowledge befo
+
+=== Ahead/behind vs origin/main ===
+Branch | ahead | behind
+release/d63-snapshot | 78 | 0
+chore/preview-swap-and-shell-integration | 78 | 0
+chore/D63-recovery-consolidated | 76 | 0
+claude/D31-D60-bulk-merge | 46 | 34
+claude/D51-D52-chef-pnl-and-quarantine | 2 | 34
+
+=== Ahead/behind vs origin/conflict_110526_1036 (your current) ===
+Branch | ahead | behind
+release/d63-snapshot | 0 | 53
+chore/preview-swap-and-shell-integration | 0 | 53
+chore/D63-recovery-consolidated | 0 | 55
+claude/D31-D60-bulk-merge | 0 | 119
+claude/D51-D52-chef-pnl-and-quarantine | 0 | 163
+
+=== Last 5 commits on each (newest first) ===
+--- release/d63-snapshot ---
+f2a58e08f fix(ci): restore tsconfig.smoke.json deleted by 2026-04-08 auto-commit
+a2cb81963 Merge pull request #72 — D63 recovery: consolidate 23 D-series branches
+51b06f6b1 docs(recovery): D63 recovery checklist for Emergent — full inventory of 23 merged branches with verification steps
+b75bfea35 chore(consolidation): dedup imports + include_router calls left by union merges
+b0124e4f2 merge: D31-D60-bulk-merge (union resolution on additive route files)
+
+--- chore/preview-swap-and-shell-integration ---
+f2a58e08f fix(ci): restore tsconfig.smoke.json deleted by 2026-04-08 auto-commit
+a2cb81963 Merge pull request #72 — D63 recovery: consolidate 23 D-series branches
+51b06f6b1 docs(recovery): D63 recovery checklist for Emergent — full inventory of 23 merged branches with verification steps
+b75bfea35 chore(consolidation): dedup imports + include_router calls left by union merges
+b0124e4f2 merge: D31-D60-bulk-merge (union resolution on additive route files)
+
+--- chore/D63-recovery-consolidated ---
+51b06f6b1 docs(recovery): D63 recovery checklist for Emergent — full inventory of 23 merged branches with verification steps
+b75bfea35 chore(consolidation): dedup imports + include_router calls left by union merges
+b0124e4f2 merge: D31-D60-bulk-merge (union resolution on additive route files)
+b3580cf6a merge: D33-pos-failover (union resolution on additive route files)
+ed83ddda3 merge: D46-vendor-mobile-ordering (union resolution on additive route files)
+
+--- claude/D31-D60-bulk-merge ---
+0884ab321 Merge D55-D60: PII sanitize + Dependabot/license/coverage/CHANGELOG/security headers/i18n/a11y/incident runbook/tax seed/Face ID/Atlas walkthrough
+5996759bf Merge D54: invoice extractor calibrated on 91-invoice corpus
+83569189a Merge D53: production hardening — indexes/health/CSP/transactions/retention
+c5966fb3c Merge D51+D52: chef P&L review + quarantine sweep + salvage
+d5fe3df73 Merge D49+D50: tip share + reservation channels
+
+--- claude/D51-D52-chef-pnl-and-quarantine ---
+9fa1513a8 D52-followup: Salvage sommelier/liquor domain knowledge before quarantining 103MB of archives
+198b7e289 D51: Chef-call P&L review (alternative to D42 distance method) D52: Quarantine sweep — clutter + iteration scratch routes
+8370af49d Merge pull request #67 from wmorrison76/claude/D30-forensic-accountant-phase1
+21a9c5e5f D30: Forensic accountant Phase 1 (3-way match + vendor fingerprint + sub-recipe drift)
+e87cb30da test(echo_resonance): break-and-repair pass — 15 scaffold imports + aurion route stress
+

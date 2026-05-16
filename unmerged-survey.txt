@@ -1,0 +1,33 @@
+Branch | Age(d) | Unique | OnMain(cherry) | Files | LastAuthor | LastSubject
+---
+chore/D63-recovery-consolidated | 1 | 76 | 0 | 4288 | wmorrison76 | docs(recovery): D63 recovery checklist for Emergen
+chore/preview-swap-and-shell-integration | 0 | 78 | 0 | 4289 | wmorrison76 | fix(ci): restore tsconfig.smoke.json deleted by 20
+claude/D10-D11-smoke-and-schedule-merge | 5 | 1 | 0 | 3 | Claude | D10 + D11: Smoke test framework + unified schedule
+claude/D31-D60-bulk-merge | 4 | 46 | 0 | 3952 | Claude | Merge D55-D60: PII sanitize + Dependabot/license/c
+claude/D31-echowaste-deep-integration | 5 | 1 | 0 | 2 | Claude | D31: EchoWaste intelligence layer (patterns + fore
+claude/D32-concierge-depth | 5 | 1 | 0 | 2 | Claude | D32: Echo concierge intelligence layer (allergen c
+claude/D33-pos-failover | 5 | 2 | 0 | 3 | Claude | D33-followup: 8h QR timeout + PWA heartbeat + POS 
+claude/D34-myecho-install-and-tablet | 5 | 1 | 0 | 2 | Claude | D34: MyEcho install-by-QR + station-aware home + r
+claude/D35-cross-dept-borrow-paf | 5 | 1 | 0 | 2 | Claude | D35: Cross-department employee borrow with auto-PA
+claude/D36-service-auditors | 5 | 1 | 0 | 2 | Claude | D36: Service-wide forensic mindset (pluggable audi
+claude/D37-qr-library-storyboard | 5 | 1 | 0 | 2 | Claude | D37: QR library + multi-print + outlet storyboard 
+claude/D38-correlation-engine | 5 | 1 | 0 | 2 | Claude | D38: Cross-correlation engine — service-spanning p
+claude/D39-echo-activity-drawer | 5 | 1 | 0 | 3 | Claude | D39 + D40: Echo activity drawer (transparency) + v
+claude/D41-D42-stress-and-divergence | 5 | 1 | 0 | 3 | Claude | D41 + D42: Forecast stress harness + chef order-di
+claude/D43-variance-complaint-benchmark-foh | 5 | 1 | 0 | 2 | Claude | D43: Variance summarizer + complaint diffusion + m
+claude/D44-orphaned-module-wiring | 5 | 1 | 0 | 1 | Claude | D44: Orphan wiring sweep — onboarding alias fix + 
+claude/D45-personal-sous-chef-agent | 5 | 1 | 0 | 2 | Claude | D45: Personal Sous Chef voice agent — chef in pock
+claude/D46-vendor-mobile-ordering | 5 | 1 | 0 | 2 | Claude | D46: Vendor mobile ordering — voice intake, cross-
+claude/D47-payroll-and-self-service | 5 | 1 | 0 | 2 | Claude | D47: Full payroll engine + employee self-service +
+claude/D48-pms-core | 5 | 1 | 0 | 2 | Claude | D48: PMS core — reservations, folio, channel manag
+claude/D49-D50-tipshare-and-reservation-channels | 5 | 1 | 0 | 3 | Claude | D49 + D50: Tip share with what-if simulator + 18-c
+claude/D51-D52-chef-pnl-and-quarantine | 5 | 2 | 0 | 3895 | Claude | D52-followup: Salvage sommelier/liquor domain know
+claude/D53-production-hardening | 4 | 1 | 0 | 17 | Claude | D53: Production hardening pass — 10 modules across
+claude/D54-invoice-extractor-corpus-trained | 4 | 2 | 0 | 23 | Claude | D54: Invoice extractor — calibrated against 91-inv
+claude/D55-D59-pii-sanitize-and-foundation-gates | 4 | 3 | 0 | 36 | Claude | D55-D60: PII sanitize + foundation gates + Atlas w
+claude/D61-hosting-recommendations | 4 | 1 | 0 | 1 | Claude | D61: Hosting recommendations — Phase 1/2/3 stack w
+claude/D62-ux-3-click-doctrine-and-handoff | 4 | 1 | 0 | 3 | Claude | D62: 3-click UX doctrine + audit rubric + AI-to-AI
+claude/D63-docs-help-onboarding-ocr-icons | 4 | 1 | 0 | 11 | Claude | D63: Module docs + help agent + onboarding wizard 
+feature/audit-001-type-errors | 6 | 1 | 0 | 2 | wmorrison76 | docs(audit): AUDIT_001 - Pre-Echo-Resonance type-e
+feature/doctrine-raw-notes | 6 | 1 | 0 | 2 | wmorrison76 | docs(foundation): capture doctrine sediment and bu
+release/d63-snapshot | 0 | 78 | 0 | 4289 | wmorrison76 | fix(ci): restore tsconfig.smoke.json deleted by 20

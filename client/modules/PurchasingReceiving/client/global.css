@@ -1,0 +1,179 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 224 71% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 229 84% 56%; /* Indigo for light */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 224 71% 4%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 199 89% 48%; /* Cyan accent */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 43 96% 56%;
+    --warning-foreground: 30 6% 13%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 229 84% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 229 84% 56%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 20% 2%; /* Much darker background */
+    --foreground: 210 40% 98%;
+
+    --card: 222 20% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 20% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 190 100% 50%; /* TRON cyan */
+    --primary-foreground: 222 20% 2%;
+
+    --secondary: 222 20% 8%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 20% 8%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 200 96% 56%;
+    --accent-foreground: 222 20% 2%;
+
+    --destructive: 0 62.8% 35.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 43 96% 56%;
+    --warning-foreground: 30 6% 13%;
+
+    --border: 222 20% 10%;
+    --input: 222 20% 8%;
+    --ring: 190 100% 50%;
+
+    --sidebar-background: 222 20% 2%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 190 100% 50%;
+    --sidebar-primary-foreground: 222 20% 2%;
+    --sidebar-accent: 222 20% 6%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 20% 10%;
+    --sidebar-ring: 190 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .camera-scan-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+  }
+
+  .camera-scan-overlay::after {
+    content: "";
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    top: -40%;
+    bottom: 60%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(99, 179, 237, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+    filter: blur(6px);
+    animation: camera-scan-sweep 1.6s ease-in-out infinite;
+    box-shadow: 0 0 32px rgba(80, 164, 255, 0.45);
+  }
+
+  .handshake-track {
+    position: relative;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: rgba(148, 163, 184, 0.25);
+  }
+
+  .handshake-track::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-60%);
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0) 0%, rgba(59, 130, 246, 0.65) 50%, rgba(59, 130, 246, 0) 100%);
+    animation: handshake-sweep 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes camera-scan-sweep {
+  0% {
+    transform: translateY(-120%);
+  }
+  50% {
+    transform: translateY(40%);
+  }
+  100% {
+    transform: translateY(120%);
+  }
+}
+
+@keyframes handshake-sweep {
+  0% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}

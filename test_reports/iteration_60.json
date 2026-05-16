@@ -1,0 +1,154 @@
+{
+  "iteration": 60,
+  "test_date": "2026-04-14",
+  "feature_tested": "Manager P&L Dashboard - Role-Based Access Control",
+  "summary": "All 12 backend API tests passed (100%). Frontend testing verified all Manager Dashboard features: role-scoped P&L views, budget alerts, GL drill-down with invoice/PO chain, AI executive review, and access request workflow. The user selector dropdown correctly switches between different role views (Manager sees 5 lines/9 locked, GM sees 14 lines/0 locked, Supervisor sees 3 lines/11 locked, Exec Chef sees 6 lines/8 locked).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results": {
+    "backend": {
+      "total_tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "test_categories": {
+        "manager_pnl_role_scoping": {
+          "tests": 5,
+          "passed": 5,
+          "endpoints": [
+            "GET /api/manager/pnl?user_id=usr-mgr-001 - Manager sees 5 visible lines (revenue, food_cost, bev_cost, hourly_labor, opex) and 9 locked sections",
+            "GET /api/manager/pnl?user_id=usr-gm-001 - GM sees 14 visible lines and 0 locked sections (full access)",
+            "GET /api/manager/pnl?user_id=usr-sup-001 - Supervisor sees 3 visible lines (revenue, food_cost, hourly_labor) and 11 locked",
+            "GET /api/manager/pnl?user_id=usr-chef-001 - Exec Chef sees 6 visible lines and 8 locked",
+            "GET /api/manager/pnl?user_id=usr-ctrl-001 - Controller sees 14 visible lines and 0 locked (full access)"
+          ]
+        },
+        "budget_alerts": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "GET /api/manager/alerts?user_id=usr-mgr-001 - Returns alerts with critical/warning severity for labor overspending (33.1% vs 25% target)"
+          ]
+        },
+        "gl_drilldown": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "GET /api/manager/gl-drilldown/5000 - Returns GL entries + linked invoices with PO and receiving chain (30 invoices with FULL CHAIN status)",
+            "GET /api/manager/gl-drilldown/6000 - Returns BOH Labor GL entries"
+          ]
+        },
+        "access_request": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "POST /api/manager/access-request - Creates request and notification for controller"
+          ]
+        },
+        "ai_review": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "POST /api/manager/ai-review?user_id=usr-mgr-001 - Returns AI narrative scoped to manager role",
+            "POST /api/manager/ai-review?user_id=usr-gm-001 - Returns AI narrative for GM with full scope"
+          ]
+        },
+        "health": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": ["GET /api/health - Returns healthy status"]
+        }
+      }
+    },
+    "frontend": {
+      "elements_verified": 15,
+      "elements_total": 15,
+      "verified_elements": [
+        "App loads successfully without errors",
+        "'My Operations' visible in sidebar under FINANCIAL & SUPPLY section",
+        "Manager Dashboard panel loads with data-testid='manager-dashboard-panel'",
+        "User selector dropdown works (data-testid='user-selector')",
+        "Manager view shows 5 P&L lines and 9 locked sections",
+        "GM view shows 14 P&L lines and 0 locked sections",
+        "KPIs displayed: Revenue $137,718, Avg Check $87, Food Cost 20.9%, Hourly Labor 33.1%",
+        "Active Alerts count: 10 (2 critical)",
+        "Budget Performance gauges visible (Food Cost %, Beverage Cost %, Hourly Labor %, Waste %)",
+        "4 tabs visible: My P&L, Alerts (10), GL Drill-Down, AI Review",
+        "Alerts tab shows critical/warning alerts with severity badges and cost impact",
+        "GL Drill-Down tab shows GL code buttons and linked invoices with FULL CHAIN status",
+        "AI Review tab shows EchoAi³ Executive Review personalized for user",
+        "Locked sections show 'Request Access' buttons with required role info",
+        "Request Access toast notification appears after clicking button"
+      ]
+    }
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration60_manager_dashboard.py",
+    "/app/test_reports/pytest/pytest_results_iter60.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "RBAC implementation correctly scopes P&L visibility based on user role (ROLE_PNL_ACCESS mapping)",
+    "Budget alerts correctly flag overspending with critical/warning thresholds (labor at 33.1% triggers critical alert)",
+    "GL drill-down correctly links invoices to POs and receiving logs (chain_complete flag)",
+    "AI review uses Emergent LLM Key with gpt-4.1-mini model for personalized narratives",
+    "Access request creates notification for controller role"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration60_manager_dashboard.py"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "No auth required - dev mode. Test users: usr-mgr-001 (manager), usr-chef-001 (exec_chef), usr-gm-001 (gm), usr-ctrl-001 (controller), usr-sup-001 (supervisor)",
+  "seed_data_creation": "RBAC users seeded on startup via seed_rbac(). Simulation data exists (2713 POS transactions, 63 invoices, 156 GL entries, etc.)",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Manager Dashboard (My Operations) panel fully functional. Role-based P&L scoping works correctly - managers see department-level data with locked salary sections, GMs/Controllers see full resort P&L. Budget alerts flag labor overspending (33.1% vs 25% target). GL drill-down shows invoice/PO/receiving chain. AI review generates personalized narratives via Emergent LLM Key. Toast POS and QuickBooks remain MOCKED.",
+  "mocked_apis": {
+    "Toast POS": "Demo/sandbox data",
+    "QuickBooks Online": "Demo/sandbox data"
+  },
+  "role_access_verified": {
+    "manager (usr-mgr-001)": {
+      "visible_lines": 5,
+      "locked_sections": 9,
+      "scope": "department (dining)",
+      "revenue": "$137,718"
+    },
+    "gm (usr-gm-001)": {
+      "visible_lines": 14,
+      "locked_sections": 0,
+      "scope": "resort (all)",
+      "revenue": "$459,060"
+    },
+    "supervisor (usr-sup-001)": {
+      "visible_lines": 3,
+      "locked_sections": 11,
+      "scope": "limited"
+    },
+    "exec_chef (usr-chef-001)": {
+      "visible_lines": 6,
+      "locked_sections": 8,
+      "scope": "culinary/pastry/banquet"
+    },
+    "controller (usr-ctrl-001)": {
+      "visible_lines": 14,
+      "locked_sections": 0,
+      "scope": "resort (all)"
+    }
+  },
+  "budget_metrics_verified": {
+    "food_cost_pct": "20.9% (target 22%)",
+    "bev_cost_pct": "1.4% (target 18%)",
+    "hourly_labor_pct": "33.1% (target 25%) - CRITICAL",
+    "waste_pct": "1.1% (target 1%)"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "summary": "iter234 testing complete. 20/20 backend tests passed. Frontend features verified: Splash screen with particle canvas and zoom logo, outlet switcher shows 'Rooftop Lounge' (new neutral name), voice panel with CognitiveMindCanvas and proactive briefing, Recipes tab with mobile-authored badge support, recipe detail view with Ingredients/Directions tabs, Import URL flow with paste button and editable preview, P&L view with auto-refresh chip and KPIs, session persistence via localStorage.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "RecipeDetailView",
+        "issue": "Legacy recipes show '[object Object]' for ingredient names because they have ingredient_id instead of name field",
+        "selector": "[data-testid='recipe-ingredients-panel']",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Recipes list",
+        "issues": ["Recipe cards show 'Yield X portion · $ cost' without actual recipe names - only yield/cost visible"]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter234_legal_rename_splash_recipes.py",
+    "/app/test_reports/pytest/pytest_results_iter234.xml"
+  ],
+  "action_items": [
+    "Fix RecipeDetailView to handle legacy recipes with ingredient_id instead of name - need to resolve ingredient names from ingredient_id or show ingredient_id as fallback",
+    "Fix Recipes list to show recipe names (item_name) instead of just yield/cost info"
+  ],
+  "critical_code_review_comments": [
+    "RecipesTab.tsx line 250: String(ing) returns '[object Object]' when ing is an object without name/ingredient properties - need better fallback handling",
+    "Legacy recipes in menu_recipes collection have ingredient_id references instead of inline names - need to join with ingredients collection or update data structure"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter234_legal_rename_splash_recipes.py"
+  ],
+  "success_rate": {
+    "backend": "100% (20/20 tests passed)",
+    "frontend": "95% (all iter234 features verified except ingredient display bug)"
+  },
+  "test_credentials": "X-User-Id: chef-william for backend. devAuth=1 query param for frontend auth bypass.",
+  "seed_data_creation": "Created TEST_ prefixed mobile recipes for testing published_from='mobile' badge",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter234 features tested: (1) Legal rename - all 8 outlets have new neutral names (Rooftop Lounge, Garden Room, Club Bar, Pool Grill, Market Cafe, Coastal Kitchen, In-Room Dining, Ballroom Catering). Legacy outlet IDs (outlet-windows, outlet-nectar, etc.) removed. (2) Splash screen works with particle canvas and zoom logo animation. (3) Voice panel has CognitiveMindCanvas behind transcript, proactive briefing returns time-aware greeting with rain warning. (4) Recipe URL import flow works - paste button, editable preview, save-imported endpoint. (5) Mobile-authored recipes show 📱 MOBILE badge when published_from='mobile'. (6) Recipe detail has Ingredients/Directions tabs. (7) P&L view has auto-refresh every 3h chip and last-updated time. (8) Session persistence via ecw_last_tab localStorage works. Known issue: Legacy recipes show [object Object] for ingredients because they use ingredient_id references instead of inline names.",
+  "tests_executed": {
+    "backend": [
+      "TestSeedMarch2026::test_seed_returns_200 - PASS",
+      "TestSeedMarch2026::test_seed_returns_8_outlets - PASS",
+      "TestEchoAuriumOutletsNewNames::test_outlets_returns_200 - PASS",
+      "TestEchoAuriumOutletsNewNames::test_outlets_returns_8_rows - PASS",
+      "TestEchoAuriumOutletsNewNames::test_outlets_all_active - PASS",
+      "TestEchoAuriumOutletsNewNames::test_outlets_have_new_names - PASS (Rooftop Lounge, Garden Room, Club Bar verified)",
+      "TestPnLForNewOutlet::test_pnl_rooftop_returns_200 - PASS",
+      "TestPnLForNewOutlet::test_pnl_rooftop_has_kpis - PASS (Revenue $579,740, Food 21.95%, Labor 24.54%, Prime 46.49%)",
+      "TestPnLForNewOutlet::test_pnl_rooftop_has_sections - PASS",
+      "TestProactiveBriefing::test_proactive_briefing_returns_200 - PASS",
+      "TestProactiveBriefing::test_proactive_briefing_has_required_fields - PASS (speech, alerts, rain_warn)",
+      "TestSaveImportedRecipe::test_save_imported_returns_200 - PASS",
+      "TestSaveImportedRecipe::test_save_imported_returns_recipe_id - PASS (published_from='mobile')",
+      "TestRecipesListWithMobileBadge::test_recipes_list_returns_200 - PASS",
+      "TestRecipesListWithMobileBadge::test_recipes_list_includes_mobile_authored - PASS",
+      "TestRecipeImportUrlBridge::test_import_url_endpoint_exists - PASS (returns 200, not 500)",
+      "TestRegressionEchoVoiceChat::test_voice_chat_pnl_question - PASS",
+      "TestRegressionTTS::test_tts_returns_audio - PASS",
+      "TestRegressionWeather::test_weather_current - PASS",
+      "TestRegressionWeather::test_weather_rain_tracker - PASS"
+    ],
+    "frontend": [
+      "Splash screen (data-testid='ecw-splash') - PASS",
+      "Splash logo (data-testid='ecw-splash-logo') - PASS",
+      "Splash canvas (data-testid='ecw-splash-canvas') - PASS",
+      "Main view (data-testid='ecw-ops-root') - PASS",
+      "Outlet switcher shows 'Rooftop Lounge' - PASS",
+      "Voice panel (data-testid='echo-voice-panel') - PASS",
+      "Cognitive Mind Canvas (data-testid='cognitive-mind-canvas') - PASS",
+      "Proactive briefing greeting - PASS ('Good morning, William. Everything's tracking to plan. Heads up — rain likely around 15:00.')",
+      "Recipes tab (data-testid='ecw-tab-recipes') - PASS",
+      "Recipes root (data-testid='recipes-root') - PASS",
+      "From URL button (data-testid='recipes-import-btn') - PASS",
+      "Paste button (data-testid='recipe-import-paste') - PASS",
+      "Recipe detail view (data-testid='recipe-detail-root') - PASS",
+      "Ingredients tab (data-testid='recipe-tab-ingredients') - PASS",
+      "Directions tab (data-testid='recipe-tab-directions') - PASS",
+      "Ingredients panel (data-testid='recipe-ingredients-panel') - PASS (but shows [object Object] for legacy recipes)",
+      "P&L view - PASS",
+      "P&L last-refresh chip (data-testid='pnl-last-refresh') - PASS ('Updated 06:20 AM')",
+      "P&L KPIs - PASS (Revenue $579,740, Food 21.95%, Labor 24.54%, Prime 46.49%)",
+      "Session persistence (ecw_last_tab localStorage) - PASS"
+    ]
+  },
+  "verified_features": {
+    "POST /api/echoaurium/seed-march-2026": "PASS - wipes legacy outlets, inserts 8 new neutral names",
+    "GET /api/echoaurium/outlets": "PASS - returns 8 rows with new names (Rooftop Lounge, etc.)",
+    "GET /api/echoaurium/pnl/full?outlet_id=outlet-rooftop": "PASS - returns sections + kpis",
+    "GET /api/echo-voice/proactive-briefing": "PASS - returns {ok, speech, alerts[], rain_warn}",
+    "POST /api/ecw-ops/recipes/save-imported": "PASS - returns {ok, recipe_id, published_from:'mobile'}",
+    "GET /api/ecw-ops/recipes": "PASS - includes mobile-authored recipes with published_from='mobile'",
+    "POST /api/ecw-ops/recipes/import-url": "PASS - returns 200 (not 500)",
+    "POST /api/echo-voice/chat": "PASS - regression test passed",
+    "POST /api/echo-voice/tts": "PASS - returns MP3 audio",
+    "GET /api/weather/current": "PASS - returns weather data",
+    "GET /api/weather/rain-tracker": "PASS - returns hourly rain data",
+    "Splash screen": "PASS - particle canvas + zoom logo animation",
+    "Voice panel CognitiveMindCanvas": "PASS - canvas behind transcript",
+    "Proactive briefing": "PASS - time-aware greeting with rain warning",
+    "Recipe URL import": "PASS - paste button, editable preview, save flow",
+    "Mobile-authored badge": "PASS - 📱 MOBILE pill on mobile-saved recipes",
+    "Recipe detail tabs": "PASS - Ingredients/Directions tabs switch panels",
+    "P&L auto-refresh": "PASS - 'Auto-refresh every 3h' + last-updated chip",
+    "Session persistence": "PASS - ecw_last_tab localStorage restores tab on reload"
+  }
+}

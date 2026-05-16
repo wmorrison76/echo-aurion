@@ -1,0 +1,26 @@
+{
+  "module": "Module 1",
+  "createdAt": "2025-09-29T01:56:31.810Z",
+  "files": [
+    {
+      "path": "/trees/Batch13_tree.txt",
+      "role": "docs",
+      "sha256": "4bee9c6f506e65fd67a552bed022e1b8f77478d7695a1b8da1608a412f0e8bad"
+    },
+    {
+      "path": "/trees/Master_Batch01-12_tree.txt",
+      "role": "docs",
+      "sha256": "1a6cd014b99739e9ba3bcac88cae053310d94ebea0369276317252a1aa8359bd"
+    },
+    {
+      "path": "/Capstone_Batch13_FeatureControl_2025-09-22.tar",
+      "role": "other",
+      "sha256": "466add751cb412f296ece8a789f69439462f6c4f72b931c3341c25822728a48c"
+    },
+    {
+      "path": "/Capstone_Master_Batch01-12_2025-09-22.tar",
+      "role": "other",
+      "sha256": "2f824e006fa9bb3885ad06f25be040c951a221476819e51c99021a0645db4001"
+    }
+  ]
+}

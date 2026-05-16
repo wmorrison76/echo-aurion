@@ -1,0 +1,7 @@
+{
+  "first_contentful_paint_ms": 2000,
+  "largest_contentful_paint_ms": 3000,
+  "total_js_kb": 600,
+  "blocking_time_ms": 200,
+  "requests_max": 50
+}

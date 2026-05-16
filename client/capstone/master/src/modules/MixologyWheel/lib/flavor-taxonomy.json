@@ -1,0 +1,80 @@
+{
+  "categories": [
+    {
+      "id": "citrus",
+      "name": "Citrus",
+      "notes": [
+        "lime",
+        "lemon",
+        "orange",
+        "grapefruit"
+      ]
+    },
+    {
+      "id": "herbal",
+      "name": "Herbal",
+      "notes": [
+        "basil",
+        "mint",
+        "rosemary",
+        "thyme"
+      ]
+    },
+    {
+      "id": "floral",
+      "name": "Floral",
+      "notes": [
+        "rose",
+        "elderflower",
+        "violet",
+        "hibiscus"
+      ]
+    },
+    {
+      "id": "spice",
+      "name": "Spice",
+      "notes": [
+        "pepper",
+        "cinnamon",
+        "clove",
+        "cardamom"
+      ]
+    },
+    {
+      "id": "smoke",
+      "name": "Smoke",
+      "notes": [
+        "peat",
+        "char",
+        "campfire"
+      ]
+    },
+    {
+      "id": "stonefruit",
+      "name": "Stone Fruit",
+      "notes": [
+        "peach",
+        "apricot",
+        "plum"
+      ]
+    },
+    {
+      "id": "berry",
+      "name": "Berry",
+      "notes": [
+        "strawberry",
+        "raspberry",
+        "blackberry"
+      ]
+    },
+    {
+      "id": "tropical",
+      "name": "Tropical",
+      "notes": [
+        "pineapple",
+        "mango",
+        "coconut"
+      ]
+    }
+  ]
+}

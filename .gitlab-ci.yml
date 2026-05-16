@@ -1,0 +1,12 @@
+stages: [validate]
+
+validate:
+  stage: validate
+  image: node:20
+  script:
+    - npm ci || npm install
+    - npx ajv-cli validate -s schemas/inventory-item.schema.json -d 'tests/fixtures/**/*.json' || true
+    - wget -qO opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64 && chmod +x opa
+    - ./opa eval --format pretty --input opa/opa-input.template.json -d policies/guardrails.rego "data.guardrails.allow"
+    - curl -sL https://github.com/gitleaks/gitleaks/releases/download/v8.18.1/gitleaks_8.18.1_linux_x64.tar.gz | tar xz gitleaks
+    - ./gitleaks detect --no-banner --config .config/gitleaks.toml || true

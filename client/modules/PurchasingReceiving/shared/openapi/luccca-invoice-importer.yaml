@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: LUCCCA Invoice Importer API
+  version: 1.0.0
+  description: Unified API for invoice ingestion, OCR, normalization, ERP export, and payment sync.
+servers:
+  - url: https://api.luccca.dev/v1
+paths:
+  /invoices/upload:
+    post:
+      summary: Upload an invoice file
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                org_id:
+                  type: string
+                  format: uuid
+      responses:
+        "201":
+          description: Invoice queued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+  /invoices/{id}/normalize:
+    post:
+      summary: Normalize OCR invoice into structured schema
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        "200":
+          description: Normalized invoice
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvoiceFull"
+  /invoices/{id}/export/{erp}:
+    post:
+      summary: Export invoice to ERP
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: path
+          name: erp
+          schema:
+            type: string
+            enum:
+              - r365
+              - simphony
+              - netsuite
+          required: true
+      responses:
+        "200":
+          description: Export result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ERPExportResult"
+  /invoices/{id}/pay:
+    post:
+      summary: Trigger payment via gateway
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gateway:
+                  type: string
+                  enum:
+                    - stripe
+                    - square
+                    - adyen
+                amount_override:
+                  type: number
+      responses:
+        "200":
+          description: Payment result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentResult"
+components:
+  schemas:
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        org_id:
+          type: string
+          format: uuid
+        vendor:
+          type: string
+        total:
+          type: number
+        status:
+          type: string
+        raw_file_url:
+          type: string
+    InvoiceLine:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        invoice_id:
+          type: string
+          format: uuid
+        item_code:
+          type: string
+        description:
+          type: string
+        qty:
+          type: number
+        unit_price:
+          type: number
+        gl_code:
+          type: string
+    InvoiceFull:
+      type: object
+      properties:
+        header:
+          $ref: "#/components/schemas/Invoice"
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/InvoiceLine"
+    ERPExportResult:
+      type: object
+      properties:
+        status:
+          type: string
+        erp_id:
+          type: string
+        message:
+          type: string
+    PaymentResult:
+      type: object
+      properties:
+        payment_status:
+          type: string
+        gateway:
+          type: string
+        transaction_id:
+          type: string
+        message:
+          type: string

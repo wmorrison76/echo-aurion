@@ -1,0 +1,107 @@
+{
+  "summary": "Iteration 161 — BEO Standalone, Client Approval Inbox, and Cake→POS routing testing complete. Backend: 25/25 tests passed (100%). Frontend: All routes verified (/beo, /beo/admin, /pastry/look/{token} with approve/change buttons, /pastry/admin with approvals panel, regression routes).",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {
+        "endpoint": "GET /api/beo-standalone/checkout/status/{session_id}",
+        "issue": "Returns 502 when polling Stripe for unpaid sessions with mock key (sk_test_emergent). This is expected behavior - the mock key creates sessions but doesn't persist them for status polling.",
+        "priority": "LOW"
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter161_beo_approvals_pos.py",
+    "/app/test_reports/pytest/pytest_results_iter161.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "POST /api/pastry/look/approve creates client_approvals row with decision + note ✓",
+    "POST /api/pastry/look/approve returns 404 for unknown/unpublished token ✓",
+    "GET /api/pastry/approvals returns {items, total, unseen} ✓",
+    "GET /api/pastry/approvals?unseen_only=true filters correctly ✓",
+    "POST /api/pastry/approvals/{approval_id}/seen marks seen_by_bakery=true ✓",
+    "GET /api/beo-standalone/packages returns 2 packages: venue_monthly ($478 = $399+$79), catering_monthly ($348 = $299+$49) ✓",
+    "POST /api/beo-standalone/checkout/session accepts both package_ids, returns Stripe URL + session_id ✓",
+    "POST /api/beo-standalone/checkout/session logs payment_transactions with product=echoai3_beo_standalone ✓",
+    "GET /api/beo-standalone/checkout/status/{session_id} returns 404 for unknown session ✓",
+    "GET /api/beo-standalone/admin/subscribers returns {subscribers, total_subscribers, active_subscribers, mrr_usd, lifetime_revenue_usd} ✓",
+    "POST /api/cake-orders/ with version:'V001' returns {success, order:{order_number, pos_status:queued}} ✓",
+    "POST /api/cake-orders/ enqueues pos_outbound row ✓",
+    "/beo landing renders beo-landing, beo-hero-title, beo-pkg-venue_monthly, beo-pkg-catering_monthly, beo-venue-input, beo-email-input, beo-checkout-btn ✓",
+    "/beo/admin renders beo-admin-page with KPI tiles (Active, MRR, Lifetime, Total signups) + beo-admin-table ✓",
+    "/pastry/look/{share_token} renders pastry-look-page with title, image, pastry-look-approve, pastry-look-change buttons ✓",
+    "/pastry/admin shows pastry-approvals-panel with unseen badge count, mark-seen buttons ✓",
+    "CakeViewerPanel has send-to-pos button (data-testid='send-to-pos') that posts to /api/cake-orders/ ✓",
+    "Regression: /pastry, /pastry/gallery, /pastry/admin, /eng-ops/notifications, root / all render correctly ✓"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter161_beo_approvals_pos.py"
+  ],
+  "success_rate": {
+    "backend": "100% (25/25 tests passed)",
+    "frontend": "100% (all routes and features verified)"
+  },
+  "test_credentials": "STRIPE_API_KEY=sk_test_emergent, FAL_KEY set in backend/.env",
+  "seed_data_creation": "Test approvals created via POST /api/pastry/look/approve during testing, TEST_ prefixed cake orders created",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter161 delivered: (A) Cake→POS routing via 'Send to POS' button in CakeViewerPanel - posts to /api/cake-orders/ with version:'V001', creates POS order + Stripe deposit link + production reminder. (B) Client approval inbox - POST /api/pastry/look/approve creates client_approvals row, GET /api/pastry/approvals lists with unseen filter, POST /api/pastry/approvals/{id}/seen marks seen. PastryLook page has Approve/Request-change CTAs, PastryAdmin embeds PastryApprovals panel. (C) BEO Standalone module at /beo with venue_monthly ($478 = $399+$79/mo) and catering_monthly ($348 = $299+$49/mo) plans. Stripe checkout creates sessions, status polling returns 502 for unpaid sessions (expected with mock key). Admin dashboard at /beo/admin shows KPIs + subscriber table. Collections: beo_subscribers (new, empty), client_approvals (has test data from iter161). Seeded data: rnd-demo-01 share token 65617132d8 still published with multiple client approvals.",
+  "features_tested": {
+    "backend_new": [
+      "POST /api/pastry/look/approve with valid share_token creates approval ✓",
+      "POST /api/pastry/look/approve with decision=changes_requested ✓",
+      "POST /api/pastry/look/approve with unknown token returns 404 ✓",
+      "GET /api/pastry/approvals returns items, total, unseen ✓",
+      "GET /api/pastry/approvals?unseen_only=true filters correctly ✓",
+      "POST /api/pastry/approvals/{approval_id}/seen marks as seen ✓",
+      "POST /api/pastry/approvals/{unknown}/seen returns 404 ✓",
+      "GET /api/beo-standalone/packages returns 2 packages with correct pricing ✓",
+      "POST /api/beo-standalone/checkout/session (venue_monthly) returns Stripe URL ✓",
+      "POST /api/beo-standalone/checkout/session (catering_monthly) returns Stripe URL ✓",
+      "POST /api/beo-standalone/checkout/session with unknown package returns 400 ✓",
+      "POST /api/beo-standalone/checkout/session logs payment_transactions ✓",
+      "GET /api/beo-standalone/checkout/status/{unknown} returns 404 ✓",
+      "GET /api/beo-standalone/admin/subscribers returns correct structure ✓",
+      "POST /api/cake-orders/ with version:'V001' returns order with pos_status=queued ✓",
+      "POST /api/cake-orders/ enqueues pos_outbound row ✓",
+      "GET /api/cake-orders/pos/outbound returns pending items ✓"
+    ],
+    "backend_regression": [
+      "GET /api/health returns healthy ✓",
+      "GET /api/pastry/packages returns pricing ✓",
+      "GET /api/pastry/admin/subscribers returns data ✓",
+      "GET /api/pastry/look/{valid_token} returns render data ✓",
+      "GET /api/pastry/gallery returns items ✓",
+      "GET /api/eng-ops/stratus/plans returns plans ✓",
+      "GET /api/pastry/referrals/leaderboard returns entries ✓"
+    ],
+    "frontend_verified": [
+      "/beo renders beo-landing testid ✓",
+      "/beo has beo-hero-title ✓",
+      "/beo has beo-pkg-venue_monthly + beo-pkg-catering_monthly switcher ✓",
+      "/beo has beo-venue-input + beo-email-input + beo-checkout-btn ✓",
+      "/beo/admin renders beo-admin-page ✓",
+      "/beo/admin has KPI tiles (Active, MRR, Lifetime, Total signups) ✓",
+      "/beo/admin has beo-admin-table ✓",
+      "/pastry/look/{share_token} renders pastry-look-page ✓",
+      "/pastry/look/{share_token} has pastry-look-title, pastry-look-image ✓",
+      "/pastry/look/{share_token} has pastry-look-approve button ✓",
+      "/pastry/look/{share_token} has pastry-look-change button ✓",
+      "/pastry/admin shows pastry-approvals-panel ✓",
+      "/pastry/admin shows unseen badge count (5 new) ✓",
+      "/pastry/admin has pastry-approvals-unseen-toggle ✓",
+      "/pastry/admin shows mark-seen buttons on approval items ✓",
+      "CakeViewerPanel has send-to-pos button (code review verified) ✓",
+      "/pastry landing renders with pastry-hero-title ✓",
+      "/pastry/gallery renders with 5 gallery cards ✓",
+      "/eng-ops/notifications renders eng-ops-notifications-page ✓",
+      "Root / dashboard loads successfully ✓"
+    ]
+  }
+}

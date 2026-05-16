@@ -1,0 +1,479 @@
+/* ============================================================================
+   R&D Labs - Ultra-Modern Scientific SaaS Aesthetic
+   Glassmorphism + Neon Accents + Dynamic Effects
+============================================================================ */
+
+/* Main container with scientific gradient background */
+.rdlabs-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0e27 0%, #050812 50%, #0d0a1a 100%);
+}
+
+.rdlabs-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(34, 211, 238, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(99, 102, 241, 0.12) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(168, 85, 247, 0.08) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rdlabs-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(34, 211, 238, 0.03) 0px,
+    rgba(34, 211, 238, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glassmorphism effect for panels */
+.rdlabs-glass {
+  background: rgba(10, 14, 39, 0.45);
+  backdrop-filter: blur(20px) saturate(125%);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  box-shadow:
+    0 8px 32px rgba(34, 211, 238, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.rdlabs-glass-alt {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(18px) saturate(120%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow:
+    0 8px 32px rgba(139, 92, 246, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Neon accent colors with glow */
+.neon-cyan {
+  color: rgba(34, 211, 238, 1);
+  text-shadow:
+    0 0 10px rgba(34, 211, 238, 0.6),
+    0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.neon-purple {
+  color: rgba(139, 92, 246, 1);
+  text-shadow:
+    0 0 10px rgba(139, 92, 246, 0.6),
+    0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.neon-indigo {
+  color: rgba(99, 102, 241, 1);
+  text-shadow:
+    0 0 10px rgba(99, 102, 241, 0.6),
+    0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.neon-pink {
+  color: rgba(236, 72, 153, 1);
+  text-shadow:
+    0 0 10px rgba(236, 72, 153, 0.6),
+    0 0 20px rgba(236, 72, 153, 0.3);
+}
+
+/* Glow effects for borders */
+.glow-cyan-border {
+  border-color: rgba(34, 211, 238, 0.4) !important;
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.3),
+    inset 0 0 20px rgba(34, 211, 238, 0.05);
+}
+
+.glow-purple-border {
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.3),
+    inset 0 0 20px rgba(139, 92, 246, 0.05);
+}
+
+.glow-indigo-border {
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  box-shadow:
+    0 0 20px rgba(99, 102, 241, 0.3),
+    inset 0 0 20px rgba(99, 102, 241, 0.05);
+}
+
+.glow-pink-border {
+  border-color: rgba(236, 72, 153, 0.4) !important;
+  box-shadow:
+    0 0 20px rgba(236, 72, 153, 0.3),
+    inset 0 0 20px rgba(236, 72, 153, 0.05);
+}
+
+/* Header styling */
+.rdlabs-header {
+  position: relative;
+  z-index: 10;
+  background: rgba(10, 14, 39, 0.6);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+  box-shadow: 0 8px 32px rgba(34, 211, 238, 0.08);
+}
+
+/* AI Tab specific styling */
+.ai-tab-trigger {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ai-tab-trigger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ai-tab-trigger:hover::before {
+  opacity: 1;
+  animation: shimmer 0.5s ease;
+}
+
+.ai-tab-trigger[data-state="active"] {
+  background: rgba(34, 211, 238, 0.1) !important;
+  border-color: rgba(34, 211, 238, 0.4) !important;
+  box-shadow:
+    0 0 15px rgba(34, 211, 238, 0.4),
+    inset 0 0 15px rgba(34, 211, 238, 0.1);
+}
+
+.ai-tab-design {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.15) 0%,
+    rgba(99, 102, 241, 0.1) 100%
+  );
+}
+
+.ai-tab-design[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.5),
+    inset 0 0 20px rgba(34, 211, 238, 0.15);
+}
+
+.ai-tab-validate {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(168, 85, 247, 0.1) 100%
+  );
+}
+
+.ai-tab-validate[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.5),
+    inset 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+.ai-tab-sop {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.1) 0%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
+}
+
+.ai-tab-sop[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(236, 72, 153, 0.4),
+    inset 0 0 20px rgba(236, 72, 153, 0.1);
+}
+
+.ai-tab-production {
+  background: linear-gradient(
+    135deg,
+    rgba(251, 146, 60, 0.15) 0%,
+    rgba(234, 179, 8, 0.1) 100%
+  );
+}
+
+.ai-tab-production[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(251, 146, 60, 0.5),
+    inset 0 0 20px rgba(251, 146, 60, 0.15);
+}
+
+.ai-tab-insights {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(34, 211, 238, 0.1) 100%
+  );
+}
+
+.ai-tab-insights[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.5),
+    inset 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.ai-tab-team {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.15) 0%,
+    rgba(236, 72, 153, 0.08) 100%
+  );
+}
+
+.ai-tab-team[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(236, 72, 153, 0.5),
+    inset 0 0 20px rgba(236, 72, 153, 0.15);
+}
+
+.ai-tab-predict {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15) 0%,
+    rgba(139, 92, 246, 0.1) 100%
+  );
+}
+
+.ai-tab-predict[data-state="active"] {
+  box-shadow:
+    0 0 20px rgba(99, 102, 241, 0.5),
+    inset 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Sidebar styling */
+.rdlabs-sidebar {
+  background: rgba(10, 14, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+.rdlabs-sidebar-section {
+  border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+  padding: 1rem;
+}
+
+.rdlabs-sidebar-header {
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+/* Main content area */
+.rdlabs-content {
+  background: rgba(10, 14, 39, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+/* Tab list styling */
+.rdlabs-tablist {
+  background: rgba(10, 14, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+  padding: 0 1.5rem;
+}
+
+/* Button enhancements */
+.rdlabs-button-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.25) 0%,
+    rgba(99, 102, 241, 0.15) 100%
+  );
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: rgba(226, 252, 255, 1);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+.rdlabs-button-primary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.35) 0%,
+    rgba(99, 102, 241, 0.25) 100%
+  );
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
+  border-color: rgba(34, 211, 238, 0.6);
+}
+
+/* Input field styling */
+.rdlabs-input {
+  background: rgba(10, 14, 39, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  color: rgba(226, 252, 255, 1);
+  transition: all 0.3s ease;
+}
+
+.rdlabs-input:focus {
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow:
+    0 0 15px rgba(34, 211, 238, 0.3),
+    inset 0 0 15px rgba(34, 211, 238, 0.05);
+  background: rgba(10, 14, 39, 0.7);
+}
+
+/* Grid background pattern */
+.rdlabs-grid-bg {
+  background-image:
+    linear-gradient(0deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Pulse animation for active elements */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px rgba(34, 211, 238, 0.3),
+      0 0 20px rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(34, 211, 238, 0.5),
+      0 0 40px rgba(34, 211, 238, 0.3);
+  }
+}
+
+.rdlabs-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* Track selector styling */
+.rdlabs-track-selector {
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.rdlabs-track-option {
+  background: rgba(10, 14, 39, 0.5);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rdlabs-track-option:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+.rdlabs-track-option.active {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+/* Divider styling */
+.rdlabs-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.2),
+    transparent
+  );
+  height: 1px;
+}
+
+/* Status indicators */
+.rdlabs-status-active {
+  color: rgba(34, 211, 238, 1);
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+}
+
+.rdlabs-status-warning {
+  color: rgba(251, 146, 60, 1);
+  text-shadow: 0 0 8px rgba(251, 146, 60, 0.6);
+}
+
+.rdlabs-status-success {
+  color: rgba(74, 222, 128, 1);
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+}
+
+/* Highlight text */
+.rdlabs-highlight {
+  color: rgba(34, 211, 238, 1);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+/* Subtle animations for UI elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.rdlabs-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Right panel styling */
+.rdlabs-right-panel {
+  background: rgba(10, 14, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-left: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+/* Ensure proper z-index stacking */
+.rdlabs-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Override default border colors for R&D sections */
+.rdlabs-container .border {
+  border-color: rgba(34, 211, 238, 0.15) !important;
+}
+
+.rdlabs-container input,
+.rdlabs-container select,
+.rdlabs-container textarea {
+  background-color: rgba(10, 14, 39, 0.6);
+  border-color: rgba(34, 211, 238, 0.25);
+}

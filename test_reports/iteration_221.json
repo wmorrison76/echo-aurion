@@ -1,0 +1,84 @@
+{
+  "summary": "iter221 Recognition Benchmark Harness + ECW Rebranding + Video Buffet Intake. All backend APIs (12/12) and frontend features tested and working. Desktop: ECW branding, Benchmark tab with KPIs/samples/runs/run-detail. Mobile: LUCCCA·ECW header, video input for buffet modes, still mode unchanged.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_benchmark_iter221.py",
+    "/app/test_reports/pytest/pytest_results_iter221.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "benchmark.py: Well-structured CRUD + run endpoints. Scoring formula (50% item match, 35% count, 15% portion) is clear. Grade thresholds documented.",
+    "seed_benchmark.py: Idempotent seeding with 8 baseline samples. PIL-drawn synthetic images are placeholders - William will replace with real photos.",
+    "EchoWastePanel.tsx: BenchmarkView component has proper data-testid attributes. KPI tiles, upload form, samples list, runs list, and run detail drawer all working.",
+    "WasteTab.tsx: Buffet modes correctly route to videoInput.current?.click() with accept='video/*'. Still mode unchanged (regression pass).",
+    "WasteStandalone.tsx: Header shows 'LUCCCA · ECW' and 'Echo Cognitive Waste' as expected."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_benchmark_iter221.py"
+  ],
+  "success_rate": {
+    "backend": "100% (12/12 tests passed)",
+    "frontend": "100% (all iter221 features verified)"
+  },
+  "test_credentials": "No auth required for /api/waste/*. Use ?devAuth=1 for frontend.",
+  "seed_data_creation": "Main agent seeded 8 benchmark samples + 2 runs. Test created additional samples for CRUD testing.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter221 fully tested. New features: (1) Recognition Benchmark Harness at /api/waste/benchmark/* with status/samples/runs/run endpoints. (2) Desktop EchoWaste panel rebranded to 'ECW · Echo Cognitive Waste Systems' with Benchmark tab showing KPIs, upload form, samples list, runs list, run detail. (3) Mobile waste page shows 'LUCCCA · ECW' header. (4) Buffet modes (set/refill/close) now use video input with accept='video/*'. (5) Still mode CTA unchanged. All backend endpoints working, all frontend components rendering correctly.",
+  "tests_executed": {
+    "backend": [
+      "GET /api/waste/benchmark/status - PASS (ok=true, sample_count>=8, runs_captured>=2, best_overall float 0..1, best_grade in valid grades)",
+      "POST /api/waste/benchmark/samples - PASS (sample.id starts with 'bs-', blob_backend='local', media_base64 not in response)",
+      "GET /api/waste/benchmark/samples?limit=20 - PASS (rows returned, media_base64 NOT in list response)",
+      "DELETE /api/waste/benchmark/samples/{id} - PASS (returns 200, subsequent delete returns 404)",
+      "POST /api/waste/benchmark/run with single sample - PASS (run has overall_accuracy, grade, per_sample with 1 entry)",
+      "POST /api/waste/benchmark/run with nonexistent sample - PASS (returns 400)",
+      "POST /api/waste/benchmark/run with deleted sample - PASS (returns 400)",
+      "GET /api/waste/benchmark/runs?limit=5 - PASS (rows returned, per_sample NOT in list response)",
+      "GET /api/waste/benchmark/runs/{run_id} - PASS (run detail has per_sample breakdown)",
+      "POST /api/waste/capture/still with JPEG - PASS (vision_mode='llm', items array present)",
+      "GET /api/waste/fingerprints/stats - PASS (ok=true)",
+      "GET /api/waste/photo-intake/atelier/stats - PASS (ok=true)"
+    ],
+    "frontend_desktop": [
+      "Navigate to EchoWaste panel via sidebar - PASS",
+      "Header shows 'ECW · ECHO COGNITIVE WASTE SYSTEMS' - PASS",
+      "Header shows 'Waste Intelligence · v1.4' - PASS",
+      "Sidebar label shows 'ECW · Waste' - PASS",
+      "[data-testid='echowaste-tab-benchmark'] visible and clickable - PASS",
+      "[data-testid='benchmark-root'] renders - PASS",
+      "[data-testid='bench-kpis'] with 5 KPI tiles - PASS (bench-samples, bench-runs, bench-best, bench-grade, bench-target)",
+      "[data-testid='bench-upload-card'] visible - PASS",
+      "[data-testid='bench-samples-list'] shows 9 samples - PASS",
+      "[data-testid='bench-runs-list'] shows runs - PASS",
+      "[data-testid='bench-run-all'] click - PASS (shows 'Running...' during execution)",
+      "New run row appears after completion - PASS",
+      "[data-testid='bench-view-{runId}'] click - PASS",
+      "[data-testid='bench-run-detail'] shows per-sample breakdown - PASS"
+    ],
+    "frontend_mobile": [
+      "/m/waste?devAuth=1 loads - PASS",
+      "[data-testid='waste-tab-root'] renders - PASS",
+      "Header shows 'LUCCCA · ECW' - PASS",
+      "Header shows 'Echo Cognitive Waste' - PASS",
+      "8 mode tiles render - PASS",
+      "[data-testid='mode-buffet-set'] click - PASS",
+      "Buffet set CTA shows '🎥 Video-scan the set buffet' - PASS",
+      "[data-testid='waste-video-input'] has accept='video/*' - PASS",
+      "[data-testid='mode-still'] click - PASS",
+      "Still mode CTA shows '📸 Capture still' - PASS (regression)"
+    ]
+  },
+  "known_blockers": "None. All iter221 features working correctly.",
+  "benchmark_run_results": {
+    "note": "Benchmark run on 9 synthetic PIL-drawn samples scored 69% overall (D grade). This is expected - samples are placeholders. Muffins, pancake, sausage scored 100%. Bacon/bagel/chafer samples had lower scores due to ambiguous synthetic shapes. William will replace with real photos to drive accuracy to 98%+."
+  }
+}

@@ -1,0 +1,27 @@
+name: Helm Package
+on:
+  workflow_dispatch:
+    inputs:
+      chart_version:
+        description: 'Chart version (e.g., 0.1.1)'
+        required: true
+      app_version:
+        description: 'App version (e.g., 0.1.1)'
+        required: true
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump versions
+        run: |
+          yq -i '.version = "${{ github.event.inputs.chart_version }}"' helm/echo-capstone/Chart.yaml
+          yq -i '.appVersion = "${{ github.event.inputs.app_version }}"' helm/echo-capstone/Chart.yaml
+      - name: Package chart
+        run: |
+          helm package helm/echo-capstone -d chart-dist
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: echo-capstone-chart
+          path: chart-dist/*.tgz

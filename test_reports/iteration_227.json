@@ -1,0 +1,77 @@
+{
+  "summary": "iter225 ECW Ops Orders Hub testing complete. 17/17 backend tests passed. Mobile Orders Hub has hamburger drawer with 4 nav items (Order Guide, Vendor Catalogs, Orders, Inventory). Orders view has 5 sub-status pills (New, Approval, Placed, Received, Canceled) with search. Vendor Catalogs shows picker + search + items with SKU/pack_size/category/unit_price. Order Guide shows items with qty input and Request FAB. Inventory voice view shows voice toggle (expected 'Voice not supported' in test runners). Tabbar auto-centers active tab on tap (scrollWidth=443 > clientWidth=390). Idempotency for order-request-offline works (duplicate=true on 2nd call with same key).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Desktop dashboard", "issues": ["Transient 'Error loading SystemSettings/Sidebar' on some page loads - recovers on retry"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ecw_ops_iter225.py",
+    "/app/test_reports/pytest/pytest_results_iter227.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_ecw_ops_iter225.py"
+  ],
+  "success_rate": {
+    "backend": "100% (17/17 tests passed)",
+    "frontend": "100% (mobile Orders Hub + tabbar scroll + all 4 drawer views)"
+  },
+  "test_credentials": "X-User-Id: chef-william for writes. devAuth=1 bypass for frontend.",
+  "seed_data_creation": "5 vendors seeded (Sysco·Main, US Foods, Local Fish Co, Specialty Meats, Gordon Food Service). 16 vendor catalog items seeded with SKU, pack_size, category, unit_price.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter225 Orders Hub fully tested. Backend: GET /vendors returns 5 seeded vendors. GET /vendor-catalog returns 16 items with filter by vendor_id and case-insensitive q= search. GET /order-guide returns aggregated rows from procurement_orders. POST /order-request-offline is idempotent (duplicate=true on 2nd call with same idempotency_key, returns same requisition). Frontend: Mobile /m/ecw Orders tab shows orders-hub-root. Hamburger (orders-hub-menu) opens drawer with 4 nav items (order-guide, vendor-catalogs, orders, inventory). Orders view has 5 sub-status pills with counts + search. Order Guide has qty inputs + Request FAB. Vendor Catalogs has picker + search + items showing SKU/pack_size/category/unit_price. Inventory voice view has voice toggle (shows 'Voice not supported' in test runners - expected). Tabbar auto-centers on tab tap (scrollWidth=443 > clientWidth=390, scrollLeft changes). Desktop dashboard loads but has transient error state on some loads.",
+  "tests_executed": {
+    "backend": [
+      "TestVendorsEndpoint::test_vendors_returns_200 - PASS",
+      "TestVendorsEndpoint::test_vendors_returns_5_seeded - PASS",
+      "TestVendorCatalogEndpoint::test_vendor_catalog_returns_200 - PASS",
+      "TestVendorCatalogEndpoint::test_vendor_catalog_filter_by_vendor_id - PASS",
+      "TestVendorCatalogEndpoint::test_vendor_catalog_search_case_insensitive - PASS",
+      "TestOrderGuideEndpoint::test_order_guide_returns_200 - PASS",
+      "TestOrderGuideEndpoint::test_order_guide_row_structure - PASS",
+      "TestOrderGuideEndpoint::test_order_guide_search_filter - PASS",
+      "TestOrderRequestOfflineIdempotency::test_order_request_offline_creates_requisition - PASS",
+      "TestOrderRequestOfflineIdempotency::test_order_request_offline_duplicate_returns_same - PASS",
+      "TestOrderRequestOfflineIdempotency::test_order_request_offline_validation - PASS",
+      "TestOrderRequestOfflineIdempotency::test_order_request_offline_short_key_rejected - PASS",
+      "TestRegressionIter224Phase2::test_requisitions_approve_endpoint - PASS",
+      "TestRegressionIter224Phase2::test_purchase_orders_endpoint - PASS",
+      "TestRegressionIter224Phase2::test_inventory_levels_endpoint - PASS",
+      "TestMenuBuilderRegression::test_stations_endpoint - PASS",
+      "TestMenuBuilderRegression::test_items_endpoint - PASS"
+    ],
+    "frontend": [
+      "Mobile /m/ecw Orders tab loads orders-hub-root - PASS",
+      "Mobile Orders hamburger menu (orders-hub-menu) found - PASS",
+      "Mobile Orders search input found - PASS",
+      "Mobile Orders 5 sub-status pills (new/for-approval/placed/received/canceled) - PASS",
+      "Mobile Orders drawer opens with 4 nav items - PASS",
+      "Mobile Order Guide view loads with search + qty inputs - PASS",
+      "Mobile Vendor Catalogs view loads with picker + search + items - PASS",
+      "Mobile Inventory voice view loads with voice toggle - PASS",
+      "Mobile Tabbar auto-center scroll (scrollWidth=443 > clientWidth=390) - PASS",
+      "Mobile Tabbar scrollLeft changes on tab click - PASS",
+      "Desktop dashboard loads (transient error on some loads) - PASS with note"
+    ]
+  },
+  "verified_features": {
+    "GET /api/ecw-ops/vendors": "PASS - returns 5 seeded vendors (Sysco·Main, US Foods, Local Fish Co, Specialty Meats, Gordon Food Service)",
+    "GET /api/ecw-ops/vendor-catalog": "PASS - returns 16 items, filters by vendor_id and q= (case-insensitive)",
+    "GET /api/ecw-ops/order-guide": "PASS - returns aggregated rows with item_id, name, order_count, last_unit_price, last_vendor, last_ordered_at",
+    "POST /api/ecw-ops/inventory/order-request-offline": "PASS - idempotent (duplicate=true on 2nd call with same key)",
+    "Mobile Orders Hub": "PASS - hamburger drawer with 4 nav items, 5 sub-status pills, search",
+    "Mobile Order Guide": "PASS - qty inputs + Request FAB",
+    "Mobile Vendor Catalogs": "PASS - picker + search + items with SKU/pack_size/category/unit_price",
+    "Mobile Inventory Voice": "PASS - voice toggle shows 'Voice not supported' in test runners (expected)",
+    "Mobile Tabbar auto-center": "PASS - scrollWidth > clientWidth, scrollLeft changes on tab tap"
+  }
+}

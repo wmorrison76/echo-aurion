@@ -1,0 +1,13 @@
+{
+  "$schema": "https://builder.io/schemas/collection.json",
+  "name": "echo-core",
+  "builder_collections": [
+    "policies",
+    "schemas"
+  ],
+  "ui": [
+    "ApprovalsConsole",
+    "PolicyAuditView",
+    "SarcasmSlider"
+  ]
+}

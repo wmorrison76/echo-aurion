@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Champagne Cart",
+    "icon": "\ud83c\udf7e",
+    "cost": 500,
+    "active": true
+  },
+  {
+    "name": "Live Violinist",
+    "icon": "\ud83c\udfbb",
+    "cost": 750,
+    "active": true
+  },
+  {
+    "name": "Ice Sculpture",
+    "icon": "\u2744\ufe0f",
+    "cost": 400,
+    "active": true
+  },
+  {
+    "name": "Photo Booth",
+    "icon": "\ud83d\udcf8",
+    "cost": 600,
+    "active": true
+  },
+  {
+    "name": "Signature Cocktail",
+    "icon": "\ud83c\udf78",
+    "cost": 300,
+    "active": true
+  },
+  {
+    "name": "Cigar Lounge",
+    "icon": "\ud83d\udeac",
+    "cost": 1000,
+    "active": false
+  },
+  {
+    "name": "Dessert Table",
+    "icon": "\ud83c\udf70",
+    "cost": 450,
+    "active": false
+  },
+  {
+    "name": "Fire Dancers",
+    "icon": "\ud83d\udd25",
+    "cost": 1200,
+    "active": false
+  }
+]

@@ -1,0 +1,26 @@
+/* MixologySommelier — Module-scoped styles
+   No global * resets. Inherits LUCCCA Tailwind system. */
+
+.sommelier-module {
+  font-family: "Outfit", system-ui, -apple-system, sans-serif;
+}
+
+.sommelier-module .mono {
+  font-family: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+}
+
+/* Scrollbar — subtle dark theme */
+.sommelier-module ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.sommelier-module ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sommelier-module ::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.2);
+  border-radius: 3px;
+}
+.sommelier-module ::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.35);
+}

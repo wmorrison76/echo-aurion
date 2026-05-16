@@ -1,0 +1,8 @@
+{
+  "title": "Buffet Sample",
+  "sections": [
+    { "header": "Salads", "items": ["Mixed Greens", "Caesar", "Beet & Goat Cheese"] },
+    { "header": "Entrees", "items": ["Grilled Chicken", "Pasta Primavera", "Carved Beef"] },
+    { "header": "Desserts", "items": ["Assorted Pastries", "Fruit Display"] }
+  ]
+}

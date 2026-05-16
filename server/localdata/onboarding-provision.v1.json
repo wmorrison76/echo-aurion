@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "orgs": {
+    "org_1769398124111_341289de5a48c": {
+      "org": {
+        "orgId": "org_1769398124111_341289de5a48c",
+        "name": "Echo Hospitality Group",
+        "createdAt": "2026-01-26T03:28:44.111Z"
+      },
+      "outlets": [
+        {
+          "id": "outlet_1769398124117_869be18e9a0f3",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "name": "Harbor Room",
+          "location": "San Diego",
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        },
+        {
+          "id": "outlet_1769398124117_7217e3813da56",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "name": "Skyline Lounge",
+          "location": "Austin",
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        }
+      ],
+      "departments": [
+        {
+          "id": "dept_1769398124117_d178c44be9783",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "outletId": null,
+          "name": "Culinary",
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        },
+        {
+          "id": "dept_1769398124117_b06a52260a48d",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "outletId": null,
+          "name": "Beverage",
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        }
+      ],
+      "roles": [
+        {
+          "id": "role_1769398124117_0a9906d717403",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "name": "Manager",
+          "permissions": [
+            "menu:edit",
+            "forecast:edit"
+          ],
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        },
+        {
+          "id": "role_1769398124117_6d2f0fafb80c4",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "name": "Chef",
+          "permissions": [
+            "menu:read",
+            "production:edit"
+          ],
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        }
+      ],
+      "assignments": [
+        {
+          "id": "assign_1769398124117_c31613494053e",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "userId": "user-1",
+          "roleId": "role_manager",
+          "outletId": null,
+          "departmentId": null,
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        },
+        {
+          "id": "assign_1769398124117_c6f994d181be3",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "userId": "user-2",
+          "roleId": "role_chef",
+          "outletId": null,
+          "departmentId": null,
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        }
+      ],
+      "storageLocations": [
+        {
+          "id": "storage_1769398124117_455dd68164a7b",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "outletId": null,
+          "departmentId": null,
+          "name": "Main Walk-in",
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        },
+        {
+          "id": "storage_1769398124117_367f116bb625f",
+          "orgId": "org_1769398124111_341289de5a48c",
+          "outletId": null,
+          "departmentId": null,
+          "name": "Dry Storage",
+          "createdAt": "2026-01-26T03:28:44.117Z"
+        }
+      ]
+    },
+    "org_1769400411033_47dd1aacc3533": {
+      "org": {
+        "orgId": "org_1769400411033_47dd1aacc3533",
+        "name": "Echo Hospitality Group",
+        "createdAt": "2026-01-26T04:06:51.033Z"
+      },
+      "outlets": [
+        {
+          "id": "outlet_1769400411034_1018aba20207",
+          "orgId": "org_1769400411033_47dd1aacc3533",
+          "name": "Harbor Room",
+          "createdAt": "2026-01-26T04:06:51.034Z"
+        },
+        {
+          "id": "outlet_1769400411034_9419df87b88ad",
+          "orgId": "org_1769400411033_47dd1aacc3533",
+          "name": "Skyline Lounge",
+          "createdAt": "2026-01-26T04:06:51.034Z"
+        }
+      ],
+      "departments": [],
+      "roles": [
+        {
+          "id": "role_1769400411034_0e908b15237a2",
+          "orgId": "org_1769400411033_47dd1aacc3533",
+          "name": "Manager",
+          "permissions": [],
+          "createdAt": "2026-01-26T04:06:51.034Z"
+        },
+        {
+          "id": "role_1769400411034_4a3e85a16f38e",
+          "orgId": "org_1769400411033_47dd1aacc3533",
+          "name": "Chef",
+          "permissions": [],
+          "createdAt": "2026-01-26T04:06:51.034Z"
+        }
+      ],
+      "assignments": [],
+      "storageLocations": [
+        {
+          "id": "storage_1769400411034_ec0d2151461b4",
+          "orgId": "org_1769400411033_47dd1aacc3533",
+          "name": "Main Walk-in",
+          "createdAt": "2026-01-26T04:06:51.034Z"
+        },
+        {
+          "id": "storage_1769400411034_ea58f698d6029",
+          "orgId": "org_1769400411033_47dd1aacc3533",
+          "name": "Dry Storage",
+          "createdAt": "2026-01-26T04:06:51.034Z"
+        }
+      ]
+    },
+    "org_1769482430821_2b6525a2281ae": {
+      "org": {
+        "orgId": "org_1769482430821_2b6525a2281ae",
+        "name": "Echo Hospitality Group",
+        "createdAt": "2026-01-27T02:53:50.821Z"
+      },
+      "outlets": [
+        {
+          "id": "outlet_1769482430822_9b7a6e45629ff",
+          "orgId": "org_1769482430821_2b6525a2281ae",
+          "name": "Harbor Room",
+          "createdAt": "2026-01-27T02:53:50.822Z"
+        },
+        {
+          "id": "outlet_1769482430822_34f42f09d6798",
+          "orgId": "org_1769482430821_2b6525a2281ae",
+          "name": "Skyline Lounge",
+          "createdAt": "2026-01-27T02:53:50.822Z"
+        }
+      ],
+      "departments": [],
+      "roles": [
+        {
+          "id": "role_1769482430822_516641fdd0aef",
+          "orgId": "org_1769482430821_2b6525a2281ae",
+          "name": "Manager",
+          "permissions": [],
+          "createdAt": "2026-01-27T02:53:50.822Z"
+        },
+        {
+          "id": "role_1769482430822_9e9175f60653b",
+          "orgId": "org_1769482430821_2b6525a2281ae",
+          "name": "Chef",
+          "permissions": [],
+          "createdAt": "2026-01-27T02:53:50.822Z"
+        }
+      ],
+      "assignments": [],
+      "storageLocations": [
+        {
+          "id": "storage_1769482430822_d201763bec4bd",
+          "orgId": "org_1769482430821_2b6525a2281ae",
+          "name": "Main Walk-in",
+          "createdAt": "2026-01-27T02:53:50.822Z"
+        },
+        {
+          "id": "storage_1769482430822_c1212b1b621d5",
+          "orgId": "org_1769482430821_2b6525a2281ae",
+          "name": "Dry Storage",
+          "createdAt": "2026-01-27T02:53:50.822Z"
+        }
+      ]
+    },
+    "org_1769482992636_63070692be91a": {
+      "org": {
+        "orgId": "org_1769482992636_63070692be91a",
+        "name": "Echo Hospitality Group",
+        "createdAt": "2026-01-27T03:03:12.636Z"
+      },
+      "outlets": [
+        {
+          "id": "outlet_1769482992637_d5787bd2a1f1b",
+          "orgId": "org_1769482992636_63070692be91a",
+          "name": "Harbor Room",
+          "createdAt": "2026-01-27T03:03:12.637Z"
+        },
+        {
+          "id": "outlet_1769482992637_719a8b8fcb5b8",
+          "orgId": "org_1769482992636_63070692be91a",
+          "name": "Skyline Lounge",
+          "createdAt": "2026-01-27T03:03:12.637Z"
+        }
+      ],
+      "departments": [],
+      "roles": [
+        {
+          "id": "role_1769482992637_8176aa4b2810f",
+          "orgId": "org_1769482992636_63070692be91a",
+          "name": "Manager",
+          "permissions": [],
+          "createdAt": "2026-01-27T03:03:12.637Z"
+        },
+        {
+          "id": "role_1769482992637_1064cdc11128a",
+          "orgId": "org_1769482992636_63070692be91a",
+          "name": "Chef",
+          "permissions": [],
+          "createdAt": "2026-01-27T03:03:12.637Z"
+        }
+      ],
+      "assignments": [],
+      "storageLocations": [
+        {
+          "id": "storage_1769482992637_3c12eb5a0188b",
+          "orgId": "org_1769482992636_63070692be91a",
+          "name": "Main Walk-in",
+          "createdAt": "2026-01-27T03:03:12.637Z"
+        },
+        {
+          "id": "storage_1769482992637_28831609ea4d4",
+          "orgId": "org_1769482992636_63070692be91a",
+          "name": "Dry Storage",
+          "createdAt": "2026-01-27T03:03:12.637Z"
+        }
+      ]
+    }
+  }
+}

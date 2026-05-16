@@ -1,0 +1,229 @@
+{
+  "version": "2.1",
+  "notes": "LUCCCA starter GL mapping with updated beverage splits",
+  "rules": [
+    {
+      "code": "5070-DryGoods",
+      "name": "Dry Goods & Pantry",
+      "category": "Food",
+      "priority": 5,
+      "patterns": [
+        "\\b(canned\\s*(tomatoes?|veg(etables?)?)|tomato\\s*paste|tomato\\s*sauce|crushed\\s*tomatoes?|whole\\s*peeled\\s*tomatoes?)\\b"
+      ]
+    },
+    {
+      "code": "5010-Produce",
+      "name": "Produce",
+      "category": "Food",
+      "priority": 10,
+      "patterns": [
+        "\\b(arugula|avocado|banana|basil|blackberry|blueberry|broccoli|cabbage|carrot|cauliflower|cilantro|cucumber|dill|garlic|ginger|grape|greens?|herb|jalapeño|kale|leafys*green|lemon|lettuce|lime|microgreens?|mushroom|onion|orange|parsley|pepper|potato|radish|raspberry|romaine|shallot|spinach|springs*mix|squash|strawberry|tomatillo|tomato|watercress|zucchini)s?\\b",
+        "\\b(produce|farm|field|veg(etables?)?)\\b"
+      ]
+    },
+    {
+      "code": "5030-Proteins",
+      "name": "Proteins",
+      "category": "Food",
+      "priority": 10,
+      "patterns": [
+        "\\b(beef|brisket|bacon|chicken|duck|goat|lamb|pork|ribeye|short\\s*rib|sirloin|steak|turkey|veal|wagyu|protein)\\b",
+        "\\b(meat|protein|butcher)\\b"
+      ]
+    },
+    {
+      "code": "5050-Seafood",
+      "name": "Seafood",
+      "category": "Food",
+      "priority": 10,
+      "patterns": [
+        "\\b(barramundi|bass|clam|cod|crab|fish|halibut|lobster|mackerel|mahi|mussels?|octopus|oyster|prawn|salmon|sardine|scallop|shrimp|snapper|squid|tuna|trout)\\b",
+        "\\b(seafood|shellfish)\\b"
+      ]
+    },
+    {
+      "code": "5060-Dairy",
+      "name": "Dairy & Alternatives",
+      "category": "Food",
+      "priority": 10,
+      "patterns": [
+        "\\b(butter|buttermilk|cream|creme|cheddar|cheese|feta|goat\\s*cheese|milk|mozzarella|parmesan|ricotta|yogurt|yoghurt|half\\s*and\\s*half|heavy\\s*cream|sour\\s*cream|oat\\s*milk|almond\\s*milk|plant\\s*milk)\\b",
+        "\\b(dairy|non[- ]dairy|alternative\\s*dairy)\\b"
+      ]
+    },
+    {
+      "code": "5070-DryGoods",
+      "name": "Dry Goods & Pantry",
+      "category": "Food",
+      "priority": 20,
+      "patterns": [
+        "\\b(baking\\s*powder|baking\\s*soda|beans?|breadcrumbs?|cacao|cocoa|cereal|chocolate|cornmeal|cornstarch|flour|gelatin|grits|honey|lentils?|nuts?|oats?|panko|pasta|peppercorns?|quinoa|rice|salt|sesame|spice|sugar|yeast|pantry)\\b",
+        "\\b(grocery|dry\\s*goods?)\\b"
+      ]
+    },
+    {
+      "code": "5075-OilsFats",
+      "name": "Oils & Fats",
+      "category": "Food",
+      "priority": 20,
+      "patterns": [
+        "\\b(olive\\s*oil|canola|sunflower|avocado\\s*oil|soybean\\s*oil|grapeseed\\s*oil|fryer|shortening|tallow|lard|ghee|clarified\\s*butter|fats?)\\b",
+        "\\b(oils?|fats?)\\b"
+      ]
+    },
+    {
+      "code": "5095-Additives",
+      "name": "Molecular Gastronomy",
+      "category": "Food",
+      "priority": 30,
+      "patterns": [
+        "\\b(agar|agar\\s*agar|carrageenan|citric\\s*acid|gellan|gum|guar\\s*gum|lecithin|maltodextrin|pectin|propylene\\s*glycol|sodium\\s*alginate|xanthan|tapioca\\s*maltodextrin)\\b"
+      ]
+    },
+    {
+      "code": "5120-Prepared",
+      "name": "Prepared & Processed",
+      "category": "Food",
+      "priority": 40,
+      "patterns": [
+        "\\b(entrees?|prepared|prepped|ready\\s*to\\s*eat|heat\\s*and\\s*serve|sauce|marinade|stock|broth|deli|charcuterie|smoked|soup|dip|spread)\\b",
+        "\\b(tyson|perdue|smithfield|oscar\\s*mayer|hormel|campbell(?:'s)?|hellmann'?s?|heinz|national\\s*brands?)\\b",
+        "\\b(sliced\\s*bread|buns?|rolls?|tortillas?|naan|pita|tomato\\s*paste|crushed\\s*tomatoes|ketchup|mustard|mayo(?:nnaise)?|pickles?|olives?|jams?|peanut\\s*butter|chips?|pretzels?|crackers?|cookies?|granola\\s*bars?|soups?|chili|deli\\s*salads?)\\b"
+      ]
+    },
+    {
+      "code": "5200-Frozen",
+      "name": "Frozen Foods",
+      "category": "Food",
+      "priority": 40,
+      "patterns": [
+        "\\b(frozen|IQF|ice\\s*cream|sorbet|gelato|french\\s*fries|tater\\s*tots)\\b"
+      ]
+    },
+    {
+      "code": "5110-Beer",
+      "name": "Beer",
+      "category": "Beverage",
+      "priority": 10,
+      "patterns": [
+        "\\b(beer|ipa|lager|pilsner|stout|ale|porter|saison|hefeweizen|kolsch|pale\\s*ale|hard\\s*seltzer)\\b"
+      ]
+    },
+    {
+      "code": "5111-Wine",
+      "name": "Wine",
+      "category": "Beverage",
+      "priority": 10,
+      "patterns": [
+        "\\b(wine|cabernet|merlot|pinot|chardonnay|riesling|sauvignon|malbec|cava|prosecco|ros[eé]|tempranillo|grenache)\\b"
+      ]
+    },
+    {
+      "code": "5112-Spirits",
+      "name": "Spirits",
+      "category": "Beverage",
+      "priority": 10,
+      "patterns": [
+        "\\b(vodka|gin|rum|tequila|bourbon|whiskey|whisky|scotch|mezcal|brandy|cognac|liqueur|amaro|aperol|campari)\\b"
+      ]
+    },
+    {
+      "code": "5113-Mixers",
+      "name": "Mixers",
+      "category": "Beverage",
+      "priority": 20,
+      "patterns": [
+        "\\b(mixer|tonic|club\\s*soda|ginger\\s*beer|bitters?|grenadine|simple\\s*syrup|soda\\s*water|seltzer|bloody\\s*mary\\s*mix|margarita\\s*mix)\\b"
+      ]
+    },
+    {
+      "code": "5114-Juices",
+      "name": "Juices & Non-Alcoholic",
+      "category": "Beverage",
+      "priority": 20,
+      "patterns": [
+        "\\b(juice|juices|smoothie|lemonade|soft\\s*drink|sparkling\\s*water|kombucha|matcha|chai|iced?\\s*tea|coffee|cold\\s*brew|tonic|ready\\s*to\\s*drink)\\b"
+      ]
+    },
+    {
+      "code": "5115-Concentrates",
+      "name": "Concentrates",
+      "category": "Beverage",
+      "priority": 30,
+      "patterns": [
+        "\\b(concentrate|concentrates|pur[eé]e|syrup|cordial|base|fountain\\s*syrup|frozen\\s*mix|slush|reducer)\\b"
+      ]
+    },
+    {
+      "code": "5030.110",
+      "name": "Paper & Disposables",
+      "category": "Non-Food",
+      "priority": 50,
+      "patterns": [
+        "\\b(bags?|boxes?|cling\\s*film|cups?|disposable|foil|lids?|napkins?|paper|parchment|plast(ic|icwrap)|straws?|take(out|away)|to\\-go|to\\sgo|wrap)\\b"
+      ]
+    },
+    {
+      "code": "5030.120",
+      "name": "Chemicals & Cleaning",
+      "category": "Non-Food",
+      "priority": 50,
+      "patterns": [
+        "\\b(bleach|degreaser|detergent|descaler|dish(machine|washer)\\s*chem|sanitizer|soap|squeegee)\\b",
+        "\\b(clean(ers?|ing)|chemicals?)\\b"
+      ]
+    },
+    {
+      "code": "5030.130",
+      "name": "Linens & Laundry",
+      "category": "Non-Food",
+      "priority": 60,
+      "patterns": [
+        "\\b(aprons?|chef\\s*coat|linen|laundry|napery|rags?|tablecloths?)\\b"
+      ]
+    },
+    {
+      "code": "5030.140",
+      "name": "Smallwares",
+      "category": "Non-Food",
+      "priority": 60,
+      "patterns": [
+        "\\b(bain\\s*marie|bowl|colander|cutting\\s*board|fish\\s*spatula|ladle|mandoline|microplane|pan|peeler|spatula|squeeze\\s*bottle|thermometer|tongs|tray|whisk)\\b"
+      ]
+    },
+    {
+      "code": "5030.150",
+      "name": "Equipment & Repairs",
+      "category": "Non-Food",
+      "priority": 70,
+      "patterns": [
+        "\\b(hood|hvac|oven|dish(machine|washer)|refrigerator|freezer|mixer|repair|service\\s*call|compressor|gasket|installation|maintenance)\\b"
+      ]
+    },
+    {
+      "code": "5030.160",
+      "name": "Kitchen Supplies (Misc)",
+      "category": "Non-Food",
+      "priority": 70,
+      "patterns": [
+        "\\b(butane|butcher\\s*paper|candles?|chaf(ers?|ing)|gloves?|hairnet|labels?|matches|nets?|scrub|sharpen(ing|er)|skewers?|toothpicks?)\\b"
+      ]
+    },
+    {
+      "code": "5090.110",
+      "name": "Freight & Delivery",
+      "category": "Overhead",
+      "priority": 90,
+      "patterns": [
+        "\\b(delivery|freight|shipping|fuel\\s*surcharge|carrier)\\b"
+      ]
+    },
+    {
+      "code": "5090.120",
+      "name": "Taxes",
+      "category": "Overhead",
+      "priority": 95,
+      "patterns": ["\\b(tax|sales\\s*tax|VAT|GST)\\b"]
+    }
+  ]
+}

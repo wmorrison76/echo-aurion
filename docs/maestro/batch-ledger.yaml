@@ -1,0 +1,68 @@
+# Batch Ledger
+# The night's running log. Plates fired, plates sent back, recoveries.
+# Updated as work happens. The Maestro keeps this current.
+
+brigade: EchoAurion
+
+# ─────────────────────────────────────────────────────────────────────
+# How to use this file
+# ─────────────────────────────────────────────────────────────────────
+# Each batch is a discrete delivery unit (typically a phase, a team's
+# completion, or a major recovery event). The Maestro adds an entry
+# at the close of each batch.
+#
+# Bad-night entries are not buried. They are written honestly so the
+# brigade learns. A ledger that hides bad nights is a ledger that
+# ensures bad nights repeat.
+# ─────────────────────────────────────────────────────────────────────
+
+batches:
+
+  - id: 0
+    date: 2026-05
+    name: Scaffolding complete
+    pass: Claude (this conversation)
+    teams_active: []
+    plates_fired: 195
+    plates_sent_back: 0
+    recoveries: []
+    fresh_eyes_pass:
+      reviewer: Claude
+      verdict: clean
+      notes: |
+        All 195 scaffolding files type-check clean across three packs.
+        File headers consistent. Privacy tenets present. Integration
+        map current. Handoff layer present (AGENT_START_HERE, HANDOFF,
+        IMPLEMENTATION_ORDER) plus brigade layer (DEDICATION, THE_LINE,
+        THE_STAGE, THE_PASS, THE_MENU, STATIONS/, ORDER_TICKET_TEMPLATE,
+        STATION_CHECK_LIST, SERVICE_RECOVERY, NO_PLACEHOLDER_POLICY,
+        team-registry, batch-ledger). The kitchen is mise en place.
+    next_batch_prep:
+      - Pilot property selected
+      - Maestro role assigned (human or AI Maestro confirmed)
+      - Priority-1 tooling questions in HANDOFF.md answered
+      - First team brief written from team-registry.yaml team #1
+
+# Future batches will be appended below as work progresses.
+# Format for each new batch:
+#
+#   - id: <int>
+#     date: <YYYY-MM>
+#     name: <short label>
+#     pass: <name of chef expediting>
+#     teams_active: [<team_ids>]
+#     plates_fired: <int>
+#     plates_sent_back: <int>
+#     recoveries:
+#       - station: <station>
+#         issue: <one sentence>
+#         resolution: <one sentence>
+#         duration_minutes: <int>
+#     fresh_eyes_pass:
+#       reviewer: <name>
+#       verdict: clean | drift_caught | weeds | bad_night
+#       notes: |
+#         <multi-line narrative>
+#     next_batch_prep:
+#       - <item>
+#       - <item>

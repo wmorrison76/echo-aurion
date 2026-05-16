@@ -1,0 +1,104 @@
+/**
+ * NetworkPercentileBadge.css
+ * ----------------------------------------------------------------------------
+ * The network percentile badge (the "p72" indicator). Tone reflects where
+ * the item sits in the network distribution — quietly informational, not
+ * alarming.
+ * ----------------------------------------------------------------------------
+ */
+
+.bmb-network-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  cursor: help;
+  border: 1px solid transparent;
+  transition: all var(--bmb-transition-fast);
+  outline: none;
+}
+
+.bmb-network-badge:focus-visible {
+  outline: 2px solid var(--bmb-gold);
+  outline-offset: 1px;
+}
+
+.bmb-network-badge__label {
+  text-transform: lowercase;
+}
+
+/* ============================================================================
+   Tones
+   ============================================================================ */
+.bmb-network-badge--low {
+  background: rgba(111, 142, 179, 0.10);
+  color: #6f8eb3;
+  border-color: rgba(111, 142, 179, 0.3);
+}
+
+.bmb-network-badge--median {
+  background: rgba(168, 163, 154, 0.10);
+  color: var(--bmb-text-secondary);
+  border-color: var(--bmb-border-default);
+}
+
+.bmb-network-badge--high {
+  background: rgba(201, 169, 97, 0.10);
+  color: var(--bmb-gold);
+  border-color: rgba(201, 169, 97, 0.4);
+}
+
+.bmb-network-badge--premium {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 169, 97, 0.15) 0%,
+    rgba(224, 194, 128, 0.20) 100%
+  );
+  color: var(--bmb-gold-bright);
+  border-color: var(--bmb-gold);
+  box-shadow: 0 0 0 1px rgba(201, 169, 97, 0.15);
+}
+
+/* ============================================================================
+   Tooltip
+   ============================================================================ */
+.bmb-network-badge__tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  width: 240px;
+  padding: 8px 10px;
+  background: var(--bmb-bg-elevated);
+  border: 1px solid var(--bmb-border-default);
+  border-radius: var(--bmb-radius-md);
+  color: var(--bmb-text-primary);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  animation: bmb-tooltip-in 120ms ease-out;
+}
+
+.bmb-network-badge__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 8px;
+  border: 4px solid transparent;
+  border-top-color: var(--bmb-border-default);
+}
+
+@keyframes bmb-tooltip-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}

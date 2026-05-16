@@ -1,0 +1,795 @@
+[
+  {
+    "id": "trace-boh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:04:42.791Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:04:42.788Z"
+  },
+  {
+    "id": "trace-foh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:04:42.631Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:04:42.628Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:04:42.460Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:04:42.459Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:04:42.458Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:04:42.455Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-27T03:04:42.445Z"
+  },
+  {
+    "id": "trace-boh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:01:47.533Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:01:47.530Z"
+  },
+  {
+    "id": "trace-foh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:01:47.382Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:01:47.377Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:01:47.221Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T03:01:47.220Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:01:47.219Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T03:01:47.219Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-27T03:01:47.218Z"
+  },
+  {
+    "id": "trace-boh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:55:27.095Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:55:27.092Z"
+  },
+  {
+    "id": "trace-foh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:55:26.935Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:55:26.932Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:55:26.755Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:55:26.754Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:55:26.754Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:55:26.753Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-27T02:55:26.752Z"
+  },
+  {
+    "id": "trace-boh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:52:05.422Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:52:05.417Z"
+  },
+  {
+    "id": "trace-foh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:52:05.245Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:52:05.241Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:52:04.959Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-27T02:52:04.958Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:52:04.956Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-27T02:52:04.954Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-27T02:52:04.953Z"
+  },
+  {
+    "id": "trace-boh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-26T04:08:05.462Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-26T04:08:05.457Z"
+  },
+  {
+    "id": "trace-foh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-26T04:08:05.335Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-26T04:08:05.332Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-26T04:08:05.190Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-26T04:08:05.189Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-26T04:08:05.189Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-26T04:08:05.188Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-26T04:08:05.187Z"
+  },
+  {
+    "id": "trace-boh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-25T10:07:56.093Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T10:07:56.088Z"
+  },
+  {
+    "id": "trace-foh-export-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-25T10:07:55.733Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T10:07:55.725Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-25T10:07:55.214Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-25T10:07:55.213Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T10:07:55.212Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T10:07:55.211Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-25T10:07:55.210Z"
+  },
+  {
+    "id": "trace-boh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T09:57:30.149Z"
+  },
+  {
+    "id": "trace-foh-export-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_EXPORTED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T09:57:29.851Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-25T09:57:29.570Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-fr-FR",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-fr-FR",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    "createdAt": "2026-01-25T09:57:29.570Z"
+  },
+  {
+    "id": "trace-pack-pack-boh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-boh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T09:57:29.569Z"
+  },
+  {
+    "id": "trace-pack-pack-foh-en-US",
+    "orgId": "demo-org",
+    "entityType": "menu-pack",
+    "entityId": "pack-foh-en-US",
+    "sourceRef": "menu-demo-6b",
+    "payload": {
+      "action": "PACK_GENERATED",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    "createdAt": "2026-01-25T09:57:29.569Z"
+  },
+  {
+    "id": "trace-menu-published",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-demo-6b",
+    "sourceRef": "v1",
+    "payload": {
+      "action": "MENU_PUBLISHED",
+      "title": "Investor Dinner Menu",
+      "itemCount": 3
+    },
+    "createdAt": "2026-01-25T09:57:29.568Z"
+  }
+]

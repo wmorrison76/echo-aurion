@@ -1,0 +1,262 @@
+/* LUCCCA Lookbook — TRON + Apple Hybrid
+ *
+ * IMPORTANT:
+ * This file must NOT modify :root variables.
+ * It is intentionally scoped to `.luccca-theme` so it cannot override the OS theme.
+ */
+
+.luccca-theme {
+  --luccca-bg: #0a0f14;
+  --luccca-surface: rgba(12, 18, 24, 0.6);
+  --luccca-glass: rgba(15, 20, 28, 0.35);
+  --luccca-text: #e6eef5;
+  --luccca-muted: #9fb2c0;
+  --luccca-accent: #00d1ff;
+  --luccca-accent-2: #c0a060;
+  --luccca-stroke: rgba(0, 209, 255, 0.65);
+  --luccca-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --luccca-radius: 18px;
+  --luccca-gap: 28px;
+  --luccca-gap-sm: 22px;
+  --luccca-gap-xs: 14px;
+
+  background: var(--luccca-bg);
+  color: var(--luccca-text);
+}
+
+/* Light mode variant of LUCCCA lookbook (still scoped) */
+html:not(.dark) .luccca-theme {
+  --luccca-bg: #f8fafc;
+  --luccca-surface: rgba(248, 250, 252, 0.95);
+  --luccca-glass: rgba(255, 255, 255, 0.6);
+  --luccca-text: #1e293b;
+  --luccca-muted: #64748b;
+  --luccca-accent: #06b6d4;
+  --luccca-accent-2: #d97706;
+  --luccca-stroke: rgba(6, 182, 212, 0.4);
+  --luccca-shadow: 0 4px 12px rgba(6, 182, 212, 0.08);
+}
+
+.luccca-theme .glass {
+  background: var(--luccca-glass);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--luccca-radius);
+  box-shadow: var(--luccca-shadow);
+  backdrop-filter: blur(12px) saturate(1.2);
+}
+
+html:not(.dark) .luccca-theme .glass {
+  border-color: rgba(6, 182, 212, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.luccca-theme .neon-border {
+  position: relative;
+}
+
+.dark .luccca-theme .neon-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--luccca-radius) + 2px);
+  box-shadow:
+    0 0 1px rgba(0, 209, 255, 0.65),
+    0 0 8px rgba(0, 209, 255, 0.5),
+    inset 0 0 12px rgba(0, 209, 255, 0.2);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+html:not(.dark) .luccca-theme .neon-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--luccca-radius) + 2px);
+  box-shadow:
+    0 0 1px rgba(6, 182, 212, 0.4),
+    0 0 8px rgba(6, 182, 212, 0.25),
+    inset 0 0 12px rgba(6, 182, 212, 0.08);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Masonry helpers for LUCCCA variant */
+.luccca-theme .masonry {
+  columns: 4 280px;
+  column-gap: var(--luccca-gap);
+}
+
+@media (max-width: 1200px) {
+  .luccca-theme .masonry {
+    columns: 3 240px;
+  }
+}
+
+@media (max-width: 900px) {
+  .luccca-theme .masonry {
+    columns: 2 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .luccca-theme .masonry {
+    columns: 1 100%;
+  }
+}
+
+.luccca-theme .masonry .card {
+  break-inside: avoid;
+  margin: 0 0 var(--luccca-gap);
+  overflow: hidden;
+}
+
+.luccca-theme .masonry img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.luccca-theme .masonry .card:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.05);
+}
+
+/* Lightbox polish */
+.luccca-theme .lightbox-overlay {
+  background: rgba(6, 10, 14, 0.7);
+  backdrop-filter: blur(8px);
+}
+/* LUCCCA Lookbook — TRON + Apple Hybrid
+ *
+ * IMPORTANT:
+ * This file must NOT modify :root variables.
+ * It is intentionally scoped to `.luccca-theme` so it cannot override the OS theme.
+ */
+
+.luccca-theme {
+  --luccca-bg: #0a0f14;
+  --luccca-surface: rgba(12, 18, 24, 0.6);
+  --luccca-glass: rgba(15, 20, 28, 0.35);
+  --luccca-text: #e6eef5;
+  --luccca-muted: #9fb2c0;
+  --luccca-accent: #00d1ff;
+  --luccca-accent-2: #c0a060;
+  --luccca-stroke: rgba(0, 209, 255, 0.65);
+  --luccca-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --luccca-radius: 18px;
+  --luccca-gap: 28px;
+  --luccca-gap-sm: 22px;
+  --luccca-gap-xs: 14px;
+
+  background: var(--luccca-bg);
+  color: var(--luccca-text);
+}
+
+/* Light mode variant of LUCCCA lookbook (still scoped) */
+html:not(.dark) .luccca-theme {
+  --luccca-bg: #f8fafc;
+  --luccca-surface: rgba(248, 250, 252, 0.95);
+  --luccca-glass: rgba(255, 255, 255, 0.6);
+  --luccca-text: #1e293b;
+  --luccca-muted: #64748b;
+  --luccca-accent: #06b6d4;
+  --luccca-accent-2: #d97706;
+  --luccca-stroke: rgba(6, 182, 212, 0.4);
+  --luccca-shadow: 0 4px 12px rgba(6, 182, 212, 0.08);
+}
+
+.luccca-theme .glass {
+  background: var(--luccca-glass);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--luccca-radius);
+  box-shadow: var(--luccca-shadow);
+  backdrop-filter: blur(12px) saturate(1.2);
+}
+
+html:not(.dark) .luccca-theme .glass {
+  border-color: rgba(6, 182, 212, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.luccca-theme .neon-border {
+  position: relative;
+}
+
+.dark .luccca-theme .neon-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--luccca-radius) + 2px);
+  box-shadow:
+    0 0 1px rgba(0, 209, 255, 0.65),
+    0 0 8px rgba(0, 209, 255, 0.5),
+    inset 0 0 12px rgba(0, 209, 255, 0.2);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+html:not(.dark) .luccca-theme .neon-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--luccca-radius) + 2px);
+  box-shadow:
+    0 0 1px rgba(6, 182, 212, 0.4),
+    0 0 8px rgba(6, 182, 212, 0.25),
+    inset 0 0 12px rgba(6, 182, 212, 0.08);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Masonry helpers for LUCCCA variant */
+.luccca-theme .masonry {
+  columns: 4 280px;
+  column-gap: var(--luccca-gap);
+}
+
+@media (max-width: 1200px) {
+  .luccca-theme .masonry {
+    columns: 3 240px;
+  }
+}
+
+@media (max-width: 900px) {
+  .luccca-theme .masonry {
+    columns: 2 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .luccca-theme .masonry {
+    columns: 1 100%;
+  }
+}
+
+.luccca-theme .masonry .card {
+  break-inside: avoid;
+  margin: 0 0 var(--luccca-gap);
+  overflow: hidden;
+}
+
+.luccca-theme .masonry img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.luccca-theme .masonry .card:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.05);
+}
+
+/* Lightbox polish */
+.luccca-theme .lightbox-overlay {
+  background: rgba(6, 10, 14, 0.7);
+  backdrop-filter: blur(8px);
+}

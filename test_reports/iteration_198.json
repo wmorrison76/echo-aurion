@@ -1,0 +1,75 @@
+{
+  "summary": "iter198 Mobile Build 5+ testing complete. All features verified: WhatsNewStrip pinned at TOP of HomeSalary (before command centre), auto-loads on mount with Claude Sonnet 4.5 summary, refresh button works, expand/collapse toggle works, freshness pill updates. Old whats-new-btn/whats-new-result testids correctly REMOVED from ActivityStrip. Role gating verified: GENERAL role does NOT see whats-new-strip, activity-strip, ops-snapshot, or finance-tiles.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_198.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "WhatsNewStrip correctly positioned at TOP of HomeSalary (line 184), BEFORE 'Today · command centre' KPI section",
+    "WhatsNewStrip auto-loads on mount via useEffect, no manual click needed",
+    "Auto-refresh interval set to 5 minutes (5 * 60 * 1000 ms)",
+    "Freshness ticker updates every 30 seconds (30 * 1000 ms)",
+    "Footer text correctly shows 'Echo · Claude Sonnet 4.5 · last 30 min · N events · auto-refresh 5m'",
+    "Old testids (whats-new-btn, whats-new-result) correctly REMOVED from ActivityStrip",
+    "New testids all present: whats-new-strip, whats-new-card, whats-new-refresh, whats-new-toggle, whats-new-headline, whats-new-summary, whats-new-fresh",
+    "Role gating works correctly: GENERAL role sees HomeGeneral (no salary+ components), SALARY+ roles see HomeSalary with WhatsNewStrip"
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "N/A (frontend-only test)",
+    "frontend": "100% (all features verified)"
+  },
+  "test_credentials": {
+    "admin_token": "TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o",
+    "manager_token": "2DwSKsmwALyIFd3JI_bq6Z3w",
+    "general_token": "QqJP1iUCAzE24kK_sUhOxtNI"
+  },
+  "seed_data_creation": "None - used existing tokens from iter193/iter197",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter198 Mobile Build 5+ fully tested. WhatsNewStrip is now a pinned component at the TOP of HomeSalary that auto-loads Echo NL summary on mount (no button click needed). It polls every 5 min and shows freshness label that updates every 30s. The old on-demand button (whats-new-btn) and result display (whats-new-result) were REMOVED from ActivityStrip. All new testids verified: whats-new-strip, whats-new-card, whats-new-refresh, whats-new-toggle, whats-new-headline, whats-new-summary, whats-new-fresh. Role gating verified: GENERAL role does NOT see any of these components (they're inside HomeSalary which only renders for is_salary=true).",
+  "features_tested": {
+    "whats_new_strip": {
+      "renders_at_top": "PASS - WhatsNewStrip (y=200) is ABOVE command centre (y=332)",
+      "auto_loads_on_mount": "PASS - headline appears within 15s of page load",
+      "whats_new_headline": "PASS - shows Claude-generated headline",
+      "whats_new_fresh": "PASS - shows freshness label (e.g., '0s ago', '23s ago')",
+      "whats_new_refresh": "PASS - button present and clickable, triggers re-fetch",
+      "whats_new_toggle": "PASS - expands/collapses summary",
+      "whats_new_summary": "PASS - multiline bullet summary visible on expand",
+      "whats_new_card": "PASS - contains footer 'Echo · Claude Sonnet 4.5 · last 30 min · N events · auto-refresh 5m'"
+    },
+    "activity_strip_changes": {
+      "activity_strip_present": "PASS - activity-strip still renders",
+      "whats_new_btn_removed": "PASS - whats-new-btn testid correctly REMOVED",
+      "whats_new_result_removed": "PASS - whats-new-result testid correctly REMOVED",
+      "activity_events_intact": "PASS - activity-event-0 through activity-event-5 still present"
+    },
+    "role_gating": {
+      "general_no_whats_new_strip": "PASS - GENERAL role does NOT see whats-new-strip",
+      "general_no_activity_strip": "PASS - GENERAL role does NOT see activity-strip",
+      "general_no_ops_snapshot": "PASS - GENERAL role does NOT see ops-snapshot",
+      "general_no_finance_tiles": "PASS - GENERAL role does NOT see finance-tiles",
+      "general_sees_home_general": "PASS - GENERAL role sees HomeGeneral components (Today section, Quick tiles)"
+    },
+    "regression": {
+      "ops_snapshot": "PASS - ops-packs-today, ops-temp-excursions, ops-out-for-delivery, ops-lane-util all present",
+      "finance_tiles": "PASS - renders for salary+ roles",
+      "staff_role_pill": "PASS - shows correct role (MANAGER/GENERAL)",
+      "five_tab_nav": "PASS - all 5 tabs (home/schedule/concierge/briefing/more) present",
+      "hiring_drawer": "PASS - opens and shows batches for manager role"
+    }
+  },
+  "mocked_apis": {
+    "claude_sonnet_45": "LIVE - Emergent LLM key present, Echo 'What just happened?' returns real LLM summary via /api/echo/whats-new"
+  }
+}

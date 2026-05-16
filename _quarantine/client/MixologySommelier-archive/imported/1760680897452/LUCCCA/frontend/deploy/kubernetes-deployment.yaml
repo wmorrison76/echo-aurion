@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luccca-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: luccca
+  template:
+    metadata:
+      labels:
+        app: luccca
+    spec:
+      containers:
+        - name: luccca
+          image: luccca:latest
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: luccca-secrets

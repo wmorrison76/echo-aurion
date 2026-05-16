@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "echo-capstone.fullname" . }}
+  labels: {{- include "echo-capstone.labels" . | nindent 8 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels: {{- include "echo-capstone.selectorLabels" . | nindent 10 }}
+  template:
+    metadata:
+      labels: {{- include "echo-capstone.selectorLabels" . | nindent 12 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.env.NODE_ENV | quote }}
+            - name: BUILD_ENTRY
+              value: {{ .Values.env.BUILD_ENTRY | quote }}
+            - name: RELEASE_CHANNEL
+              value: {{ .Values.env.RELEASE_CHANNEL | quote }}
+            - name: RELEASE_TAG
+              value: {{ .Values.env.RELEASE_TAG | quote }}
+          readinessProbe:
+            httpGet: { path: "/", port: 80 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: "/", port: 80 }
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          resources: {{- toYaml .Values.resources | nindent 16 }}

@@ -1,0 +1,46 @@
+# Echo AI³ Core Authorization Model
+#
+# Defines organization roles, actions, and baseline policy rules
+# consumed by the policy service and CI guardrails. The model keeps
+# EchoBot from escalating privileges while ensuring human oversight
+# for production impacting activity.
+
+roles:
+  - Owner
+  - Manager
+  - Chef
+  - Purchaser
+  - EchoBot
+
+actions:
+  - code:pr.create
+  - code:pr.comment
+  - code:scan.sarif.import
+  - order:po.prepare
+  - order:po.send
+  - inventory:transfer.prepare
+  - inventory:transfer.approve
+  - robot:pause
+  - robot:throttle
+  - data:read
+  - data:write
+
+rules:
+  - id: pr-only
+    description: "Critical changes must go through protected pull-requests"
+    require:
+      branch_protection: true
+      signed_commits: true
+      reviewers: [lead, security]
+      checks: [unit, lint, sast, sbom, license]
+
+  - id: no-self-edit
+    description: "EchoBot cannot modify authentication or CI pipelines directly"
+    match:
+      file:
+        - "**/auth/**"
+        - "**/ci/**"
+        - ".github/workflows/**"
+    deny_if_author:
+      - EchoBot
+    message: "Echo cannot edit auth/CI directly. Open a PR with a human reviewer."

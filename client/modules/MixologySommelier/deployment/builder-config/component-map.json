@@ -1,0 +1,172 @@
+{
+  "WineCatalogGrid": {
+    "endpoint": "/api/wines",
+    "method": "GET",
+    "refreshInterval": "1h",
+    "bindings": {
+      "id": "wine.id",
+      "name": "wine.name",
+      "producer": "wine.producer",
+      "region": "wine.region",
+      "vintage": "wine.vintage",
+      "image": "wine.image_url",
+      "price": "wine.retail_price",
+      "rating": "wine.critic_scores.avg || 0",
+      "aromas": "wine.aromas"
+    },
+    "actions": ["openWineDetail", "addToFavorites", "viewPairing"]
+  },
+  "WineDetailModal": {
+    "endpoint": "/api/wines/:id",
+    "method": "GET",
+    "bindings": {
+      "name": "wine.name",
+      "producer": "wine.producer",
+      "region": "wine.region",
+      "vintage": "wine.vintage",
+      "variety": "wine.varietals",
+      "abv": "wine.abv",
+      "body": "wine.body",
+      "acidity": "wine.acidity",
+      "tannin": "wine.tannin",
+      "sweetness": "wine.sweetness",
+      "notes": "wine.ai_pairing_notes",
+      "pairingNotess": "wine.winemaker_notes",
+      "image": "wine.image_url"
+    },
+    "actions": ["addToInventory", "suggestPairings", "viewVintageHistory"]
+  },
+  "PairingPanel": {
+    "endpoint": "/pairings/compute/:recipeId",
+    "method": "POST",
+    "bindings": {
+      "dishName": "recipe.name",
+      "dishCuisine": "recipe.cuisine",
+      "wineName": "pairing.wine_name",
+      "wineSummary": "pairing.rationale",
+      "pairingScore": "pairing.pairing_score",
+      "region": "pairing.wine_region"
+    },
+    "actions": ["approvePairing", "savePairing", "requestAlternatives"]
+  },
+  "InventoryList": {
+    "endpoint": "/api/inventory",
+    "method": "GET",
+    "refreshInterval": "15m",
+    "bindings": {
+      "id": "lot.id",
+      "wineName": "lot.name",
+      "region": "lot.region",
+      "vintage": "lot.vintage",
+      "binLocation": "lot.bin_location",
+      "quantity": "lot.qty_bottles",
+      "costPerBottle": "lot.cost_per_bottle",
+      "parLevel": "lot.par_level",
+      "status": "lot.qty_bottles > lot.par_level ? 'Overstocked' : 'Low'"
+    },
+    "actions": ["updateQuantity", "transferBin", "orderMore"]
+  },
+  "MonthEndReport": {
+    "endpoint": "/reports/month-end/:venueId/:month",
+    "method": "GET",
+    "bindings": {
+      "venueId": "report.venueId",
+      "month": "report.month",
+      "opening": "report.opening",
+      "purchases": "report.purchases",
+      "closing": "report.closing",
+      "cogs": "report.cogs",
+      "costPercent": "report.costPct",
+      "revenue": "report.revenue"
+    },
+    "actions": ["downloadReport", "emailStakeholders"]
+  },
+  "VintageTimeline": {
+    "endpoint": "/archive/vintage/:region/:year",
+    "method": "GET",
+    "bindings": {
+      "region": "vintage.region",
+      "year": "vintage.year",
+      "rating": "vintage.rating",
+      "summary": "vintage.summary",
+      "rainfall": "vintage.rainfall_mm",
+      "temperature": "vintage.avg_temp"
+    },
+    "actions": ["viewDecade", "compareVintages", "viewProducers"]
+  },
+  "VintageDecadeSummary": {
+    "endpoint": "/archive/vintage/decade/:region/:start",
+    "method": "GET",
+    "bindings": {
+      "region": "decade.region",
+      "decade": "decade.decade",
+      "summary": "decade.summary"
+    },
+    "actions": ["viewAllVintages", "downloadAnalysis"]
+  },
+  "ProducerCard": {
+    "endpoint": "/archive/producer/:name",
+    "method": "GET",
+    "bindings": {
+      "name": "producer.name",
+      "history": "producer.history",
+      "region": "producer.region"
+    },
+    "actions": ["viewWines", "viewVintages"]
+  },
+  "TrainingDeck": {
+    "endpoint": "/training/flashcards/:topic",
+    "method": "GET",
+    "bindings": {
+      "question": "card.question",
+      "answer": "card.answer",
+      "topic": "card.topic"
+    },
+    "actions": ["nextCard", "markCorrect", "saveProgress"]
+  },
+  "BlindTastingExam": {
+    "endpoint": "/training/exam/blind",
+    "method": "GET",
+    "bindings": {
+      "scenario": "exam.scenario",
+      "region": "exam.region",
+      "difficulty": "exam.difficulty"
+    },
+    "actions": ["submitAnswer", "revealAnswer"]
+  },
+  "AlertsPanel": {
+    "endpoint": "/alerts/:venueId",
+    "method": "GET",
+    "refreshInterval": "5m",
+    "bindings": {
+      "sensorId": "alert.sensor_id",
+      "message": "alert.message",
+      "severity": "alert.temp_c < 8 || alert.temp_c > 18 ? 'critical' : 'warning'",
+      "timestamp": "alert.created_at"
+    },
+    "actions": ["resolveAlert", "viewDetails"]
+  },
+  "SalesAnalyticsDashboard": {
+    "endpoint": "/analytics/mix/:venueId",
+    "method": "GET",
+    "bindings": {
+      "totalRevenue": "analytics.totalRevenue",
+      "wineRevenue": "analytics.wineRevenue",
+      "foodRevenue": "analytics.foodRevenue",
+      "winePercent": "analytics.winePercent",
+      "topItems": "analytics.items"
+    },
+    "actions": ["viewTopPairings", "downloadReport"]
+  },
+  "VenueDashboard": {
+    "endpoint": "/api/inventory/stats",
+    "method": "GET",
+    "bindings": {
+      "totalWines": "stats.wines",
+      "costPercent": "stats.costPct",
+      "topRegion": "stats.topRegion",
+      "alerts": "stats.activeAlerts"
+    },
+    "actions": ["viewCellar", "viewReports", "viewAlerts"]
+  }
+}

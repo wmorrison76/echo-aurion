@@ -1,0 +1,119 @@
+{
+  "summary": "Iteration 121: Four Critical Fixes Verified. All 13 backend tests PASSED (100%). Frontend panels verified: 21-Day Forecast opens OpsForecast module, Culinary Recipe Builder shows AI recipes with badges, Menu Engineering Matrix shows LIVE POS DATA.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Menu Engineering (menu-engineering panel key)",
+        "issue": "Panel failed to load with 'Failed to fetch dynamically imported module' error when accessed via 'menu-engineering' key. Works correctly via 'Menu Engineering' sidebar link which uses 'menu-eng-matrix' key.",
+        "selector": "[data-testid='menu-engineering-panel']",
+        "priority": "LOW",
+        "note": "Panel registry has both 'menu-engineering' and 'menu-eng-matrix' keys pointing to same module. The 'menu-engineering' key at line 690 uses simple import() while 'menu-eng-matrix' at line 855 uses createSafeModuleLoader. Recommend consolidating to single key."
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter121_fixes.py",
+    "/app/test_reports/pytest/pytest_results_iter121.xml"
+  ],
+  "action_items": [
+    "Optional: Consolidate 'menu-engineering' and 'menu-eng-matrix' panel keys in panel-registry.ts to avoid confusion"
+  ],
+  "critical_code_review_comments": [
+    "P0 VERIFIED: Yield Database search API returns results with yield_pct, ap_cost_lb, ep_cost_lb",
+    "P0 VERIFIED: Fuzzy search returns matches for partial queries ('onio' -> 'Onion, Yellow', 'chick' -> 'Chicken', 'salm' -> 'Salmon')",
+    "P0 VERIFIED: IngredientsGrid fuzzy dropdown shows yield DB items with yield %, cost info (via Culinary Recipe Builder)",
+    "P0 VERIFIED: 21-Day Forecast panel opens OpsForecast module (data-testid='ops-forecast-panel') with Excel grid view",
+    "P1 VERIFIED: /api/yields/recipes returns both manual recipes and echoai3_generated AI recipes",
+    "P1 VERIFIED: AI recipes show source='echoai3_generated' and status='pending_approval' in response",
+    "P1 VERIFIED: CulinaryRecipeBuilder sidebar shows AI badge for echoai3_generated recipes (Lobster Thermidor, Truffle Mushroom Risotto)",
+    "P1 VERIFIED: Menu Engineering Matrix /api/menu-eng-matrix/outlets returns outlets from POS database with source='pos_database'",
+    "P1 VERIFIED: Menu Engineering Matrix /api/menu-eng-matrix/matrix returns items with data_source='pos_database'",
+    "P1 VERIFIED: Menu Engineering Matrix frontend shows 'LIVE POS DATA' indicator",
+    "P1 VERIFIED: Menu Engineering Matrix frontend dynamically picks first available outlet (BNQ) instead of hardcoded 'Signature Italian'"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter121_fixes.py"
+  ],
+  "success_rate": {
+    "backend": "100% (13/13 tests passed)",
+    "frontend": "100% (All 4 critical fixes verified)"
+  },
+  "test_credentials": {
+    "auth": "No auth required - dev mode"
+  },
+  "seed_data_creation": "None required - existing POS data used",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 121 verified 4 critical fixes: (1) Yield Database search API with fuzzy matching at /api/yields/search - returns yield_pct, ap_cost_lb, ep_cost_lb. (2) IngredientsGrid.tsx connected to Yield DB API - fuzzy dropdown shows yield % and cost, auto-fills on selection. (3) 21-Day Forecast panel (key: forecast-21day) now loads OpsForecast module (data-testid='ops-forecast-panel') with Excel grid view. (4) /api/yields/recipes merges manual + echoai3_generated recipes - AI recipes show with AI badge and 'Pending' status in CulinaryRecipeBuilder sidebar. (5) Menu Engineering Matrix pulls from real POS database - shows 'LIVE POS DATA' indicator, outlets dynamically loaded (BNQ, REST, LNG, POOL).",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/yields/search?q=salmon - returns results with yield_pct, ap_cost_lb, ep_cost_lb - PASSED",
+      "GET /api/yields/search?q=onio - fuzzy matches 'Onion, Yellow' - PASSED",
+      "GET /api/yields/search?q=chick - fuzzy matches 'Chicken' items - PASSED",
+      "GET /api/yields/search?q=beef - returns cost info for auto-fill - PASSED",
+      "GET /api/yields/recipes - returns recipes list - PASSED",
+      "GET /api/yields/recipes - includes AI-generated recipes with source='echoai3_generated' - PASSED",
+      "GET /api/menu-eng-matrix/outlets - returns outlets from POS database - PASSED",
+      "GET /api/menu-eng-matrix/matrix - returns data_source field - PASSED",
+      "GET /api/menu-eng-matrix/matrix - items have required fields - PASSED",
+      "GET /api/menu-eng-matrix/matrix - quadrant classification works - PASSED",
+      "GET /api/ops-forecast/21-day - endpoint check - PASSED",
+      "GET /api/yields/calculate - yield calculation works - PASSED",
+      "GET /api/yields/all - returns 130+ items - PASSED"
+    ],
+    "frontend_ui_tests": [
+      "21-Day Forecast panel opens OpsForecast module (data-testid='ops-forecast-panel') - PASSED",
+      "OpsForecast shows Excel grid view with 21 days of data - PASSED",
+      "OpsForecast has view tabs (grid, graph, rooms, outlets, groups, trends) - PASSED",
+      "Culinary Recipe Builder panel loads via Recipe Builder sidebar link - PASSED",
+      "Fuzzy search dropdown shows yield DB items with yield %, cost - PASSED",
+      "Fuzzy search 'beef' matches Beef items (Tenderloin, Strip Loin, Short Rib, Ground, Ribeye) - PASSED",
+      "AI recipes show with AI badge in saved recipes sidebar - PASSED",
+      "AI recipes show 'Pending' status - PASSED",
+      "Menu Engineering Matrix panel loads - PASSED",
+      "Menu Engineering Matrix shows 'LIVE POS DATA' indicator - PASSED",
+      "Menu Engineering Matrix outlet selector has dynamic outlets (BNQ, REST, LNG, POOL) - PASSED",
+      "Menu Engineering Matrix shows scatter plot and quadrant breakdown - PASSED"
+    ]
+  },
+  "verified_features": {
+    "yield_database_search": {
+      "status": "Working",
+      "endpoint": "/api/yields/search",
+      "features": ["Fuzzy matching", "Returns yield_pct, ap_cost_lb, ep_cost_lb", "Partial query support"]
+    },
+    "ingredients_grid_integration": {
+      "status": "Working",
+      "location": "Culinary Recipe Builder > Fuzzy Search",
+      "features": ["Calls /api/yields/search", "Shows yield % and cost in dropdown", "Auto-fills on selection"]
+    },
+    "21_day_forecast_fix": {
+      "status": "Working",
+      "panel_key": "forecast-21day",
+      "loads_module": "OpsForecast",
+      "data_testid": "ops-forecast-panel",
+      "features": ["Excel grid view", "21 days of forecast data", "Multiple view tabs"]
+    },
+    "ai_recipes_visibility": {
+      "status": "Working",
+      "endpoint": "/api/yields/recipes",
+      "features": ["Merges manual + AI recipes", "AI badge in sidebar", "Pending status shown"]
+    },
+    "menu_engineering_pos_integration": {
+      "status": "Working",
+      "endpoints": ["/api/menu-eng-matrix/outlets", "/api/menu-eng-matrix/matrix"],
+      "features": ["LIVE POS DATA indicator", "Dynamic outlet selection", "Real POS item prices", "Yield DB food costs"]
+    }
+  },
+  "mocked_apis": {
+    "has_mocked_apis": true,
+    "mocked_apis_list": ["Menu Engineering Matrix uses simulated sales volume when no pos_transactions exist, but real POS item prices and yield DB food costs"],
+    "note": "Sales volume is simulated based on price tier when pos_transactions collection is empty"
+  }
+}

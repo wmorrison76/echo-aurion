@@ -1,0 +1,12 @@
+{
+  "EchoMixologyAI": true,
+  "EchoSommelier": true,
+  "SommelierMixologyBridge": true,
+  "LiquorAI": true,
+  "VisualSyncLiveControl": false,
+  "MobileScheduler": true,
+  "RedPhoenixRecovery": true,
+  "Telemetry": false,
+  "MixologyWheel": true,
+  "SommelierMergeConsole": false
+}

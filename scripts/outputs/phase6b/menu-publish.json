@@ -1,0 +1,83 @@
+{
+  "menu": {
+    "menuId": "menu-demo-6b",
+    "title": "Investor Dinner Menu",
+    "items": [
+      {
+        "id": "menu-demo-6b-dish-1",
+        "menuId": "menu-demo-6b",
+        "name": "Seared Scallop",
+        "recipeId": "dish-001",
+        "recipeName": "Seared Scallop",
+        "courseName": "Starter",
+        "yieldCount": 80,
+        "portionSize": "1 plate",
+        "dietaryNotes": [
+          "pescatarian"
+        ],
+        "allergieWarnings": [
+          "shellfish"
+        ],
+        "productionNote": "Hot line"
+      },
+      {
+        "id": "menu-demo-6b-dish-2",
+        "menuId": "menu-demo-6b",
+        "name": "Braised Short Rib",
+        "recipeId": "dish-002",
+        "recipeName": "Braised Short Rib",
+        "courseName": "Main",
+        "yieldCount": 80,
+        "portionSize": "8 oz",
+        "dietaryNotes": [],
+        "allergieWarnings": [
+          "dairy"
+        ],
+        "productionNote": "Braised day prior"
+      },
+      {
+        "id": "menu-demo-6b-bev-1",
+        "menuId": "menu-demo-6b",
+        "name": "Citrus Spritz",
+        "recipeId": "bev-001",
+        "recipeName": "Citrus Spritz",
+        "courseName": "Beverage",
+        "yieldCount": 80,
+        "portionSize": "8 oz",
+        "dietaryNotes": [],
+        "allergieWarnings": [],
+        "productionNote": "Bar station"
+      }
+    ],
+    "eventId": "investor-demo",
+    "createdAtISO": "2026-01-23T12:00:00.000Z",
+    "updatedAtISO": "2026-01-23T12:00:00.000Z"
+  },
+  "versionId": "v1",
+  "languages": [
+    "en-US",
+    "fr-FR"
+  ],
+  "packs": [
+    {
+      "id": "pack-foh-en-US",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "en-US"
+    },
+    {
+      "id": "pack-boh-en-US",
+      "kind": "BOH_PRODUCTION",
+      "language": "en-US"
+    },
+    {
+      "id": "pack-foh-fr-FR",
+      "kind": "FOH_SERVER_NOTES",
+      "language": "fr-FR"
+    },
+    {
+      "id": "pack-boh-fr-FR",
+      "kind": "BOH_PRODUCTION",
+      "language": "fr-FR"
+    }
+  ]
+}

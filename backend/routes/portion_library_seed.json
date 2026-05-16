@@ -1,0 +1,3947 @@
+{
+  "schema_version": "1.0.0",
+  "library_name": "LUCCCA Portion Library",
+  "items": [
+    {
+      "item_id": "protein_beef_tenderloin",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Tenderloin",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 6,
+        "unit": "oz",
+        "display": "5-6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_ny_strip",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "NY Strip",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 10,
+        "max": 14,
+        "unit": "oz",
+        "display": "10-14 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_ribeye",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Ribeye",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 12,
+        "max": 16,
+        "unit": "oz",
+        "display": "12-16 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_prime_rib",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Prime Rib",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 10,
+        "max": 16,
+        "unit": "oz",
+        "display": "10-16 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_short_rib",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Braised Short Rib",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 10,
+        "unit": "oz",
+        "display": "8-10 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 6,
+        "unit": "oz",
+        "display": "5-6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_flat_iron",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Flat Iron",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_flank",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Flank Steak",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_skirt",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Skirt Steak",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_sirloin",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Sirloin",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 12,
+        "unit": "oz",
+        "display": "8-12 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 6,
+        "unit": "oz",
+        "display": "5-6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_tips",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Beef Tips",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_stroganoff",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Beef Stroganoff",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_bourguignon",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Beef Bourguignon",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_beef_kabob",
+      "category": "protein",
+      "subcategory": "beef",
+      "item_name": "Beef Kabob",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "beef"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_airline_breast",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Airline Breast",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 10,
+        "unit": "oz",
+        "display": "8-10 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 6,
+        "unit": "oz",
+        "display": "5-6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_breast",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Breast",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_thigh",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Thigh",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_leg_quarter",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Leg Quarter",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 12,
+        "max": 12,
+        "unit": "oz",
+        "display": "12 oz"
+      },
+      "banquet_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_roasted_half",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Roasted Chicken Half",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 16,
+        "max": 20,
+        "unit": "oz",
+        "display": "16-20 oz"
+      },
+      "banquet_portion": {
+        "min": 10,
+        "max": 10,
+        "unit": "oz",
+        "display": "10 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_piccata",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Piccata",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_marsala",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Marsala",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_parmesan",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Parmesan",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_chicken_skewer",
+      "category": "protein",
+      "subcategory": "chicken",
+      "item_name": "Chicken Skewer",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "chicken"
+      ]
+    },
+    {
+      "item_id": "protein_pork_chop_bone_in",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Pork Chop Bone-In",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 10,
+        "max": 14,
+        "unit": "oz",
+        "display": "10-14 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_pork_chop_boneless",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Pork Chop Boneless",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_pork_tenderloin",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Pork Tenderloin",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_pork_pulled",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Pulled Pork",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_pork_belly",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Pork Belly",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_pork_porchetta",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Porchetta",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_pork_ham_carving",
+      "category": "protein",
+      "subcategory": "pork",
+      "item_name": "Ham Carving",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "pork"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_salmon",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Salmon",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 9,
+        "unit": "oz",
+        "display": "7-9 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_ora_king_salmon",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Ora King Salmon",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 8,
+        "unit": "oz",
+        "display": "6-8 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 5,
+        "unit": "oz",
+        "display": "4-5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_halibut",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Halibut",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_sea_bass",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Sea Bass",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_snapper",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Snapper",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_cod",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Cod",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_mahi",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Mahi",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_swordfish",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Swordfish",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_shrimp_entree",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Shrimp Entree",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_shrimp_cocktail",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Shrimp Cocktail",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "piece",
+        "display": "5 pcs"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "piece",
+        "display": "3 pcs"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_lobster_tail",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Lobster Tail",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_crab_cake",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Crab Cake",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "piece",
+        "display": "2 pcs"
+      },
+      "banquet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "piece",
+        "display": "1 pcs"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_scallops",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Scallops",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "piece",
+        "display": "5 pcs"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "piece",
+        "display": "3 pcs"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_seafood_tuna_steak",
+      "category": "protein",
+      "subcategory": "seafood",
+      "item_name": "Tuna Steak",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "seafood"
+      ]
+    },
+    {
+      "item_id": "protein_lamb_rack",
+      "category": "protein",
+      "subcategory": "lamb",
+      "item_name": "Rack of Lamb",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "lamb"
+      ]
+    },
+    {
+      "item_id": "protein_lamb_chops",
+      "category": "protein",
+      "subcategory": "lamb",
+      "item_name": "Lamb Chops",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "chop",
+        "display": "3 chops"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "chop",
+        "display": "2 chops"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "lamb"
+      ]
+    },
+    {
+      "item_id": "protein_lamb_leg",
+      "category": "protein",
+      "subcategory": "lamb",
+      "item_name": "Leg of Lamb",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "lamb"
+      ]
+    },
+    {
+      "item_id": "protein_lamb_braised",
+      "category": "protein",
+      "subcategory": "lamb",
+      "item_name": "Braised Lamb",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "lamb"
+      ]
+    },
+    {
+      "item_id": "protein_lamb_shank",
+      "category": "protein",
+      "subcategory": "lamb",
+      "item_name": "Lamb Shank",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 16,
+        "max": 16,
+        "unit": "oz",
+        "display": "16 oz"
+      },
+      "banquet_portion": {
+        "min": 10,
+        "max": 10,
+        "unit": "oz",
+        "display": "10 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "lamb"
+      ]
+    },
+    {
+      "item_id": "protein_veg_tofu",
+      "category": "protein",
+      "subcategory": "vegetarian",
+      "item_name": "Tofu Entree",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "vegetarian"
+      ]
+    },
+    {
+      "item_id": "protein_veg_tempeh",
+      "category": "protein",
+      "subcategory": "vegetarian",
+      "item_name": "Tempeh",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "vegetarian"
+      ]
+    },
+    {
+      "item_id": "protein_veg_wellington",
+      "category": "protein",
+      "subcategory": "vegetarian",
+      "item_name": "Vegetable Wellington",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "vegetarian"
+      ]
+    },
+    {
+      "item_id": "protein_veg_stuffed_pepper",
+      "category": "protein",
+      "subcategory": "vegetarian",
+      "item_name": "Stuffed Pepper",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "large",
+        "display": "1 large"
+      },
+      "banquet_portion": {
+        "min": 0.75,
+        "max": 0.75,
+        "unit": "large",
+        "display": "3/4 large"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "vegetarian"
+      ]
+    },
+    {
+      "item_id": "protein_veg_eggplant_parm",
+      "category": "protein",
+      "subcategory": "vegetarian",
+      "item_name": "Eggplant Parmesan",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "vegetarian"
+      ]
+    },
+    {
+      "item_id": "protein_veg_vegetable_lasagna",
+      "category": "protein",
+      "subcategory": "vegetarian",
+      "item_name": "Vegetable Lasagna",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "protein",
+        "vegetarian"
+      ]
+    },
+    {
+      "item_id": "starch_mashed_potatoes",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Mashed Potatoes",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_roasted_potatoes",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Roasted Potatoes",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_fingerlings",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Fingerlings",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_rice",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Rice",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_wild_rice",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Wild Rice",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_risotto",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Risotto",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_polenta",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Polenta",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_couscous",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Couscous",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_quinoa",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Quinoa",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_mac_and_cheese",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Mac & Cheese",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 7,
+        "max": 7,
+        "unit": "oz",
+        "display": "7 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_pasta_side",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Pasta Side",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_french_fries",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "French Fries",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "starch_sweet_potato_mash",
+      "category": "starch",
+      "subcategory": "sides",
+      "item_name": "Sweet Potato Mash",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "starch",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_green_beans",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Green Beans",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_asparagus",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Asparagus",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_broccolini",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Broccolini",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_roasted_carrots",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Roasted Carrots",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_brussels_sprouts",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Brussels Sprouts",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_spinach_saute",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Spinach Saute",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_cauliflower",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Cauliflower",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "veg_corn",
+      "category": "vegetable",
+      "subcategory": "sides",
+      "item_name": "Corn",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "vegetable",
+        "side"
+      ]
+    },
+    {
+      "item_id": "salad_caesar",
+      "category": "salad",
+      "subcategory": "plated",
+      "item_name": "Caesar Salad",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "salad",
+        "plated"
+      ]
+    },
+    {
+      "item_id": "salad_garden",
+      "category": "salad",
+      "subcategory": "plated",
+      "item_name": "Garden Salad",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "salad",
+        "plated"
+      ]
+    },
+    {
+      "item_id": "salad_wedge",
+      "category": "salad",
+      "subcategory": "plated",
+      "item_name": "Wedge Salad",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "salad",
+        "plated"
+      ]
+    },
+    {
+      "item_id": "soup_cream",
+      "category": "soup",
+      "subcategory": "soups",
+      "item_name": "Cream Soup",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "soup"
+      ]
+    },
+    {
+      "item_id": "soup_bisque",
+      "category": "soup",
+      "subcategory": "soups",
+      "item_name": "Bisque",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "soup"
+      ]
+    },
+    {
+      "item_id": "soup_chowder",
+      "category": "soup",
+      "subcategory": "soups",
+      "item_name": "Chowder",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "soup"
+      ]
+    },
+    {
+      "item_id": "pasta_spaghetti",
+      "category": "pasta",
+      "subcategory": "entree",
+      "item_name": "Spaghetti",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 10,
+        "max": 10,
+        "unit": "oz",
+        "display": "10 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "pasta",
+        "entree"
+      ]
+    },
+    {
+      "item_id": "pasta_ravioli",
+      "category": "pasta",
+      "subcategory": "entree",
+      "item_name": "Ravioli",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 8,
+        "max": 8,
+        "unit": "oz",
+        "display": "8 oz"
+      },
+      "banquet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "pasta",
+        "entree"
+      ]
+    },
+    {
+      "item_id": "pasta_lasagna",
+      "category": "pasta",
+      "subcategory": "entree",
+      "item_name": "Lasagna",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 10,
+        "max": 10,
+        "unit": "oz",
+        "display": "10 oz"
+      },
+      "banquet_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "pasta",
+        "entree"
+      ]
+    },
+    {
+      "item_id": "breakfast_eggs_scrambled",
+      "category": "breakfast",
+      "subcategory": "protein",
+      "item_name": "Eggs Scrambled",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "egg",
+        "display": "3 eggs"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "egg",
+        "display": "2 eggs"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "breakfast"
+      ]
+    },
+    {
+      "item_id": "breakfast_bacon",
+      "category": "breakfast",
+      "subcategory": "protein",
+      "item_name": "Bacon",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "slice",
+        "display": "4 strips"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "slice",
+        "display": "2 strips"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "breakfast"
+      ]
+    },
+    {
+      "item_id": "breakfast_sausage_links",
+      "category": "breakfast",
+      "subcategory": "protein",
+      "item_name": "Sausage Links",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "link",
+        "display": "3 links"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "link",
+        "display": "2 links"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "breakfast"
+      ]
+    },
+    {
+      "item_id": "breakfast_hash_browns",
+      "category": "breakfast",
+      "subcategory": "starch",
+      "item_name": "Hash Browns",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "breakfast"
+      ]
+    },
+    {
+      "item_id": "buffet_prime_rib",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Prime Rib",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "buffet_striploin",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Striploin",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "buffet_turkey_breast",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Turkey Breast",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "buffet_ham",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Ham",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "buffet_roast_beef",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Roast Beef",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "buffet_porchetta",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Porchetta",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "buffet_leg_of_lamb",
+      "category": "buffet",
+      "subcategory": "carving_station",
+      "item_name": "Leg of Lamb",
+      "service_style": "buffet",
+      "portion_type": "weight",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "buffet",
+        "carving"
+      ]
+    },
+    {
+      "item_id": "passed_mini_crab_cake",
+      "category": "appetizer",
+      "subcategory": "passed",
+      "item_name": "Mini Crab Cake",
+      "service_style": "passed",
+      "portion_type": "mixed",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 1.5,
+        "max": 1.5,
+        "unit": "oz",
+        "display": "1.5 oz"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": 5,
+        "heavy_reception_pieces_per_person": 10
+      },
+      "notes": "Reception planning baseline: 4-6 pieces/person light, 8-12 heavy.",
+      "tags": [
+        "appetizer",
+        "passed"
+      ]
+    },
+    {
+      "item_id": "passed_shrimp_skewer",
+      "category": "appetizer",
+      "subcategory": "passed",
+      "item_name": "Shrimp Skewer",
+      "service_style": "passed",
+      "portion_type": "count",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "each",
+        "display": "1 each"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": 5,
+        "heavy_reception_pieces_per_person": 10
+      },
+      "notes": "Reception planning baseline: 4-6 pieces/person light, 8-12 heavy.",
+      "tags": [
+        "appetizer",
+        "passed"
+      ]
+    },
+    {
+      "item_id": "passed_mini_slider",
+      "category": "appetizer",
+      "subcategory": "passed",
+      "item_name": "Mini Slider",
+      "service_style": "passed",
+      "portion_type": "count",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "each",
+        "display": "1 each"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": 5,
+        "heavy_reception_pieces_per_person": 10
+      },
+      "notes": "Reception planning baseline: 4-6 pieces/person light, 8-12 heavy.",
+      "tags": [
+        "appetizer",
+        "passed"
+      ]
+    },
+    {
+      "item_id": "passed_bruschetta",
+      "category": "appetizer",
+      "subcategory": "passed",
+      "item_name": "Bruschetta",
+      "service_style": "passed",
+      "portion_type": "count",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "each",
+        "display": "1 each"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": 5,
+        "heavy_reception_pieces_per_person": 10
+      },
+      "notes": "Reception planning baseline: 4-6 pieces/person light, 8-12 heavy.",
+      "tags": [
+        "appetizer",
+        "passed"
+      ]
+    },
+    {
+      "item_id": "passed_stuffed_mushroom",
+      "category": "appetizer",
+      "subcategory": "passed",
+      "item_name": "Stuffed Mushroom",
+      "service_style": "passed",
+      "portion_type": "count",
+      "restaurant_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "banquet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "buffet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "each",
+        "display": "1 each"
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": 5,
+        "heavy_reception_pieces_per_person": 10
+      },
+      "notes": "Reception planning baseline: 4-6 pieces/person light, 8-12 heavy.",
+      "tags": [
+        "appetizer",
+        "passed"
+      ]
+    },
+    {
+      "item_id": "board_cheese",
+      "category": "grazing",
+      "subcategory": "cheese_charcuterie",
+      "item_name": "Cheese Board",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "grazing",
+        "board"
+      ]
+    },
+    {
+      "item_id": "board_charcuterie",
+      "category": "grazing",
+      "subcategory": "cheese_charcuterie",
+      "item_name": "Charcuterie",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "grazing",
+        "board"
+      ]
+    },
+    {
+      "item_id": "dessert_cheesecake",
+      "category": "dessert",
+      "subcategory": "desserts",
+      "item_name": "Cheesecake",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "dessert"
+      ]
+    },
+    {
+      "item_id": "dessert_chocolate_cake",
+      "category": "dessert",
+      "subcategory": "desserts",
+      "item_name": "Chocolate Cake",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "dessert"
+      ]
+    },
+    {
+      "item_id": "dessert_creme_brulee",
+      "category": "dessert",
+      "subcategory": "desserts",
+      "item_name": "Creme Brulee",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 5,
+        "max": 5,
+        "unit": "oz",
+        "display": "5 oz"
+      },
+      "banquet_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "dessert"
+      ]
+    },
+    {
+      "item_id": "dessert_mousse",
+      "category": "dessert",
+      "subcategory": "desserts",
+      "item_name": "Mousse",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "dessert"
+      ]
+    },
+    {
+      "item_id": "fruit_plate",
+      "category": "fruit",
+      "subcategory": "fruit",
+      "item_name": "Fruit Plate",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 6,
+        "max": 6,
+        "unit": "oz",
+        "display": "6 oz"
+      },
+      "banquet_portion": {
+        "min": 4,
+        "max": 4,
+        "unit": "oz",
+        "display": "4 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "fruit"
+      ]
+    },
+    {
+      "item_id": "bread_dinner_rolls",
+      "category": "bread_service",
+      "subcategory": "bread_service",
+      "item_name": "Dinner Rolls",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "piece",
+        "display": "2 pcs"
+      },
+      "banquet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "piece",
+        "display": "1 pc"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "bread_service"
+      ]
+    },
+    {
+      "item_id": "bread_butter",
+      "category": "bread_service",
+      "subcategory": "bread_service",
+      "item_name": "Butter",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "oz",
+        "display": "1 oz"
+      },
+      "banquet_portion": {
+        "min": 0.5,
+        "max": 0.5,
+        "unit": "oz",
+        "display": "0.5 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "bread_service"
+      ]
+    },
+    {
+      "item_id": "sauce_pan",
+      "category": "sauce",
+      "subcategory": "condiments",
+      "item_name": "Pan Sauce",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "banquet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "oz",
+        "display": "1 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "sauce",
+        "condiment"
+      ]
+    },
+    {
+      "item_id": "sauce_gravy",
+      "category": "sauce",
+      "subcategory": "condiments",
+      "item_name": "Gravy",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 3,
+        "max": 3,
+        "unit": "oz",
+        "display": "3 oz"
+      },
+      "banquet_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "sauce",
+        "condiment"
+      ]
+    },
+    {
+      "item_id": "sauce_hollandaise",
+      "category": "sauce",
+      "subcategory": "condiments",
+      "item_name": "Hollandaise",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 2,
+        "max": 2,
+        "unit": "oz",
+        "display": "2 oz"
+      },
+      "banquet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "oz",
+        "display": "1 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "sauce",
+        "condiment"
+      ]
+    },
+    {
+      "item_id": "sauce_vinaigrette",
+      "category": "sauce",
+      "subcategory": "condiments",
+      "item_name": "Vinaigrette",
+      "service_style": "restaurant",
+      "portion_type": "range",
+      "restaurant_portion": {
+        "min": 1.5,
+        "max": 1.5,
+        "unit": "oz",
+        "display": "1.5 oz"
+      },
+      "banquet_portion": {
+        "min": 1,
+        "max": 1,
+        "unit": "oz",
+        "display": "1 oz"
+      },
+      "buffet_portion": {
+        "min": null,
+        "max": null,
+        "unit": null,
+        "display": null
+      },
+      "planning_defaults": {
+        "light_reception_pieces_per_person": null,
+        "heavy_reception_pieces_per_person": null
+      },
+      "notes": null,
+      "tags": [
+        "sauce",
+        "condiment"
+      ]
+    }
+  ]
+}

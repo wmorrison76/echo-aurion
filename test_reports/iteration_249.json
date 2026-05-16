@@ -1,0 +1,95 @@
+{
+  "summary": "iter249 testing complete - Manager Workflow desktop panel (5 tabs: PTO/Swap/Callout/Chat/Config), MyEcho mobile extensions (Swap/Callout/Chat tabs + notifications bell), and Reports Hub flip-to-live all verified. 31/31 backend tests passed. Frontend testing confirmed all new features working correctly.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "MyEcho mobile home", "issues": ["SolveBar button intercepts clicks on quick action buttons at bottom of screen - minor UX issue but core functionality works"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter249_manager_workflow.py",
+    "/app/test_reports/pytest/pytest_results_iter249.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Manager Workflow panel correctly implements 5 tabs with proper data-testids for all interactive elements",
+    "PTO approve/deny endpoints correctly push notifications to myecho_notifications collection",
+    "HR Config toggle for allow_mobile_callout correctly gates the callout form vs tap-to-call button in MyEcho",
+    "MoD Chat is WhatsApp-style with proper author attribution and timestamps",
+    "Reports Hub endpoints correctly flip from demo=true to demo=false when pos_rings collection has data"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter249_manager_workflow.py"
+  ],
+  "success_rate": {
+    "backend": "100% (31/31 tests passed)",
+    "frontend": "100%"
+  },
+  "test_credentials": "X-User-Id: demo-hourly-001 (employee), X-User-Id: manager-on-duty (manager), devAuth=1 for frontend",
+  "seed_data_creation": "Created test PTO requests, shift swaps, callouts, and chat messages during testing",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter249 features verified: (1) Manager Workflow desktop panel at sidebar 'Admin & System' > 'Manager Workflow' with 5 tabs - PTO Approvals (16 pending), Shift Swaps (1 pending), Call-Outs (1 pending), MoD Chat, HR Config. All tabs render correctly with approve/deny buttons, chat input/send, and config toggles. (2) MyEcho mobile at /m/me?devAuth=1 has new tabs - Swap (form with date/cover/note + MY SWAPS list), Call-out (shows tap-to-call when allow_mobile_callout=false, form when true), Chat (WhatsApp-style MoD chat). Notifications bell in top-right shows unread count. Quick action buttons on home (Swap/Call-out/Chat MoD) navigate to respective tabs. (3) Reports Hub endpoints (sales-by-profit-center, tender-mix, server-sales, hourly-heatmap) correctly read from pos_rings collection and return demo=false when data exists. (4) ECW mobile at /m/ecw?devAuth=1 shows docked RESV card (not floating banner) with cover count. (5) Install Hub at /install shows both Echo AURION and MyEcho Staff cards with QR codes.",
+  "test_results": {
+    "backend_manager_workflow": {
+      "pto_pending": "PASS - Returns pending PTO requests",
+      "pto_decided": "PASS - Returns decided PTO requests",
+      "pto_approve": "PASS - Approves PTO and creates notification",
+      "pto_deny": "PASS - Denies PTO and creates notification",
+      "swap_pending": "PASS - Returns pending swaps",
+      "callouts_pending": "PASS - Returns pending callouts",
+      "hr_config_get": "PASS - Returns HR config with allow_mobile_callout",
+      "hr_config_set": "PASS - Updates HR config",
+      "mod_active_room": "PASS - Returns/creates chat room",
+      "mod_post_message": "PASS - Posts message to chat",
+      "mod_get_messages": "PASS - Returns chat messages"
+    },
+    "backend_myecho_extensions": {
+      "coworkers": "PASS - Returns coworkers list",
+      "shift_swap_request": "PASS - Creates swap with manager-pending status",
+      "shift_swap_mine": "PASS - Returns my swaps",
+      "callout_policy": "PASS - Returns policy with allow_mobile_callout",
+      "callout_request_phone_required": "PASS - Returns 403 with phone-required code when disabled",
+      "callout_request_success": "PASS - Creates callout when enabled",
+      "callout_mine": "PASS - Returns my callouts",
+      "notifications": "PASS - Returns notifications with unread_count",
+      "mod_chat_messages": "PASS - Returns chat messages",
+      "mod_chat_post": "PASS - Posts message to chat"
+    },
+    "backend_reports_hub": {
+      "pos_rings_status": "PASS - Returns total count",
+      "pos_rings_seed_demo": "PASS - Seeds demo data",
+      "sales_by_profit_center": "PASS - Returns outlet sales data",
+      "tender_mix": "PASS - Returns tender breakdown",
+      "server_sales": "PASS - Returns server sales data",
+      "hourly_heatmap": "PASS - Returns hourly grid data"
+    },
+    "frontend_manager_workflow": {
+      "root_renders": "PASS - [data-testid='mgr-workflow-root'] visible",
+      "pto_tab": "PASS - Shows 16 pending PTO requests with approve/deny buttons",
+      "swap_tab": "PASS - Shows 1 pending swap with approve/deny buttons",
+      "callout_tab": "PASS - Shows 1 pending callout with acknowledge button",
+      "chat_tab": "PASS - Shows WhatsApp-style chat with input/send/feed",
+      "config_tab": "PASS - Shows HR config form with toggles and 'Saved ✓' confirmation"
+    },
+    "frontend_myecho_mobile": {
+      "root_renders": "PASS - [data-testid='myecho-root'] visible",
+      "bell": "PASS - Notifications bell visible with unread count",
+      "home_tab": "PASS - Shows welcome, next shift, PTO, paycheck, quick buttons",
+      "swap_tab": "PASS - Shows form with date/cover/note and MY SWAPS list",
+      "callout_tab": "PASS - Shows tap-to-call button (phone-required mode)",
+      "chat_tab": "PASS - Shows WhatsApp-style chat with messages"
+    },
+    "regression_tests": {
+      "install_hub": "PASS - Both Echo AURION and MyEcho Staff cards visible",
+      "ecw_mobile": "PASS - Docked RESV card visible, no floating banner",
+      "myecho_existing_tabs": "PASS - Home/Schedule/PTO/Pay/Docs/Concierge all working"
+    }
+  },
+  "mocked_apis_note": "pos_rings seed-demo creates synthetic POS data for Reports Hub testing. Manager phone (+15555550199) is default fallback for callout tap-to-call."
+}

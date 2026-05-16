@@ -1,0 +1,21 @@
+import { useEffect } from "react";
+
+export default function EchoCoderHotkey() {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      // Cmd + Option + C (very low collision)
+      if (e.metaKey && e.altKey && e.key.toLowerCase() === "c") {
+        window.dispatchEvent(
+          new CustomEvent("open-panel", {
+            detail: { id: "echocoder" },
+          })
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  return null;
+}

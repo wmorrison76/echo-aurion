@@ -1,0 +1,75 @@
+:root {
+  /* Base Colors (Dark Mode Default) */
+  --bg: #0b0f14;
+  --bg-soft: #0e141b;
+  --surface: #121821;
+  --text: #e6edf3;
+  --muted: #9aa7b1;
+  --border: #1f2a37;
+
+  /* Color Scheme Variables (Cyan Default) */
+  --primary-hue: 185;
+  --primary-sat: 100%;
+  --primary-light: 50%;
+
+  /* Brand Colors (Legacy - Cyan) */
+  --brand: #00d1ff;
+  --brand-2: #66e3ff;
+  --brand-3: #b3f3ff;
+  --accent: #7c4dff;
+  --accent-2: #ff6ad5;
+
+  /* Semantic Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Shadows & Effects */
+  --shadow-1: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --radius: 16px;
+  --radius-sm: 10px;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Inter", "SF Pro", Roboto, "Segoe UI", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* Layout */
+  --panel-header-height: 44px;
+  --panel-glow: 0 0 32px rgba(0, 209, 255, 0.35);
+}
+
+/* Color Scheme: Cyan (Default) */
+.theme-cyan {
+  --primary-hue: 185;
+  --primary-sat: 100%;
+  --primary-light: 50%;
+}
+
+/* Color Scheme: Blue */
+.theme-blue {
+  --primary-hue: 210;
+  --primary-sat: 100%;
+  --primary-light: 50%;
+}
+
+/* Color Scheme: Emerald */
+.theme-emerald {
+  --primary-hue: 160;
+  --primary-sat: 100%;
+  --primary-light: 45%;
+}
+
+/* Color Scheme: Violet */
+.theme-violet {
+  --primary-hue: 280;
+  --primary-sat: 100%;
+  --primary-light: 55%;
+}
+
+/* Color Scheme: Rose */
+.theme-rose {
+  --primary-hue: 0;
+  --primary-sat: 100%;
+  --primary-light: 50%;
+}

@@ -1,0 +1,51 @@
+{
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "create": "Crea",
+    "search": "Cerca",
+    "filter": "Filtra",
+    "export": "Esporta",
+    "import": "Importa",
+    "refresh": "Aggiorna",
+    "close": "Chiudi",
+    "confirm": "Conferma",
+    "yes": "Sì",
+    "no": "No"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "inventory": "Inventario",
+    "schedule": "Programmazione",
+    "purchasing": "Acquisti",
+    "culinary": "Culinary",
+    "echoaurum": "EchoAurum",
+    "echostratus": "EchoStratus",
+    "settings": "Impostazioni"
+  },
+  "inventory": {
+    "title": "Gestione Inventario",
+    "currentStock": "Stock Attuale",
+    "parLevel": "Livello Par",
+    "reorderPoint": "Punto di Riordino",
+    "addItem": "Aggiungi Articolo",
+    "updateStock": "Aggiorna Stock"
+  },
+  "schedule": {
+    "title": "Programmazione Staff",
+    "shifts": "Turni",
+    "assignStaff": "Assegna Staff",
+    "createShift": "Crea Turno"
+  },
+  "purchasing": {
+    "title": "Acquisti e Ricezione",
+    "createPO": "Crea Ordine d'Acquisto",
+    "receiveOrder": "Ricevi Ordine",
+    "approvePO": "Approva Ordine"
+  }
+}

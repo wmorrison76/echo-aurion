@@ -1,0 +1,585 @@
+/**
+ * CompositionCanvas.css
+ * ----------------------------------------------------------------------------
+ * Styles for the composition canvas (right panel). Matches the LUCCCA
+ * dark luxury aesthetic — deep canvas, restrained gold, presence-focused
+ * typography.
+ *
+ * Token usage:
+ *   We use CSS variables that should resolve from the LUCCCA root theme.
+ *   Fallbacks are baked in for standalone testing.
+ *
+ * Class naming:
+ *   bmb- prefix = "BanquetMenuBuilder" — won't collide with other modules.
+ * ----------------------------------------------------------------------------
+ */
+
+/* ============================================================================
+   Tokens (with fallbacks to LUCCCA root)
+   ============================================================================ */
+.bmb-canvas {
+  /* Canvas */
+  --bmb-bg-canvas: var(--lucca-bg-canvas, #0d0e10);
+  --bmb-bg-surface: var(--lucca-bg-surface, #15171b);
+  --bmb-bg-elevated: var(--lucca-bg-elevated, #1c1f25);
+  --bmb-bg-hover: var(--lucca-bg-hover, #232730);
+
+  /* Text */
+  --bmb-text-primary: var(--lucca-text-primary, #f4f1ea);
+  --bmb-text-secondary: var(--lucca-text-secondary, #a8a39a);
+  --bmb-text-tertiary: var(--lucca-text-tertiary, #6b6760);
+  --bmb-text-on-gold: var(--lucca-text-on-gold, #0d0e10);
+
+  /* Gold */
+  --bmb-gold: var(--lucca-gold, #c9a961);
+  --bmb-gold-bright: var(--lucca-gold-bright, #e0c280);
+  --bmb-gold-dim: var(--lucca-gold-dim, #8a7544);
+  --bmb-gold-faint: var(--lucca-gold-faint, rgba(201, 169, 97, 0.12));
+
+  /* Status */
+  --bmb-success: #6fa86b;
+  --bmb-warning: #d4a64a;
+  --bmb-danger: #c25652;
+  --bmb-info: #6f8eb3;
+
+  /* Borders */
+  --bmb-border-subtle: rgba(255, 255, 255, 0.06);
+  --bmb-border-default: rgba(255, 255, 255, 0.10);
+  --bmb-border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Spacing */
+  --bmb-pad-xs: 4px;
+  --bmb-pad-sm: 8px;
+  --bmb-pad-md: 16px;
+  --bmb-pad-lg: 24px;
+  --bmb-pad-xl: 32px;
+
+  /* Radii */
+  --bmb-radius-sm: 4px;
+  --bmb-radius-md: 8px;
+  --bmb-radius-lg: 12px;
+
+  /* Motion */
+  --bmb-transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --bmb-transition-default: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  background: var(--bmb-bg-canvas);
+  color: var(--bmb-text-primary);
+  font-family: var(--lucca-font-body, 'Inter', system-ui, sans-serif);
+  overflow: hidden;
+}
+
+/* ============================================================================
+   Scroll region
+   ============================================================================ */
+.bmb-canvas__scroll {
+  overflow-y: auto;
+  padding: var(--bmb-pad-md) var(--bmb-pad-md) var(--bmb-pad-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--bmb-border-default) transparent;
+}
+
+.bmb-canvas__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.bmb-canvas__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.bmb-canvas__scroll::-webkit-scrollbar-thumb {
+  background: var(--bmb-border-default);
+  border-radius: 3px;
+}
+.bmb-canvas__scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--bmb-border-strong);
+}
+
+/* ============================================================================
+   Empty state
+   ============================================================================ */
+.bmb-canvas__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--bmb-pad-xl) var(--bmb-pad-md);
+  text-align: center;
+  min-height: 320px;
+  opacity: 0.85;
+}
+
+.bmb-canvas__empty-orb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--bmb-gold-bright) 0%,
+    var(--bmb-gold) 35%,
+    var(--bmb-gold-dim) 100%
+  );
+  opacity: 0.4;
+  box-shadow: 0 0 40px var(--bmb-gold-faint);
+  margin-bottom: var(--bmb-pad-lg);
+  animation: bmb-orb-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes bmb-orb-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.05); }
+}
+
+.bmb-canvas__empty-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--bmb-text-primary);
+  margin: 0 0 var(--bmb-pad-sm);
+  letter-spacing: 0.01em;
+}
+
+.bmb-canvas__empty-body {
+  font-size: 14px;
+  color: var(--bmb-text-tertiary);
+  margin: 0;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   Section
+   ============================================================================ */
+.bmb-section {
+  margin-bottom: var(--bmb-pad-lg);
+  border-radius: var(--bmb-radius-md);
+  transition: background var(--bmb-transition-fast);
+}
+
+.bmb-section--drop-active {
+  background: var(--bmb-gold-faint);
+  outline: 1px dashed var(--bmb-gold);
+  outline-offset: -1px;
+}
+
+.bmb-section__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bmb-pad-sm);
+  padding: var(--bmb-pad-sm) 0;
+}
+
+/* ============================================================================
+   Section header
+   ============================================================================ */
+.bmb-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bmb-pad-sm) var(--bmb-pad-sm) var(--bmb-pad-xs);
+  border-bottom: 1px solid var(--bmb-border-subtle);
+  margin-bottom: var(--bmb-pad-xs);
+}
+
+.bmb-section-header__main {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bmb-pad-sm);
+}
+
+.bmb-section-header__title {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--lucca-font-display, 'Playfair Display', serif);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bmb-gold);
+  cursor: pointer;
+  transition: color var(--bmb-transition-fast);
+}
+
+.bmb-section-header__title:hover {
+  color: var(--bmb-gold-bright);
+}
+
+.bmb-section-header__input {
+  background: var(--bmb-bg-elevated);
+  border: 1px solid var(--bmb-gold);
+  border-radius: var(--bmb-radius-sm);
+  padding: 4px 8px;
+  color: var(--bmb-text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  min-width: 160px;
+}
+
+.bmb-section-header__count {
+  font-size: 11px;
+  color: var(--bmb-text-tertiary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.bmb-section-header__actions {
+  position: relative;
+}
+
+.bmb-section-header__menu-trigger {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  border-radius: var(--bmb-radius-sm);
+  color: var(--bmb-text-tertiary);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: all var(--bmb-transition-fast);
+}
+
+.bmb-section-header__menu-trigger:hover {
+  background: var(--bmb-bg-hover);
+  color: var(--bmb-text-primary);
+}
+
+.bmb-section-header__menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  background: var(--bmb-bg-elevated);
+  border: 1px solid var(--bmb-border-default);
+  border-radius: var(--bmb-radius-md);
+  padding: 4px 0;
+  min-width: 160px;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.bmb-section-header__menu-item {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 13px;
+  color: var(--bmb-text-primary);
+  cursor: pointer;
+  transition: background var(--bmb-transition-fast);
+}
+
+.bmb-section-header__menu-item:hover {
+  background: var(--bmb-bg-hover);
+}
+
+.bmb-section-header__menu-item--danger {
+  color: var(--bmb-danger);
+}
+
+.bmb-section-header__menu-item--danger:hover {
+  background: rgba(194, 86, 82, 0.12);
+}
+
+/* ============================================================================
+   Item card
+   ============================================================================ */
+.bmb-item-card {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  gap: var(--bmb-pad-sm);
+  align-items: stretch;
+  padding: var(--bmb-pad-sm) var(--bmb-pad-md);
+  background: var(--bmb-bg-surface);
+  border: 1px solid var(--bmb-border-subtle);
+  border-radius: var(--bmb-radius-md);
+  cursor: grab;
+  transition: all var(--bmb-transition-fast);
+  position: relative;
+}
+
+.bmb-item-card:hover {
+  background: var(--bmb-bg-elevated);
+  border-color: var(--bmb-border-default);
+}
+
+.bmb-item-card:active {
+  cursor: grabbing;
+}
+
+.bmb-item-card--dragging {
+  border-color: var(--bmb-gold);
+}
+
+.bmb-item-card--overlay {
+  cursor: grabbing;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6),
+              0 0 0 1px var(--bmb-gold);
+  border-color: var(--bmb-gold);
+}
+
+.bmb-item-card--override {
+  border-left: 2px solid var(--bmb-warning);
+}
+
+.bmb-item-card__handle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  opacity: 0.3;
+  transition: opacity var(--bmb-transition-fast);
+}
+
+.bmb-item-card:hover .bmb-item-card__handle {
+  opacity: 0.6;
+}
+
+.bmb-item-card__handle span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--bmb-text-secondary);
+}
+
+.bmb-item-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.bmb-item-card__row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bmb-pad-sm);
+}
+
+.bmb-item-card__name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--bmb-text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bmb-item-card__tags {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.bmb-tag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: var(--bmb-gold-faint);
+  color: var(--bmb-gold);
+  border: 1px solid var(--bmb-gold-dim);
+  text-transform: uppercase;
+}
+
+.bmb-tag[data-tag="vegan"] { background: rgba(111, 168, 107, 0.12); color: #6fa86b; border-color: rgba(111, 168, 107, 0.4); }
+.bmb-tag[data-tag="vegetarian"] { background: rgba(111, 168, 107, 0.12); color: #6fa86b; border-color: rgba(111, 168, 107, 0.4); }
+.bmb-tag[data-tag="gluten_free"] { background: rgba(212, 166, 74, 0.12); color: #d4a64a; border-color: rgba(212, 166, 74, 0.4); }
+.bmb-tag[data-tag="dairy_free"] { background: rgba(111, 142, 179, 0.12); color: #6f8eb3; border-color: rgba(111, 142, 179, 0.4); }
+.bmb-tag[data-tag="nut_free"] { background: rgba(194, 86, 82, 0.12); color: #c25652; border-color: rgba(194, 86, 82, 0.4); }
+
+.bmb-item-card__desc {
+  font-size: 12px;
+  color: var(--bmb-text-tertiary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
+
+.bmb-item-card__row3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bmb-pad-sm);
+  margin-top: 2px;
+}
+
+.bmb-item-card__price {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--bmb-gold);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.bmb-item-card__price-suffix {
+  font-size: 10px;
+  color: var(--bmb-text-tertiary);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.bmb-item-card__market-flag,
+.bmb-item-card__override-flag {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  margin-left: 4px;
+}
+
+.bmb-item-card__market-flag {
+  background: rgba(212, 166, 74, 0.18);
+  color: var(--bmb-warning);
+}
+
+.bmb-item-card__override-flag {
+  background: rgba(212, 166, 74, 0.18);
+  color: var(--bmb-warning);
+}
+
+.bmb-item-card__remove {
+  align-self: center;
+  background: none;
+  border: none;
+  color: var(--bmb-text-tertiary);
+  font-size: 18px;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--bmb-transition-fast);
+}
+
+.bmb-item-card:hover .bmb-item-card__remove,
+.bmb-item-card:focus-within .bmb-item-card__remove {
+  opacity: 1;
+}
+
+.bmb-item-card__remove:hover {
+  background: rgba(194, 86, 82, 0.18);
+  color: var(--bmb-danger);
+}
+
+/* ============================================================================
+   Empty drop zone
+   ============================================================================ */
+.bmb-empty-drop {
+  display: flex;
+  align-items: center;
+  gap: var(--bmb-pad-sm);
+  padding: var(--bmb-pad-md);
+  border: 1px dashed var(--bmb-border-default);
+  border-radius: var(--bmb-radius-md);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.bmb-empty-drop__line {
+  flex: 1;
+  height: 1px;
+  background: var(--bmb-border-subtle);
+}
+
+.bmb-empty-drop__text {
+  font-size: 12px;
+  color: var(--bmb-text-tertiary);
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.bmb-empty-drop__text strong {
+  color: var(--bmb-text-secondary);
+  font-weight: 500;
+}
+
+/* ============================================================================
+   Add section button
+   ============================================================================ */
+.bmb-add-section {
+  position: relative;
+  margin-top: var(--bmb-pad-md);
+}
+
+.bmb-add-section__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bmb-pad-sm);
+  background: none;
+  border: 1px dashed var(--bmb-border-default);
+  border-radius: var(--bmb-radius-md);
+  padding: var(--bmb-pad-sm) var(--bmb-pad-md);
+  color: var(--bmb-text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--bmb-transition-fast);
+}
+
+.bmb-add-section__trigger:hover {
+  border-color: var(--bmb-gold);
+  color: var(--bmb-gold);
+  background: var(--bmb-gold-faint);
+}
+
+.bmb-add-section__plus {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.bmb-add-section__popover {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 4px;
+  background: var(--bmb-bg-elevated);
+  border: 1px solid var(--bmb-border-default);
+  border-radius: var(--bmb-radius-md);
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(2, 140px);
+  gap: 2px;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.bmb-add-section__option {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 13px;
+  color: var(--bmb-text-primary);
+  border-radius: var(--bmb-radius-sm);
+  cursor: pointer;
+  transition: background var(--bmb-transition-fast);
+}
+
+.bmb-add-section__option:hover {
+  background: var(--bmb-gold-faint);
+  color: var(--bmb-gold);
+}
+
+/* ============================================================================
+   Drag overlay
+   ============================================================================ */
+.bmb-drag-overlay {
+  pointer-events: none;
+  width: 100%;
+  max-width: 480px;
+}

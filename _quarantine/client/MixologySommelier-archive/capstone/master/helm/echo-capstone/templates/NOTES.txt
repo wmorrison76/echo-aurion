@@ -1,0 +1,7 @@
+1. Get the application URL by running these commands:
+  {{- if .Values.ingress.enabled }}
+  http{{ if (hasKey .Values "tls") }}s{{ end }}://{{ (index .Values.ingress.hosts 0).host }}
+  {{- else }}
+  kubectl port-forward svc/{{ include "echo-capstone.fullname" . }} 8080:80
+  echo "http://localhost:8080"
+  {{- end }}

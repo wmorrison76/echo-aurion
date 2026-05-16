@@ -1,0 +1,12 @@
+{
+  "id": "app-shell",
+  "version": 1,
+  "component": "SlotLayout",
+  "description": "Default EchoCoder slot wiring across header, sidebar, toolbar, and main regions.",
+  "slots": {
+    "header": [],
+    "sidebar": [],
+    "toolbar": [],
+    "main": []
+  }
+}

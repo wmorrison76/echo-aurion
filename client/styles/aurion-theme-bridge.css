@@ -1,0 +1,119 @@
+/**
+ * Echo AURION · Global Aurion Theme Bridge
+ *
+ * iter262 · Maps the dark/light theme toggle to module-level surfaces so
+ * modules that don't yet import from design-tokens still re-theme via CSS
+ * cascade. Companion to `design-tokens.tsx` which injects the
+ * --aurion-* custom properties on <html>.
+ *
+ * Import once from client/App.tsx (or index.css) to take effect.
+ */
+
+/* Light-mode overrides for common dark assumptions */
+html.theme-light body {
+  color: var(--aurion-text-primary);
+}
+
+/* Global backdrop — any element using .aurion-backdrop gets the themed bg */
+.aurion-backdrop {
+  background-image: var(--aurion-backdrop-url);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Shared surface helpers — modules can opt-in by adding these classes */
+.aurion-panel   { background: var(--aurion-panel-bg); color: var(--aurion-text-primary); }
+.aurion-surface { background: var(--aurion-surface); color: var(--aurion-text-primary); }
+.aurion-card    { background: var(--aurion-surface); border: 1px solid var(--aurion-border); border-radius: 8px; }
+.aurion-subtle  { background: var(--aurion-subtle); }
+.aurion-border  { border-color: var(--aurion-border); }
+.aurion-accent  { color: var(--aurion-accent); }
+.aurion-muted   { color: var(--aurion-text-muted); }
+
+/* Light-mode specific: shift the Chronos / other hard-coded dark panels
+   to a slightly-elevated light surface so text stays readable. We keep
+   Chronos dark in both modes intentionally (Oracle ERP style), but other
+   modules with hard-coded light-on-dark get a softer lift. */
+html.theme-light [data-ui="panel-frame"] {
+  background: var(--aurion-surface);
+  color: var(--aurion-text-primary);
+  border-color: var(--aurion-border);
+}
+html.theme-light [data-ui="panel-frame"] button {
+  color: var(--aurion-text-primary);
+}
+
+/* Shadcn variable bridging (Radix UI / Tailwind shadcn tokens) */
+html.theme-light {
+  --background: 40 30% 96%;
+  --foreground: 222 15% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 15% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 15% 18%;
+  --primary: 38 45% 38%;
+  --primary-foreground: 40 30% 96%;
+  --secondary: 40 20% 90%;
+  --secondary-foreground: 222 15% 18%;
+  --muted: 40 20% 92%;
+  --muted-foreground: 220 8% 46%;
+  --accent: 38 45% 38%;
+  --accent-foreground: 40 30% 96%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 40 30% 96%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 38 45% 38%;
+}
+
+html.theme-dark {
+  --background: 222 40% 5%;
+  --foreground: 210 20% 90%;
+  --card: 222 35% 8%;
+  --card-foreground: 210 20% 90%;
+  --popover: 222 40% 5%;
+  --popover-foreground: 210 20% 90%;
+  --primary: 38 40% 64%;
+  --primary-foreground: 222 40% 5%;
+  --secondary: 222 20% 14%;
+  --secondary-foreground: 210 20% 90%;
+  --muted: 222 20% 14%;
+  --muted-foreground: 210 10% 60%;
+  --accent: 38 40% 64%;
+  --accent-foreground: 222 40% 5%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 20% 90%;
+  --border: 222 20% 18%;
+  --input: 222 20% 18%;
+  --ring: 38 40% 64%;
+}
+
+/* iter264.1 · Belt-and-suspenders rule: force every input/textarea/select inside
+   the IRD/Spa menu builders to render with the current theme's text color so
+   browser dark-mode form-control overrides and autofill never kill visibility. */
+[data-testid="ird-builder"] input,
+[data-testid="ird-builder"] textarea,
+[data-testid="ird-builder"] select,
+[data-testid="spa-builder"] input,
+[data-testid="spa-builder"] textarea,
+[data-testid="spa-builder"] select {
+  color: var(--aurion-text-primary) !important;
+  -webkit-text-fill-color: var(--aurion-text-primary) !important;
+  background-color: var(--aurion-surface) !important;
+  color-scheme: normal !important;
+  caret-color: var(--aurion-accent);
+}
+[data-testid="ird-builder"] input::placeholder,
+[data-testid="ird-builder"] textarea::placeholder,
+[data-testid="spa-builder"] input::placeholder,
+[data-testid="spa-builder"] textarea::placeholder {
+  color: var(--aurion-text-muted) !important;
+  opacity: 0.7;
+}
+[data-testid="ird-builder"] input:-webkit-autofill,
+[data-testid="spa-builder"] input:-webkit-autofill {
+  -webkit-text-fill-color: var(--aurion-text-primary) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--aurion-surface) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

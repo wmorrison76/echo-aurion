@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "plans": {
+    "demo-org": {
+      "orgId": "demo-org",
+      "startDate": "2026-01-26",
+      "days": [
+        {
+          "date": "2026-01-26",
+          "forecast": 220,
+          "override": 230,
+          "notes": null
+        },
+        {
+          "date": "2026-01-27",
+          "forecast": 72,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-01-28",
+          "forecast": 124,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-01-29",
+          "forecast": 126,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-01-30",
+          "forecast": 128,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-01-31",
+          "forecast": 130,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-01",
+          "forecast": 132,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-02",
+          "forecast": 134,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-03",
+          "forecast": 136,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-04",
+          "forecast": 138,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-05",
+          "forecast": 140,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-06",
+          "forecast": 142,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-07",
+          "forecast": 144,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-08",
+          "forecast": 146,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-09",
+          "forecast": 148,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-10",
+          "forecast": 150,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-11",
+          "forecast": 152,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-12",
+          "forecast": 154,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-13",
+          "forecast": 156,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-14",
+          "forecast": 158,
+          "override": null,
+          "notes": null
+        },
+        {
+          "date": "2026-02-15",
+          "forecast": 160,
+          "override": null,
+          "notes": null
+        }
+      ],
+      "updatedAt": "2026-01-27T03:03:12.691Z"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+[
+  {
+    "name": "Ingredient",
+    "kind": "data",
+    "public": false,
+    "fields": [
+      { "name": "sku", "type": "text", "required": true, "unique": true },
+      { "name": "name", "type": "text", "required": true, "indexed": true },
+      { "name": "category", "type": "enum", "required": true, "enumOptions": ["Dairy","Eggs","Flour","Sugar","Chocolate","Fruit","Nuts","Seeds","Yeast","Spices","Flavorings","Gels","Other"] },
+      { "name": "allergens", "type": "list", "subFields": [{ "name": "name", "type": "text" }] },
+      { "name": "units", "type": "enum", "enumOptions": ["g","kg","oz","lb","ml","l","tsp","tbsp","cup","each"] },
+      { "name": "packSize", "type": "text" },
+      { "name": "costPerBaseUnit", "type": "number" },
+      { "name": "supplier", "type": "text" },
+      { "name": "lotTracked", "type": "boolean", "defaultValue": true },
+      { "name": "shelfLifeDays", "type": "number", "defaultValue": 365 },
+      { "name": "nutrition", "type": "object", "subFields": [
+        { "name": "kcalPer100g", "type": "number" },
+        { "name": "proteinPer100g", "type": "number" },
+        { "name": "carbPer100g", "type": "number" },
+        { "name": "fatPer100g", "type": "number" }
+      ]}
+    ]
+  },
+  { "name": "InventoryLot", "kind": "data", "public": false, "fields": [
+    { "name": "ingredient", "type": "reference", "model": "Ingredient", "required": true },
+    { "name": "lotCode", "type": "text", "required": true, "indexed": true },
+    { "name": "receivedAt", "type": "date" },
+    { "name": "expiryDate", "type": "date" },
+    { "name": "quantity", "type": "number", "required": true },
+    { "name": "location", "type": "text" },
+    { "name": "unit", "type": "text" }
+  ]},
+  { "name": "SubRecipe", "kind": "data", "public": false, "fields": [
+    { "name": "code", "type": "text", "required": true, "unique": true },
+    { "name": "name", "type": "text", "required": true },
+    { "name": "version", "type": "text", "defaultValue": "1.0.0" },
+    { "name": "steps", "type": "richText" },
+    { "name": "yieldAmount", "type": "number" },
+    { "name": "yieldUnit", "type": "text" },
+    { "name": "ingredients", "type": "list", "required": true, "subFields": [
+      { "name": "ingredient", "type": "reference", "model": "Ingredient", "required": true },
+      { "name": "qty", "type": "number", "required": true },
+      { "name": "unit", "type": "text", "required": true },
+      { "name": "lossPercent", "type": "number", "defaultValue": 0 }
+    ]},
+    { "name": "allergenFlags", "type": "list", "subFields": [{ "name": "name", "type": "text" }] }
+  ]},
+  { "name": "ProductItem", "kind": "data", "public": false, "fields": [
+    { "name": "sku", "type": "text", "required": true, "unique": true },
+    { "name": "name", "type": "text", "required": true },
+    { "name": "category", "type": "enum", "enumOptions": ["Viennoiserie","Bread","Cakes","Tortes","Entremets","PetitsFours","Cookies","Breakfast","PlatedDessert","Specialty"], "required": true },
+    { "name": "sizeOrPortion", "type": "text" },
+    { "name": "standardBatchYield", "type": "number", "required": true },
+    { "name": "standardBatchUnit", "type": "text", "defaultValue": "each" },
+    { "name": "subRecipes", "type": "list", "subFields": [
+      { "name": "subRecipe", "type": "reference", "model": "SubRecipe", "required": true },
+      { "name": "multiplier", "type": "number", "defaultValue": 1 }
+    ]},
+    { "name": "decorationNotes", "type": "richText" },
+    { "name": "storage", "type": "enum", "enumOptions": ["Room","Chill","Freeze"], "defaultValue": "Room" },
+    { "name": "shelfLifeHours", "type": "number", "defaultValue": 48 },
+    { "name": "dietTags", "type": "list", "subFields": [{ "name": "name", "type": "text" }] },
+    { "name": "isActive", "type": "boolean", "defaultValue": true }
+  ]},
+  { "name": "ClientOrder", "kind": "data", "public": false, "fields": [
+    { "name": "orderNumber", "type": "text", "required": true, "unique": true },
+    { "name": "clientName", "type": "text", "required": true },
+    { "name": "contact", "type": "object", "subFields": [ { "name": "email", "type": "text" }, { "name": "phone", "type": "text" } ] },
+    { "name": "eventRef", "type": "text" },
+    { "name": "deliveryOrPickup", "type": "enum", "enumOptions": ["Delivery","Pickup"], "defaultValue": "Pickup" },
+    { "name": "when", "type": "date", "required": true },
+    { "name": "specialInstructions", "type": "richText" },
+    { "name": "lineItems", "type": "list", "subFields": [
+      { "name": "product", "type": "reference", "model": "ProductItem", "required": true },
+      { "name": "qty", "type": "number", "required": true },
+      { "name": "sizeOrVariant", "type": "text" },
+      { "name": "decoration", "type": "text" },
+      { "name": "allergens", "type": "list", "subFields": [{ "name": "name", "type": "text" }] }
+    ]},
+    { "name": "status", "type": "enum", "enumOptions": ["Draft","Confirmed","InProduction","Ready","Delivered","Cancelled"], "defaultValue": "Draft" }
+  ]},
+  { "name": "Shift", "kind": "data", "public": false, "fields": [
+    { "name": "name", "type": "text", "required": true },
+    { "name": "date", "type": "date", "required": true },
+    { "name": "type", "type": "enum", "enumOptions": ["AM","PM","Overnight"], "defaultValue": "AM" }
+  ]},
+  { "name": "StaffMember", "kind": "data", "public": false, "fields": [
+    { "name": "employeeId", "type": "text", "unique": true },
+    { "name": "name", "type": "text", "required": true },
+    { "name": "roles", "type": "list", "subFields": [{ "name": "name", "type": "text" }] },
+    { "name": "skills", "type": "list", "subFields": [{ "name": "name", "type": "text" }] },
+    { "name": "stations", "type": "list", "subFields": [{ "name": "name", "type": "text" }] },
+    { "name": "availabilityNote", "type": "text" }
+  ]},
+  { "name": "ProductionOrder", "kind": "data", "public": false, "fields": [
+    { "name": "date", "type": "date", "required": true },
+    { "name": "shift", "type": "reference", "model": "Shift", "required": true },
+    { "name": "manager", "type": "reference", "model": "StaffMember" },
+    { "name": "outlets", "type": "list", "subFields": [{ "name": "name", "type": "text" }] },
+    { "name": "notes", "type": "richText" },
+    { "name": "requiresQC", "type": "boolean", "defaultValue": true },
+    { "name": "items", "type": "list", "required": true, "subFields": [
+      { "name": "product", "type": "reference", "model": "ProductItem", "required": true },
+      { "name": "requestedQty", "type": "number", "required": true },
+      { "name": "unit", "type": "text", "defaultValue": "each" },
+      { "name": "computedBatches", "type": "number" },
+      { "name": "assignedTo", "type": "reference", "model": "StaffMember" },
+      { "name": "startTime", "type": "text" },
+      { "name": "deadline", "type": "text" },
+      { "name": "storage", "type": "text" },
+      { "name": "status", "type": "enum", "enumOptions": ["Planned","InProgress","QC","Completed","Held"], "defaultValue": "Planned" },
+      { "name": "notes", "type": "text" }
+    ]}
+  ]},
+  { "name": "QCCheckpoint", "kind": "data", "public": false, "fields": [
+    { "name": "name", "type": "text", "required": true },
+    { "name": "description", "type": "richText" },
+    { "name": "photosRequired", "type": "boolean", "defaultValue": false },
+    { "name": "temperatureRangeC", "type": "object", "subFields": [ { "name": "min", "type": "number" }, { "name": "max", "type": "number" } ] },
+    { "name": "timeRangeMin", "type": "object", "subFields": [ { "name": "min", "type": "number" }, { "name": "max", "type": "number" } ] }
+  ]},
+  { "name": "ProductionQCEvent", "kind": "data", "public": false, "fields": [
+    { "name": "productionOrder", "type": "reference", "model": "ProductionOrder", "required": true },
+    { "name": "itemIndex", "type": "number", "required": true },
+    { "name": "checkpoint", "type": "reference", "model": "QCCheckpoint", "required": true },
+    { "name": "result", "type": "enum", "enumOptions": ["Pass","Fail","Deviate"], "defaultValue": "Pass" },
+    { "name": "temperature", "type": "number" },
+    { "name": "durationMin", "type": "number" },
+    { "name": "photoUrls", "type": "list", "subFields": [{ "name": "url", "type": "text" }] },
+    { "name": "notes", "type": "richText" },
+    { "name": "timestamp", "type": "date", "required": true }
+  ]},
+  { "name": "LogisticsRoute", "kind": "data", "public": false, "fields": [
+    { "name": "routeName", "type": "text", "required": true },
+    { "name": "stops", "type": "list", "subFields": [
+      { "name": "order", "type": "reference", "model": "ClientOrder" },
+      { "name": "eta", "type": "text" },
+      { "name": "coldChain", "type": "boolean", "defaultValue": true }
+    ]}
+  ]},
+  { "name": "PackagingItem", "kind": "data", "public": false, "fields": [
+    { "name": "sku", "type": "text", "required": true, "unique": true },
+    { "name": "name", "type": "text", "required": true },
+    { "name": "units", "type": "text", "defaultValue": "each" },
+    { "name": "costPerUnit", "type": "number" }
+  ]}
+]

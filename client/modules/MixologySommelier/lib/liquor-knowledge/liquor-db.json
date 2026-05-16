@@ -1,0 +1,27 @@
+{
+  "gin": {
+    "abv": 40,
+    "origin": "juniper",
+    "family": "botanical"
+  },
+  "vodka": {
+    "abv": 40,
+    "origin": "grain/potato",
+    "family": "neutral"
+  },
+  "rum": {
+    "abv": 40,
+    "origin": "sugarcane",
+    "family": "sweet"
+  },
+  "whiskey": {
+    "abv": 40,
+    "origin": "grain",
+    "family": "oak"
+  },
+  "tequila": {
+    "abv": 40,
+    "origin": "agave",
+    "family": "herbal"
+  }
+}

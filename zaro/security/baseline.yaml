@@ -1,0 +1,22 @@
+version: 1
+metadata:
+  name: echo-ai3-baseline
+  description: Baseline permissions for EchoBot automation
+
+principals:
+  - id: EchoBot
+    allowed:
+      - task: order:po.prepare
+      - task: inventory:transfer.prepare
+      - task: code:pr.create
+      - task: code:scan.sarif.import
+    requires_human:
+      - order:po.send
+      - inventory:transfer.approve
+      - deploy:production
+
+controls:
+  - name: immutable-audit
+    description: Store all EchoBot actions with rationale in cognition/ethical-sentinel/why.md
+  - name: vault-short-lived
+    description: Require OIDC tokens from scripts/setup_vault_oidc.sh with 1h TTL

@@ -1,0 +1,50 @@
+version: 1
+entities:
+  ingredient:
+    attributes:
+      - id
+      - name
+      - category
+      - allergens
+      - cost_per_unit
+  recipe:
+    attributes:
+      - id
+      - name
+      - yield
+      - plating_style
+      - cost_target
+    relationships:
+      - type: uses
+        target: ingredient
+        metadata:
+          amount: number
+          unit: string
+  event:
+    attributes:
+      - id
+      - name
+      - date
+      - covers
+    relationships:
+      - type: serves
+        target: recipe
+        metadata:
+          portion_size: string
+  inventory_item:
+    attributes:
+      - sku
+      - on_hand
+      - par
+      - vendor_id
+  purchase_order:
+    attributes:
+      - id
+      - vendor_id
+      - status
+    relationships:
+      - type: includes
+        target: inventory_item
+        metadata:
+          quantity: number
+          case_size: string

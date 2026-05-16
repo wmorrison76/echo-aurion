@@ -1,0 +1,16 @@
+{
+  "src/Form.js": {
+    "heat": 90,
+    "linked": 12,
+    "status": "\ud83d\udfe1",
+    "connections": [
+      "src/Validator.js"
+    ]
+  },
+  "src/Validator.js": {
+    "heat": 40,
+    "linked": 3,
+    "status": "\ud83d\udfe2",
+    "connections": []
+  }
+}

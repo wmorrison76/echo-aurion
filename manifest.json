@@ -1,0 +1,40 @@
+{
+  "name": "LUCCCA Enterprise Platform",
+  "short_name": "LUCCCA",
+  "description": "Enterprise hospitality intelligence — EchoAi3 powered operations, analytics, and management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f1a",
+  "theme_color": "#c8a97e",
+  "orientation": "any",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Analytics BI",
+      "short_name": "Analytics",
+      "url": "/?panel=analytics-engine",
+      "description": "Open the Analytics Business Intelligence dashboard"
+    },
+    {
+      "name": "Spa & Wellness",
+      "short_name": "Spa",
+      "url": "/?panel=spa-wellness",
+      "description": "Open Spa reservations and CRM"
+    }
+  ]
+}

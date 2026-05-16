@@ -1,0 +1,68 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-error.log
+
+# Production build artifacts
+dist
+build
+.next
+out
+
+# Source control
+.git
+.gitignore
+.github
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Testing
+coverage
+.nyc_output
+.jest
+__tests__
+
+# Development
+.cache
+.parcel-cache
+.turbo
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+tmp
+temp
+*.log
+
+# Documentation
+docs
+README.md
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Project-specific
+client/imported
+client/capstone
+cognition
+echo-monorepo
+.vitepress

@@ -1,0 +1,333 @@
+{
+  "meta": {
+    "version": "2.0.0",
+    "description": "Complete hybrid hospitality GL rules for restaurant, hotel, casino, resort operations",
+    "lastUpdated": "2025-11-29",
+    "standards": ["USALI", "USAR", "Hospitality Financial Management Association"]
+  },
+
+  "schema": {
+    "fields": ["code", "label", "category", "sub_category", "property_types", "keywords", "patterns"]
+  },
+
+  "rules": [
+    {
+      "code": "4100",
+      "label": "Food Sales",
+      "category": "REVENUE",
+      "sub_category": "Restaurant F&B",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["food sale", "restaurant sale", "menu item", "entree", "appetizer", "dessert", "banquet food", "buffet food"],
+      "patterns": ["\\b(food\\s*sale|restaurant\\s*sale|menu|entree|appetizer|dessert|banquet)\\b"]
+    },
+    {
+      "code": "4200",
+      "label": "Beverage Sales",
+      "category": "REVENUE",
+      "sub_category": "Restaurant F&B",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["beverage sale", "bar sale", "cocktail", "wine", "beer", "liquor", "soda", "juice"],
+      "patterns": ["\\b(beverage|bar\\s*sale|cocktail|wine|beer|liquor|soda|juice)\\b"]
+    },
+    {
+      "code": "4300",
+      "label": "Room Revenue",
+      "category": "REVENUE",
+      "sub_category": "Lodging",
+      "property_types": ["hotel", "resort"],
+      "keywords": ["room revenue", "nightly rate", "lodging", "accommodation", "guest room"],
+      "patterns": ["\\b(room\\s*revenue|nightly\\s*rate|lodging|accommodation|guest\\s*room)\\b"]
+    },
+    {
+      "code": "4310",
+      "label": "Resort Fees",
+      "category": "REVENUE",
+      "sub_category": "Lodging",
+      "property_types": ["hotel", "resort"],
+      "keywords": ["resort fee", "facility fee", "destination fee"],
+      "patterns": ["\\b(resort\\s*fee|facility\\s*fee|destination\\s*fee)\\b"]
+    },
+    {
+      "code": "4320",
+      "label": "Parking Revenue",
+      "category": "REVENUE",
+      "sub_category": "Parking",
+      "property_types": ["hotel", "resort", "casino"],
+      "keywords": ["parking revenue", "valet", "self parking", "garage"],
+      "patterns": ["\\b(parking|valet|self\\s*parking|garage)\\b"]
+    },
+    {
+      "code": "4400",
+      "label": "Banquet & Catering Revenue",
+      "category": "REVENUE",
+      "sub_category": "Events",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["banquet revenue", "catering revenue", "event revenue", "wedding", "group event"],
+      "patterns": ["\\b(banquet|catering|event\\s*revenue|wedding|group\\s*event)\\b"]
+    },
+    {
+      "code": "4500",
+      "label": "Spa & Wellness Revenue",
+      "category": "REVENUE",
+      "sub_category": "Spa",
+      "property_types": ["hotel", "resort"],
+      "keywords": ["spa revenue", "massage", "facial", "treatment", "wellness fee"],
+      "patterns": ["\\b(spa|massage|facial|treatment|wellness)\\b"]
+    },
+    {
+      "code": "4600",
+      "label": "Golf & Recreation Revenue",
+      "category": "REVENUE",
+      "sub_category": "Recreation",
+      "property_types": ["resort"],
+      "keywords": ["green fee", "golf revenue", "recreation", "tennis", "sports court", "marina"],
+      "patterns": ["\\b(golf|green\\s*fee|recreation|tennis|sports|marina)\\b"]
+    },
+    {
+      "code": "4700",
+      "label": "Retail & Gift Shop Revenue",
+      "category": "REVENUE",
+      "sub_category": "Retail",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["gift shop", "retail", "merchandise", "souvenir", "logo shop"],
+      "patterns": ["\\b(gift\\s*shop|retail|merchandise|souvenir|logo\\s*shop)\\b"]
+    },
+    {
+      "code": "4800",
+      "label": "Gaming Revenue",
+      "category": "REVENUE",
+      "sub_category": "Casino",
+      "property_types": ["casino"],
+      "keywords": ["gaming revenue", "slot revenue", "table revenue", "casino win", "house win"],
+      "patterns": ["\\b(gaming|slot|table\\s*game|casino\\s*win|house\\s*win)\\b"]
+    },
+
+    {
+      "code": "5010",
+      "label": "Food Cost - Produce",
+      "category": "COGS",
+      "sub_category": "Food",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["produce", "vegetable", "fruit", "greens", "yields", "lettuce", "tomato", "onion"],
+      "patterns": ["\\b(produce|vegetable|fruit|greens|lettuce|tomato|onion|carrot|cucumber)\\b"]
+    },
+    {
+      "code": "5030",
+      "label": "Food Cost - Proteins",
+      "category": "COGS",
+      "sub_category": "Food",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["meat", "beef", "poultry", "chicken", "pork", "lamb", "protein", "steak"],
+      "patterns": ["\\b(beef|chicken|pork|lamb|steak|meat|poultry|protein)\\b"]
+    },
+    {
+      "code": "5050",
+      "label": "Food Cost - Seafood",
+      "category": "COGS",
+      "sub_category": "Food",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["seafood", "fish", "shrimp", "lobster", "oyster", "salmon", "scallop", "crab"],
+      "patterns": ["\\b(seafood|fish|shrimp|lobster|oyster|salmon|scallop|crab|mussel|clam)\\b"]
+    },
+    {
+      "code": "5060",
+      "label": "Food Cost - Dairy & Eggs",
+      "category": "COGS",
+      "sub_category": "Food",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["dairy", "milk", "cream", "butter", "cheese", "eggs", "yogurt"],
+      "patterns": ["\\b(dairy|milk|cream|butter|cheese|eggs?|yogurt|cheddar|mozzarella|parmesan)\\b"]
+    },
+    {
+      "code": "5070",
+      "label": "Food Cost - Dry Goods & Staples",
+      "category": "COGS",
+      "sub_category": "Food",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["dry goods", "flour", "sugar", "spices", "rice", "pasta", "oil"],
+      "patterns": ["\\b(dry\\s*goods|flour|sugar|spice|rice|pasta|oil|salt|seasoning)\\b"]
+    },
+    {
+      "code": "5100",
+      "label": "Beverage Cost - Alcoholic",
+      "category": "COGS",
+      "sub_category": "Beverage",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["liquor cost", "wine cost", "beer cost", "spirit cost", "vodka", "gin", "rum"],
+      "patterns": ["\\b(liquor|wine|beer|spirit|vodka|gin|rum|tequila|whiskey)\\b"]
+    },
+    {
+      "code": "5110",
+      "label": "Beverage Cost - Non-Alcoholic",
+      "category": "COGS",
+      "sub_category": "Beverage",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["soda cost", "juice cost", "coffee cost", "tea cost", "soft drink", "water"],
+      "patterns": ["\\b(soda|juice|coffee|tea|water|soft\\s*drink|milk|lemonade)\\b"]
+    },
+    {
+      "code": "5150",
+      "label": "Retail Cost of Goods",
+      "category": "COGS",
+      "sub_category": "Retail",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["retail cost", "gift shop cost", "merchandise cost", "souvenir cost"],
+      "patterns": ["\\b(retail\\s*cost|gift\\s*shop|merchandise|souvenir)\\b"]
+    },
+    {
+      "code": "5180",
+      "label": "Gaming Comps & Promotional Allowances",
+      "category": "COGS",
+      "sub_category": "Casino",
+      "property_types": ["casino", "resort"],
+      "keywords": ["comped meal", "comp", "player comp", "promo allowance", "casino comp"],
+      "patterns": ["\\b(comp|comped?|promotional?|allowance)\\b"]
+    },
+
+    {
+      "code": "5301",
+      "label": "Kitchen Labor",
+      "category": "LABOR",
+      "sub_category": "Back of House",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["kitchen payroll", "boh wages", "line cook", "prep cook", "chef", "culinary wage", "back of house"],
+      "patterns": ["\\b(kitchen|cook|chef|culinary|boh|back\\s*of\\s*house)\\b"]
+    },
+    {
+      "code": "5302",
+      "label": "Front of House Labor",
+      "category": "LABOR",
+      "sub_category": "Front of House",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["server payroll", "wait staff", "hostess", "host", "bartender", "barback", "runner", "busser", "front of house"],
+      "patterns": ["\\b(server|waiter|bartender|barback|host|hostess|busser|runner|foh|front\\s*of\\s*house)\\b"]
+    },
+    {
+      "code": "5303",
+      "label": "Management Salaries",
+      "category": "LABOR",
+      "sub_category": "Management",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["management salary", "gm salary", "executive chef salary", "director", "manager wage", "supervisor"],
+      "patterns": ["\\b(manager|director|executive|supervisor|salary|gm|general\\s*manager)\\b"]
+    },
+    {
+      "code": "5304",
+      "label": "Housekeeping & Laundry Labor",
+      "category": "LABOR",
+      "sub_category": "Rooms & Housekeeping",
+      "property_types": ["hotel", "resort", "casino"],
+      "keywords": ["housekeeping payroll", "room attendant", "laundry staff", "public area", "housekeeper"],
+      "patterns": ["\\b(housekeeping|room\\s*attendant|laundry|housekeeper|public\\s*area)\\b"]
+    },
+    {
+      "code": "5305",
+      "label": "Security & Surveillance Labor",
+      "category": "LABOR",
+      "sub_category": "Security",
+      "property_types": ["hotel", "resort", "casino"],
+      "keywords": ["security payroll", "surveillance", "loss prevention", "guard", "security officer"],
+      "patterns": ["\\b(security|surveillance|loss\\s*prevention|guard|officer)\\b"]
+    },
+    {
+      "code": "5310",
+      "label": "Gaming Operations Labor",
+      "category": "LABOR",
+      "sub_category": "Casino",
+      "property_types": ["casino"],
+      "keywords": ["dealer payroll", "cage staff", "pit boss", "gaming floor staff"],
+      "patterns": ["\\b(dealer|cage|pit\\s*boss|gaming\\s*floor)\\b"]
+    },
+    {
+      "code": "5320",
+      "label": "Benefits & Payroll Taxes",
+      "category": "LABOR",
+      "sub_category": "Benefits",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["benefits", "payroll tax", "fica", "health insurance", "401k match"],
+      "patterns": ["\\b(benefit|payroll\\s*tax|fica|health\\s*insurance|401k|insurance)\\b"]
+    },
+
+    {
+      "code": "5400",
+      "label": "Marketing & Advertising",
+      "category": "OPEX",
+      "sub_category": "Sales & Marketing",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["advertising", "marketing", "facebook ads", "google ads", "printing", "menu design", "promo"],
+      "patterns": ["\\b(advertis|market|facebook|google\\s*ads|promo|print|design)\\b"]
+    },
+    {
+      "code": "5450",
+      "label": "Licenses & Permits",
+      "category": "OPEX",
+      "sub_category": "Compliance",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["liquor license", "health permit", "music license", "license fee", "permit"],
+      "patterns": ["\\b(license|permit|liquor\\s*license|health\\s*permit|music)\\b"]
+    },
+    {
+      "code": "5500",
+      "label": "Repairs & Maintenance",
+      "category": "OPEX",
+      "sub_category": "R&M",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["repair", "maintenance", "hvac", "equipment service", "plumbing", "contractor", "fix"],
+      "patterns": ["\\b(repair|maintenance|hvac|plumb|contractor|service\\s*call|equipment\\s*repair)\\b"]
+    },
+    {
+      "code": "5550",
+      "label": "Smallwares & Operating Supplies",
+      "category": "OPEX",
+      "sub_category": "Operating Supplies",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["smallwares", "china", "glassware", "flatware", "operating supplies", "linen rental"],
+      "patterns": ["\\b(smallware|china|glassware|flatware|operating\\s*supplies|linen)\\b"]
+    },
+    {
+      "code": "5600",
+      "label": "Utilities",
+      "category": "OPEX",
+      "sub_category": "Utilities",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["electric", "electricity", "power", "water", "gas", "trash", "internet", "wifi"],
+      "patterns": ["\\b(electric|water|gas|trash|internet|wifi|utility|power|sewer)\\b"]
+    },
+    {
+      "code": "5700",
+      "label": "Occupancy Costs (Rent/Lease)",
+      "category": "OPEX",
+      "sub_category": "Occupancy",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["rent", "lease", "common area maintenance", "cam charge", "base rent"],
+      "patterns": ["\\b(rent|lease|cam|common\\s*area|occupancy|base\\s*rent)\\b"]
+    },
+    {
+      "code": "5800",
+      "label": "Insurance",
+      "category": "OPEX",
+      "sub_category": "Insurance",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["insurance", "general liability", "property insurance", "workers comp", "premium"],
+      "patterns": ["\\b(insurance|liability|workers?\\s*comp|premium|coverage)\\b"]
+    },
+    {
+      "code": "5900",
+      "label": "Office & Administrative",
+      "category": "OPEX",
+      "sub_category": "Admin",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["office supplies", "admin expense", "software subscription", "accounting fee", "professional fee"],
+      "patterns": ["\\b(office|admin|software|subscription|accounting\\s*fee|professional)\\b"]
+    },
+    {
+      "code": "5950",
+      "label": "Depreciation & Amortization",
+      "category": "OPEX",
+      "sub_category": "Non-Cash",
+      "property_types": ["restaurant", "hotel", "resort", "casino"],
+      "keywords": ["depreciation", "amortization", "non cash expense"],
+      "patterns": ["\\b(depreciation|amortization|non.?cash)\\b"]
+    }
+  ]
+}

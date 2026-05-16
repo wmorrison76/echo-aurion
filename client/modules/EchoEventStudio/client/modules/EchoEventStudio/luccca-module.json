@@ -1,0 +1,43 @@
+{
+  "name": "EchoEventStudio",
+  "label": "Echo Event Studio",
+  "description": "Professional event layout design with 3D visualization, compliance checking, and BEO export. Complete 6-stage workflow for venue setup, seating, design, and export.",
+  "version": "1.0.0",
+  "icon": "🎨",
+  "author": "Echo Team",
+  "defaultWidth": 1400,
+  "defaultHeight": 900,
+  "category": "design",
+  "tags": ["events", "layout", "3d-design", "compliance", "planning"],
+  "requires": {
+    "react": ">=18.0.0",
+    "supabase": ">=2.0.0",
+    "three": ">=r128",
+    "tailwindcss": ">=3.0.0"
+  },
+  "features": [
+    "6-stage EchoLayout workflow",
+    "3D venue visualization",
+    "Compliance checking (ADA)",
+    "Real KPI metrics",
+    "BEO PDF export",
+    "Collision detection",
+    "Custom item upload",
+    "Requisition management",
+    "Camera bookmarks",
+    "Presenter annotations"
+  ],
+  "permissions": {
+    "database": [
+      "layout_sessions",
+      "custom_items",
+      "banquet_event_orders",
+      "camera_bookmarks",
+      "annotations"
+    ],
+    "storage": ["required"],
+    "auth": ["optional"]
+  },
+  "documentation": "https://echo-event-studio.docs",
+  "support": "support@echo-event-studio.com"
+}

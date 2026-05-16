@@ -1,0 +1,14 @@
+{
+  "techniques": [
+    {
+      "title": "Classic Genoise",
+      "steps": ["Whisk eggs + sugar", "Fold flour", "Bake 180°C"],
+      "category": "Cake Base"
+    },
+    {
+      "title": "Crumb Coat Standard",
+      "steps": ["Apply thin buttercream layer", "Chill 10 minutes"],
+      "category": "Decoration"
+    }
+  ]
+}

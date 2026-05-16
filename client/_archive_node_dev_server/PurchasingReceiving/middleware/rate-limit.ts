@@ -1,0 +1,16 @@
+import rateLimit, { RateLimitRequestHandler, ipKeyGenerator,
+} from "express-rate-limit";
+import { logger } from "../lib/logger"; /** * General API rate limiter (10 requests per minute per IP) */
+export const generalLimiter = rateLimit({ windowMs: 60 * 1000, // 1 minute max: 10, message:"Too many requests from this IP, please try again later", standardHeaders: true, legacyHeaders: false, keyGenerator: ipKeyGenerator, skip: (req) => { // Skip rate limiting for health checks if (req.path ==="/health" || req.path ==="/readiness") { return true; } return false; }, handler: (req, res) => { logger.warn(`Rate limit exceeded for IP: ${req.ip}, path: ${req.path}`); res.status(429).json({ error:"Too many requests", retryAfter: 60, }); },
+}); /** * Strict limiter for webhook endpoints (5 requests per minute) */
+export const webhookLimiter = rateLimit({ windowMs: 60 * 1000, max: 5, message:"Too many webhook requests", standardHeaders: true, legacyHeaders: false, handler: (req, res) => { logger.warn( `Webhook rate limit exceeded for IP: ${req.ip}, endpoint: ${req.path}`, ); res.status(429).json({ error:"Too many webhook requests", retryAfter: 60, }); },
+}); /** * Strict limiter for payment endpoints (20 requests per minute) */
+export const paymentLimiter = rateLimit({ windowMs: 60 * 1000, max: 20, message:"Too many payment requests", standardHeaders: true, legacyHeaders: false, handler: (req, res) => { logger.warn( `Payment rate limit exceeded for IP: ${req.ip}, endpoint: ${req.path}`, ); res.status(429).json({ error:"Too many payment requests", retryAfter: 60, }); },
+}); /** * Very strict limiter for authentication endpoints (5 requests per 15 minutes) */
+export const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, // 15 minutes max: 5, message:"Too many authentication attempts", standardHeaders: true, legacyHeaders: false, handler: (req, res) => { logger.warn( `Auth rate limit exceeded for IP: ${req.ip}, endpoint: ${req.path}`, ); res.status(429).json({ error:"Too many authentication attempts, please try again later", retryAfter: 900, }); },
+}); /** * IoT sensor data limiter (100 requests per minute per organization or IP) */
+export const iotDataLimiter = rateLimit({ windowMs: 60 * 1000, max: 100, keyGenerator: (req) => { // Use organization_id from query or body if available, otherwise use IP (with IPv6 safety) const orgId = req.query.organization_id || req.body?.organization_id; if (orgId) { return `org_${orgId}`; } // Use ipKeyGenerator for IPv6-safe IP extraction return ipKeyGenerator(req); }, message:"Too many IoT data requests", handler: (req, res) => { logger.warn( `IoT rate limit exceeded for source: ${req.ip}, endpoint: ${req.path}`, ); res.status(429).json({ error:"Too many data requests", retryAfter: 60, }); },
+}); /** * Create a custom rate limiter with configurable options */
+export function createCustomLimiter(options: { windowMs?: number; max?: number; name: string;
+}): RateLimitRequestHandler { return rateLimit({ windowMs: options.windowMs || 60 * 1000, max: options.max || 30, standardHeaders: true, legacyHeaders: false, handler: (req, res) => { logger.warn( `${options.name} rate limit exceeded for IP: ${req.ip}, path: ${req.path}`, ); res.status(429).json({ error: `Too many requests - ${options.name}`, retryAfter: Math.ceil((options.windowMs || 60000) / 1000), }); }, });
+}

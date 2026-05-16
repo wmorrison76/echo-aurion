@@ -1,0 +1,80 @@
+{
+  "summary": "iter231 Echo Voice Chat + EchoMiniButton testing complete. 12/12 backend tests passed. All new features verified: POST /api/echo-voice/chat returns valid JSON with session_id/speech/panel/panel_args/explanation/graph_spec/actions, session continuity works (follow-up messages maintain context), Claude references real outlet P&L data from injected snapshot. Frontend: Dark-blue Echo Mini Button at bottom-right (replaces gold pill), short tap opens quick-launch sheet with Activity/Dashboard/P&L tiles + 6 desktop module links, long-press (>550ms) opens voice panel directly, voice panel has 4 suggestion buttons + mic button, tabbar spacer exists.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile ECW", "issues": ["Echo command palette overlay (echo-cmd-launcher) appears on page load and intercepts clicks on Echo Mini Button - requires Escape key or JS hide to dismiss. This is a pre-existing issue from previous iterations."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ecw_ops_iter231_echo_voice.py",
+    "/app/test_reports/pytest/pytest_results_iter231.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "P&L view shows 'No P&L data for outlet-main/2026-03' when outlet-main is selected - this is expected behavior as data is seeded for outlet-windows. Consider adding a default outlet selection or seeding data for outlet-main."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_ecw_ops_iter231_echo_voice.py"
+  ],
+  "success_rate": {
+    "backend": "100% (12/12 tests passed)",
+    "frontend": "100% (all iter231 features verified)"
+  },
+  "test_credentials": "X-User-Id: chef-william for backend writes. devAuth=1 query param for frontend auth bypass.",
+  "seed_data_creation": "No new seed data created. Used existing outlet-windows P&L data for voice chat context testing.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter231 Echo Voice Chat fully tested. Backend: POST /api/echo-voice/chat works with Claude Sonnet 4.5 via emergentintegrations, returns valid JSON with session_id (vs-*), speech (non-empty), panel (nullable), panel_args (dict), explanation (nullable), graph_spec (nullable), actions (list). Session continuity works - follow-up messages with same session_id maintain conversation context. GET /api/echo-voice/session/{session_id} returns full transcript with alternating user/echo roles. Claude receives grounded data snapshot with outlet P&L numbers (food cost %, labor %, prime cost %, top GL expenses, pending accruals, flagged invoices). Frontend: EchoMiniButton at bottom-right (data-testid='echo-mini-btn') replaces gold EchoFab pill. Short tap opens quick-launch sheet (data-testid='echo-quick-sheet') with ASK ECHO section (voice trigger), THIS OUTLET section (Activity/Dashboard/P&L tiles), DESKTOP MODULES section (6 links with correct hrefs). Long-press (>550ms) opens voice panel directly. Voice panel (data-testid='echo-voice-panel') has 4 suggestion buttons (data-testid='voice-suggestion-*') and mic button (data-testid='echo-voice-mic'). Tabbar spacer (data-testid='ecw-tabbar-spacer') exists at 130px width.",
+  "tests_executed": {
+    "backend": [
+      "TestEchoVoiceChat::test_voice_chat_basic_food_cost_question - PASS",
+      "TestEchoVoiceChat::test_voice_chat_follow_up_maintains_context - PASS",
+      "TestEchoVoiceChat::test_voice_chat_nectar_outlet_context - PASS",
+      "TestEchoVoiceChat::test_voice_chat_returns_valid_json_not_markdown - PASS",
+      "TestEchoVoiceChat::test_voice_chat_context_snapshot_has_real_numbers - PASS",
+      "TestEchoVoiceSession::test_get_session_transcript - PASS",
+      "TestEchoVoiceSession::test_get_nonexistent_session - PASS",
+      "TestEchoVoicePanelTriggers::test_show_pnl_triggers_panel - PASS",
+      "TestRegressionIter230::test_echoaurium_outlets_endpoint - PASS",
+      "TestRegressionIter230::test_echoaurium_pnl_full_endpoint - PASS",
+      "TestRegressionIter230::test_ecw_ops_activity_endpoint - PASS",
+      "TestRegressionIter230::test_ecw_ops_dashboard_endpoint - PASS"
+    ],
+    "frontend": [
+      "ECW Ops root loads - PASS",
+      "Echo Mini Button found (data-testid='echo-mini-btn') - PASS",
+      "No gold EchoFab pill (correctly removed) - PASS",
+      "Tabbar spacer exists (data-testid='ecw-tabbar-spacer') - PASS",
+      "Quick launch sheet opens on short tap - PASS",
+      "THIS OUTLET tiles (Activity/Dashboard/P&L) - PASS",
+      "Voice conversation trigger button - PASS",
+      "Desktop module links (6/6 with correct hrefs) - PASS",
+      "Activity view loads - PASS",
+      "Dashboard view loads - PASS",
+      "P&L view loads (shows no data for outlet-main, expected) - PASS",
+      "Voice panel opens - PASS",
+      "Voice suggestion buttons (4) - PASS",
+      "Mic button found - PASS",
+      "Long-press (700ms) opens voice panel directly - PASS"
+    ]
+  },
+  "verified_features": {
+    "POST /api/echo-voice/chat": "PASS - returns session_id (vs-*), speech (non-empty), panel, panel_args, explanation, graph_spec, actions",
+    "POST /api/echo-voice/chat follow-up": "PASS - same session_id maintains conversation context",
+    "POST /api/echo-voice/chat outlet context": "PASS - Claude references outlet-specific data from injected snapshot",
+    "GET /api/echo-voice/session/{session_id}": "PASS - returns ok=true, session_id, count, rows with alternating user/echo roles",
+    "Echo Mini Button": "PASS - dark-blue button at bottom-right, labelled 'ECHO ⌘K'",
+    "Quick launch sheet": "PASS - opens on short tap with ASK ECHO, THIS OUTLET, DESKTOP MODULES sections",
+    "Activity/Dashboard/P&L tiles": "PASS - drill into respective views, Back button returns to home",
+    "Desktop module links": "PASS - 6 links with correct hrefs (/studio/menu-builder, /studio/procurement, etc.)",
+    "Voice panel": "PASS - opens via voice trigger or long-press, has 4 suggestion buttons + mic button",
+    "Long-press (>550ms)": "PASS - opens voice panel directly (skipping quick launch)",
+    "Tabbar spacer": "PASS - 130px spacer at end of tabbar"
+  }
+}

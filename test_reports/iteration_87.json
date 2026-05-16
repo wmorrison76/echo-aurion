@@ -1,0 +1,98 @@
+{
+  "summary": "Iteration 87: 21-Day Living Forecast module fully tested. All 32 backend tests passed (100%). Frontend panel loads correctly with all features working: 5 KPIs, 21-day calendar grid with mini coverage graphs, day card click expands coverage detail, AI Notes tab with form and active notes list, AI Insights tab with peak/low days and pattern analysis, Coverage View tab with hourly stacked bar charts per outlet.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Module loading",
+        "issue": "Intermittent 'Failed to fetch dynamically imported module' error on first load after idle. Resolved by frontend restart. May be Vite HMR caching issue.",
+        "affected_selectors": ["[data-testid='forecast-21-panel']"],
+        "priority": "LOW"
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration87_21day_forecast.py",
+    "/app/test_reports/pytest/pytest_results_iter87.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iteration87_21day_forecast.py"
+  ],
+  "success_rate": {
+    "backend": "100% (32/32 tests passed)",
+    "frontend": "100% (all features working after restart)"
+  },
+  "test_credentials": {
+    "guest_ordering": "Room 412, Last name: Smith"
+  },
+  "seed_data_creation": "Created test notes via API: 2026-04-22 bar 'VIP group arriving', 2026-04-25 spa 'TEST_note - VIP spa day expected'",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 87 verified 21-Day Living Forecast module. Backend endpoints: GET /api/forecast-21/forecast (returns 21 days with data_source='live_mongodb'), GET /api/forecast-21/forecast/day/{date} (day detail with ai_adjustments), POST /api/forecast-21/notes (create AI-readable note), GET /api/forecast-21/notes (list notes), GET /api/forecast-21/coverage/{outlet}/{date} (hourly coverage with status). Frontend panel at sidebar '21-Day Forecast' shows: 5 KPIs (21-Day Revenue, Avg Occupancy, Labor Cost, Labor Budget, Rooms Sold), Calendar tab with 7-column grid and mini coverage graphs per day, Coverage View tab with hourly stacked bars per outlet, AI Notes tab with form and active notes, AI Insights tab with peak/low days and AI pattern analysis. DOW patterns working (Saturday highest, Monday lowest). Manager notes trigger AI adjustments (e.g., 'closed' sets forecast to 0). surface_3d has ~1785 data points for 3D visualization.",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/forecast-21/forecast - returns 200, data_source='live_mongodb'",
+      "Forecast returns exactly 21 days",
+      "Forecast base_metrics has real room counts from MongoDB (31/65 occupied)",
+      "Summary has total_revenue, avg_occupancy, peak_days, low_days",
+      "AI insights has peak_pattern, gap_alert, labor_efficiency",
+      "surface_3d has >1000 data points with correct structure",
+      "Each day has occupancy, revenue, covers, labor, outlets breakdown",
+      "Each outlet has hourly_flow with staff_needed and staff_scheduled",
+      "POST /api/forecast-21/notes creates note successfully",
+      "GET /api/forecast-21/notes returns saved notes",
+      "GET /api/forecast-21/forecast/day/2026-04-21 returns day detail with ai_adjustments",
+      "GET /api/forecast-21/coverage/restaurant/2026-04-18 returns hourly coverage",
+      "Coverage endpoint returns status (optimal/understaffed/overstaffed) per hour",
+      "DOW patterns: Saturday shows higher occupancy factor than Monday",
+      "Regression: /api/daily-reports/gm-flash, /api/daily-reports/chef-daily, /api/guest-intel/dashboard, /api/health all working"
+    ],
+    "frontend_tests": [
+      "21-Day Forecast panel opens from sidebar",
+      "Panel shows 5 summary KPIs (21-Day Revenue, Avg Occupancy, Labor Cost, Labor Budget, Rooms Sold)",
+      "Calendar tab shows 21 day cards in 7-column grid with mini coverage graphs",
+      "Each day card shows date, occupancy %, revenue, labor cost, and mini bar chart",
+      "Clicking a day card expands the Coverage Detail view with hourly breakdowns",
+      "Coverage Detail shows stacked bar charts per outlet with needed vs scheduled",
+      "Notes tab has form to add AI-readable notes with date and outlet selector",
+      "Notes tab shows Active Notes list with existing notes",
+      "Insights tab shows Peak Revenue Days and Low Volume Days",
+      "Insights tab shows AI Pattern Analysis section",
+      "Coverage View tab shows hourly coverage for multiple days"
+    ]
+  },
+  "features_verified": {
+    "21_day_forecast_backend": {
+      "status": "WORKING",
+      "details": "All endpoints return correct data. Forecast pulls real MongoDB data (hk_rooms for room counts). DOW patterns apply correctly. Manager notes trigger AI adjustments."
+    },
+    "21_day_forecast_frontend": {
+      "status": "WORKING",
+      "details": "Panel loads with all features: KPIs, calendar grid, coverage graphs, notes form, insights. All tabs functional."
+    },
+    "ai_notes_system": {
+      "status": "WORKING",
+      "details": "Notes can be created via API and appear in frontend. AI reads notes and adjusts forecast (e.g., 'closed' sets forecast to 0)."
+    },
+    "coverage_analysis": {
+      "status": "WORKING",
+      "details": "Hourly coverage endpoint returns staff_needed, staff_scheduled, gap, and status per hour. Frontend displays stacked bar charts."
+    },
+    "regression_other_apis": {
+      "status": "WORKING",
+      "details": "GM Flash, Chef Daily, Guest Intel, Health endpoints all still working"
+    }
+  },
+  "mocked_apis": {
+    "beo_events": "BEO events use demo data",
+    "adr": "ADR fixed at $289.50",
+    "sendgrid": "SendGrid in demo mode"
+  }
+}

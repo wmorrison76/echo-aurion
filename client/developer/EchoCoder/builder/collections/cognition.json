@@ -1,0 +1,13 @@
+{
+  "$schema": "https://builder.io/schemas/collection.json",
+  "name": "echo-cognition",
+  "builder_collections": [
+    "cognition/capability-graph",
+    "cognition/cognitive-mesh"
+  ],
+  "ui": [
+    "ApprovalsConsole",
+    "PolicyAuditView",
+    "SarcasmSlider"
+  ]
+}

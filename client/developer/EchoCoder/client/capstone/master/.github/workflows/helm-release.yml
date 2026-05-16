@@ -1,0 +1,25 @@
+name: Helm Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Chart version"
+        required: true
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.15.0
+      - name: Lint chart
+        run: helm lint helm/echo-capstone
+      - name: Package chart
+        run: helm package helm/echo-capstone --version ${{ github.event.inputs.version }}
+      - name: Upload chart
+        uses: actions/upload-artifact@v4
+        with:
+          name: helm-chart
+          path: echo-capstone-*.tgz

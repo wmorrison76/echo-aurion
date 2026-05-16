@@ -1,0 +1,479 @@
+/**
+ * LiveStats.css
+ * ----------------------------------------------------------------------------
+ * Footer strip styling. Three-region grid layout with responsive collapse
+ * to stacked on narrow viewports. Uses the same token scope established
+ * in CompositionCanvas.css — tokens cascade from .bmb-canvas down.
+ * ----------------------------------------------------------------------------
+ */
+
+/* ============================================================================
+   Footer container
+   ============================================================================ */
+.bmb-stats-footer {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.2fr) minmax(180px, 1.4fr) minmax(220px, 1fr);
+  gap: var(--bmb-pad-lg);
+  padding: var(--bmb-pad-md) var(--bmb-pad-lg);
+  background: var(--bmb-bg-surface);
+  border-top: 1px solid var(--bmb-border-default);
+  align-items: center;
+}
+
+.bmb-stats-footer--idle {
+  display: flex;
+  justify-content: center;
+}
+
+.bmb-stats-footer__idle-text {
+  margin: 0;
+  font-size: 12px;
+  color: var(--bmb-text-tertiary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 0;
+}
+
+.bmb-stats-footer__region {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.bmb-stats-footer__region--operational {
+  align-items: flex-end;
+}
+
+/* ============================================================================
+   Pricing region
+   ============================================================================ */
+.bmb-stats-footer__primary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bmb-pad-sm);
+  flex-wrap: wrap;
+}
+
+.bmb-stats-footer__per-guest {
+  font-family: var(--lucca-font-display, 'Playfair Display', serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--bmb-gold);
+  letter-spacing: 0.01em;
+}
+
+.bmb-stats-footer__divider {
+  color: var(--bmb-text-tertiary);
+}
+
+.bmb-stats-footer__total {
+  font-size: 13px;
+  color: var(--bmb-text-secondary);
+}
+
+.bmb-stats-footer__secondary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bmb-pad-sm);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bmb-stats-footer__delta--positive {
+  color: var(--bmb-success);
+}
+
+.bmb-stats-footer__delta--negative {
+  color: var(--bmb-danger);
+  font-weight: 600;
+}
+
+.bmb-stats-footer__utilization {
+  color: var(--bmb-text-tertiary);
+}
+
+.bmb-stats-footer--over-budget .bmb-stats-footer__per-guest {
+  color: var(--bmb-danger);
+}
+
+/* ============================================================================
+   Budget bar
+   ============================================================================ */
+.bmb-budget-bar {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.bmb-budget-bar__track {
+  position: relative;
+  height: 4px;
+  background: var(--bmb-border-subtle);
+  border-radius: 2px;
+  overflow: visible;
+}
+
+.bmb-budget-bar__fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 240ms cubic-bezier(0.4, 0, 0.2, 1),
+              background 200ms;
+}
+
+.bmb-budget-bar__fill--safe {
+  background: linear-gradient(
+    90deg,
+    var(--bmb-gold-dim) 0%,
+    var(--bmb-gold) 100%
+  );
+}
+
+.bmb-budget-bar__fill--caution {
+  background: linear-gradient(
+    90deg,
+    var(--bmb-gold) 0%,
+    var(--bmb-warning) 100%
+  );
+}
+
+.bmb-budget-bar__fill--over {
+  background: var(--bmb-danger);
+}
+
+.bmb-budget-bar__overflow {
+  position: absolute;
+  left: 100%;
+  top: -1px;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--bmb-danger) 0%,
+    rgba(194, 86, 82, 0.4) 100%
+  );
+  border-radius: 0 3px 3px 0;
+  animation: bmb-overflow-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bmb-overflow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ============================================================================
+   Dietary distribution
+   ============================================================================ */
+.bmb-dietary-dist {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bmb-dietary-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+  transition: all var(--bmb-transition-fast);
+  position: relative;
+}
+
+.bmb-dietary-chip--present {
+  background: var(--bmb-gold-faint);
+  color: var(--bmb-gold);
+  border-color: var(--bmb-gold-dim);
+}
+
+.bmb-dietary-chip--absent {
+  background: transparent;
+  color: var(--bmb-text-tertiary);
+  border-color: var(--bmb-border-subtle);
+  opacity: 0.5;
+}
+
+.bmb-dietary-chip[data-tag="vegan"].bmb-dietary-chip--present { color: #6fa86b; border-color: rgba(111, 168, 107, 0.4); background: rgba(111, 168, 107, 0.10); }
+.bmb-dietary-chip[data-tag="vegetarian"].bmb-dietary-chip--present { color: #6fa86b; border-color: rgba(111, 168, 107, 0.4); background: rgba(111, 168, 107, 0.10); }
+.bmb-dietary-chip[data-tag="gluten_free"].bmb-dietary-chip--present { color: #d4a64a; border-color: rgba(212, 166, 74, 0.4); background: rgba(212, 166, 74, 0.10); }
+.bmb-dietary-chip[data-tag="dairy_free"].bmb-dietary-chip--present { color: #6f8eb3; border-color: rgba(111, 142, 179, 0.4); background: rgba(111, 142, 179, 0.10); }
+
+.bmb-dietary-chip--gap-info { border-color: var(--bmb-info); }
+.bmb-dietary-chip--gap-warning { border-color: var(--bmb-warning); }
+.bmb-dietary-chip--gap-critical {
+  border-color: var(--bmb-danger);
+  animation: bmb-gap-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes bmb-gap-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(194, 86, 82, 0); }
+  50% { box-shadow: 0 0 0 2px rgba(194, 86, 82, 0.3); }
+}
+
+.bmb-dietary-chip__count {
+  font-size: 9px;
+  opacity: 0.7;
+}
+
+.bmb-dietary-chip__gap-flag {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bmb-warning);
+  color: var(--bmb-text-on-gold);
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.bmb-dietary-chip--gap-critical .bmb-dietary-chip__gap-flag {
+  background: var(--bmb-danger);
+  color: white;
+}
+
+.bmb-dietary-dist__gap-count {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--bmb-warning);
+  font-weight: 600;
+}
+
+/* ============================================================================
+   Operational load badge
+   ============================================================================ */
+.bmb-op-load {
+  position: relative;
+  display: inline-block;
+}
+
+.bmb-op-load__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--bmb-radius-sm);
+  background: var(--bmb-bg-elevated);
+  border: 1px solid var(--bmb-border-default);
+  color: var(--bmb-text-primary);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all var(--bmb-transition-fast);
+}
+
+.bmb-op-load__badge:hover {
+  border-color: var(--bmb-border-strong);
+  background: var(--bmb-bg-hover);
+}
+
+.bmb-op-load__indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--bmb-text-tertiary);
+}
+
+.bmb-op-load__badge--positive .bmb-op-load__indicator { background: var(--bmb-success); }
+.bmb-op-load__badge--neutral .bmb-op-load__indicator { background: var(--bmb-gold); }
+.bmb-op-load__badge--caution {
+  border-color: rgba(212, 166, 74, 0.5);
+}
+.bmb-op-load__badge--caution .bmb-op-load__indicator {
+  background: var(--bmb-warning);
+  color: var(--bmb-text-on-gold);
+  font-weight: 700;
+  width: auto; height: auto;
+  padding: 0 5px;
+  border-radius: 8px;
+  font-size: 9px;
+  line-height: 14px;
+  text-align: center;
+  min-width: 14px;
+}
+.bmb-op-load__badge--critical {
+  border-color: var(--bmb-danger);
+  animation: bmb-gap-pulse 2.4s ease-in-out infinite;
+}
+.bmb-op-load__badge--critical .bmb-op-load__indicator {
+  background: var(--bmb-danger);
+  color: white;
+  font-weight: 700;
+  width: auto; height: auto;
+  padding: 0 5px;
+  border-radius: 8px;
+  font-size: 9px;
+  line-height: 14px;
+  min-width: 14px;
+}
+
+.bmb-op-load__label {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.bmb-op-load__hours {
+  color: var(--bmb-text-tertiary);
+  font-weight: 400;
+}
+
+.bmb-op-load__popover {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 320px;
+  background: var(--bmb-bg-elevated);
+  border: 1px solid var(--bmb-border-default);
+  border-radius: var(--bmb-radius-md);
+  padding: var(--bmb-pad-md);
+  z-index: 20;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.bmb-op-load__section + .bmb-op-load__section {
+  margin-top: var(--bmb-pad-md);
+  padding-top: var(--bmb-pad-md);
+  border-top: 1px solid var(--bmb-border-subtle);
+}
+
+.bmb-op-load__heading {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bmb-gold);
+  margin: 0 0 var(--bmb-pad-sm);
+}
+
+.bmb-op-load__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bmb-op-load__list-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.bmb-op-load__list-item--bottleneck .bmb-op-load__list-name {
+  color: var(--bmb-warning);
+  font-weight: 500;
+}
+
+.bmb-op-load__list-name {
+  color: var(--bmb-text-primary);
+}
+
+.bmb-op-load__list-value {
+  color: var(--bmb-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.bmb-op-load__bottleneck-flag {
+  margin-left: 4px;
+  color: var(--bmb-warning);
+}
+
+.bmb-op-load__empty {
+  font-size: 12px;
+  color: var(--bmb-text-tertiary);
+  font-style: italic;
+  margin: 0;
+}
+
+.bmb-op-load__summary {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.bmb-op-load__summary > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.bmb-op-load__summary dt {
+  color: var(--bmb-text-tertiary);
+}
+
+.bmb-op-load__summary dd {
+  margin: 0;
+  color: var(--bmb-text-primary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* ============================================================================
+   Sync indicator
+   ============================================================================ */
+.bmb-sync-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bmb-text-tertiary);
+  margin-top: 4px;
+}
+
+.bmb-sync-indicator__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.bmb-sync-indicator--saving {
+  color: var(--bmb-warning);
+}
+.bmb-sync-indicator--saving .bmb-sync-indicator__dot {
+  animation: bmb-sync-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes bmb-sync-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.bmb-sync-indicator--saved {
+  color: var(--bmb-success);
+}
+
+.bmb-sync-indicator--pending {
+  color: var(--bmb-text-tertiary);
+}
+
+/* ============================================================================
+   Responsive collapse
+   ============================================================================ */
+@media (max-width: 720px) {
+  .bmb-stats-footer {
+    grid-template-columns: 1fr;
+    gap: var(--bmb-pad-md);
+    padding: var(--bmb-pad-md);
+  }
+
+  .bmb-stats-footer__region--operational {
+    align-items: flex-start;
+  }
+}

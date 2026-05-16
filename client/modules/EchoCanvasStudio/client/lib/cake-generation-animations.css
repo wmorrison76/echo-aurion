@@ -1,0 +1,115 @@
+/* Spinning animation for loader icons */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse animation for progress indicators */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Progress bar fill animation */
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width, 100%);
+  }
+}
+
+/* Glow effect for approved items */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(74, 222, 128, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.6);
+  }
+}
+
+/* Success checkmark animation */
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Image load animation */
+@keyframes imageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply animations to cake generation elements */
+.cake-generation-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.cake-progress-bar {
+  animation: progressFill 0.5s ease-out;
+}
+
+.cake-approved-item {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.cake-checkmark {
+  animation: checkmark 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cake-image-preview {
+  animation: imageLoad 0.3s ease-out;
+}
+
+.cake-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.cake-slide-up {
+  animation: slideUp 0.4s ease-out;
+}

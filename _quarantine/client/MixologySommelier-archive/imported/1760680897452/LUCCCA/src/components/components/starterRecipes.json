@@ -1,0 +1,20 @@
+const starterRecipes = [
+  {
+    id: 1,
+    recipeName: "Tomato Basil Soup",
+    course: "Soup",
+    nationality: "Italian",
+    allergies: ["Dairy"],
+    access: "Global"
+  },
+  {
+    id: 2,
+    recipeName: "Caesar Salad",
+    course: "Salad",
+    nationality: "French",
+    allergies: ["Egg", "Fish"],
+    access: "Outlet"
+  }
+];
+
+export default starterRecipes;

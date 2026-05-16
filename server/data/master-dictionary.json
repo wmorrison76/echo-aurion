@@ -1,0 +1,1327 @@
+[
+  {
+    "term": "Açaí",
+    "definition": "Amazonian fruit served as smoothie bowls. Tupi 'ïwasa'i'. Dark purple, creamy, slightly earthy. Superfood trend.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Acarajé",
+    "definition": "Fried black-eyed pea fritters stuffed with spicy shrimp. Yoruba origin. Golden, crispy, savory-spicy.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Aceto Balsamico",
+    "definition": "Sweet, aged vinegar from Modena or Reggio Emilia. Dark, syrupy, complex. Made from grape must, aged in barrels.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Achiote",
+    "definition": "Annatto seeds used for color and flavor in Yucatán dishes. Nahuatl 'achiotl'. Orange-red color, mild earthy flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Acidulation",
+    "definition": "Adding acid to preserve color or adjust flavor. Latin 'acidus', sour. Prevents browning.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Adobo",
+    "definition": "A marinade or stew made with vinegar, chiles, garlic, and spices. Spanish 'adobar', to marinate. Complex, deep flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Aeration",
+    "definition": "Incorporating air to lighten batters, creams, or dough. Latin 'aer', air. Creates light texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Agar Agar",
+    "definition": "Seaweed-derived gelling agent used as a vegan gelatin substitute. Malay for 'jelly'. Sets at room temperature.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Aging",
+    "definition": "Developing flavor and tenderness through controlled storage. Applies to meats, cheeses, wines. Time-based transformation.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Agua Fresca",
+    "definition": "Refreshing beverage made from fruit, sugar, and water. Spanish 'fresh water'. Light, sweet, hydrating.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Aïoli",
+    "definition": "Garlic emulsified sauce similar to mayonnaise. Provençal 'garlic + oil'. Pungent, creamy, versatile.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ajvar",
+    "definition": "A Balkan roasted red pepper spread. Made from roasted red peppers, eggplant, and spices. Smoky, sweet, slightly spicy. Condiment and sandwich spread.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Al Dente",
+    "definition": "Pasta cooked firm and slightly resistant to bite. Italian 'to the tooth'. Perfect pasta texture. Not soft, not hard.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Aliquot",
+    "definition": "A measured sub-portion used in food science. Latin 'aliquot', several. Essential for scaling recipes.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Antipasto",
+    "definition": "Appetizer course featuring cured meats, olives, cheeses, and vegetables. Italian 'before the meal'. First course tradition.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Arancini",
+    "definition": "Fried rice balls stuffed with cheese or ragù. Italian 'little oranges'. Crispy, golden, savory filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Au Jus",
+    "definition": "Serving meat with natural cooking juices, lightly thickened or concentrated, rather than a separate gravy or sauce. Essential for roasted and braised meats in classical service.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Autolyse",
+    "definition": "Resting flour and water to improve gluten development. Greek 'auto (self) + lysis (breakdown)'. Enhances dough structure.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bain Marie Stabilization",
+    "definition": "Keeping emulsions or custards from breaking using gentle heat. Culinary science. Preserves texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bain-Marie",
+    "definition": "Water bath used to gently cook delicate foods. French 'Mary's bath'. Provides even heat distribution.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Barbacoa",
+    "definition": "Slow-cooked meat traditionally prepared in a pit or wrapped in leaves. Taíno origin 'barabicu'. Tender, flavorful, complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Beijinho",
+    "definition": "Coconut truffles made with condensed milk. Portuguese 'little kiss'. Sweet, creamy, covered in coconut.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Beurre Blanc",
+    "definition": "A sauce made from butter emulsified with vinegar or wine and shallots. Delicate, requires gentle heat. One of the mother sauces' derivatives.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Beurre Manié",
+    "definition": "A paste of flour and softened butter used for last-minute thickening. French 'kneaded butter'. No roux taste.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Beurre Noisette",
+    "definition": "Browned butter used for sauces and pastries. French 'hazelnut butter'. Nutty aroma, complex flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Birria",
+    "definition": "Spiced meat stew often served with consommé for dipping. Mexican origin meaning 'savory stew'. Rich, complex, satisfying.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Blancher",
+    "definition": "French technique of briefly cooking vegetables in boiling water and immediately refreshing in ice water to stop cooking. Preserves color and texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Blanching",
+    "definition": "Cooking food briefly in boiling water then shocking in ice to stop cooking. French 'blanchir', to whiten. Preserves color and texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Blitz Puff",
+    "definition": "Quick method of making puff pastry with rough-layering. Modern technique. Less time than traditional lamination.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Blooming Spices",
+    "definition": "Heating spices in oil to intensify flavor. Culinary science. Activates volatile compounds.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bobó de Camarão",
+    "definition": "Shrimp stew thickened with cassava puree and coconut milk. Afro-Brazilian tradition. Creamy, aromatic, seafood-rich.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Boil",
+    "definition": "Cooking method using rapid heating where water bubbles vigorously at 212°F (100°C) at sea level. Used for pasta, potatoes, eggs, and making stocks.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bok Choy",
+    "definition": "A type of Chinese cabbage used in soups, stir-fries, and braises. Cantonese 'white vegetable'. Tender greens with crisp stalks. Quick-cooking.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bolo de Rolo",
+    "definition": "Thin layered cake rolled with guava paste. Brazilian specialty. Delicate layers, sweet guava filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bolognese",
+    "definition": "A meat-based pasta sauce cooked with aromatics and tomatoes. Named after Bologna. Rich, complex, slow-cooked.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Braise",
+    "definition": "Cooking method combining dry heat (browning) followed by moist heat (simmering in liquid) in a covered pot. Creates tender meat and deep flavors.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Braising",
+    "definition": "Slow cooking in a covered pot with small amounts of liquid. French 'braiser'. Creates tender, flavorful results.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Breading",
+    "definition": "Coating food with breadcrumbs for frying or baking. Three-step process: flour, egg wash, breadcrumbs. Creates crispy exterior, tender interior.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Brigadeiro",
+    "definition": "Chocolate truffle made with condensed milk. Named after Brigadier Eduardo Gomes. Sweet, creamy, iconic.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Brunette (Sauce)",
+    "definition": "Light brown roux made with equal parts butter and flour cooked until light brown color develops but not as dark as espagnole. Used as sauce base.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Brunoise",
+    "definition": "Fine dice cut typically 1–2 mm cubes. French culinary term. Finest classical dice cut.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Bruschetta",
+    "definition": "Grilled bread topped with tomatoes, garlic, and olive oil. Italian 'bruscare', meaning to roast. Crunchy, fresh, simple.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Butcher's Steak",
+    "definition": "The hanger steak prized for flavor. Butchers kept this cut for themselves. Flavorful, tender.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Cacciatore",
+    "definition": "Dish braised with tomatoes, herbs, and peppers. Italian 'hunter style'. Often chicken or game.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Cachaça",
+    "definition": "Distilled liquor made from fermented sugarcane juice. Portuguese sugarcane spirit. High alcohol, fruity, sharp.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Caipirinha",
+    "definition": "Brazil's national cocktail made with cachaça, lime, and sugar. Portuguese 'little countryside drink'. Refreshing, potent.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Caponata",
+    "definition": "Sweet and sour eggplant dish with capers and vinegar. Sicilian origins. Complex flavor, preserved condiment.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Caramelization",
+    "definition": "Sugar browning reaction producing complex sweet flavors. Occurs above 320°F (160°C). Creates deep, complex flavors.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Caramelize",
+    "definition": "Process of heating sugars (natural or added) until they brown and develop rich, complex flavors. Temperature-dependent: light (320°F/160°C) to dark (380°F/193°C). Essential for sauce development.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Carbonara",
+    "definition": "A pasta sauce made of egg, cheese, and cured pork. Italian 'charcoal worker's style'. Rich, creamy, simple ingredients.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Carnitas",
+    "definition": "Slow-cooked pork crisped in its own fat. Spanish 'little meats'. Tender, rich, succulent. Often served in tacos.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ceviche",
+    "definition": "Marinating seafood in citrus to denature proteins. Peruvian origin. Creates cooked-like texture without heat.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ceviche Mexicano",
+    "definition": "Citrus-marinated seafood with tomato, cilantro, and jalapeño. Latin American coastal tradition. Fresh, bright, tangy.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Chalupa",
+    "definition": "Taco-like dish with a fried masa shell. Spanish 'small boat'. Crispy, topped with beans and meat.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Char Siu",
+    "definition": "Cantonese-style barbecued pork glazed with honey, soy sauce, and spices. 'Fork roasted'. Deep red color from marinade. Tender and sweet-savory.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Charring",
+    "definition": "Blackening food to develop smoky, bitter, and sweet flavors. Maillard and caramelization reactions. Deep flavor development.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Chiffonade",
+    "definition": "Fine ribbon cut of leafy vegetables and herbs, typically 1/16-inch (1.5mm) wide. Used for garnish and delicate presentations.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Chinkiang Vinegar",
+    "definition": "A black rice vinegar used for dipping and braising. Named after Zhenjiang city. Complex, slightly sweet, rich umami flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Chipotle",
+    "definition": "Smoked and dried jalapeño used in sauces. Nahuatl 'chilpoctli', meaning smoked chile. Deep, complex, spicy heat.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Chorizo",
+    "definition": "Spicy pork sausage seasoned with smoked paprika or chiles. Spanish origin. Can be fresh, dried, or smoked.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Chow Mein",
+    "definition": "Stir-fried noodles with vegetables and/or protein. Cantonese 'fried noodles'. Popular globally but regional variations significant.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Churrasco",
+    "definition": "Brazilian grilling tradition featuring skewered meats. Portuguese for 'barbecue'. Social, meat-focused dining tradition.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Clarification",
+    "definition": "Removing impurities to make a stock or butter transparent. French technique. Creates crystal-clear consommé.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Cold-Smoking",
+    "definition": "Smoking food at low temperatures for flavor without cooking. Traditional Nordic method. Preserves raw texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Confit",
+    "definition": "Slow-cooked and preserved in its own fat. Originated as French preservation technique. Creates tender, flavorful results. Examples: duck confit, garlic confit.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Confiture",
+    "definition": "Thick fruit preserve similar to jam. French 'to confect'. Rich, concentrated fruit flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Congee",
+    "definition": "Slow-cooked rice porridge often served with savory toppings. Chinese 'zhou'. Tamil 'kanji'. Comfort food across Asia. Varies by region.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Consommé",
+    "definition": "A clarified, highly refined broth made from stock and a meat/vegetable mixture. Clear, delicate, aromatic. Requires careful clarification process.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Convection",
+    "definition": "Heat transfer method using air movement in ovens. Latin 'convehere', to transport. Distributes heat evenly.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Cortado",
+    "definition": "A coffee drink equal parts espresso and warm milk. Spanish 'cut'. Balanced, creamy.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Coulis",
+    "definition": "A smooth, strained sauce made from fruit or vegetables. French 'strained liquid'. Refined, elegant sauce.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Coxinha",
+    "definition": "Chicken croquettes shaped like a teardrop. Portuguese 'little thigh'. Crispy, creamy filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Crudo",
+    "definition": "Raw fish or meat served with citrus, oils, and seasonings. Italian 'raw'. Modern technique showcasing ingredient quality.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Crumb Structure",
+    "definition": "Internal texture pattern in breads and cakes. Determined by yeast, fermentation, mixing. Indicates quality and technique.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Cryo-Blanching",
+    "definition": "Freezing herbs before grinding to preserve color and flavor. Modern food science. Maintains vibrant color.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Curry",
+    "definition": "Spiced sauce or dish with complex flavor from multiple spices, herbs, and aromatics. Fundamental to Indian, Thai, and Southeast Asian cuisines. Range from mild to very hot.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dashi",
+    "definition": "A broth made from kombu (seaweed) and bonito flakes forming the base of Japanese cuisine. Japanese 'extract'. Fundamental umami-rich stock.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Deconstruction",
+    "definition": "Presenting components of a classic dish in separated forms. Modernist cuisine. Creates conceptual presentation.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Deglaze",
+    "definition": "Adding liquid (wine, stock, water) to hot pan after cooking proteins to dissolve caramelized drippings (fond). Creates flavorful pan sauce. Requires deglazing liquid to loosen fond with scraper.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Deglazing",
+    "definition": "Adding liquid to hot pan after cooking to dissolve caramelized drippings (fond). Creates flavorful sauce base. Using scraper to loosen fond is essential.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dehydration",
+    "definition": "Removing moisture from ingredients for preservation or texture change. Modern technique. Creates concentrated flavors and crispy textures.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Demiglace",
+    "definition": "Rich, glossy sauce made by reducing equal parts brown sauce and brown stock to concentrated consistency. Fundamental mother sauce derivative. French for \"half-glaze\".",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dendê Oil",
+    "definition": "Palm oil used in Afro-Brazilian cooking. Angolan Portuguese origin. Golden-red, distinctive flavor, culinary staple.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dim Sum",
+    "definition": "Small bite-sized dishes served in bamboo steamers or on small plates. Cantonese 'touch the heart'. Traditionally served with tea. Various fillings and preparations.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Donburi",
+    "definition": "A rice bowl topped with meat, vegetables, or fish. Japanese 'bowl'. Quick meal, satisfying. Various regional styles and fillings.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Doubanjiang",
+    "definition": "A spicy fermented broad bean paste essential for Sichuan cuisine. Reddish-brown color, complex umami, spicy heat. Used in marinades and sauces.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Douhua",
+    "definition": "Soft tofu dessert or savory soup topping. Chinese 'bean flower'. Silken texture, delicate. Sweet or savory preparation.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dredging",
+    "definition": "Coating food lightly in flour or breadcrumbs before cooking. Old English 'dragian'. Creates texture and color.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dry-Aging",
+    "definition": "Exposing meat to controlled humidity and airflow for flavor development. Butchery practice. Creates concentrated beef flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Dry-Brining",
+    "definition": "Seasoning food with salt to draw out and reabsorb moisture. Modern culinary science. Creates juicy, flavorful results.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Duxelles",
+    "definition": "Finely chopped mushrooms cooked with shallots and herbs. Used as filling, garnish, or sauce component. Named after 17th-century Marquis d'Uxelles.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Elote",
+    "definition": "Mexican street corn topped with mayo, cheese, and chili. Nahuatl 'elotli', meaning corn cob. Creamy, savory, spicy.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Empadão",
+    "definition": "Large savory pie filled with chicken or shrimp. Portuguese pie. Crispy crust, creamy filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Emulsification",
+    "definition": "Food science process of combining two immiscible liquids (oil and water) by breaking one into tiny droplets suspended in the other. Requires emulsifying agent.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Emulsion",
+    "definition": "A stable mixture of two immiscible liquids, like oil and water. Science-based technique. Examples: mayonnaise, beurre blanc, hollandaise.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "En Papillote",
+    "definition": "Baking food inside parchment to steam in its own juices. French 'in parchment'. Preserves moisture and flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Enzyme Tenderization",
+    "definition": "Using natural enzymes to soften meats. Modern food chemistry. Breaks down protein fibers.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Espresso",
+    "definition": "Concentrated coffee made by forcing hot water through finely ground beans. Italian 'pressed out'. Rich, bold, complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Farofa",
+    "definition": "Toasted cassava flour used as a side dish or topping. Portuguese, possibly African origins. Dry, nutty, versatile.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Feijão Tropeiro",
+    "definition": "Dish of beans with bacon, eggs, and cassava flour. Tropeiro cowboys of Brazil. Hearty, rustic.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Feijoada",
+    "definition": "A black bean stew with pork, considered Brazil's national dish. Portuguese 'feijão', meaning beans. Rich, complex, festive.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Fermentation",
+    "definition": "Transformation of ingredients by microorganisms for flavor development. Creates probiotics, complex flavors. Ancient technique.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Five-Spice Powder",
+    "definition": "Blend of star anise, fennel, cloves, cinnamon, and Sichuan peppercorn. Represents five flavors of Chinese cooking. Sweet, savory, warm spice blend.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Flambé",
+    "definition": "Igniting alcohol to create dramatic flavor and presentation. French 'flamed'. Burns off alcohol, concentrates flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Flash Reduction",
+    "definition": "Rapid reduction over extreme heat for concentrated flavor. Culinary technique. Quick sauce making.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Flash-Freezing",
+    "definition": "Rapidly freezing food to preserve cell structure and freshness. Modern technology. Maintains quality better than slow freezing.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Florentine",
+    "definition": "Dishes prepared with spinach and béchamel. Named after Florence, Italy. Creamy, green, vegetable-forward.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Fluting",
+    "definition": "Decorative crimping technique on pastries. French origin. Creates visual texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Focaccia",
+    "definition": "Soft flatbread topped with herbs and olive oil. Italian from Latin 'focus' (hearth). Airy crumb, crispy crust.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Folding",
+    "definition": "Gentle combining of ingredients (usually incorporating light ingredient into heavy). Uses spatula in cutting and turning motions to preserve air and structure.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Fond",
+    "definition": "Caramelized protein bits stuck to pan surface. French 'base' or 'foundation'. Contains concentrated flavor. Used for pan sauces.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Fondant Potatoes",
+    "definition": "Potatoes browned then braised in stock and butter. French 'melting'. Crispy outside, creamy inside.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Fondue",
+    "definition": "Melted cheese or chocolate served communally. French 'to melt'. Interactive, social dining tradition.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Fricassee",
+    "definition": "A dish of meat sautéed before being stewed in a white sauce. Typically uses poultry. Tender, creamy result from gentle cooking in sauce.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Full Reduction",
+    "definition": "Reducing liquid to syrup consistency. Culinary technique. Creates thick, concentrated glaze.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Furikake",
+    "definition": "A rice seasoning blend made from seaweed, sesame, fish, and spices. Japanese 'sprinkle over'. Versatile topping.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Gastrique",
+    "definition": "Caramelized sugar deglazed with vinegar, used for sweet–sour sauces. French culinary term. Complex balance of sweet and acidic.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ghee",
+    "definition": "Clarified butter with all water and milk solids removed. Used extensively in Indian cuisine. High smoke point makes it ideal for high-heat cooking.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Glacé",
+    "definition": "Coating or glossy finish on food, typically achieved by coating with gelatin, aspic, or glaze. Creates shiny, professional appearance.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Gnocchi",
+    "definition": "Soft dumplings made from potatoes or semolina. Italian 'nocchio', meaning knot. Light, pillowy texture. Served with sauce.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Gochujang",
+    "definition": "A fermented Korean chili paste made from red chili peppers, soybeans, salt, and other ingredients. Deep umami flavor with spicy heat. Essential Korean ingredient.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Gordita",
+    "definition": "Stuffed masa pocket filled with meats and toppings. Spanish 'little fat one'. Soft, comforting.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Grappa",
+    "definition": "A distilled spirit made from leftover grape skins and seeds. Italian pomace brandy. High alcohol, sharp, complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Gremolata",
+    "definition": "Condiment of lemon zest, parsley, and garlic used as a bright garnish. Italian origin. Fresh, pungent, aromatic.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Gyoza",
+    "definition": "Pan-fried dumplings with meat and vegetables. Adapted from Chinese 'jiaozi'. Crispy bottoms, tender tops. Popular appetizer.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Harissa",
+    "definition": "A North African chili paste made from roasted red peppers, chili peppers, spices, and garlic. Spicy, smoky, aromatic. Used throughout North African cuisine.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Horchata",
+    "definition": "Rice-based sweet beverage flavored with cinnamon. Latin 'hordeum' (barley). Creamy, sweet, refreshing.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Hot Pot",
+    "definition": "A simmering pot of broth used to cook raw meats and vegetables at the table. Interactive communal cooking. Popular in China, Japan, Korea.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Hot-Smoking",
+    "definition": "Cooking food through exposure to smoke and moderate heat. Traditional preservation. Creates cooked, smoked result.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Hydrocolloid",
+    "definition": "Gelling, thickening, or stabilizing agent used in modernist cuisine. Greek 'hydro (water) + kolla (glue)'. Examples: agar, xanthan gum.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Infusing",
+    "definition": "Extracting flavor by steeping ingredients in liquid (oil, vinegar, alcohol, liquid). Can be hot or cold. Creates flavored cooking mediums.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Jian Bing",
+    "definition": "A popular breakfast crepe filled with eggs, sauces, and crunchy wonton. Chinese street food. Thin, delicate wrapper with savory filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Julienne",
+    "definition": "Thin matchstick-style vegetable cuts. French cut named after a chef. Uniform, fine, decorative.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Katsuobushi",
+    "definition": "Dried, smoked fish flakes (bonito) used in dashi and toppings. Japanese 'dried bonito'. Adds umami and bonito fragrance.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Kimchi",
+    "definition": "A fermented Korean vegetable dish seasoned with chili, garlic, and other spices. Tangy, spicy, aromatic. Fundamental to Korean cuisine. Requires fermentation.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Kombu",
+    "definition": "Dried seaweed used in dashi. Japanese kelp. Essential umami source. Used in stocks and soups.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Labneh",
+    "definition": "A thick, strained yogurt cheese from Middle East and Mediterranean. Creamy, tangy, versatile. Made by straining yogurt to remove whey. Can be served as spread or dip.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Laminating",
+    "definition": "Baking technique creating layers of butter and dough through repeated folding. Creates flaky pastries like croissants and Danish. Requires precise temperature control.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Lamination",
+    "definition": "Creating layers of dough and butter for pastries like croissants. French layering technique. Produces flaky texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Lao Gan Ma",
+    "definition": "A famous chili crisp condiment known worldwide. 'Old Godmother' in Chinese. Complex, balanced heat with savory notes. Versatile condiment.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Lion's Head Meatballs",
+    "definition": "Large pork meatballs braised in broth with greens. Shanghai dish. Named for its large size resembling a lion's head. Tender, savory braise.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Lo Mein",
+    "definition": "Soft wheat noodles tossed with sauce and stir-fried ingredients. Cantonese 'tossed noodles'. More sauce-focused than chow mein.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ma La",
+    "definition": "A signature Sichuan flavor profile combining 'ma' (numbing sensation from Sichuan peppercorn) with 'la' (spicy heat from chilis). Balanced and complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Maceration",
+    "definition": "Soaking foods in liquid to extract or infuse flavors. Latin 'macerare', to soften. Creates flavored liquids and softened ingredients.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Maillard Reaction",
+    "definition": "Browning from amino acids and reducing sugars producing savory flavors. Named after Louis Maillard. Creates complex, savory notes.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mandioca",
+    "definition": "Cassava root used in countless Brazilian dishes. Tupi origin. Versatile, starchy vegetable.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mapo Tofu",
+    "definition": "A spicy Sichuan tofu dish with ground pork and chili bean paste. Named after a pockmarked woman who invented the dish. Balance of numbing, spicy, and savory.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Marinating",
+    "definition": "Soaking food in flavorful liquid (acid, oil, spices) to tenderize and flavor. Time varies: 30 minutes to overnight depending on ingredient and desired intensity.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Matcha",
+    "definition": "Finely powdered green tea used in ceremonies and desserts. Vibrant green color. Complex, slightly bitter, grassy flavor. Ceremonial grade best.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Menudo",
+    "definition": "Traditional soup made from beef tripe and hominy. Spanish for trifles. Hearty, flavorful, traditional.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mincing",
+    "definition": "Finely cutting food into very small pieces. Critical for pâtés, tartares, and meat preparations. Can be done with knife, food processor, or grinder.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mirepoix",
+    "definition": "Basic aromatic vegetable mixture: 50% onion, 25% celery, 25% carrot (ratio by weight). Foundation of French cooking. White mirepoix uses celery root instead of carrot. Essential for stocks, braises, soups.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mirin",
+    "definition": "A sweet rice wine used for glazing and seasoning. Light honey color. Sweet, slightly complex flavor. Used in sauces and glazes.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mise en Place",
+    "definition": "The complete setup of ingredients and tools before cooking. French for 'put in place'. Essential practice in professional kitchens.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Miso",
+    "definition": "A fermented paste made from soybeans, rice, or barley. Rich umami flavor. Varies by region and fermentation length. Key seasoning in Japanese cuisine.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mochi",
+    "definition": "A chewy rice cake used in desserts and savory dishes. Japanese 'sticky rice cake'. Glutinous texture, mild flavor. Versatile ingredient.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mojo",
+    "definition": "A citrus-garlic sauce used in Caribbean cuisine, especially Cuban. Made with lime juice, garlic, and spices. Bright, acidic, aromatic flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mole",
+    "definition": "Complex sauce made from chiles, nuts, spices, and sometimes chocolate. Nahuatl 'molli', meaning sauce. Rich, layered flavors.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mooncake",
+    "definition": "A dense pastry filled with lotus paste or red bean, often with egg yolks. Traditional Mid-Autumn Festival food. Sweet and rich.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Moqueca",
+    "definition": "Seafood stew made with coconut milk, palm oil, and peppers. Indigenous Tupi 'moquém', meaning slow-cooked. Aromatic, tropical.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Mounting",
+    "definition": "Whisking cold butter into sauce at end of cooking. Adds richness, glossy finish, and emulsified texture. French: 'beurre monté'.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Napé",
+    "definition": "The proper viscosity of a sauce that coats the back of a spoon. French 'to coat'. Essential doneness indicator for sauces.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Nduja",
+    "definition": "A spreadable spicy Italian salami from Calabria. Rich, fatty, intensely flavorful. Can be spread on bread or cooked into dishes. Contains chili peppers.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Nigiri",
+    "definition": "Pressed sushi made by hand with rice and fish. Japanese 'to grasp'. Simple, elegant. Shows fish quality and chef skill.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Nixtamalization",
+    "definition": "The alkaline process that transforms corn for tortillas and tamales. Nahuatl origin. Makes corn nutritionally complete.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Onigiri",
+    "definition": "Rice balls wrapped in seaweed, often filled with savory items. Japanese 'to shape'. Portable, versatile. Classic Japanese food.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ossobuco",
+    "definition": "Braised veal shanks with marrow-rich bones. Italian 'bone with a hole'. Tender, flavorful, served with gremolata.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Paella",
+    "definition": "Spanish rice dish cooked in wide shallow pan over direct heat. Rice absorbs flavorful stock without stirring. Creates crispy bottom layer (socarrat).",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pan Reduction",
+    "definition": "Reducing pan liquids to make sauce. Culinary technique. Quick pan sauce creation.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Panade",
+    "definition": "A paste of bread and liquid used to keep ground meat moist. French 'bread mash'. Essential for forcemeats and mousse.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Panzanella",
+    "definition": "Salad made from stale bread, tomatoes, and onions. Tuscan bread salad. Uses leftover bread creatively.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pão de Queijo",
+    "definition": "Chewy cheese-filled cassava rolls. Portuguese 'cheese bread'. Airy, tangy, perfect snack.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Parmigiano Reggiano",
+    "definition": "Hard, aged cheese known as the King of Cheeses. Named after Parma and Reggio Emilia. Complex, crystalline, nutty flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pastel",
+    "definition": "Fried pastry filled with meat, cheese, or hearts of palm. Portuguese pastry. Crispy, golden, versatile filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pâte à Choux",
+    "definition": "Light pastry dough used for éclairs and cream puffs. French 'cabbage paste'. Contains eggs and butter. Creates hollow structures.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pecorino",
+    "definition": "A family of firm, salty sheep's milk cheeses. Italian 'pecora' (sheep). Various types by region and aging.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pesto",
+    "definition": "A sauce of basil, garlic, pine nuts, cheese, and olive oil. Italian 'pestare', meaning to crush. Green, aromatic, emulsified.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pibil",
+    "definition": "Yucatán dish where meat is marinated and cooked in wrapped leaves. Mayan 'pib', meaning buried. Tender, complex, slow-cooked.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Picanha",
+    "definition": "Popular Brazilian cut of beef grilled over open flame. Portuguese term for top sirloin cap. Tender, flavorful, succulent.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Plating Architecture",
+    "definition": "Design principles of visual dish presentation. Modern gastronomic term. Creates visual appeal.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Poach",
+    "definition": "To gently cook food in simmering liquid. Common for eggs, fish, and delicate proteins. Temperature around 160-180°F (71-82°C).",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Poblano",
+    "definition": "Mild dark green chile used in many dishes. Named after Puebla, Mexico. Earthy, slightly smoky, perfect for stuffing.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Poke",
+    "definition": "A Hawaiian dish of seasoned raw fish cubed and marinated in soy sauce and sesame oil. Fresh, savory, rich. Now popular globally.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Polenta",
+    "definition": "Cornmeal porridge served creamy or grilled. Italian from Latin 'pollen' (fine flour). Staple in Northern Italy.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ponzu",
+    "definition": "A citrus-soy dressing used with meats, fish, and vegetables. Portuguese 'pon' (punch) + Japanese 'zu' (vinegar). Bright, acidic, complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Pozole",
+    "definition": "Hearty soup made with hominy and meat. Nahuatl 'pozolli', meaning foamy. Festive, warming, complex broth.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Proofing",
+    "definition": "Allowing dough to rise through yeast fermentation. Baking term. Creates air and flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Prosciutto",
+    "definition": "Air-dried cured ham served sliced thin. Italian 'prosciugare', meaning to dry. Salty, complex, melting texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Quartier",
+    "definition": "Cutting fruits or vegetables into quarters. French 'quarter'. Simple vegetable cut.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Queso Fresco",
+    "definition": "Soft, crumbly cheese used in tacos and salads. Spanish 'fresh cheese'. Mild, slightly tangy, unaged.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Quindim",
+    "definition": "Bright yellow coconut custard dessert. Portuguese; African influence. Sweet, creamy, coconut-forward.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ragù",
+    "definition": "Slow-cooked Italian meat sauce. From French 'ragout', to stimulate appetite. Rich, complex, aromatic.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Ramen",
+    "definition": "Japanese noodle soup with meat or fish-based broths. Chinese origin but naturalized in Japan. Complex broths, various regional styles.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Rapadura",
+    "definition": "Unrefined cane sugar used in desserts. Portuguese term. Brown, crystalline, molasses flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Red Cooking",
+    "definition": "A braising method using soy sauce, sugar, and aromatics. Named for the reddish color from soy and caramelized sugar. Slow cooking method.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Reduction",
+    "definition": "Thickening liquid by evaporation to intensify flavor. Key sauce-making technique. Concentrates flavors and creates body.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Render",
+    "definition": "Melting fat from meat through gentle heating. Old French 'rendre', to give back. Extracts liquid fat.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Rillettes",
+    "definition": "Slow-cooked, shredded meat preserved in fat. French origin. Spreadable, rich, complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Risotto",
+    "definition": "Creamy rice dish cooked slowly with broth, stirring frequently. Italian rice technique. Arborio rice most common. Luxurious texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Roast",
+    "definition": "Cooking method using dry heat in an oven at high temperatures (typically 350-450°F / 175-230°C) to cook foods surrounded by hot air, creating browning and caramelization.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Romeu e Julieta",
+    "definition": "Dessert pairing of guava paste and cheese. Named after Shakespeare's lovers. Sweet-salty, traditional.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Roux",
+    "definition": "A cooked mixture of equal parts fat and flour used as a thickener in sauces. Colors range from white (light roux) to dark brown (dark roux or espagnole).",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sabayon",
+    "definition": "Whipped egg yolk dessert or sauce flavored with wine. Italian 'zabaglione'. Light, creamy, luxurious.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Salsa Verde",
+    "definition": "Tomatillo-based sauce used for tacos, enchiladas, and dips. Spanish 'green sauce'. Fresh, bright, tangy flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sashimi",
+    "definition": "Thinly sliced raw fish served without rice. Japanese 'pierced flesh'. Showcases fish quality. Served with soy, wasabi, and garnish.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sauce",
+    "definition": "A liquid or semi-liquid preparation served with food to enhance flavor, add moisture, or provide visual appeal. Can be hot or cold, thin or thick, and derived from broths, emulsions, or reductions.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sauté",
+    "definition": "Cooking method where food is cooked quickly in a small amount of fat over high heat, typically in a shallow pan. French term meaning 'jumped'.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Scallion Oil",
+    "definition": "A fragrant oil made from fried green onions used to flavor noodles and proteins. Infused oil with aromatic quality. Key to many Asian preparations.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sfogliatella",
+    "definition": "A flaky shell-shaped pastry filled with ricotta. Italian 'small, thin leaf'. Neapolitan specialty. Crispy, sweet.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Shabu-Shabu",
+    "definition": "Thin slices of meat swished in boiling broth tableside. Japanese onomatopoeia for boiling sound. Interactive, light, elegant.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Shaoxing Wine",
+    "definition": "A fermented rice wine used in marinades and stir-frying. Named after Shaoxing in Zhejiang province. Adds depth and complexity to dishes.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Shio Koji",
+    "definition": "A fermented seasoning made from koji (cultured rice), salt, and other ingredients. Japanese. Tenderizes meat and enhances umami. Probiotic-rich.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Shoyu",
+    "definition": "Japanese soy sauce - salt-fermented sauce made from soybeans and wheat. Complex umami flavor. Essential Japanese seasoning.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sichuan Peppercorn",
+    "definition": "A spice from Sichuan province that creates a numbing, tingling sensation known as 'ma'. Not actually a pepper but a berry. Essential in Sichuan cuisine.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Simmer",
+    "definition": "Cooking method using gentle heat with small, occasional bubbles breaking the surface (around 180-205°F / 82-96°C). Slower than boiling, maintains texture better for delicate foods.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Simmering",
+    "definition": "Cooking just below boiling point (180-205°F/82-96°C). Maintains gentle cooking without vigorous bubbles. Essential for stocks, sauces, soups.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Socarrat",
+    "definition": "In paella, the intentionally caramelized, crispy bottom layer of rice. Creates desirable flavor and texture. Achieved through careful high heat control.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Soffritto",
+    "definition": "Italian aromatic base: diced onion, celery, carrot slowly cooked in olive oil. Foundation of soups, sauces, and stews. Similar to French mirepoix.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sofrito",
+    "definition": "Spanish aromatic base similar to soffritto: onion, garlic, tomato, peppers cooked in olive oil. Foundation of Spanish and Latin American dishes.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sopes",
+    "definition": "Thick masa cakes topped with beans, meat, and vegetables. Mexican 'thick little thing'. Crispy outside, soft inside.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sous Vide",
+    "definition": "Low-temperature cooking in vacuum-sealed bags for precision control. French 'under vacuum'. Exact temperature, consistent texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sous Vide Infusion",
+    "definition": "Extracting intense flavors using low-temperature water baths. Modernist technique. Precise flavor extraction.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Spherification",
+    "definition": "Creating gel-coated liquid spheres using sodium alginate and calcium. Modern gastronomy technique. Creates caviar-like spheres.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Split Cooking",
+    "definition": "Cooking in stages to optimize texture and moisture retention. Modern technique. Combines different cooking methods.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Starch Retrogradation",
+    "definition": "Recrystallization of gelatinized starch causing staling. Food chemistry. Explains bread staling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Steaming",
+    "definition": "Cooking food using steam without direct contact with boiling water. Preserves nutrients and delicate flavors. Universal technique across Asian cuisines.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Stir-Fry",
+    "definition": "Asian cooking technique combining high heat, constant movement, and quick cooking. Creates tender-crisp vegetables and fully cooked proteins.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sukiyaki",
+    "definition": "Hot pot with beef, tofu, and vegetables simmered in sweet soy broth. Japanese 'cook what you like'. Interactive, communal dining.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Sumac",
+    "definition": "A tangy spice made from dried and ground sumac berries. Bright, lemony flavor without acidity. Used in Middle Eastern and Mediterranean cuisines.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Syneresis",
+    "definition": "Water expulsion from gels such as custards or yogurt. Greek 'contracting'. Indicates instability or aging.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tagliatelle",
+    "definition": "Long flat ribbons of pasta from Emilia-Romagna. Italian 'to cut'. Excellent for meat and cream sauces.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Takoyaki",
+    "definition": "Ball-shaped grilled batter filled with octopus and toppings. Japanese 'octopus grill'. Crispy outside, creamy inside. Street food.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tamale",
+    "definition": "Steamed masa dough filled with meats or sweets, wrapped in leaves. Nahuatl 'tamalli'. Portable, festive, diverse.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tandoor",
+    "definition": "Clay oven used in Indian and Pakistani cuisine. High heat (around 900°F/480°C) creates breads and meats with charred, smoky flavor. Ancient cooking method.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tapenade",
+    "definition": "Olive, caper, and anchovy paste spread. French from 'tapenas' (capers). Salty, briny, intense.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tapioca",
+    "definition": "Crepe-like dish made from cassava starch. Tupi origin. Can be sweet or savory, versatile.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tare",
+    "definition": "A concentrated sauce used to season ramen and grilled dishes. Japanese seasoning base. Complex umami flavors.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tempering",
+    "definition": "Bringing ingredients to similar temperatures to prevent curdling or seizing. Technique for creams and mousses. Control is key.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tempering Chocolate",
+    "definition": "Precise heating and cooling of chocolate to stabilize cocoa butter crystals. Creates glossy finish and snap. Critical for professional chocolate work.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tempering Spices",
+    "definition": "Indian technique of briefly heating spices in hot oil or ghee to release aromatic compounds and flavor them. Also called 'tadka' or 'baghar'.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tempura",
+    "definition": "Light, airy batter-fried vegetables or seafood. From Portuguese 'tempero' (seasoning). Crispy outside, tender inside. Eaten with dipping sauce.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Texture Modifiers",
+    "definition": "Ingredients like xanthan gum or lecithin used to alter mouthfeel. Food science. Creates specific textures.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Thermal Shock",
+    "definition": "Sudden temperature change affecting texture or integrity of food. Physics term. Can crack or damage.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tinga",
+    "definition": "Shredded chicken cooked in tomato-chipotle sauce. Mexican origin. Complex, smoky, slightly spicy.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tiramisu",
+    "definition": "Layered dessert with mascarpone, coffee, and ladyfingers. Italian 'pick me up'. Rich, creamy, chocolate-dusted.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tonkatsu",
+    "definition": "Breaded and fried pork chop served with cabbage and sauce. Japanese 'pork cutlet'. Crispy, tender. Usually with tonkatsu sauce.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Torchon",
+    "definition": "A cylindrical preparation of foie gras wrapped tightly and poached. French 'dish towel'. Elegant, refined preparation.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Torque Testing",
+    "definition": "Measuring the resistance of dough or batters. Food physics. Indicates dough structure.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tostada",
+    "definition": "A crispy fried tortilla topped with various ingredients. Spanish 'toasted'. Open-faced, crunchy base.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tournée",
+    "definition": "Barrel-shaped vegetable cut used for classical presentation. French 'turned'. Seven-sided, decorative.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Tsukemono",
+    "definition": "Pickled vegetables served as side dishes. Japanese 'pickled things'. Variety of vegetables and pickling methods.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Turbidity",
+    "definition": "Cloudiness in liquids due to particulates. Latin 'turba', disturbance. Indicates clarity level.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Udon",
+    "definition": "Chewy thick wheat noodles served hot or cold with flavorful broths. Traditional Japanese noodle. Satisfying, comforting.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Umami",
+    "definition": "The savory fifth taste found in kombu, mushrooms, miso, and fermented foods. Japanese 'delicious taste'. Created by glutamates and nucleotides.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Umami Bomb",
+    "definition": "Ingredients exceptionally rich in glutamates like miso or anchovy. Modern culinary slang. Creates intense savory flavor.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Vatapá",
+    "definition": "Creamy dish made from bread, shrimp, coconut milk, and dendê oil. African Brazilian origin. Rich, aromatic, complex.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Velouté",
+    "definition": "A mother sauce made by thickening stock (chicken, veal, or fish) with roux. One of the five French mother sauces. Velvety, smooth texture.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Wok",
+    "definition": "Round-bottomed or flat-bottomed Asian cooking pan used for stir-frying, steaming, boiling. High heat, quick cooking. Essential for Asian cuisine.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Wok Hay",
+    "definition": "Cantonese culinary technique - literally 'breath of the wok'. High-heat cooking that sears food and creates smoky, charred flavor. Signature technique in professional wok cooking.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Wok Hei",
+    "definition": "The smoky, charred aroma imparted by cooking food at high heat in a seasoned wok. Cantonese 'breath of the wok'. Signature of proper wok cooking.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Wonton",
+    "definition": "Dumplings filled with meat or shrimp, served in soup or fried. Cantonese 'swallowing clouds'. Delicate wrapper with savory filling.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Yakitori",
+    "definition": "Chicken skewers grilled over charcoal. Japanese 'grilled bird'. Succulent, smoky flavor. Often glazed with sauce.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Youtiao",
+    "definition": "Fried dough sticks commonly eaten with congee. Chinese 'oil strip'. Crispy, light, elongated pastry. Traditional breakfast item.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Za'atar",
+    "definition": "A Middle Eastern blend of herbs (thyme, oregano, marjoram), sesame seeds, and sumac. Tangy, herbaceous, slightly nutty. Used as seasoning and condiment.",
+    "source": "master-culinary-dictionary"
+  },
+  {
+    "term": "Zongzi",
+    "definition": "Sticky rice dumplings wrapped in bamboo leaves. Ancient Chinese festival food for Dragon Boat Festival. Can be sweet or savory. Glutinous rice filling.",
+    "source": "master-culinary-dictionary"
+  }
+]

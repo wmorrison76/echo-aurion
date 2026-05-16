@@ -1,0 +1,211 @@
+{
+  "project": "LUCCCA Sommelier Suite",
+  "version": "1.0.0",
+  "releaseDate": "2024-02-01",
+  "status": "production-ready",
+  "architecture": "Microservices + Serverless Frontend",
+
+  "modules": [
+    {
+      "name": "Core Backend",
+      "slug": "backend-core",
+      "version": "1.0.0",
+      "port": 8080,
+      "status": "stable",
+      "endpoints": [
+        "/api/wines",
+        "/api/inventory",
+        "/api/purchases",
+        "/api/pairing",
+        "/api/auth"
+      ]
+    },
+    {
+      "name": "EchoAI³ Pairing Engine",
+      "slug": "pairing-engine",
+      "version": "1.0.0",
+      "port": 8090,
+      "status": "stable",
+      "dependencies": ["backend-core", "OpenAI"],
+      "endpoints": ["/pairings/compute/:recipeId", "/pairings/compute-all"]
+    },
+    {
+      "name": "EchoCellar Ops (Inventory Costing)",
+      "slug": "inventory-costing",
+      "version": "1.0.0",
+      "port": 8100,
+      "status": "stable",
+      "endpoints": [
+        "/reports/month-end/:venueId/:month",
+        "/reports/variance/:venueId/:month"
+      ]
+    },
+    {
+      "name": "Sales & Menu Analytics",
+      "slug": "sales-analytics",
+      "version": "1.0.0",
+      "port": 8120,
+      "status": "stable",
+      "endpoints": [
+        "/analytics/mix/:venueId",
+        "/analytics/top/:venueId",
+        "/analytics/menu/sync"
+      ]
+    },
+    {
+      "name": "IoT Cooler Monitor",
+      "slug": "iot-monitor",
+      "version": "1.0.0",
+      "port": 8140,
+      "status": "stable",
+      "dependencies": ["MQTT Broker"],
+      "endpoints": ["/alerts/:venueId", "/alerts/:venueId/avg"]
+    },
+    {
+      "name": "EchoAI³ Education & Training",
+      "slug": "education-training",
+      "version": "1.0.0",
+      "port": 8150,
+      "status": "stable",
+      "dependencies": ["OpenAI"],
+      "endpoints": [
+        "/training/flashcards/:topic",
+        "/training/exam/blind",
+        "/training/leaderboard"
+      ]
+    },
+    {
+      "name": "EchoVinum Grand Archive",
+      "slug": "echovinum-archive",
+      "version": "1.0.0",
+      "port": 8160,
+      "status": "stable",
+      "dependencies": ["OpenAI"],
+      "endpoints": ["/archive/vintage/:region/:year", "/archive/producer/:name"]
+    },
+    {
+      "name": "EchoServe Mobile (React Native)",
+      "slug": "mobile-app",
+      "version": "1.0.0",
+      "platforms": ["iOS", "Android", "Web"],
+      "status": "stable"
+    }
+  ],
+
+  "frontend": {
+    "platform": "Builder.io",
+    "cms": "Supabase",
+    "design": "Figma",
+    "hosting": "Netlify / Vercel",
+    "componentLibrary": "Custom Design System"
+  },
+
+  "database": {
+    "primary": "PostgreSQL 15",
+    "host": "Supabase",
+    "tables": [
+      "wines",
+      "inventory_lots",
+      "recipes",
+      "pairing_evidence",
+      "sales",
+      "purchases",
+      "vintages",
+      "producers",
+      "training_exams",
+      "sensor_logs",
+      "alerts",
+      "users"
+    ]
+  },
+
+  "ai": {
+    "engine": "EchoAI³",
+    "provider": "OpenAI",
+    "model": "gpt-4o-mini",
+    "features": [
+      "Wine pairing recommendations",
+      "Vintage analysis and forecasting",
+      "Producer history generation",
+      "Training flashcard generation",
+      "Blind tasting scenarios"
+    ]
+  },
+
+  "infrastructure": {
+    "containerization": "Docker & Docker Compose",
+    "orchestration": "Kubernetes-ready",
+    "databases": [
+      { "service": "PostgreSQL", "image": "postgres:15-alpine" },
+      { "service": "MQTT Broker", "image": "eclipse-mosquitto:latest" }
+    ]
+  },
+
+  "deployment": {
+    "backend": "Render / Fly.io / Railway",
+    "frontend": "Netlify / Vercel",
+    "database": "Supabase Cloud",
+    "iotBroker": "Self-hosted or cloud MQTT service"
+  },
+
+  "environment": {
+    "development": {
+      "services": "localhost:800X",
+      "database": "localhost:5432",
+      "logLevel": "debug"
+    },
+    "staging": {
+      "domain": "staging-api.luccca.io",
+      "logLevel": "info"
+    },
+    "production": {
+      "domain": "api.luccca.io",
+      "logLevel": "warn",
+      "sslCertificate": "Let's Encrypt",
+      "backups": "daily"
+    }
+  },
+
+  "dependencies": {
+    "runtime": ["Node.js 18+", "PostgreSQL 15+", "OpenAI API"],
+    "optional": [
+      "Redis (caching)",
+      "Sentry (error tracking)",
+      "DataDog (monitoring)"
+    ]
+  },
+
+  "testing": {
+    "unit": "Jest",
+    "integration": "Supertest",
+    "coverage": "90%+",
+    "e2e": "Playwright (mobile)"
+  },
+
+  "monitoring": {
+    "performance": "DataDog / New Relic",
+    "errors": "Sentry",
+    "logs": "CloudWatch / ELK",
+    "uptime": "StatusPage.io"
+  },
+
+  "security": {
+    "authentication": "JWT + Supabase Auth",
+    "rowLevelSecurity": "PostgreSQL RLS",
+    "encryption": "TLS 1.3",
+    "apiKeyRotation": "90 days"
+  },
+
+  "scalability": {
+    "users": "10,000+",
+    "venues": "100+",
+    "wines": "50,000+",
+    "requestsPerSecond": "1,000+"
+  },
+
+  "support": {
+    "contactEmail": "support@luccca.io",
+    "documentation": "https://docs.luccca.io",
+    "slack": "#luccca-support"
+  }
+}

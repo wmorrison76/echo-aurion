@@ -1,0 +1,257 @@
+#!/bin/bash
+
+# ================= CONFIG =================
+SOURCE="$HOME/Downloads/EchoAurum-main"
+DEST="$HOME/Documents/GitHub/LUCCCA_Framework/client/modules/EchoAurum"
+
+WORKDIR="$HOME/Desktop/echoaurum_transfer_audit"
+SRC_LIST="$WORKDIR/source_files_relative.txt"
+SRC_HASH="$WORKDIR/source_checksums.sha256"
+DST_HASH="$WORKDIR/dest_checksums.sha256"
+DIFF_REPORT="$WORKDIR/checksum_diff.txt"
+
+# ================= SETUP =================
+mkdir -p "$WORKDIR"
+mkdir -p "$DEST"
+
+echo "🔹 Source: $SOURCE"
+echo "🔹 Destination: $DEST"
+echo "🔹 Audit dir: $WORKDIR"
+echo ""
+
+# ================= FILE SELECTION =================
+INCLUDE_PATHS=(
+  "client"
+  "server"
+  "shared"
+  "echo"
+  "public"
+  "package.json"
+  "pnpm-lock.yaml"
+  "tsconfig.json"
+  "vite.config.ts"
+  "vite.config.server.ts"
+)
+
+echo "📄 Building RELATIVE source file list..."
+> "$SRC_LIST"
+
+cd "$SOURCE" || exit 1
+
+for path in "${INCLUDE_PATHS[@]}"; do
+  if [ -e "$path" ]; then
+    find "$path" -type f >> "$SRC_LIST"
+  fi
+done
+
+sort "$SRC_LIST" -o "$SRC_LIST"
+
+# ================= CHECKSUM SOURCE =================
+echo "🔐 Generating source checksums..."
+> "$SRC_HASH"
+
+while read -r rel; do
+  shasum -a 256 "$SOURCE/$rel" | sed "s|$SOURCE/||" >> "$SRC_HASH"
+done < "$SRC_LIST"
+
+# ================= COPY FILES =================
+echo "📦 Copying files to destination..."
+rsync -av --files-from="$SRC_LIST" "$SOURCE/" "$DEST/"
+
+# ================= CHECKSUM DEST =================
+echo "🔐 Generating destination checksums..."
+> "$DST_HASH"
+
+while read -r rel; do
+  shasum -a 256 "$DEST/$rel" >> "$DST_HASH"
+done < "$SRC_LIST"
+
+# ================= COMPARE =================
+echo "🔎 Comparing checksums..."
+diff -u "$SRC_HASH" "$DST_HASH" > "$DIFF_REPORT"
+
+if [ -s "$DIFF_REPORT" ]; then
+  echo "❌ CHECKSUM DIFFERENCES FOUND"
+  echo "See: $DIFF_REPORT"
+else
+  echo "✅ CHECKSUM MATCH — TRANSFER VERIFIED"
+fi
+
+echo ""
+echo "📁 Audit artifacts:"
+echo " - $SRC_HASH"
+echo " - $DST_HASH"
+echo " - $DIFF_REPORT"
+#!/bin/bash
+
+# ================= CONFIG =================
+SOURCE="$HOME/Downloads/EchoAurum-main"
+DEST="$HOME/Documents/GitHub/LUCCCA_Framework/client/modules/EchoAurum"
+
+WORKDIR="$HOME/Desktop/echoaurum_transfer_audit"
+#!/bin/bash
+
+# ================= CONFIG =================
+SOURCE="$HOME/Downloads/EchoAurum-main"
+DEST="$HOME/Documents/GitHub/LUCCCA_Framework/client/modules/EchoAurum"
+
+WORKDIR="$HOME/Desktop/echoaurum_transfer_audit"
+SRC_LIST="$WORKDIR/source_files_relative.txt"
+SRC_HASH="$WORKDIR/source_checksums.sha256"
+DST_HASH="$WORKDIR/dest_checksums.sha256"
+DIFF_REPORT="$WORKDIR/checksum_diff.txt"
+
+# ================= SETUP =================
+mkdir -p "$WORKDIR"
+mkdir -p "$DEST"
+
+echo "🔹 Source: $SOURCE"
+echo "🔹 Destination: $DEST"
+echo "🔹 Audit dir: $WORKDIR"
+echo ""
+
+# ================= FILE SELECTION =================
+INCLUDE_PATHS=(
+  "client"
+  "server"
+  "shared"
+  "echo"
+  "public"
+  "package.json"
+  "pnpm-lock.yaml"
+  "tsconfig.json"
+  "vite.config.ts"
+  "vite.config.server.ts"
+)
+
+echo "📄 Building RELATIVE source file list..."
+> "$SRC_LIST"
+
+cd "$SOURCE" || exit 1
+
+for path in "${INCLUDE_PATHS[@]}"; do
+  if [ -e "$path" ]; then
+    find "$path" -type f >> "$SRC_LIST"
+  fi
+done
+
+sort "$SRC_LIST" -o "$SRC_LIST"
+
+# ================= CHECKSUM SOURCE =================
+echo "🔐 Generating source checksums..."
+> "$SRC_HASH"
+
+while read -r rel; do
+  shasum -a 256 "$SOURCE/$rel" | sed "s|$SOURCE/||" >> "$SRC_HASH"
+done < "$SRC_LIST"
+
+# ================= COPY FILES =================
+echo "📦 Copying files to destination..."
+rsync -av --files-from="$SRC_LIST" "$SOURCE/" "$DEST/"
+
+# ================= CHECKSUM DEST =================
+echo "🔐 Generating destination checksums..."
+> "$DST_HASH"
+
+while read -r rel; do
+  shasum -a 256 "$DEST/$rel" >> "$DST_HASH"
+done < "$SRC_LIST"
+
+# ================= COMPARE =================
+echo "🔎 Comparing checksums..."
+diff -u "$SRC_HASH" "$DST_HASH" > "$DIFF_REPORT"
+
+if [ -s "$DIFF_REPORT" ]; then
+  echo "❌ CHECKSUM DIFFERENCES FOUND"
+  echo "See: $DIFF_REPORT"
+else
+  echo "✅ CHECKSUM MATCH — TRANSFER VERIFIED"
+fi
+
+echo ""
+echo "📁 Audit artifacts:"
+echo " - $SRC_HASH"
+echo " - $DST_HASH"
+echo " - $DIFF_REPORT"
+SRC_LIST="$WORKDIR/source_files.txt"
+DST_LIST="$WORKDIR/dest_files.txt"
+SRC_HASH="$WORKDIR/source_checksums.sha256"
+DST_HASH="$WORKDIR/dest_checksums.sha256"
+DIFF_REPORT="$WORKDIR/checksum_diff.txt"
+
+# ================= SETUP =================
+mkdir -p "$WORKDIR"
+mkdir -p "$DEST"
+
+echo "🔹 Source: $SOURCE"
+echo "🔹 Destination: $DEST"
+echo "🔹 Audit dir: $WORKDIR"
+echo ""
+
+# ================= FILE SELECTION =================
+# We explicitly include only production-relevant paths
+INCLUDE_PATHS=(
+  "client"
+  "server"
+  "shared"
+  "echo"
+  "public"
+  "package.json"
+  "pnpm-lock.yaml"
+  "tsconfig.json"
+  "vite.config.ts"
+  "vite.config.server.ts"
+)
+
+echo "📄 Building source file list..."
+
+> "$SRC_LIST"
+for path in "${INCLUDE_PATHS[@]}"; do
+  if [ -e "$SOURCE/$path" ]; then
+    find "$SOURCE/$path" -type f >> "$SRC_LIST"
+  fi
+done
+
+sort "$SRC_LIST" -o "$SRC_LIST"
+
+# ================= CHECKSUM SOURCE =================
+echo "🔐 Generating source checksums..."
+> "$SRC_HASH"
+while read -r file; do
+  REL="${file#$SOURCE/}"
+  shasum -a 256 "$file" | sed "s|$file|$REL|" >> "$SRC_HASH"
+done < "$SRC_LIST"
+
+# ================= COPY FILES =================
+echo "📦 Copying files to destination..."
+rsync -av --files-from="$SRC_LIST" --relative "$SOURCE/" "$DEST/"
+
+# ================= CHECKSUM DEST =================
+echo "🔐 Generating destination checksums..."
+
+> "$DST_LIST"
+find "$DEST" -type f | sort >> "$DST_LIST"
+
+> "$DST_HASH"
+while read -r file; do
+  REL="${file#$DEST/}"
+  shasum -a 256 "$file" | sed "s|$file|$REL|" >> "$DST_HASH"
+done < "$DST_LIST"
+
+# ================= COMPARE =================
+echo "🔎 Comparing checksums..."
+diff -u "$SRC_HASH" "$DST_HASH" > "$DIFF_REPORT"
+
+if [ -s "$DIFF_REPORT" ]; then
+  echo "❌ CHECKSUM DIFFERENCES FOUND"
+  echo "See: $DIFF_REPORT"
+else
+  echo "✅ CHECKSUM MATCH — TRANSFER VERIFIED"
+fi
+
+echo ""
+echo "📁 Audit artifacts:"
+echo " - $SRC_HASH"
+echo " - $DST_HASH"
+echo " - $DIFF_REPORT"
+

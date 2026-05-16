@@ -1,0 +1,67 @@
+{
+  "summary": "Iteration 140: Spa Command Dashboard (SPA-OPS) + POS Connector Adapter - All 29 backend tests passed. Fixed 1 bug in /api/spa-ops/utilization (KeyError on missing 'type' field). Tested 10 spa-ops endpoints (seed-demo, kpis/today, kpis/trends, utilization, guest-intel, staff, retail, memberships, reputation, actions) and 7 pos-adapter endpoints (providers, config GET/PUT, drain, test-connection, summary, delivery-log). Verified KPI math (NPS formula, utilization 0..1), token masking security, and no _id leaks.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter140_spa_ops_pos_adapter.py",
+    "/app/test_reports/pytest/pytest_results_iter140.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter140_spa_ops_pos_adapter.py",
+    "/app/backend/routes/spa_ops.py"
+  ],
+  "success_rate": {
+    "backend": "100% - 29/29 tests passed",
+    "frontend": "N/A - backend only testing requested"
+  },
+  "verified_features": {
+    "SPA_OPS_seed_demo": "PASS - POST /api/spa-ops/seed-demo seeds therapists(5+), rooms(8), members(10), retail(5), feedback(30). Idempotent on subsequent calls.",
+    "SPA_OPS_kpis_today": "PASS - GET /api/spa-ops/kpis/today returns bookings{total,completed,no_show,cancelled,upcoming_today,vip_today,in_house_today}, revenue{total,services,retail,tips,avg_treatment_rate,revenue_per_guest}, utilization{treatment_room,therapist,rooms_total,therapists_total}, rates{retail_attachment,no_show_rate,cancellation_rate}",
+    "SPA_OPS_kpis_trends": "PASS - GET /api/spa-ops/kpis/trends?days=14 returns 14 point time-series with date, bookings, completed, revenue, atr, no_shows",
+    "SPA_OPS_utilization": "PASS - GET /api/spa-ops/utilization returns rooms[] + therapists[] each with utilization 0..1, plus daypart_mix with morning/midday/afternoon/evening keys",
+    "SPA_OPS_guest_intel": "PASS - GET /api/spa-ops/guest-intel returns vip_today[], in_house_today[], rebook_prompts[], counts{vip,in_house,rebook_candidates}",
+    "SPA_OPS_staff": "PASS - GET /api/spa-ops/staff returns rows[] (each with bookings_today,utilization,revenue_today,labor_cost_today,specialties,request_ratio) + totals{revenue_today,labor_cost_today,labor_to_revenue_ratio}",
+    "SPA_OPS_retail": "PASS - GET /api/spa-ops/retail returns items[], low_stock[], attachment_rate_today, retail_revenue_today. Each item has margin_pct, low_stock boolean, revenue_30d",
+    "SPA_OPS_memberships": "PASS - GET /api/spa-ops/memberships returns members[] + totals{active,renewing_soon,overdue,liability_credits,monthly_recurring_revenue,redemption_rate}",
+    "SPA_OPS_reputation": "PASS - GET /api/spa-ops/reputation returns nps (float), responses, promoters, passives, detractors, feedback[], recovery_queue[]. NPS formula verified: (promoters - detractors)/responses*100",
+    "SPA_OPS_actions": "PASS - GET /api/spa-ops/actions returns actions[] with each item having kind ('alert'|'recommend'|'info'), severity ('high'|'warn'|'info'), msg. Count >= 1",
+    "POS_ADAPTER_providers": "PASS - GET /api/pos-adapter/providers returns 4 providers (mock, webhook, micros, toast)",
+    "POS_ADAPTER_config_put_masks_token": "PASS - PUT /api/pos-adapter/config saves configuration. Response auth_token is masked (contains •) and raw token is NOT leaked",
+    "POS_ADAPTER_config_get_excludes_token": "PASS - GET /api/pos-adapter/config returns configured=true, masked auth_token_masked, and excludes raw auth_token",
+    "POS_ADAPTER_drain_mock": "PASS - POST /api/pos-adapter/drain with provider=mock marks all pending pos_outbound items delivered, returns provider, attempted, delivered, failed",
+    "POS_ADAPTER_drain_webhook_fail": "PASS - POST /api/pos-adapter/drain with provider=webhook to unreachable endpoint marks items as failed and increments attempts",
+    "POS_ADAPTER_test_connection": "PASS - POST /api/pos-adapter/test-connection returns log entry with status, http_status, duration_ms",
+    "POS_ADAPTER_summary": "PASS - GET /api/pos-adapter/summary returns provider, active, queue{pending,delivered,dead}, last_attempt",
+    "POS_ADAPTER_delivery_log": "PASS - GET /api/pos-adapter/delivery-log returns items[] with provider, kind, action, status, http_status, duration_ms",
+    "SECURITY_no_id_leak_spa_ops": "PASS - No _id field leaked in any spa-ops response (9 endpoints checked)",
+    "SECURITY_no_id_leak_pos_adapter": "PASS - No _id field leaked in any pos-adapter response (4 endpoints checked)",
+    "REGRESSION_production_schedules": "PASS - GET /api/production-schedules/summary still works",
+    "REGRESSION_cake_orders": "PASS - GET /api/cake-orders/ still works",
+    "REGRESSION_cake_assets": "PASS - GET /api/cake-assets/advanced-tools still works",
+    "REGRESSION_spa_services": "PASS - GET /api/spa-services/ still works",
+    "REGRESSION_spa_booking": "PASS - GET /api/spa-booking/services/{slug} still works",
+    "REGRESSION_pamphlet": "PASS - GET /api/pamphlet/ still works",
+    "REGRESSION_health": "PASS - GET /api/health still works"
+  },
+  "bugs_fixed": {
+    "spa_ops_utilization_keyerror": {
+      "file": "/app/backend/routes/spa_ops.py",
+      "line": "304-308",
+      "issue": "KeyError: 'type' when room documents don't have 'type' field",
+      "fix": "Changed r['type'] to r.get('type', 'single') and r['name'] to r.get('name', 'Room'). Also added defensive check for missing 'id' field."
+    }
+  },
+  "seed_data_creation": "Created TEST_ prefixed spa services for POS drain testing. Spa-ops auto-seeds therapists(5), rooms(8), members(10), retail(5), feedback(30) on first call. Synthesizes bookings if spa_bookings < 50 docs.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iteration 140 adds two major modules: (1) SPA-OPS - 10 endpoints for spa command dashboard with 8-zone KPI engine. Auto-seeds demo data (therapists/rooms/members/retail/feedback) and synthesizes bookings if sparse. All utilization/rate values are 0..1. NPS formula: (promoters-detractors)/responses*100. Actions feed always returns >= 1 action. (2) POS-ADAPTER - 7 endpoints for configurable POS connector. Supports mock/webhook/micros/toast providers. Auth token is masked in responses (never leaked). Drain with mock delivers all; drain with unreachable webhook fails and increments attempts. Dead-letter after 5 failed attempts (status='dead'). Collections: spa_therapists, spa_rooms, spa_members, spa_retail_items, spa_feedback, pos_adapter_config, pos_delivery_log. All responses exclude _id."
+}

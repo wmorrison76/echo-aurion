@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "orgs": {
+    "org-test-001": {
+      "clients": [
+        {
+          "id": "client_1769038854734_8870dcec538dd",
+          "org_id": "org-test-001",
+          "created_by": "admin-user",
+          "created_at": "2026-01-21T23:40:54.734Z",
+          "updated_at": "2026-01-21T23:40:54.734Z",
+          "tags": [],
+          "name": "William Morrison",
+          "email": "wjmorrison76@gmail.com",
+          "phone": "5617796872",
+          "company": "LUCCCA",
+          "address_street": null,
+          "address_city": null,
+          "address_state": null,
+          "address_zip": null,
+          "address_country": "USA",
+          "event_type": null,
+          "budget": null,
+          "guest_count": null,
+          "notes": null
+        },
+        {
+          "id": "client_1769005693011_7398b543760c8",
+          "org_id": "org-test-001",
+          "name": "Acme Corp",
+          "email": "events@acme.test",
+          "company": "Acme Corporation",
+          "phone": null,
+          "tags": [
+            "vip"
+          ],
+          "created_by": "seed",
+          "created_at": "2026-01-21T14:28:13.011Z",
+          "updated_at": "2026-01-21T14:28:13.011Z"
+        }
+      ],
+      "goals": [],
+      "prospects": [
+        {
+          "id": "prospect_1769005693012_1ec75083a96c5",
+          "org_id": "org-test-001",
+          "event_date": "2026-02-04",
+          "estimated_revenue": 18000,
+          "status": "proposal"
+        },
+        {
+          "id": "prospect_1769005693012_f5d453311700b",
+          "org_id": "org-test-001",
+          "event_date": "2026-02-25",
+          "estimated_revenue": 42000,
+          "status": "qualified"
+        }
+      ],
+      "salesGoals": []
+    }
+  }
+}

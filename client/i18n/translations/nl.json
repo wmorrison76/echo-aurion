@@ -1,0 +1,51 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Fout",
+    "success": "Succes",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "create": "Aanmaken",
+    "search": "Zoeken",
+    "filter": "Filteren",
+    "export": "Exporteren",
+    "import": "Importeren",
+    "refresh": "Vernieuwen",
+    "close": "Sluiten",
+    "confirm": "Bevestigen",
+    "yes": "Ja",
+    "no": "Nee"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "inventory": "Voorraad",
+    "schedule": "Rooster",
+    "purchasing": "Inkoop",
+    "culinary": "Culinary",
+    "echoaurum": "EchoAurum",
+    "echostratus": "EchoStratus",
+    "settings": "Instellingen"
+  },
+  "inventory": {
+    "title": "Voorraadbeheer",
+    "currentStock": "Huidige Voorraad",
+    "parLevel": "Par Niveau",
+    "reorderPoint": "Bestelpunt",
+    "addItem": "Item Toevoegen",
+    "updateStock": "Voorraad Bijwerken"
+  },
+  "schedule": {
+    "title": "Personeelsrooster",
+    "shifts": "Diensten",
+    "assignStaff": "Personeel Toewijzen",
+    "createShift": "Dienst Aanmaken"
+  },
+  "purchasing": {
+    "title": "Inkoop en Ontvangst",
+    "createPO": "Inkooporder Aanmaken",
+    "receiveOrder": "Order Ontvangen",
+    "approvePO": "Inkooporder Goedkeuren"
+  }
+}

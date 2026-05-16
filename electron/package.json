@@ -1,0 +1,4 @@
+{
+  "//": "Scopes electron/*.js to CommonJS so main.js + preload.js can use require(), independent of the root package.json's type:module.",
+  "type": "commonjs"
+}

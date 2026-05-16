@@ -1,0 +1,5 @@
+name,service_date,service_time,guest_count,menus,chef_in_charge,complexity_score
+Gala Welcome,2025-10-21,18:00,220,Wedding Cake Layers|Mirror Glaze|Sugar Flowers,Chef A,3
+VIP Reception,2025-10-24,19:00,140,Chocolate Mousse|Fruit Tart Shells,Chef B,2
+Brunch Buffet,2025-10-26,11:00,300,Croissant Dough|Fruit Tart Shells,Chef C,3
+Awards Dinner,2025-10-28,19:00,260,Wedding Cake Layers|Mirror Glaze|Sugar Flowers,Chef A,4

@@ -1,0 +1,137 @@
+/* TRON Fluid Gradient Background */
+:root {
+  --tron-bg: #070b14;
+  --tron-cyan: #00eaff;
+  --tron-blue: #0a84ff;
+  --tron-magenta: #ff00ea;
+  --grid-gap: 88px;
+  --grid-line: 2px;
+  --glow-a-x: 18%;
+  --glow-a-y: 28%;
+  --glow-b-x: 78%;
+  --glow-b-y: 72%;
+}
+
+/* Only active in dark mode */
+.dark .bg-tron {
+  background-color: var(--tron-bg);
+  background-image:
+    radial-gradient(
+      circle at var(--glow-a-x) var(--glow-a-y),
+      rgba(0, 234, 255, 0.2),
+      rgba(0, 234, 255, 0) 35%
+    ),
+    radial-gradient(
+      circle at var(--glow-b-x) var(--glow-b-y),
+      rgba(255, 0, 234, 0.12),
+      rgba(255, 0, 234, 0) 40%
+    ),
+    conic-gradient(
+      from 180deg at 50% 50%,
+      rgba(10, 132, 255, 0.06),
+      rgba(0, 234, 255, 0.1),
+      rgba(10, 132, 255, 0.06) 70%
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 234, 255, 0.045) 0 var(--grid-line),
+      transparent var(--grid-line) var(--grid-gap)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 234, 255, 0.045) 0 var(--grid-line),
+      transparent var(--grid-line) var(--grid-gap)
+    );
+  background-blend-mode: screen, screen, soft-light, normal, normal;
+  background-size:
+    100% 100%,
+    100% 100%,
+    140% 140%,
+    var(--grid-gap) var(--grid-gap),
+    var(--grid-gap) var(--grid-gap);
+  animation: tron-drift 22s ease-in-out infinite alternate;
+  -webkit-mask-image: radial-gradient(
+    125% 90% at 50% 50%,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    125% 90% at 50% 50%,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.dark .tron-sheen {
+  background:
+    radial-gradient(
+      120% 80% at -10% 10%,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0) 35% 65%,
+      rgba(255, 255, 255, 0.06)
+    );
+  mix-blend-mode: overlay;
+  animation: tron-sheen-pan 18s ease-in-out infinite;
+}
+@keyframes tron-drift {
+  0% {
+    background-position:
+      0% 0%,
+      0% 0%,
+      50% 50%,
+      0 0,
+      0 0;
+  }
+  50% {
+    background-position:
+      10% 0%,
+      -10% 0%,
+      48% 52%,
+      0 calc(var(--grid-gap) * 0.33),
+      calc(var(--grid-gap) * -0.25) 0;
+  }
+  100% {
+    background-position:
+      -8% 0%,
+      8% 0%,
+      53% 48%,
+      0 calc(var(--grid-gap) * -0.33),
+      calc(var(--grid-gap) * 0.25) 0;
+  }
+}
+@keyframes tron-sheen-pan {
+  0% {
+    transform: translateX(-8%) translateY(-2%);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(6%) translateY(3%);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(-8%) translateY(-2%);
+    opacity: 0.55;
+  }
+}
+.dark .bg-tron.bg-tron--dense {
+  --grid-gap: 64px;
+  --grid-line: 2px;
+}
+.dark .bg-tron.bg-tron--shift {
+  filter: hue-rotate(12deg) saturate(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark .bg-tron {
+    animation: none;
+  }
+  .dark .tron-sheen {
+    animation: none;
+  }
+}

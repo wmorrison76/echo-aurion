@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.echo.ai/inventory-item.schema.json",
+  "title": "Inventory Item",
+  "description": "Standard representation of a stocked item used for ordering, transfers, and recipe cost analysis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sku",
+    "name",
+    "uom",
+    "case_size",
+    "on_hand"
+  ],
+  "properties": {
+    "sku": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9._-]+$",
+      "description": "Internal stock keeping identifier."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "description": "Human readable product name."
+    },
+    "uom": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32,
+      "description": "Primary unit of measure (e.g. L, kg, ea)."
+    },
+    "case_size": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Pack size description such as '6 x 1L'."
+    },
+    "on_hand": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Current available quantity expressed in the base unit of measure."
+    },
+    "par": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Preferred minimum inventory level for automated replenishment."
+    },
+    "vendor_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "External supplier identifier used when building purchase orders."
+    },
+    "category": {
+      "type": "string",
+      "description": "Optional category or GL grouping to support reporting."
+    },
+    "last_counted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last verified physical count."
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "name": "SommelierAI",
+  "label": "SommelierAI Wine Management",
+  "description": "Complete wine management system for 5-star hospitality venues with AI pairing recommendations, inventory management, analytics dashboards, sommelier training, and wine archive.",
+  "version": "1.0.0",
+  "icon": "🍷",
+  "defaultWidth": 1200,
+  "defaultHeight": 800,
+  "author": "Builder.io",
+  "homepage": "https://sommelier-ai.example.com",
+  "keywords": [
+    "wine",
+    "hospitality",
+    "inventory",
+    "analytics",
+    "sommelier",
+    "pairing",
+    "recommendations"
+  ],
+  "features": [
+    "AI-powered wine pairing recommendations",
+    "Comprehensive inventory management",
+    "Real-time analytics and reporting",
+    "IoT cellar monitoring with temperature alerts",
+    "Sommelier training and education",
+    "75-year wine vintage archive",
+    "Purchase order management",
+    "POS integration",
+    "COGS and costing reports",
+    "Dark/light theme support"
+  ],
+  "backendServices": {
+    "express": {
+      "port": 8080,
+      "description": "Core API server"
+    },
+    "pairing": {
+      "port": 8090,
+      "description": "AI wine-food pairing engine (OpenAI)"
+    },
+    "costing": {
+      "port": 8100,
+      "description": "Financial COGS calculation and reporting"
+    },
+    "analytics": {
+      "port": 8120,
+      "description": "Business metrics and analytics"
+    },
+    "iot": {
+      "port": 8140,
+      "description": "IoT sensor monitoring and alerts"
+    },
+    "training": {
+      "port": 8150,
+      "description": "Sommelier training content and flashcards"
+    },
+    "archive": {
+      "port": 8160,
+      "description": "Wine vintage archive database"
+    },
+    "mqtt": {
+      "port": 1883,
+      "description": "MQTT broker for IoT data streaming"
+    }
+  },
+  "database": {
+    "type": "PostgreSQL",
+    "description": "Wine catalog, inventory, orders, analytics data",
+    "schemaFile": "db/schema.sql",
+    "seedFiles": ["db/seed_wines.sql", "db/seed_recipes.sql"]
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.84.2",
+    "react-router-dom": "^6.30.1",
+    "recharts": "^2.12.7",
+    "lucide-react": "^0.539.0",
+    "framer-motion": "^12.23.12",
+    "next-themes": "^0.4.6"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "pages": [
+    "Home",
+    "Catalog",
+    "Recommendations",
+    "TastingNotes",
+    "Inventory",
+    "LiquorInventory",
+    "TransferWorkflow",
+    "CompedDrinks",
+    "VarianceAudit",
+    "PurchaseOrders",
+    "CostingReport",
+    "Analytics",
+    "AdvancedAnalytics",
+    "CellarMonitoring",
+    "POSDashboard",
+    "POSSettings",
+    "WineArchive",
+    "SommelierTraining",
+    "MenuSommelierBridge",
+    "Settings",
+    "Onboarding"
+  ],
+  "environmentVariables": {
+    "VITE_API_URL": "http://localhost:8080",
+    "VITE_PAIRING_URL": "http://localhost:8090",
+    "VITE_COSTING_URL": "http://localhost:8100",
+    "VITE_ANALYTICS_URL": "http://localhost:8120",
+    "VITE_IOT_URL": "http://localhost:8140",
+    "VITE_TRAINING_URL": "http://localhost:8150",
+    "VITE_ARCHIVE_URL": "http://localhost:8160",
+    "VITE_BUILDER_API_KEY": "476345005b164694b85d4afb69cf760e",
+    "ELEVENLABS_API_KEY": "required for voice features",
+    "ECHO_OPENAI_API_KEY": "required for AI pairing recommendations"
+  },
+  "integrations": {
+    "openai": "AI wine pairing recommendations",
+    "elevenlabs": "Voice synthesis for sommelier training",
+    "mqtt": "IoT sensor data collection"
+  }
+}

@@ -1,0 +1,74 @@
+=== DIAGNOSING conflict_040526_1458 ===
+
+--- Merge base with main (the common ancestor commit) ---
+Common ancestor: 9f318d606ccf29ee3c0520b902209a76ec55ea5e
+Date of common ancestor:
+2026-02-04 00:36:37 -0500 feat: complete enterprise security system
+
+--- Commits on conflict_040526_1458 NOT on main (count) ---
+9580
+
+--- Commits on main NOT on conflict_040526_1458 (count) ---
+9737
+
+--- First 5 commits unique to conflict_040526_1458 (oldest) ---
+50151b360 Initial commit
+eff486d56 Add site header component with brand and navigation
+3b12c071f Fix invalid shadow class in Studio page
+3ab5a90db Fix arbitrary class syntax and shadow variant usages
+8082d5459 Wrap Header and Footer with BrowserRouter
+
+--- Last 5 commits unique to conflict_040526_1458 (newest) ---
+cbedd4333 Auto-generated changes
+6d5e5f180 auto-commit for fa202621-c6ac-42fa-ad32-191126f83c77
+8e4f98c59 auto-commit for fed436e5-a2a3-4399-87aa-5a1873e53061
+40ed4eede auto-commit for 65057458-0a70-488f-bd5e-d9b17598c517
+be8f224f6 auto-commit for c7e4c7be-6bee-4d2a-b57e-d1471c279043
+
+--- Author breakdown of unique commits ---
+8794 Builder.io
+ 656 emergent-agent-e1
+ 124 wmorrison76
+   1 iter269.5-audit
+   1 iter269.4-agent
+   1 iter269.3-final
+   1 iter269.3-agent
+   1 iter269.2-agent
+   1 iter269-agent
+
+--- Top-level files/dirs that differ between main and conflict_040526_1458 ---
+.builderrules
+.claude
+.dockerignore
+.emergent
+.env
+.env.safemode
+.env.test.example
+.github
+.gitignore
+.semgrep.yml
+.tsbuildinfo
+"docs
+AGENT_START_HERE.md
+ARCHITECTURE.md
+backend
+BACKLOG.md
+BUILD_PHASES.md
+CLAUDE.md
+client
+client.zip
+docs
+electron
+frontend
+HANDOFF_OVERNIGHT.md
+HANDOFF_PM.md
+HANDOFF.md
+IMPLEMENTATION_ORDER.md
+index.html
+INTEGRATION_MAP.md
+LICENSE
+
+--- Total files different between the two ---
+    1939
+
+=== DONE ===

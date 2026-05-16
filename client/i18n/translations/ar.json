@@ -1,0 +1,51 @@
+{
+  "common": {
+    "loading": "جار التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تحرير",
+    "create": "إنشاء",
+    "search": "بحث",
+    "filter": "تصفية",
+    "export": "تصدير",
+    "import": "استيراد",
+    "refresh": "تحديث",
+    "close": "إغلاق",
+    "confirm": "تأكيد",
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "inventory": "المخزون",
+    "schedule": "الجدولة",
+    "purchasing": "المشتريات",
+    "culinary": "Culinary",
+    "echoaurum": "EchoAurum",
+    "echostratus": "EchoStratus",
+    "settings": "الإعدادات"
+  },
+  "inventory": {
+    "title": "إدارة المخزون",
+    "currentStock": "المخزون الحالي",
+    "parLevel": "مستوى بار",
+    "reorderPoint": "نقطة إعادة الطلب",
+    "addItem": "إضافة عنصر",
+    "updateStock": "تحديث المخزون"
+  },
+  "schedule": {
+    "title": "جدولة الموظفين",
+    "shifts": "الورديات",
+    "assignStaff": "تعيين موظف",
+    "createShift": "إنشاء وردية"
+  },
+  "purchasing": {
+    "title": "المشتريات والاستلام",
+    "createPO": "إنشاء أمر شراء",
+    "receiveOrder": "استلام الطلب",
+    "approvePO": "الموافقة على أمر الشراء"
+  }
+}

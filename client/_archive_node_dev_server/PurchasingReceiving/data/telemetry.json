@@ -1,0 +1,55 @@
+{
+  "ocrEvents": [
+    {
+      "id": "ocr-1760366325020",
+      "vendor": "2562 PAYSPHERE CIRCLE",
+      "averageConfidence": 0.74,
+      "lowConfidenceRate": 0,
+      "glCoverage": 0.6,
+      "totalLines": 5,
+      "source": "upload",
+      "timestamp": 1760366326175
+    },
+    {
+      "id": "ocr-1760367048624",
+      "vendor": "Siem. H",
+      "averageConfidence": 0.8692,
+      "lowConfidenceRate": 0,
+      "glCoverage": 0.1538,
+      "totalLines": 13,
+      "source": "upload",
+      "timestamp": 1760367049802
+    },
+    {
+      "id": "ocr-1760367277701",
+      "vendor": "AV PIER SIXTY SIX AV PIER SIXTY SIX US Foods, Inc.",
+      "averageConfidence": 0.75,
+      "lowConfidenceRate": 0,
+      "glCoverage": 0.5,
+      "totalLines": 4,
+      "source": "upload",
+      "timestamp": 1760367278879
+    },
+    {
+      "id": "ocr-1760367462273",
+      "vendor": "ACCOUNT  IHVOICE INVOICE CUSTOMER PURCHASE ORDER SALES SALES DATE",
+      "averageConfidence": 0.8833,
+      "lowConfidenceRate": 0,
+      "glCoverage": 0.3333,
+      "totalLines": 6,
+      "source": "upload",
+      "timestamp": 1760367463461
+    }
+  ],
+  "corrections": [],
+  "alerts": [
+    {
+      "id": "alert-1760367048624-gl",
+      "type": "gl_coverage",
+      "severity": "critical",
+      "message": "GL classification coverage down",
+      "detail": "Coverage 37.7%.",
+      "createdAt": 1760367049802
+    }
+  ]
+}

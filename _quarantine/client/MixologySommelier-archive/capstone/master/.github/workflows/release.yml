@@ -1,0 +1,23 @@
+name: Release Notes
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag'
+        required: true
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 18 }
+      - name: Generate notes
+        run: |
+          npm i
+          RELEASE_TAG=${{ github.event.inputs.tag }} node scripts/gen_release_notes.mjs
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: RELEASE_NOTES.md

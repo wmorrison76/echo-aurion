@@ -1,0 +1,26 @@
+{
+  "name": "builder-culinary-import",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Builder.io uploader for culinary knowledge extracted from PDFs",
+  "main": "import_terms_and_recipes.js",
+  "scripts": {
+    "import": "node import_terms_and_recipes.js",
+    "scan": "python3 echo_culinary_scanner.py"
+  },
+  "keywords": [
+    "builder.io",
+    "culinary",
+    "pdf",
+    "glossary",
+    "recipes"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

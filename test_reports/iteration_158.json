@@ -1,0 +1,120 @@
+{
+  "summary": "Iteration 158 — Public Share Links, Referral Tracking, EngOps Notifications/Stratus/Dismissal Audit testing complete. Backend: 29/29 tests passed (100%). Frontend: All routes verified (/pastry/look/{token}, /pastry/admin with referrals panel, /pastry/gallery with share panel, /eng-ops/notifications, /eng-ops/dismissal-audit, /eng-ops/stratus).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter158_share_referrals_engops.py",
+    "/app/test_reports/pytest/pytest_results_iter158.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "POST /api/pastry/look/{render_id}/publish creates share_token + share_url correctly ✓",
+    "GET /api/pastry/look/{share_token} returns public-safe payload WITHOUT prompt field ✓",
+    "POST /api/pastry/look/{render_id}/unpublish → subsequent GET returns 404 ✓",
+    "GET /api/pastry/referrals/{subscriber_id}/link returns unique REF-* code ✓",
+    "POST /api/pastry/referrals/record with event=paid credits referrer +30d ✓",
+    "GET /api/pastry/referrals/leaderboard returns sorted list by referral_count ✓",
+    "GET /api/pastry/referrals/ping?ref=CODE records click event ✓",
+    "POST /api/eng-ops/stratus/plans with priority=critical → sla_hours=2, escalation_level=0, assignee_role=owner ✓",
+    "POST /api/eng-ops/stratus/plans/run-escalation scans and escalates overdue plans ✓",
+    "POST /api/eng-ops/stratus/plans/{id}/resolve → status=resolved, events[] gains resolved event ✓",
+    "GET /api/eng-ops/notifications/assigned with assignee/unread_only filters works ✓",
+    "POST /api/eng-ops/notifications/assign + /{id}/read + /{id}/dismiss → dismissal_audit row appended ✓",
+    "GET /api/eng-ops/dismissal-audit returns by_priority + high_recent_7d KPIs ✓",
+    "Email service gracefully queues when RESEND_API_KEY missing (queued_no_provider) ✓",
+    "/pastry/look/{share_token} renders pastry-look-page with title, image, approve CTA ✓",
+    "/pastry/look/{invalid} shows pastry-look-notfound ✓",
+    "/pastry/gallery modal has share panel with client-name input, publish-share button, share-url + copy-share ✓",
+    "/pastry/admin shows PastryReferrals panel with leaderboard table ✓",
+    "/pastry?ref=CODE fires ping to /api/pastry/referrals/ping on mount ✓",
+    "/eng-ops/notifications renders with assignee filter, unread toggle, mark-read + dismiss buttons ✓",
+    "/eng-ops/dismissal-audit renders with KPI tiles + dismissal-audit-table ✓",
+    "/eng-ops/stratus renders with create-btn, run-escalation button, result panel ✓",
+    "CakeFlowers.tsx has guards to prevent stray flower state arc (lines 294-308) ✓",
+    "CakeScene3D.tsx filters invalid flower entries (line 319) ✓",
+    "Regression: /pastry, /pastry/admin, /pastry/gallery, root / all work ✓"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter158_share_referrals_engops.py"
+  ],
+  "success_rate": {
+    "backend": "100% (29/29 tests passed)",
+    "frontend": "100% (all routes and features verified)"
+  },
+  "test_credentials": "STRIPE_API_KEY=sk_test_emergent, FAL_KEY set in backend/.env, RESEND_API_KEY NOT set (email queues gracefully)",
+  "seed_data_creation": "Test notifications, plans, and dismissals created with TEST_ prefix during testing",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter158 delivered: (1) Public share links at /pastry/look/{share_token} with client-approval CTAs - publish via POST /api/pastry/look/{render_id}/publish, unpublish via POST /api/pastry/look/{render_id}/unpublish, view via GET /api/pastry/look/{share_token}. (2) Referral tracking with unique codes (REF-*), leaderboard, ping endpoint for landing page tracking, paid conversion credits referrer +30d. (3) Email service with Resend fallback - queues to email_outbox when RESEND_API_KEY missing. (4) APScheduler cron jobs for daily billing sweep (14:00 UTC) + 15-min SLA escalation. (5) Stratus SLA plans with owner→duty_manager→GM escalation chain. (6) Assigned-notifications panel at /eng-ops/notifications with filters. (7) Dismissal audit log at /eng-ops/dismissal-audit with KPI tiles. (8) CakeFlowers guards prevent stray flower state arc. All endpoints tested and working. Seeded data: rnd-demo-01 share published with token 65617132d8, sub-001 has referral code REF-SUB-00-*.",
+  "features_tested": {
+    "backend_new": [
+      "POST /api/pastry/look/{render_id}/publish creates share_token + share_url ✓",
+      "GET /api/pastry/look/{share_token} returns public-safe payload (no prompt) ✓",
+      "GET /api/pastry/look/{invalid} returns 404 ✓",
+      "POST /api/pastry/look/{render_id}/unpublish → subsequent GET returns 404 ✓",
+      "GET /api/pastry/referrals/{subscriber_id}/link returns unique code ✓",
+      "GET /api/pastry/referrals/{invalid}/link returns 404 ✓",
+      "POST /api/pastry/referrals/record with event=click ✓",
+      "POST /api/pastry/referrals/record with event=signup ✓",
+      "POST /api/pastry/referrals/record with event=paid credits referrer ✓",
+      "GET /api/pastry/referrals/ping?ref=CODE records click ✓",
+      "GET /api/pastry/referrals/leaderboard returns sorted list ✓",
+      "POST /api/eng-ops/stratus/plans with priority=critical → sla_hours=2 ✓",
+      "POST /api/eng-ops/stratus/plans with priority=high → sla_hours=8 ✓",
+      "GET /api/eng-ops/stratus/plans returns list ✓",
+      "POST /api/eng-ops/stratus/plans/{id}/resolve → status=resolved ✓",
+      "POST /api/eng-ops/stratus/plans/run-escalation scans and escalates ✓",
+      "POST /api/eng-ops/notifications/assign creates notification ✓",
+      "GET /api/eng-ops/notifications/assigned returns list ✓",
+      "GET /api/eng-ops/notifications/assigned?assignee=X filters correctly ✓",
+      "GET /api/eng-ops/notifications/assigned?unread_only=true filters unread ✓",
+      "POST /api/eng-ops/notifications/{id}/read marks as read ✓",
+      "POST /api/eng-ops/notifications/{id}/dismiss creates dismissal_audit row ✓",
+      "GET /api/eng-ops/dismissal-audit returns structure with KPIs ✓",
+      "GET /api/eng-ops/dismissal-audit?priority=high filters correctly ✓",
+      "Email service queues when RESEND_API_KEY missing ✓"
+    ],
+    "backend_regression": [
+      "GET /api/health returns healthy ✓",
+      "GET /api/pastry/gallery returns items ✓",
+      "GET /api/pastry/admin/subscribers returns data ✓",
+      "GET /api/pastry/packages returns pricing ✓"
+    ],
+    "frontend_verified": [
+      "/pastry/look/{invalid} shows pastry-look-notfound ✓",
+      "/pastry/look/{valid} shows pastry-look-page with title, image, approve CTA ✓",
+      "/pastry/gallery modal has pastry-gallery-share-panel ✓",
+      "/pastry/gallery modal has pastry-gallery-client-name input ✓",
+      "/pastry/gallery modal has pastry-gallery-publish-share button ✓",
+      "/pastry/gallery modal shows pastry-gallery-share-url after publish ✓",
+      "/pastry/gallery modal has pastry-gallery-copy-share button ✓",
+      "/pastry/admin shows pastry-referrals-panel ✓",
+      "/pastry/admin shows pastry-referrals-table (leaderboard) ✓",
+      "/pastry?ref=CODE fires referral ping on mount ✓",
+      "/eng-ops/notifications renders eng-ops-notifications-page ✓",
+      "/eng-ops/notifications has eng-ops-assignee-filter ✓",
+      "/eng-ops/notifications has eng-ops-unread-toggle ✓",
+      "/eng-ops/notifications has mark-read + dismiss buttons ✓",
+      "/eng-ops/dismissal-audit renders eng-ops-dismissal-audit-page ✓",
+      "/eng-ops/dismissal-audit has KPI tiles (total, high_recent_7d, critical, high) ✓",
+      "/eng-ops/dismissal-audit has dismissal-audit-table ✓",
+      "/eng-ops/dismissal-audit has priority + actor filters ✓",
+      "/eng-ops/stratus renders eng-ops-stratus-page ✓",
+      "/eng-ops/stratus has stratus-create-btn ✓",
+      "/eng-ops/stratus has stratus-run-escalation button ✓",
+      "/eng-ops/stratus shows stratus-escalation-result after run ✓",
+      "/eng-ops/stratus create modal has all fields ✓",
+      "/pastry landing page loads ✓",
+      "/pastry/admin loads with referrals panel ✓",
+      "/pastry/gallery loads with 5 render cards ✓",
+      "Root / dashboard loads successfully ✓"
+    ]
+  }
+}

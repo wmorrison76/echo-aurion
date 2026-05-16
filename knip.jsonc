@@ -1,0 +1,41 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema-jsonc.json",
+
+  // Entry points: main SPA, 5 module chains (Culinary, Pastry, Schedule, VideoConference, Whiteboard),
+  // Vite configs, server, and Netlify functions so Knip traces the real dependency graph.
+  "entry": [
+    "client/index.tsx",
+    "client/modules/Culinary/entry.tsx",
+    "client/modules/Pastry/index.tsx",
+    "client/modules/Schedule/index.tsx",
+    "client/modules/VideoConference/index.tsx",
+    "client/modules/Whiteboard/index.tsx",
+    "server/index.ts",
+    "server/node-build.ts",
+    "netlify/functions/api.ts",
+    "vite.config.ts",
+    "vite.config.server.ts"
+  ],
+
+  // Project scope: same as tsconfig include + netlify
+  "project": [
+    "client/**/*.{ts,tsx}",
+    "server/**/*.ts",
+    "shared/**/*.ts",
+    "cognition/**/*.ts",
+    "tests/**/*.{ts,tsx}",
+    "scripts/**/*.ts",
+    "netlify/functions/**/*.ts",
+    "vite.config.ts",
+    "vite.config.server.ts"
+  ],
+
+  // Exclude from "unused files" only (still analyzed for exports/deps): mobile, scripts, seeds, migrations, builder-import
+  "ignoreFiles": [
+    "**/mobile/**",
+    "**/scripts/**",
+    "**/seeds/**",
+    "**/migrations/**",
+    "**/builder-import/**"
+  ]
+}

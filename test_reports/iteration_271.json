@@ -1,0 +1,40 @@
+{
+  "summary": "iter266.16 BEO Detail Command Center backend tested end-to-end. 17/17 tests pass covering: GET /beo-timeline/{id}/detail enriched payload (menu_items, order_status, prep_items, setup, schedule_team, days_until_event, printable_urls, event_timeline_id, same_day_beo_count), 404 on missing BEO, POST /order/submit creating purchase_approval_requests row (idempotent on re-post), 3 printable HTML endpoints (beo/recipes/setup), and /api/calendar/events merge of BEOs as event_type='beo' with deep_link_panel='beo-timeline-ui'. Found and fixed 1 minor contract bug: menu_items fallback path (when only menu_summary exists) was missing the nullable cost_per_cover key.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {
+        "endpoint": "GET /api/chef-outlet/beo-timeline/{id}/detail",
+        "issue": "menu_items fallback (when no menu_items array on BEO doc, splitting menu_summary) was emitting entries with only {name, is_costed} and missing the cost_per_cover key required by the contract. FIXED in /app/backend/routes/chef_outlet.py lines ~941 and ~947 by adding cost_per_cover: None."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter266_16_beo_command_center.py",
+    "/app/test_reports/pytest/iter266_16_results.xml"
+  ],
+  "action_items": [
+    "Verify the menu_items.cost_per_cover null-fill fix applied in chef_outlet.py is acceptable (small, makes the contract uniform across the 'menu_items array exists' and 'menu_summary split' code paths)."
+  ],
+  "critical_code_review_comments": [
+    "submit_beo_order swallows insert/update exceptions silently (try/except: pass). If Mongo fails, client gets ok=True with no row persisted. Recommend logging at minimum so silent data loss is observable.",
+    "calendar.py BEO merge applies the same `limit` to BEOs and to native calendar_events separately, then slices the combined list to `limit` at the end. Under heavy data this could drop events ordered later. Acceptable for now given current data volumes.",
+    "_default_equipment uses tables=covers//8 which gives 0 tables for <8-cover BEOs. The `max(1, ...)` already guards. Good.",
+    "Printable HTML uses raw string interpolation of BEO name/client_name into the HTML body — XSS risk if BEO names contain HTML. Low risk given the trusted-data context but worth html.escape() pass before render."
+  ],
+  "updated_files": [
+    "/app/backend/routes/chef_outlet.py (added cost_per_cover: None to menu_items fallback paths)",
+    "/app/backend/tests/test_iter266_16_beo_command_center.py (new)"
+  ],
+  "success_rate": {"backend": "100%", "frontend": "skipped per request"},
+  "test_credentials": "none required",
+  "seed_data_creation": "Used existing demo BEOs (demo-bf-rooftop-sunset, demo-bf-poolside-brunch, demo-bf-garden-gala, demo-bf-beach-ceremony). Submit-order tests created purchase_approval_requests rows for poolside-brunch and rooftop-sunset; idempotent and harmless.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Demo BEOs are date-relative (start_at ~today+1..6 days). Container date is May 12 2026 so schedule_team_visible=true. equipment_list defaults to 7 banquet items scaling with covers. Garden Gala (320 covers) -> tables=40, chairs=324. Calendar /events filtered by source_module=maestrobqt returns ONLY BEOs (native rows excluded by query). Re-running tests is safe — submit is idempotent."
+}

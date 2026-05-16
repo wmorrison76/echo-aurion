@@ -1,0 +1,14 @@
+{
+  "name": "Capstone Unified Installer",
+  "modules": [
+    "EchoMixologyAI",
+    "EchoSommelier",
+    "LiquorAI",
+    "Scheduler",
+    "RedPhoenix",
+    "MixologyWheel",
+    "SommelierMerge",
+    "Orchestrator"
+  ],
+  "date": "2025-09-22"
+}

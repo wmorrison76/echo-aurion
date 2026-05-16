@@ -1,0 +1,113 @@
+{
+  "project_context": {
+    "domain": "Enterprise SaaS (Culinary/Pastry Operations)",
+    "theme": "Dark",
+    "archetype": "5 (Jewel & Luxury) mixed with 4 (Swiss & High-Contrast)",
+    "emotion": "Highly professional, technical, authoritative, and elegant command center",
+    "notes": "Modules live inside an existing desktop OS panel. The focus is removing visual noise, resolving color clashes, and enforcing a strict 1px grid-based technical aesthetic."
+  },
+  "colors": {
+    "background": {
+      "base": "#04060d",
+      "panel": "#0b0f1a",
+      "surface": "rgba(255,255,255,0.025)",
+      "surface_hover": "rgba(255,255,255,0.04)"
+    },
+    "border": {
+      "default": "rgba(255,255,255,0.06)",
+      "focus": "rgba(255,255,255,0.15)",
+      "divider": "rgba(255,255,255,0.06)"
+    },
+    "accent": {
+      "primary": "#c8a97e",
+      "primary_hover": "#b8976c",
+      "primary_glow": "rgba(200,169,126,0.15)"
+    },
+    "text": {
+      "primary": "rgba(255,255,255,0.95)",
+      "secondary": "rgba(255,255,255,0.60)",
+      "tertiary": "rgba(255,255,255,0.40)",
+      "accent": "#c8a97e"
+    },
+    "feedback": {
+      "error_bg": "#3f0f0f",
+      "error_border": "#7f1d1d",
+      "error_text": "#fca5a5",
+      "loading_accent": "#c8a97e"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "primary": "IBM Plex Sans, sans-serif",
+      "mono": "IBM Plex Mono, monospace"
+    },
+    "headings": {
+      "h1": "text-2xl sm:text-3xl font-light tracking-tight text-white/95",
+      "h2": "text-xl sm:text-2xl font-normal tracking-tight text-white/90",
+      "h3": "text-lg font-medium tracking-tight text-white/85",
+      "module_title": "text-lg font-medium tracking-tight text-[#c8a97e]"
+    },
+    "body": {
+      "default": "text-sm font-normal text-white/60 leading-relaxed",
+      "label": "text-[11px] font-mono uppercase tracking-[0.15em] text-white/40",
+      "data": "text-sm font-mono text-white/90"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "The 'Control Room' Grid - High density, clear hierarchy, 1px optical borders defining all regions. Zero soft shadows.",
+    "sidebar_navigation": {
+      "container": "w-64 flex-shrink-0 border-r border-[rgba(255,255,255,0.06)] bg-[#04060d]/50 flex flex-col h-full",
+      "group_header": "px-4 py-3 text-[11px] font-mono uppercase tracking-[0.15em] text-white/40",
+      "nav_item": "flex items-center px-4 py-2.5 text-sm text-white/60 hover:text-white/90 hover:bg-white/[0.02] transition-colors cursor-pointer",
+      "nav_item_active": "flex items-center px-4 py-2.5 text-sm text-[#c8a97e] bg-white/[0.03] border-l-2 border-[#c8a97e] transition-all"
+    },
+    "module_header": {
+      "container": "h-14 flex items-center justify-between px-6 border-b border-[rgba(255,255,255,0.06)] bg-[#0b0f1a]",
+      "brand": "flex items-center gap-3"
+    },
+    "main_content": {
+      "container": "flex-1 overflow-auto bg-[#04060d] p-6 sm:p-8",
+      "bento_grid": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"
+    },
+    "surfaces": {
+      "card": "bg-[rgba(255,255,255,0.015)] border border-[rgba(255,255,255,0.06)] rounded-sm p-5",
+      "glass": "backdrop-blur-xl bg-[#0b0f1a]/80 border-b border-[rgba(255,255,255,0.06)]"
+    }
+  },
+  "components_and_cleanup": {
+    "decorative_removal": [
+      {
+        "file": "TronBackdrop.js / TronBackdrop.tsx",
+        "action": "Remove content. Return null or empty div. It clashes with the enterprise panel aesthetic."
+      },
+      {
+        "file": "CornerBrand.js / CornerBrand.tsx",
+        "action": "Remove completely or return null. Watermarks overlapping content create visual noise."
+      },
+      {
+        "file": "SubtleBottomGlow.js / SubtleBottomGlow.tsx",
+        "action": "Remove completely or return null. Gradients are prohibited in this strict architectural dark mode."
+      }
+    ],
+    "state_replacements": {
+      "loading": "Replace amber/orange spinners with a subtle #c8a97e (gold) pulse or linear indeterminate loader matching the border.",
+      "error_boundary": "Replace amber/orange backgrounds. Use bg-[#3f0f0f] with border-[#7f1d1d] and text-[#fca5a5]. Keep it flat and technical."
+    },
+    "buttons": {
+      "primary": "bg-[rgba(200,169,126,0.1)] border border-[#c8a97e]/30 text-[#c8a97e] hover:bg-[#c8a97e] hover:text-[#04060d] transition-all px-4 py-2 rounded-sm text-sm font-medium",
+      "secondary": "bg-transparent border border-[rgba(255,255,255,0.1)] text-white/70 hover:text-white hover:border-[rgba(255,255,255,0.3)] transition-all px-4 py-2 rounded-sm text-sm"
+    }
+  },
+  "motion_and_interaction": {
+    "hover": "Subtle background color shifts (rgba(255,255,255,0.02) to 0.04) and border luminosity increases.",
+    "active": "Crisp, immediate feedback. Scale down slightly (scale-95) on click.",
+    "transitions": "transition-all duration-200 ease-in-out"
+  },
+  "instructions_to_main_agent": [
+    "Read this JSON carefully. Do NOT use gradients, excessive blurs, or drop shadows. Rely exclusively on 1px borders (rgba(255,255,255,0.06)) to define hierarchy.",
+    "Strip out all instances of the amber/orange error and loading states. Replace them with the technical error palette or gold accent specified here.",
+    "Ensure the internal navigation (TopTabs in Culinary, Sidebar in Pastry) uses the `layout_and_spacing.sidebar_navigation` styling to unify them. They must sit cleanly within the OS panel without floating awkwardly.",
+    "Empty out TronBackdrop, CornerBrand, and SubtleBottomGlow components to instantly clean up the visual noise.",
+    "Ensure all interactive elements have a `data-testid` attribute in kebab-case."
+  ]
+}

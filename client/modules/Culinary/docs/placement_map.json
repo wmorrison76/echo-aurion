@@ -1,0 +1,22 @@
+[
+  {
+    "panel": "InvoiceTriage",
+    "areas": ["finance", "global"]
+  },
+  {
+    "panel": "RecipeCosting",
+    "areas": ["ops", "kitchen"]
+  },
+  {
+    "panel": "Forecast30",
+    "areas": ["global", "finance"]
+  },
+  {
+    "panel": "WinePairing",
+    "areas": ["ops", "dining"]
+  },
+  {
+    "panel": "HelpCenter",
+    "areas": ["global"]
+  }
+]

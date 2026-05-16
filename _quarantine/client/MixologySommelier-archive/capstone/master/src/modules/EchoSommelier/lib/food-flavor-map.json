@@ -1,0 +1,41 @@
+{
+  "steak_ribeye": {
+    "salt": 2,
+    "fat": 4,
+    "spice": 1,
+    "acid": 0,
+    "sweet": 0,
+    "umami": 2,
+    "intensity": 4,
+    "aromas": [
+      "pepper",
+      "smoke"
+    ]
+  },
+  "ceviche": {
+    "salt": 2,
+    "fat": 1,
+    "spice": 1,
+    "acid": 3,
+    "sweet": 0,
+    "umami": 1,
+    "intensity": 2,
+    "aromas": [
+      "lime",
+      "citrus"
+    ]
+  },
+  "thai_green_curry": {
+    "salt": 2,
+    "fat": 2,
+    "spice": 3,
+    "acid": 1,
+    "sweet": 1,
+    "umami": 2,
+    "intensity": 3,
+    "aromas": [
+      "herb",
+      "citrus"
+    ]
+  }
+}

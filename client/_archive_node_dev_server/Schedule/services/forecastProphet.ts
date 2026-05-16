@@ -1,0 +1,8 @@
+/** * Prophet Forecasting Service * Spawns Python subprocess to run Prophet forecasting * Requires: pip install prophet */ import { spawn } from"child_process";
+import path from"path";
+import fs from"fs"; export interface ProphetData { date: string; y: number;
+} export interface ProphetForecast { ds: string; yhat: number; yhat_lower: number; yhat_upper: number;
+} /** * Run Prophet forecasting via Python subprocess * Falls back to linear regression if Prophet not available */
+export async function runProphetForecast( data: ProphetData[], horizon: number = 30
+): Promise<ProphetForecast[]> { return new Promise((resolve, reject) => { // Check if Prophet runner script exists const scriptPath = path.resolve( __dirname,"../scripts/prophet_runner.py" ); if (!fs.existsSync(scriptPath)) { console.warn("Prophet script not found, returning empty forecast"); resolve([]); return; } const python = spawn("python3", [scriptPath, horizon.toString()], { stdio: ["pipe","pipe","pipe"], timeout: 30000, // 30 second timeout }); let output =""; let errorOutput =""; python.stdout.on("data", (chunk) => { output += chunk.toString(); }); python.stderr.on("data", (chunk) => { errorOutput += chunk.toString(); }); python.on("close", (code) => { if (code !== 0) { console.error("Prophet failed:", errorOutput); reject(new Error(`Prophet forecast failed with code ${code}`)); return; } try { const result = JSON.parse(output); resolve(result); } catch (e) { console.error("Failed to parse Prophet output:", output); reject(new Error("Failed to parse Prophet output")); } }); python.on("error", (err) => { reject(err); }); // Send data to Python process python.stdin.write(JSON.stringify(data)); python.stdin.end(); });
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "sku": "CREME-CREAM",
+    "name": "Heavy Cream 32oz",
+    "uom": "qt",
+    "case_size": "12 x 1qt",
+    "on_hand": 14,
+    "par": 18,
+    "vendor_id": "US-DAIRY-01",
+    "category": "dairy",
+    "last_counted_at": "2025-10-12T00:00:00Z"
+  }
+]

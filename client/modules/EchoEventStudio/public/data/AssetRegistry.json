@@ -1,0 +1,251 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2025-10-18T00:00:00Z",
+  "categories": [
+    { "id": "tables", "label": "Tables", "icon": "TableIcon" },
+    { "id": "seating", "label": "Seating", "icon": "ChairIcon" },
+    { "id": "buffet", "label": "Buffet & Stations", "icon": "UtensilsCrossed" },
+    { "id": "service", "label": "Service & Ops", "icon": "TrendingUp" },
+    { "id": "decor", "label": "Decor", "icon": "Sparkles" }
+  ],
+  "items": [
+    {
+      "id": "table_round_60in",
+      "name": "Round Table 60\"",
+      "category": "tables",
+      "glCode": "7000",
+      "dimensions_m": [1.524, 0.76, 1.524],
+      "seatsDefault": 8,
+      "cost": { "rental": 12, "laborMin": 1.5 },
+      "tags": ["round", "banquet", "standard"]
+    },
+    {
+      "id": "table_round_72in",
+      "name": "Round Table 72\"",
+      "category": "tables",
+      "glCode": "7000",
+      "dimensions_m": [1.8288, 0.76, 1.8288],
+      "seatsDefault": 10,
+      "cost": { "rental": 16, "laborMin": 2 },
+      "tags": ["round", "banquet", "large"]
+    },
+    {
+      "id": "table_rect_6ft",
+      "name": "Rect Table 6ft",
+      "category": "tables",
+      "glCode": "7002",
+      "dimensions_m": [1.8288, 0.76, 0.762],
+      "seatsDefault": 6,
+      "cost": { "rental": 10, "laborMin": 1.2 },
+      "tags": ["rect", "buffet", "station"]
+    },
+    {
+      "id": "table_cocktail",
+      "name": "Cocktail Table (Bar Height)",
+      "category": "tables",
+      "glCode": "7003",
+      "dimensions_m": [0.81, 1.07, 0.81],
+      "seatsDefault": 0,
+      "cost": { "rental": 8, "laborMin": 1 },
+      "tags": ["cocktail", "standing", "bar"]
+    },
+    {
+      "id": "chair_chiavari_gold",
+      "name": "Chair – Chiavari (Gold)",
+      "category": "seating",
+      "glCode": "7001",
+      "dimensions_m": [0.45, 0.9, 0.45],
+      "cost": { "rental": 4, "laborMin": 0.4 },
+      "tags": ["chair", "premium", "banquet"]
+    },
+    {
+      "id": "chair_banquet_fold",
+      "name": "Chair – Folding",
+      "category": "seating",
+      "glCode": "7001",
+      "dimensions_m": [0.45, 0.9, 0.45],
+      "cost": { "rental": 2, "laborMin": 0.3 },
+      "tags": ["chair", "standard", "budget"]
+    },
+    {
+      "id": "chafer_full",
+      "name": "Chafer (Full-Size)",
+      "category": "buffet",
+      "glCode": "7101",
+      "dimensions_m": [0.66, 0.4, 0.4],
+      "cost": { "rental": 8, "fuelUnit": 1 },
+      "tags": ["chafer", "buffet", "hot", "food-service"]
+    },
+    {
+      "id": "chafer_half",
+      "name": "Chafer (Half-Size)",
+      "category": "buffet",
+      "glCode": "7101",
+      "dimensions_m": [0.4, 0.4, 0.4],
+      "cost": { "rental": 5, "fuelUnit": 0.5 },
+      "tags": ["chafer", "buffet", "hot", "small"]
+    },
+    {
+      "id": "heat_lamp_double",
+      "name": "Heat Lamp Stand (Double)",
+      "category": "buffet",
+      "glCode": "7104",
+      "dimensions_m": [0.76, 1.83, 0.45],
+      "cost": { "rental": 15, "power": 800 },
+      "tags": ["heat-lamp", "buffet", "carving", "serving"]
+    },
+    {
+      "id": "heat_lamp_single",
+      "name": "Heat Lamp Stand (Single)",
+      "category": "buffet",
+      "glCode": "7104",
+      "dimensions_m": [0.45, 1.83, 0.45],
+      "cost": { "rental": 10, "power": 400 },
+      "tags": ["heat-lamp", "buffet", "serving"]
+    },
+    {
+      "id": "carving_station_double",
+      "name": "Carving Station (Double)",
+      "category": "buffet",
+      "glCode": "7102",
+      "dimensions_m": [1.2, 1.0, 0.8],
+      "cost": { "rental": 25, "power": 600 },
+      "tags": ["carving", "heat-lamp", "chef", "premium"]
+    },
+    {
+      "id": "beverage_station",
+      "name": "Beverage Station",
+      "category": "buffet",
+      "glCode": "7105",
+      "dimensions_m": [1.83, 0.91, 0.61],
+      "cost": { "rental": 30, "power": 200 },
+      "tags": ["bar", "drinks", "service"]
+    },
+    {
+      "id": "dessert_station",
+      "name": "Dessert Display",
+      "category": "buffet",
+      "glCode": "7106",
+      "dimensions_m": [1.52, 1.22, 0.76],
+      "cost": { "rental": 15, "power": 100 },
+      "tags": ["dessert", "sweets", "display"]
+    },
+    {
+      "id": "bowl_large",
+      "name": "Service Bowl – Large",
+      "category": "service",
+      "glCode": "7200",
+      "dimensions_m": [0.35, 0.2, 0.35],
+      "cost": { "rental": 1.5 },
+      "tags": ["bowl", "service"]
+    },
+    {
+      "id": "stanchion",
+      "name": "Stanchion + Rope",
+      "category": "decor",
+      "glCode": "7300",
+      "dimensions_m": [0.35, 1.0, 0.35],
+      "cost": { "rental": 5 },
+      "tags": ["queue", "vip", "flow"]
+    },
+    {
+      "id": "plant_large",
+      "name": "Large Plant (Floor)",
+      "category": "decor",
+      "glCode": "7310",
+      "dimensions_m": [0.6, 1.2, 0.6],
+      "cost": { "rental": 8 },
+      "tags": ["plant", "greenery", "decor", "tall"]
+    },
+    {
+      "id": "plant_small",
+      "name": "Small Plant (Table)",
+      "category": "decor",
+      "glCode": "7311",
+      "dimensions_m": [0.25, 0.4, 0.25],
+      "cost": { "rental": 2 },
+      "tags": ["plant", "greenery", "table-decor"]
+    },
+    {
+      "id": "tree_arched",
+      "name": "Arched Tree (Decorative)",
+      "category": "decor",
+      "glCode": "7312",
+      "dimensions_m": [1.0, 2.4, 1.0],
+      "cost": { "rental": 20 },
+      "tags": ["tree", "arch", "entrance", "decor"]
+    },
+    {
+      "id": "tree_spiral",
+      "name": "Spiral Topiary Tree",
+      "category": "decor",
+      "glCode": "7313",
+      "dimensions_m": [0.5, 1.83, 0.5],
+      "cost": { "rental": 15 },
+      "tags": ["tree", "topiary", "formal"]
+    },
+    {
+      "id": "centerpiece_low",
+      "name": "Table Centerpiece (Low)",
+      "category": "decor",
+      "glCode": "7320",
+      "dimensions_m": [0.3, 0.3, 0.3],
+      "cost": { "rental": 3 },
+      "tags": ["centerpiece", "table-decor", "flowers"]
+    },
+    {
+      "id": "centerpiece_tall",
+      "name": "Table Centerpiece (Tall)",
+      "category": "decor",
+      "glCode": "7321",
+      "dimensions_m": [0.25, 0.61, 0.25],
+      "cost": { "rental": 5 },
+      "tags": ["centerpiece", "table-decor", "flowers", "sightline"]
+    },
+    {
+      "id": "candelabra",
+      "name": "Candelabra (Tall)",
+      "category": "decor",
+      "glCode": "7322",
+      "dimensions_m": [0.3, 0.76, 0.3],
+      "cost": { "rental": 6 },
+      "tags": ["candelabra", "lighting", "elegant"]
+    },
+    {
+      "id": "string_lights",
+      "name": "String Lights Installation",
+      "category": "decor",
+      "glCode": "7330",
+      "dimensions_m": [6.0, 2.0, 6.0],
+      "cost": { "rental": 40, "power": 500 },
+      "tags": ["lighting", "outdoor", "ambiance", "large"]
+    },
+    {
+      "id": "uplighting",
+      "name": "Uplighting (Per Light)",
+      "category": "decor",
+      "glCode": "7331",
+      "dimensions_m": [0.15, 0.3, 0.15],
+      "cost": { "rental": 10, "power": 150 },
+      "tags": ["lighting", "ambiance", "color"]
+    },
+    {
+      "id": "photo_booth",
+      "name": "Photo Booth Backdrop",
+      "category": "decor",
+      "glCode": "7340",
+      "dimensions_m": [2.44, 2.44, 0.3],
+      "cost": { "rental": 50 },
+      "tags": ["photo", "entertainment", "backdrop"]
+    },
+    {
+      "id": "dance_floor_led",
+      "name": "LED Dance Floor (Premium)",
+      "category": "decor",
+      "glCode": "7350",
+      "dimensions_m": [3.66, 0.05, 3.66],
+      "cost": { "rental": 100, "power": 2000 },
+      "tags": ["dance-floor", "lighting", "led", "premium"]
+    }
+  ]
+}

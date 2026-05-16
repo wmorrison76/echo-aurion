@@ -1,0 +1,118 @@
+{
+  "summary": "iter192 comprehensive testing complete. All 24 backend tests passed (100%). Frontend fully verified: (1) Staff Mobile shell loads and auto-registers web push device on first render, (2) Group Event Attendee page caches itinerary to localStorage with stale-while-revalidate pattern, (3) Desktop Sidebar tri-state collapse works (expanded→collapsed→hidden→expanded with visible handle in hidden state). Fixed critical Vite bundling issue with Capacitor imports.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter192_push_native_offline_sidebar.py",
+    "/app/test_reports/pytest/pytest_results_iter192.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Fixed Vite bundling error: @capacitor/device and @capacitor/push-notifications imports were causing 500 error on StaffMobile route. Changed from `import(/* @vite-ignore */ ...)` to `new Function('m', 'return import(m)')` pattern to completely bypass Vite's static analysis",
+    "POST /api/push/register correctly creates push_devices row with {ok:true, device_id} response",
+    "POST /api/push/unregister correctly sets active=false on device record",
+    "GET /api/push/devices/mine returns devices scoped to the staff token",
+    "GET /api/push/devices/all (admin) returns all active devices across all staff",
+    "POST /api/push/broadcast (admin) logs to push_log and returns stats with queued counts (FCM/APNs keys not set)",
+    "Invalid/revoked token returns 401 on all push endpoints",
+    "Missing title/body on /broadcast returns 400",
+    "POST /api/standup/send includes mobile_push fan-out stats AND calls send_push_to_staff() for each active briefing token",
+    "Group Event Attendee caches to localStorage with key pattern luccca_event_cache_{code}_{attendee_code}",
+    "Sidebar tri-state: expanded (220px) → collapsed (52px) → hidden (1px with sidebar-handle visible) → expanded"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter192_push_native_offline_sidebar.py",
+    "/app/client/modules/StaffMobile/index.tsx"
+  ],
+  "success_rate": {
+    "backend": "100% (24/24 tests passed)",
+    "frontend": "100% (all flows verified)"
+  },
+  "test_credentials": {
+    "admin_token": "TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o",
+    "staff_token_for_push_test": "ksvURuKW3t_ECPyvPpq5elzk (TEST_iter192_Frontend)",
+    "group_event": "acme-offsite-2026 with attendee code 0D8sZLBT"
+  },
+  "seed_data_creation": "Created TEST_iter192_Frontend briefing token for push registration testing, registered 8 push devices during testing",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter192 fully tested. Features: (1) Native Push Notifications scaffold at /api/push/* - POST /register creates push_devices row, POST /unregister sets active=false, GET /devices/mine returns staff's devices, GET /devices/all (admin) returns all, POST /broadcast (admin) fans out to all devices and logs to push_log. Without FCM_SERVER_KEY or APNS_* env vars, pushes are gracefully queued with status 'queued_no_fcm_key' or 'queued_apns_not_wired'. (2) POST /api/standup/send now calls send_push_to_staff() for each active briefing token holder, creating push_log entries for each registered device. (3) Staff Mobile shell (/m/staff/:token) auto-registers web push device on first render via registerPushDevice() in useEffect - uses localStorage key luccca_push_regd_{token} to skip re-registration within 7 days. (4) Group Event Attendee (/g/event/:code?attendee=CODE) implements stale-while-revalidate caching - paints from localStorage cache immediately, then revalidates from API. Cache key: luccca_event_cache_{code}_{attendee_code}. Shows 'Offline · showing cached itinerary' pill (data-testid='event-offline-pill') when served from cache without successful API response. (5) Desktop Sidebar tri-state collapse: expanded (220px) → collapsed/icon-only (52px) → hidden (0px with floating tab handle data-testid='sidebar-handle' visible at left edge) → expanded. State persisted to localStorage keys sidebar_expanded and sidebar_hidden. MOCKED: FCM/APNs (no keys set → returns 'queued_no_fcm_key' / 'queued_apns_not_wired'), Twilio SMS (queued when keys absent), Resend email (queued when keys absent).",
+  "features_tested": {
+    "push_register": {
+      "creates_device_row": "PASS - returns {ok:true, device_id}",
+      "validates_platform": "PASS - returns 400 for invalid platform",
+      "requires_token": "PASS - returns 401 without X-Briefing-Token",
+      "rejects_invalid_token": "PASS - returns 401 for invalid token",
+      "supports_ios_android_web": "PASS - all three platforms accepted"
+    },
+    "push_unregister": {
+      "sets_active_false": "PASS - device marked inactive",
+      "requires_token": "PASS - returns 401 without token"
+    },
+    "push_devices_mine": {
+      "returns_staff_devices": "PASS - returns {ok, total, devices}",
+      "requires_token": "PASS - returns 401 without token"
+    },
+    "push_devices_all": {
+      "returns_all_devices": "PASS - admin can list all active devices",
+      "requires_admin_token": "PASS - returns 401 without X-Admin-Token"
+    },
+    "push_broadcast": {
+      "fans_out_to_devices": "PASS - returns {ok, stats} with queued counts",
+      "validates_title_body": "PASS - returns 400 for missing/empty title or body",
+      "requires_admin_token": "PASS - returns 401 without admin token"
+    },
+    "standup_send_native_push": {
+      "includes_mobile_push_stats": "PASS - response includes mobile_push with total_tokens, delivered, queued, failed"
+    },
+    "revoked_token_auth": {
+      "register_401": "PASS - revoked token cannot register device",
+      "devices_mine_401": "PASS - revoked token cannot list devices"
+    },
+    "group_event_offline_cache": {
+      "returns_itinerary": "PASS - GET /api/group-events/events/{code} returns cacheable itinerary",
+      "caches_to_localstorage": "PASS - event data cached with correct key pattern"
+    },
+    "frontend_staff_mobile_push_registration": {
+      "shell_loads": "PASS - staff-mobile-root found",
+      "role_pill": "PASS - shows GENERAL",
+      "tab_bar": "PASS - all 5 tabs found",
+      "auto_registers_device": "PASS - web push device registered (verified in /api/push/devices/all)"
+    },
+    "frontend_group_event_attendee": {
+      "event_root_loads": "PASS - event-root found",
+      "itinerary_displayed": "PASS - 3 day sections, 4 session cards",
+      "offline_pill_hidden_when_online": "PASS - pill not visible on successful API load",
+      "data_cached": "PASS - localStorage contains cached event data"
+    },
+    "frontend_sidebar_tristate": {
+      "state1_expanded": "PASS - 220px width",
+      "state2_collapsed": "PASS - 52px width (icon-only)",
+      "state3_hidden": "PASS - 1px width with sidebar-handle visible",
+      "state4_reopened": "PASS - 220px width after clicking handle",
+      "full_cycle": "PASS - expanded → collapsed → hidden → expanded"
+    },
+    "regressions": {
+      "health_endpoint": "PASS - returns healthy",
+      "staff_mobile_me": "PASS - returns staff and capabilities"
+    }
+  },
+  "mocked_apis": {
+    "fcm_apns": "MOCKED - no FCM_SERVER_KEY or APNS_* keys set, pushes return 'queued_no_fcm_key' / 'queued_apns_not_wired'",
+    "twilio_sms": "MOCKED - keys not set, all paths take graceful queue fallback",
+    "resend_email": "MOCKED - keys not set, all paths take graceful queue fallback"
+  },
+  "bug_fix_applied": {
+    "issue": "StaffMobile route returned 'Error loading StaffMobile' due to Vite failing to resolve @capacitor/device and @capacitor/push-notifications imports",
+    "root_cause": "Vite's static analysis was trying to bundle Capacitor packages even with /* @vite-ignore */ comment",
+    "fix": "Changed dynamic import pattern from `import(/* @vite-ignore */ '@capacitor/...')` to `new Function('m', 'return import(m)')('@capacitor/...')` which completely bypasses Vite's static analysis",
+    "file_modified": "/app/client/modules/StaffMobile/index.tsx lines 567-593"
+  }
+}

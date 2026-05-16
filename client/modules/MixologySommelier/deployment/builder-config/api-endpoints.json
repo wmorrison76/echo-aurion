@@ -1,0 +1,111 @@
+{
+  "environment": "${NODE_ENV}",
+  "apiBaseUrl": "${API_BASE_URL}",
+  "endpoints": {
+    "wines": {
+      "listAll": "GET /api/wines",
+      "getOne": "GET /api/wines/:id",
+      "create": "POST /api/wines",
+      "update": "PATCH /api/wines/:id",
+      "delete": "DELETE /api/wines/:id"
+    },
+    "inventory": {
+      "listAll": "GET /api/inventory",
+      "getOne": "GET /api/inventory/:id",
+      "create": "POST /api/inventory",
+      "update": "PATCH /api/inventory/:id",
+      "delete": "DELETE /api/inventory/:id"
+    },
+    "purchases": {
+      "listAll": "GET /api/purchases",
+      "getOne": "GET /api/purchases/:id",
+      "create": "POST /api/purchases",
+      "update": "PATCH /api/purchases/:id"
+    },
+    "pairing": {
+      "listAll": "GET /api/pairing",
+      "byWine": "GET /api/pairing/wine/:wine_id",
+      "byRecipe": "GET /api/pairing/recipe/:recipe_id",
+      "create": "POST /api/pairing",
+      "update": "PATCH /api/pairing/:id"
+    },
+    "auth": {
+      "register": "POST /api/auth/register",
+      "login": "POST /api/auth/login",
+      "getUser": "GET /api/auth/user/:id"
+    },
+    "pairingEngine": {
+      "compute": "POST /pairings/compute/:recipeId",
+      "computeAll": "POST /pairings/compute-all",
+      "health": "GET /pairings/health"
+    },
+    "costing": {
+      "monthEnd": "GET /reports/month-end/:venueId/:month",
+      "variance": "GET /reports/variance/:venueId/:month",
+      "purchases": "GET /reports/purchases?startDate=:start&endDate=:end",
+      "recordPurchase": "POST /reports/purchases",
+      "fifo": "GET /reports/fifo/:venueId/:month"
+    },
+    "analytics": {
+      "salesMix": "GET /analytics/mix/:venueId?startDate=:start&endDate=:end",
+      "topPairings": "GET /analytics/top/:venueId?limit=10",
+      "missedOpportunities": "GET /analytics/missed/:venueId?days=30",
+      "menuTrend": "GET /analytics/trend/:venueId/:menuItemId?days=30",
+      "syncMenu": "POST /analytics/menu/sync",
+      "recipes": "GET /analytics/recipes",
+      "recipeDetail": "GET /analytics/recipes/:id",
+      "updateRecipe": "PATCH /analytics/recipes/:id"
+    },
+    "iotMonitor": {
+      "alerts": "GET /alerts/:venueId?resolved=false",
+      "temperatures": "GET /alerts/:venueId/avg?days=7",
+      "readings": "GET /alerts/:venueId/readings?limit=100",
+      "resolveAlert": "PATCH /alerts/:alertId/resolve",
+      "attachSensor": "POST /alerts/sensor/attach"
+    },
+    "education": {
+      "flashcards": "GET /training/flashcards?topic=:topic&count=5",
+      "progress": "GET /training/progress/:userId",
+      "blindExam": "GET /training/exam/blind?region=:region&difficulty=2",
+      "submitExam": "POST /training/exam/submit",
+      "getExam": "GET /training/exam/:examId",
+      "leaderboard": "GET /training/leaderboard?limit=10&examType=:type"
+    },
+    "archive": {
+      "vintage": "GET /archive/vintage/:region/:year",
+      "vintageDecade": "GET /archive/vintage/decade/:region/:start",
+      "vintageHistory": "GET /archive/vintage/history/:region?limit=50",
+      "bestVintages": "GET /archive/vintage/best/:region?limit=10",
+      "updateVintage": "PATCH /archive/vintage/:region/:year",
+      "producer": "GET /archive/producer/:name",
+      "searchProducers": "GET /archive/producers/search?q=:query&limit=20",
+      "allProducers": "GET /archive/producers?limit=100&offset=0",
+      "producersByRegion": "GET /archive/producers/region/:region?limit=20",
+      "updateProducer": "PATCH /archive/producer/:name"
+    }
+  },
+  "headers": {
+    "default": {
+      "Content-Type": "application/json",
+      "User-Agent": "LUCCCA-SommelierSuite/1.0"
+    },
+    "authenticated": {
+      "Authorization": "Bearer ${AUTH_TOKEN}",
+      "X-API-Key": "${API_KEY}"
+    }
+  },
+  "errorHandling": {
+    "400": "Bad Request - Check request parameters",
+    "401": "Unauthorized - Authentication required",
+    "403": "Forbidden - Insufficient permissions",
+    "404": "Not Found - Resource does not exist",
+    "500": "Server Error - Contact support"
+  },
+  "rateLimits": {
+    "default": "100 requests per minute",
+    "auth": "5 requests per minute",
+    "pairing": "50 requests per hour",
+    "archive": "10 requests per second"
+  },
+  "supportContact": "api-support@luccca.io"
+}

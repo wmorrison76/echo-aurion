@@ -1,0 +1,22 @@
+
+{
+  "chocolateTemperingProfiles": {
+    "darkChocolate": { "melt": "45–50°C", "cool": "27–28°C", "work": "31–32°C" },
+    "milkChocolate": { "melt": "40–45°C", "cool": "26–27°C", "work": "29–30°C" },
+    "whiteChocolate": { "melt": "40–45°C", "cool": "25–26°C", "work": "28–29°C" }
+  },
+  "pastryPanSizes": [
+    { "type": "Round", "sizeInches": "6", "volume": "4 cups" },
+    { "type": "Round", "sizeInches": "8", "volume": "6 cups" },
+    { "type": "Round", "sizeInches": "9", "volume": "8 cups" }
+  ],
+  "boxAndPackagingSizes": [
+    { "type": "Cake Circle", "sizeInches": "6" },
+    { "type": "Cake Circle", "sizeInches": "8" },
+    { "type": "Cake Circle", "sizeInches": "9" },
+    { "type": "Cake Box", "sizeInches": "10x10x5" }
+  ],
+  "allergenPickerConfig": [
+    "Gluten", "Dairy", "Eggs", "Nuts", "Soy", "Shellfish", "Sesame", "Peanuts", "Fish"
+  ]
+}

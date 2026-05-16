@@ -1,0 +1,103 @@
+{
+  "summary": "iter174 comprehensive testing completed. Backend: 26/26 passed (100%). Frontend: All renamed panels render correctly. Alice→Relay rename verified. Promotions endpoint working. SSRF guard functional.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter174_relay_promotions_ssrf.py",
+    "/app/test_reports/pytest/pytest_results_iter174.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter174_relay_promotions_ssrf.py"
+  ],
+  "success_rate": {
+    "backend": "100% (26/26 passed)",
+    "frontend": "100%"
+  },
+  "test_credentials": "ADMIN_API_TOKEN from backend/.env used for admin-gated endpoints (promotions, people upsert).",
+  "seed_data_creation": "Backend tests created TEST_ prefixed employees and tickets for verification. Playwright created test tickets with RLY- prefix.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter174 delivered: (1) Alice→Relay rename complete - all /api/alice/* return 404, /api/relay/* working with RLY- ticket prefix. (2) Promotions endpoint /api/people/promotion creates promotion_history entries and updates employee title. (3) SSRF guard on recipe_import.py blocks localhost, 127.0.0.1, 169.254.169.254. (4) Standup autofill includes promotions in people_services section. (5) UI labels renamed per NAMING_AUDIT.md - 'Local Guide' (was FOH Concierge Hub), 'Concierge Desk' (was Echo Concierge), 'Relay · Tickets' (was Alice · Tickets). (6) Command bar search for 'Alice' returns 0 results, 'Relay' returns correct suggestion.",
+  "backend_tests_summary": {
+    "TestAliceRenamed404": "3/3 passed - /api/alice/dashboard, /api/alice/tickets, /api/alice/ticket/create all return 404",
+    "TestRelayEndpoints": "3/3 passed - /api/relay/dashboard returns KPIs, /api/relay/ticket/create generates RLY- prefix, /api/relay/tickets lists with proper schema",
+    "TestPromotionsEndpoint": "2/2 passed - Admin token required, promotion creates entry and updates title",
+    "TestCelebrationsTodayWithPromotions": "1/1 passed - /api/people/celebrations/today includes promotions array and summary",
+    "TestSSRFGuard": "4/4 passed - Blocks localhost, 169.254.169.254, 127.0.0.1; allows public URLs",
+    "TestStandupAutofillWithPromotions": "2/2 passed - Returns autofilled sections including people_services with promotions",
+    "TestCriticalRegressions": "10/10 passed - people/list, hours/today, leadership/by-date, lifestyle/calendar, lifestyle/revenue-engagement, lifestyle/attendance-forecast, showrooms/list, standup/today, concierge-v2/outlets, lifestyle/cross-dept-plan all return 200",
+    "TestHealthCheck": "1/1 passed - /api/health returns healthy"
+  },
+  "frontend_tests_summary": {
+    "CommandBarRename": {
+      "status": "PASS",
+      "details": "Search 'Alice' returns 0 suggestions. Search 'Relay' returns 1 suggestion ('Open Relay · Tickets')."
+    },
+    "RelayPanel": {
+      "status": "PASS",
+      "features_verified": [
+        "Panel renders with data-testid='relay-panel'",
+        "Title shows 'Relay · Tickets' and 'Lean Tickets for Every Department'",
+        "KPI tiles: Open, In Progress, Urgent, Resolved 24h",
+        "Queue and + New Ticket tabs functional",
+        "Ticket creation works with RLY- prefix (e.g., RLY-260418-086F)",
+        "Concierge tag '→ CONCIERGE' visible on marked tickets"
+      ]
+    },
+    "PanelRenderSmokeTest": {
+      "status": "PASS",
+      "panels_verified": [
+        "Maestro Dashboard - renders",
+        "Daily Standup · Sailing Yacht - renders",
+        "People & Operations · Admin - renders",
+        "Lifestyle Command - renders",
+        "Local Guide (renamed from FOH Concierge Hub) - renders with full content"
+      ]
+    },
+    "SidebarLabels": {
+      "status": "PASS",
+      "renamed_labels_visible": [
+        "Relay · Tickets (was Alice · Tickets)",
+        "Local Guide (was FOH Concierge Hub)",
+        "Concierge Desk (was Echo Concierge)"
+      ]
+    }
+  },
+  "iter174_specific_verifications": {
+    "alice_to_relay_rename": {
+      "backend": "VERIFIED - All /api/alice/* endpoints return 404. /api/relay/* endpoints work correctly.",
+      "frontend": "VERIFIED - Command bar shows 'Relay' not 'Alice'. Panel title is 'Relay · Tickets'.",
+      "ticket_prefix": "VERIFIED - New tickets get RLY-YYMMDD-XXXX prefix (not ALI-)"
+    },
+    "promotions_endpoint": {
+      "status": "VERIFIED",
+      "details": "POST /api/people/promotion with admin token creates promotion_history entry and updates employee.title"
+    },
+    "ssrf_guard": {
+      "status": "VERIFIED",
+      "blocked_urls": ["localhost", "127.0.0.1", "169.254.169.254"],
+      "allowed_urls": ["public URLs like example.com"]
+    },
+    "standup_autofill_promotions": {
+      "status": "VERIFIED",
+      "details": "people_services section includes '⭐ Promotion anniversaries' line when promotions exist"
+    },
+    "naming_audit_ui_labels": {
+      "status": "VERIFIED",
+      "changes_confirmed": [
+        "Echo Concierge → Concierge Desk",
+        "FOH Concierge Hub → Local Guide",
+        "Alice · Tickets → Relay · Tickets"
+      ]
+    }
+  }
+}

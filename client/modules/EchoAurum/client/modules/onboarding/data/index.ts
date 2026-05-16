@@ -1,0 +1,50 @@
+import type { OnboardingPhaseInput } from "../../../../shared/onboarding";
+export const phases: OnboardingPhaseInput[] = [
+  {
+    id: "phase-discovery",
+    name: "Discovery & Data Wiring",
+    durationDays: 7,
+    objectives: [
+      "Connect LUCCCA PMS and POS exports",
+      "Provision finance SSO groups",
+      "Validate GL 5110/5125 mappings",
+    ],
+    roiBaseline: 0,
+    roiTarget: 12000,
+    metricLabel: "Annualized savings",
+    dependencies: [],
+    glCodes: ["5110", "5125"],
+    zapierWorkflowId: "zapier:workflow:data-ingest",
+  },
+  {
+    id: "phase-automation",
+    name: "Automation & Guardrails",
+    durationDays: 14,
+    objectives: [
+      "Launch Zelda guardrails for AP batch release",
+      "Enable EchoSentinel duplicate vendor detection",
+      "Route PCI card data attestations via Zapier",
+    ],
+    roiBaseline: 12000,
+    roiTarget: 42000,
+    metricLabel: "Annualized savings",
+    dependencies: ["phase-discovery"],
+    glCodes: ["5110", "5125", "5132"],
+    zapierWorkflowId: "zapier:workflow:guardrails",
+  },
+  {
+    id: "phase-analytics",
+    name: "Analytics & ROI Benchmarks",
+    durationDays: 10,
+    objectives: [
+      "Publish ROI scorecards for each property",
+      "Benchmark labor and COGS variance impact",
+      "Hand off KPI dashboards to finance operations",
+    ],
+    roiBaseline: 42000,
+    roiTarget: 62000,
+    metricLabel: "Annualized savings",
+    dependencies: ["phase-automation"],
+    glCodes: ["5110", "5125", "5132"],
+  },
+];

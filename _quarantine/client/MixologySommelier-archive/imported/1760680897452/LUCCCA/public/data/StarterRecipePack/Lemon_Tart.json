@@ -1,0 +1,24 @@
+{
+  "name": "Lemon Tart",
+  "ingredients": [
+    {
+      "name": "Lemon Juice",
+      "qty": 250,
+      "unit": "ml",
+      "yield": "100"
+    },
+    {
+      "name": "Sugar",
+      "qty": 200,
+      "unit": "g",
+      "yield": "100"
+    },
+    {
+      "name": "Butter",
+      "qty": 100,
+      "unit": "g",
+      "yield": "100"
+    }
+  ],
+  "prep": "1. Make tart shell\n2. Cook curd\n3. Fill shell and chill"
+}

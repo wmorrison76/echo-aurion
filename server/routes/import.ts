@@ -1,0 +1,299 @@
+import { Router, Request, Response } from "express";
+import * as fs from "fs";
+import * as path from "path";
+import { detectConnectedFiles, shouldExcludeFile, getFileType } from "../../shared/file-scanner";
+import type { FileEntry } from "../../shared/file-scanner";
+
+const router = Router();
+
+// Ensure import directories exist
+function ensureImportDirs() {
+  const importedDir = path.join(process.cwd(), "client", "imported");
+  const archiveDir = path.join(process.cwd(), "client", "imports-archive");
+
+  if (!fs.existsSync(importedDir)) {
+    fs.mkdirSync(importedDir, { recursive: true });
+  }
+  if (!fs.existsSync(archiveDir)) {
+    fs.mkdirSync(archiveDir, { recursive: true });
+  }
+
+  return { importedDir, archiveDir };
+}
+
+// Analyze uploaded files and determine which ones are connected
+router.post("/analyze", async (req: Request, res: Response) => {
+  try {
+    const { files } = req.body;
+
+    if (!Array.isArray(files) || files.length === 0) {
+      return res.status(400).json({ error: "No files provided" });
+    }
+
+    const fileEntries: FileEntry[] = [];
+    const fileContentMap = new Map<string, string>();
+
+    // Process uploaded files
+    files.forEach(
+      (file: {
+        path: string;
+        content?: string;
+        size: number;
+      }) => {
+        // Skip excluded files
+        if (shouldExcludeFile(file.path)) {
+          return;
+        }
+
+        const entry: FileEntry = {
+          path: file.path,
+          type: getFileType(file.path),
+          size: file.size,
+          dependencies: [],
+          isConnected: false,
+        };
+
+        fileEntries.push(entry);
+
+        if (file.content) {
+          fileContentMap.set(file.path, file.content);
+        }
+      }
+    );
+
+    // Analyze connections
+    const analyzedFiles = detectConnectedFiles(
+      fileEntries,
+      fileContentMap,
+      30
+    );
+
+    const summary = {
+      total: analyzedFiles.length,
+      connected: analyzedFiles.filter((f) => f.isConnected).length,
+      archived: analyzedFiles.filter((f) => !f.isConnected).length,
+      byType: {
+        source: analyzedFiles.filter((f) => f.type === "source").length,
+        config: analyzedFiles.filter((f) => f.type === "config").length,
+        style: analyzedFiles.filter((f) => f.type === "style").length,
+        doc: analyzedFiles.filter((f) => f.type === "doc").length,
+        other: analyzedFiles.filter((f) => f.type === "other").length,
+      },
+      totalSize: analyzedFiles.reduce((sum, f) => sum + f.size, 0),
+      connectedSize: analyzedFiles
+        .filter((f) => f.isConnected)
+        .reduce((sum, f) => sum + f.size, 0),
+    };
+
+    res.json({
+      success: true,
+      files: analyzedFiles,
+      summary,
+    });
+  } catch (error) {
+    console.error("Error analyzing files:", error);
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+// Import selected files
+router.post("/execute", async (req: Request, res: Response) => {
+  try {
+    console.log("Import execute endpoint called");
+    const { files, sessionId, fileContents } = req.body;
+
+    console.log("Files received:", files?.length || 0, "Session ID:", sessionId);
+
+    if (!Array.isArray(files) || files.length === 0) {
+      console.warn("Invalid files array");
+      return res.status(400).json({ error: "No files to import" });
+    }
+
+    if (!sessionId) {
+      console.warn("Missing session ID");
+      return res.status(400).json({ error: "Session ID required" });
+    }
+
+    const { importedDir } = ensureImportDirs();
+    const sessionDir = path.join(importedDir, sessionId);
+
+    // Create session directory
+    if (!fs.existsSync(sessionDir)) {
+      fs.mkdirSync(sessionDir, { recursive: true });
+    }
+
+    const importedFiles: string[] = [];
+    const failedFiles: string[] = [];
+    let totalSize = 0;
+
+    // Copy files to imported directory
+    for (const file of files) {
+      try {
+        const targetPath = path.join(sessionDir, file.path);
+        const targetDir = path.dirname(targetPath);
+
+        // Ensure target directory exists
+        if (!fs.existsSync(targetDir)) {
+          fs.mkdirSync(targetDir, { recursive: true });
+        }
+
+        // Write file content
+        if (fileContents && fileContents[file.path]) {
+          fs.writeFileSync(targetPath, fileContents[file.path], "utf8");
+          importedFiles.push(file.path);
+          totalSize += file.size;
+          console.log(`Copied: ${file.path}`);
+        } else {
+          failedFiles.push(file.path);
+          console.warn(`No content for: ${file.path}`);
+        }
+      } catch (err) {
+        failedFiles.push(file.path);
+        console.error(`Failed to copy ${file.path}:`, err);
+      }
+    }
+
+    // Store import metadata
+    const importSession = {
+      id: sessionId,
+      timestamp: new Date().toISOString(),
+      filesImported: importedFiles.length,
+      filesFailed: failedFiles.length,
+      totalSize,
+      files: importedFiles.map((filePath) => {
+        const file = files.find((f: FileEntry) => f.path === filePath);
+        return {
+          path: filePath,
+          type: file?.type,
+          size: file?.size,
+        };
+      }),
+    };
+
+    // Save import manifest
+    const manifestPath = path.join(sessionDir, ".import-manifest.json");
+    fs.writeFileSync(manifestPath, JSON.stringify(importSession, null, 2), "utf8");
+
+    console.log("Import successful, returning response");
+    res.json({
+      success: true,
+      session: importSession,
+      message: `Successfully imported ${importedFiles.length} files${failedFiles.length > 0 ? ` (${failedFiles.length} failed)` : ""}`,
+      importedDir: sessionDir,
+    });
+  } catch (error) {
+    console.error("Error executing import:", error);
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Unknown error",
+      details: error instanceof Error ? error.stack : undefined,
+    });
+  }
+});
+
+// Get import session history
+router.get("/sessions", async (_req: Request, res: Response) => {
+  try {
+    // This would retrieve import history from database/storage
+    const sessions = [];
+
+    res.json({
+      success: true,
+      sessions,
+    });
+  } catch (error) {
+    console.error("Error retrieving sessions:", error);
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+// Create archive of unimported files
+router.post("/archive", async (req: Request, res: Response) => {
+  try {
+    const { files, sessionId, fileContents } = req.body;
+
+    if (!Array.isArray(files) || files.length === 0) {
+      return res.status(200).json({
+        success: true,
+        archive: null,
+        message: "No files to archive",
+      });
+    }
+
+    const { archiveDir } = ensureImportDirs();
+    const archiveName = `archive-${sessionId}-${Date.now()}.tar.gz`;
+    const archivePath = path.join(archiveDir, archiveName);
+
+    // Create temporary directory for archive contents
+    const tempDir = path.join(archiveDir, `temp-${sessionId}`);
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true });
+    }
+
+    let totalSize = 0;
+
+    // Copy files to temp directory
+    for (const file of files) {
+      try {
+        const targetPath = path.join(tempDir, file.path);
+        const targetDir = path.dirname(targetPath);
+
+        if (!fs.existsSync(targetDir)) {
+          fs.mkdirSync(targetDir, { recursive: true });
+        }
+
+        if (fileContents && fileContents[file.path]) {
+          fs.writeFileSync(targetPath, fileContents[file.path], "utf8");
+          totalSize += file.size;
+        }
+      } catch (err) {
+        console.error(`Failed to prepare file for archive ${file.path}:`, err);
+      }
+    }
+
+    // Archive created in temp directory structure
+    // Files are stored at: /api/import/archive/{sessionId}/
+    console.log(`Archive created at: ${archiveName}`);
+
+    // Clean up temp directory
+    try {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    } catch (cleanupErr) {
+      console.warn("Failed to cleanup temp directory:", cleanupErr);
+    }
+
+    const archiveData = {
+      sessionId,
+      timestamp: new Date().toISOString(),
+      fileCount: files.length,
+      totalSize,
+      archiveName,
+      downloadUrl: `/archives/${archiveName}`,
+      files: files.map((f: FileEntry) => ({
+        path: f.path,
+        type: f.type,
+        size: f.size,
+      })),
+    };
+
+    // Save archive manifest
+    const manifestPath = path.join(archiveDir, `.archive-${sessionId}.json`);
+    fs.writeFileSync(manifestPath, JSON.stringify(archiveData, null, 2), "utf8");
+
+    res.json({
+      success: true,
+      archive: archiveData,
+      message: `Created archive with ${files.length} files`,
+    });
+  } catch (error) {
+    console.error("Error creating archive:", error);
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+export default router;

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "ingredient-romaine",
+    "name": "Romaine Hearts",
+    "spec": "24 ct",
+    "baseUom": "each",
+    "yieldPct": 0.94,
+    "currentCostPerBaseUom": 1.35,
+    "preferredVendorItemId": "item-romaine-pacific"
+  },
+  {
+    "id": "ingredient-tomato-roma",
+    "name": "Roma Tomatoes",
+    "spec": "25 lb case",
+    "baseUom": "lb",
+    "yieldPct": 0.92,
+    "currentCostPerBaseUom": 1.14,
+    "preferredVendorItemId": "item-tomato-pacific"
+  },
+  {
+    "id": "ingredient-basil",
+    "name": "Fresh Basil",
+    "spec": "Clamshell",
+    "baseUom": "lb",
+    "yieldPct": 0.8,
+    "currentCostPerBaseUom": 16.75,
+    "preferredVendorItemId": "item-basil-pacific"
+  },
+  {
+    "id": "ingredient-avocado",
+    "name": "Hass Avocado",
+    "spec": "48 ct",
+    "baseUom": "each",
+    "yieldPct": 0.78,
+    "currentCostPerBaseUom": 1.12,
+    "preferredVendorItemId": "item-avocado-pacific"
+  },
+  {
+    "id": "ingredient-sourdough",
+    "name": "Sourdough Bread",
+    "spec": "Artisan loaf",
+    "baseUom": "each",
+    "yieldPct": 0.95,
+    "currentCostPerBaseUom": 3.7,
+    "preferredVendorItemId": "item-sourdough-pacific"
+  },
+  {
+    "id": "ingredient-cheddar",
+    "name": "Sharp Cheddar",
+    "spec": "5 lb loaf",
+    "baseUom": "lb",
+    "yieldPct": 0.98,
+    "currentCostPerBaseUom": 4.25,
+    "preferredVendorItemId": "item-cheddar-harvest"
+  },
+  {
+    "id": "ingredient-butter",
+    "name": "Unsalted Butter",
+    "spec": "1 lb quarters",
+    "baseUom": "lb",
+    "yieldPct": 1,
+    "currentCostPerBaseUom": 3.6,
+    "preferredVendorItemId": "item-butter-harvest"
+  },
+  {
+    "id": "ingredient-milk",
+    "name": "Whole Milk",
+    "spec": "Gallon",
+    "baseUom": "gal",
+    "yieldPct": 1,
+    "currentCostPerBaseUom": 3.25,
+    "preferredVendorItemId": "item-milk-harvest"
+  },
+  {
+    "id": "ingredient-mozzarella",
+    "name": "Fresh Mozzarella",
+    "spec": "Ball",
+    "baseUom": "lb",
+    "yieldPct": 0.97,
+    "currentCostPerBaseUom": 6.3,
+    "preferredVendorItemId": "item-mozzarella-harvest"
+  },
+  {
+    "id": "ingredient-parmesan",
+    "name": "Parmesan Cheese",
+    "spec": "Shredded",
+    "baseUom": "lb",
+    "yieldPct": 0.98,
+    "currentCostPerBaseUom": 6.9,
+    "preferredVendorItemId": "item-parmesan-harvest"
+  },
+  {
+    "id": "ingredient-linguine",
+    "name": "Dry Linguine",
+    "spec": "20 lb case",
+    "baseUom": "lb",
+    "yieldPct": 1,
+    "currentCostPerBaseUom": 1.35,
+    "preferredVendorItemId": "item-linguine-harvest"
+  },
+  {
+    "id": "ingredient-salmon",
+    "name": "Atlantic Salmon",
+    "spec": "Fillet",
+    "baseUom": "lb",
+    "yieldPct": 0.9,
+    "currentCostPerBaseUom": 9.8,
+    "preferredVendorItemId": "item-salmon-freshseas"
+  },
+  {
+    "id": "ingredient-shrimp",
+    "name": "16/20 Shrimp",
+    "spec": "Peeled & deveined",
+    "baseUom": "lb",
+    "yieldPct": 0.85,
+    "currentCostPerBaseUom": 14.9,
+    "preferredVendorItemId": "item-shrimp-freshseas"
+  },
+  {
+    "id": "ingredient-lobster",
+    "name": "Lobster Tail",
+    "spec": "10 ct",
+    "baseUom": "each",
+    "yieldPct": 0.85,
+    "currentCostPerBaseUom": 21,
+    "preferredVendorItemId": "item-lobster-freshseas"
+  }
+]

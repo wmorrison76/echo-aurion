@@ -1,0 +1,65 @@
+{
+  "summary": "iter256 avatar bug fixes verified - All 12 backend tests pass, frontend profile switching and avatar display working correctly. William's three reported issues are fixed: (1) Avatar pill now positioned at top:80px below OVERDUE banner, (2) Profile dropdown shows real avatar photos from Builder.io CDN, (3) Director profile is visible and clickable with correct id/user_id fields.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter256_avatar_profiles.py",
+    "/app/test_reports/pytest/pytest_results_iter256.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Backend /profiles endpoint correctly returns both 'id' and 'user_id' fields for each profile",
+    "Picture field rotation (Echo_B/F/M/R) working correctly - director_user gets Echo_B",
+    "Profiles sorted correctly: admin at index 0, director at index 1",
+    "switch-profile endpoint has fallback lookup for user_id field (line 403-404)",
+    "Frontend UserAvatarMenu.tsx correctly positioned at top:80px to clear OVERDUE banner",
+    "Profile dropdown renders real avatar images from Builder.io CDN, not just initials"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter256_avatar_profiles.py"
+  ],
+  "success_rate": {
+    "backend": "100% (12/12 tests passed)",
+    "frontend": "100% (all avatar and profile switching features working)"
+  },
+  "test_credentials": "devAuth=1 query param for dev mode access",
+  "seed_data_creation": "None - using existing seeded auth_users",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter256 fixed William's avatar bug. Key fixes: (1) /profiles returns both id and user_id fields, (2) Avatar pill at top:80px clears OVERDUE banner, (3) Profile dropdown shows real Echo avatar photos. All 14 profiles visible in dropdown with Builder.io CDN images.",
+  "verified_features": {
+    "backend": [
+      "GET /api/auth/jwt/profiles returns 14 cleaned rows (test users filtered)",
+      "Each profile row has BOTH id and user_id fields",
+      "Each profile has picture field set to Echo_B/F/M/R",
+      "director_user has id='director_user', name='William Reyes', role='director', picture='Echo_B'",
+      "Profiles sorted: admin at index 0, director at index 1",
+      "POST /api/auth/jwt/switch-profile?devAuth=1 with user_id='director_user' returns role='director'",
+      "switch-profile fallback lookup works for user_id field",
+      "GET /api/auth/jwt/me?devAuth=1 with X-Dev-User-Id: director_user returns role='director'",
+      "GET /api/auth/jwt/me?devAuth=1 (no header) returns admin (default)"
+    ],
+    "frontend": [
+      "Avatar pill renders at fixed position top:80px right:16px (BELOW OVERDUE banner)",
+      "topbar-avatar-img present with Builder.io CDN URL (Echo avatar)",
+      "Avatar dropdown opens with 14 profile buttons",
+      "switch-profile-director_user button visible and clickable",
+      "switch-profile-img-director_user image present with Builder.io CDN URL",
+      "All 14 profiles visible: admin, director_user, general_manager_user, executive_chef_user, pastry_chef_user, fb_director_user, controller_user, sous_chef_user, spa_manager_user, dining_room_manager_user, dir_engineering_user, purchasing_manager_user, events_manager_user, demo-hourly-001",
+      "Profile switch to director_user → avatar pill shows 'William Reyes DIRECTOR'",
+      "Approval banner renders with readable contrast",
+      "Oracle dashboard in Purchasing & Receiving renders with KPI tiles (Total Spend, Open Approvals, Active Vendors, Tracked SKUs)"
+    ]
+  },
+  "mocked_apis": {
+    "has_mocked_apis": true,
+    "mocked_apis_list": ["Twilio SMS", "Resend email", "Firebase push"]
+  }
+}

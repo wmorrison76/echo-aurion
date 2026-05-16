@@ -1,0 +1,7 @@
+Invoice Number,Vendor,Date,Item,Quantity,Unit Price,Total
+INV-2026-001,Sysco Foods,2026-04-01,Chicken Breast,200,4.25,850.00
+INV-2026-001,Sysco Foods,2026-04-01,Atlantic Salmon,100,12.50,1250.00
+INV-2026-001,Sysco Foods,2026-04-01,Organic Mixed Greens,50,3.75,187.50
+INV-2026-001,Sysco Foods,2026-04-01,Arborio Rice,25,2.10,52.50
+INV-2026-001,Sysco Foods,2026-04-01,Heavy Cream,40,5.60,224.00
+,,,,,Total:,2564.00

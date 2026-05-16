@@ -1,0 +1,6 @@
+{
+  "round": [4, 6, 8, 10, 12, 14],
+  "square": [6, 8, 10, 12],
+  "sheet": ["quarter", "half", "full"],
+  "heights": [2, 4, 6]
+}

@@ -1,0 +1,111 @@
+{
+  "summary": "iter253 testing complete. 20/20 backend tests pass. All frontend components verified: Invoice ingest with 3 William-uploaded invoices (Cusanos $91.15, Halperns $88.40, Mr Greens $2950.64), vendor SKU lookup (butter→Plugra $130, avocado→Hass, chicken breast), notification preferences modal with event×channel grid, save-the-ticket AI remediation, tonight's playbook 4pm push, approval banner with expand drawer showing INVOICE DETAIL + INVOICE DOCUMENT sections, avatar dropdown with size controls and profile switcher.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter253_invoice_notif_recovery.py",
+    "/app/test_reports/pytest/pytest_results_iter253.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Invoice ingest correctly seeds 3 William-uploaded invoices with proper totals and line items",
+    "Vendor SKU lookup uses fuzzy token-overlap scoring on _search field for recipe ingredient matching",
+    "Notification prefs correctly implements CDC's cascade rule: po_received for executive-chef cascades to sous-chef",
+    "Save-the-ticket endpoint uses Claude AI (with fallback) to draft comp + amenity recommendations",
+    "Tonight's playbook fans out to all salaried roles via notification preferences",
+    "Approval banner has readable contrast (white text on dark gold gradient header)",
+    "Approval row expand button ('+') opens inline drawer with INVOICE DETAIL and INVOICE DOCUMENT sections",
+    "Avatar dropdown includes size controls (avatar-size-down/up) that persist to localStorage",
+    "Notification prefs modal shows full event×channel grid with checkboxes",
+    "Topbar cleanup: Language picker removed (now in System Settings only), only Settings gear remains",
+    "Sidebar Hotel Operations group contains outlook-mail, gmail, ms-teams, whiteboard items"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter253_invoice_notif_recovery.py"
+  ],
+  "success_rate": {
+    "backend": "100% (20/20 tests passed)",
+    "frontend": "100%"
+  },
+  "test_credentials": "Admin: admin@luccca.com / LuccaaAdmin2026! ; devAuth=1 query param for bypass",
+  "seed_data_creation": "Backend seeds 3 William-uploaded invoices at startup: Cusanos Italian Bakery (inv-6243401, $91.15, 4 lines), Halperns (inv-12118378, $88.40, 1 line), Mr Greens (inv-NC9994, $2950.64, 27 lines). Each creates approval request routed per hierarchy.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter253 fully tested: (1) /api/invoices returns 3 seeded invoices with correct totals. (2) /api/invoices/{id} returns full doc with pdf_filename and lines array. (3) /api/invoices/file/{name} serves PDFs with application/pdf content-type. (4) /api/vendor-skus/lookup fuzzy-matches ingredients (butter→Plugra $130, avocado→Hass, chicken breast→Halperns). (5) /api/approvals/banner?for_user=sous_chef_user returns Cusanos+Halperns (from demo-hourly-001 staff). (6) /api/approvals/banner?for_user=executive_chef_user returns Mr Greens (sous-chef requested, exceeds $2k limit). (7) /api/notif-prefs/{user_id} returns prefs with event_keys and channel_keys. (8) CDC's po_received=['in_app','text'] cascades to sous-chef. (9) /api/notif-prefs/fire fans out with cascade rules. (10) /api/service-recovery/save-the-ticket creates AI draft with status=pending_gm_approval. (11) /api/playbook/run generates narrative and delivers to salaried roles. (12) Frontend: approval-banner shows 'N APPROVAL(S) NEEDED' with readable contrast. (13) Expand '+' button opens drawer with INVOICE DETAIL + INVOICE DOCUMENT sections. (14) Avatar dropdown has size controls (avatar-size-down/up) persisting to localStorage. (15) Notification prefs modal shows event×channel checkbox grid. (16) Topbar: Language picker removed, only Settings gear remains. (17) Sidebar Hotel Operations has outlook-mail, gmail, ms-teams, whiteboard.",
+  "test_results": {
+    "backend_invoice_ingest": {
+      "list_invoices_3_seeded": "PASS - Returns 3+ invoices including Cusanos, Halperns, Mr Greens",
+      "cusanos_details": "PASS - $91.15 total, 4 lines, pdf_filename=cusanos_6243401.pdf",
+      "halperns_details": "PASS - $88.40 total",
+      "mrgreens_details": "PASS - $2950.64 total",
+      "pdf_cusanos": "PASS - 200 with application/pdf",
+      "pdf_mrgreens": "PASS - 200 with application/pdf"
+    },
+    "backend_vendor_sku_lookup": {
+      "lookup_butter": "PASS - Returns Plugra with ~$130 price",
+      "lookup_avocado": "PASS - Returns Avocado Hass",
+      "lookup_chicken_breast": "PASS - Returns Halperns chicken"
+    },
+    "backend_approvals_banner": {
+      "banner_sous_chef": "PASS - Returns pending for sous-chef",
+      "banner_exec_chef": "PASS - Returns pending for exec-chef"
+    },
+    "backend_notif_prefs": {
+      "get_prefs_exec_chef": "PASS - po_received=['in_app','text']",
+      "get_prefs_sous_chef": "PASS - po_received=['in_app','text'] (cascaded)",
+      "update_prefs": "PASS - PUT updates, GET reflects",
+      "fire_event_cascade": "PASS - fanout_count > 0"
+    },
+    "backend_service_recovery": {
+      "save_the_ticket": "PASS - Returns ai_draft, status=pending_gm_approval",
+      "list_tickets": "PASS - Returns rows with count"
+    },
+    "backend_playbook": {
+      "run_playbook": "PASS - Returns narrative and delivered_to array",
+      "get_today": "PASS - Returns playbook for today"
+    },
+    "backend_approval_actions": {
+      "approve_as_exec_chef": "PASS - Approval action works"
+    },
+    "frontend_approval_banner": {
+      "banner_visible": "PASS - approval-banner found",
+      "banner_text_readable": "PASS - 'N APPROVAL(S) NEEDED' visible with good contrast",
+      "expand_button": "PASS - approval-row-expand buttons found",
+      "drawer_opens": "PASS - approval-row-drawer opens on expand",
+      "invoice_detail_section": "PASS - 'INVOICE DETAIL' section in drawer",
+      "invoice_document_section": "PASS - 'INVOICE DOCUMENT' section in drawer",
+      "approve_reject_buttons": "PASS - approval-banner-approve and reject buttons found"
+    },
+    "frontend_avatar_dropdown": {
+      "dropdown_opens": "PASS - avatar-dropdown opens on click",
+      "size_controls": "PASS - avatar-size-down and avatar-size-up found",
+      "size_persists": "PASS - Size change persists to localStorage",
+      "notif_prefs_button": "PASS - open-notif-prefs button found"
+    },
+    "frontend_notif_prefs_modal": {
+      "modal_opens": "PASS - notif-prefs-modal opens",
+      "checkbox_grid": "PASS - 51 preference checkboxes found",
+      "save_button": "PASS - prefs-save button found"
+    },
+    "frontend_topbar": {
+      "avatar_img": "PASS - topbar-avatar-img found (not initials)",
+      "briefing_btn": "PASS - topbar-briefing-btn found",
+      "notif_btn": "PASS - topbar-notif-btn found",
+      "settings_btn": "PASS - topbar-settings-btn found",
+      "review_pill": "PASS - topbar-review-pill found when pending approvals"
+    },
+    "frontend_sidebar": {
+      "hotel_ops_group": "PASS - sidebar-group-hotel_ops found"
+    }
+  },
+  "mocked_apis": {
+    "note": "Twilio SMS, Resend Email, Firebase Push are MOCKED - notification_outbox stores deliveries in MongoDB without actually sending. Claude Sonnet calls use real Emergent LLM key."
+  }
+}

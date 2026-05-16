@@ -1,0 +1,247 @@
+# Brigade Team Registry
+# The roster. Each team is a discrete unit of work with a station, a mission, a deadline, a status.
+#
+# This is the active operational ledger. Update it as work progresses.
+# The Maestro maintains this file. Chefs de partie do not edit it directly.
+
+brigade: EchoAurion
+hat: black-with-gold-victorian-oval-and-swish
+toque: classical-101-folds
+standard: V&A — earned, hand-stitched, gold lettering on black
+
+teams:
+
+  # ─────────────────────────────────────────────────────────
+  # ECHO RESONANCE PLATFORM — Phases 1-6
+  # ─────────────────────────────────────────────────────────
+
+  - id: 1
+    name: Resonance MVP — Foundation
+    phase: 1
+    primary_station: saucier
+    supporting_stations: [poissonier, the_sous]
+    mission: |
+      Schema, signals, types, retention. The foundation everything stands on.
+    files:
+      - migrations/echo_resonance/0001_resonance_readings.sql
+      - migrations/echo_resonance/0002_resonance_trajectories.sql
+      - migrations/echo_resonance/0003_interventions_library.sql
+      - migrations/echo_resonance/0004_interventions_executed.sql
+      - migrations/echo_resonance/0005_signals.sql
+      - shared/types/resonance/*
+      - shared/types/signals/*
+      - server/services/signals/*
+    status: queued
+    deadline: TBD
+
+  - id: 2
+    name: Resonance MVP — Backend
+    phase: 1
+    primary_station: poissonier
+    supporting_stations: [garde_manger]
+    mission: |
+      Score math, trajectory math, intervention library, forecast engine.
+      Resonance engine and Echo-Fast S1 classifier.
+    files:
+      - server/services/echo-ai3/resonance/*
+      - server/services/echo-ai3/orchestrator/*
+      - server/routes/resonance.ts
+      - server/routes/signals.ts
+    depends_on: [1]
+    status: queued
+    deadline: TBD
+
+  - id: 3
+    name: Resonance MVP — Frontend
+    phase: 1
+    primary_station: entremetier
+    supporting_stations: [demi]
+    mission: |
+      Whisper widget. Trajectory dashboard. Sparkline tiles. Intervention card.
+      The screens GMs use during shift.
+    files:
+      - client/lib/resonance/*
+      - client/components/resonance/*
+      - client/modules/EchoResonance/*
+    depends_on: [2]
+    status: queued
+    deadline: TBD
+
+  - id: 4
+    name: Voyage Foundations — Backend
+    phase: 2
+    primary_station: demi
+    supporting_stations: [saucier, poissonier]
+    mission: |
+      Trip engine, brief engine, plan engine, gap finder, suggestion ranker,
+      affinity engine, unconverted-ask tracker, map engine.
+    files:
+      - migrations/echo_resonance/0009_trips.sql
+      - migrations/echo_resonance/0010_trip_briefs.sql
+      - migrations/echo_resonance/0011_trip_blocks.sql
+      - server/services/echo-ai3/voyage/*
+      - server/services/echo-ai3/aurion/brief-composer.ts
+      - server/routes/voyage.ts
+    depends_on: [1, 2]
+    status: queued
+    deadline: TBD
+
+  - id: 5
+    name: Voyage Foundations — Frontend
+    phase: 2
+    primary_station: entremetier
+    supporting_stations: [demi]
+    mission: |
+      Trip Brief card, Living Plan timeline, block card, suggested filler,
+      map view, Add-to-Itinerary button.
+    files:
+      - client/lib/voyage/*
+      - client/components/voyage/*
+      - client/modules/EchoVoyage/*
+    depends_on: [4]
+    status: queued
+    deadline: TBD
+
+  - id: 6
+    name: Aurion Voice — End to End
+    phase: 3
+    primary_station: rotisseur
+    supporting_stations: [the_sous, entremetier]
+    mission: |
+      Speech-to-speech bridge, prosody analyzer, session manager, conversation memory,
+      pre-arrival orchestrator, in-room orchestrator, the four privacy controls.
+    files:
+      - migrations/echo_resonance/0006_voice_sessions.sql
+      - migrations/echo_resonance/0007_prosody_readings.sql
+      - migrations/echo_resonance/0016_trust_scores.sql
+      - server/services/echo-ai3/aurion/*
+      - server/services/trust/*
+      - server/routes/aurion.ts
+      - server/routes/trust.ts
+      - client/lib/aurion/*
+      - client/components/aurion/*
+      - client/components/trust/*
+      - client/modules/EchoAurion/*
+    depends_on: [1, 2]
+    status: queued
+    deadline: TBD
+
+  # Phases 4, 5, 6 — drafted but not yet broken into team-level work
+  # The pass will dispatch these as the platform matures.
+
+  # ─────────────────────────────────────────────────────────
+  # INHERITED FROM PRIOR LIGHTSPEED ARCHIVE
+  # The 28-team registry from the prior lightspeed coding sessions.
+  # Most details lost across session boundaries. Listed here as
+  # placeholders for reconstruction over time.
+  # ─────────────────────────────────────────────────────────
+
+  - id: legacy_1_to_21
+    name: Lightspeed Teams 1-21
+    status: NEEDS_RECONSTRUCTION
+    note: |
+      Teams 1-21 were completed and delivered as .tar archives in the
+      original lightspeed coding sessions. Detailed scope per team is
+      lost across session boundaries. Reconstruction depends on
+      operator memory and any retrievable archive snapshots.
+
+  - id: legacy_22
+    name: Lightspeed Team 22
+    status: NEEDS_RECONSTRUCTION
+    note: |
+      Team 22 was queued and ready to begin full code production
+      after Teams 1-21 were complete. Mission scope unknown without
+      reconstruction.
+
+  - id: legacy_28
+    name: Lightspeed Team 28 — Final development build before largest LUCCCA module install
+    status: NEEDS_RECONSTRUCTION
+    note: |
+      Intended as the final development build before the largest
+      LUCCCA module install. Specific files and mission scope to be
+      reconstructed from operator notes.
+
+  # ─────────────────────────────────────────────────────────
+  # ECHO ENHANCEMENT INITIATIVES — recovered from prior archive
+  # These are remembered as components of the broader EchoAurion vision.
+  # Each needs to be cross-referenced with the current scaffolding to
+  # determine: (a) is this the same as a current scaffold component
+  # under a different name, (b) is it a separate component still to
+  # be designed, or (c) is it an aspirational future enhancement.
+  # ─────────────────────────────────────────────────────────
+
+  - id: enhancement_auto_dev_mode
+    name: Auto-Dev Mode
+    status: NEEDS_CROSS_REFERENCE
+    note: Possibly related to the Maestro role itself. Confirm with operator.
+
+  - id: enhancement_echo_voice_sdk
+    name: Echo Voice SDK
+    status: NEEDS_CROSS_REFERENCE
+    note: |
+      Likely the same as the current Aurion voice layer. If so, this
+      registry entry should be retired and the work tracked under
+      team_id 6.
+
+  - id: enhancement_self_deploy_cli
+    name: Self-Deploy CLI
+    status: NEEDS_CROSS_REFERENCE
+
+  - id: enhancement_antcolony_3d_map
+    name: AntColony 3D Map
+    status: NEEDS_CROSS_REFERENCE
+
+  - id: enhancement_red_phoenix_recovery
+    name: Red Phoenix Recovery
+    status: NEEDS_CROSS_REFERENCE
+    note: |
+      Recovery system. May be related to seeds/phoenix/phoenix.manifest.yaml
+      from the prior archive. Definition needed.
+
+  - id: enhancement_collab_coder_mode
+    name: Collab Coder Mode
+    status: NEEDS_CROSS_REFERENCE
+
+  - id: enhancement_memory_capsule
+    name: Memory Capsule
+    status: NEEDS_CROSS_REFERENCE
+    note: Possibly related to Aurion ConversationMemory. Confirm.
+
+  - id: enhancement_ai_aware_roadmap
+    name: AI-Aware Roadmap
+    status: NEEDS_CROSS_REFERENCE
+
+  - id: enhancement_echobuilder_shell
+    name: EchoBuilderShell
+    status: NEEDS_CROSS_REFERENCE
+
+  - id: enhancement_zaro
+    name: ZARO
+    status: NEEDS_CROSS_REFERENCE
+    note: Definition needed. Possibly security or identity-related.
+
+  - id: enhancement_safepatch_cli
+    name: SafePatch CLI
+    status: NEEDS_CROSS_REFERENCE
+
+  - id: enhancement_guardian_secure_uids
+    name: Guardian Secure UIDs
+    status: NEEDS_CROSS_REFERENCE
+    note: Identity layer. May overlap with existing trust spine.
+
+  - id: enhancement_echo_whisper_mode
+    name: Echo Whisper Mode
+    status: NEEDS_CROSS_REFERENCE
+    note: Likely the same as the current staff-whisper feature. Confirm.
+
+# ─────────────────────────────────────────────────────────────────────
+# Status legend
+# ─────────────────────────────────────────────────────────────────────
+#   queued                — ticket dispatched, work not yet begun
+#   in-prep               — chef is in prep apron, foundations being laid
+#   firing                — work is actively being implemented
+#   at-pass               — work returned to pass for review
+#   sent-back             — pass returned with notes; chef is reworking
+#   fired-through         — merged to main, complete for this batch
+#   NEEDS_RECONSTRUCTION  — historical work, scope not currently known
+#   NEEDS_CROSS_REFERENCE — possibly already covered by current scaffolding

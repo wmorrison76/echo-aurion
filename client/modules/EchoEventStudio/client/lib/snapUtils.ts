@@ -1,0 +1,14 @@
+import type { Database } from"../types/database"; type LayoutItem = Database["public"]["Tables"]["layout_items"]["Row"]; export interface SnapOptions { gridSize?: number; // in feet enabled?: boolean;
+} export interface CollisionRect { x: number; y: number; width: number; height: number;
+} export function snapValue(value: number, gridSize: number): number { return Math.round(value / gridSize) * gridSize;
+} export function snapPosition( x: number, y: number, gridSize: number = 0.5
+): { x: number; y: number } { return { x: snapValue(x, gridSize), y: snapValue(y, gridSize), };
+} export function getItemBounds(item: LayoutItem): CollisionRect { return { x: item.x_ft, y: item.y_ft, width: item.width_ft || 3, height: item.depth_ft || 3, };
+} export function rectsIntersect(rect1: CollisionRect, rect2: CollisionRect): boolean { return !( rect1.x + rect1.width < rect2.x || rect2.x + rect2.width < rect1.x || rect1.y + rect1.height < rect2.y || rect2.y + rect2.height < rect1.y );
+} export function checkCollisions( item: LayoutItem, allItems: LayoutItem[], newX?: number, newY?: number
+): boolean { const testRect: CollisionRect = { x: newX !== undefined ? newX : item.x_ft, y: newY !== undefined ? newY : item.y_ft, width: item.width_ft || 3, height: item.depth_ft || 3, }; return allItems.some((other) => { if (other.id === item.id) return false; const otherRect = getItemBounds(other); return rectsIntersect(testRect, otherRect); });
+} export function findSnapPoints( item: LayoutItem, allItems: LayoutItem[], threshold: number = 0.3
+): { x?: number; y?: number } { const bounds = getItemBounds(item); const snapPoints = { x: undefined as number | undefined, y: undefined as number | undefined }; for (const other of allItems) { if (other.id === item.id) continue; const otherBounds = getItemBounds(other); // Snap to left edge const leftDist = Math.abs(bounds.x - (otherBounds.x + otherBounds.width)); if (leftDist < threshold) { snapPoints.x = otherBounds.x + otherBounds.width; } // Snap to right edge const rightDist = Math.abs(bounds.x + bounds.width - otherBounds.x); if (rightDist < threshold) { snapPoints.x = otherBounds.x - bounds.width; } // Snap to top edge const topDist = Math.abs(bounds.y - (otherBounds.y + otherBounds.height)); if (topDist < threshold) { snapPoints.y = otherBounds.y + otherBounds.height; } // Snap to bottom edge const bottomDist = Math.abs(bounds.y + bounds.height - otherBounds.y); if (bottomDist < threshold) { snapPoints.y = otherBounds.y - bounds.height; } } return snapPoints;
+} export function constrainToRoom( item: LayoutItem, roomWidth: number, roomDepth: number, x?: number, y?: number
+): { x: number; y: number } { const posX = x !== undefined ? x : item.x_ft; const posY = y !== undefined ? y : item.y_ft; const width = item.width_ft || 3; const depth = item.depth_ft || 3; return { x: Math.max(0, Math.min(posX, roomWidth - width)), y: Math.max(0, Math.min(posY, roomDepth - depth)), };
+}

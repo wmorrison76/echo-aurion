@@ -1,0 +1,110 @@
+{
+  "summary": "iter191 comprehensive testing complete. All 18 backend tests passed (100%). Frontend fully verified: /m/staff/:token mobile shell works with role-gated rendering (GENERAL shows basic tiles, SALARY shows KPI command centre + admin palette entries). Role Assigner backend endpoints working. All regressions passed (Guest Concierge auto-auth, /m/briefing, Panel Host root).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "StaffMobile tab bar",
+        "issue": "Echo command launcher button (data-testid='echo-cmd-launcher') overlays the bottom tab bar, intercepting clicks. Workaround: use JavaScript click or force=True",
+        "selector": "[data-testid='echo-cmd-launcher']",
+        "priority": "LOW"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter191_staff_mobile_role_assigner.py",
+    "/app/test_reports/pytest/pytest_results_iter191.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "GET /api/staff-mobile/employees correctly returns union of employees + active briefing tokens, deduped by email/name key",
+    "POST /api/staff-mobile/employees/role validates role ∈ {general, salary, manager, owner}, returns 400 for invalid roles",
+    "Role assignment creates stub employee record if not exists (source='role_assigner_stub')",
+    "GET /api/staff-mobile/me capability flags correctly change when role is updated (tested general→salary→manager promotion)",
+    "StaffMobile component correctly gates UI based on capability flags (is_salary, can_view_dashboard, can_approve_pto, etc.)",
+    "Command palette shows admin entries only for salary+ roles (palette-dashboard, palette-standup-edit, palette-briefing-admin, palette-pto-queue)",
+    "Concierge and Briefing tabs render iframes to /m/concierge/:token and /m/briefing/:token respectively"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter191_staff_mobile_role_assigner.py"
+  ],
+  "success_rate": {
+    "backend": "100% (18/18 tests passed)",
+    "frontend": "100% (all flows verified)"
+  },
+  "test_credentials": {
+    "admin_token": "TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o",
+    "general_role_token": "2cIdo3E3dgQEsGEUL1_-dV45 (test.general.frontend@luccca.com)",
+    "salary_role_token": "8ykFJF4zqQiYACvXY0O2nRz6 (priya.p@luccca.com)",
+    "guest_credentials": "room=1208, last=Reed (William Reed, anniversary, diamond)"
+  },
+  "seed_data_creation": "Created test tokens for general and salary roles, promoted priya.p@luccca.com to salary role",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter191 fully tested. Features: (1) GET /api/staff-mobile/employees (admin) returns {ok, total, employees, roles} - union of employees collection + active briefing_mobile_tokens, deduped; (2) POST /api/staff-mobile/employees/role (admin) assigns role, validates role ∈ {general, salary, manager, owner}, creates stub if employee doesn't exist; (3) GET /api/staff-mobile/me capability flags change correctly when role updated - tested general→salary→manager promotion chain; (4) /m/staff/:token route renders StaffMobile component with data-testid='staff-mobile-root', role pill (staff-role-pill), 5-tab bottom nav (tab-home, tab-schedule, tab-concierge, tab-briefing, tab-more); (5) Home tab: general role shows quick tiles (home-pto, home-benefits, home-briefing, home-concierge), salary+ shows KPI command centre (On property, Arrivals, VIP, Alerts) + Admin quick section; (6) Schedule tab: PTO form with pto-start, pto-end, pto-kind, pto-reason, pto-submit, pto-flash, pto-row-{id}, pto-cancel-{id}; (7) More tab: benefits-list with 8 benefit items, Admin tools section only for salary+ (admin-dashboard, admin-briefing-edit, admin-mint-tokens, admin-pto-approve, admin-hiring); (8) Command palette: home-palette-btn opens command-palette with palette-input, basic entries (palette-home, palette-schedule, palette-concierge, palette-briefing, palette-benefits), admin entries for salary+ (palette-dashboard, palette-standup-edit, palette-briefing-admin, palette-pto-queue); (9) Concierge/Briefing tabs render iframes to /m/concierge/:token and /m/briefing/:token; (10) Daily Briefing Admin shows both /m/briefing and /m/staff URLs after mint (briefing-admin-copy, briefing-admin-copy-staff). MOCKED: Dashboard /api/dashboard/today and Stratus alerts may 404 - KPI tiles gracefully show '—' fallbacks.",
+  "features_tested": {
+    "backend_employees_list": {
+      "requires_admin_token": "PASS - returns 401 without X-Admin-Token",
+      "returns_structure": "PASS - {ok, total, employees, roles}",
+      "roles_array": "PASS - ['general', 'salary', 'manager', 'owner']",
+      "employee_structure": "PASS - {id, name, email, role, title, source}",
+      "source_values": "PASS - 'employees' or 'briefing_token'"
+    },
+    "backend_role_assignment": {
+      "requires_admin_token": "PASS - returns 401 without X-Admin-Token",
+      "invalid_role_400": "PASS - returns 400 for invalid role values",
+      "missing_identifier_400": "PASS - returns 400 when neither email nor id provided",
+      "creates_stub_if_not_exists": "PASS - creates employee record with source='role_assigner_stub'",
+      "updates_existing": "PASS - updates role for existing employee",
+      "all_valid_roles": "PASS - accepts general, salary, manager, owner"
+    },
+    "backend_me_capabilities": {
+      "general_role_flags": "PASS - is_general=true, is_salary=false, can_view_dashboard=false, can_approve_pto=false",
+      "salary_role_flags": "PASS - is_salary=true, can_view_dashboard=true, can_approve_pto=false",
+      "manager_role_flags": "PASS - is_manager=true, can_approve_pto=true, can_edit_standup=true",
+      "owner_role_flags": "PASS - is_owner=true, can_view_financials=true, all capabilities true",
+      "role_promotion_changes_capabilities": "PASS - promoting from salary to manager changes can_approve_pto from false to true"
+    },
+    "frontend_staff_mobile_general": {
+      "staff_mobile_root": "PASS - data-testid='staff-mobile-root' found",
+      "role_pill": "PASS - shows 'GENERAL'",
+      "tab_bar": "PASS - all 5 tabs found (tab-home, tab-schedule, tab-concierge, tab-briefing, tab-more)",
+      "home_tab_tiles": "PASS - home-pto, home-benefits, home-briefing, home-concierge found",
+      "schedule_tab_pto_form": "PASS - all PTO form elements found",
+      "more_tab_benefits": "PASS - 8 benefit items found",
+      "more_tab_admin_hidden": "PASS - admin-dashboard correctly hidden for general role",
+      "command_palette_basic": "PASS - 5 basic entries found",
+      "command_palette_admin_hidden": "PASS - admin entries correctly hidden for general role"
+    },
+    "frontend_staff_mobile_salary": {
+      "role_pill": "PASS - shows 'SALARY'",
+      "home_tab_kpi": "PASS - KPI command centre visible (On property, Arrivals, VIP, Alerts)",
+      "home_tab_admin_quick": "PASS - salary-concierge tile found",
+      "more_tab_admin_visible": "PASS - admin-dashboard visible for salary role",
+      "command_palette_admin": "PASS - palette-dashboard, palette-standup-edit, palette-briefing-admin, palette-pto-queue visible"
+    },
+    "frontend_concierge_briefing_tabs": {
+      "concierge_iframe": "PASS - iframe src=/m/concierge/:token",
+      "briefing_iframe": "PASS - iframe src=/m/briefing/:token"
+    },
+    "regressions": {
+      "guest_auto_auth": "PASS - /guest?room=1208&last=Reed redirects to /guest/app",
+      "guest_app_root": "PASS - guest-app-root found",
+      "guest_quick_actions": "PASS - 6/6 quick action cards found",
+      "guest_celebration_nudge": "PASS - celebration-nudge found for anniversary guest",
+      "guest_ird_menu": "PASS - 15 IRD menu items found",
+      "briefing_mobile_route": "PASS - /m/briefing/:token loads with briefing-root",
+      "briefing_pref_card": "PASS - delivery preference card with 4 options",
+      "panel_host_root": "PASS - / route loads Enterprise Command Center dashboard"
+    }
+  },
+  "mocked_apis": {
+    "dashboard_today": "MOCKED - /api/dashboard/today may 404, KPI tiles show '—' fallbacks",
+    "stratus_alerts": "MOCKED - /api/stratus/alerts/active may 404, Alerts tile shows 0"
+  }
+}

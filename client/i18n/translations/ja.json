@@ -1,0 +1,51 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "作成",
+    "search": "検索",
+    "filter": "フィルター",
+    "export": "エクスポート",
+    "import": "インポート",
+    "refresh": "更新",
+    "close": "閉じる",
+    "confirm": "確認",
+    "yes": "はい",
+    "no": "いいえ"
+  },
+  "navigation": {
+    "dashboard": "ダッシュボード",
+    "inventory": "在庫",
+    "schedule": "スケジュール",
+    "purchasing": "仕入",
+    "culinary": "Culinary",
+    "echoaurum": "EchoAurum",
+    "echostratus": "EchoStratus",
+    "settings": "設定"
+  },
+  "inventory": {
+    "title": "在庫管理",
+    "currentStock": "現在在庫",
+    "parLevel": "パーレベル",
+    "reorderPoint": "発注点",
+    "addItem": "アイテム追加",
+    "updateStock": "在庫更新"
+  },
+  "schedule": {
+    "title": "スタッフスケジュール",
+    "shifts": "シフト",
+    "assignStaff": "スタッフ割り当て",
+    "createShift": "シフト作成"
+  },
+  "purchasing": {
+    "title": "仕入・受入",
+    "createPO": "発注書作成",
+    "receiveOrder": "受注",
+    "approvePO": "発注書承認"
+  }
+}

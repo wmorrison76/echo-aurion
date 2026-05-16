@@ -1,0 +1,7 @@
+name,yield_time_minutes,prep_station,equipment,skills_required,dependencies
+Croissant Dough,180,MIX,Mixer|Proofer,lamination|dough_handling,
+Chocolate Mousse,60,CHILL,Whisk|Chiller,emulsion|tempering,
+Fruit Tart Shells,90,OVEN,SheetPan|Oven,docking|blind_bake,
+Mirror Glaze,45,DECOR,Pot|Thermometer,glazing|tempering,
+Wedding Cake Layers,240,OVEN,SheetPan|Oven,sponge|batter_mixing,
+Sugar Flowers,120,DECOR,ModelingTools,flower_modeling|coloring,

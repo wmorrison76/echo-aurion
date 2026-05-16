@@ -1,0 +1,203 @@
+{
+  "models": [
+    {
+      "name": "EchoPanelLayout",
+      "description": "Configuration for collapsible, dockable panel layouts",
+      "inputs": [
+        {
+          "name": "defaultOpenPanels",
+          "type": "list",
+          "subFields": [
+            {
+              "name": "id",
+              "type": "text",
+              "required": true,
+              "defaultValue": "outliner"
+            },
+            {
+              "name": "label",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "icon",
+              "type": "text",
+              "defaultValue": "square"
+            }
+          ],
+          "defaultValue": [
+            { "id": "outliner", "label": "Outliner", "icon": "list" },
+            { "id": "variants", "label": "Variants", "icon": "layout" },
+            { "id": "eventstudio", "label": "Event Studio", "icon": "calendar" }
+          ]
+        },
+        {
+          "name": "dockPosition",
+          "type": "text",
+          "enum": ["left", "right", "bottom"],
+          "defaultValue": "left",
+          "description": "Where panels dock by default"
+        },
+        {
+          "name": "allowDrag",
+          "type": "boolean",
+          "defaultValue": true,
+          "description": "Allow panels to be dragged"
+        },
+        {
+          "name": "allowCollapse",
+          "type": "boolean",
+          "defaultValue": true,
+          "description": "Allow panels to be collapsed"
+        },
+        {
+          "name": "toolbarShortcuts",
+          "type": "list",
+          "subFields": [
+            {
+              "name": "label",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "panelId",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "icon",
+              "type": "text",
+              "defaultValue": "square"
+            }
+          ],
+          "defaultValue": [
+            { "label": "Scene", "panelId": "outliner", "icon": "list" },
+            { "label": "Variants", "panelId": "variants", "icon": "layout" },
+            { "label": "Events", "panelId": "eventstudio", "icon": "calendar" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EchoToolbar",
+      "description": "Main toolbar configuration for SaaS UI",
+      "inputs": [
+        {
+          "name": "items",
+          "type": "list",
+          "subFields": [
+            {
+              "name": "label",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "action",
+              "type": "text",
+              "required": true,
+              "enum": [
+                "open-panel",
+                "save-layout",
+                "export-beo",
+                "generate-ai",
+                "toggle-presenter"
+              ]
+            },
+            {
+              "name": "icon",
+              "type": "text",
+              "defaultValue": "square"
+            },
+            {
+              "name": "panelId",
+              "type": "text",
+              "description": "For open-panel actions"
+            }
+          ],
+          "defaultValue": [
+            { "label": "Scene", "action": "open-panel", "panelId": "outliner", "icon": "list" },
+            { "label": "Variants", "action": "open-panel", "panelId": "variants", "icon": "layout" },
+            { "label": "Events", "action": "open-panel", "panelId": "eventstudio", "icon": "calendar" },
+            { "label": "Export", "action": "export-beo", "icon": "download" },
+            { "label": "AI Generate", "action": "generate-ai", "icon": "sparkles" }
+          ]
+        },
+        {
+          "name": "densityMode",
+          "type": "text",
+          "enum": ["comfortable", "compact"],
+          "defaultValue": "comfortable",
+          "description": "Panel spacing and sizing"
+        }
+      ]
+    },
+    {
+      "name": "EchoSnapPreferences",
+      "description": "Snap grid and alignment settings",
+      "inputs": [
+        {
+          "name": "gridSize",
+          "type": "number",
+          "defaultValue": 0.25,
+          "description": "Grid cell size in meters"
+        },
+        {
+          "name": "angleIncrement",
+          "type": "number",
+          "defaultValue": 15,
+          "description": "Angle snap increment in degrees"
+        },
+        {
+          "name": "objectTolerance",
+          "type": "number",
+          "defaultValue": 0.2,
+          "description": "Object snap tolerance in meters"
+        },
+        {
+          "name": "enableGridSnap",
+          "type": "boolean",
+          "defaultValue": true
+        },
+        {
+          "name": "enableAngleSnap",
+          "type": "boolean",
+          "defaultValue": true
+        },
+        {
+          "name": "enableObjectSnap",
+          "type": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "name": "EchoBEOSettings",
+      "description": "BEO (Banquet Event Order) export settings",
+      "inputs": [
+        {
+          "name": "includeConsumables",
+          "type": "boolean",
+          "defaultValue": true,
+          "description": "Include consumables in PDF export"
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "description": "Default notes to include in BEO"
+        },
+        {
+          "name": "laborRate",
+          "type": "number",
+          "defaultValue": 18,
+          "description": "Labor cost per hour (USD)"
+        },
+        {
+          "name": "fuelCostPerUnit",
+          "type": "number",
+          "defaultValue": 1.2,
+          "description": "Fuel cost per unit"
+        }
+      ]
+    }
+  ]
+}

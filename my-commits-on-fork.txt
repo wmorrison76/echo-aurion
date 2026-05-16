@@ -1,0 +1,124 @@
+2dbbe40e6 update
+5ce04888d update
+c7e9061ea update
+7dbc7b288 update
+6b5ca3a27 update
+6b289aec0 update
+257e98164 update
+575b842a0 update
+152ad92b6 update
+73c39fbcd update
+62b26716e push
+484a1ac83 update
+b7e91ed5e update
+9fc124f15 update 2 25 26
+e520c638b chore: remove node_modules from tracking (fix symlink error)
+cdd15a122 todo be #1
+0c3682523 Update upstream-echo-recipe-pro
+398c69ed5 update
+e473d9709 update
+d654294af update
+2f285c8c9 update
+9ac7fca49 chore: autonomous optimization complete
+f0796119f docs: final polish for launch
+50bcbbbd5 feat: Network Intelligence Engine (MVP)
+6ce0e2642 chore: autonomous optimization complete
+827cb4539 update
+a394273b7 docs: Week 10 component splitting analysis
+2537dceac feat: restore real module implementations
+51f7802cf fix: emergency module fix - remove lazy loading
+bb369175f fix: final module cleanup + status dashboard
+7150d1fcc fix: resolve duplicate React imports + module loading
+90da4bc6a fix: module rendering issues
+f014dbb63 feat(echo): proactive insights - Echo tells you what to do
+8f509409a fix(echo): properly load all 37 wisdom rules + domain priority
+067d1e32b feat(echo): improve wisdom matching + add 25+ rules
+90dfd7b02 feat(echo): Echo is now sentient
+faf4d33a5 feat(echo-ai3): complete intelligence orchestration
+e327c1bb0 feat(aurionos): add Collision Detection & Yield-Aware Costing
+c2ea933bd feat(aurionos): begin Week 10 - Decision Clearance Algorithm
+8847b7112 docs(forecasting): mark consolidation complete
+76420ac0d feat(forecasting): add providers & algorithms
+6c4d2e37c feat(forecasting): begin consolidation - core infrastructure
+35a5547f2 docs: add enterprise integration summary
+7f6a1698d merge: integrate EchoAurum improvements
+feced6618 culianry
+9bccca5ec update
+f67d21a9b 21 dy
+e47e501ea 21 day
+b11c133f2 update
+a3e9a3ed8 update
+5f7aa7299 updates
+49e6a52ca repair upgrade
+04dae2708 echo event automation
+433d58d79 update
+a9fbb58a2 next update
+4891275a1 Record enterprise baseline report
+ac0b3b941 Stabilize baseline and add shadow agents
+3b6d5a8c7 next update
+f78420e61 update
+323eb8567 push
+f6313e434 Update vite.config.ts
+96fd17387 push
+610a4bfa4 push
+e2a38af84 push
+0049d85be Add Phase 6A smoke runner
+ad5788017 phase 1-3
+167da9e42 final push
+a23123626 next update
+592f72c7f Create SYSTEM_AUDIT_REPORT_2026.md
+c38347c5c next update
+c7cce5ff2 next improvements
+1debdf34a PurchRecieving
+0565519d6 echo canvas update
+6926d71ec Update smoke-tests.ts
+7b1b1641b 21 day
+acfe3d414 21 day forecast
+9ae9798d1 EchoEvents update
+7ba418360 EchoEvent update
+e5179df07 next update
+abf6e12f2 next upgrad crm
+6a55aa318 Next update
+c880ac358 CRM update
+305dcb59a crm
+dc64032af update
+3bb4be6b3 update
+377eff8b3 Maestro corrected
+c47f10324 push
+b4cb1e747 panels wont load
+a851d5dd8 next
+0b0168fed yes to commit
+7f52fbd0a correction
+f30744305 moat improvements
+2299ef29f adding logo
+f855bec98 next group
+b99d20de2 next updates
+8a4bd7726 the next update
+e9560a49c next update
+3558417b1 next update
+c87d7b789 update
+296393b4b EchoCanvas
+6e9be30a3 updated RecipePro for Culinary
+bd5ac2b4f copy pastry to culinary
+f039e80f3 Images
+cea771077 updating modules
+ec5ef7e07 Updated Culinary module
+0086eed16 Merge branch 'main' of https://github.com/wmorrison76/LUCCCA_Framework
+f668df68b echorecipepro
+b118e7ac8 MixologySommelier merge into LUCCCAFramework
+f9946905d PurCHASIN UPDATE
+a232b5284 adding updated modules to LUCCCA Framework
+0a7d30330 Create generate_file_manifest.sh
+b1d6a094b Update Sidebar.tsx
+05ee6c2c8 Update Sidebar.tsx
+8628159b6 Add EchoCoder developer toolchain (internal only)
+7e07a2a56 feat: one-command EchoCoder open (unlock + dev)
+3c994b0a3 chore: ignore EchoCoder uploads and runtime artifacts
+603f681ac feat(devtools): add EchoCoder and remove generated artifacts
+987f7d8b2 components files of EchoEvents
+310500d5a Add files via upload
+115228770 Create .gitkeep
+7e26743e1 Delete client/modules/EchoEvents/components
+3debb6558 Add files via upload
+537b1fafd Create components
+9a41f1422 Update Culinary module with latest EchoRecipePro version

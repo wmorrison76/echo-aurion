@@ -1,0 +1,187 @@
+================================================================
+=== claude/D10-D11-smoke-and-schedule-merge ===
+================================================================
+--- Commit ---
+c202284ff Claude 2026-05-07 09:21:18 +0000
+  D10 + D11: Smoke test framework + unified schedule view
+  D10 · Smoke test framework that grows with the codebase
+
+  backend/tests/test_smoke_demo_paths.py runs end-to-end
+  exercises of the demo paths. Each test seeds its own data,
+  exercises the user-facing call, and asserts the canonical
+  outcome.
+
+  Critically, the harness gracefully SKIPS tests whose target
+  module isn't on the current branch yet (SkippedModule sentinel).
+  This means the file ships on main today and ACTIVATES smoke
+  tests as feature PRs (D32, D33, D45, D47, D48) merge.
+
+  Current run on this branch:
+     1/6 PASS  (D30 forensic — already merged on main)
+     5/6 SKIP  (D32, D33, D45, D47, D48 — pending merge of
+                their respective branches; smoke test will
+                activate automatically once each PR lands)
+     0/6 FAIL
+
+  CI hook: add to your test runner to enforce demo-path health
+  on every PR going forward.
+
+D11 · Unified schedule view (AutoScheduling + Schedule merge)
+
+  Echo's scheduling lives across two surfaces today:
+    · Echo Schedule: live roster (manager's actual)
+    · AutoScheduling (chronos_flex_labor + orchestrator):
+      AI's per-station headcount proposal
+
+  The chef should see ONE schedule with proposed-vs-actual side
+  by side, not two screens. This module is the reconciliation
+  layer — does NOT remove either underlying surface (each is
+  still source of truth for its own write path); reads from both
+  and produces a unified payload.
+
+  Endpoints (/api/schedule/unified)
+
+    GET /{outlet_id}?date=YYYY-MM-DD
+        Returns proposal + actual + per-station variance with
+        status (match | over | under).
+
+    POST /{outlet_id}/accept-proposal?date=
+        Promote selected proposal stations into actual shift
+        rows via the existing echo_schedule write path.
+        Idempotent: stations already at >= proposed_headcount
+        skip; gap-filling only.
+
+  Doctrine alignment
+
+    · §1.4: operator audience required.
+    · §3.1: accept-proposal writes new shift rows; never edits
+      historical rows.
+    · D27 tenant isolation on every read/write.
+
+  What this enables
+
+    Friday 7am, chef opens unified view:
+      GET /api/schedule/unified/signature_room?date=2026-05-09
+        → grill: proposed 4 / actual 4 (match)
+        → sauce: proposed 3 / actual 2 (under by 1)
+        → expo: proposed 2 / actual 3 (over by 1)
+    Chef taps "Accept proposal · sauce" — system fires +1 shift
+    row for sauce. Manager fills the assignment. Done in 3 taps.
+
+What's not in this PR (deferred for cause)
+
+  · Full UI deletion of the AutoScheduling separate screen
+    (UX decision: keep both surfaces alongside the unified view
+    while operators learn the new merged layout).
+  · D49 tip share simulator + D50 reservation channel partners
+    are queued (acknowledged in user message; coming next PR).
+
+Continuing the chain. Next: D49 (tip share with what-if
+simulator + manager/accounting adjustment), D50 (reservation
+channel partners — OpenTable, Resy, Tock, SevenRooms, Booking.com,
+Expedia, Marriott CRS, MindBody, Vagaro, Viator, GetYourGuide),
+then the innovation moat memo.
+
+https://claude.ai/code/session_01UXMBZGUE17wYMvyTaMrPzE
+
+
+--- Files touched (vs main) ---
+backend/routes/schedule_unified.py
+backend/server.py
+backend/tests/test_smoke_demo_paths.py
+
+--- For each file, does main have it? ---
+  MISSING  backend/routes/schedule_unified.py  (only on branch)
+  ON_MAIN  backend/server.py  (branch:     924 main:    1002 diff:     108 lines)
+  MISSING  backend/tests/test_smoke_demo_paths.py  (only on branch)
+
+================================================================
+=== feature/audit-001-type-errors ===
+================================================================
+--- Commit ---
+060e76679 wmorrison76 2026-05-05 15:11:51 -0400
+  docs(audit): AUDIT_001 - Pre-Echo-Resonance type-error triage report
+  Forensic audit of the 4122 pre-existing tsc errors surfaced during
+TICKET_002. Read-only; no fixes applied.
+
+Headline finding: the errors are overwhelmingly parser-cascade from
+minified TypeScript source files, not semantic type errors. 4061 of
+4122 (98.5%) are TS1xxx (syntax) codes. TS2305 (missing-export, the
+broken-imports pattern that prompted this audit) reports as 0 in the
+full-repo log despite being demonstrably present in shared/types/voyage/*
+- flagged as Category E unknown (likely tsc skips semantic checking
+when parser cascades dominate the dependency graph).
+
+Top 6 modules account for 93% of the count:
+  1513  PurchasingReceiving       (37%)
+   848  Culinary                  (21%)
+   738  EchoEventStudio           (18%)
+   331  Schedule                  (8%)
+   212  Maestro                   (5%)
+   211  Whiteboard                (5%)
+
+Categorization (per pass A/B/C/D/E spec):
+  A - Dead code:      ~10-30 confirmed + 30-100 candidates, ~500-900 errors
+  B - Stub code:      effectively 0 errors (stub bodies don't break parser)
+  C - Cascade:        ~46 high-error files, ~3000-3500 errors (minified source)
+  D - Real bugs:      ~440 long-tail files, ~600-800 errors
+  E - Unknown:        TS2305 invisibility + Maestro/data dropped-in project
+
+Recommendation order:
+  1. Dead-code sweep (Maestro/data UUID files + ExportManager.ts) - S effort
+  2. Per-module prettier reformat (PurchasingReceiving first) - M effort
+  3. Real-bug triage post-cascade-clear - L effort
+  4. Re-audit on clean baseline - M effort
+
+Open pass-call questions in the report (5 items) covering deletion
+authorization, reformat strategy, TS2305 audit gap, tsconfig-excluded
+modules, and the untracked brigade-merge script.
+
+Reproducibility: full tsc log committed at docs/audits/_data/tsc-errors.txt
+(429K, 4122 lines). Renamed from .log to .txt to bypass root *.log
+gitignore. Branch + regen commands documented in the report.
+
+Branch: feature/audit-001-type-errors
+Not for merge - pass reviews report and dispatches repair tickets per
+category.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+
+
+--- Files touched (vs main) ---
+docs/audits/PRE_ECHO_RESONANCE_TYPE_ERRORS.md
+docs/audits/_data/tsc-errors.txt
+
+--- For each file, does main have it? ---
+  ON_MAIN  docs/audits/PRE_ECHO_RESONANCE_TYPE_ERRORS.md  (branch:     290 main:     403 diff:     124 lines)
+  ON_MAIN  docs/audits/_data/tsc-errors.txt  (branch:    4122 main:    4122 diff:       0 lines)
+
+================================================================
+=== feature/doctrine-raw-notes ===
+================================================================
+--- Commit ---
+ba0d943c6 wmorrison76 2026-05-05 23:20:02 -0400
+  docs(foundation): capture doctrine sediment and build-state snapshot
+  SILENT_SERVICE_RAW_NOTES.md: the philosophical foundation built
+during the deep AM/PM conversation of May 2026 - Mary Flagler, the
+submarine card, the Silent Service Principle, pride and
+perseverance formation philosophy, Brashear lineage, the space
+between seconds, industry-transformation success criterion. Working
+notes form, will be polished into final SILENT_SERVICE.md tomorrow.
+
+BUILD_STATE.md: architecture state snapshot - TICKET_003 service
+status, pass-staged answers, blocker status, 14-day plan,
+for-the-next-Claude resume instructions. Survives context window
+compaction.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+
+
+--- Files touched (vs main) ---
+docs/foundation/BUILD_STATE.md
+docs/foundation/SILENT_SERVICE_RAW_NOTES.md
+
+--- For each file, does main have it? ---
+  MISSING  docs/foundation/BUILD_STATE.md  (only on branch)
+  MISSING  docs/foundation/SILENT_SERVICE_RAW_NOTES.md  (only on branch)
+

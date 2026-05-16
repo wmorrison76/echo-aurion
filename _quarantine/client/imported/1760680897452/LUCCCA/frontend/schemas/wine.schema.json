@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wine (simplified)",
+  "type": "object",
+  "required": [
+    "name",
+    "acidity",
+    "tannin",
+    "sugar",
+    "alcohol",
+    "aromas"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "acidity": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "tannin": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "sugar": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "alcohol": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "aromas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

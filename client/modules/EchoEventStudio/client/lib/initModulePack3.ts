@@ -1,0 +1,9 @@
+/** * Initialize Module Pack 3 features * - Service Worker registration for offline support * - Global keyboard shortcuts */ export async function initModulePack3() { // Register service worker for offline mode if ("serviceWorker" in navigator) { try { const registration = await navigator.serviceWorker.register("/sw.js"); console.log("Service Worker registered successfully:", registration); } catch (err) { console.warn("Service Worker registration failed:", err); } } // Log initialization console.log("Module Pack 3 initialized");
+} /** * Helper to apply snap constraints during transforms */
+export interface SnapSettings { grid: boolean; angle: boolean; object: boolean; gridSize?: number; angleSnap?: number;
+} export function applySnap( position: [number, number, number], rotation: [number, number, number], settings: SnapSettings
+): { position: [number, number, number]; rotation: [number, number, number] } { const gridSize = settings.gridSize ?? 0.25; const angleSnap = settings.angleSnap ?? (Math.PI / 12); // 15 degrees let snappedPos = [...position] as [number, number, number]; let snappedRot = [...rotation] as [number, number, number]; if (settings.grid) { snappedPos = [ Math.round(position[0] / gridSize) * gridSize, position[1], Math.round(position[2] / gridSize) * gridSize, ]; } if (settings.angle) { snappedRot = [ Math.round(rotation[0] / angleSnap) * angleSnap, Math.round(rotation[1] / angleSnap) * angleSnap, Math.round(rotation[2] / angleSnap) * angleSnap, ]; } return { position: snappedPos, rotation: snappedRot };
+} /** * Collision check and auto-nudge helper */
+export function applyCollisionFeedback( hasCollision: boolean
+): { color: string; opacity: number } { return hasCollision ? { color:"#ef4444", opacity: 0.5 } // red for collision : { color:"#22c55e", opacity: 0.3 }; // green for clear
+}

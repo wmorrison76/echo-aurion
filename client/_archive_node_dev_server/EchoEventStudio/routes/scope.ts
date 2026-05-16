@@ -1,0 +1,4 @@
+import { Router, Request, Response } from"express"; export const scope = Router(); interface ScopeKPIs { throughput: number; avgPathM: number; seatsPerM2: number;
+} interface ScopeRequest { session?: string; variantId?: string;
+} scope.get("/scope/kpis", async (req: Request<unknown, unknown, unknown, ScopeRequest>, res: Response) => { try { const { session ="default", variantId } = req.query as any; // TODO: Compute actual KPIs from layout objects: // - throughput: based on tables and bottleneck capacity // - avgPathM: average path length through layout // - seatsPerM2: total seats / room area // Placeholder values const kpis: ScopeKPIs = { throughput: 120, avgPathM: 38.5, seatsPerM2: 0.65, }; res.json(kpis); } catch (err) { console.error("Scope KPI error:", err); res.status(500).json({ error:"Failed to compute KPIs" }); }
+});

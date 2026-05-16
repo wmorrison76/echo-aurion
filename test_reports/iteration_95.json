@@ -1,0 +1,94 @@
+{
+  "summary": "Iteration 95: Post-Cleanup Regression Testing - ALL 28 TESTS PASSED (100%). Verified system stability after major cleanup: 36 dead route files deleted, competitor names scrubbed, broken imports fixed. All 10 engines active, all major module endpoints working.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_regression_cleanup_iter95.py",
+    "/app/test_reports/pytest/pytest_results_iter95.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_regression_cleanup_iter95.py"
+  ],
+  "success_rate": {
+    "backend": "100% (28/28 tests passed)",
+    "frontend": "N/A (backend-only testing)"
+  },
+  "test_credentials": {
+    "auth": "No auth required - dev mode"
+  },
+  "seed_data_creation": "None - used existing seeded data",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 95 verified system stability after major cleanup. All endpoints tested and working. Key findings: (1) Health endpoint shows all 10 engines active. (2) Enterprise BI STR/Portfolio dashboards working. (3) Concierge outlets/equipment/guest-report working. (4) Purchasing dashboard/vendors working. (5) Item Mapping catalog (30 items), fuzzy match (85% confidence), stats all working. (6) Daily Reports GM Flash working. (7) 21-Day Forecast at /api/forecast-21/forecast working. (8) EchoAi3 identity/health working (identity was refactored inline). (9) Procurement vendor-scorecards/ap-aging working. (10) No competitor names (Craftable, OnTrack, BirchStreet, Fourth, Builder.io) found in responses. (11) Operations/Forecasting/POS stats endpoints working. (12) RBAC users, Calendar events, Enterprise command center all working.",
+  "tests_performed": {
+    "health_tests": [
+      "GET /api/health - returns healthy with all 10 engines active (PASSED)",
+      "All 10 engines verified: operations_core, ai_forecasting, pos_integration, event_lifecycle, labor_cost, event_bus, payroll, workflow, notifications, tamper_audit (PASSED)"
+    ],
+    "enterprise_bi_tests": [
+      "GET /api/enterprise-bi/str/dashboard - 200 OK (PASSED)",
+      "GET /api/enterprise-bi/portfolio/dashboard - 200 OK (PASSED)"
+    ],
+    "concierge_tests": [
+      "GET /api/concierge/outlets - 200 OK (PASSED)",
+      "GET /api/concierge/equipment - 200 OK (PASSED)",
+      "POST /api/concierge/guest-report - ticket creation works (PASSED)"
+    ],
+    "purchasing_tests": [
+      "GET /api/purchasing/dashboard - 200 OK (PASSED)",
+      "GET /api/purchasing/vendors - 200 OK (PASSED)"
+    ],
+    "item_mapping_tests": [
+      "GET /api/item-mapping/catalog - 30 items returned (PASSED)",
+      "POST /api/item-mapping/match - fuzzy matching with 85% confidence (PASSED)",
+      "GET /api/item-mapping/stats - 200 OK (PASSED)"
+    ],
+    "daily_reports_tests": [
+      "GET /api/daily-reports/gm-flash - 200 OK (PASSED)"
+    ],
+    "forecast_tests": [
+      "GET /api/forecast-21/forecast - 21-day forecast working (PASSED)"
+    ],
+    "echoai3_tests": [
+      "GET /api/echoai3/identity - returns self_model and role_descriptions (PASSED)",
+      "GET /api/echoai3/health - operational status (PASSED)"
+    ],
+    "procurement_tests": [
+      "GET /api/procurement/vendor-scorecards - 200 OK (PASSED)",
+      "GET /api/procurement/ap-aging - 200 OK (PASSED)"
+    ],
+    "competitor_name_tests": [
+      "No competitor names in /api/health (PASSED)",
+      "No competitor names in /api/dashboard (PASSED)",
+      "No competitor names in /api/echoai3/identity (PASSED)"
+    ],
+    "additional_module_tests": [
+      "GET /api/operations/stats - 200 OK (PASSED)",
+      "GET /api/forecasting/alerts - 200 OK (PASSED)",
+      "GET /api/events - 200 OK (PASSED)",
+      "GET /api/pos/stats - 200 OK (PASSED)",
+      "GET /api/enterprise/command-center - 200 OK (PASSED)",
+      "GET /api/rbac/users - 200 OK (PASSED)",
+      "GET /api/calendar/events - 200 OK (PASSED)"
+    ]
+  },
+  "cleanup_verification": {
+    "dead_files_deleted": "36 route files removed (echo_stratus_*, event_workflow_*, fresh_meals_*, knowledge_engine_config/domains/recommend, echoai3_identity, maestro_production_*)",
+    "competitor_names_scrubbed": "Verified no Craftable, OnTrack, BirchStreet, Fourth, Builder.io in API responses",
+    "broken_imports_fixed": "server.py, scheduler.py, echoai3_orchestrator.py all importing correctly",
+    "server_startup": "Application startup complete - no import errors"
+  },
+  "mocked_apis": {
+    "has_mocked_apis": false,
+    "mocked_apis_list": []
+  }
+}

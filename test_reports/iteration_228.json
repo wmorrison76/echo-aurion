@@ -1,0 +1,102 @@
+{
+  "summary": "iter228 ECW Operations Phase 3 testing complete. 25/25 backend tests passed. All new features verified: Activity feed (POST/GET), P&L snapshot with forecast/budget variance banners (red/green/amber/neutral), Dashboard KPIs, Invoice drill-down + flagging with notifications, Delivery notifications, Commissary outlets (3 seeded: Production/Pastry/Storeroom) + catalog (6 items per commissary) + transfer requests, Echo Chef mimic-style with flavor signature preservation (10 dimensions), Recipe URL import. Frontend mobile ECW verified: Echo FAB positioned above tab bar (bottom=82px), Echo rail with 3 tabs (Activity/Dashboard/P&L), P&L view with expense lines and variance banners, Invoice modal with demo invoices, Recipes tab with 3 action buttons (From URL/Echo Chef/Drafts), Orders drawer with Commissary entry, Commissary view with 3 tabs and item list with qty inputs.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile ECW", "issues": ["Echo command palette overlay appears on page load - dismisses with Escape key"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ecw_ops_iter228_phase3.py",
+    "/app/test_reports/pytest/pytest_results_iter228.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_ecw_ops_iter228_phase3.py"
+  ],
+  "success_rate": {
+    "backend": "100% (25/25 tests passed)",
+    "frontend": "100% (all iter228 mobile features verified)"
+  },
+  "test_credentials": "X-User-Id: chef-william for backend writes. devAuth=1 query param for frontend auth bypass.",
+  "seed_data_creation": "Demo invoices (inv-demo-1/2/3) auto-seeded when invoices collection empty. Commissary outlets (com-production/com-pastry/com-storeroom) auto-seeded on first call. Commissary catalog items (6 per commissary) auto-seeded on first catalog call.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter228 Phase 3 ECW Ops fully tested. Backend: All 17 new endpoints working. POST /activity creates events. GET /activity returns explicit + synthesized events from POs/line-checks/deliveries. GET /pnl-snapshot returns revenue/expenses/banners with color coding (red if expense > forecast AND % of sales higher, green if over forecast but % held, amber if over budget, neutral otherwise). GET /dashboard returns 7 KPIs. GET /invoices returns demo-seeded invoices. GET /invoices/{id} returns invoice with line_items. POST /invoices/{id}/flag creates flag + activity event + notifies accounting. POST /invoices/{id}/resolve-flag resolves flag. POST /deliveries/notify creates delivery + activity event. GET /commissary/outlets returns 3 seeded outlets. GET /commissary/catalog returns 6 items per commissary. POST /commissary/transfer-request creates transfer + activity event. POST /echo-chef/mimic-style returns draft_id + signature + dominant + prior_recipe_count + recipe (may have error field if LLM unavailable). GET /echo-chef/drafts lists drafts. POST /recipes/import-url parses recipe from URL. Frontend: Mobile /m/ecw has Echo FAB at bottom=82px (above 68px tab bar). FAB opens right-side rail with Activity/Dashboard/P&L tabs. P&L shows revenue, expense lines with variance banners, View invoices button. Invoice modal shows list with drill-down + flag button. Recipes tab has 3 action buttons (From URL, Echo Chef, Drafts). Orders drawer has Commissary entry. Commissary view has 3 tabs (Production/Pastry/Storeroom) with item list and qty inputs.",
+  "tests_executed": {
+    "backend": [
+      "TestActivityFeed::test_post_activity_creates_event - PASS",
+      "TestActivityFeed::test_get_activity_returns_events - PASS",
+      "TestActivityFeed::test_get_activity_synthesizes_from_collections - PASS",
+      "TestPnlSnapshot::test_pnl_snapshot_forecast_returns_200 - PASS",
+      "TestPnlSnapshot::test_pnl_snapshot_budget_returns_200 - PASS",
+      "TestPnlSnapshot::test_pnl_snapshot_has_percentages - PASS",
+      "TestDashboard::test_dashboard_returns_kpis - PASS",
+      "TestInvoices::test_list_invoices_returns_demo_seed - PASS",
+      "TestInvoices::test_get_invoice_by_id_returns_invoice - PASS",
+      "TestInvoices::test_flag_invoice_creates_flag - PASS",
+      "TestInvoices::test_resolve_flag - PASS",
+      "TestDeliveryNotifications::test_notify_delivery_creates_event - PASS",
+      "TestCommissary::test_commissary_outlets_returns_3_seeds - PASS",
+      "TestCommissary::test_commissary_catalog_returns_items - PASS",
+      "TestCommissary::test_commissary_transfer_request_creates_transfer - PASS",
+      "TestCommissary::test_list_commissary_transfers - PASS",
+      "TestEchoChef::test_echo_chef_mimic_style_returns_draft - PASS",
+      "TestEchoChef::test_echo_chef_drafts_list - PASS",
+      "TestRecipeImport::test_recipe_import_url_parses_recipe - PASS",
+      "TestRegressionIter225::test_vendors_endpoint - PASS",
+      "TestRegressionIter225::test_vendor_catalog_endpoint - PASS",
+      "TestRegressionIter225::test_order_guide_endpoint - PASS",
+      "TestRegressionIter225::test_inventory_levels_endpoint - PASS",
+      "TestRegressionIter225::test_stations_endpoint - PASS",
+      "TestRegressionIter225::test_recipes_endpoint - PASS"
+    ],
+    "frontend": [
+      "Mobile /m/ecw ECW Ops root loads - PASS",
+      "Mobile Echo FAB positioned above tab bar (bottom=82px) - PASS",
+      "Mobile Tab bar with 6 tabs - PASS",
+      "Mobile Echo rail opens with 3 tabs (Activity/Dashboard/P&L) - PASS",
+      "Mobile Activity list renders - PASS",
+      "Mobile Dashboard view with KPI tiles - PASS",
+      "Mobile P&L view with expense lines and variance banners - PASS",
+      "Mobile P&L 'View invoices' button - PASS",
+      "Mobile Invoice modal opens from P&L - PASS",
+      "Mobile Recipes tab with 3 action buttons (From URL/Echo Chef/Drafts) - PASS",
+      "Mobile Recipes search input - PASS",
+      "Mobile Orders drawer with 5 entries including Commissary - PASS",
+      "Mobile Commissary view with 3 tabs (Production/Pastry/Storeroom) - PASS",
+      "Mobile Commissary catalog items with qty inputs - PASS"
+    ]
+  },
+  "verified_features": {
+    "POST /api/ecw-ops/activity": "PASS - creates activity event with id, outlet_id, kind, title, detail, actor, meta, created_at",
+    "GET /api/ecw-ops/activity": "PASS - returns explicit events + synthesized from POs/line-checks/deliveries",
+    "GET /api/ecw-ops/pnl-snapshot?compare=forecast": "PASS - returns revenue/expenses/banners/percentages with color coding",
+    "GET /api/ecw-ops/pnl-snapshot?compare=budget": "PASS - same shape with budget comparison",
+    "GET /api/ecw-ops/dashboard": "PASS - returns 7 KPIs (today_sales, today_covers, avg_check, open_pos, open_requisitions, deliveries_today, flagged_invoices)",
+    "GET /api/ecw-ops/invoices": "PASS - returns demo-seeded invoices when empty",
+    "GET /api/ecw-ops/invoices/{id}": "PASS - returns invoice with line_items",
+    "POST /api/ecw-ops/invoices/{id}/flag": "PASS - creates flag, sets has_flag=true, notified_count>0, writes activity event",
+    "POST /api/ecw-ops/invoices/{id}/resolve-flag": "PASS - resolves flag",
+    "POST /api/ecw-ops/deliveries/notify": "PASS - creates delivery + activity event",
+    "GET /api/ecw-ops/commissary/outlets": "PASS - returns 3 seeded outlets (Production/Pastry/Storeroom)",
+    "GET /api/ecw-ops/commissary/catalog": "PASS - returns 6 items per commissary",
+    "POST /api/ecw-ops/commissary/transfer-request": "PASS - creates transfer + activity event",
+    "GET /api/ecw-ops/commissary/transfer-requests": "PASS - lists requests",
+    "POST /api/ecw-ops/echo-chef/mimic-style": "PASS - returns draft_id, signature, dominant, prior_recipe_count, recipe",
+    "GET /api/ecw-ops/echo-chef/drafts": "PASS - lists drafts",
+    "POST /api/ecw-ops/recipes/import-url": "PASS - parses recipe from URL",
+    "Mobile Echo FAB": "PASS - positioned at bottom=82px (above 68px tab bar)",
+    "Mobile Echo rail": "PASS - 3 tabs (Activity/Dashboard/P&L)",
+    "Mobile P&L view": "PASS - revenue, expense lines with variance banners, View invoices button",
+    "Mobile Invoice modal": "PASS - opens from P&L, shows invoice list",
+    "Mobile Recipes tab": "PASS - 3 action buttons (From URL/Echo Chef/Drafts)",
+    "Mobile Commissary": "PASS - in Orders drawer, 3 tabs, item list with qty inputs"
+  }
+}

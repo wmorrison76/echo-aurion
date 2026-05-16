@@ -1,0 +1,73 @@
+# fly.toml app configuration generated with 'fly launch'
+app = "luccca-echo-ops"
+primary_region = "sjc"
+
+[build]
+  builder = "docker"
+  dockerfile = "./Dockerfile"
+
+[build.args]
+  NODE_ENV = "production"
+
+[env]
+  NODE_ENV = "production"
+  GOOGLE_VISION_API_KEY = "AQ.Ab8RN6Lw8Tfei4tlIZfPxofK0UJlTDqLcmPPBLEUDAgJAcf6UQ"
+  # Deploy trigger - OCR fix 2024-12-20 forced rebuild
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 3000
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 1000
+    soft_limit = 100
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [services.http_checks]
+    enabled = true
+    interval = 10000
+    timeout = 5000
+    grace_period = "5s"
+    method = "get"
+    path = "/health"
+    protocol = "http"
+    tls_skip_verify = false
+    headers = {}
+
+[[statics]]
+  guest_path = "/assets"
+  url_prefix = "/assets"
+
+[processes]
+  app = "node dist/server/node-build.mjs"
+
+[checks]
+  [checks.status]
+    type = "http"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "5s"
+    method = "GET"
+    path = "/health"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1

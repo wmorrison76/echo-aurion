@@ -1,0 +1,21 @@
+{
+  "modules": [
+    "EchoMixologyAI",
+    "EchoSommelier",
+    "LiquorAI",
+    "Scheduler",
+    "RedPhoenix"
+  ],
+  "adapters": [
+    "SceneAdapter",
+    "ColorPulseAdapter",
+    "MotionAdapter"
+  ],
+  "bridges": [
+    "EchoSommelierMixologyBridge"
+  ],
+  "cli": [
+    "RedPhoenix CLI"
+  ],
+  "date": "2025-09-22"
+}

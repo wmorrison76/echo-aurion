@@ -1,0 +1,86 @@
+{
+  "summary": "iter185 comprehensive testing complete. All 29 backend tests passed (100%). Frontend fully verified: Daily Briefing Mobile (/m/briefing/:token) with 6 section cards, Group Events Attendee (/g/event/:code?attendee=) with day groupings and session cards, Planner mode with edit pill, error handling for invalid tokens/codes. Pier 66 scrub verified - Marina Grill correctly renamed, no 'Pier 66' references found. Guest Concierge Mobile regression passed.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter185_briefing_mobile_groupevents_pier66scrub.py",
+    "/app/test_reports/pytest/pytest_results_iter185.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter185_briefing_mobile_groupevents_pier66scrub.py"
+  ],
+  "success_rate": {
+    "backend": "100% (29/29 tests passed)",
+    "frontend": "100% (all flows verified)"
+  },
+  "test_credentials": "ADMIN_API_TOKEN=TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o, Guest: room=1208, last=Reed, Group Event Attendee: /g/event/acme-offsite-2026?attendee=0D8sZLBT",
+  "seed_data_creation": "Used existing seeded data from iter184",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter185 fully tested. New features: (1) Daily Briefing Mobile at /m/briefing/:token - staff catch-up view with section cards for ops numbers, VIP arrivals, glitches; (2) Group Events Attendee at /g/event/:code?attendee=CODE - read-only itinerary view with day groupings and session cards; (3) Pier 66 scrub complete - renamed to Marina Grill (venue) and Luccca Resort (property). Backend routes: /api/daily-briefing/* (mint, session, today, tokens, revoke). Group Events uses planner_token for edit access, attendee_code for read-only.",
+  "features_tested": {
+    "pier66_scrub": {
+      "venues_no_pier66": "PASS - concierge_venues has 'Marina Grill' with slug 'marina-grill', no 'Pier 66'",
+      "outlets_no_pier66": "PASS - outlets collection has 'Marina Grill', no 'Pier 66 Restaurant'",
+      "banquet_menu_no_pier66": "PASS - no 'Pier Sixty-Six' in banquet menu properties",
+      "frontend_venues_view": "PASS - Marina Grill displayed in guest venues view, no Pier 66"
+    },
+    "daily_briefing_mobile_backend": {
+      "mint_requires_admin": "PASS - POST /api/daily-briefing/mint returns 401 without admin token",
+      "mint_success": "PASS - returns token + mobile_url with admin token",
+      "session_valid_token": "PASS - GET /api/daily-briefing/session returns staff info",
+      "session_no_token_401": "PASS - returns 401 without X-Briefing-Token",
+      "session_invalid_token_401": "PASS - returns 401 for invalid token",
+      "today_valid_token": "PASS - GET /api/daily-briefing/today returns board/sections",
+      "today_no_token_401": "PASS - returns 401 without token",
+      "tokens_list_admin": "PASS - GET /api/daily-briefing/tokens returns list",
+      "revoke_token": "PASS - POST /api/daily-briefing/revoke deactivates token"
+    },
+    "daily_briefing_mobile_frontend": {
+      "briefing_root": "PASS - data-testid='briefing-root' found",
+      "briefing_status": "PASS - status pill shows 'confirmed'",
+      "briefing_sections": "PASS - 6 section cards rendered (ops numbers, VIP arrivals, VIPs in-house, glitches)",
+      "invalid_token_error": "PASS - shows 'This briefing link is invalid or revoked' for bad token"
+    },
+    "group_events_attendee_backend": {
+      "upsert_event": "PASS - POST /api/group-events/events/upsert creates event",
+      "add_session_admin": "PASS - admin can add sessions",
+      "invite_planner": "PASS - returns planner_token + attendee_url",
+      "add_session_planner": "PASS - planner token can add sessions",
+      "get_event_attendee": "PASS - attendee_code grants read-only access with redacted fields",
+      "get_event_no_code_401": "PASS - returns 401 without any code",
+      "seeded_acme_event": "PASS - acme-offsite-2026 accessible with attendee code 0D8sZLBT"
+    },
+    "group_events_attendee_frontend": {
+      "event_root": "PASS - data-testid='event-root' found",
+      "event_welcome": "PASS - welcome note displayed",
+      "event_days": "PASS - 3 day groupings (event-day-{date})",
+      "event_sessions": "PASS - 4 session cards with kind icons (keynote, meal, coffee-break)",
+      "attendee_no_edit_pill": "PASS - event-can-edit pill hidden for attendees",
+      "missing_code_error": "PASS - shows 'This link needs an access code' without attendee param"
+    },
+    "group_events_planner_frontend": {
+      "planner_edit_pill": "PASS - event-can-edit pill shows 'Planner mode · edits allowed'"
+    },
+    "guest_concierge_regression": {
+      "auto_auth": "PASS - /guest?room=1208&last=Reed redirects to /guest/app",
+      "guest_app_root": "PASS - data-testid='guest-app-root' found",
+      "quick_action_cards": "PASS - all 9 cards present (qa-ird, qa-vip, qa-weather, qa-venues, qa-valet, qa-luggage, qa-transport, qa-nearby, qa-requests)",
+      "marina_grill_in_venues": "PASS - Marina Grill displayed in venues view",
+      "ird_menu": "PASS - 15 IRD menu items loaded",
+      "ird_cart": "PASS - cart visible after adding item",
+      "vip_addons": "PASS - VIP add-ons endpoint working",
+      "weather_alternatives": "PASS - weather alternatives endpoint working",
+      "valet_request": "PASS - valet request creates successfully"
+    }
+  }
+}

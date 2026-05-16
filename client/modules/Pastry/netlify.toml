@@ -1,0 +1,83 @@
+# Netlify Configuration
+# Deployment settings for Echo Recipe Pro
+
+[build]
+  command = "npm run build"
+  publish = "dist/spa"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18.17.0"
+  NPM_VERSION = "9.6.7"
+
+# Development environment
+[context.develop]
+  command = "npm run dev"
+  environment = { NODE_ENV = "development" }
+
+# Preview builds (pull requests)
+[context.branch-deploy]
+  command = "npm run build"
+
+# Production builds
+[context.production]
+  command = "npm run build"
+  environment = { NODE_ENV = "production" }
+
+# Redirect rules for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# API redirects to functions
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    
+    # CSP Header
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.github.com https://*.supabase.co https://fdc.nal.usda.gov https://sentry.io; frame-ancestors 'none'"
+    
+    # CORS
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+# Cache headers for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache headers for index.html
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache headers for fonts
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Disable Netlify analytics by default
+[analytics]
+  enabled = false
+
+# Environment variables to inject
+[env]
+  NODE_ENV = "production"
+  VITE_APP_NAME = "Echo Recipe Pro"

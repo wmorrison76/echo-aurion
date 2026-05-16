@@ -1,0 +1,93 @@
+{
+  "summary": "iter183 Guest Concierge Mobile App - comprehensive testing complete. All 27 backend tests passed (100%). Frontend fully verified: landing page, authentication, guest app with 8 quick-action cards, venues view (6 items), nearby view (3 items), valet/transport/luggage requests, sign out. Admin token rotation verified (old token returns 401, new token works). Regression tests passed for iter179 mobile concierge and iter182 shared board.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter183_guest_concierge.py",
+    "/app/test_reports/pytest/pytest_results_iter183.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter183_guest_concierge.py",
+    "/app/memory/test_credentials.md"
+  ],
+  "success_rate": {
+    "backend": "100% (27/27 tests passed)",
+    "frontend": "100% (all flows verified)"
+  },
+  "test_credentials": "NEW ADMIN_API_TOKEN = TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o (old token kDLVaJJVmtxX_EPKYGpU2ZunwTT1j0TU4Z_ezSximgc now returns 401)",
+  "seed_data_creation": "Used seeded demo guests (g_williams_r1208, g_santos_r714, g_okafor_r902), 6 venues, 3 nearby items",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter183 Guest Concierge fully tested. Admin token rotated - update any scripts using old token. Guest auth uses room + last_name (case-insensitive substring match). Session stored in sessionStorage (not localStorage) with key 'echoai3_guest_token'. 48h TTL. Routes: /guest (landing), /guest/app (authenticated). Auto-auth via /guest?room=X&last=Y. All 15+ guest-concierge endpoints working.",
+  "features_tested": {
+    "admin_token_rotation": {
+      "old_token_401": "PASS - kDLVaJJVmtxX_EPKYGpU2ZunwTT1j0TU4Z_ezSximgc returns 401",
+      "new_token_200": "PASS - TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o returns 200"
+    },
+    "guest_authentication": {
+      "POST /api/guest-concierge/authenticate": "PASS - returns token + guest bundle on match",
+      "404_no_match": "PASS - returns 404 for non-matching credentials",
+      "400_missing_fields": "PASS - returns 400/422 for missing room or last_name",
+      "case_insensitive": "PASS - last name matching is case-insensitive"
+    },
+    "guest_session": {
+      "GET /api/guest-concierge/session": "PASS - returns guest info with valid token",
+      "401_without_token": "PASS - returns 401 without X-Guest-Token",
+      "401_invalid_token": "PASS - returns 401 for invalid token"
+    },
+    "venues": {
+      "GET /api/guest-concierge/venues": "PASS - returns 6 seeded venues",
+      "POST /api/guest-concierge/venues/upsert": "PASS - admin-only"
+    },
+    "nearby": {
+      "GET /api/guest-concierge/nearby": "PASS - returns 3 seeded nearby items",
+      "POST /api/guest-concierge/nearby/upsert": "PASS - admin-only"
+    },
+    "map": {
+      "GET /api/guest-concierge/map": "PASS - returns property metadata + venue pins"
+    },
+    "service_requests": {
+      "POST /api/guest-concierge/valet": "PASS - creates valet request with 10-min ETA",
+      "POST /api/guest-concierge/transport": "PASS - creates transport request",
+      "POST /api/guest-concierge/luggage": "PASS - creates luggage pickup request",
+      "GET /api/guest-concierge/requests": "PASS - returns guest's requests newest-first"
+    },
+    "location": {
+      "POST /api/guest-concierge/location": "PASS - creates location record"
+    },
+    "admin_endpoints": {
+      "GET /api/guest-concierge/admin/requests": "PASS - returns all requests (admin-gated)",
+      "POST /api/guest-concierge/admin/requests/{id}/ack": "PASS - updates request status"
+    },
+    "property_meta": {
+      "POST /api/guest-concierge/property/upsert": "PASS - admin-only"
+    },
+    "cross_guest_isolation": {
+      "isolation_test": "PASS - guest A cannot see guest B's requests"
+    },
+    "frontend": {
+      "guest_landing": "PASS - data-testid='guest-landing', room + last name inputs, Enter button",
+      "error_handling": "PASS - shows error message for bad credentials",
+      "auto_auth_qr": "PASS - /guest?room=1208&last=Reed auto-authenticates",
+      "guest_app": "PASS - data-testid='guest-app-root', 8 quick-action cards",
+      "valet_toast": "PASS - clicking qa-valet triggers POST and shows toast",
+      "venues_view": "PASS - shows 6 venue cards with photos",
+      "nearby_view": "PASS - shows 3 nearby items with ratings",
+      "sign_out": "PASS - clears sessionStorage token and redirects to /guest"
+    },
+    "regression": {
+      "iter179_mobile_concierge": "PASS - /m/concierge/{token} still works",
+      "iter182_shared_board": "PASS - /board/{share_id} public viewer still works",
+      "jarvis_dashboard": "PASS - /api/dashboard/overview returns KPIs"
+    }
+  }
+}

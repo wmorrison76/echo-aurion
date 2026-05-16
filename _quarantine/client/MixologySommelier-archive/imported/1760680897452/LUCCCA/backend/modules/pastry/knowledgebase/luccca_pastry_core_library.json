@@ -1,0 +1,26 @@
+
+{
+  "pastryLibrary": [
+    {
+      "category": "Cakes",
+      "name": "Classic Vanilla Sponge Cake",
+      "components": ["Eggs", "Sugar", "Flour", "Vanilla", "Baking Powder"],
+      "cookingMethod": "Bake at 350°F for 25–30 minutes",
+      "yield": "2 x 9-inch round cakes"
+    },
+    {
+      "category": "Cakes",
+      "name": "Chocolate Ganache Layer Cake",
+      "components": ["Chocolate", "Heavy Cream", "Eggs", "Flour", "Sugar", "Baking Soda"],
+      "cookingMethod": "Bake at 350°F for 30–35 minutes",
+      "yield": "3 x 9-inch round layers"
+    },
+    {
+      "category": "Cakes",
+      "name": "Carrot Cake with Cream Cheese Frosting",
+      "components": ["Carrots", "Eggs", "Flour", "Sugar", "Oil", "Spices", "Cream Cheese"],
+      "cookingMethod": "Bake at 325°F for 30–40 minutes",
+      "yield": "2 x 9-inch round cakes"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "jsx": "react-native",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["react", "react-native"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "app/(app)/**/*",
+    "app/(auth)/**/*",
+    "app/_layout.tsx",
+    "components/**/*",
+    "context/**/*",
+    "lib/**/*",
+    "store/**/*"
+  ],
+  "exclude": ["node_modules", "app/(tabs)/**/*"]
+}

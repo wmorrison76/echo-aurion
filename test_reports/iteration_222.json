@@ -1,0 +1,53 @@
+{
+  "summary": "iter222 testing complete. All new features verified: import-url endpoint, PATCH samples, async benchmark runs, mobile single header, desktop Trust button. 13/14 backend tests passed (1 transient 502). Frontend fully functional.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "POST /api/waste/benchmark/run", "issue": "Intermittent 502 during pytest (transient infrastructure issue, not code bug). Verified working via curl - returns immediately with status='running'."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_benchmark_iter222.py",
+    "/app/test_reports/pytest/pytest_results_iter222.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_benchmark_iter222.py"
+  ],
+  "success_rate": {
+    "backend": "93% (13/14 passed, 1 transient 502)",
+    "frontend": "100%"
+  },
+  "test_credentials": "No auth required. Frontend: ?devAuth=1",
+  "seed_data_creation": "None - used existing 23 samples from main agent's TheMealDB import",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter222 features all working: (1) POST /import-url downloads images from web URLs, (2) PATCH /samples/{id} updates ground truth for Trust button, (3) POST /run returns immediately with status='running' and processes in background, (4) Mobile /m/waste has single ECW header, (5) Desktop Benchmark tab has Trust buttons in run detail drawer. Sample count is 23. Best accuracy is 63% grade D.",
+  "features_verified": {
+    "import_url_valid": "PASS - Downloads image, stores as bs-* sample with blob_backend='local'",
+    "import_url_invalid": "PASS - Returns 400 for invalid URLs",
+    "import_url_non_image": "PASS - Returns 415 for non-image content-type",
+    "patch_sample_success": "PASS - Updates expected_count and expected_portion_g",
+    "patch_sample_empty_body": "PASS - Returns 400 for empty body",
+    "patch_sample_not_found": "PASS - Returns 404 for nonexistent sample",
+    "async_run": "PASS (via curl) - Returns immediately with status='running', polls to 'complete'",
+    "run_nonexistent_samples": "PASS - Returns 400",
+    "sample_count_20_plus": "PASS - 23 samples present",
+    "regression_status": "PASS",
+    "regression_samples": "PASS",
+    "regression_runs": "PASS",
+    "regression_delete": "PASS",
+    "regression_capture_still": "PASS",
+    "mobile_single_header": "PASS - Only one ECW header at top, online pill visible, h2 'Capture waste' present",
+    "desktop_benchmark_tab": "PASS - Tab present and functional",
+    "desktop_run_all_button": "PASS - Shows 'Running...' immediately, no 60s block",
+    "desktop_trust_button": "PASS - 21 Trust buttons in run detail drawer, clicking updates sample ground truth",
+    "substring_item_match": "PASS - Blueberry Muffin shows 100% item match"
+  }
+}

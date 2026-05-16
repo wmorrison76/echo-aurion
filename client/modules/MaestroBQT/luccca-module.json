@@ -1,0 +1,71 @@
+{
+  "name": "MaestroBQT",
+  "version": "1.0.0",
+  "description": "Unified orchestrator for hospitality operations - Events, spaces, inventory, labor, financials",
+  "routes": [
+    "/api/events",
+    "/api/spaces",
+    "/api/tasks",
+    "/api/changes",
+    "/api/shortages",
+    "/api/financials",
+    "/api/conflicts"
+  ],
+  "events": [
+    "EVENT_CREATED",
+    "EVENT_UPDATED",
+    "EVENT_DELETED",
+    "EVENT_STATUS_CHANGED",
+    "GUEST_COUNT_CHANGED",
+    "GUEST_REQUIREMENT_UPDATED",
+    "SPACE_UPDATED",
+    "SPACE_AVAILABILITY_CHANGED",
+    "SPACE_CONFLICT_DETECTED",
+    "EVENT_TIME_CHANGED",
+    "SCHEDULE_CONFLICT_DETECTED",
+    "SHORTAGE_DETECTED",
+    "INVENTORY_UPDATED",
+    "PURCHASING_ORDER_CREATED",
+    "TASK_CREATED",
+    "TASK_UPDATED",
+    "TASK_ASSIGNED",
+    "STAFFING_CONFLICT",
+    "PREP_PLAN_UPDATED",
+    "PRODUCTION_CONFLICT",
+    "STATION_CAPACITY_WARNING",
+    "MARGIN_RISK_DETECTED",
+    "REVENUE_PROJECTION_UPDATED",
+    "COST_PROJECTION_UPDATED",
+    "HVAC_CONFLICT_DETECTED",
+    "AV_REQUIREMENT_UPDATED",
+    "MAINTENANCE_WINDOW_CREATED",
+    "MODULE_LOADED",
+    "MODULE_ERROR",
+    "DATA_SYNC_STARTED",
+    "DATA_SYNC_COMPLETED",
+    "CONFLICT_RESOLVED"
+  ],
+  "ui": [
+    "/maestro-bqt"
+  ],
+  "dependencies": [
+    "Culinary",
+    "Schedule",
+    "Inventory",
+    "PurchasingReceiving",
+    "EchoAurum",
+    "EchoStratus"
+  ],
+  "lifecycle": {
+    "initModule": "initModule",
+    "subscribeToEvents": "subscribeToEvents",
+    "onDataUpdate": "onDataUpdate",
+    "cleanupModule": "cleanupModule"
+  },
+  "metadata": {
+    "category": "orchestration",
+    "priority": "critical",
+    "autoLoad": true,
+    "persistent": true
+  }
+}

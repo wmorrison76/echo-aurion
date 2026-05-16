@@ -1,0 +1,292 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "name": "Dashboard",
+      "component": "VenueDashboard",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager", "admin"],
+      "description": "Overview of venue KPIs, inventory, and alerts"
+    },
+    {
+      "path": "/cellar",
+      "name": "Cellar",
+      "component": "CellarView",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager", "admin"],
+      "children": [
+        {
+          "path": ":wineId",
+          "component": "WineDetailModal",
+          "modal": true
+        }
+      ],
+      "description": "Wine inventory management and search"
+    },
+    {
+      "path": "/pairings",
+      "name": "Pairings",
+      "component": "PairingPanel",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager"],
+      "description": "AI-powered wine and food pairing recommendations"
+    },
+    {
+      "path": "/reports",
+      "name": "Reports",
+      "component": "ReportsDashboard",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["manager", "admin"],
+      "children": [
+        {
+          "path": "month-end/:venueId/:month",
+          "component": "MonthEndReport"
+        },
+        {
+          "path": "variance/:venueId/:month",
+          "component": "VarianceAnalysis"
+        },
+        {
+          "path": "sales-mix/:venueId",
+          "component": "SalesAnalyticsDashboard"
+        }
+      ],
+      "description": "Financial reports and variance analysis"
+    },
+    {
+      "path": "/alerts",
+      "name": "Alerts",
+      "component": "AlertsDashboard",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager", "admin"],
+      "description": "Real-time IoT cooler temperature and sensor alerts"
+    },
+    {
+      "path": "/training",
+      "name": "Training",
+      "component": "TrainingDashboard",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager", "admin"],
+      "children": [
+        {
+          "path": "flashcards/:topic",
+          "component": "TrainingDeck"
+        },
+        {
+          "path": "exams",
+          "component": "ExamsList"
+        },
+        {
+          "path": "exams/:region",
+          "component": "BlindTastingExam",
+          "modal": true
+        },
+        {
+          "path": "progress",
+          "component": "TrainingProgress"
+        }
+      ],
+      "description": "Master Sommelier-level education and certification"
+    },
+    {
+      "path": "/archive",
+      "name": "Archive",
+      "component": "ArchiveDashboard",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager", "admin"],
+      "children": [
+        {
+          "path": "vintage/:region/:year",
+          "component": "VintageDetailModal",
+          "modal": true
+        },
+        {
+          "path": "producer/:name",
+          "component": "ProducerDetailModal",
+          "modal": true
+        }
+      ],
+      "description": "EchoVinum 75-year global wine archive"
+    },
+    {
+      "path": "/admin",
+      "name": "Admin",
+      "component": "AdminDashboard",
+      "layout": "admin",
+      "requiresAuth": true,
+      "roles": ["admin"],
+      "children": [
+        {
+          "path": "users",
+          "component": "UserManagement"
+        },
+        {
+          "path": "venues",
+          "component": "VenueManagement"
+        },
+        {
+          "path": "settings",
+          "component": "SystemSettings"
+        },
+        {
+          "path": "api-keys",
+          "component": "APIKeyManagement"
+        }
+      ],
+      "description": "System administration and configuration"
+    },
+    {
+      "path": "/auth",
+      "name": "Authentication",
+      "component": "AuthLayout",
+      "layout": "auth",
+      "requiresAuth": false,
+      "children": [
+        {
+          "path": "login",
+          "component": "LoginPage"
+        },
+        {
+          "path": "register",
+          "component": "RegisterPage"
+        },
+        {
+          "path": "forgot-password",
+          "component": "ForgotPasswordPage"
+        },
+        {
+          "path": "callback",
+          "component": "AuthCallback"
+        }
+      ],
+      "description": "User authentication flows"
+    },
+    {
+      "path": "/settings",
+      "name": "Settings",
+      "component": "SettingsPage",
+      "layout": "default",
+      "requiresAuth": true,
+      "roles": ["sommelier", "manager", "admin"],
+      "children": [
+        {
+          "path": "profile",
+          "component": "ProfileSettings"
+        },
+        {
+          "path": "preferences",
+          "component": "PreferenceSettings"
+        },
+        {
+          "path": "notifications",
+          "component": "NotificationSettings"
+        }
+      ],
+      "description": "User profile and account settings"
+    },
+    {
+      "path": "*",
+      "name": "Not Found",
+      "component": "NotFoundPage",
+      "layout": "error",
+      "description": "404 page for undefined routes"
+    }
+  ],
+
+  "layouts": [
+    {
+      "name": "default",
+      "includes": ["NavigationBar", "Sidebar", "Footer"]
+    },
+    {
+      "name": "admin",
+      "includes": ["AdminNavigationBar", "AdminSidebar", "Footer"]
+    },
+    {
+      "name": "auth",
+      "includes": []
+    },
+    {
+      "name": "error",
+      "includes": ["Footer"]
+    }
+  ],
+
+  "navigation": [
+    {
+      "label": "Dashboard",
+      "icon": "home",
+      "path": "/",
+      "roles": ["sommelier", "manager", "admin"]
+    },
+    {
+      "label": "Cellar",
+      "icon": "wine-glass",
+      "path": "/cellar",
+      "roles": ["sommelier", "manager", "admin"]
+    },
+    {
+      "label": "Pairings",
+      "icon": "utensils",
+      "path": "/pairings",
+      "roles": ["sommelier", "manager"]
+    },
+    {
+      "label": "Reports",
+      "icon": "chart-bar",
+      "path": "/reports",
+      "roles": ["manager", "admin"]
+    },
+    {
+      "label": "Alerts",
+      "icon": "bell",
+      "path": "/alerts",
+      "roles": ["sommelier", "manager", "admin"],
+      "badge": "alertCount"
+    },
+    {
+      "label": "Training",
+      "icon": "book",
+      "path": "/training",
+      "roles": ["sommelier", "manager", "admin"]
+    },
+    {
+      "label": "Archive",
+      "icon": "database",
+      "path": "/archive",
+      "roles": ["sommelier", "manager", "admin"]
+    },
+    {
+      "label": "Admin",
+      "icon": "cog",
+      "path": "/admin",
+      "roles": ["admin"]
+    },
+    {
+      "label": "Settings",
+      "icon": "sliders",
+      "path": "/settings",
+      "roles": ["sommelier", "manager", "admin"]
+    }
+  ],
+
+  "breadcrumbs": {
+    "/cellar/:wineId": ["Home", "Cellar", "Wine Detail"],
+    "/reports/month-end/:venueId/:month": ["Home", "Reports", "Month-End"],
+    "/training/exams/:region": ["Home", "Training", "Blind Tasting"]
+  },
+
+  "deepLinks": {
+    "wine": "/cellar/:wineId",
+    "vintage": "/archive/vintage/:region/:year",
+    "producer": "/archive/producer/:name",
+    "report": "/reports/month-end/:venueId/:month"
+  }
+}

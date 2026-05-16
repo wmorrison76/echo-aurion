@@ -1,0 +1,400 @@
+import type { RequestHandler } from "express";
+import { promises as fs } from "fs";
+import path from "path";
+import { execFile as execFileCb } from "child_process";
+import { promisify } from "util";
+import { createHash } from "crypto";
+import { snapshot } from "../zaro-lib";
+import { appendLog } from "./logs";
+import { handleGuardEvent } from "./guard";
+import {
+  recordHistorianEvent,
+  summarizeDiff,
+} from "../historian/storage";
+import {
+  type HistorianFileChange,
+  type HistorianSpecReview,
+  type HistorianChecks,
+} from "../../shared/historian";
+
+const execFile = promisify(execFileCb);
+const ROOT = process.cwd();
+const ALLOW = [
+  path.join(ROOT, "client"),
+  path.join(ROOT, "shared"),
+  path.join(ROOT, "server"),
+];
+const PROTECTED = [
+  path.join(ROOT, "server"),
+  path.join(ROOT, "echo-monorepo"),
+  path.join(ROOT, "client", "echo-dev-core"),
+  path.join(ROOT, "client", "pages", "Studio.tsx"),
+];
+
+function hashContent(value: string): string {
+  return createHash("sha256").update(value, "utf8").digest("hex");
+}
+
+function coerceSpecReview(raw: any): HistorianSpecReview | null {
+  if (!raw) return null;
+  const reason = typeof raw.reason === "string" ? raw.reason.trim() : "";
+  const act = typeof raw.act === "string" ? raw.act.trim() : "";
+  const verify = typeof raw.verify === "string" ? raw.verify.trim() : "";
+  if (!reason && !act && !verify) return null;
+  return { reason, act, verify };
+}
+
+function detectProjectSlug(files: HistorianFileChange[]): string | null {
+  for (const file of files) {
+    const match = /^client\/projects\/([^/]+)/.exec(file.path);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+function trimSummary(value: string | null | undefined, max = 8000): string | null {
+  if (!value) return null;
+  if (value.length <= max) return value;
+  const omitted = value.length - max;
+  return value.slice(0, max) + `\n… truncated (${omitted} chars omitted)`;
+}
+
+function buildChecksSummary(
+  typecheck: { ok: boolean; out: string } | null,
+  tests: { ok: boolean; out: string } | null,
+): HistorianChecks | undefined {
+  const checks: HistorianChecks = {};
+  if (typecheck) {
+    checks.typecheck = {
+      ok: typecheck.ok,
+      summary: trimSummary(typecheck.out) ?? "",
+    };
+  }
+  if (tests) {
+    checks.tests = {
+      ok: tests.ok,
+      summary: trimSummary(tests.out) ?? "",
+    };
+  }
+  return Object.keys(checks).length > 0 ? checks : undefined;
+}
+
+function allowed(p: string) {
+  const rel = path.normalize(p);
+  return ALLOW.some((d) => rel.startsWith(d));
+}
+
+function isProtected(p: string) {
+  const rel = path.normalize(p);
+  return PROTECTED.some((d) => rel.startsWith(d));
+}
+
+async function ensureDir(p: string) {
+  await fs.mkdir(p, { recursive: true });
+}
+
+export const handleApply: RequestHandler = async (req, res) => {
+  try {
+    const body = req.body || {};
+    const {
+      changes,
+      runChecks = true,
+      force = false,
+      message = "",
+      metadata = {},
+    } = body;
+    const specReview = coerceSpecReview((metadata as any).specReview);
+    if (!Array.isArray(changes) || changes.length === 0) {
+      return res
+        .status(400)
+        .json({ ok: false, error: "changes array required" });
+    }
+
+    const role = String((req.headers["x-role"] as string) || "").toLowerCase();
+    const token = String((req.headers["x-admin-token"] as string) || "");
+    const adminToken = process.env.ADMIN_TOKEN || "";
+    const isSuper =
+      role === "superadmin" || (!!adminToken && token === adminToken);
+
+    // Role/ACL enforcement
+    for (const ch of changes) {
+      const relPath = String(ch.relPath || "");
+      const full = path.join(ROOT, relPath);
+      if (!allowed(full)) {
+        await appendLog(`[DENY] not-allowed path ${relPath}`);
+        
+        // Emit trace for permission denial
+        const { emitTrace } = await import("../lib/trace-emitter");
+        emitTrace(
+          req,
+          "permission-denial",
+          `deny-${Date.now()}-${relPath}`,
+          "file-system",
+          "permissions",
+          {
+            path: relPath,
+            role: role || "none",
+            action: "file_access",
+            reason: "not_allowed_path",
+          },
+          {
+            denied: true,
+            reason: "not_allowed_path",
+          },
+          {
+            confidence: 1.0,
+            userRole: role,
+          }
+        ).catch(() => {
+          // Ignore trace errors - graceful degradation
+        });
+
+        await handleGuardEvent(
+          {
+            body: { type: "defcon1", detail: `Not allowed path ${relPath}` },
+          } as any,
+          res as any,
+          () => undefined,
+        );
+        return;
+      }
+      if (isProtected(full) && !isSuper) {
+        await appendLog(
+          `[DENY] protected path ${relPath} role=${role || "none"}`,
+        );
+
+        // Emit trace for permission denial
+        const { emitTrace } = await import("../lib/trace-emitter");
+        emitTrace(
+          req,
+          "permission-denial",
+          `deny-${Date.now()}-${relPath}`,
+          "file-system",
+          "permissions",
+          {
+            path: relPath,
+            role: role || "none",
+            action: "file_access",
+            reason: "protected_path_insufficient_role",
+          },
+          {
+            denied: true,
+            reason: "protected_path_insufficient_role",
+          },
+          {
+            confidence: 1.0,
+            userRole: role,
+          }
+        ).catch(() => {
+          // Ignore trace errors - graceful degradation
+        });
+
+        await handleGuardEvent(
+          {
+            body: {
+              type: "defcon1",
+              detail: `Protected path ${relPath} role=${role || "none"}`,
+            },
+          } as any,
+          res as any,
+          () => undefined,
+        );
+        return; // response already sent by guard
+      }
+    }
+
+    const stamp = Date.now().toString();
+    const backupDir = path.join(ROOT, "server", ".backups", stamp);
+    const manifest: {
+      message: string;
+      when: number;
+      files: { relPath: string; hadFile: boolean }[];
+    } = {
+      message,
+      when: Date.now(),
+      files: [],
+    };
+
+    const fileEvents: HistorianFileChange[] = [];
+
+    await ensureDir(backupDir);
+
+    // ZARO snapshot prior to apply
+    try {
+      const s = await snapshot(ROOT);
+      await appendLog(`[SNAPSHOT] before-apply ${s.snapshotPath || ""}`);
+    } catch {}
+
+    // Write changes while backing up originals
+    for (const ch of changes) {
+      const relPath = String(ch.relPath || "");
+      const contents = String(ch.contents ?? "");
+      if (!relPath)
+        return res
+          .status(400)
+          .json({ ok: false, error: "relPath missing in change" });
+      const full = path.join(ROOT, relPath);
+      if (!allowed(full))
+        return res
+          .status(403)
+          .json({ ok: false, error: `Path not allowed: ${relPath}` });
+
+      // backup original if exists
+      let hadFile = false;
+      try {
+        const orig = await fs.readFile(full, "utf8");
+        hadFile = true;
+        const backupPath = path.join(backupDir, relPath);
+        await ensureDir(path.dirname(backupPath));
+        await fs.writeFile(backupPath, orig, "utf8");
+      } catch {}
+      manifest.files.push({ relPath, hadFile });
+
+      await ensureDir(path.dirname(full));
+      await fs.writeFile(full, contents, "utf8");
+    }
+    await appendLog(`[APPLY] changes=${changes.length} role=${role || "none"}`);
+
+    let typecheck: { ok: boolean; out: string } | null = null;
+    let tests: { ok: boolean; out: string } | null = null;
+
+    if (runChecks) {
+      const EXEC_TIMEOUT = 5 * 60 * 1000; // 5 minutes max
+      const MAX_BUFFER = 10 * 1024 * 1024; // 10MB max output
+
+      try {
+        const r = await execFile("npm", ["run", "-s", "typecheck"], {
+          cwd: ROOT,
+          maxBuffer: MAX_BUFFER,
+          timeout: EXEC_TIMEOUT,
+        });
+        typecheck = { ok: true, out: (r.stdout || "") + (r.stderr || "") };
+      } catch (e: any) {
+        if (e.killed) {
+          typecheck = {
+            ok: false,
+            out: "Typecheck timed out (exceeded 5 minutes)",
+          };
+        } else {
+          typecheck = {
+            ok: false,
+            out: (e.stdout || "") + (e.stderr || e.message || ""),
+          };
+        }
+      }
+
+      try {
+        const r = await execFile("npm", ["test", "--silent"], {
+          cwd: ROOT,
+          maxBuffer: MAX_BUFFER,
+          timeout: EXEC_TIMEOUT,
+        });
+        tests = { ok: true, out: (r.stdout || "") + (r.stderr || "") };
+      } catch (e: any) {
+        if (e.killed) {
+          tests = {
+            ok: false,
+            out: "Tests timed out (exceeded 5 minutes)",
+          };
+        } else {
+          tests = {
+            ok: false,
+            out: (e.stdout || "") + (e.stderr || e.message || ""),
+          };
+        }
+      }
+    }
+
+    const checksOk =
+      !runChecks || ((typecheck?.ok ?? true) && (tests?.ok ?? true));
+    if (!checksOk && !force) {
+      // rollback immediately
+      for (const f of manifest.files) {
+        const full = path.join(ROOT, f.relPath);
+        const backupPath = path.join(backupDir, f.relPath);
+        try {
+          if (f.hadFile) {
+            const content = await fs.readFile(backupPath, "utf8");
+            await fs.writeFile(full, content, "utf8");
+          } else {
+            await fs.rm(full, { force: true });
+          }
+        } catch {}
+      }
+      // save manifest for visibility
+      await ensureDir(backupDir);
+      await fs.writeFile(
+        path.join(backupDir, "manifest.json"),
+        JSON.stringify(manifest, null, 2),
+        "utf8",
+      );
+      return res
+        .status(400)
+        .json({
+          ok: false,
+          error: "Checks failed; rolled back",
+          backupId: stamp,
+          typecheck,
+          tests,
+        });
+    }
+
+    await fs.writeFile(
+      path.join(backupDir, "manifest.json"),
+      JSON.stringify(manifest, null, 2),
+      "utf8",
+    );
+    await appendLog(
+      `[IT_NOTIFY] Apply completed changes=${changes.length} checksOk=${!runChecks || ((typecheck?.ok ?? true) && (tests?.ok ?? true))}`,
+    );
+    res.json({
+      ok: true,
+      backupId: stamp,
+      applied: changes.length,
+      typecheck,
+      tests,
+    });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: (e as Error).message });
+  }
+};
+
+export const handleRollback: RequestHandler = async (req, res) => {
+  try {
+    const { backupId } = req.body || {};
+    const base = path.join(ROOT, "server", ".backups");
+    let id = String(backupId || "");
+    if (!id) {
+      // find latest
+      const entries = await fs.readdir(base).catch(() => [] as string[]);
+      id = entries.sort().pop() || "";
+    }
+    if (!id) return res.status(404).json({ ok: false, error: "No backups" });
+    const dir = path.join(base, id);
+    const manifestPath = path.join(dir, "manifest.json");
+    const manifestStr = await fs.readFile(manifestPath, "utf8");
+    const manifest = JSON.parse(manifestStr) as {
+      files: { relPath: string; hadFile: boolean }[];
+    };
+
+    for (const f of manifest.files) {
+      const full = path.join(ROOT, f.relPath);
+      const backupPath = path.join(dir, f.relPath);
+      await ensureDir(path.dirname(full));
+      if (
+        await fs
+          .stat(backupPath)
+          .then(() => true)
+          .catch(() => false)
+      ) {
+        const content = await fs.readFile(backupPath, "utf8");
+        await fs.writeFile(full, content, "utf8");
+      } else if (!f.hadFile) {
+        await fs.rm(full, { force: true });
+      }
+    }
+    res.json({ ok: true, backupId: id });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: (e as Error).message });
+  }
+};

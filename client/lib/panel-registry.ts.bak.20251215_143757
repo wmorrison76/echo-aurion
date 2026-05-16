@@ -1,0 +1,243 @@
+/**
+ * Panel Registry
+ * Maps module names to their default exported components
+ * Used for dynamic loading in floating panels
+ */
+
+import type React from "react";
+
+export type PanelKey =
+  | "dashboard"
+  | "culinary"
+  | "culinary_sidebar"
+  | "maestro"
+  | "maestro-bqt"
+  | "maestro_sidebar"
+  | "pastry"
+  | "schedule"
+  | "inventory"
+  | "mixology_sommelier"
+  | "chefnet"
+  | "support"
+  | "whiteboard"
+  | "video"
+  | "studio"
+  | "notes"
+  | "aurum"
+  | "layout"
+  | "events"
+  | "wine"
+  | "stratus"
+  | "demand"
+  | "pricing"
+  | "staffing"
+  | "scheduling"
+  | "revenue"
+  | "costs"
+  | "qa"
+  | "guest"
+  | "supply"
+  | "voice"
+  | "canvas"
+  | "ai-chef"
+  | "maintenance"
+  | "templates"
+  | "network"
+  | "benchmark"
+  | "zaro"
+  | "multi-property"
+  | "job-sharing"
+  | "pto"
+  | "analytics"
+  | "mobile"
+  | "echo-chat"
+  | "echo-events"
+  | "global-calendar"
+  | "change-feed"
+  | "event-scheduler"
+  | "maintenance-scheduler"
+  | "override-center"
+  | "override-center-gate"
+  | "audit-timeline"
+  | "event-detail-drawer"
+  | "conflict-dashboard"
+  | "exec-command-console"
+  | "event-risk-dashboard"
+  | "risk-heatmap";
+
+export interface PanelRegistry {
+  [key: string]: () => Promise<{ default: React.ComponentType<any> }>;
+}
+
+/**
+ * Preload a module in the background during idle time
+ */
+export const preloadModule = (panelKey: PanelKey) => {
+  if (typeof window === "undefined") return;
+
+  setTimeout(() => {
+    PANEL_REGISTRY[panelKey]?.().catch(() => {});
+  }, 5000);
+};
+
+/**
+ * Preload critical modules on app startup
+ */
+export const preloadCriticalModules = () => {
+  if (typeof window === "undefined") return;
+  preloadModule("dashboard");
+};
+
+/**
+ * Central registry for all module panels
+ */
+export const PANEL_REGISTRY: PanelRegistry = {
+  dashboard: () => import("@/modules/Dashboard"),
+  culinary: () => import("@/modules/Culinary"),
+  culinary_sidebar: () => import("@/modules/Culinary/CulinarySidebarPanel"),
+  maestro: () => import("@/modules/Maestro"),
+  "maestro-bqt": () => import("@/modules/MaestroBQT"),
+  maestro_sidebar: () => import("@/modules/Maestro/MaestroSidebarPanel"),
+  pastry: () => import("@/modules/Pastry"),
+  schedule: () => import("@/modules/Schedule"),
+  inventory: () => import("@/modules/Inventory"),
+  mixology_sommelier: () => import("@/modules/MixologySommelier"),
+  chefnet: () => import("@/modules/ChefNet"),
+  support: () => import("@/modules/Support"),
+  whiteboard: () => import("@/modules/Whiteboard"),
+  video: () => import("@/modules/VideoConference"),
+  studio: () => import("@/modules/EchoCanvasStudio"),
+  notes: () => import("@/modules/StickyNotes"),
+  aurum: () => import("@/modules/EchoAurum"),
+  layout: () => import("@/modules/EchoLayout"),
+  events: () => import("@/modules/EchoEventStudio"),
+  wine: () => import("@/modules/WineSommelier"),
+  stratus: () => import("@/modules/EchoStratus"),
+  demand: () => import("@/modules/DemandForecasting"),
+  pricing: () => import("@/modules/DynamicPricing"),
+  staffing: () => import("@/modules/StaffOptimization"),
+  scheduling: () => import("@/modules/AutoScheduling"),
+  revenue: () => import("@/modules/RevenueOps"),
+  costs: () => import("@/modules/CostManagement"),
+  qa: () => import("@/modules/QualityAssurance"),
+  guest: () => import("@/modules/GuestExperience"),
+  supply: () => import("@/modules/SupplyChain"),
+  voice: () => import("@/modules/VoiceCommands"),
+  canvas: () => import("@/modules/UnifiedCanvas"),
+  "ai-chef": () => import("@/modules/AICookingAssistant"),
+  maintenance: () => import("@/modules/PredictiveMaintenance"),
+  templates: () => import("@/modules/TemplateMarketplace"),
+  network: () => import("@/modules/SupplierNetwork"),
+  benchmark: () => import("@/modules/DataCollective"),
+  zaro: () => import("@/modules/Zaro"),
+
+  "multi-property": () => import("@/modules/MultiProperty"),
+  "job-sharing": () => import("@/modules/JobSharing"),
+  pto: () => import("@/modules/PTOManagement"),
+  analytics: () => import("@/modules/CustomAnalytics"),
+  mobile: () => import("@/modules/MobileEnhancements"),
+
+  "echo-chat": () =>
+    import("@/components/messaging").then((m) => ({ default: m.EchoChat })),
+
+  "echo-events": () => import("@/modules/EchoEvents"),
+  "global-calendar": () => import("@/modules/GlobalCalendar"),
+  "change-feed": () => import("@/modules/ChangeFeedPanel"),
+  "event-scheduler": () => import("@/modules/EventSchedulerPanel"),
+  "maintenance-scheduler": () =>
+    import("@/modules/MaintenanceSchedulerPanel"),
+  "override-center": () => import("@/modules/OverrideCenterPanel"),
+  "override-center-gate": () => import("@/modules/OverrideCenterGate"),
+  "audit-timeline": () => import("@/modules/AuditTimelinePanel"),
+  "event-detail-drawer": () => import("@/modules/EventDetailDrawer"),
+  "conflict-dashboard": () => import("@/modules/ConflictDashboardPanel"),
+  "exec-command-console": () => import("@/modules/ExecCommandConsole"),
+  "event-risk-dashboard": () => import("@/modules/EventRiskDashboard"),
+  "risk-heatmap": () => import("@/modules/RiskHeatmap"),
+};
+
+/**
+ * Panel metadata
+ */
+export interface PanelMetadata {
+  title: string;
+  devOnly?: boolean;
+  defaultSize?: {
+    w: number;
+    h: number;
+  };
+}
+/**
+ * Panel metadata registry
+ * Used for titles, sizing, and dev-only flags
+ */
+export const PANEL_METADATA: Record<PanelKey, PanelMetadata> = {
+  dashboard: { title: "Dashboard" },
+  culinary: { title: "Culinary" },
+  culinary_sidebar: { title: "Culinary Sidebar" },
+  maestro: { title: "Maestro" },
+  "maestro-bqt": { title: "Maestro BQT" },
+  maestro_sidebar: { title: "Maestro Sidebar" },
+  pastry: { title: "Pastry" },
+  schedule: { title: "Schedule" },
+  inventory: { title: "Inventory" },
+  mixology_sommelier: { title: "Mixology & Sommelier" },
+  chefnet: { title: "ChefNet" },
+  support: { title: "Support" },
+  whiteboard: { title: "Whiteboard" },
+  video: { title: "Video" },
+  studio: { title: "Studio" },
+  notes: { title: "Notes" },
+  aurum: { title: "Aurum" },
+  layout: { title: "Layout" },
+  events: { title: "Events" },
+  wine: { title: "Wine" },
+  stratus: { title: "Stratus" },
+  demand: { title: "Demand" },
+  pricing: { title: "Pricing" },
+  staffing: { title: "Staffing" },
+  scheduling: { title: "Scheduling" },
+  revenue: { title: "Revenue" },
+  costs: { title: "Costs" },
+  qa: { title: "QA" },
+  guest: { title: "Guest Experience" },
+  supply: { title: "Supply Chain" },
+  voice: { title: "Voice" },
+  canvas: { title: "Canvas" },
+  "ai-chef": { title: "AI Chef" },
+  maintenance: { title: "Maintenance" },
+  templates: { title: "Templates" },
+  network: { title: "Network" },
+  benchmark: { title: "Benchmark" },
+  zaro: { title: "ZARO", devOnly: true },
+
+  "multi-property": { title: "Multi-Property" },
+  "job-sharing": { title: "Job Sharing" },
+  pto: { title: "PTO" },
+  analytics: { title: "Analytics" },
+  mobile: { title: "Mobile" },
+
+  "echo-chat": { title: "Echo Chat" },
+  "echo-events": { title: "Echo Events" },
+  "global-calendar": { title: "Global Calendar" },
+  "change-feed": { title: "Change Feed" },
+  "event-scheduler": { title: "Event Scheduler" },
+  "maintenance-scheduler": { title: "Maintenance Scheduler" },
+  "override-center": { title: "Override Center" },
+  "override-center-gate": { title: "Override Center Gate" },
+  "audit-timeline": { title: "Audit Timeline" },
+  "event-detail-drawer": { title: "Event Detail" },
+  "conflict-dashboard": { title: "Conflict Dashboard" },
+  "exec-command-console": { title: "Exec Command Console" },
+  "event-risk-dashboard": { title: "Event Risk Dashboard" },
+  "risk-heatmap": { title: "Risk Heatmap" },
+};
+/**
+ * Runtime guard to verify a panel key exists
+ * Prevents invalid panel opens and blank screens
+ */
+export function isValidPanelKey(key: unknown): key is PanelKey {
+  if (typeof key !== "string") return false;
+  return key in PANEL_REGISTRY;
+}
+

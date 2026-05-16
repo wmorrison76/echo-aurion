@@ -1,0 +1,852 @@
+{
+  "meta": {
+    "name": "LUCCCA_GIO_Banquet_Dashboard",
+    "version": "0.1.0",
+    "generated_at": "2025-08-28T12:09:07.591988Z",
+    "precision_requirement": 5e-05,
+    "authoring_notes": [
+      "GIO = Global Intelligence for Operations \u2014 the orchestration brain for Maestro Banquets.",
+      "Focus: single Banquet dashboard that coordinates everything. Setup wizard will be attached later.",
+      "Primary UI is composed with Builder.io; this manifest guides content models, slots, and data bindings."
+    ]
+  },
+  "identities": {
+    "systems": {
+      "maestro_banquets": true,
+      "echo_ai": true,
+      "echo_event_studio": true,
+      "echo_scope": true,
+      "crm": true
+    },
+    "roles": [
+      "ExecutiveChef",
+      "SeniorExecSous",
+      "SousAM",
+      "SousPM",
+      "CDP_Hot",
+      "CDP_Cold",
+      "GardeMangerSous",
+      "GardeMangerChef",
+      "ProductionChef",
+      "Saucier",
+      "Butcher",
+      "Cook1",
+      "Cook2",
+      "Cook3",
+      "KitchenPorter",
+      "EventManager",
+      "PurchaserReceiver",
+      "Finance"
+    ]
+  },
+  "builder_io": {
+    "notes": "Define Builder.io models and slots so content editors can visually compose the dashboard while preserving data contracts.",
+    "models": [
+      {
+        "name": "BanquetDashboard",
+        "id": "7a92039f-1ddd-4f89-8c7a-c766d684cc9d",
+        "kind": "page",
+        "url": "/banquets/dashboard",
+        "slots": [
+          "Header",
+          "Toolbar",
+          "KPIBar",
+          "LeftRail",
+          "Main",
+          "RightRail",
+          "Footer"
+        ],
+        "data_bindings": {
+          "Header": [
+            "user.profile",
+            "property.name",
+            "date.today"
+          ],
+          "KPIBar": [
+            "kpis.food_cost_pct",
+            "kpis.labor_cost_pct",
+            "kpis.events_today",
+            "kpis.guests_total",
+            "kpis.prep_completion_pct"
+          ],
+          "LeftRail": [
+            "panel.EventQueue",
+            "panel.CalendarMini"
+          ],
+          "Main": [
+            "panel.BEOEditor",
+            "panel.MenuRecipe",
+            "panel.Timeline"
+          ],
+          "RightRail": [
+            "panel.Scheduler",
+            "panel.PrepTracker",
+            "panel.InventoryPricing"
+          ],
+          "Footer": [
+            "notifications.stream"
+          ]
+        }
+      },
+      {
+        "name": "Panel",
+        "id": "82cd6bc8-dc03-448b-9d7a-7c4d4ffbf650",
+        "kind": "section",
+        "schema": {
+          "title": "string",
+          "slug": "string",
+          "icon": "string",
+          "size": {
+            "w": "number",
+            "h": "number",
+            "minW": "number",
+            "minH": "number"
+          },
+          "slot": "string",
+          "component_ref": "string",
+          "permissions": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "components": [
+      {
+        "name": "EventQueue",
+        "ref": "panel.EventQueue"
+      },
+      {
+        "name": "GlobalCalendar",
+        "ref": "panel.GlobalCalendar"
+      },
+      {
+        "name": "BEO_REO_Editor",
+        "ref": "panel.BEOEditor"
+      },
+      {
+        "name": "MenuRecipe",
+        "ref": "panel.MenuRecipe"
+      },
+      {
+        "name": "InventoryPricing",
+        "ref": "panel.InventoryPricing"
+      },
+      {
+        "name": "Scheduler",
+        "ref": "panel.Scheduler"
+      },
+      {
+        "name": "PrepTracker",
+        "ref": "panel.PrepTracker"
+      },
+      {
+        "name": "CartTracker",
+        "ref": "panel.CartTracker"
+      },
+      {
+        "name": "SeatPlanner",
+        "ref": "panel.SeatPlanner"
+      },
+      {
+        "name": "Timeline",
+        "ref": "panel.Timeline"
+      },
+      {
+        "name": "CalendarMini",
+        "ref": "panel.CalendarMini"
+      }
+    ],
+    "content_entries": [
+      {
+        "model": "BanquetDashboard",
+        "entry_id": "f3aab582-4074-4731-9cff-30e8d2c0298e",
+        "slots": {
+          "Header": {
+            "component": "HeaderBar",
+            "props": {
+              "showPropertySwitcher": true
+            }
+          },
+          "Toolbar": {
+            "component": "EchoAssistantToolbar",
+            "props": {
+              "echoAvatar": "EchoF"
+            }
+          },
+          "KPIBar": {
+            "component": "KPIBar",
+            "props": {
+              "layout": "compact"
+            }
+          },
+          "LeftRail": [
+            {
+              "component": "EventQueue",
+              "props": {
+                "filter": "today+3d",
+                "groupBy": "status"
+              }
+            },
+            {
+              "component": "CalendarMini",
+              "props": {
+                "range": "month"
+              }
+            }
+          ],
+          "Main": [
+            {
+              "component": "BEO_REO_Editor",
+              "props": {
+                "mode": "auto",
+                "autosave": true
+              }
+            },
+            {
+              "component": "MenuRecipe",
+              "props": {
+                "compareMode": "side-by-side"
+              }
+            },
+            {
+              "component": "Timeline",
+              "props": {
+                "view": "prep-vs-execution"
+              }
+            }
+          ],
+          "RightRail": [
+            {
+              "component": "Scheduler",
+              "props": {
+                "targetAccuracySingle": 0.95,
+                "targetAccuracyMulti": 0.75
+              }
+            },
+            {
+              "component": "PrepTracker",
+              "props": {
+                "mobileScan": true
+              }
+            },
+            {
+              "component": "InventoryPricing",
+              "props": {
+                "showAlerts": true
+              }
+            }
+          ],
+          "Footer": {
+            "component": "NotificationStream",
+            "props": {
+              "ackTimeoutHours": 3
+            }
+          }
+        }
+      }
+    ]
+  },
+  "dashboard": {
+    "layout_presets": [
+      {
+        "name": "OrchestraDefault",
+        "grid": {
+          "cols": 12,
+          "rowHeight": 12,
+          "margin": [
+            8,
+            8
+          ]
+        },
+        "placements": [
+          {
+            "panel": "EventQueue",
+            "x": 0,
+            "y": 0,
+            "w": 3,
+            "h": 16,
+            "slot": "LeftRail"
+          },
+          {
+            "panel": "CalendarMini",
+            "x": 0,
+            "y": 16,
+            "w": 3,
+            "h": 8,
+            "slot": "LeftRail"
+          },
+          {
+            "panel": "BEO_REO_Editor",
+            "x": 3,
+            "y": 0,
+            "w": 6,
+            "h": 14,
+            "slot": "Main"
+          },
+          {
+            "panel": "MenuRecipe",
+            "x": 3,
+            "y": 14,
+            "w": 6,
+            "h": 10,
+            "slot": "Main"
+          },
+          {
+            "panel": "Timeline",
+            "x": 3,
+            "y": 24,
+            "w": 6,
+            "h": 10,
+            "slot": "Main"
+          },
+          {
+            "panel": "Scheduler",
+            "x": 9,
+            "y": 0,
+            "w": 3,
+            "h": 12,
+            "slot": "RightRail"
+          },
+          {
+            "panel": "PrepTracker",
+            "x": 9,
+            "y": 12,
+            "w": 3,
+            "h": 11,
+            "slot": "RightRail"
+          },
+          {
+            "panel": "InventoryPricing",
+            "x": 9,
+            "y": 23,
+            "w": 3,
+            "h": 11,
+            "slot": "RightRail"
+          }
+        ]
+      }
+    ],
+    "panels": [
+      {
+        "title": "Event Queue",
+        "slug": "event-queue",
+        "component_ref": "panel.EventQueue",
+        "permissions": [
+          "ExecutiveChef",
+          "SeniorExecSous",
+          "SousAM",
+          "SousPM",
+          "EventManager",
+          "Finance"
+        ],
+        "data": {
+          "source": "CRM.events",
+          "filters": {
+            "range": "today..+14d"
+          },
+          "sort": [
+            "status",
+            "start_at"
+          ]
+        }
+      },
+      {
+        "title": "BEO / REO Editor",
+        "slug": "beo-editor",
+        "component_ref": "panel.BEOEditor",
+        "permissions": [
+          "EventManager",
+          "ExecutiveChef",
+          "SeniorExecSous",
+          "SousAM",
+          "SousPM"
+        ],
+        "data": {
+          "source": "BEO_REO.logic_file",
+          "features": [
+            "parse",
+            "autosave",
+            "versioning"
+          ]
+        }
+      },
+      {
+        "title": "Menu & Recipes",
+        "slug": "menu-recipe",
+        "component_ref": "panel.MenuRecipe",
+        "permissions": [
+          "ExecutiveChef",
+          "SeniorExecSous",
+          "SousAM",
+          "SousPM",
+          "CDP_Hot",
+          "CDP_Cold",
+          "GardeMangerSous",
+          "GardeMangerChef"
+        ],
+        "data": {
+          "source": [
+            "Menu.items",
+            "Recipes.library"
+          ],
+          "features": [
+            "link",
+            "scale",
+            "buffer_pct",
+            "missing_recipe_flag"
+          ]
+        }
+      },
+      {
+        "title": "Timeline",
+        "slug": "timeline",
+        "component_ref": "panel.Timeline",
+        "permissions": [
+          "All"
+        ],
+        "data": {
+          "source": [
+            "BEO_REO.tasks",
+            "Scheduler.assignments"
+          ],
+          "features": [
+            "prep_day_before",
+            "execution_day",
+            "role_breakdown"
+          ]
+        }
+      },
+      {
+        "title": "Scheduler",
+        "slug": "scheduler",
+        "component_ref": "panel.Scheduler",
+        "permissions": [
+          "ExecutiveChef",
+          "SeniorExecSous",
+          "SousAM",
+          "SousPM"
+        ],
+        "data": {
+          "source": [
+            "Roster.staff",
+            "History.events",
+            "TruthGuidelines.roles"
+          ],
+          "targets": {
+            "single": 0.95,
+            "multi": 0.75
+          }
+        }
+      },
+      {
+        "title": "Prep Tracker",
+        "slug": "prep-tracker",
+        "component_ref": "panel.PrepTracker",
+        "permissions": [
+          "SousAM",
+          "SousPM",
+          "SeniorExecSous",
+          "ExecutiveChef"
+        ],
+        "data": {
+          "source": [
+            "BEO_REO.counts",
+            "MobileScan.updates"
+          ],
+          "features": [
+            "checklists",
+            "cart_numbers",
+            "HACCP"
+          ]
+        }
+      },
+      {
+        "title": "Cart Tracker",
+        "slug": "cart-tracker",
+        "component_ref": "panel.CartTracker",
+        "permissions": [
+          "SousAM",
+          "SousPM",
+          "SeniorExecSous",
+          "ExecutiveChef"
+        ],
+        "data": {
+          "source": "Carts.registry",
+          "features": [
+            "locations",
+            "status",
+            "assignments"
+          ]
+        }
+      },
+      {
+        "title": "Seat Planner",
+        "slug": "seat-planner",
+        "component_ref": "panel.SeatPlanner",
+        "permissions": [
+          "EventManager",
+          "ExecutiveChef"
+        ],
+        "data": {
+          "source": [
+            "Floorplans",
+            "GuestList"
+          ],
+          "features": [
+            "drag_place",
+            "flow_sim"
+          ]
+        }
+      },
+      {
+        "title": "Inventory & Pricing",
+        "slug": "inventory-pricing",
+        "component_ref": "panel.InventoryPricing",
+        "permissions": [
+          "PurchaserReceiver",
+          "ExecutiveChef",
+          "SeniorExecSous",
+          "Finance"
+        ],
+        "data": {
+          "source": [
+            "Inventory.products",
+            "Invoices.history",
+            "Vendors.list"
+          ],
+          "features": [
+            "price_alerts",
+            "cost_effect",
+            "vendor_terms"
+          ]
+        }
+      },
+      {
+        "title": "Global Calendar (Mini)",
+        "slug": "calendar-mini",
+        "component_ref": "panel.CalendarMini",
+        "permissions": [
+          "All"
+        ],
+        "data": {
+          "source": "Calendar.events",
+          "features": [
+            "ack_required_after_3h"
+          ]
+        }
+      }
+    ]
+  },
+  "data_sources": {
+    "CRM": {
+      "endpoint": "/api/crm",
+      "objects": [
+        "clients",
+        "events",
+        "activities"
+      ]
+    },
+    "BEO_REO": {
+      "endpoint": "/api/beo",
+      "objects": [
+        "logic_file",
+        "documents",
+        "tasks"
+      ]
+    },
+    "Menu": {
+      "endpoint": "/api/menu",
+      "objects": [
+        "items",
+        "collections"
+      ]
+    },
+    "Recipes": {
+      "endpoint": "/api/recipes",
+      "objects": [
+        "library",
+        "links",
+        "costing"
+      ]
+    },
+    "Inventory": {
+      "endpoint": "/api/inventory",
+      "objects": [
+        "products",
+        "levels",
+        "alerts"
+      ]
+    },
+    "Invoices": {
+      "endpoint": "/api/invoices",
+      "objects": [
+        "history",
+        "lines",
+        "vendors"
+      ]
+    },
+    "Vendors": {
+      "endpoint": "/api/vendors",
+      "objects": [
+        "list",
+        "contacts",
+        "terms"
+      ]
+    },
+    "Roster": {
+      "endpoint": "/api/roster",
+      "objects": [
+        "staff",
+        "skills",
+        "history"
+      ]
+    },
+    "Calendar": {
+      "endpoint": "/api/calendar",
+      "objects": [
+        "events",
+        "acknowledgements"
+      ]
+    },
+    "MobileScan": {
+      "endpoint": "/api/mobile",
+      "objects": [
+        "prep_updates",
+        "cart_scans"
+      ]
+    },
+    "TruthGuidelines": {
+      "endpoint": "/api/truth",
+      "objects": [
+        "roles",
+        "permissions",
+        "workflows"
+      ]
+    },
+    "KPI": {
+      "endpoint": "/api/kpi",
+      "objects": [
+        "food_cost_pct",
+        "labor_cost_pct",
+        "guests_total",
+        "prep_completion_pct"
+      ]
+    },
+    "Echo": {
+      "endpoint": "/api/echo",
+      "objects": [
+        "notifications",
+        "avatars",
+        "assist"
+      ]
+    }
+  },
+  "event_flow": {
+    "states": [
+      "Lead",
+      "Proposal",
+      "Pending",
+      "Confirmed",
+      "InPrep",
+      "Execution",
+      "Closed"
+    ],
+    "transitions": [
+      {
+        "from": "Lead",
+        "to": "Proposal",
+        "trigger": "Sales.qualify"
+      },
+      {
+        "from": "Proposal",
+        "to": "Pending",
+        "trigger": "Client.reviewed"
+      },
+      {
+        "from": "Pending",
+        "to": "Confirmed",
+        "trigger": "Deposit.received"
+      },
+      {
+        "from": "Confirmed",
+        "to": "InPrep",
+        "trigger": "Chef.acknowledge"
+      },
+      {
+        "from": "InPrep",
+        "to": "Execution",
+        "trigger": "Prep.complete && Day.before"
+      },
+      {
+        "from": "Execution",
+        "to": "Closed",
+        "trigger": "Event.complete"
+      }
+    ],
+    "guards": {
+      "Chef.acknowledge": {
+        "timeout_hours": 3,
+        "on_timeout": "Echo.notifyPersistent"
+      }
+    }
+  },
+  "notifications": {
+    "rules": [
+      {
+        "name": "BEO_Not_Opened",
+        "condition": "beo.created && !beo.acknowledged_in_3h",
+        "action": "Echo.pushPersistent"
+      },
+      {
+        "name": "PriceChangeImpact",
+        "condition": "inventory.price_change && recipe.cost_delta>threshold",
+        "action": "Notify.Chef&Purchaser&Finance"
+      },
+      {
+        "name": "MissingRecipe",
+        "condition": "menu.item && !recipe.linked",
+        "action": "Dashboard.flag('MenuRecipe')"
+      }
+    ]
+  },
+  "permissions": {
+    "ExecutiveChef": [
+      "*"
+    ],
+    "SeniorExecSous": [
+      "read",
+      "write",
+      "assign",
+      "ack"
+    ],
+    "SousAM": [
+      "read",
+      "write",
+      "assign",
+      "ack"
+    ],
+    "SousPM": [
+      "read",
+      "write",
+      "assign",
+      "ack"
+    ],
+    "CDP_Hot": [
+      "read",
+      "update_prep"
+    ],
+    "CDP_Cold": [
+      "read",
+      "update_prep"
+    ],
+    "GardeMangerSous": [
+      "read",
+      "update_prep"
+    ],
+    "GardeMangerChef": [
+      "read",
+      "update_prep"
+    ],
+    "ProductionChef": [
+      "read",
+      "update_prep"
+    ],
+    "Saucier": [
+      "read",
+      "update_prep"
+    ],
+    "Butcher": [
+      "read",
+      "update_prep"
+    ],
+    "Cook1": [
+      "read"
+    ],
+    "Cook2": [
+      "read"
+    ],
+    "Cook3": [
+      "read"
+    ],
+    "KitchenPorter": [
+      "read",
+      "receive",
+      "inventory_update"
+    ],
+    "EventManager": [
+      "read",
+      "write_beo",
+      "calendar"
+    ],
+    "PurchaserReceiver": [
+      "read",
+      "purchase",
+      "receive",
+      "vendor_update"
+    ],
+    "Finance": [
+      "read",
+      "kpi_view"
+    ]
+  },
+  "kpis": {
+    "food_cost_pct": {
+      "source": "KPI.food_cost_pct",
+      "target": "<=0.30"
+    },
+    "labor_cost_pct": {
+      "source": "KPI.labor_cost_pct",
+      "target": "<=0.22"
+    },
+    "events_today": {
+      "source": "Calendar.events.count_today"
+    },
+    "guests_total": {
+      "source": "Calendar.events.guests_today"
+    },
+    "prep_completion_pct": {
+      "source": "PrepTracker.completion_pct",
+      "target": ">=0.90 by day-before"
+    }
+  },
+  "automations": {
+    "parse_menu_upload": {
+      "trigger": "upload.menu",
+      "pipeline": [
+        "security_check",
+        "ocr",
+        "menu_segmentation",
+        "item_extraction",
+        "recipe_link_or_create",
+        "missing_recipe_flag"
+      ]
+    },
+    "invoice_intake": {
+      "trigger": "upload.invoices",
+      "pipeline": [
+        "line_parse",
+        "category_normalize",
+        "sku_merge",
+        "vendor_enrich",
+        "price_update",
+        "cost_impact_alerts"
+      ]
+    },
+    "scheduler_optimize": {
+      "trigger": "beo.confirmed",
+      "pipeline": [
+        "roster_match",
+        "skill_fit",
+        "historical_similarity",
+        "multi_event_merge",
+        "target_accuracy_evaluate"
+      ]
+    }
+  },
+  "glossary": {
+    "GIO": "Global Intelligence for Operations",
+    "MaestroBanquets": "Unified banquet orchestration dashboard and data contracts",
+    "LogicFile": "Searchable parsed representation of BEO/REO content",
+    "TruthGuidelines": "Role/rank responsibilities that inform scheduling, prep, and permissions"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "iteration": 73,
+  "test_date": "2026-04-15",
+  "feature_tested": "Role-based Onboarding Wizard & Public Guest Spa Booking",
+  "summary": "Backend: 16/16 tests passed (100%). All onboarding wizard and guest booking endpoints working correctly. Frontend: Onboarding wizard visible with step counter, progress bar, Next/Skip buttons. Guest Booking panel opens from Spa & Wellness group with 10 treatment cards. Full 4-step booking flow works: treatment selection → time selection → guest details → confirmation.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results": {
+    "backend": {
+      "total_tests": 16,
+      "passed": 16,
+      "failed": 0,
+      "test_categories": {
+        "onboarding_wizard_steps": {
+          "tests": 4,
+          "passed": 4,
+          "endpoints": [
+            "GET /api/onboarding-wizard/steps?role=exec_chef - Returns 3 culinary-specific steps",
+            "GET /api/onboarding-wizard/steps?role=spa_manager - Returns 3 spa-specific steps",
+            "GET /api/onboarding-wizard/steps?role=owner - Returns 3 owner steps",
+            "GET /api/onboarding-wizard/steps (default) - Returns 3 default steps"
+          ]
+        },
+        "onboarding_wizard_status": {
+          "tests": 3,
+          "passed": 3,
+          "endpoints": [
+            "GET /api/onboarding-wizard/status?user_id=test - Returns show_wizard=true for new user",
+            "POST /api/onboarding-wizard/complete-step - Marks step as completed",
+            "POST /api/onboarding-wizard/dismiss - Dismisses wizard"
+          ]
+        },
+        "guest_booking_treatments": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "GET /api/guest-booking/treatments - Returns 10 public treatments (no internal fields)",
+            "Treatments have valid price and duration fields"
+          ]
+        },
+        "guest_booking_availability": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "GET /api/guest-booking/availability?date=YYYY-MM-DD - Returns 22 time slots",
+            "Availability can filter by treatment_id"
+          ]
+        },
+        "guest_booking_create": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "POST /api/guest-booking/book - Creates pending appointment with auto-assigned therapist",
+            "Invalid treatment_id returns 404"
+          ]
+        },
+        "existing_endpoints": {
+          "tests": 3,
+          "passed": 3,
+          "endpoints": [
+            "GET /api/health - Still works",
+            "GET /api/dept-analytics/spa - Still works",
+            "GET /api/integrations/status - Still works"
+          ]
+        }
+      }
+    },
+    "frontend": {
+      "elements_verified": 25,
+      "elements_total": 25,
+      "verified_elements": [
+        "Onboarding wizard visible in sidebar (data-testid='onboarding-wizard')",
+        "Step counter shows 'Step X of 3'",
+        "Progress bar with 3 dots",
+        "Next button advances to next step",
+        "Skip Tour button dismisses wizard",
+        "Spa & Wellness group in sidebar (data-testid='sidebar-group-spa_wellness')",
+        "Guest Booking option under Spa & Wellness",
+        "Guest Booking panel opens (data-testid='guest-booking-panel')",
+        "Step 1: 10 treatment cards with name, category badge, description, price, duration",
+        "Step 2: Date input and 22 time slots",
+        "Step 3: Full Name, Email, Phone, Room #, Special Requests fields",
+        "Step 3: Confirm Booking and Back buttons",
+        "Step 4: Booking Confirmed with checkmark",
+        "Step 4: Treatment, Date, Time, Therapist, Price, Booking ID displayed",
+        "Step 4: Book Another Treatment button",
+        "All 9 sidebar groups still present",
+        "Dashboard & Overview expanded by default",
+        "Analytics BI switcher visible"
+      ]
+    }
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration73_onboarding_guest.py",
+    "/app/test_reports/pytest/pytest_results_iter73.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "onboarding_guest.py correctly implements role-based tour steps with 7 role configurations",
+    "Guest booking correctly auto-assigns therapist based on qualifications and availability",
+    "Guest booking creates client record if not exists",
+    "Sidebar.tsx OnboardingWizard component properly fetches status and steps from API",
+    "GuestBooking/index.tsx implements clean 4-step flow with proper state management",
+    "guest-booking panel registered in panel-registry.ts with high priority"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration73_onboarding_guest.py"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "No auth required (dev mode)",
+  "seed_data_creation": "None - using existing spa treatments, therapists, rooms seed data",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Onboarding wizard shows for first-time users in sidebar. Uses user_id='default-user' in dev mode. Guest Booking is under Spa & Wellness group. Full 4-step booking flow: treatment → time → details → confirmation. Booking creates pending appointment with auto-assigned therapist and room. POS/GL/Email integrations remain MOCKED stubs.",
+  "mocked_apis": {
+    "Toast POS": "Stub - returns 'connection_ready' message, no actual API calls",
+    "QuickBooks Online": "Stub - returns 'connection_ready' message, no actual API calls",
+    "SendGrid": "Stub - queues emails locally, no actual delivery",
+    "Resend": "Stub - queues emails locally, no actual delivery"
+  },
+  "verified_features": {
+    "onboarding_wizard": {
+      "roles_supported": ["owner", "admin", "exec_chef", "gm", "spa_manager", "dir_engineering", "default"],
+      "steps_per_role": 3,
+      "ui_elements": ["step_counter", "progress_bar", "next_button", "skip_button", "dismiss_button"],
+      "api_endpoints": ["/api/onboarding-wizard/steps", "/api/onboarding-wizard/status", "/api/onboarding-wizard/complete-step", "/api/onboarding-wizard/dismiss"]
+    },
+    "guest_booking": {
+      "steps": 4,
+      "step_flow": ["Choose Treatment", "Select Date & Time", "Enter Details", "Confirmation"],
+      "treatments_count": 10,
+      "time_slots_count": 22,
+      "form_fields": ["guest_name", "guest_email", "guest_phone", "room_number", "notes"],
+      "auto_assignment": ["therapist", "room"],
+      "booking_status": "pending",
+      "api_endpoints": ["/api/guest-booking/treatments", "/api/guest-booking/availability", "/api/guest-booking/book"]
+    },
+    "sidebar_groups": {
+      "total": 9,
+      "spa_wellness_items": ["Spa Dashboard", "Guest Booking"]
+    }
+  }
+}

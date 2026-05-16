@@ -1,0 +1,145 @@
+{
+  "summary": "Iteration 117: Purchasing Requisition Engine, BEO Creation from Menu Builder, Group Resume PDF Export - All features tested and working. Backend: 19/19 tests PASSED (100%). Frontend: All panels verified working after fixing Purchasing module export issue.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter117_purchasing_beo_pdf.py",
+    "/app/test_reports/pytest/pytest_results_iter117.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Fixed Purchasing module export - index.ts was exporting old OptimizedOrderPanel instead of new PurchasingPanel",
+    "Purchasing Engine connects 21-day forecast covers → recipe ingredients → prep list with 34 ingredients totaling ~$746",
+    "Prep list shows outlet breakdown (Signature Italian, Rooftop Lounge, Pool Bar & Grill, Family Dining)",
+    "Dashboard shows 7-day projected food cost chart with daily projections",
+    "BEO creation from Menu Builder calculates financial breakdown with service charge (26%) and tax (7%)",
+    "BEO templates support save/load/delete with use_count tracking",
+    "Group Resume PDF export uses fpdf2 library with proper Content-Type: application/pdf header",
+    "All data-testid attributes present for automated testing"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter117_purchasing_beo_pdf.py",
+    "/app/client/modules/Purchasing/index.ts",
+    "/app/client/modules/Purchasing/PurchasingPanel.tsx"
+  ],
+  "success_rate": {
+    "backend": "100% (19/19 tests passed)",
+    "frontend": "100% (all panels and features verified)"
+  },
+  "test_credentials": {
+    "auth": "No auth required - dev mode"
+  },
+  "seed_data_creation": "Group Resume sample seeded via POST /api/group-resume/seed-sample (eClinical Works Enterprise Summit). Purchasing prep list uses OUTLET_MENU_MIX and INGREDIENT_YIELDS data.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 117 tested Purchasing Requisition Engine (Financial & Purchasing > Purchasing Engine), BEO Menu Builder (Culinary Operations > BEO Menu Builder), and Group Resume PDF Export (Events & Catering > Group Resume). Fixed Purchasing module export issue - renamed index.tsx to PurchasingPanel.tsx and updated index.ts to export it. All backend APIs working. Purchasing Engine has 3 tabs: Dashboard (7-day food cost chart), Prep List (34 ingredients with shortage alerts), Requisitions (PR list with approve workflow). BEO Menu Builder has Save Template and Create BEO buttons when items selected. Group Resume has Export PDF button that generates PDF with all sections.",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/purchasing/prep-list?date=2026-04-13 - returns 34 ingredients with total cost $746.06 - PASSED",
+      "GET /api/purchasing/prep-list?date=2026-04-13&outlet=Pool%20Bar%20%26%20Grill - returns Pool Bar only items - PASSED",
+      "GET /api/purchasing/prep-list - has shortages array - PASSED",
+      "GET /api/purchasing/dashboard - returns weekly_projected_cost, daily_projections (7 days), outlets_tracked - PASSED",
+      "POST /api/purchasing/requisition - creates PR with pr- prefix ID - PASSED",
+      "GET /api/purchasing/requisitions - returns requisition list - PASSED",
+      "PUT /api/purchasing/requisitions/{id}/approve - approves PR - PASSED",
+      "PUT /api/purchasing/requisitions/nonexistent/approve - returns 404 - PASSED",
+      "POST /api/banquet-menus/create-beo - creates BEO with financial breakdown - PASSED",
+      "POST /api/banquet-menus/templates/save - saves BEO template - PASSED",
+      "GET /api/banquet-menus/templates/list - returns templates - PASSED",
+      "GET /api/banquet-menus/templates/{id} - loads template - PASSED",
+      "DELETE /api/banquet-menus/templates/{id} - deletes template - PASSED",
+      "GET /api/banquet-menus/templates/nonexistent - returns 404 - PASSED",
+      "POST /api/group-resume/seed-sample - seeds eClinical Works resume - PASSED",
+      "GET /api/group-resume/gr-eclinical-sample/pdf - returns PDF binary with application/pdf content type - PASSED",
+      "GET /api/group-resume/nonexistent/pdf - returns 404 - PASSED",
+      "GET /api/group-resume/gr-eclinical-sample - returns all sections (VIPs, room blocks, schedule) - PASSED",
+      "GET /api/health - PASSED"
+    ],
+    "frontend_ui_tests": [
+      "Purchasing Engine panel opens via Financial & Purchasing > Purchasing Engine - PASSED",
+      "Panel has 3 tabs: Dashboard, Prep List, Requisitions - PASSED",
+      "Dashboard shows 7-Day Projected Food Cost chart with $3.4K weekly cost - PASSED",
+      "Dashboard shows 4 outlets tracked, 10 items with recipes, pending PRs count - PASSED",
+      "Prep List shows 34 ingredients totaling $746.06 with 34 shortages - PASSED",
+      "Prep List has date picker, outlet selector, Generate button - PASSED",
+      "Create PR button visible and creates requisition - PASSED",
+      "Requisitions view shows PR list with PENDING/APPROVED status - PASSED",
+      "BEO Menu Builder panel opens via Culinary Operations > BEO Menu Builder - PASSED",
+      "Category sidebar shows BREAKFAST, BREAKS, LUNCH, DINNER, RECEPTION, BEVERAGE, ADD-ONS - PASSED",
+      "Available items panel shows menu items with dietary info - PASSED",
+      "Selected items panel shows items with quantity controls - PASSED",
+      "Save Template button visible when items selected - PASSED",
+      "Create BEO button visible when items selected - PASSED",
+      "Cost breakdown shows per-person, F&B total, service charge, tax, grand total - PASSED",
+      "Group Resume Builder panel opens via Events & Catering > Group Resume - PASSED",
+      "Resume list shows eClinical Works sample with CONFIRMED status - PASSED",
+      "Resume detail shows all sections: Meeting Details, VIP Info, Room Blocks - PASSED",
+      "Export PDF button visible in resume detail view - PASSED"
+    ]
+  },
+  "verified_features": {
+    "purchasing_requisition_engine": {
+      "status": "Working",
+      "endpoints": [
+        "GET /api/purchasing/prep-list",
+        "GET /api/purchasing/dashboard",
+        "POST /api/purchasing/requisition",
+        "GET /api/purchasing/requisitions",
+        "PUT /api/purchasing/requisitions/{id}/approve"
+      ],
+      "data": {
+        "prep_list_date": "2026-04-13",
+        "total_ingredients": 34,
+        "total_cost": "$746.06",
+        "outlets": ["Signature Italian", "Rooftop Lounge", "Pool Bar & Grill", "Family Dining"],
+        "weekly_projected_cost": "$3.4K"
+      },
+      "tabs": ["Dashboard", "Prep List", "Requisitions"]
+    },
+    "beo_creation_from_menu_builder": {
+      "status": "Working",
+      "endpoints": [
+        "POST /api/banquet-menus/create-beo",
+        "POST /api/banquet-menus/templates/save",
+        "GET /api/banquet-menus/templates/list",
+        "GET /api/banquet-menus/templates/{id}",
+        "DELETE /api/banquet-menus/templates/{id}"
+      ],
+      "features": ["Save Template button", "Create BEO button", "Financial breakdown with service charge and tax"]
+    },
+    "group_resume_pdf_export": {
+      "status": "Working",
+      "endpoints": [
+        "GET /api/group-resume/{id}/pdf"
+      ],
+      "sample_resume": {
+        "id": "gr-eclinical-sample",
+        "name": "Enterprise Summit & Sales Meeting",
+        "company": "eClinicalWorks, LLC",
+        "dates": "2026-04-12 to 2026-04-15",
+        "attendance": 325,
+        "vips": 4,
+        "room_nights": 575,
+        "revenue": "$239,175"
+      },
+      "pdf_features": ["Content-Type: application/pdf", "PDF magic bytes verified", "Attachment disposition header"]
+    }
+  },
+  "bug_fixed": {
+    "issue": "Purchasing Requisition Engine panel showed 'Panel failed to render - useState is not defined'",
+    "root_cause": "index.ts was exporting OptimizedOrderPanel instead of the new PurchasingPanel component",
+    "fix": "Renamed index.tsx to PurchasingPanel.tsx and updated index.ts to export from './PurchasingPanel'"
+  },
+  "mocked_apis": {
+    "has_mocked_apis": false,
+    "mocked_apis_list": [],
+    "note": "All APIs are real implementations. Purchasing Engine uses hardcoded OUTLET_MENU_MIX and INGREDIENT_YIELDS data."
+  }
+}

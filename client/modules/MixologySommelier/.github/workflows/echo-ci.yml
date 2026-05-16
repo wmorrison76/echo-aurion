@@ -1,0 +1,48 @@
+name: Echo CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    env:
+      PNPM_HOME: ~/.pnpm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile || pnpm install
+
+      - name: Run unit tests
+        run: pnpm test
+
+      - name: Validate JSON Schemas
+        run: pnpm exec ajv-cli validate -s schemas/inventory-item.schema.json -d 'tests/fixtures/**/*.json' || true
+
+      - name: Evaluate guardrails
+        run: |
+          curl -sL https://openpolicyagent.org/downloads/latest/opa_linux_amd64 -o opa
+          chmod +x opa
+          ./opa eval --format pretty --input opa/opa-input.template.json -d policies/guardrails.rego "data.guardrails.allow"
+
+      - name: Secret scanning
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: .config/gitleaks.toml

@@ -1,0 +1,16 @@
+learning: sandboxed
+access:
+  writes_code: false
+  deploys: false
+  queue: true
+  requires_human_approval: true
+sandboxes:
+  - name: neural-meta-loop
+    isolation: filesystem
+    review_required: true
+  - name: dream-forge
+    isolation: network
+    egress: ["generation-service"]
+  - name: vector-memory
+    isolation: network
+    egress: ["vector-memory"]

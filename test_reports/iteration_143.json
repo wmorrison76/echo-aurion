@@ -1,0 +1,93 @@
+{
+  "summary": "Iteration 143: FOH Command Dashboard + Guest 360 Hub + IRD/Minibar Hub + Intelligence Adapter - All 47 backend tests passed. Tested 4 new router files with 36+ endpoints. Fixed 2 bugs during testing: (1) foh_ops.py floor_view datetime comparison error (offset-naive vs offset-aware), (2) intelligence_adapter.py route order issue (/ai3/summary must come before /ai3/{module}). All seed endpoints idempotent. No MongoDB _id leaks in any response. Cross-module event emission verified.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter143_foh_guest360_ird_intelligence.py",
+    "/app/test_reports/pytest/pytest_results_iter143.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "foh_ops.py floor_view had datetime comparison bug (offset-naive vs offset-aware) - FIXED",
+    "intelligence_adapter.py had route order issue (/ai3/summary was after /ai3/{module}, causing 404) - FIXED",
+    "All new modules properly use _strip() or {'_id': 0} projection to prevent MongoDB _id leaks"
+  ],
+  "updated_files": [
+    "/app/backend/routes/foh_ops.py",
+    "/app/backend/routes/intelligence_adapter.py",
+    "/app/backend/tests/test_iter143_foh_guest360_ird_intelligence.py"
+  ],
+  "success_rate": {
+    "backend": "100% - 47/47 tests passed",
+    "frontend": "N/A - backend only testing requested"
+  },
+  "verified_features": {
+    "FOH_seed_idempotent": "PASS - POST /api/foh-ops/seed returns counts for outlets/reservations/servers/ticket_timings/beverage_sales",
+    "FOH_outlets_9": "PASS - GET /api/foh-ops/outlets returns 9 seeded outlets (pier-top, calusso, sotogrande, saltbreeze, garni, windows, ird, nectar, elate)",
+    "FOH_kpis_12_fields": "PASS - GET /api/foh-ops/kpis returns covers_per_hour, revenue_per_seat, check_average, beverage_attachment_pct, dessert_attachment_pct, no_show_rate_pct, ticket_time_variance_min",
+    "FOH_director_dashboard": "PASS - GET /api/foh-ops/director returns outlet_ranking (sorted by revenue), upcoming_by_outlet, vip_arrivals, top_bottlenecks",
+    "FOH_outlet_pier_top": "PASS - GET /api/foh-ops/outlet/pier-top returns covers_forecast, projected_turns, section_load, vip_tables, allergy_alerts, recovery_queue",
+    "FOH_outlet_floor_view": "PASS - GET /api/foh-ops/outlet/pier-top/floor returns arrivals_15min/30min/60min, recent_tickets, host_pressure",
+    "FOH_create_reservation": "PASS - POST /api/foh-ops/reservations emits foh.reservation.created event, returns reservation with id",
+    "FOH_patch_reservation": "PASS - PATCH /api/foh-ops/reservations/{id}?status=seated updates status",
+    "FOH_pacing": "PASS - GET /api/foh-ops/pacing/pier-top returns timeline with 30-min slots, overload_slots where capacity_pct > 85",
+    "FOH_beverage_performance": "PASS - GET /api/foh-ops/beverage-performance returns by_category, server_ranking sorted by revenue",
+    "FOH_walk_in_surge": "PASS - GET /api/foh-ops/walk-in-surge returns hourly_forecast, peak_hour, surge_risk (low/moderate/high)",
+    "FOH_recovery": "PASS - POST /api/foh-ops/recovery creates recovery log",
+    "GUEST360_seed": "PASS - POST /api/guest360-hub/seed seeds 10 profiles",
+    "GUEST360_profiles_filter": "PASS - GET /api/guest360-hub/profiles supports vip, loyalty_tier, in_house filters",
+    "GUEST360_profile_detail": "PASS - GET /api/guest360-hub/profiles/{guest_id} returns profile + notes + concierge_history + reservations + spa_touchpoints",
+    "GUEST360_upsert": "PASS - POST /api/guest360-hub/profiles upserts guest profile",
+    "GUEST360_note_pii_scrubbed": "PASS - POST /api/guest360-hub/profiles/{guest_id}/note scrubs PII ('drunk' -> '[redacted-behavior]', SSN -> '[redacted-ssn]')",
+    "GUEST360_in_house": "PASS - GET /api/guest360-hub/in-house returns in_house=true guests",
+    "GUEST360_vip_today": "PASS - GET /api/guest360-hub/vip-today returns VIPs",
+    "IRD_seed": "PASS - POST /api/ird-hub/seed seeds menu, minibars, zeroes orders collection",
+    "IRD_menu_13_items": "PASS - GET /api/ird-hub/menu returns 13 items with IDs like ird-din-001",
+    "IRD_create_order": "PASS - POST /api/ird-hub/orders validates menu_id, enqueues to pos_outbound, emits ird.order.created event, returns ticket_no",
+    "IRD_patch_order_delivered": "PASS - PATCH /api/ird-hub/orders/{id} with status=delivered sets delivered_at",
+    "IRD_minibar_auto_creates": "PASS - GET /api/ird-hub/minibar/412 auto-creates if missing",
+    "IRD_minibar_consumption": "PASS - POST /api/ird-hub/minibar/412/consumption decrements on_hand, creates minibar charge",
+    "IRD_minibar_restock": "PASS - POST /api/ird-hub/minibar/412/restock resets on_hand to par",
+    "IRD_restock_queue": "PASS - GET /api/ird-hub/restock-queue returns rooms with low items",
+    "IRD_kpis": "PASS - GET /api/ird-hub/kpis returns orders_24h, revenue_24h, avg_ticket, avg_delivery_minutes, minibar_revenue_24h, open_orders",
+    "INTEL_ai3_foh": "PASS - GET /api/intelligence/ai3/foh returns insights about VIP arrivals, allergies",
+    "INTEL_ai3_engineering": "PASS - GET /api/intelligence/ai3/engineering returns VIP engineering risk insights",
+    "INTEL_ai3_housekeeping": "PASS - GET /api/intelligence/ai3/housekeeping returns linen shortage, arrival-risk insights",
+    "INTEL_ai3_summary": "PASS - GET /api/intelligence/ai3/summary returns all modules combined, sorted by severity",
+    "INTEL_aurium_gm": "PASS - GET /api/intelligence/aurium/gm returns composite_health_score, readiness_pct, engineering_open, foh_revenue_24h, ird_revenue_24h, high_severity_alerts",
+    "INTEL_stratus_forecast": "PASS - GET /api/intelligence/stratus/forecast?weeks=6 returns 6 weekly rows + totals_6w with revenue/covers/labor_cost/capex_risk/linen_demand",
+    "CROSS_MODULE_hskp_report_issue": "PASS - POST /api/hskp-ops/report-issue with high severity creates eng_work_orders AND blocks room OOO",
+    "CROSS_MODULE_concierge_intake": "PASS - POST /api/concierge/intake emits concierge.intake event",
+    "REGRESSION_eng_ops_kpis": "PASS - GET /api/eng-ops/kpis still works",
+    "REGRESSION_hskp_ops_kpis": "PASS - GET /api/hskp-ops/kpis still works",
+    "REGRESSION_concierge_domains": "PASS - GET /api/concierge/domains still works",
+    "REGRESSION_health": "PASS - GET /api/health still works",
+    "SECURITY_no_id_leak_foh_ops": "PASS - No MongoDB _id leaked in any foh-ops endpoint",
+    "SECURITY_no_id_leak_guest360_hub": "PASS - No MongoDB _id leaked in any guest360-hub endpoint",
+    "SECURITY_no_id_leak_ird_hub": "PASS - No MongoDB _id leaked in any ird-hub endpoint",
+    "SECURITY_no_id_leak_intelligence": "PASS - No MongoDB _id leaked in any intelligence endpoint"
+  },
+  "bugs_fixed_during_testing": [
+    {
+      "file": "/app/backend/routes/foh_ops.py",
+      "issue": "floor_view endpoint had TypeError: can't subtract offset-naive and offset-aware datetimes",
+      "fix": "Added _parse_eta helper function to ensure timezone-aware datetime comparison"
+    },
+    {
+      "file": "/app/backend/routes/intelligence_adapter.py",
+      "issue": "/api/intelligence/ai3/summary returned 404 because route was defined after /ai3/{module}",
+      "fix": "Moved /ai3/summary route before /ai3/{module} route"
+    }
+  ],
+  "seed_data_creation": "Used seed endpoints: POST /api/foh-ops/seed, POST /api/guest360-hub/seed, POST /api/ird-hub/seed. Created test reservations, orders, and profiles with TEST_ prefix.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iteration 143 adds 4 major backend modules: (1) FOH COMMAND DASHBOARD (/api/foh-ops/*) - 14 endpoints for outlets, reservations, pacing, beverage performance, walk-in surge, recovery. 9 outlets seeded. Director/GM/Floor Manager role views. (2) GUEST 360 HUB (/api/guest360-hub/*) - 8 endpoints for guest profiles with notes, concierge history, reservations, spa touchpoints. PII sanitization for 'drunk', SSN patterns. (3) IRD/MINIBAR HUB (/api/ird-hub/*) - 10 endpoints for menu, orders, minibar state. Uses distinct collections (ird_hub_menu, ird_hub_orders, ird_hub_minibar_state) to avoid clashing with pre-existing /api/ird module. (4) INTELLIGENCE ADAPTER (/api/intelligence/*) - 4 endpoints: ai3/{module} for per-module insights, ai3/summary for all combined, aurium/gm for GM roll-up, stratus/forecast for 6-week forecasting. All deterministic (rule-based), no LLM required. IMPORTANT: /ai3/summary route must come BEFORE /ai3/{module} in FastAPI route order."
+}

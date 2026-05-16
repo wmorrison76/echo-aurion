@@ -1,0 +1,16 @@
+{
+  "request": {
+    "kind": "review",
+    "author": "EchoBot",
+    "pr": true,
+    "checks": {
+      "unit": true,
+      "lint": true,
+      "sast": true,
+      "sbom": true,
+      "license": true
+    },
+    "files": ["policies/authz.model.yaml"],
+    "diff": "rules updated"
+  }
+}

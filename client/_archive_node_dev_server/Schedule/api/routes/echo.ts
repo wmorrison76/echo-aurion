@@ -1,0 +1,7 @@
+/** * Express API routes for EchoAI conversational assistant * Handles natural language queries about labor, revenue, and workload */
+import { Router } from"express";
+import { askEchoAI } from"../../services/aiAssist"; const router = Router(); /** * POST /api/echo/ask * Send natural language query to EchoAI */
+router.post("/ask", async (req, res) => { try { const { org_id, outlet_id, dept_id, prompt } = req.body; if (!org_id || !outlet_id || !dept_id || !prompt) { return res.status(400).json({ error:"org_id, outlet_id, dept_id, prompt required", }); } const result = await askEchoAI({ org_id, outlet_id, dept_id, prompt, }); res.json(result); } catch (err: any) { console.error("POST /echo/ask error:", err); res.status(500).json({ error: err?.message ||"Internal Server Error" }); }
+}); /** * POST /api/echo/scenario * Generate and compare multiple tip pool or labor scenarios */
+router.post("/scenario", async (req, res) => { try { const { org_id, outlet_id, dept_id, scenarios } = req.body; if (!org_id || !outlet_id || !dept_id || !scenarios) { return res.status(400).json({ error:"org_id, outlet_id, dept_id, scenarios required", }); } // This is a placeholder for scenario generation // In production, would compute all scenarios and return comparisons res.json({ message:"Scenario generation not yet implemented", scenarios: [], }); } catch (err: any) { console.error("POST /echo/scenario error:", err); res.status(500).json({ error: err?.message ||"Internal Server Error" }); }
+}); export default router;

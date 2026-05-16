@@ -1,0 +1,60 @@
+{
+  "summary": "Iteration 148: Revenue-at-Risk Engine + Pastry/Module Loading Fixes - All 21 backend tests passed (100%). Frontend verified: EchoAurium GM panel shows revenue-at-risk tile ($15,706), Pattern Intelligence panel shows revenue-at-risk drill-down with by_kind chips and sorted rows. Pastry/Echo Canvas module now loads correctly after cache clear (was showing 'Canvas Studio editor could not be loaded' due to stale Vite cache).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter148_revenue_at_risk.py",
+    "/app/test_reports/pytest/pytest_results_iter148.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "VERIFIED: GET /api/patterns/revenue-at-risk returns total_at_risk_usd=$15,705.95, by_kind breakdown (recurring_room, asset_cluster, repeat_guest), rows sorted by at_risk_usd desc",
+    "VERIFIED: GET /api/intelligence/aurium/gm includes revenue_at_risk_usd=$15,705.95 matching the revenue-at-risk endpoint",
+    "VERIFIED: EchoAurium GM panel hero has 5th tile (data-testid='revenue-at-risk') showing $15,706 in red",
+    "VERIFIED: Pattern Intelligence panel has 'Revenue at Risk · 14d horizon' section (data-testid='revenue-at-risk-panel') with by_kind chips and drill-down rows",
+    "VERIFIED: Pastry > Echo Canvas loads correctly with Tools palette, AI panel, Cake Builder tab, Templates tab",
+    "VERIFIED: REGRESSION - iter147 assign/dismiss/dismissals/preventive WO/team_notifications all working",
+    "NOTE: Vite cache issue caused 'Canvas Studio editor could not be loaded' error - resolved by touching preset-storage.ts to invalidate cache"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter148_revenue_at_risk.py"
+  ],
+  "success_rate": {
+    "backend": "100% - 21/21 tests passed",
+    "frontend": "100% - All iter148 features verified"
+  },
+  "verified_features": {
+    "REVENUE_AT_RISK_endpoint": "PASS - GET /api/patterns/revenue-at-risk returns correct structure with total_at_risk_usd, by_kind, rows, count, horizon_days, window_days, ts",
+    "REVENUE_AT_RISK_by_kind_keys": "PASS - by_kind keys are from {recurring_room, repeat_guest, asset_cluster, outlet_drift}",
+    "REVENUE_AT_RISK_rows_structure": "PASS - Each row has target, at_risk_usd, kind fields",
+    "REVENUE_AT_RISK_rows_sorted": "PASS - Rows sorted by at_risk_usd descending",
+    "REVENUE_AT_RISK_no_id_leak": "PASS - No MongoDB _id in response",
+    "AURIUM_GM_revenue_at_risk_field": "PASS - GET /api/intelligence/aurium/gm includes revenue_at_risk_usd field",
+    "AURIUM_GM_revenue_at_risk_matches": "PASS - revenue_at_risk_usd matches revenue-at-risk endpoint within 5% tolerance",
+    "FRONTEND_aurium_gm_rar_tile": "PASS - Revenue-at-risk tile (data-testid='revenue-at-risk') shows $15,706 in red",
+    "FRONTEND_pattern_intel_rar_panel": "PASS - Revenue-at-risk panel (data-testid='revenue-at-risk-panel') with by_kind chips and drill-down rows",
+    "FRONTEND_pastry_echo_canvas": "PASS - Pastry > Echo Canvas loads with Tools palette, AI panel, Cake Builder, Templates tabs",
+    "REGRESSION_assign_notification": "PASS - POST /api/concierge/team-notifications/{id}/assign works",
+    "REGRESSION_dismiss_pattern": "PASS - POST /api/patterns/dismiss works",
+    "REGRESSION_list_dismissals": "PASS - GET /api/patterns/dismissals works",
+    "REGRESSION_restore_dismissal": "PASS - DELETE /api/patterns/dismissals/{room_no}/{category} works",
+    "REGRESSION_stratus_preventive_wos": "PASS - stratus-recommendations creates preventive WOs",
+    "REGRESSION_stratus_team_notifications": "PASS - stratus creates team_notifications for HIGH-priority plans",
+    "REGRESSION_recurring_issues": "PASS - GET /api/patterns/recurring-issues works",
+    "REGRESSION_inline_summary": "PASS - GET /api/patterns/inline-summary works",
+    "REGRESSION_guest_complaints": "PASS - GET /api/patterns/guest-complaint-history works",
+    "REGRESSION_asset_clusters": "PASS - GET /api/patterns/asset-failure-clusters works",
+    "REGRESSION_outlet_drift": "PASS - GET /api/patterns/outlet-drift works"
+  },
+  "seed_data_creation": "Used existing demo data - revenue-at-risk returns $15,705.95 for 44 pattern rows",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iteration 148 adds Revenue-at-Risk engine: (1) GET /api/patterns/revenue-at-risk?days=30&horizon_days=14 returns single-number revenue-at-risk across all open pattern signals plus drill-down rows sorted by at_risk_usd desc, (2) GET /api/intelligence/aurium/gm now includes revenue_at_risk_usd field, (3) EchoAurium GM panel hero has 5th tile (data-testid='revenue-at-risk') showing $USD amount, clicking opens Pattern Intelligence panel, (4) Pattern Intelligence panel has 'Revenue at Risk · 14d horizon' section (data-testid='revenue-at-risk-panel') with by_kind chips and drill-down rows. Also fixed Pastry/Echo Canvas loading issue caused by minified files with line-comments swallowing code - 185 files had missing React hook imports fixed. Vite cache may need to be cleared if 'Canvas Studio editor could not be loaded' error appears."
+}

@@ -1,0 +1,233 @@
+.d64-stub-root {
+  --bg-deep: #0a0a0a;
+  --bg-card: #161513;
+  --gold: #c8a97e;
+  --gold-deep: #8a7350;
+  --cream: #f3ebd9;
+  --dim: #8a8478;
+  --line: rgba(200, 169, 126, 0.18);
+  --green: #7fb084;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-deep);
+  color: var(--cream);
+  min-height: 100%;
+  width: 100%;
+  padding: 28px 32px 32px;
+  overflow-y: auto;
+}
+
+.d64-stub-root * { box-sizing: border-box; }
+
+.d64-stub-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+}
+.d64-stub-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+.d64-stub-title {
+  font-family: "Fraunces", "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  line-height: 1.1;
+}
+.d64-stub-group {
+  margin-top: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--dim);
+}
+
+.d64-stub-callout {
+  background: linear-gradient(180deg, rgba(200, 169, 126, 0.05) 0%, transparent 100%);
+  border-left: 2px solid var(--gold);
+  padding: 16px 22px;
+  margin-bottom: 22px;
+  border-radius: 0 4px 4px 0;
+}
+.d64-stub-callout-title {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.d64-stub-callout p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--cream);
+  margin: 0 0 8px;
+}
+.d64-stub-callout code {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--gold);
+  font-size: 12px;
+  background: rgba(200, 169, 126, 0.08);
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+.d64-stub-doctrine {
+  font-size: 12px !important;
+  color: var(--dim) !important;
+  margin-top: 8px !important;
+}
+
+.d64-stub-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.d64-stub-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.d64-stub-panel-title {
+  font-family: "Fraunces", serif;
+  font-size: 16px;
+  color: var(--cream);
+}
+.d64-stub-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.d64-stub-endpoints {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.d64-stub-row {
+  border: 1px solid rgba(200, 169, 126, 0.08);
+  border-radius: 2px;
+  transition: border-color 0.3s ease;
+}
+.d64-stub-row.open { border-color: rgba(200, 169, 126, 0.35); }
+.d64-stub-row-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+.d64-stub-row-trigger:hover { background: rgba(200, 169, 126, 0.05); }
+.d64-stub-method {
+  color: var(--green);
+  font-weight: 600;
+}
+.d64-stub-path {
+  color: var(--gold);
+  flex: 1;
+}
+.d64-stub-state {
+  color: var(--dim);
+  font-size: 11px;
+  min-width: 140px;
+  text-align: right;
+}
+.d64-stub-state-ok { color: var(--green); }
+.d64-stub-state-err { color: #c87065; }
+.d64-stub-chevron {
+  color: var(--dim);
+  font-size: 11px;
+  width: 12px;
+  text-align: center;
+}
+.d64-stub-drawer {
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(200, 169, 126, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+}
+.d64-stub-drawer-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.d64-stub-drawer-meta code {
+  color: var(--gold);
+  background: rgba(200, 169, 126, 0.05);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+.d64-stub-refire {
+  margin-left: auto;
+  border: 1px solid rgba(200, 169, 126, 0.35);
+  background: transparent;
+  color: var(--gold);
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.d64-stub-refire:hover { background: var(--gold); color: var(--bg-deep); }
+.d64-stub-drawer-loading {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--gold);
+  font-style: italic;
+}
+.d64-stub-drawer-err {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #c87065;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+.d64-stub-body {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 12px;
+  margin: 0;
+  border-radius: 2px;
+  max-height: 380px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.d64-stub-foot {
+  border-top: 1px solid rgba(200, 169, 126, 0.08);
+  padding-top: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(138, 132, 120, 0.6);
+}

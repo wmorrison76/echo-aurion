@@ -1,0 +1,23 @@
+{
+  "spirits": [
+    "Gin",
+    "Vodka",
+    "Rum",
+    "Tequila",
+    "Whisky"
+  ],
+  "mixers": [
+    "Tonic",
+    "Soda",
+    "Cola",
+    "Vermouth",
+    "Lime Juice"
+  ],
+  "aromas": [
+    "Citrus",
+    "Herbal",
+    "Spice",
+    "Floral",
+    "Smoky"
+  ]
+}

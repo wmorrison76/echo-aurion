@@ -1,0 +1,155 @@
+# D23 · Semgrep ruleset, tuned to LUCCCA's actual risk surface.
+#
+# These are NOT generic OWASP rules (Semgrep registry has those —
+# we run them separately via `semgrep --config p/python --config p/typescript`).
+# This file is the project's CUSTOM rules: patterns that catch bugs
+# specific to how we write code. Each rule has:
+#   - A real bug pattern we've already shipped (or nearly shipped)
+#   - A pinpointable replacement
+#   - Low false-positive rate so people don't ignore it
+#
+# Run locally:   semgrep --config .semgrep.yml
+# CI runs:       see .github/workflows/echo-ci.yml D23 step
+
+rules:
+  # ─── Fuse-box discipline (D17) ────────────────────────────────────
+  - id: lucca-no-direct-mongo-client
+    message: >-
+      Use `from database import db` or `from services.clients import get_db`
+      — D17b consolidated 19 separate MongoClient instantiations into
+      one shared pool. Each new MongoClient adds a connection pool
+      with maxPoolSize=100 to the cluster.
+    severity: WARNING
+    languages: [python]
+    pattern: MongoClient(...)
+    paths:
+      include:
+        - "backend/"
+      exclude:
+        - "backend/services/clients.py"
+        - "backend/database.py"
+        - "backend/tests/"
+
+  - id: lucca-no-inline-openai-python
+    message: >-
+      Use `from services.clients import get_openai_client` (D17c).
+      Inline `OpenAI(api_key=...)` rebuilds the SDK pool + token
+      counter per route. We've already retired the main bundle;
+      keep new inits out.
+    severity: WARNING
+    languages: [python]
+    pattern: OpenAI(api_key=$KEY)
+    paths:
+      include:
+        - "backend/"
+      exclude:
+        - "backend/services/clients.py"
+
+  - id: lucca-no-inline-openai-typescript
+    message: >-
+      Use `getOpenAIClient()` from server/lib/env.ts (D17c).
+      Inline `new OpenAI({apiKey: ...})` rebuilds the SDK pool +
+      token counter per route. The main server bundle is already
+      retired; sub-modules are tracked for D17c-followup.
+    severity: WARNING
+    languages: [typescript, javascript]
+    pattern: "new OpenAI({apiKey: $KEY})"
+    paths:
+      include:
+        - "server/"
+      exclude:
+        - "server/lib/env.ts"
+
+  - id: lucca-no-inline-jwt-secret
+    message: >-
+      Use `from config import get_settings` (Python) or
+      `getJwtSecret()` from server/lib/env.ts (TS). D17e collapsed
+      5 sites with 3 different hardcoded fallbacks into one.
+    severity: WARNING
+    languages: [python]
+    pattern: os.environ.get("JWT_SECRET", $DEFAULT)
+    paths:
+      include:
+        - "backend/"
+      exclude:
+        - "backend/config.py"
+
+  - id: lucca-no-inline-jwt-secret-ts
+    message: >-
+      Use `getJwtSecret()` from server/lib/env.ts (D17e).
+      Inline `process.env.JWT_SECRET || ...` resurrects the 5-way
+      hardcoded-fallback bug we fixed.
+    severity: WARNING
+    languages: [typescript, javascript]
+    pattern: process.env.JWT_SECRET || $DEFAULT
+    paths:
+      include:
+        - "server/"
+      exclude:
+        - "server/lib/env.ts"
+
+  # ─── Snapshot fields on COGS events (D16g/D19) ────────────────────
+  - id: lucca-cogs-event-needs-source-tag
+    message: >-
+      cogs_events rows MUST carry a `source` field so the reconciler
+      (D16g /cogs/reconcile) can filter internal_transfer vs pos_sale.
+      An untagged event becomes an orphan at month-end close.
+    severity: ERROR
+    languages: [python]
+    pattern: db["cogs_events"].insert_one($DOC)
+    paths:
+      include:
+        - "backend/"
+      exclude:
+        - "backend/tests/"
+
+  # ─── Per-tenant isolation (D11b/D13) ──────────────────────────────
+  - id: lucca-find-without-tenant-id
+    message: >-
+      Multi-tenant collections (custom_roles, module_registrations,
+      audit_events, pending_approvals) need tenant_id in the query.
+      Cross-tenant reads silently leak tenant A's data into tenant B's
+      UI. If single-tenant intent is correct, add a comment explaining.
+    severity: WARNING
+    languages: [python]
+    pattern-either:
+      - pattern: db["custom_roles"].find_one({...})
+      - pattern: db["module_registrations"].find_one({...})
+      - pattern: db["audit_events"].find_one({...})
+      - pattern: db["pending_approvals"].find_one({...})
+    paths:
+      include:
+        - "backend/routes/"
+
+  # ─── Forecast reproducibility (D16h) ──────────────────────────────
+  - id: lucca-monte-carlo-needs-seed
+    message: >-
+      `run_monte_carlo(...)` must be called with `seed=` so reruns
+      are reproducible. An auditor replaying yesterday's forecast
+      needs identical scenarios; without a seed the histogram drifts.
+    severity: WARNING
+    languages: [python]
+    pattern: run_monte_carlo(...)
+    pattern-not: run_monte_carlo(..., seed=$S, ...)
+    paths:
+      include:
+        - "backend/"
+      exclude:
+        - "backend/routes/chronos_forecast.py"
+        - "backend/tests/"
+
+  # ─── Logging hygiene ──────────────────────────────────────────────
+  - id: lucca-no-console-log-in-route
+    message: >-
+      Use `logger.info/warn/error` (server) or the toast/notification
+      surface (client). console.log in a route handler doesn't get
+      structured logging or Sentry breadcrumbs.
+    severity: INFO
+    languages: [typescript]
+    pattern: console.log(...)
+    paths:
+      include:
+        - "server/routes/"
+      exclude:
+        - "*.test.ts"
+        - "*.spec.ts"

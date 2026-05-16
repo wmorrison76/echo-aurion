@@ -1,0 +1,135 @@
+{
+  "summary": "Iteration 31 - Dashboard Enhancements Complete. All 16 backend tests passed (100%). Frontend verified: Dashboard shows 14/14 engines, date range selector (Today/7d/30d/MTD), Top-Selling Items (8 seeded items), Labor Breakdown (7 segments: FOH Servers 32%, FOH Bartenders 8%, FOH Hosts 5%, BOH Cooks 25%, BOH Prep 10%, BOH Dish 7%, Management 13%). Scenario Planner comparison working with throughput analysis and staff breakdown.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration31_dashboard_enhancements.py",
+    "/app/test_reports/pytest/pytest_results_iter31.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Dashboard command-center returns labor.breakdown with all 7 segments (foh_servers, foh_bartenders, foh_hosts, boh_cooks, boh_prep, boh_dish, management)",
+    "Dashboard command-center returns pos.top_items with 8 seeded items from _SEED_TOP_ITEMS",
+    "Dashboard command-center accepts date_from and date_to query params",
+    "System health shows engines_active=14 and engines_total=14",
+    "Knowledge Engine returns 14 domains including timeline_throughput and cafeteria_dining",
+    "Scenario Planner build-scenario returns throughput_analysis with est_clear_minutes, dish_pit_racks, timeline_feasible",
+    "Scenario Planner staffing_estimate includes captains, bussers, station_staff fields",
+    "Share link creation and viewing working correctly with view count increment",
+    "Frontend date range selector has Today/7d/30d/MTD preset buttons",
+    "Frontend Top-Selling Items shows item bars with revenue and quantity",
+    "Frontend Labor Breakdown shows 7 department segments with percentages and dollar amounts"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration31_dashboard_enhancements.py"
+  ],
+  "success_rate": {
+    "backend": "100% (16/16 passed)",
+    "frontend": "100% (all features verified)"
+  },
+  "seed_data_creation": "Created TEST_ITER31_Throughput, TEST_ITER31_Staffing, TEST_ITER31_ShareTest leads during testing",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Iteration 31 verified dashboard enhancements. Key features: Dashboard command-center (GET /api/enterprise/command-center) returns labor.breakdown with 7 segments, pos.top_items with 8+ seeded items, system_health.engines_active=14, accepts date_from/date_to params. Frontend shows date range selector with Today/7d/30d/MTD buttons, Top-Selling Items section with item bars, Labor Breakdown section with 7 department segments. Scenario Planner throughput analysis and share links verified in iteration 30.",
+  "test_results": {
+    "backend_tests": {
+      "health_check": "PASS",
+      "dashboard_command_center": {
+        "returns_data": "PASS",
+        "labor_breakdown_7_segments": "PASS - foh_servers, foh_bartenders, foh_hosts, boh_cooks, boh_prep, boh_dish, management",
+        "pos_top_items_8_items": "PASS - 8 seeded items returned",
+        "system_health_14_engines": "PASS - engines_active=14, engines_total=14",
+        "date_range_params": "PASS - accepts date_from and date_to"
+      },
+      "knowledge_engine": {
+        "domains_count_14": "PASS - 14 domains returned"
+      },
+      "scenario_planner": {
+        "throughput_analysis": "PASS - est_clear_minutes, dish_pit_racks, timeline_feasible",
+        "staffing_breakdown": "PASS - captains, bussers, station_staff"
+      },
+      "share_links": {
+        "create_share_link": "PASS",
+        "view_shared_estimate": "PASS - views increment"
+      },
+      "date_range_presets": {
+        "today": "PASS",
+        "7d": "PASS",
+        "30d": "PASS",
+        "mtd": "PASS"
+      }
+    },
+    "frontend_tests": {
+      "dashboard": {
+        "14_14_engines": "PASS - displayed in header",
+        "date_range_selector": "PASS - Today/7d/30d/MTD buttons visible",
+        "top_selling_items": "PASS - 6+ items visible with bars",
+        "labor_breakdown": "PASS - 7 segments with percentages",
+        "live_indicator": "PASS"
+      },
+      "scenario_planner": {
+        "panel_loads": "PASS",
+        "run_comparison": "PASS",
+        "comparison_results": "PASS - shows delta summary",
+        "throughput_terms": "PASS",
+        "staff_terms": "PASS"
+      }
+    }
+  },
+  "endpoints_tested": [
+    "GET /api/health",
+    "GET /api/enterprise/command-center",
+    "GET /api/enterprise/command-center?date_from=YYYY-MM-DD&date_to=YYYY-MM-DD",
+    "GET /api/knowledge-engine/domains",
+    "POST /api/scenario-planner/build-scenario",
+    "POST /api/portal/submit-lead",
+    "POST /api/portal/share-link/{lead_id}",
+    "GET /api/portal/shared/{share_token}"
+  ],
+  "mocked_apis": {
+    "has_mocked_apis": true,
+    "mocked_apis_list": ["Top-selling items are seeded from _SEED_TOP_ITEMS (not from real POS)", "Labor breakdown uses percentage splits of total labor cost"],
+    "note": "POS/GL integrations are mocked with seeded data"
+  },
+  "verified_features": {
+    "dashboard_enhancements": {
+      "labor_breakdown": {
+        "segments": ["foh_servers (32%)", "foh_bartenders (8%)", "foh_hosts (5%)", "boh_cooks (25%)", "boh_prep (10%)", "boh_dish (7%)", "management (13%)"],
+        "total_cost": "Calculated from positions",
+        "revenue_base": "From POS data"
+      },
+      "top_selling_items": {
+        "count": 8,
+        "items": ["Pan-Seared Salmon", "Filet Mignon 8oz", "Lobster Bisque", "Caesar Salad", "Wagyu Burger", "Chocolate Lava Cake", "Craft Old Fashioned", "Truffle Mac & Cheese"]
+      },
+      "date_range_selector": {
+        "presets": ["Today", "7d", "30d", "MTD"],
+        "custom_range": "date_from and date_to inputs"
+      },
+      "system_health": {
+        "engines_active": 14,
+        "engines_total": 14
+      }
+    },
+    "knowledge_engine": {
+      "total_domains": 14,
+      "includes": ["timeline_throughput", "cafeteria_dining"]
+    },
+    "scenario_planner": {
+      "throughput_analysis": ["est_clear_minutes", "dish_pit_racks", "timeline_feasible"],
+      "staffing": ["captains", "bussers", "station_staff"]
+    },
+    "share_links": {
+      "create": "POST /api/portal/share-link/{lead_id}",
+      "view": "GET /api/portal/shared/{share_token}",
+      "view_count": "Increments on each view"
+    }
+  }
+}

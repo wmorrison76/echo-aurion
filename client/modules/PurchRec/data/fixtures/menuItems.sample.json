@@ -1,0 +1,8 @@
+[
+  { "id": "menu-caesar", "name": "Classic Caesar Salad", "recipeId": "recipe-caesar", "active": true },
+  { "id": "menu-caprese", "name": "Heirloom Caprese", "recipeId": "recipe-caprese", "active": true },
+  { "id": "menu-salmon", "name": "Seared Salmon Bowl", "recipeId": "recipe-salmon-bowl", "active": true },
+  { "id": "menu-shrimp-pasta", "name": "Shrimp Linguine", "recipeId": "recipe-shrimp-linguine", "active": true },
+  { "id": "menu-avocado-toast", "name": "Avocado Toast Deluxe", "recipeId": "recipe-avocado-toast", "active": true },
+  { "id": "menu-grilled-cheese", "name": "Sourdough Grilled Cheese", "recipeId": "recipe-grilled-cheese", "active": true }
+]

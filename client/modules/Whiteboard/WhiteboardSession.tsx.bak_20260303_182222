@@ -1,0 +1,35 @@
+import React from "react";
+
+import Board from "../../board/Board";
+
+interface WhiteboardSessionProps {
+  sessionId?: string;
+  userId?: string;
+  userName?: string;
+  userRole?: "viewer" | "editor" | "presenter" | "organizer";
+  readOnly?: boolean;
+  isPresenter?: boolean;
+  onSessionUpdate?: (session: { id: string; title: string; canvasState: unknown }) => void;
+}
+
+
+/**
+ * Local fallback renderer so the whiteboard stays usable while multiplayer/session logic is being repaired.
+ * Replace this with your real Board component import if needed.
+ */
+function WhiteboardLocalFallback() {
+  // If you already have a Board component, swap this to: return <Board mode="local" />;
+  return (<Board />);
+}
+
+export default function WhiteboardSession(_props?: WhiteboardSessionProps) {
+  return (
+  <div className="w-full h-full flex flex-col">
+    <div className="px-3 py-2 text-xs opacity-80 border-b border-white/10">
+      Whiteboard session is in <b>Local Mode</b> (collaboration/session wiring still repairing).
+    </div>
+    {/* Local-first fallback: allow the board to render even if session logic isn't ready */}
+    <WhiteboardLocalFallback />
+  </div>
+);
+}

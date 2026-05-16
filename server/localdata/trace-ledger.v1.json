@@ -1,0 +1,1261 @@
+[
+  {
+    "id": "trace_1769482992748_pos-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "pos-1->export-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.748Z"
+  },
+  {
+    "id": "trace_1769482992748_menu-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "menu-1->pos-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.748Z"
+  },
+  {
+    "id": "trace_1769482992748_dish-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "dish-1->menu-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.748Z"
+  },
+  {
+    "id": "trace_1769482992747_recipe-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "recipe-1->dish-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.747Z"
+  },
+  {
+    "id": "trace_1769482992746_storage-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "storage-1->recipe-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.746Z"
+  },
+  {
+    "id": "trace_1769482992746_ingredient-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "ingredient-1->storage-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.746Z"
+  },
+  {
+    "id": "trace_1769482992745_invoice-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "invoice-1->ingredient-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.745Z"
+  },
+  {
+    "id": "trace_1769482992745",
+    "orgId": "demo-org",
+    "entityType": "spine-chain",
+    "entityId": "spine_1769482992743",
+    "payload": {
+      "action": "SPINE_CHAIN_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.745Z"
+  },
+  {
+    "id": "trace_1769482992694_override",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "payload": {
+      "action": "FORECAST_OVERRIDE_SET"
+    },
+    "createdAt": "2026-01-27T03:03:12.694Z"
+  },
+  {
+    "id": "trace_1769482992693",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "payload": {
+      "action": "FORECAST_UPDATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.693Z"
+  },
+  {
+    "id": "trace_1769482992642_fc0c3e4f71d42",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "storage-location",
+    "entityId": "storage_1769482992637_28831609ea4d4",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.642Z"
+  },
+  {
+    "id": "trace_1769482992641_e20fa7e7a8a98",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "storage-location",
+    "entityId": "storage_1769482992637_3c12eb5a0188b",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.641Z"
+  },
+  {
+    "id": "trace_1769482992640_2860e5994f458",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769482992640_39bb1e5caf38a",
+    "payload": {
+      "action": "ROLE_ASSIGNED"
+    },
+    "createdAt": "2026-01-27T03:03:12.640Z"
+  },
+  {
+    "id": "trace_1769482992640_db4b595b36b3e",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769482992640_3f8c6c699942",
+    "payload": {
+      "action": "ROLE_ASSIGNED"
+    },
+    "createdAt": "2026-01-27T03:03:12.640Z"
+  },
+  {
+    "id": "trace_1769482992640_d00b91a37c10c",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "outlet",
+    "entityId": "outlet_1769482992637_719a8b8fcb5b8",
+    "payload": {
+      "action": "OUTLET_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.640Z"
+  },
+  {
+    "id": "trace_1769482992639_a6dbaa526d91c",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "outlet",
+    "entityId": "outlet_1769482992637_d5787bd2a1f1b",
+    "payload": {
+      "action": "OUTLET_CREATED"
+    },
+    "createdAt": "2026-01-27T03:03:12.639Z"
+  },
+  {
+    "id": "trace_1769482992637_a76e3367ff88e",
+    "orgId": "org_1769482992636_63070692be91a",
+    "entityType": "org",
+    "entityId": "org_1769482992636_63070692be91a",
+    "payload": {
+      "action": "ORG_PROVISIONED"
+    },
+    "createdAt": "2026-01-27T03:03:12.637Z"
+  },
+  {
+    "id": "trace_1769482430999_pos-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "pos-1->export-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.999Z"
+  },
+  {
+    "id": "trace_1769482430998_menu-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "menu-1->pos-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.998Z"
+  },
+  {
+    "id": "trace_1769482430997_dish-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "dish-1->menu-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.997Z"
+  },
+  {
+    "id": "trace_1769482430995_recipe-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "recipe-1->dish-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.995Z"
+  },
+  {
+    "id": "trace_1769482430994_storage-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "storage-1->recipe-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.994Z"
+  },
+  {
+    "id": "trace_1769482430994_ingredient-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "ingredient-1->storage-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.994Z"
+  },
+  {
+    "id": "trace_1769482430993_invoice-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "invoice-1->ingredient-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.993Z"
+  },
+  {
+    "id": "trace_1769482430992",
+    "orgId": "demo-org",
+    "entityType": "spine-chain",
+    "entityId": "spine_1769482430990",
+    "payload": {
+      "action": "SPINE_CHAIN_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.992Z"
+  },
+  {
+    "id": "trace_1769482430917_override",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "payload": {
+      "action": "FORECAST_OVERRIDE_SET"
+    },
+    "createdAt": "2026-01-27T02:53:50.917Z"
+  },
+  {
+    "id": "trace_1769482430916",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "payload": {
+      "action": "FORECAST_UPDATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.916Z"
+  },
+  {
+    "id": "trace_1769482430828_6c28a3ffd3d31",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "storage-location",
+    "entityId": "storage_1769482430822_c1212b1b621d5",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.828Z"
+  },
+  {
+    "id": "trace_1769482430827_14b1efa060bb3",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "storage-location",
+    "entityId": "storage_1769482430822_d201763bec4bd",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.827Z"
+  },
+  {
+    "id": "trace_1769482430827_43f13c6e73b6b",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769482430827_8770ec3291a87",
+    "payload": {
+      "action": "ROLE_ASSIGNED"
+    },
+    "createdAt": "2026-01-27T02:53:50.827Z"
+  },
+  {
+    "id": "trace_1769482430826_a901960f6b2ac",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769482430826_ddc94b6f36d7",
+    "payload": {
+      "action": "ROLE_ASSIGNED"
+    },
+    "createdAt": "2026-01-27T02:53:50.826Z"
+  },
+  {
+    "id": "trace_1769482430826_c35383e592ec9",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "outlet",
+    "entityId": "outlet_1769482430822_34f42f09d6798",
+    "payload": {
+      "action": "OUTLET_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.826Z"
+  },
+  {
+    "id": "trace_1769482430824_6de7d7e17711b",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "outlet",
+    "entityId": "outlet_1769482430822_9b7a6e45629ff",
+    "payload": {
+      "action": "OUTLET_CREATED"
+    },
+    "createdAt": "2026-01-27T02:53:50.824Z"
+  },
+  {
+    "id": "trace_1769482430822_5c7d3a9ebadc3",
+    "orgId": "org_1769482430821_2b6525a2281ae",
+    "entityType": "org",
+    "entityId": "org_1769482430821_2b6525a2281ae",
+    "payload": {
+      "action": "ORG_PROVISIONED"
+    },
+    "createdAt": "2026-01-27T02:53:50.822Z"
+  },
+  {
+    "id": "trace_1769400411121_pos-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "pos-1->export-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.121Z"
+  },
+  {
+    "id": "trace_1769400411120_menu-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "menu-1->pos-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.120Z"
+  },
+  {
+    "id": "trace_1769400411120_dish-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "dish-1->menu-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.120Z"
+  },
+  {
+    "id": "trace_1769400411119_recipe-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "recipe-1->dish-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.119Z"
+  },
+  {
+    "id": "trace_1769400411119_storage-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "storage-1->recipe-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.119Z"
+  },
+  {
+    "id": "trace_1769400411118_ingredient-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "ingredient-1->storage-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.118Z"
+  },
+  {
+    "id": "trace_1769400411118_invoice-1",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "invoice-1->ingredient-1",
+    "payload": {
+      "action": "SPINE_LINK_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.118Z"
+  },
+  {
+    "id": "trace_1769400411117",
+    "orgId": "demo-org",
+    "entityType": "spine-chain",
+    "entityId": "spine_1769400411116",
+    "payload": {
+      "action": "SPINE_CHAIN_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.117Z"
+  },
+  {
+    "id": "trace_1769400411079_override",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "payload": {
+      "action": "FORECAST_OVERRIDE_SET"
+    },
+    "createdAt": "2026-01-26T04:06:51.079Z"
+  },
+  {
+    "id": "trace_1769400411078",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "payload": {
+      "action": "FORECAST_UPDATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.078Z"
+  },
+  {
+    "id": "trace_1769400411038_81afa50a16b8e",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "storage-location",
+    "entityId": "storage_1769400411034_ea58f698d6029",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.038Z"
+  },
+  {
+    "id": "trace_1769400411037_bef7f839be094",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "storage-location",
+    "entityId": "storage_1769400411034_ec0d2151461b4",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.037Z"
+  },
+  {
+    "id": "trace_1769400411037_187bae9bda748",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769400411037_ba53033ad470f",
+    "payload": {
+      "action": "ROLE_ASSIGNED"
+    },
+    "createdAt": "2026-01-26T04:06:51.037Z"
+  },
+  {
+    "id": "trace_1769400411037_6ad43858eff45",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769400411037_3f42864093cf3",
+    "payload": {
+      "action": "ROLE_ASSIGNED"
+    },
+    "createdAt": "2026-01-26T04:06:51.037Z"
+  },
+  {
+    "id": "trace_1769400411036_75df561a9cdbc",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "outlet",
+    "entityId": "outlet_1769400411034_9419df87b88ad",
+    "payload": {
+      "action": "OUTLET_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.036Z"
+  },
+  {
+    "id": "trace_1769400411036_337cb7259343d",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "outlet",
+    "entityId": "outlet_1769400411034_1018aba20207",
+    "payload": {
+      "action": "OUTLET_CREATED"
+    },
+    "createdAt": "2026-01-26T04:06:51.036Z"
+  },
+  {
+    "id": "trace_1769400411034_4bedb09b70c88",
+    "orgId": "org_1769400411033_47dd1aacc3533",
+    "entityType": "org",
+    "entityId": "org_1769400411033_47dd1aacc3533",
+    "payload": {
+      "action": "ORG_PROVISIONED"
+    },
+    "createdAt": "2026-01-26T04:06:51.034Z"
+  },
+  {
+    "id": "7e3c444d-cfdb-41b7-b8dc-1b45102257ba",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "storage-location",
+    "entityId": "storage_1769398124117_367f116bb625f",
+    "sourceRef": "org_1769398124111_341289de5a48c",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED",
+      "name": "Dry Storage",
+      "outletId": null,
+      "departmentId": null
+    },
+    "createdAt": "2026-01-26T03:28:44.150Z"
+  },
+  {
+    "id": "44643e4b-95b6-4580-9764-fe5868b53b45",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "storage-location",
+    "entityId": "storage_1769398124117_455dd68164a7b",
+    "sourceRef": "org_1769398124111_341289de5a48c",
+    "payload": {
+      "action": "STORAGE_LOCATION_CREATED",
+      "name": "Main Walk-in",
+      "outletId": null,
+      "departmentId": null
+    },
+    "createdAt": "2026-01-26T03:28:44.148Z"
+  },
+  {
+    "id": "a4c4fc23-4e1b-433e-a094-40b4c61f7e27",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769398124117_c6f994d181be3",
+    "sourceRef": "org_1769398124111_341289de5a48c",
+    "payload": {
+      "action": "ROLE_ASSIGNED",
+      "userId": "user-2",
+      "roleId": "role_chef",
+      "outletId": null,
+      "departmentId": null
+    },
+    "createdAt": "2026-01-26T03:28:44.146Z"
+  },
+  {
+    "id": "b9c2bc19-142a-4119-b18b-8a3734dd1b00",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "role-assignment",
+    "entityId": "assign_1769398124117_c31613494053e",
+    "sourceRef": "org_1769398124111_341289de5a48c",
+    "payload": {
+      "action": "ROLE_ASSIGNED",
+      "userId": "user-1",
+      "roleId": "role_manager",
+      "outletId": null,
+      "departmentId": null
+    },
+    "createdAt": "2026-01-26T03:28:44.143Z"
+  },
+  {
+    "id": "434cc1d0-6977-4291-b50c-6f60a18bf50a",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "outlet",
+    "entityId": "outlet_1769398124117_7217e3813da56",
+    "sourceRef": "org_1769398124111_341289de5a48c",
+    "payload": {
+      "action": "OUTLET_CREATED",
+      "name": "Skyline Lounge"
+    },
+    "createdAt": "2026-01-26T03:28:44.140Z"
+  },
+  {
+    "id": "482f6004-1472-44f6-96d6-83f28c27585b",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "outlet",
+    "entityId": "outlet_1769398124117_869be18e9a0f3",
+    "sourceRef": "org_1769398124111_341289de5a48c",
+    "payload": {
+      "action": "OUTLET_CREATED",
+      "name": "Harbor Room"
+    },
+    "createdAt": "2026-01-26T03:28:44.135Z"
+  },
+  {
+    "id": "38d466b7-230c-4313-a834-00eac6e8f0bb",
+    "orgId": "org_1769398124111_341289de5a48c",
+    "entityType": "org",
+    "entityId": "org_1769398124111_341289de5a48c",
+    "sourceRef": "onboarding",
+    "payload": {
+      "action": "ORG_PROVISIONED",
+      "name": "Echo Hospitality Group"
+    },
+    "createdAt": "2026-01-26T03:28:44.131Z"
+  },
+  {
+    "id": "98cd2511-588b-43a3-82c7-c238bc3760e5",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "pos-1->export-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "exported_as"
+    },
+    "createdAt": "2026-01-26T03:28:41.601Z"
+  },
+  {
+    "id": "ccf3cf9a-e282-4cc4-a4b2-76cef35b4c13",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "menu-1->pos-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "mapped_to"
+    },
+    "createdAt": "2026-01-26T03:28:41.600Z"
+  },
+  {
+    "id": "27c4ab26-01ad-4500-a5e0-f804f2e0f578",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "dish-1->menu-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "listed_in"
+    },
+    "createdAt": "2026-01-26T03:28:41.599Z"
+  },
+  {
+    "id": "de40d27b-e10b-48f5-8d9d-885882997773",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "recipe-1->dish-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "composes"
+    },
+    "createdAt": "2026-01-26T03:28:41.598Z"
+  },
+  {
+    "id": "3d9f66f9-bc22-4ad3-a55c-773a894ac0f6",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "storage-1->recipe-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "feeds"
+    },
+    "createdAt": "2026-01-26T03:28:41.598Z"
+  },
+  {
+    "id": "6fba2b85-70e3-4a6f-b6d9-86fcf1e5b069",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "ingredient-1->storage-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "stored_in"
+    },
+    "createdAt": "2026-01-26T03:28:41.597Z"
+  },
+  {
+    "id": "e2fee958-fa4d-44ac-a738-f3be6927050d",
+    "orgId": "demo-org",
+    "entityType": "spine-link",
+    "entityId": "invoice-1->ingredient-1",
+    "sourceRef": "spine_1769398121590_c93c6e2c7e05f",
+    "payload": {
+      "action": "SPINE_LINK_CREATED",
+      "relation": "billed_for"
+    },
+    "createdAt": "2026-01-26T03:28:41.596Z"
+  },
+  {
+    "id": "a8639f2e-c9b4-4f6d-a044-a6fd307644d2",
+    "orgId": "demo-org",
+    "entityType": "spine-chain",
+    "entityId": "spine_1769398121590_c93c6e2c7e05f",
+    "sourceRef": "smoke",
+    "payload": {
+      "action": "SPINE_CHAIN_CREATED",
+      "nodes": 8
+    },
+    "createdAt": "2026-01-26T03:28:41.594Z"
+  },
+  {
+    "id": "b3c9c513-0011-4a62-b130-18085af62bfb",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-27-2026-01-27",
+    "sourceRef": "c74786cf-fa2b-4a67-b248-386ccb2bad4f",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-27",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 5,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-27",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T03:28:38.720Z"
+    },
+    "createdAt": "2026-01-26T03:28:38.721Z"
+  },
+  {
+    "id": "2272dc56-a93f-4e21-bd3d-98938bea73f1",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-1769398118715",
+    "sourceRef": "c74786cf-fa2b-4a67-b248-386ccb2bad4f",
+    "payload": {
+      "action": "DEMAND_DELTA_CONSUMED",
+      "deltaCount": 1,
+      "deltas": [
+        {
+          "date": "2026-01-27",
+          "delta": -10
+        }
+      ],
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "menu-builder"
+      },
+      "timestamp": "2026-01-26T03:28:38.718Z"
+    },
+    "createdAt": "2026-01-26T03:28:38.719Z"
+  },
+  {
+    "id": "b1f0ebd8-a602-45c3-8570-8612214224ca",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-27-demo-org",
+    "sourceRef": "c74786cf-fa2b-4a67-b248-386ccb2bad4f",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-27",
+      "previousForecast": 82,
+      "newForecast": 72,
+      "delta": -10,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T03:28:38.709Z"
+    },
+    "createdAt": "2026-01-26T03:28:38.714Z"
+  },
+  {
+    "id": "8e449dbc-18c9-4f1c-a0a7-886593ba0d92",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "c74786cf-fa2b-4a67-b248-386ccb2bad4f",
+    "payload": {
+      "action": "FORECAST_OVERRIDE_SET",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T03:28:38.709Z"
+    },
+    "createdAt": "2026-01-26T03:28:38.712Z"
+  },
+  {
+    "id": "35bc4938-1d6d-45b8-a315-a9c07d3ea58c",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "c74786cf-fa2b-4a67-b248-386ccb2bad4f",
+    "payload": {
+      "action": "FORECAST_UPDATED",
+      "days": 21,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T03:28:38.709Z"
+    },
+    "createdAt": "2026-01-26T03:28:38.711Z"
+  },
+  {
+    "id": "637f6f8c-2a1c-4b70-9970-04fe31ba876b",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-26-demo-org",
+    "sourceRef": "8d0f6951-588d-43e3-9eda-90995c03e6fd",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-26",
+      "previousForecast": 200,
+      "newForecast": 215,
+      "delta": 15,
+      "actor": {
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T03:28:34.882Z"
+    },
+    "createdAt": "2026-01-26T03:28:34.897Z"
+  },
+  {
+    "id": "a5f0db17-3932-496d-91ac-43c653e97dce",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "8d0f6951-588d-43e3-9eda-90995c03e6fd",
+    "payload": {
+      "action": "FORECAST_OVERRIDE_SET",
+      "actor": {
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T03:28:34.882Z"
+    },
+    "createdAt": "2026-01-26T03:28:34.895Z"
+  },
+  {
+    "id": "1847aece-9d95-420d-8790-43f547b931a5",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "8d0f6951-588d-43e3-9eda-90995c03e6fd",
+    "payload": {
+      "action": "FORECAST_UPDATED",
+      "days": 21,
+      "actor": {
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T03:28:34.882Z"
+    },
+    "createdAt": "2026-01-26T03:28:34.886Z"
+  },
+  {
+    "id": "647ef619-6fd6-4691-bc12-5bfc628cc62a",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-26-2026-01-26",
+    "sourceRef": "375a7a99-d918-4f81-9f7e-0dd90c37c232",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-26",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 10,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-26",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T02:42:13.768Z"
+    },
+    "createdAt": "2026-01-26T02:42:13.770Z"
+  },
+  {
+    "id": "a33178cb-ab55-435c-81fc-86e38fc2f1d5",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-27-2026-01-27",
+    "sourceRef": "375a7a99-d918-4f81-9f7e-0dd90c37c232",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-27",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 5,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-27",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T02:42:13.768Z"
+    },
+    "createdAt": "2026-01-26T02:42:13.768Z"
+  },
+  {
+    "id": "9cd76403-a562-4df2-b6c7-f6860ea9ceb9",
+    "orgId": "demo-org",
+    "entityType": "menu",
+    "entityId": "menu-1769395333763",
+    "sourceRef": "375a7a99-d918-4f81-9f7e-0dd90c37c232",
+    "payload": {
+      "action": "DEMAND_DELTA_CONSUMED",
+      "deltaCount": 2,
+      "deltas": [
+        {
+          "date": "2026-01-27",
+          "delta": -10
+        },
+        {
+          "date": "2026-01-26",
+          "delta": 20
+        }
+      ],
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "menu-builder"
+      },
+      "timestamp": "2026-01-26T02:42:13.766Z"
+    },
+    "createdAt": "2026-01-26T02:42:13.766Z"
+  },
+  {
+    "id": "f7482ece-f25c-4ba9-8b86-6acc1217c7ec",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-27-demo-org",
+    "sourceRef": "375a7a99-d918-4f81-9f7e-0dd90c37c232",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-27",
+      "previousForecast": 92,
+      "newForecast": 82,
+      "delta": -10,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:42:13.759Z"
+    },
+    "createdAt": "2026-01-26T02:42:13.762Z"
+  },
+  {
+    "id": "faee4f2a-406e-40d2-b8f7-a128338380cd",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-26-demo-org",
+    "sourceRef": "375a7a99-d918-4f81-9f7e-0dd90c37c232",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-26",
+      "previousForecast": 180,
+      "newForecast": 200,
+      "delta": 20,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:42:13.759Z"
+    },
+    "createdAt": "2026-01-26T02:42:13.761Z"
+  },
+  {
+    "id": "8007cd1e-b063-49fc-9576-a4fdd3f9d925",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "375a7a99-d918-4f81-9f7e-0dd90c37c232",
+    "payload": {
+      "action": "FORECAST_UPDATED",
+      "days": 21,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:42:13.759Z"
+    },
+    "createdAt": "2026-01-26T02:42:13.760Z"
+  },
+  {
+    "id": "ac9814cb-91f4-4a5c-8d8a-373a3e5e1a04",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-26-2026-01-26",
+    "sourceRef": "e76d2447-9d23-423a-9606-ef1c4bb39444",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-26",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 10,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-26",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T02:40:30.965Z"
+    },
+    "createdAt": "2026-01-26T02:40:30.967Z"
+  },
+  {
+    "id": "cfa36239-18bb-4659-8974-83e8f0cf2351",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-27-2026-01-27",
+    "sourceRef": "e76d2447-9d23-423a-9606-ef1c4bb39444",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-27",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 5,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-27",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T02:40:30.965Z"
+    },
+    "createdAt": "2026-01-26T02:40:30.966Z"
+  },
+  {
+    "id": "66336d26-51d4-49c2-80a1-b6f608b4f00c",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-27-demo-org",
+    "sourceRef": "e76d2447-9d23-423a-9606-ef1c4bb39444",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-27",
+      "previousForecast": 102,
+      "newForecast": 92,
+      "delta": -10,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:30.956Z"
+    },
+    "createdAt": "2026-01-26T02:40:30.960Z"
+  },
+  {
+    "id": "6ab10256-d9ed-40c6-a7bf-681c2f8097e3",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-26-demo-org",
+    "sourceRef": "e76d2447-9d23-423a-9606-ef1c4bb39444",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-26",
+      "previousForecast": 160,
+      "newForecast": 180,
+      "delta": 20,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:30.956Z"
+    },
+    "createdAt": "2026-01-26T02:40:30.958Z"
+  },
+  {
+    "id": "d15df4fd-70a3-4598-917b-5833bb552875",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "e76d2447-9d23-423a-9606-ef1c4bb39444",
+    "payload": {
+      "action": "FORECAST_UPDATED",
+      "days": 21,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:30.956Z"
+    },
+    "createdAt": "2026-01-26T02:40:30.957Z"
+  },
+  {
+    "id": "96357fd0-8095-4823-8f0b-5aadb84c1fb9",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-26-2026-01-26",
+    "sourceRef": "dbb2da2d-3e4e-4292-bdaa-bca47160b2b1",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-26",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 10,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-26",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T02:40:19.936Z"
+    },
+    "createdAt": "2026-01-26T02:40:19.938Z"
+  },
+  {
+    "id": "d505a481-df35-46fd-8869-e8e2bd751c33",
+    "orgId": "demo-org",
+    "entityType": "inventory-implication",
+    "entityId": "impl-ingredient-2026-01-27-2026-01-27",
+    "sourceRef": "dbb2da2d-3e4e-4292-bdaa-bca47160b2b1",
+    "payload": {
+      "action": "INVENTORY_IMPLICATION_DERIVED",
+      "ingredientId": "ingredient-2026-01-27",
+      "ingredientName": "Sample Ingredient",
+      "requiredQty": 5,
+      "currentOnHand": 100,
+      "shortage": 0,
+      "date": "2026-01-27",
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "inventory-engine"
+      },
+      "timestamp": "2026-01-26T02:40:19.936Z"
+    },
+    "createdAt": "2026-01-26T02:40:19.937Z"
+  },
+  {
+    "id": "c67e0405-5271-45f4-a328-3b4f0854204d",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-27-demo-org",
+    "sourceRef": "dbb2da2d-3e4e-4292-bdaa-bca47160b2b1",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-27",
+      "previousForecast": 112,
+      "newForecast": 102,
+      "delta": -10,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:19.928Z"
+    },
+    "createdAt": "2026-01-26T02:40:19.932Z"
+  },
+  {
+    "id": "b7d1ee58-695a-4a15-9281-60768589de78",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-26-demo-org",
+    "sourceRef": "dbb2da2d-3e4e-4292-bdaa-bca47160b2b1",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-26",
+      "previousForecast": 140,
+      "newForecast": 160,
+      "delta": 20,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:19.928Z"
+    },
+    "createdAt": "2026-01-26T02:40:19.930Z"
+  },
+  {
+    "id": "6e69a244-ae47-4ed5-8ffa-f7df50ed583b",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "dbb2da2d-3e4e-4292-bdaa-bca47160b2b1",
+    "payload": {
+      "action": "FORECAST_UPDATED",
+      "days": 21,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:19.928Z"
+    },
+    "createdAt": "2026-01-26T02:40:19.929Z"
+  },
+  {
+    "id": "87aa2f35-e98f-4c91-b5ae-3c9a00cbd019",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-27-demo-org",
+    "sourceRef": "41713d7d-e4a6-4b6a-8f50-c680758de425",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-27",
+      "previousForecast": 122,
+      "newForecast": 112,
+      "delta": -10,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:12.186Z"
+    },
+    "createdAt": "2026-01-26T02:40:12.188Z"
+  },
+  {
+    "id": "744be938-0589-4b40-84d2-eede9dd44829",
+    "orgId": "demo-org",
+    "entityType": "demand-delta",
+    "entityId": "delta-2026-01-26-demo-org",
+    "sourceRef": "41713d7d-e4a6-4b6a-8f50-c680758de425",
+    "payload": {
+      "action": "DEMAND_DELTA_EMITTED",
+      "date": "2026-01-26",
+      "previousForecast": 120,
+      "newForecast": 140,
+      "delta": 20,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:12.186Z"
+    },
+    "createdAt": "2026-01-26T02:40:12.188Z"
+  },
+  {
+    "id": "9e92ed25-6129-43d0-ab97-7e37718c42ce",
+    "orgId": "demo-org",
+    "entityType": "forecast-plan",
+    "entityId": "demo-org",
+    "sourceRef": "41713d7d-e4a6-4b6a-8f50-c680758de425",
+    "payload": {
+      "action": "FORECAST_UPDATED",
+      "days": 21,
+      "actor": {
+        "userId": "smoke-test-user",
+        "role": "admin",
+        "system": "forecast-hub"
+      },
+      "timestamp": "2026-01-26T02:40:12.186Z"
+    },
+    "createdAt": "2026-01-26T02:40:12.186Z"
+  }
+]

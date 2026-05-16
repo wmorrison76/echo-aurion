@@ -1,0 +1,29 @@
+// 5. data/invoiceMocks/sampleInvoice1.json
+// Example:
+/*
+[
+  {
+    "vendorName": "Chef's Warehouse",
+    "invoiceNumber": "INV-72319",
+    "dateOrdered": "2025-07-17",
+    "dateReceived": "2025-07-18",
+    "rep": "Anthony Marino",
+    "items": [
+      {
+        "itemCode": "43qg4112",
+        "name": "Short Ribs Boneless",
+        "pricePerUnit": 6.94,
+        "weight": 10,
+        "unit": "lb",
+        "totalPrice": 69.4
+      },
+      {
+        "itemCode": "43bb4112",
+        "name": "Capers Nonpareil",
+        "pack": "12/8oz",
+        "totalPrice": 39.4
+      }
+    ]
+  }
+]
+*/

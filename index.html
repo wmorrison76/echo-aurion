@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echo AURION</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0b1628" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Echo AURION" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <meta name="application-name" content="Echo AURION" />
+    <meta name="msapplication-TileColor" content="#0b1628" />
+    <meta name="msapplication-TileImage" content="/icons/icon-192.png" />
+    <meta name="description" content="Enterprise Hospitality Intelligence Platform" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script>
+      (function () {
+        const root = document.getElementById("root");
+        if (!root) return;
+
+        const escapeHtml = (value) =>
+          String(value).replace(/[&<>"']/g, (ch) => {
+            switch (ch) {
+              case "&":
+                return "&amp;";
+              case "<":
+                return "&lt;";
+              case ">":
+                return "&gt;";
+              case '"':
+                return "&quot;";
+              case "'":
+                return "&#39;";
+              default:
+                return ch;
+            }
+          });
+
+        const renderError = (title, err) => {
+          const message =
+            err && typeof err === "object" && "message" in err
+              ? err.message
+              : err?.toString?.()
+                ? err.toString()
+                : String(err);
+          const stack =
+            err && typeof err === "object" && "stack" in err ? err.stack : "";
+
+          root.innerHTML = `
+            <div style="padding: 18px; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #0f172a;">
+              <div style="max-width: 960px; margin: 0 auto;">
+                <h1 style="margin: 0 0 10px; font-size: 20px; color: #b91c1c;">App failed to start</h1>
+                <p style="margin: 0 0 12px; font-size: 13px; color: #334155;">${escapeHtml(title)}</p>
+                <pre style="white-space: pre-wrap; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 12px; border-radius: 10px; overflow: auto; font-size: 12px; line-height: 1.4;">${escapeHtml(
+                  message + (stack ? "\n\n" + stack : ""),
+                )}</pre>
+                <button onclick="location.reload()" style="margin-top: 12px; padding: 8px 12px; border-radius: 10px; background: #0ea5e9; border: 0; color: white; cursor: pointer;">Reload</button>
+              </div>
+            </div>
+          `;
+        };
+
+        let statusEl = null;
+
+        const setStatus = (status) => {
+          try {
+            window.__APP_BOOT_STATUS__ = status;
+          } catch {
+            // ignore
+          }
+
+          try {
+            if (statusEl) {
+              statusEl.textContent = `Status: ${String(status)}`;
+            }
+          } catch {
+            // ignore
+          }
+        };
+
+        window.__APP_BOOT__ = {
+          renderError,
+          setStatus,
+        };
+
+        setStatus("inline-loader-ready");
+
+        // Default loading state. If the app never mounts, this prevents a silent blank screen.
+        root.innerHTML =
+          '<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #64748b;">' +
+          '<div style="text-align: center;">' +
+          '<div style="font-size: 14px;">Loading…</div>' +
+          '<div id="boot-status" style="margin-top: 8px; font-size: 12px; color: #94a3b8;">Status: inline-loader-ready</div>' +
+          '</div>' +
+          '</div>';
+
+        statusEl = document.getElementById("boot-status");
+        setStatus(window.__APP_BOOT_STATUS__);
+
+        // If nothing progresses beyond the initial loader, surface an actionable error.
+        // (Some module script failures do not reliably trigger window.onerror.)
+        setTimeout(() => {
+          if (window.__APP_BOOT_STATUS__ === "inline-loader-ready") {
+            renderError(
+              "App JavaScript did not start",
+              {
+                message:
+                  "The page loaded, but the main app entry module never executed. This usually means a module import failed before runtime error handlers could attach, or the browser cached a broken dev module graph.",
+              },
+            );
+          }
+        }, 5000);
+
+        // If we started booting but never reached a usable UI, show a more specific error.
+        // IMPORTANT: once the app shell has rendered ("app-shell-rendered"), we should NOT
+        // overwrite it with this fallback error screen.
+        setTimeout(() => {
+          const status = String(window.__APP_BOOT_STATUS__ || "unknown");
+
+          const isUsableUi =
+            status === "react-rendered" ||
+            status === "app-shell-rendered" ||
+            status === "app-module-loaded" ||
+            status === "app-full-rendered" ||
+            status === "app-full-module-loaded" ||
+            status === "app-full-rendered" ||
+            status.startsWith("app-");
+
+          if (!isUsableUi) {
+            renderError(
+              "App is stuck while starting",
+              {
+                message:
+                  `Boot status: ${status}. The app began loading but did not reach a usable UI. This is usually caused by a very expensive synchronous initialization during startup, or a module evaluation hanging.`,
+              },
+            );
+          }
+        }, 15000);
+
+        const hasReactMounted = () => {
+          try {
+            return Boolean(window.__APP_BOOT__ && window.__APP_BOOT__.reactMounted);
+          } catch {
+            return false;
+          }
+        };
+
+        const isPreReactBootPhase = (status) => {
+          return (
+            !status ||
+            status === "inline-loader-ready" ||
+            status === "importing-entry" ||
+            status === "entry-imported" ||
+            String(status).startsWith("retrying-entry")
+          );
+        };
+
+        // Catch common runtime errors.
+        // IMPORTANT: Once React has mounted, do NOT replace the DOM out from under it.
+        window.addEventListener("error", (event) => {
+          const status = String(window.__APP_BOOT_STATUS__ || "unknown");
+          if (!hasReactMounted() && isPreReactBootPhase(status)) {
+            renderError("Runtime error", event.error || event.message);
+            return;
+          }
+
+          console.error("[BOOT] Runtime error after React mounted", event.error || event.message);
+        });
+
+        window.addEventListener("unhandledrejection", (event) => {
+          const status = String(window.__APP_BOOT_STATUS__ || "unknown");
+          if (!hasReactMounted() && isPreReactBootPhase(status)) {
+            renderError("Unhandled promise rejection", event.reason);
+            return;
+          }
+
+          console.error("[BOOT] Unhandled promise rejection after React mounted", event.reason);
+        });
+      })();
+    </script>
+
+    <script>
+      window.__APP_BOOT__?.setStatus?.("importing-entry");
+    </script>
+    <script type="module" src="/client/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "name": "echo-canva-design-editor",
+  "displayName": "EchoCanva Design Editor",
+  "label": "Design Editor",
+  "description": "Professional image and design editor with AI-powered tools, layer management, and advanced editing capabilities",
+  "version": "1.0.0",
+  "author": "EchoCanva Team",
+  "icon": "🎨",
+  "category": "Designer",
+  "defaultWidth": 1400,
+  "defaultHeight": 900,
+  "minWidth": 800,
+  "minHeight": 600,
+  "canFloat": true,
+  "canDock": true,
+  "resizable": true,
+  "closeable": true,
+  "maximizable": true,
+  "dependencies": [
+    "react@^18.3.1",
+    "react-dom@^18.3.1",
+    "three@^0.176.0",
+    "@react-three/fiber@^8.18.0",
+    "@react-three/drei@^9.122.0"
+  ],
+  "exports": {
+    "default": "index.tsx",
+    "metadata": "ECHO_CANVA_DESIGN_EDITOR_MODULE"
+  },
+  "supportedModes": ["panel", "modal", "maximized"],
+  "features": [
+    "image-editing",
+    "layer-management",
+    "ai-tools",
+    "filters",
+    "adjustments",
+    "text-tool",
+    "shape-tools",
+    "brush-tools",
+    "color-management",
+    "export",
+    "collaboration"
+  ],
+  "keybindings": {
+    "ctrl+z": "undo",
+    "ctrl+shift+z": "redo",
+    "ctrl+a": "select-all",
+    "ctrl+c": "copy",
+    "ctrl+v": "paste",
+    "escape": "deselect"
+  },
+  "permissions": [
+    "file:read",
+    "file:write",
+    "clipboard:read",
+    "clipboard:write",
+    "api:call"
+  ]
+}

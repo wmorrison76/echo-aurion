@@ -1,0 +1,167 @@
+{
+  "iteration": 63,
+  "test_date": "2026-04-14",
+  "feature_tested": "Admin Command Center - User Onboarding, Outlet Management, Commissary, Data Import, Report Export",
+  "summary": "All 17 backend API tests passed (100%). Frontend testing verified Admin Command Center panel with all 5 tabs: Users (7), Outlets (5), Commissary, Data Import, Report Export. All features working correctly including AI production forecasting with moon cycle factor.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results": {
+    "backend": {
+      "total_tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "test_categories": {
+        "export_formats": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "GET /api/export/formats - Returns formats (pdf, csv, xlsx), report_types (pnl, invoice, budget, daily_flash, vendor_comparison, outlet_health), paper_sizes (letter, a4, legal, tabloid), orientations (portrait, landscape), margin_presets (normal, narrow, wide)"
+          ]
+        },
+        "report_export_pdf": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "POST /api/export/report (format=pdf) - Returns print-ready HTML with @page CSS, P&L data, LUCCCA branding"
+          ]
+        },
+        "report_export_csv": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "POST /api/export/report (format=csv) - Returns CSV file with GL entries, Content-Disposition: attachment"
+          ]
+        },
+        "commissary_forecast": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "POST /api/commissary/forecast-production?outlet_id=main-dining&days_ahead=1 - Returns forecast with moon_phase (waning_crescent), moon_impact, season_factor, forecast_covers, item_forecast with production_qty"
+          ]
+        },
+        "commissary_config": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "POST /api/commissary/config - Creates commissary relationship between outlets (main-kitchen → pool-cafe)",
+            "GET /api/commissary/configs - Lists all commissary relationships with producing_name, receiving_name"
+          ]
+        },
+        "onboarding_wizard": {
+          "tests": 2,
+          "passed": 2,
+          "endpoints": [
+            "POST /api/onboarding/start - Creates onboarding session with session_id, steps tracking (vendors, employees, gl_codes, menus)",
+            "GET /api/onboarding/templates/vendors - Returns CSV template headers: name,category,account_number,contact_name,contact_email,phone,payment_terms,address"
+          ]
+        },
+        "admin_users": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "GET /api/admin/users - Returns 7 seeded users with roles (owner, gm, exec_chef, pastry_chef, bar_manager, events_director, controller), outlet_ids, is_admin, active status"
+          ]
+        },
+        "admin_outlets": {
+          "tests": 1,
+          "passed": 1,
+          "endpoints": [
+            "GET /api/admin/outlets - Returns 5 seeded outlets with outlet_id, name, type, manager"
+          ]
+        },
+        "export_report_types": {
+          "tests": 4,
+          "passed": 4,
+          "endpoints": [
+            "POST /api/export/report (report_type=invoice, format=pdf) - Invoice report export",
+            "POST /api/export/report (report_type=budget, format=pdf) - Budget report export",
+            "POST /api/export/report (report_type=daily_flash, format=pdf) - Daily flash report export",
+            "POST /api/export/report (report_type=vendor_comparison, format=csv) - Vendor comparison CSV export"
+          ]
+        },
+        "onboarding_templates": {
+          "tests": 3,
+          "passed": 3,
+          "endpoints": [
+            "GET /api/onboarding/templates/employees - Returns headers: name,email,role,department,outlet,hourly_rate,type",
+            "GET /api/onboarding/templates/gl_codes - Returns headers: gl_code,description,account_type,department",
+            "GET /api/onboarding/templates/menu - Returns headers: name,category,price,food_cost,description"
+          ]
+        }
+      }
+    },
+    "frontend": {
+      "elements_verified": 18,
+      "elements_total": 18,
+      "verified_elements": [
+        "App loads successfully without errors",
+        "Admin button visible in sidebar",
+        "Admin Command Center panel loads with data-testid='admin-command-panel'",
+        "Panel header shows 'ADMIN COMMAND CENTER'",
+        "Subtitle shows 'User Onboarding • Outlet Management • Commissary • Data Import • Report Export'",
+        "Users (7) tab visible and clickable",
+        "Outlets (5) tab visible and clickable",
+        "Commissary tab visible and clickable",
+        "Data Import tab visible and clickable",
+        "Report Export tab visible and clickable",
+        "Users tab shows team members table with Name, Role, Department, Outlets, Admin, Status columns",
+        "Users tab shows roles: OWNER, GM, EXEC_CHEF, PASTRY_CHEF, BAR_MANAGER, EVENTS_DIRECTOR, CONTROLLER",
+        "Users tab shows ADMIN badges for admin users",
+        "Users tab shows Add User form with Full Name, Email, Department, Role, Admin Access fields",
+        "Outlets tab shows outlets table with Name, Type, GL Code, Manager, Capacity, Status columns",
+        "Report Export tab shows 5 select elements: Report, Format, Paper Size, Orientation, Margins",
+        "Report Export tab shows Export Report button",
+        "Data Import tab shows import cards for Vendor, Employee, GL Code, Menu imports"
+      ]
+    }
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration63_admin_command.py",
+    "/app/test_reports/pytest/pytest_results_iter63.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Universal Report Export Engine correctly generates print-ready HTML with @page CSS for PDF printing",
+    "Commissary AI production forecast includes moon cycle factor (waning_crescent = -2% impact) as user's 'secret weapon'",
+    "Onboarding wizard CSV import supports vendors, employees, GL codes, menus with proper template headers",
+    "Admin users auto-seeded with 7 users across different roles and outlet assignments",
+    "Admin outlets auto-seeded with 5 outlets (Main Kitchen, Pastry Shop, Pier 66 Restaurant, Rooftop Bar, Grand Banquet Hall, Pool Bar)"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration63_admin_command.py"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "test_credentials": "No auth required - dev mode. Admin users seeded: owner (James Wellington III), gm (Sarah Mitchell), exec_chef (Maria Santos), pastry_chef (Marie Laurent), bar_manager (Jake Morrison), events_director (Michelle Mayor), controller (David Chen)",
+  "seed_data_creation": "Admin users and outlets auto-seeded on first API request. 7 users with various roles, 5 outlets with different types.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Admin Command Center fully functional. All 5 tabs working: Users (7), Outlets (5), Commissary, Data Import, Report Export. Commissary forecast uses moon cycle factor. Report export generates print-ready HTML for PDF. CSV import templates available for vendors, employees, GL codes, menus. Toast POS and QuickBooks remain MOCKED. Weather API in commissary forecast is simulated (always 1.0).",
+  "mocked_apis": {
+    "Toast POS": "Demo/sandbox data",
+    "QuickBooks Online": "Demo/sandbox data",
+    "Weather API": "Simulated (always returns 1.0 factor)"
+  },
+  "admin_command_verified": {
+    "tabs": ["Users (7)", "Outlets (5)", "Commissary", "Data Import", "Report Export"],
+    "users_count": 7,
+    "outlets_count": 5,
+    "user_roles": ["owner", "gm", "exec_chef", "pastry_chef", "bar_manager", "events_director", "controller"],
+    "export_formats": ["pdf", "csv", "xlsx"],
+    "export_report_types": ["pnl", "invoice", "budget", "daily_flash", "vendor_comparison", "outlet_health"],
+    "paper_sizes": ["letter", "a4", "legal", "tabloid"],
+    "orientations": ["portrait", "landscape"],
+    "margin_presets": ["normal", "narrow", "wide"],
+    "import_types": ["vendors", "employees", "gl-codes", "menu"],
+    "commissary_forecast_factors": ["moon_phase", "moon_impact", "season_factor", "weather_factor", "events_today"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Prix Fixe Sample",
+  "sections": [
+    { "header": "Appetizer", "items": ["Lobster Bisque"] },
+    { "header": "Main", "items": ["Filet Mignon", "Roasted Vegetables"] },
+    { "header": "Dessert", "items": ["Molten Chocolate Cake"] }
+  ]
+}

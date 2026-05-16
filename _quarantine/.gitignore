@@ -1,0 +1,6 @@
+# Quarantine folder is part of the repo (so the audit trail
+# survives), but make sure nothing here is auto-loaded by tooling.
+# Specifically, exclude the route files from any pytest discovery
+# or importlib auto-register pass.
+__pycache__/
+*.pyc

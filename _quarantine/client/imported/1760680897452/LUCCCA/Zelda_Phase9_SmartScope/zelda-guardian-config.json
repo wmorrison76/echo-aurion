@@ -1,0 +1,11 @@
+{
+  "safePaths": [
+    "user_uploads",
+    "invoices",
+    "images",
+    "pdf_exports",
+    "pdf_menus"
+  ],
+  "preserveKeywords": ["@preserve", "DO_NOT_TOUCH"],
+  "fileExtensionsToSkip": [".lock", ".protected"]
+}

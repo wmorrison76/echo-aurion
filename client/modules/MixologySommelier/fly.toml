@@ -1,0 +1,61 @@
+# Fly.io Configuration for SommelierAI Frontend
+
+app = "sommelier-ai-frontend"
+primary_region = "sfo"
+
+[build]
+  builder = "patak"
+  buildpacks = ["heroku/nodejs"]
+
+  [build.args]
+    NODE_ENV = "production"
+
+[env]
+  # Development environment
+  [env.development]
+    REACT_APP_API_URL = "http://localhost:8080"
+    REACT_APP_PAIRING_URL = "http://localhost:8090"
+    REACT_APP_COSTING_URL = "http://localhost:8100"
+    REACT_APP_ANALYTICS_URL = "http://localhost:8120"
+    REACT_APP_IOT_URL = "http://localhost:8140"
+    REACT_APP_TRAINING_URL = "http://localhost:8150"
+    REACT_APP_ARCHIVE_URL = "http://localhost:8160"
+
+  # Production environment
+  [env.production]
+    REACT_APP_API_URL = "https://sommelier-api.fly.dev"
+    REACT_APP_PAIRING_URL = "https://sommelier-pairing.fly.dev"
+    REACT_APP_COSTING_URL = "https://sommelier-costing.fly.dev"
+    REACT_APP_ANALYTICS_URL = "https://sommelier-analytics.fly.dev"
+    REACT_APP_IOT_URL = "https://sommelier-iot.fly.dev"
+    REACT_APP_TRAINING_URL = "https://sommelier-training.fly.dev"
+    REACT_APP_ARCHIVE_URL = "https://sommelier-archive.fly.dev"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 3000
+
+  [[services.ports]]
+    port = 443
+    handlers = ["http"]
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 1000
+    soft_limit = 800
+
+  [[services.tcp_checks]]
+    grace_period = "5s"
+    interval = "15s"
+    timeout = "2s"

@@ -1,0 +1,11 @@
+{
+  "ts": {
+    "typecheck": "src/components/PastryLibrary/EchoCanvas.tsx(682,10): error TS1005: ')' expected.\nsrc/components/PastryLibrary/EchoCanvas.tsx(683,1): error TS1128: Declaration or statement expected.\nsrc/components/PastryLibrary/EchoCanvas.tsx(683,3): error TS1005: '}' expected.\n"
+  },
+  "imports": {
+    "depcruise": "❌ Oops! You're trying to run a package that should be provided by a local binary, but isn't. This is a misconfiguration.\n\n🚫 This is a placeholder published to prevent dependency confusion.\n🔒 It does not contain any usable code.\n\n🧠 Double-check your dependencies or installation instructions.\n\n🔎 Learn more at https://intel.aikido.dev\n"
+  },
+  "vite": {
+    "build": "vite v7.1.4 building for analyze...\ntransforming...\n✓ 49 modules transformed.\n"
+  }
+}

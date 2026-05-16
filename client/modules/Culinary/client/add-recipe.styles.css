@@ -1,0 +1,44 @@
+/* Typewriter Animation */
+.typewriter { overflow: hidden; border-right: .15em solid #34d399; white-space: nowrap; margin: 0 auto; letter-spacing: .05em; animation: typing 1.5s steps(40, end), blink-caret .75s step-end infinite; }
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #34d399; } }
+
+/* Custom Scrollbar for Ingredient Grid */
+.ingredient-grid::-webkit-scrollbar { width: 4px; }
+.ingredient-grid::-webkit-scrollbar-track { background: #f1f5f9; }
+.ingredient-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.ingredient-grid::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Smooth focus transitions */
+input:focus, textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); transition: all 0.2s ease-in-out; }
+
+/* Hover effects for buttons */
+button:hover { transition: all 0.2s ease-in-out; }
+
+/* Recipe input specific styles */
+.recipe-input-container { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+
+/* Grid styling improvements */
+.ingredient-row { transition: background-color 0.2s ease-in-out; }
+/* Do not change color on hover */
+.ingredient-row:hover { background-color: transparent; }
+/* Keep input background stable on hover */
+.ingredients-grid input:hover { background-color: inherit !important; }
+
+/* Unified grid so headers and rows align perfectly */
+.ingredients-grid { display: grid; grid-template-columns: 8rem 6rem 1fr 1fr 7rem 8rem; column-gap: 0.5rem; }
+@media (max-width: 768px){
+  .ingredients-grid { grid-template-columns: 6rem 5rem 1fr 1fr 5rem 6rem; }
+}
+
+/* Prevent input drop-shadows from bleeding outside the card */
+.ingredients-card { overflow: hidden; }
+
+/* Stainless steel sidebar styling */
+.stainless-steel-sidebar { background: linear-gradient(135deg, rgba(226,232,240,0.6) 0%, rgba(203,213,225,0.5) 25%, rgba(241,245,249,0.4) 50%, rgba(203,213,225,0.5) 75%, rgba(226,232,240,0.6) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.1), 0 4px 20px rgba(0,0,0,0.1); }
+
+/* Custom scrollbar for stainless steel theme */
+.scrollbar-thin::-webkit-scrollbar { width: 6px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: rgba(156,163,175,0.2); border-radius: 3px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(107,114,128,0.6); border-radius: 3px; border: 1px solid rgba(156,163,175,0.3); }
+.scrollbar-thin::-webkit-scrollbar-thumb:hover { background: rgba(75,85,99,0.8); }

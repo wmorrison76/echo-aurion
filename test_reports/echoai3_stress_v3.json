@@ -1,0 +1,48 @@
+{
+  "test_date": "2026-04-14",
+  "test_name": "EchoAi3 Comprehensive Spine Stress Test v3 — Industry-Leading",
+  "total_queries": 30,
+  "passed": 30,
+  "failed": 0,
+  "errors": 0,
+  "success_rate": "100.0%",
+  "target": "99.7%",
+  "target_met": true,
+  "improvements": {
+    "data_sources_wired": [
+      "gl_entries", "budgets", "invoices", "purchase_orders", "pos_transactions",
+      "event_invoices", "fms_subscriptions", "events", "calendar_events", "beos",
+      "ingredients", "waste_tracking", "labor_schedules", "labor_actuals",
+      "menu_items", "recipes", "vendors", "vendor_orders", "guest_profiles",
+      "beverage_inventory", "pour_logs", "compliance_checklists", "corrective_actions",
+      "properties", "echo_stratus_forecasts", "echo_stratus_signals",
+      "echo_stratus_scenarios", "ai3_branches", "monthly_reviews",
+      "food_knowledge", "zaro_incidents"
+    ],
+    "total_collections_wired": 31,
+    "forensic_capabilities": [
+      "Vendor payment anomaly detection",
+      "Payroll irregularity flagging",
+      "Revenue leakage pattern analysis (voids, comps, discounts)",
+      "POS transaction analysis",
+      "Invoice-to-PO reconciliation gaps",
+      "USALI benchmark comparison"
+    ],
+    "industry_benchmarks_embedded": "USALI Luxury Resort F&B standards"
+  },
+  "metrics": {
+    "avg_sources_per_query": 15.7,
+    "min_sources": 12,
+    "max_sources": 23,
+    "avg_confidence": 93.5,
+    "avg_response_length": 2151,
+    "categories_tested": 12,
+    "languages_tested": ["english", "french", "spanish", "german"]
+  },
+  "version_comparison": {
+    "v1_avg_sources": 5.8,
+    "v2_avg_sources": 9.3,
+    "v3_avg_sources": 15.7,
+    "improvement_from_v1": "+170%"
+  }
+}

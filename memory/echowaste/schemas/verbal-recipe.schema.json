@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://echowaste.dev/schemas/verbal-recipe.schema.json",
+  "title": "VerbalRecipeExtractionResult",
+  "type": "object",
+  "required": ["dish_name", "components", "overall_confidence", "ambiguities"],
+  "additionalProperties": false,
+  "properties": {
+    "dish_name": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "protein", "vegetable", "starch", "sauce", "garnish",
+              "dairy", "grain", "legume", "fruit", "seasoning", "fat", "other"
+            ]
+          },
+          "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "quantity": { "type": ["number", "null"], "minimum": 0 },
+          "unit": {
+            "type": ["string", "null"],
+            "enum": [
+              "oz", "lb", "g", "kg", "ml", "L",
+              "cup", "tbsp", "tsp", "pinch", "dash",
+              "portion", "each", "slice", "piece", null
+            ]
+          },
+          "prep": { "type": ["string", "null"], "maxLength": 60 },
+          "sub_ingredients": {
+            "type": "array",
+            "items": { "type": "string", "maxLength": 60 },
+            "maxItems": 12
+          },
+          "notes": { "type": ["string", "null"], "maxLength": 300 }
+        }
+      }
+    },
+    "overall_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "ambiguities": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 200 }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "language": "Español",
+    "code": "es",
+    "version": "1.0.0"
+  },
+
+  "errors.tenant_required": "Se requiere ID de inquilino.",
+  "errors.audience_required": "Se requiere registro de audiencia para este endpoint.",
+  "errors.not_found": "No encontrado.",
+  "errors.forbidden": "No permitido para esta audiencia.",
+  "errors.rate_limited": "Demasiadas solicitudes; por favor reduce la velocidad.",
+
+  "payroll.runs_locked": "La nómina del periodo {run_id} está bloqueada.",
+  "payroll.ach_submitted": "Lote ACH enviado al banco ({lines} líneas, ${total}).",
+  "payroll.w2_ready": "Tu W-2 del año {tax_year} está disponible en MyEcho.",
+  "payroll.shift_swap_offered": "Turno ofrecido a compañeros.",
+  "payroll.shift_swap_claimed": "{employee} aceptó tu turno del {date}.",
+
+  "concierge.allergen_alert": "Alerta de alérgeno para huésped en {context}.",
+  "concierge.arrival_at_risk": "Habitación no lista para llegada en {hours}h.",
+  "concierge.spend_trajectory_declining": "La trayectoria de gasto del huésped está disminuyendo.",
+
+  "schedule.borrow_pending": "Solicitud de préstamo entre departamentos pendiente de {manager}.",
+  "schedule.borrow_approved": "Préstamo aprobado para {employee} el {date}.",
+  "schedule.popup_drafted": "Horario de evento emergente borrador: {cooks} cocineros + {servers} meseros.",
+
+  "pms.checked_in": "Bienvenido — registrado en la habitación {room}.",
+  "pms.checked_out": "Salida realizada. Saldo final: ${balance}.",
+  "pms.reservation_confirmed": "Reservación confirmada: {confirmation}.",
+
+  "pos.failover_active": "Modo de respaldo POS activo. Las órdenes se guardan localmente.",
+  "pos.reconcile_complete": "{count} órdenes sincronizadas con el POS.",
+
+  "auditor.finding_critical": "Hallazgo crítico requiere revisión.",
+  "auditor.finding_resolved": "Hallazgo resuelto por {actor}.",
+
+  "general.welcome": "Bienvenido a {property_name}.",
+  "general.thank_you": "Gracias."
+}

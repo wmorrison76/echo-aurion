@@ -1,0 +1,3 @@
+export function toCsv(rows: any[]): string {
+  if (rows.length === 0) return ""; // Get all unique keys from all rows const keys = Array.from( new Set(rows.flatMap((r) => Object.keys(r))) ); // Create header const header = keys.map((k) => `"${k}"`).join(","); // Create rows const csvRows = rows.map((row) => keys .map((k) => { const val = row[k]; if (val === null || val === undefined) return '""'; const str = String(val); if (str.includes(",") || str.includes('"') || str.includes("\n")) { return `"${str.replace(/"/g, '""')}"`; } return `"${str}"`; }) .join(",") ); return [header, ...csvRows].join("\n");
+}

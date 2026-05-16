@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-07T00:00:00Z",
+  "linkedProject": "LUCCCA",
+  "modules": [
+    "LandingPage",
+    "RecipeInput",
+    "InvoiceParser",
+    "EchoCanvas",
+    "EchoScope"
+  ],
+  "schedule": "nightly",
+  "backupRetentionDays": 14,
+  "author": "Echo AI x William Morrison"
+}

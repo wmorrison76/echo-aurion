@@ -1,0 +1,59 @@
+{
+  "summary": "iter178 testing complete - Emergent Google OAuth + MySchedule Social Feed features fully working. Backend: 15/15 tests passed. Frontend: GoogleAuthPill renders correctly in top-right, PanelLayoutToolbar (Tile/Cascade) present, MySchedule panel loads with employee picker and social feed section showing cross-department celebrations.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter178_auth_myschedule.py",
+    "/app/test_reports/pytest/pytest_results_iter178.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter178_auth_myschedule.py",
+    "/app/memory/test_credentials.md"
+  ],
+  "success_rate": {
+    "backend": "100% (15/15 passed)",
+    "frontend": "100%"
+  },
+  "test_credentials": "Session tokens created in MongoDB luccca_enterprise: session_marcus_1776558009425 (with employee_match), test_session_1776557986266 (no employee_match). See /app/memory/test_credentials.md for details.",
+  "seed_data_creation": "Created auth_users and auth_sessions records for testing. Updated Marcus H. employee with email marcus.h@pier-sixty-six.com for employee_match testing.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter178 adds Emergent Google OAuth (auth_emergent.py) with /api/auth/session, /api/auth/me, /api/auth/logout endpoints. GoogleAuthPill component renders top-right with data-testid='auth-sign-in-btn'. MySchedule panel now includes company_feed (cross-department celebrations) in addition to team_celebrations. Employee auto-resolve works via /api/auth/me returning employee_match when auth_users.email matches employees.email case-insensitively. Test sessions stored in auth_users + auth_sessions collections in MongoDB.",
+  "mocked_apis": {
+    "has_mocked_apis": false,
+    "mocked_apis_list": [],
+    "note": "Emergent session-data endpoint (external) is real - invalid session_id returns 401 as expected"
+  },
+  "features_tested": {
+    "auth_me_401_without_auth": "PASS - GET /api/auth/me returns 401 when no cookie/header",
+    "auth_session_rejects_invalid": "PASS - POST /api/auth/session with invalid session_id returns 401",
+    "auth_logout_idempotent": "PASS - POST /api/auth/logout returns 200 even with no session",
+    "auth_me_with_bearer_token": "PASS - GET /api/auth/me with Authorization: Bearer returns user + employee_match",
+    "employee_match_case_insensitive": "PASS - employee_match resolves when emails match case-insensitively",
+    "employee_match_null_when_no_match": "PASS - employee_match returns null when no matching employee",
+    "my_schedule_company_feed": "PASS - GET /api/my-schedule/employee/{id} returns company_feed with cross-department celebrations",
+    "company_feed_structure": "PASS - company_feed entries have {date, name, kind, years, department}",
+    "company_feed_excludes_self": "PASS - company_feed excludes the requesting employee's milestones",
+    "team_celebrations_same_dept": "PASS - team_celebrations only includes same-department milestones",
+    "frontend_google_auth_pill": "PASS - GoogleAuthPill renders with data-testid='auth-sign-in-btn' in top-right (x=1811, y=12)",
+    "frontend_panel_layout_toolbar": "PASS - PanelLayoutToolbar (Tile/Cascade buttons) renders correctly",
+    "frontend_my_schedule_panel": "PASS - MySchedule panel loads with employee picker and social feed section",
+    "frontend_social_feed_section": "PASS - Social feed shows 'Marcus H.'s birthday' from front-office (cross-department)"
+  },
+  "regressions_tested": {
+    "health_endpoint": "PASS - /api/health returns healthy",
+    "people_list": "PASS - /api/people/list returns employees",
+    "job_profiles_list": "PASS - /api/job-profiles/list returns 23 profiles (21+ required)",
+    "job_profiles_admin_gate": "PASS - Returns 401 without X-Admin-Token",
+    "frontend_job_profiles_tab": "PASS - Job Profiles tab shows 23 positions with department/level pills"
+  }
+}

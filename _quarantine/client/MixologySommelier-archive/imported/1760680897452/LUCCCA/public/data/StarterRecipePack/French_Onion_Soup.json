@@ -1,0 +1,24 @@
+{
+  "name": "French Onion Soup",
+  "ingredients": [
+    {
+      "name": "Onion",
+      "qty": 1000,
+      "unit": "g",
+      "yield": "90"
+    },
+    {
+      "name": "Beef Stock",
+      "qty": 1500,
+      "unit": "ml",
+      "yield": "100"
+    },
+    {
+      "name": "Gruyere Cheese",
+      "qty": 200,
+      "unit": "g",
+      "yield": "100"
+    }
+  ],
+  "prep": "1. Caramelize onions\n2. Add stock and simmer\n3. Top with cheese and gratin\u00e9e"
+}

@@ -1,0 +1,58 @@
+Invoice NF9012
+
+Mr Ww
+GFEENSC ) castomeranvay sno
+
+Route: 017
+
+Miami (SEF)
+2450 NW 116 St Bldg 1
+
+Miami Fi 33167
+
+Phone: (305) 545-1399 Fax: (305) 545 - 4887
+
+Bill To: Ship To:
+
+[PROPERTY] [PROPERTY] - Banquets
+
+[ADDRESS]reet [ADDRESS]reet
+
+[CITY_ZIP] [CITY_ZIP]
+
+() - () -
+
+Al-ADDITEM KE-KeyError Si-Short item PQ-Poor Quality MP-Mis-picked PC-PriceChange CE -CUSTOMER ERROR
+
+Stop: 002
+
+Date Ship Via Due Date Terms
+05/06/2026 MT5AM5 05/27/2026 NET 21 DAYS
+Purchase Order Number Order Date Salesperson Order Taker Our Order Number
+20279 05/06/2026 ZGAR WEB-PEP_ 413915 z
+Quantity Tax Unit Price ‘etum
+Amount
+Ordered] Shipped] Pack Item Codel Description coo; oun! nov,
+1.00 1.00} HALF | 20650 PEPPER RED BUSHEL 1 1/9 BU N $26.38 $26.38
+1.00 1.00] CASE | 55435 QUINOA TRI-COLOR PRECKD 12/2# N $55.51 $55.51
+1.00 0.00} CASE | 45213 | TANGERINE 12 X 3# CALIFORNIA N $42.74 $0.00}
+4.00) 4.00) CASE | 23052 TOMATO HEIRLOOM BABY 12/1 PT N $37.59 $150.36)
+1.00 1.00] CASE | 23075 | TOMATO PLUM 25 # N $62.25 $62.25)
+3.00 3.00] CASE | 21695 WATERCRESS F/S 1.5 # N $14.65 $43.95)
+Proper washing of all fruits and vegetables is recommended for food safety
+Adjustments and quailty Issues must be reported within 24 hours of receipt of merchandise by phone, fax or emall AIT phone requests must
+be followed up in writing via fax or email in order to eliminate confusion. Once received, a credit memo number will be ed by
+salesperson or customer service sional which must be added with your remittance.
+ie Perishable agricultural commodities listed on this invoice are sold subject to the statutory trust ai (c) of the
+Perishable Agricultural Commodities Act, 1930 (7 U.S.C. 498e(c)). The seller of these commodities retains a trust clalm over these
+commodities, all inventories of food or other products de: from these commodities, and any receivables or proceeds from the
+sale of these commodities until full payment is received.
+Purchaser agrees to all reasonable costs of collection, attorney's fees & any cost incident thereor and consents to venue
+In Miami-Dade County, Florida, for an) ny court action. Interest of 1.5% per Month will be charged on all outstanding balances.
+ALL CHECKS RETURNED UNPAID FOR ANY REASON WILL BE SUBJECT TO A CHARGE OF 25% OF FACE VALUE OR $45.00
+WHICHEVER IS GREATER. Prices are subject to change without noticve due to market prices.
+Subtotal $1,285.34
+Tax $0.00)
+Total Invoice $1,285.34}
+Cases= 32.00 Splits= 6.00 Signature: Page 30f3
+

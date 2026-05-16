@@ -1,0 +1,154 @@
+{
+  "models": [
+    {
+      "name": "EchoStratusConfig",
+      "displayName": "Echo Stratus Configuration",
+      "description": "Configuration for EchoStratus dining layout engine",
+      "inputs": [
+        {
+          "name": "glCodes",
+          "type": "list",
+          "displayName": "GL Codes",
+          "description": "General Ledger codes for cost tracking",
+          "subFields": [
+            {
+              "name": "code",
+              "type": "text",
+              "displayName": "Code",
+              "required": true
+            },
+            {
+              "name": "label",
+              "type": "text",
+              "displayName": "Label",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "laborRate",
+          "type": "number",
+          "displayName": "Labor Rate ($/hr)",
+          "description": "Hourly rate for labor cost calculations",
+          "defaultValue": 18
+        },
+        {
+          "name": "fuelCostPerUnit",
+          "type": "number",
+          "displayName": "Chafer Fuel Cost",
+          "description": "Cost per fuel unit for chafing dishes",
+          "defaultValue": 1.2
+        },
+        {
+          "name": "aisleClearanceMin",
+          "type": "number",
+          "displayName": "Aisle Min Width (m)",
+          "description": "Minimum aisle width in meters (ADA 36 in = 0.915m)",
+          "defaultValue": 0.915
+        },
+        {
+          "name": "aisleClearanceRecommended",
+          "type": "number",
+          "displayName": "Aisle Recommended Width (m)",
+          "description": "Recommended aisle width for two-way service (44 in = 1.118m)",
+          "defaultValue": 1.118
+        }
+      ]
+    },
+    {
+      "name": "EchoBEO",
+      "displayName": "Banquet Event Order",
+      "description": "Template and configuration for Banquet Event Order (BEO) generation",
+      "inputs": [
+        {
+          "name": "eventName",
+          "type": "text",
+          "displayName": "Event Name",
+          "required": true
+        },
+        {
+          "name": "eventDate",
+          "type": "text",
+          "displayName": "Event Date",
+          "description": "YYYY-MM-DD format"
+        },
+        {
+          "name": "notes",
+          "type": "longText",
+          "displayName": "Special Notes",
+          "description": "Event-specific notes and instructions"
+        },
+        {
+          "name": "includeConsumables",
+          "type": "boolean",
+          "displayName": "Auto-calc Consumables",
+          "description": "Include napkins, plates, glasses, etc. in export",
+          "defaultValue": true
+        },
+        {
+          "name": "includeLaborEstimate",
+          "type": "boolean",
+          "displayName": "Include Labor Timeline",
+          "description": "Show setup/service/teardown hours",
+          "defaultValue": true
+        },
+        {
+          "name": "complianceCheckLevel",
+          "type": "text",
+          "displayName": "Compliance Check Level",
+          "description": "basic, standard, or strict ADA validation",
+          "defaultValue": "standard"
+        }
+      ]
+    },
+    {
+      "name": "EchoRealityPrefs",
+      "displayName": "EchoReality Capture Preferences",
+      "description": "Configuration for 3D room reconstruction capture and fusion",
+      "inputs": [
+        {
+          "name": "requireLidar",
+          "type": "boolean",
+          "displayName": "Require LIDAR Scans",
+          "description": "Only accept LIDAR-based scan data",
+          "defaultValue": true
+        },
+        {
+          "name": "coverageTarget",
+          "type": "number",
+          "displayName": "Coverage Target",
+          "description": "Minimum scan coverage (0.0–1.0)",
+          "defaultValue": 0.85
+        },
+        {
+          "name": "maxHoleRatio",
+          "type": "number",
+          "displayName": "Max Hole Ratio",
+          "description": "Maximum allowed hole coverage ratio (0.0–1.0)",
+          "defaultValue": 0.1
+        },
+        {
+          "name": "fusionMethod",
+          "type": "text",
+          "displayName": "Fusion Method",
+          "description": "icp (default) or advanced for neural fusion",
+          "defaultValue": "icp"
+        },
+        {
+          "name": "autoCorrectThreshold",
+          "type": "number",
+          "displayName": "Auto-Correct Confidence",
+          "description": "Confidence threshold (0.0–1.0) for auto mesh corrections",
+          "defaultValue": 0.75
+        },
+        {
+          "name": "enableSelfLearning",
+          "type": "boolean",
+          "displayName": "Enable Self-Learning",
+          "description": "Allow AI to learn from corrections for this session",
+          "defaultValue": true
+        }
+      ]
+    }
+  ]
+}

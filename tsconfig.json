@@ -1,0 +1,65 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./client/*"],
+      "@shared/*": ["./shared/*"],
+      "@cognition/*": ["./cognition/*"],
+      "@dev/*": ["./client/developer/*"],
+      "@modules/*": ["./client/modules/*"],
+      "@purchasing-data/*": ["./client/modules/PurchasingReceiving/data/*"],
+      "@purchasing-modules/*": [
+        "./client/modules/PurchasingReceiving/data/src/modules/*"
+      ]
+    },
+    
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
+  },
+  "include": [
+    "client/**/*",
+    "server/**/*",
+    "shared/**/*",
+    "tests/**/*",
+    "scripts/**/*",
+    "cognition/**/*",
+    "vite.config.ts",
+    "vite.config.server.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/.tsbuildinfo",
+    "**/pnpm-lock.yaml",
+    "**/package-lock.json",
+    "**/DUParchive/**",
+    "**/imported/**",
+    "client/modules/CulinaryEngine/**",
+    "client/modules/EchoAurum/**",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}

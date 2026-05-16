@@ -1,0 +1,22 @@
+FROM node:18-alpine
+
+ARG SERVICE
+
+WORKDIR /app
+
+# Install dependencies
+COPY services/${SERVICE}/package*.json ./
+RUN npm ci --only=production
+
+# Copy service code
+COPY services/${SERVICE} ./
+
+# Expose port (services use 809X ports)
+EXPOSE 8080
+
+# Health check (basic)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:8080', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})" || exit 1
+
+# Start service
+CMD ["node", "index.js"]

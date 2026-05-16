@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  echo-capstone:
+    environment:
+      - BUILD_ENTRY=${BUILD_ENTRY:-src/index.jsx}
+    volumes:
+      - ./dist:/usr/share/nginx/html

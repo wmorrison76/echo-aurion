@@ -1,0 +1,38 @@
+import type { RequestHandler } from "express";
+import { promises as fs } from "fs";
+import path from "path";
+
+const ROOT = process.cwd();
+const UPLOAD_DIR = path.join(ROOT, "client", "assets", "uploads");
+
+function safeName(name: string) {
+  const base = name.replace(/[^a-z0-9._-]/gi, "_").toLowerCase();
+  const ts = Date.now();
+  const dot = base.lastIndexOf(".");
+  const ext = dot > -1 ? base.slice(dot) : "";
+  const stem = dot > -1 ? base.slice(0, dot) : base;
+  return `${stem}-${ts}${ext}`;
+}
+
+export const handleUpload: RequestHandler = async (req, res) => {
+  try {
+    const { name, data } = (req.body || {}) as { name?: string; data?: string };
+    if (!name || !data) return res.status(400).json({ ok: false, error: "name_and_data_required" });
+
+    // Expect data to be a data URL or raw base64
+    const m = String(data).match(/^data:([^;]+);base64,(.+)$/);
+    const base64 = m ? m[2] : String(data);
+    const buf = Buffer.from(base64, "base64");
+
+    await fs.mkdir(UPLOAD_DIR, { recursive: true });
+    const fname = safeName(name);
+    const full = path.join(UPLOAD_DIR, fname);
+    await fs.writeFile(full, buf);
+
+    // Expose via /uploads static route (set in server/index.ts)
+    const urlPath = `/uploads/${fname}`;
+    res.json({ ok: true, path: urlPath });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: (e as Error).message });
+  }
+};

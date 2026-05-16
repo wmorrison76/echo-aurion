@@ -1,0 +1,137 @@
+{
+  "summary": "iter195 FM-Upgrade 2+3+3.5+4+5+6 comprehensive testing complete. All 52 backend tests passed (100%). Frontend Activity Timeline panel verified with live feed showing all test events. All new features working correctly.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter195_fm_upgrades.py",
+    "/app/test_reports/pytest/pytest_results_iter195.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "All FM-Upgrade 2-6 features implemented correctly and working",
+    "RecipeNode graph cascade propagation works correctly (dirty_recipes includes both parent and child recipes)",
+    "Cycle detection correctly rejects self-referencing sub_recipes with 400",
+    "FDA 21 CFR 101 ingredient_statement sorted by descending weight",
+    "All 14 Fresh Meal endpoints return 200 OK",
+    "Pack lifecycle transitions emit correct TimelineEvents with TLCs in payload",
+    "Temp excursion auto-emits pack.temp_excursion when temp_c > 7 or < -1",
+    "FDA recall export returns in <2ms (well under 2000ms target)",
+    "FDA CSV export has all 14 required columns",
+    "Channels type validation correctly rejects invalid types",
+    "Kitchen Calendar today returns correct day_type with hint",
+    "Echo Permission Ladder correctly enforces rung requirements (po_execution_under_threshold at rung=1 rejects execute which needs rung>=3)",
+    "Benchmark.tsx component enforces Glass-Box UX contract with required props and testids"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter195_fm_upgrades.py"
+  ],
+  "success_rate": {
+    "backend": "100% (52/52 tests passed)",
+    "frontend": "100% (Activity Timeline panel verified)"
+  },
+  "test_credentials": {
+    "admin_token": "TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o",
+    "manager_token": "2DwSKsmwALyIFd3JI_bq6Z3w",
+    "demo_recipe_ids": ["rec-demo-thai-peanut-bowl", "rec-demo-thai-peanut-sauce", "rec-demo-spice-blend"],
+    "demo_node_ids": ["node-demo-bowl-root", "node-demo-sauce-root", "node-demo-spice-root", "node-demo-sauce-1"],
+    "test_tlc": "TLC-FDA999"
+  },
+  "seed_data_creation": "Created test packs, production runs, products, channels, safety records during testing (all prefixed with TEST_iter195)",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter195 fully tested. FM-Upgrade 2-6 complete. Key features: (1) RecipeNode graph at /api/recipe-graph/* with cascade propagation, cycle detection, FDA 21 CFR 101 ingredient_statement. Demo seeded via POST /seed-demo. (2) Pack primitive at /api/fresh-meals/packs with lifecycle transitions emitting TimelineEvents. 14 Fresh Meal endpoints all working. (3) FDA 24-hour recall export at /api/compliance/fda-recall/export with JSON+CSV formats, <2ms performance. (4) Channels at /api/channels with type validation. Kitchen Calendar at /api/kitchen-calendar with today endpoint returning day_type+hint. (5) Echo Permission Ladder at /api/echo/capabilities with check endpoint enforcing rung requirements. (6) Benchmark.tsx Glass-Box UX contract component ready for use. MOCKED: FCM/APNs push, Twilio SMS, Resend emails (all queued until keys arrive).",
+  "features_tested": {
+    "fm_upgrade_2_recipe_graph": {
+      "seed_demo": "PASS - idempotent, seeds 3-level Thai Peanut Bowl",
+      "get_recipe": "PASS - returns recipe + nodes",
+      "computed": "PASS - returns nutrition, allergens (peanuts/soybeans/wheat), cost, total_grams, trace, ingredient_statement",
+      "cascade_proof": "PASS - updating node-demo-sauce-1 marks both bowl and sauce as dirty",
+      "cycle_detection": "PASS - self-reference rejected with 400",
+      "list_recipes": "PASS - returns all recipes"
+    },
+    "fm_upgrade_3_fresh_meals": {
+      "ops_dashboard": "PASS",
+      "overview": "PASS",
+      "products_crud": "PASS",
+      "production_runs": "PASS",
+      "assembly_lanes": "PASS",
+      "packaging_options": "PASS",
+      "packaging_validate": "PASS",
+      "subscriptions": "PASS",
+      "subscriptions_stats": "PASS",
+      "distribution_channels": "PASS",
+      "forecast": "PASS",
+      "margin_analysis": "PASS",
+      "safety_check_records": "PASS",
+      "shelf_life": "PASS",
+      "routes": "PASS"
+    },
+    "fm_upgrade_3_pack_lifecycle": {
+      "pack_create": "PASS - creates with lot_composition, emits pack.planned",
+      "pack_advance": "PASS - transitions through all states emitting events",
+      "temp_excursion": "PASS - temp_c=12.5 auto-emits pack.temp_excursion",
+      "bad_status_400": "PASS",
+      "unknown_pack_404": "PASS"
+    },
+    "fm_upgrade_35_fda_export": {
+      "json_export": "PASS - elapsed_ms < 2000ms, returns csv + events + row_count",
+      "csv_export": "PASS - text/csv with 14 FDA-aligned columns",
+      "no_anchor_400": "PASS",
+      "audit_log": "PASS - exports logged"
+    },
+    "fm_upgrade_4_channels": {
+      "get_channels": "PASS",
+      "post_valid_type": "PASS",
+      "post_invalid_type_400": "PASS",
+      "get_unknown_404": "PASS"
+    },
+    "fm_upgrade_4_kitchen_calendar": {
+      "get_calendars": "PASS - seeds default",
+      "today": "PASS - returns weekday, day_type, hint with headline/tone/focus"
+    },
+    "fm_upgrade_5_echo_capabilities": {
+      "get_capabilities": "PASS - 12+ capabilities with rungs 0-4",
+      "update_capability": "PASS - emits timeline event",
+      "check_allowed": "PASS - morning_brief execute allowed (rung=4 >= 3)",
+      "check_denied": "PASS - po_execution_under_threshold execute denied (rung=1 < 3)",
+      "check_unknown_404": "PASS",
+      "check_bad_action_400": "PASS"
+    },
+    "fm_upgrade_6_benchmark": {
+      "component_exists": "PASS - Benchmark.tsx with required props and testids",
+      "testids": "PASS - benchmark-{slug}, benchmark-{slug}-values, benchmark-{slug}-context, benchmark-{slug}-recommendation"
+    },
+    "regression_iter194_timeline": {
+      "query": "PASS",
+      "recent": "PASS",
+      "recall": "PASS",
+      "cycle_time": "PASS",
+      "emit_admin_gated": "PASS"
+    },
+    "regression_iter193": {
+      "hiring_batches": "PASS",
+      "finance_rollup": "PASS",
+      "feature_flags_public": "PASS",
+      "release_notes": "PASS"
+    },
+    "frontend_activity_timeline": {
+      "panel_loads": "PASS - Activity Timeline panel loads from sidebar",
+      "category_chips": "PASS - All, Lots, POs, Production, Packs, Orders, Labels, Echo/Ops",
+      "recall_input": "PASS - TLC input with TRACE button",
+      "live_feed": "PASS - Shows test events (pack.planned, pack.temp_excursion, audit.export_generated, echo.suggestion_made)"
+    }
+  },
+  "mocked_apis": {
+    "fcm_apns": "MOCKED - no FCM_SERVER_KEY or APNS_* keys set",
+    "twilio_sms": "MOCKED - keys not set",
+    "resend_email": "MOCKED - keys not set",
+    "sentry": "MOCKED - SENTRY_DSN empty"
+  }
+}

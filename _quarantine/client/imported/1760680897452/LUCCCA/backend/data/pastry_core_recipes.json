@@ -1,0 +1,30 @@
+{
+  "FerranLevel": [
+    {
+      "name": "Spherical Chocolate Mousse",
+      "category": "Avant-Garde Desserts",
+      "ingredients": ["Dark Chocolate", "Agar-Agar", "Nitrogen Spray"],
+      "techniques": ["Molecular Foaming", "Freezing", "Spherical Molding"]
+    },
+    {
+      "name": "Liquid-Center Almond Cake",
+      "category": "Innovative Cakes",
+      "ingredients": ["Almond Flour", "Sugar", "Gelatin Core"],
+      "techniques": ["Flash Baking", "Gelatin Injection"]
+    }
+  ],
+  "Foundational": [
+    {
+      "name": "Classic Croissant",
+      "category": "Breakfast Pastry",
+      "ingredients": ["Bread Flour", "Butter", "Yeast"],
+      "techniques": ["Lamination", "Proofing"]
+    },
+    {
+      "name": "Vanilla Bavarian Cream",
+      "category": "Base Creams",
+      "ingredients": ["Milk", "Egg Yolks", "Gelatin"],
+      "techniques": ["Tempering", "Chilling"]
+    }
+  ]
+}

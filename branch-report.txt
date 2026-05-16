@@ -1,0 +1,221 @@
+=== REPO STATE ===
+Current branch: conflict_110526_1036
+Total branches: 121
+Total commits on main: 9750
+
+=== FETCHING LATEST FROM GITHUB ===
+
+=== BRANCHES ALREADY MERGED INTO MAIN (safe to delete) ===
+  origin/chore/D64-boot-fixes
+  origin/chore/gitignore-pycache
+  origin/claude/A1-persist-event-record
+  origin/claude/A2-prospect-event-beo-fk
+  origin/claude/A3-beo-save-recipe-scaling
+  origin/claude/A4-5-consolidation-resilience
+  origin/claude/A4-6-strict-mode-and-auth
+  origin/claude/A4-multi-beo-po-consolidation
+  origin/claude/A5-production-sheet-scheduler
+  origin/claude/A6-echolayout-auto-design
+  origin/claude/A7-calendar-fanout
+  origin/claude/B1-money-decimal-finance-types
+  origin/claude/B2-gl-engine-guardians-money
+  origin/claude/B3-postgres-numeric-migration
+  origin/claude/C0-cheap-critical-fixes
+  origin/claude/D1-emergent-deletions
+  origin/claude/D11a-user-roles-into-scope
+  origin/claude/D11b-custom-roles-persistence
+  origin/claude/D11c-rolebuilder-save-ui
+  origin/claude/D12a-concierge-property-scope
+  origin/claude/D12b-manager-amenity-orders
+  origin/claude/D12c-myecho-outlet-scope
+  origin/claude/D13-third-party-modules
+  origin/claude/D14-electron-multi-window
+  origin/claude/D15-desktop-offline-smoke
+  origin/claude/D16a-commissary-catalog
+  origin/claude/D16b-stages-and-onboarding-seed
+  origin/claude/D16b-ui-commissary-ordering-api
+  origin/claude/D16c-beo-production-generator
+  origin/claude/D16d-echo-knowledge-wiring
+  origin/claude/D16e-par-calibration
+  origin/claude/D16f-production-sheet-pickup
+  origin/claude/D16g-confirm-transfer-cogs-v2
+  origin/claude/D16h-flex-labor
+  origin/claude/D16h-followup-auto-order-cogs
+  origin/claude/D16h-monte-carlo-forecast-self-audit
+  origin/claude/D17a-fuse-box-scaffolding
+  origin/claude/D17b-mongo-migration
+  origin/claude/D17c-followup-submodule-openai
+  origin/claude/D17c-openai-migration
+  origin/claude/D17d-centralize-urls
+  origin/claude/D17e-jwt-secret-sweep
+  origin/claude/D17f-fusebox-ui
+  origin/claude/D18-audit-log-and-approval-inbox
+  origin/claude/D19-aurium-reads-cogs-events
+  origin/claude/D2-voice-driven-inventory
+  origin/claude/D20-recipe-stage-versioning
+  origin/claude/D21-myecho-cogs-tile
+  origin/claude/D22-chronos-cogs-tiles
+  origin/claude/D23-semgrep-config
+  origin/claude/D24-audit-timeline-real-fetch
+  origin/claude/D25-cron-jobs
+  origin/claude/D26-notification-fabric
+  origin/claude/D27-tenant-isolation-fixes
+  origin/claude/D28-echo-event-log
+  origin/claude/D29-retrospective-analyzer
+  origin/claude/D3-receive-from-truck
+  origin/claude/D30-forensic-accountant-phase1
+  origin/claude/D4-chronos-live-tiles
+  origin/claude/D5-echolayout-kitchen-tab
+  origin/claude/D6-chronos-outlet-morph
+  origin/claude/D64-icon-master-list
+  origin/claude/D7-emergent-module-backends
+  origin/claude/D8-modular-framework
+  origin/claude/D9-chronos-property-drill-down
+  origin/claude/fix-recipe-integration-K7kyA
+  origin/feature/audit-002-repair
+  origin/feature/blocker-a-test-db
+  origin/feature/blocker-c-auth-recon
+  origin/feature/silent-service-doctrine
+  origin/feature/ticket-001-foundation-tests
+  origin/feature/ticket-002-foundation-types
+  origin/feature/ticket-003-backend-core
+  origin/fix/D64-lockfile-drift
+
+=== BRANCHES NOT YET MERGED INTO MAIN (need review) ===
+  origin/chore/D63-recovery-consolidated
+  origin/chore/preview-swap-and-shell-integration
+  origin/claude/D10-D11-smoke-and-schedule-merge
+  origin/claude/D31-D60-bulk-merge
+  origin/claude/D31-echowaste-deep-integration
+  origin/claude/D32-concierge-depth
+  origin/claude/D33-pos-failover
+  origin/claude/D34-myecho-install-and-tablet
+  origin/claude/D35-cross-dept-borrow-paf
+  origin/claude/D36-service-auditors
+  origin/claude/D37-qr-library-storyboard
+  origin/claude/D38-correlation-engine
+  origin/claude/D39-echo-activity-drawer
+  origin/claude/D41-D42-stress-and-divergence
+  origin/claude/D43-variance-complaint-benchmark-foh
+  origin/claude/D44-orphaned-module-wiring
+  origin/claude/D45-personal-sous-chef-agent
+  origin/claude/D46-vendor-mobile-ordering
+  origin/claude/D47-payroll-and-self-service
+  origin/claude/D48-pms-core
+  origin/claude/D49-D50-tipshare-and-reservation-channels
+  origin/claude/D51-D52-chef-pnl-and-quarantine
+  origin/claude/D53-production-hardening
+  origin/claude/D54-invoice-extractor-corpus-trained
+  origin/claude/D55-D59-pii-sanitize-and-foundation-gates
+  origin/claude/D61-hosting-recommendations
+  origin/claude/D62-ux-3-click-doctrine-and-handoff
+  origin/claude/D63-docs-help-onboarding-ocr-icons
+  origin/conflict_040526_1458
+  origin/conflict_110526_1036
+  origin/feature/audit-001-type-errors
+  origin/feature/doctrine-raw-notes
+  origin/release/d63-snapshot
+
+=== EMERGENT CONFLICT BRANCHES ===
+  origin/conflict_040526_1458
+  origin/conflict_110526_1036
+
+=== UNIQUE COMMITS ON EACH CONFLICT BRANCH (vs main) ===
+origin/conflict_040526_1458 | 9580 unique commits | last commit: 2026-05-04 19:53:35 +0000
+origin/conflict_110526_1036 | 131 unique commits | last commit: 2026-05-12 10:18:52 +0000
+
+=== CLAUDE FEATURE BRANCHES ===
+  origin/claude/A1-persist-event-record
+  origin/claude/A2-prospect-event-beo-fk
+  origin/claude/A3-beo-save-recipe-scaling
+  origin/claude/A4-5-consolidation-resilience
+  origin/claude/A4-6-strict-mode-and-auth
+  origin/claude/A4-multi-beo-po-consolidation
+  origin/claude/A5-production-sheet-scheduler
+  origin/claude/A6-echolayout-auto-design
+  origin/claude/A7-calendar-fanout
+  origin/claude/B1-money-decimal-finance-types
+  origin/claude/B2-gl-engine-guardians-money
+  origin/claude/B3-postgres-numeric-migration
+  origin/claude/C0-cheap-critical-fixes
+  origin/claude/D1-emergent-deletions
+  origin/claude/D10-D11-smoke-and-schedule-merge
+  origin/claude/D11a-user-roles-into-scope
+  origin/claude/D11b-custom-roles-persistence
+  origin/claude/D11c-rolebuilder-save-ui
+  origin/claude/D12a-concierge-property-scope
+  origin/claude/D12b-manager-amenity-orders
+  origin/claude/D12c-myecho-outlet-scope
+  origin/claude/D13-third-party-modules
+  origin/claude/D14-electron-multi-window
+  origin/claude/D15-desktop-offline-smoke
+  origin/claude/D16a-commissary-catalog
+  origin/claude/D16b-stages-and-onboarding-seed
+  origin/claude/D16b-ui-commissary-ordering-api
+  origin/claude/D16c-beo-production-generator
+  origin/claude/D16d-echo-knowledge-wiring
+  origin/claude/D16e-par-calibration
+  origin/claude/D16f-production-sheet-pickup
+  origin/claude/D16g-confirm-transfer-cogs-v2
+  origin/claude/D16h-flex-labor
+  origin/claude/D16h-followup-auto-order-cogs
+  origin/claude/D16h-monte-carlo-forecast-self-audit
+  origin/claude/D17a-fuse-box-scaffolding
+  origin/claude/D17b-mongo-migration
+  origin/claude/D17c-followup-submodule-openai
+  origin/claude/D17c-openai-migration
+  origin/claude/D17d-centralize-urls
+  origin/claude/D17e-jwt-secret-sweep
+  origin/claude/D17f-fusebox-ui
+  origin/claude/D18-audit-log-and-approval-inbox
+  origin/claude/D19-aurium-reads-cogs-events
+  origin/claude/D2-voice-driven-inventory
+  origin/claude/D20-recipe-stage-versioning
+  origin/claude/D21-myecho-cogs-tile
+  origin/claude/D22-chronos-cogs-tiles
+  origin/claude/D23-semgrep-config
+  origin/claude/D24-audit-timeline-real-fetch
+  origin/claude/D25-cron-jobs
+  origin/claude/D26-notification-fabric
+  origin/claude/D27-tenant-isolation-fixes
+  origin/claude/D28-echo-event-log
+  origin/claude/D29-retrospective-analyzer
+  origin/claude/D3-receive-from-truck
+  origin/claude/D30-forensic-accountant-phase1
+  origin/claude/D31-D60-bulk-merge
+  origin/claude/D31-echowaste-deep-integration
+  origin/claude/D32-concierge-depth
+  origin/claude/D33-pos-failover
+  origin/claude/D34-myecho-install-and-tablet
+  origin/claude/D35-cross-dept-borrow-paf
+  origin/claude/D36-service-auditors
+  origin/claude/D37-qr-library-storyboard
+  origin/claude/D38-correlation-engine
+  origin/claude/D39-echo-activity-drawer
+  origin/claude/D4-chronos-live-tiles
+  origin/claude/D41-D42-stress-and-divergence
+  origin/claude/D43-variance-complaint-benchmark-foh
+  origin/claude/D44-orphaned-module-wiring
+  origin/claude/D45-personal-sous-chef-agent
+  origin/claude/D46-vendor-mobile-ordering
+  origin/claude/D47-payroll-and-self-service
+  origin/claude/D48-pms-core
+  origin/claude/D49-D50-tipshare-and-reservation-channels
+  origin/claude/D5-echolayout-kitchen-tab
+  origin/claude/D51-D52-chef-pnl-and-quarantine
+  origin/claude/D53-production-hardening
+  origin/claude/D54-invoice-extractor-corpus-trained
+  origin/claude/D55-D59-pii-sanitize-and-foundation-gates
+  origin/claude/D6-chronos-outlet-morph
+  origin/claude/D61-hosting-recommendations
+  origin/claude/D62-ux-3-click-doctrine-and-handoff
+  origin/claude/D63-docs-help-onboarding-ocr-icons
+  origin/claude/D64-icon-master-list
+  origin/claude/D7-emergent-module-backends
+  origin/claude/D8-modular-framework
+  origin/claude/D9-chronos-property-drill-down
+  origin/claude/fix-recipe-integration-K7kyA
+
+=== STALE BRANCHES (no activity in 30+ days) ===
+
+=== DONE - No changes made ===

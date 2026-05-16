@@ -1,0 +1,40 @@
+# PHASE 5.2: Local development and testing
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      SUPABASE_URL: ${SUPABASE_URL:-http://localhost:54321}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYmVlcnBzZ2RuZWhhZHBqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTYwMDA2MTIwMCwiZXhwIjoyMDAwMDAwMDAwfQ.ZxZKxH0wqvXNVxI5Cxd7mU-0aZLkqwHPXr0EyrYKPM0}
+      ECHO_OPENAI_API_KEY: ${ECHO_OPENAI_API_KEY}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    networks:
+      - echocoder
+
+  # Optional: Local Supabase setup (uncomment to use local Supabase)
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_PASSWORD: postgres
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - echocoder
+
+networks:
+  echocoder:
+    driver: bridge
+# volumes:
+#   postgres_data:

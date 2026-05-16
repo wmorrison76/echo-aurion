@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://luccca.ai/schemas/onboarding-config.schema.json",
+  "title": "LUCCCA Onboarding Config v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "organization", "operations", "departments", "roles", "preferences"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": ["v1"]
+    },
+    "organization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "timezone"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": ["hotel", "resort", "casino", "spa", "restaurant-group", "venue", "other"]
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "operations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outletCount", "hasBanquets", "banquetRooms"],
+      "properties": {
+        "outletCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "hasBanquets": {
+          "type": "boolean"
+        },
+        "banquetRooms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "departments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ownership",
+          "executive",
+          "finance",
+          "purchasing",
+          "culinary",
+          "banquets",
+          "foh",
+          "beverage",
+          "rooms",
+          "spa",
+          "security",
+          "it-admin"
+        ]
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryAdminName", "primaryAdminRoleId", "assignedRoles"],
+      "properties": {
+        "primaryAdminName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primaryAdminRoleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assignedRoles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["notifications", "tutorials"],
+      "properties": {
+        "notifications": {
+          "type": "boolean"
+        },
+        "tutorials": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

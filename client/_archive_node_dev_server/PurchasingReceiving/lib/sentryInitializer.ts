@@ -1,0 +1,11 @@
+import * as Sentry from "@sentry/node";
+import { nodeProfilingIntegration } from "@sentry/profiling-node"; export function initializeSentry() { if (!process.env.SENTRY_DSN) { console.warn("SENTRY_DSN not configured. Error tracking will not be enabled.", ); return; } Sentry.init({ dsn: process.env.SENTRY_DSN, environment: process.env.NODE_ENV ||"development", integrations: [ nodeProfilingIntegration(), new Sentry.Integrations.Http({ tracing: true }), new Sentry.Integrations.Express({ request: true, serverName: true, }), ], tracesSampleRate: process.env.NODE_ENV ==="production" ? 0.1 : 1.0, profilesSampleRate: process.env.NODE_ENV ==="production" ? 0.1 : 1.0, maxBreadcrumbs: 50, attachStacktrace: true, beforeSend(event, hint) { // Filter out noise if (event.exception) { const error = hint.originalException; // Ignore 404s and common client errors if (error instanceof Error) { if (error.message.includes("404")) return null; if (error.message.includes("Network")) return null; } } return event; }, denyUrls: [ // Browser extensions /extensions\//i, /^chrome:\/\//i, /^moz-extension:\/\//i, // Third party scripts /graph\.instagram\.com/i, /connect\.facebook\.net/i, ], }); console.log("✓ Sentry initialized successfully");
+} export function captureException( error: unknown, context?: Record<string, any>,
+) { if (!process.env.SENTRY_DSN) { console.error("Error:", error); return; } Sentry.captureException(error, { contexts: { custom: context, }, });
+} export function captureMessage( message: string, level: Sentry.SeverityLevel ="info", context?: Record<string, any>,
+) { if (!process.env.SENTRY_DSN) { console.log(`[${level}] ${message}`); return; } Sentry.captureMessage(message, { level, contexts: { custom: context, }, });
+} export function setUserContext(userId: string, userData?: Record<string, any>) { if (!process.env.SENTRY_DSN) return; Sentry.setUser({ id: userId, ...userData, });
+} export function clearUserContext() { if (!process.env.SENTRY_DSN) return; Sentry.setUser(null);
+} export function addBreadcrumb( message: string, category: string ="default", level: Sentry.SeverityLevel ="info", data?: Record<string, any>,
+) { if (!process.env.SENTRY_DSN) return; Sentry.addBreadcrumb({ message, category, level, data, timestamp: Date.now() / 1000, });
+}

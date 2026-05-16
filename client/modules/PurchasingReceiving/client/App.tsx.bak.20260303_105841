@@ -1,0 +1,330 @@
+/**
+ * PurchasingReceiving/client/App.tsx — FIXED & Sentry-wired
+ * Properly formatted; ErrorBoundary reports to Sentry. All routes and providers preserved.
+ */
+
+import "./global.css";
+import "@/lib/gl-rules";
+import { initializeLearning } from "@/lib/invoiceLearning";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  MemoryRouter,
+  Routes,
+  Route,
+  useInRouterContext,
+} from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import * as Sentry from "@sentry/react";
+import { ThemeProvider } from "next-themes";
+import { TurtleLoader } from "./components/TurtleLoader";
+import { AuthProvider } from "./context/AuthContext";
+import { LanguageProvider } from "./context/LanguageContext";
+import { YieldProvider } from "./context/YieldContext";
+import { AppDataProvider } from "./context/AppDataContext";
+import { PageToolbarProvider } from "./context/PageToolbarContext";
+import { CollaborationProvider } from "./context/CollaborationContext";
+import { MultiOutletProvider } from "./context/MultiOutletContext";
+import { WhiteLabelProvider } from "./context/WhiteLabelContext";
+import { SkipToMainContent } from "./components/AccessibilityComponents";
+
+
+// ── Router wrapper: handles both panel and standalone modes ──
+
+function RouterWrapper({ children }: { children: React.ReactNode }) {
+  // In LUCCCA, modules can be rendered inside an existing app router context.
+  // In standalone dev/builds, we mount a MemoryRouter for in-module navigation.
+  const inRouter = useInRouterContext();
+  if (inRouter) return <>{children}</>;
+  return <MemoryRouter initialEntries={["/"]}>{children}</MemoryRouter>;
+}
+
+
+
+// ── Lazy-loaded page components ──
+
+const Index = lazy(() => import("./pages/Index"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Analytics = lazy(() => import("./pages/Analytics"));
+const AdvancedAnalytics = lazy(() => import("./pages/AdvancedAnalytics"));
+const Accounting = lazy(() => import("./pages/Accounting"));
+const APDashboard = lazy(() => import("./pages/APDashboard"));
+const PandLViewer = lazy(() => import("./pages/PandLViewer"));
+const Finance = lazy(() => import("./pages/Finance"));
+const OnTheDock = lazy(() => import("./pages/OnTheDock"));
+const CommissaryOrdering = lazy(() => import("./pages/CommissaryOrdering"));
+const CollaborativeApprovalHub = lazy(
+  () => import("./pages/CollaborativeApprovalHub"),
+);
+const ExceptionResolutionHub = lazy(
+  () => import("./pages/ExceptionResolutionHub"),
+);
+const ManagerAlertDashboard = lazy(
+  () => import("./pages/ManagerAlertDashboard"),
+);
+const OCRMetricsDashboard = lazy(() => import("./pages/OCRMetricsDashboard"));
+const VendorManagement = lazy(() => import("./pages/VendorManagement"));
+const PurchaseOrderForm = lazy(() => import("./pages/PurchaseOrderForm"));
+const POApprovalWorkflow = lazy(() => import("./pages/POApprovalWorkflow"));
+const ReceivingDashboard = lazy(() => import("./pages/ReceivingDashboard"));
+const BarcodeReceiver = lazy(() => import("./pages/BarcodeReceiver"));
+const ProcurementToPaymentDashboard = lazy(
+  () => import("./pages/ProcurementToPaymentDashboard"),
+);
+const AdminPanels = lazy(() => import("./pages/AdminPanels"));
+const Inventory = lazy(() => import("./pages/Inventory"));
+const InventoryLayout = lazy(() => import("./pages/InventoryLayout"));
+const InventoryPhysicalCount = lazy(
+  () => import("./pages/InventoryPhysicalCount"),
+);
+const InventoryQuickCounts = lazy(() => import("./pages/InventoryQuickCounts"));
+const InventoryShelfSheet = lazy(() => import("./pages/InventoryShelfSheet"));
+const InventoryVoiceCapture = lazy(
+  () => import("./pages/InventoryVoiceCapture"),
+);
+const InventorySyncWorkflow = lazy(
+  () => import("./pages/InventorySyncWorkflow"),
+);
+const InvoiceGLIntegrationWorkflow = lazy(
+  () => import("./pages/InvoiceGLIntegrationWorkflow"),
+);
+const Invoices = lazy(() => import("./pages/Invoices"));
+const InvoiceReview = lazy(() => import("./pages/InvoiceReview"));
+const InvoiceDrop = lazy(() => import("./pages/InvoiceDrop"));
+const PurchasingReceiving = lazy(() =>
+  import("@/modules/PurchRec").then((mod) => ({ default: mod.default })),
+);
+const Recipes = lazy(() => import("./pages/Recipes"));
+const Conversions = lazy(() => import("./pages/Conversions"));
+const WasteTracking = lazy(() => import("./pages/WasteTracking"));
+const HACCP = lazy(() => import("./pages/HACCP"));
+const Hardware = lazy(() => import("./pages/Hardware"));
+const IoTDashboard = lazy(() => import("./pages/IoTDashboard"));
+const GLMapping = lazy(() => import("./pages/GLMapping"));
+const ComplianceManager = lazy(() => import("./pages/ComplianceManager"));
+const IntegrationManager = lazy(() => import("./pages/IntegrationManager"));
+const ImageVault = lazy(() => import("./pages/ImageVault"));
+const MultiOutletDashboard = lazy(() => import("./pages/MultiOutletDashboard"));
+const Search = lazy(() => import("./pages/Search"));
+const Maestro = lazy(() => import("./pages/Maestro"));
+const ModuleEcosystem = lazy(() => import("./pages/ModuleEcosystem"));
+const ForecastingOptimization = lazy(
+  () => import("./pages/ForecastingOptimization"),
+);
+const PerformanceMonitoring = lazy(
+  () => import("./pages/PerformanceMonitoring"),
+);
+const Test = lazy(() => import("./pages/Test"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const EDIMonitoringDashboard = lazy(
+  () => import("./pages/EDIMonitoringDashboard"),
+);
+
+// ── Expansion modules ──
+
+const BeoLifecycleWorkspace = lazy(
+  () => import("../../BeoLifecycleWorkspace/BeoLifecycleWorkspace"),
+);
+const GuestIntelligenceWorkspace = lazy(
+  () => import("../../GuestIntelligenceWorkspace/GuestIntelligenceWorkspace"),
+);
+const CulinaryEducationWorkspace = lazy(
+  () => import("../../CulinaryEducationWorkspace/CulinaryEducationWorkspace"),
+);
+const EquipmentLifecycleWorkspace = lazy(
+  () => import("../../EquipmentLifecycleWorkspace/EquipmentLifecycleWorkspace"),
+);
+const HealthInspectionWorkspace = lazy(
+  () => import("../../HealthInspectionWorkspace/HealthInspectionWorkspace"),
+);
+const IoTSensorDashboard = lazy(
+  () => import("../../IoTSensorDashboard/IoTSensorDashboard"),
+);
+const MasterChefProgram = lazy(
+  () => import("../../MasterChefProgram/MasterChefProgram"),
+);
+const PlateAnalysisPanel = lazy(
+  () => import("../../PlateAnalysisPanel/PlateAnalysisPanel"),
+);
+const QualityAuditWorkspace = lazy(
+  () => import("../../QualityAuditWorkspace/QualityAuditWorkspace"),
+);
+const RecipeAccessMatrix = lazy(
+  () => import("../../RecipeAccessMatrix/RecipeAccessMatrix"),
+);
+const RegulatoryTrackingWorkspace = lazy(
+  () => import("../../RegulatoryTrackingWorkspace/RegulatoryTrackingWorkspace"),
+);
+const ServerPerformanceWorkspace = lazy(
+  () => import("../../ServerPerformanceWorkspace/ServerPerformanceWorkspace"),
+);
+
+// ── Query client ──
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 10,
+      retry: 1,
+    },
+  },
+});
+
+// ── Loading fallback ──
+
+const LoadingFallback = () => (
+  <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+    <TurtleLoader message="Loading Echo Ops" note="Preparing your workspace" />
+  </div>
+);
+
+const isEmbeddedPanel = () => {
+  try {
+    if (typeof window === "undefined") return false;
+    const explicit = (window as any).__LUCCCA_EMBEDDED_PANEL__;
+    if (explicit === true || explicit === false) return !!explicit;
+
+    // Heuristic: when mounted as a LUCCCA panel, the host owns the URL (e.g. /whiteboard)
+    // and the module should not attempt to mount its own router.
+    const p = window.location?.pathname || "";
+    if (p.includes("/client/modules/PurchasingReceiving")) return false;
+    if (p.includes("/purchasing-receiving")) return false;
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const EmbeddedApp = () => (
+  <Suspense fallback={<LoadingFallback />}>
+    <AppLayout>
+      <Dashboard />
+    </AppLayout>
+  </Suspense>
+);
+
+// ── Error Boundary with Sentry ──
+
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error?: Error; eventId?: string }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error(
+      "[PurchasingReceiving] Error in component tree:",
+      error,
+      errorInfo,
+    );
+
+    const eventId = Sentry.captureException(error, {
+      contexts: {
+        react_error_boundary: {
+          module: "PurchasingReceiving",
+          componentStack: errorInfo.componentStack || "N/A",
+        },
+      },
+      tags: {
+        error_boundary: "PurchasingReceivingErrorBoundary",
+        module: "PurchasingReceiving",
+        error_type: "render_error",
+      },
+      fingerprint: ["purchasing-receiving-render-error", error.message],
+    });
+
+    this.setState({ eventId });
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+          <div className="text-center max-w-md">
+            <h1 className="text-2xl font-bold text-destructive mb-4">
+              Something went wrong
+            </h1>
+            <p className="text-foreground mb-2 text-sm break-words">
+              {this.state.error?.message || "An unknown error occurred"}
+            </p>
+            {this.state.eventId && (
+              <p className="text-xs text-muted-foreground mb-4 font-mono">
+                Error ID: {this.state.eventId}
+              </p>
+            )}
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+            >
+              Reload Page
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// ── App Component ──
+
+const App = () => {
+  React.useEffect(() => {
+    initializeLearning();
+  }, []);
+
+  return (
+    <ErrorBoundary>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <SkipToMainContent />
+            <Toaster />
+            <Sonner />
+            <LanguageProvider>
+              <AuthProvider>
+                <YieldProvider>
+                  <AppDataProvider>
+                 <WhiteLabelProvider>
+                            {isEmbeddedPanel() ? (
+                              <EmbeddedApp />
+                            ) : (
+                              <RouterWrapper>
+                              <Suspense fallback={<LoadingFallback />}>
+  <Suspense fallback={<LoadingFallback />}>
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </Suspense>
+                              </Suspense>
+                            </RouterWrapper>
+                            )}otFound />} />
+                              </Suspense>
+                            </RouterWrapper>
+                          </WhiteLabelProvider>
+                        </MultiOutletProvider>
+                      </CollaborationProvider>
+                    </PageToolbarProvider>
+                  </AppDataProvider>
+                </YieldProvider>
+              </AuthProvider>
+            </LanguageProvider>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+};
+
+export default App;

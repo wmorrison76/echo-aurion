@@ -1,0 +1,255 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import "../styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    color-scheme: dark;
+    --background: var(--bg);
+    --foreground: var(--text);
+
+    --card: var(--surface);
+    --card-foreground: var(--text);
+
+    --popover: color-mix(in srgb, var(--surface) 90%, rgba(255,255,255,0.06));
+    --popover-foreground: var(--text);
+
+    --primary: var(--brand);
+    --primary-foreground: var(--bg);
+
+    --secondary: var(--accent);
+    --secondary-foreground: var(--bg);
+
+    --muted: color-mix(in srgb, var(--surface) 82%, var(--text) 18%);
+    --muted-foreground: color-mix(in srgb, var(--text) 68%, white 32%);
+
+    --accent: var(--accent-2);
+    --accent-foreground: var(--bg);
+
+    --destructive: var(--danger);
+    --destructive-foreground: color-mix(in srgb, var(--text) 90%, white 10%);
+
+    --border: color-mix(in srgb, var(--brand) 55%, rgba(7,16,29,0.7));
+    --input: color-mix(in srgb, var(--brand-2) 50%, rgba(7,16,29,0.6));
+    --ring: color-mix(in srgb, var(--brand-2) 65%, rgba(255,255,255,0.2));
+
+    --radius: var(--radius-sm);
+
+    --sidebar-background: color-mix(in srgb, var(--bg) 88%, black 12%);
+    --sidebar-foreground: color-mix(in srgb, var(--text) 92%, rgba(255,255,255,0.2));
+    --sidebar-primary: var(--brand);
+    --sidebar-primary-foreground: var(--bg);
+    --sidebar-accent: color-mix(in srgb, var(--surface) 70%, rgba(255,255,255,0.08));
+    --sidebar-accent-foreground: var(--text);
+    --sidebar-border: color-mix(in srgb, var(--border) 85%, rgba(255,255,255,0.05));
+    --sidebar-ring: var(--brand-2);
+
+    /* EchoCoder Pro Color Theme */
+    --color-primary-cyan: #00D9FF;
+    --color-primary-blue: #3B82F6;
+    --color-tier-1: #06B6D4;
+    --color-tier-2: #3B82F6;
+    --color-tier-3: #8B5CF6;
+    --color-tier-4: #EC4899;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+    --color-info: #06B6D4;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  .light {
+    color-scheme: light;
+    --background: #f5f7fb;
+    --foreground: #0b1727;
+
+    --card: #ffffff;
+    --card-foreground: #0b1727;
+
+    --popover: color-mix(in srgb, #ffffff 95%, rgba(15,40,74,0.05));
+    --popover-foreground: #0b1727;
+
+    --primary: #0564ff;
+    --primary-foreground: #ffffff;
+
+    --secondary: #6f4dff;
+    --secondary-foreground: #ffffff;
+
+    --muted: color-mix(in srgb, #d7dfeb 80%, #0b1727 20%);
+    --muted-foreground: color-mix(in srgb, #32476b 75%, #0b1727 25%);
+
+    --accent: #00a2ff;
+    --accent-foreground: #ffffff;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+
+    --border: color-mix(in srgb, #c9d4e6 65%, rgba(5,100,255,0.25));
+    --input: color-mix(in srgb, #8bb8ff 55%, rgba(255,255,255,0.35));
+    --ring: color-mix(in srgb, #8bb8ff 70%, rgba(5,100,255,0.3));
+
+    --sidebar-background: color-mix(in srgb, #ffffff 85%, #c9d4e6 15%);
+    --sidebar-foreground: #263957;
+    --sidebar-primary: #0564ff;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: color-mix(in srgb, #f0f4fc 80%, #c9d4e6 20%);
+    --sidebar-accent-foreground: #1a2b44;
+    --sidebar-border: #c9d4e6;
+    --sidebar-ring: #8bb8ff;
+  }
+
+  .theme-locked {
+    --background: var(--bg);
+    --foreground: var(--text);
+    --card: var(--surface);
+    --card-foreground: var(--text);
+    --muted: color-mix(in srgb, var(--surface) 82%, var(--text) 18%);
+    --muted-foreground: color-mix(in srgb, var(--text) 68%, white 32%);
+    --border: color-mix(in srgb, var(--brand) 55%, rgba(7,16,29,0.7));
+    --input: color-mix(in srgb, var(--brand-2) 50%, rgba(7,16,29,0.6));
+    --ring: color-mix(in srgb, var(--brand-2) 65%, rgba(255,255,255,0.2));
+  }
+
+  /* Color Schemes - Cyan Theme */
+  :root.scheme-cyan {
+    --primary: hsl(186, 100%, 56%);
+    --secondary: hsl(200, 100%, 60%);
+    --accent: hsl(180, 100%, 50%);
+  }
+
+  .dark.scheme-cyan {
+    --primary: hsl(186, 100%, 56%);
+    --secondary: hsl(200, 100%, 60%);
+    --accent: hsl(180, 100%, 50%);
+    --border: color-mix(in srgb, hsl(186, 100%, 56%) 55%, rgba(7,16,29,0.7));
+    --ring: color-mix(in srgb, hsl(186, 100%, 56%) 65%, rgba(255,255,255,0.2));
+  }
+
+  .light.scheme-cyan {
+    --primary: hsl(186, 100%, 45%);
+    --secondary: hsl(200, 100%, 50%);
+    --accent: hsl(180, 100%, 40%);
+    --border: color-mix(in srgb, hsl(186, 100%, 45%) 65%, rgba(0,212,255,0.25));
+  }
+
+  /* Color Schemes - Blue Theme */
+  :root.scheme-blue {
+    --primary: hsl(217, 92%, 60%);
+    --secondary: hsl(210, 100%, 65%);
+    --accent: hsl(215, 98%, 61%);
+  }
+
+  .dark.scheme-blue {
+    --primary: hsl(217, 92%, 60%);
+    --secondary: hsl(210, 100%, 65%);
+    --accent: hsl(215, 98%, 61%);
+    --border: color-mix(in srgb, hsl(217, 92%, 60%) 55%, rgba(7,16,29,0.7));
+    --ring: color-mix(in srgb, hsl(217, 92%, 60%) 65%, rgba(255,255,255,0.2));
+  }
+
+  .light.scheme-blue {
+    --primary: hsl(217, 92%, 50%);
+    --secondary: hsl(210, 100%, 55%);
+    --accent: hsl(215, 98%, 51%);
+    --border: color-mix(in srgb, hsl(217, 92%, 50%) 65%, rgba(59,130,246,0.25));
+  }
+
+  /* Color Schemes - Emerald Theme */
+  :root.scheme-emerald {
+    --primary: hsl(160, 84%, 54%);
+    --secondary: hsl(150, 80%, 60%);
+    --accent: hsl(170, 85%, 50%);
+  }
+
+  .dark.scheme-emerald {
+    --primary: hsl(160, 84%, 54%);
+    --secondary: hsl(150, 80%, 60%);
+    --accent: hsl(170, 85%, 50%);
+    --border: color-mix(in srgb, hsl(160, 84%, 54%) 55%, rgba(7,16,29,0.7));
+    --ring: color-mix(in srgb, hsl(160, 84%, 54%) 65%, rgba(255,255,255,0.2));
+  }
+
+  .light.scheme-emerald {
+    --primary: hsl(160, 84%, 44%);
+    --secondary: hsl(150, 80%, 50%);
+    --accent: hsl(170, 85%, 40%);
+    --border: color-mix(in srgb, hsl(160, 84%, 44%) 65%, rgba(16,185,129,0.25));
+  }
+
+  /* Color Schemes - Violet Theme */
+  :root.scheme-violet {
+    --primary: hsl(259, 90%, 66%);
+    --secondary: hsl(270, 85%, 70%);
+    --accent: hsl(280, 88%, 65%);
+  }
+
+  .dark.scheme-violet {
+    --primary: hsl(259, 90%, 66%);
+    --secondary: hsl(270, 85%, 70%);
+    --accent: hsl(280, 88%, 65%);
+    --border: color-mix(in srgb, hsl(259, 90%, 66%) 55%, rgba(7,16,29,0.7));
+    --ring: color-mix(in srgb, hsl(259, 90%, 66%) 65%, rgba(255,255,255,0.2));
+  }
+
+  .light.scheme-violet {
+    --primary: hsl(259, 90%, 56%);
+    --secondary: hsl(270, 85%, 60%);
+    --accent: hsl(280, 88%, 55%);
+    --border: color-mix(in srgb, hsl(259, 90%, 56%) 65%, rgba(139,92,246,0.25));
+  }
+
+  /* Color Schemes - Rose Theme */
+  :root.scheme-rose {
+    --primary: hsl(347, 89%, 60%);
+    --secondary: hsl(340, 82%, 65%);
+    --accent: hsl(350, 100%, 55%);
+  }
+
+  .dark.scheme-rose {
+    --primary: hsl(347, 89%, 60%);
+    --secondary: hsl(340, 82%, 65%);
+    --accent: hsl(350, 100%, 55%);
+    --border: color-mix(in srgb, hsl(347, 89%, 60%) 55%, rgba(7,16,29,0.7));
+    --ring: color-mix(in srgb, hsl(347, 89%, 60%) 65%, rgba(255,255,255,0.2));
+  }
+
+  .light.scheme-rose {
+    --primary: hsl(347, 89%, 50%);
+    --secondary: hsl(340, 82%, 55%);
+    --accent: hsl(350, 100%, 45%);
+    --border: color-mix(in srgb, hsl(347, 89%, 50%) 65%, rgba(244,63,94,0.25));
+  }
+
+  /* Glass Morphism Utilities */
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-panel.light {
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

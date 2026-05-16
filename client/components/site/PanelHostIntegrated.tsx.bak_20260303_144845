@@ -1,0 +1,548 @@
+/**
+ * PanelHost Integrated
+ * Full migration of PanelHost.tsx to use new modular architecture
+ * 
+ * This component integrates the new panel system with existing event handlers
+ * and maintains full backward compatibility
+ */
+
+import React, { useEffect, useRef, useState, Suspense, lazy, ReactNode } from "react";
+import { PanelContainer } from "./panels/PanelContainer";
+import type { PanelId, PanelEntry } from "./panels/types";
+import { usePanelStoreEnhanced } from "@/lib/stores/panel-store-enhanced";
+import { PANEL_REGISTRY, PANEL_METADATA, type PanelKey, isValidPanelKey, preloadModule } from "@/lib/panel-registry";
+import { captureException } from "@/lib/sentry-init";
+import { osBus } from "@/lib/os-bus";
+import type { PanelLayout } from "@/lib/panel-controller";
+import { calculateGridLayout, calculateCascadeLayout } from "@/lib/panel-controller";
+import { calculateResponsivePanelSize, calculateDefaultPosition } from "./panels/PanelLayout";
+
+// System panel components
+const ZaroPanel = lazy(() => import("@/modules/Zaro"));
+const EchoCoderPanel = lazy(() => import("@/components/studio/EchoCoderPanel"));
+const RestaurantDashboard = lazy(() => import("@/components/dashboard/RestaurantDashboard"));
+const WhiteboardModule = lazy(() => import("@/modules/Whiteboard"));
+const StickyNotesModule = lazy(() => import("@/modules/StickyNotes"));
+const VideoConferenceModule = lazy(() => import("@/modules/VideoConference"));
+const NetworkChat = lazy(() => import("@/components/site/NetworkChat"));
+const ChatSettings = lazy(() => import("@/components/site/ChatSettings"));
+const SystemSettingsModule = lazy(() => import("@/components/site/SystemSettings"));
+
+// System panel registry
+const SYSTEM_PANELS: Record<string, {
+  metadata: {
+    defaultWidth: number;
+    defaultHeight: number;
+    icon?: string;
+    title?: string;
+  };
+  element: ReactNode;
+}> = {
+  zaro: {
+    metadata: { defaultWidth: 800, defaultHeight: 600, icon: "🔐", title: "ZARO Guardian" },
+    element: <ZaroPanel />,
+  },
+  settings: {
+    metadata: { defaultWidth: 500, defaultHeight: 400, icon: "⚙️", title: "Settings" },
+    element: <SystemSettingsModule />,
+  },
+  echo: {
+    metadata: { defaultWidth: 800, defaultHeight: 600, icon: "🤖", title: "EchoCoder" },
+    element: <EchoCoderPanel />,
+  },
+  dashboard: {
+    metadata: {
+      defaultWidth: 700,
+      defaultHeight: 550,
+      icon: "",
+      title: "Dashboard",
+    },
+    element: <RestaurantDashboard />,
+  },
+  "network-chat": {
+    metadata: { defaultWidth: 350, defaultHeight: 380, icon: "💬", title: "Network Chat" },
+    element: <NetworkChat />,
+  },
+  "chat-settings": {
+    metadata: { defaultWidth: 400, defaultHeight: 450, icon: "⚙️", title: "Chat Settings" },
+    element: <ChatSettings />,
+  },
+  whiteboard: {
+    metadata: { defaultWidth: 900, defaultHeight: 650, icon: "✏️", title: "Whiteboard" },
+    element: <WhiteboardModule />,
+  },
+  notes: {
+    metadata: { defaultWidth: 500, defaultHeight: 500, icon: "📝", title: "Sticky Notes" },
+    element: <StickyNotesModule />,
+  },
+  video: {
+    metadata: { defaultWidth: 1100, defaultHeight: 700, icon: "📹", title: "Video Conference" },
+    element: <VideoConferenceModule />,
+  },
+};
+
+const INITIAL_Z_INDEX = 20010;
+
+/** Catches render errors from panel content so we show a message instead of blank. */
+class PanelContentErrorBoundary extends React.Component<
+  { panelKey: string; panelTitle: string; children: ReactNode },
+  { error: Error | null }
+> {
+  state = { error: null as Error | null };
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
+    console.error(`[PanelHostIntegrated] Panel "${this.props.panelTitle}" (${this.props.panelKey}) threw during render:`, error, info.componentStack);
+    try {
+      captureException(error, { source: "PanelHostIntegrated.PanelContentErrorBoundary", panelKey: this.props.panelKey, componentStack: info?.componentStack });
+    } catch (_) { /* Sentry not available */ }
+  }
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="flex flex-col items-center justify-center flex-1 min-h-[200px] p-6 overflow-auto rounded border border-amber-500/70 bg-amber-500/15 text-amber-900 dark:text-amber-200">
+          <p className="font-semibold mb-2">Panel failed to render</p>
+          <p className="text-sm mb-4 max-w-md break-words">{this.state.error.message}</p>
+          <button
+            type="button"
+            className="px-3 py-1.5 rounded text-sm font-medium bg-amber-500 text-amber-950 hover:bg-amber-600"
+            onClick={() => this.setState({ error: null })}
+          >
+            Retry
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+export function PanelHostIntegrated() {
+  const store = usePanelStoreEnhanced();
+  const {
+    panels: storePanels,
+    getOpenPanels,
+    addPanel,
+    removePanel,
+    updatePanel,
+    minimizePanel,
+    setPanelPosition,
+    setPanelSize,
+    toggleExpand,
+    getMaxZIndex,
+    getNextZIndex,
+    isInitialized,
+    initialize,
+  } = store;
+
+  const pendingPanelsRef = useRef<Set<string>>(new Set());
+  const nextZIndexRef = useRef(INITIAL_Z_INDEX);
+
+  // Initialize store on mount
+  useEffect(() => {
+    if (!isInitialized) {
+      initialize();
+    }
+  }, [isInitialized, initialize]);
+
+  // Open panel function - handles both system and module panels
+  const openPanel = async (
+    id: PanelId,
+    tab?: string,
+    panelProps?: Record<string, any>
+  ) => {
+    console.debug("[PanelHostIntegrated.openPanel] Opening panel:", id, { tab, hasProps: !!panelProps });
+
+    if (pendingPanelsRef.current.has(id)) {
+      console.log("[PanelHostIntegrated.openPanel] Panel already pending:", id);
+      return;
+    }
+
+      // Check if panel is already open
+      const existingPanel = storePanels[id];
+      if (existingPanel) {
+        // Panel already open - just focus and unminimize
+        const nextZ = getNextZIndex();
+        updatePanel(id, {
+          zIndex: nextZ,
+          isMinimized: false,
+          isExpanded: false,
+        });
+        return;
+      }
+
+    pendingPanelsRef.current.add(id);
+
+    try {
+      // Check if system panel
+      const isSystemPanel = Object.keys(SYSTEM_PANELS).includes(id as string);
+
+      if (isSystemPanel) {
+        // Handle system panel
+        let sysPanel = SYSTEM_PANELS[id as string];
+        
+        // Special handling for settings panel with tab
+        if (id === "settings" && tab && sysPanel) {
+          // For settings panel with tab, we need to wrap SystemSettings
+          // Note: SystemSettings doesn't directly support initialTab, but this maintains compatibility
+          sysPanel = {
+            ...sysPanel,
+            element: <SystemSettingsModule />,
+          };
+        }
+
+        // Sticky Notes system panel requires panelId and onDelete
+        if (id === "notes" && sysPanel) {
+          sysPanel = {
+            ...sysPanel,
+            element: (
+              <Suspense fallback={<div className="p-6 text-foreground/60">Loading…</div>}>
+                <StickyNotesModule
+                  panelId="notes"
+                  onDelete={() => removePanel("notes")}
+                />
+              </Suspense>
+            ),
+          };
+        }
+
+        // Video Conference system panel requires panelId, onClose, isEmbedded; optional context for deep links
+        if (id === "video" && sysPanel) {
+          const ctx = panelProps || {};
+          sysPanel = {
+            ...sysPanel,
+            element: (
+              <Suspense fallback={<div className="p-6 text-foreground/60">Loading…</div>}>
+                <VideoConferenceModule
+                  panelId="video"
+                  onClose={() => removePanel("video")}
+                  isEmbedded={true}
+                  tableId={ctx.tableId}
+                  servicePeriodId={ctx.servicePeriodId}
+                  boardId={ctx.boardId}
+                  tableLabel={ctx.tableLabel}
+                />
+              </Suspense>
+            ),
+          };
+        }
+
+        // Whiteboard system panel: show stub until session logic is repaired (avoids crash from broken WhiteboardSession.tsx)
+        if (id === "whiteboard" && sysPanel) {
+          sysPanel = {
+            ...sysPanel,
+            element: (
+              <div className="w-full h-full flex items-center justify-center p-6">
+                <div className="rounded border border-amber-500/60 bg-amber-500/10 px-4 py-3 text-amber-900 dark:text-amber-200">
+                  Whiteboard is running in Local Mode (session wiring still repairing).
+                </div>
+              </div>
+            ),
+          };
+        }
+
+        const { width, height } = calculateResponsivePanelSize(
+          window.innerWidth,
+          window.innerHeight,
+          sysPanel.metadata.defaultWidth,
+          sysPanel.metadata.defaultHeight
+        );
+
+        const openPanelCount = Object.keys(storePanels).filter(
+          (panelId) => !storePanels[panelId as PanelId]?.isMinimized
+        ).length;
+
+        const { x, y } = calculateDefaultPosition(openPanelCount, { width, height }, window.innerWidth, window.innerHeight);
+
+        const zIndex = nextZIndexRef.current++;
+
+        const panelEntry: PanelEntry = {
+          id,
+          title: sysPanel.metadata.title || id.charAt(0).toUpperCase() + id.slice(1),
+          panelKey: id,
+          element: sysPanel.element,
+          defaultWidth: width,
+          defaultHeight: height,
+          icon: sysPanel.metadata.icon || "📦",
+          isImageIcon: sysPanel.metadata.icon?.startsWith("http") ?? false,
+        };
+
+        addPanel(id, {
+          entry: panelEntry,
+          position: { x, y },
+          size: { width, height },
+          isMinimized: false,
+          isExpanded: false,
+          panelProps: panelProps || {},
+        });
+
+        pendingPanelsRef.current.delete(id);
+        return;
+      }
+
+      // Handle module panel (from registry)
+      const panelKey = id as PanelKey;
+      if (!isValidPanelKey(panelKey)) {
+        console.error("[PanelHostIntegrated] Invalid panel key:", panelKey);
+        pendingPanelsRef.current.delete(id);
+        return;
+      }
+
+      const metadata = PANEL_METADATA[panelKey];
+      if (!metadata) {
+        console.error("[PanelHostIntegrated] No metadata for panel:", panelKey);
+        pendingPanelsRef.current.delete(id);
+        return;
+      }
+
+      // Add module panel with panelKey only; Panel will render content via ModulePanelContent at render time (avoids stale/missing element)
+      const loadPanel = async () => {
+        const { width, height } = calculateResponsivePanelSize(
+          window.innerWidth,
+          window.innerHeight,
+          metadata.defaultWidth,
+          metadata.defaultHeight
+        );
+
+        const openPanelCount = Object.keys(storePanels).filter(
+          (panelId) => !storePanels[panelId as PanelId]?.isMinimized
+        ).length;
+
+        const { x, y } = calculateDefaultPosition(openPanelCount, { width, height }, window.innerWidth, window.innerHeight);
+
+        const panelEntry: PanelEntry = {
+          id: panelKey,
+          title: metadata.label || panelKey,
+          panelKey,
+          defaultWidth: width,
+          defaultHeight: height,
+          icon: metadata.icon || "📦",
+          isImageIcon: metadata.icon?.startsWith("http") ?? false,
+        };
+
+        addPanel(panelKey, {
+          entry: panelEntry,
+          position: { x, y },
+          size: { width, height },
+          isMinimized: false,
+          isExpanded: false,
+          panelProps: panelProps || {},
+        });
+      };
+
+      await loadPanel();
+      pendingPanelsRef.current.delete(id);
+    } catch (error) {
+      console.error("[PanelHostIntegrated] Error opening panel:", error);
+      pendingPanelsRef.current.delete(id);
+    }
+  };
+
+  // Event handlers
+  useEffect(() => {
+    // OS Bus subscription for open-panel events
+    const unsubOsBusOpenPanel = osBus.on(
+      "ui:open_panel",
+      ({ panelKey, payload }) => {
+        const detail: Record<string, any> = { id: panelKey };
+        if (payload && typeof payload === "object") {
+          Object.assign(detail, payload as any);
+        } else if (payload !== undefined) {
+          detail.payload = payload;
+        }
+        window.dispatchEvent(new CustomEvent("open-panel", { detail }));
+      },
+    );
+
+    const handleOpenPanel = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: PanelId; tab?: string; panelProps?: Record<string, any> }>).detail;
+      if (detail?.id) {
+        openPanel(detail.id, detail.tab, detail.panelProps);
+      }
+    };
+
+    const handleRestorePanel = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: PanelId }>).detail;
+      if (detail?.id) {
+        const panel = storePanels[detail.id];
+        if (panel) {
+          // Restore means unminimize
+          const nextZ = getNextZIndex();
+          updatePanel(detail.id, {
+            isMinimized: false,
+            isExpanded: false,
+            zIndex: nextZ,
+          });
+        }
+      }
+    };
+
+    const handleCreateStickyNote = (e: Event) => {
+      const detail = (e as CustomEvent<{ panelId: string }>).detail;
+      if (!detail?.panelId) return;
+      const panelId = detail.panelId as PanelId;
+      if (storePanels[panelId]) {
+        const nextZ = getNextZIndex();
+        updatePanel(panelId, { zIndex: nextZ, isMinimized: false, isExpanded: false });
+        return;
+      }
+      const width = 225;
+      const height = 225;
+      let savedPosition: { x: number; y: number } | undefined;
+      try {
+        const saved = localStorage.getItem("sticky-notes-positions");
+        if (saved) savedPosition = JSON.parse(saved)[panelId as string];
+      } catch {}
+      const openPanelCount = Object.keys(storePanels).filter(
+        (id) => !storePanels[id as PanelId]?.isMinimized
+      ).length;
+      const { x, y } = savedPosition ?? calculateDefaultPosition(openPanelCount, { width, height }, window.innerWidth, window.innerHeight);
+      const zIndex = nextZIndexRef.current++;
+      const panelEntry: PanelEntry = {
+        id: panelId,
+        title: "Sticky Note",
+        panelKey: panelId,
+        element: (
+          <Suspense fallback={<div className="p-6 text-foreground/60">Loading…</div>}>
+            <StickyNotesModule
+              panelId={panelId as string}
+              onDelete={() => removePanel(panelId)}
+              onResize={(size) => setPanelSize(panelId, size)}
+            />
+          </Suspense>
+        ),
+        defaultWidth: width,
+        defaultHeight: height,
+        icon: "📝",
+        isImageIcon: false,
+      };
+      addPanel(panelId, {
+        entry: panelEntry,
+        position: { x, y },
+        size: { width, height },
+        isMinimized: false,
+        isExpanded: false,
+        panelProps: {},
+      });
+    };
+
+    const handleDockAction = (e: Event) => {
+      const detail = (e as CustomEvent<{ action: string; payload?: Record<string, any> }>).detail;
+      if (!detail) return;
+
+      const { action } = detail;
+
+      if (action === "echo-ai-toggle") {
+        queueMicrotask(() => {
+          window.dispatchEvent(new CustomEvent("echo-ai-toggle"));
+        });
+        return;
+      }
+
+      const panelIds = Object.keys(storePanels) as PanelId[];
+
+      switch (action) {
+        case "close-all":
+          Promise.all(panelIds.map((id) => removePanel(id))).then(() => {
+            panelIds.forEach((id) => {
+              window.dispatchEvent(new CustomEvent("restore-panel", { detail: { id } }));
+            });
+          });
+          break;
+
+        case "minimize-all":
+          panelIds.forEach((id) => {
+            minimizePanel(id);
+          });
+          break;
+
+        case "stack-grid": {
+          const layout = calculateGridLayout(
+            panelIds.map(String),
+            window.innerWidth,
+            window.innerHeight,
+            Object.fromEntries(panelIds.map((id) => [String(id), storePanels[id]?.size.width || 800])),
+            Object.fromEntries(panelIds.map((id) => [String(id), storePanels[id]?.size.height || 600]))
+          );
+
+          Object.entries(layout.positions).forEach(([id, pos]) => {
+            const panelId = id as PanelId;
+            updatePanel(panelId, {
+              position: pos,
+              isMinimized: false,
+              isExpanded: false,
+            });
+          });
+          break;
+        }
+
+        case "stack-cascade": {
+          const layout = calculateCascadeLayout(
+            panelIds.map(String),
+            window.innerWidth,
+            window.innerHeight
+          );
+
+          Object.entries(layout.positions).forEach(([id, pos]) => {
+            const panelId = id as PanelId;
+            updatePanel(panelId, {
+              position: pos,
+              isMinimized: false,
+              isExpanded: false,
+            });
+          });
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("open-panel", handleOpenPanel);
+    window.addEventListener("restore-panel", handleRestorePanel);
+    window.addEventListener("dock-action", handleDockAction);
+    window.addEventListener("create-sticky-note", handleCreateStickyNote);
+
+    return () => {
+      unsubOsBusOpenPanel();
+      window.removeEventListener("open-panel", handleOpenPanel);
+      window.removeEventListener("restore-panel", handleRestorePanel);
+      window.removeEventListener("dock-action", handleDockAction);
+      window.removeEventListener("create-sticky-note", handleCreateStickyNote);
+    };
+  }, [storePanels, openPanel, addPanel, minimizePanel, removePanel, updatePanel, setPanelSize, getNextZIndex]);
+
+  if (!isInitialized) {
+    return null;
+  }
+
+  // Get open panels (non-minimized)
+  const openPanels = getOpenPanels().filter((p) => !p.isMinimized);
+  const maxZIndex = getMaxZIndex();
+
+  // Render using PanelContainer
+  return (
+    <PanelContainer
+      panels={openPanels}
+      maxZIndex={maxZIndex}
+      onClose={(id) => removePanel(id as PanelId)}
+      onMinimize={(id) => minimizePanel(id as PanelId)}
+      onFocus={(id) => {
+        const nextZ = getNextZIndex();
+        const panelId = id as PanelId;
+        updatePanel(panelId, { zIndex: nextZ });
+      }}
+      onResize={(id, size) => {
+        const panelId = id as PanelId;
+        setPanelSize(panelId, size);
+      }}
+      onPositionChange={(id, position) => {
+        const panelId = id as PanelId;
+        setPanelPosition(panelId, position);
+      }}
+      onToggleExpand={(id) => {
+        const panelId = id as PanelId;
+        toggleExpand(panelId);
+      }}
+    />
+  );
+}

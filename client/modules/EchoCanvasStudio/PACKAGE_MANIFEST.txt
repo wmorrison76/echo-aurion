@@ -1,0 +1,210 @@
+═══════════════════════════════════════════════════════════════════════════════
+  EchoCanva Modules - Package Manifest
+  Files to include in the clean download for Echo Recipe Pro
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ INCLUDE THESE FILES
+───────────────────────────────────────────────────────────────────────────────
+
+DIRECTORIES:
+  ✓ client/modules/echo-canva-cake-order/
+    ├── index.tsx
+    ├── luccca-module.json
+    └── INTEGRATION_GUIDE.md
+
+  ✓ client/modules/echo-canva-design-editor/
+    ├── index.tsx
+    ├── luccca-module.json
+    └── INTEGRATION_GUIDE.md
+
+DOCUMENTATION (Root Level):
+  ✓ INSTALL.md                            (Main installation guide)
+  ✓ QUICKSTART.md                         (5-minute quick start)
+  ✓ ECHOCANVA_MODULES_SETUP_GUIDE.md      (Complete reference)
+  ✓ README_MODULES.md                     (Feature overview)
+  ✓ PACKAGE_MANIFEST.txt                  (This file)
+
+REFERENCE:
+  ✓ package.json                          (For reference only - shows dependencies)
+
+
+❌ REMOVE THESE FILES BEFORE EXPORT
+───────────────────────────────────────────────────────────────────────────────
+
+BUILD & DEPENDENCIES:
+  ✗ node_modules/                         (Large - not needed)
+  ✗ dist/                                 (Build output)
+  ✗ build/                                (Build artifacts)
+  ✗ .next/                                (Next.js cache)
+  ✗ coverage/                             (Test coverage)
+
+LOCK FILES:
+  ✗ pnpm-lock.yaml
+  ✗ package-lock.json
+  ✗ yarn.lock
+
+ENVIRONMENT & SECRETS:
+  ✗ .env                                  (Main env file)
+  ✗ .env.local                            (Local overrides)
+  ✗ .env.*.local                          (Environment-specific)
+  ✗ .env.example                          (If it contains real values)
+
+VERSION CONTROL:
+  ✗ .git/                                 (Git metadata)
+  ✗ .gitignore
+  ✗ .github/                              (GitHub workflows)
+
+IDE & EDITOR CONFIG:
+  ✗ .vscode/                              (VS Code settings)
+  ✗ .idea/                                (IntelliJ settings)
+  ✗ .sublime-project
+  ✗ .sublime-workspace
+
+SYSTEM FILES:
+  ✗ .DS_Store                             (macOS)
+  ✗ Thumbs.db                             (Windows)
+  ✗ .cache/
+  ✗ .turbo/
+
+LOGS & TEMP:
+  ✗ *.log
+  ✗ npm-debug.log
+  ✗ yarn-error.log
+  ✗ pnpm-debug.log
+  ✗ lerna-debug.log
+  ✗ .eslintcache
+
+OPTIONAL - REMOVE IF NOT NEEDED:
+  ? archived-cake-builder/                (Old archived code)
+  ? AUDIT_*.md                            (Old audit files)
+  ? CAKE_DESIGNER_*.md                    (Old documentation)
+  ? BUILD_COMPLETION_SUMMARY.md           (Archived docs)
+  ? *_IMPLEMENTATION_*.md                 (Old implementation docs)
+  ? COMPETITIVE_*.md                      (Competitive analysis - optional)
+  ? DEPLOYMENT_CHECKLIST.md               (Old checklist)
+  ? FINAL_SESSION_SUMMARY.md              (Old summary)
+  ? MARKET_AUDIT_*.md                     (Old market research)
+  ? MASTER_TODO_LIST.md                   (Internal tracking)
+  ? PHASE*.md                             (Old phase docs)
+  ? SPRINT_*.md                           (Old sprint docs)
+  ? WEEK*.md                              (Old weekly summaries)
+
+
+📊 EXPECTED PACKAGE SIZE
+───────────────────────────────────────────────────────────────────────────────
+
+WITHOUT CLEANUP:
+  Full project with node_modules:         ~500MB - 1GB (Too large!)
+  
+WITH CLEANUP (Recommended):
+  Just modules + docs:                    ~200-300 KB (Perfect!)
+
+Breakdown after cleanup:
+  - echo-canva-cake-order/                ~80 KB
+  - echo-canva-design-editor/             ~120 KB
+  - Documentation (.md files)             ~500 KB
+  - Total:                                ~700 KB (very small & portable)
+
+
+🧹 HOW TO CLEAN BEFORE DOWNLOAD
+───────────────────────────────────────────────────────────────────────────────
+
+Option 1: Use the cleanup script (RECOMMENDED)
+  bash cleanup-for-export.sh
+  
+  This will remove all unnecessary files automatically.
+
+Option 2: Manual cleanup
+  rm -rf node_modules/
+  rm -f pnpm-lock.yaml package-lock.json yarn.lock
+  rm -rf .git .env* dist/ build/ .vscode/ .idea/
+  find . -name ".DS_Store" -delete
+  find . -name "*.log" -delete
+  
+Option 3: Create a clean zip
+  zip -r echocanva-modules.zip \
+    echo-canva-cake-order/ \
+    echo-canva-design-editor/ \
+    INSTALL.md \
+    QUICKSTART.md \
+    ECHOCANVA_MODULES_SETUP_GUIDE.md \
+    README_MODULES.md \
+    PACKAGE_MANIFEST.txt \
+    -x "node_modules/*" ".git/*" ".env*" "dist/*" "*.log"
+
+
+✅ VERIFICATION CHECKLIST
+───────────────────────────────────────────────────────────────────────────────
+
+Before sharing with Echo Recipe Pro, verify:
+
+  [ ] node_modules/ is completely removed
+  [ ] No .env files present
+  [ ] No .git directory
+  [ ] No lock files (pnpm-lock.yaml, package-lock.json, yarn.lock)
+  [ ] No build artifacts (dist/, build/)
+  [ ] No IDE configs (.vscode/, .idea/)
+  [ ] Both module folders present and complete
+  [ ] All documentation files included
+  [ ] Package size is reasonable (~1 MB max)
+  
+Command to verify no large directories:
+  du -sh * | sort -h | tail -20
+
+
+📦 FINAL PACKAGE STRUCTURE
+───────────────────────────────────────────────────────────────────────────────
+
+echocanva-modules/
+├── echo-canva-cake-order/
+│   ├── index.tsx
+│   ├── luccca-module.json
+│   └── INTEGRATION_GUIDE.md
+├── echo-canva-design-editor/
+│   ├── index.tsx
+│   ├── luccca-module.json
+│   └── INTEGRATION_GUIDE.md
+├── INSTALL.md                           ← START HERE
+├── QUICKSTART.md
+├── ECHOCANVA_MODULES_SETUP_GUIDE.md
+├── README_MODULES.md
+├── PACKAGE_MANIFEST.txt                 ← This file
+└── package.json                         (for reference)
+
+Total Size: ~700 KB
+Install Time: ~15 minutes
+
+
+🚀 DISTRIBUTION STEPS
+───────────────────────────────────────────────────────────────────────────────
+
+1. Run cleanup:
+   bash cleanup-for-export.sh
+
+2. Verify package:
+   ls -la echo-canva-*/
+   (Should show only index.tsx, luccca-module.json, INTEGRATION_GUIDE.md)
+
+3. Create zip:
+   zip -r echocanva-modules.zip \
+     echo-canva-cake-order/ \
+     echo-canva-design-editor/ \
+     *.md package.json
+
+4. Verify zip size:
+   ls -lh echocanva-modules.zip
+   (Should be ~1 MB or less)
+
+5. Test extraction:
+   mkdir test-extract
+   unzip echocanva-modules.zip -d test-extract/
+   ls test-extract/
+   
+6. Send to Echo Recipe Pro with INSTALL.md
+
+
+═══════════════════════════════════════════════════════════════════════════════
+Generated: 2025
+For: Echo Recipe Pro Integration
+Status: Production Ready
+═══════════════════════════════════════════════════════════════════════════════

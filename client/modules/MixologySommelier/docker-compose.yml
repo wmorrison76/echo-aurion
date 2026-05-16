@@ -1,0 +1,232 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: sommelier_postgres
+    environment:
+      POSTGRES_DB: sommelier_ai
+      POSTGRES_USER: sommelier
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-sommelier_password}
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./backend/db/seed_wines.sql:/docker-entrypoint-initdb.d/seed_wines.sql
+      - ./backend/db/seed_recipes.sql:/docker-entrypoint-initdb.d/seed_recipes.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sommelier"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sommelier
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: sommelier_redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sommelier
+
+  # MQTT Broker (for IoT sensors)
+  mosquitto:
+    image: eclipse-mosquitto:2-alpine
+    container_name: sommelier_mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto_data:/mosquitto/data
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - sommelier
+
+  # Main Backend Service (Port 8080)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sommelier_backend
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-in-production}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # Pairing Engine (Port 8090)
+  pairing-engine:
+    build:
+      context: ./services/pairing-engine
+      dockerfile: Dockerfile
+    container_name: sommelier_pairing
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8090:8090"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # Costing Service (Port 8100)
+  costing-service:
+    build:
+      context: ./services/inventory-costing
+      dockerfile: Dockerfile
+    container_name: sommelier_costing
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8100:8100"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # Sales Analytics Service (Port 8120)
+  analytics-service:
+    build:
+      context: ./services/sales-analytics
+      dockerfile: Dockerfile
+    container_name: sommelier_analytics
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8120:8120"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # IoT Monitor Service (Port 8140)
+  iot-monitor:
+    build:
+      context: ./services/iot-monitor
+      dockerfile: Dockerfile
+    container_name: sommelier_iot
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      MQTT_URL: mqtt://mosquitto:1883
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8140:8140"
+    depends_on:
+      - postgres
+      - mosquitto
+      - redis
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # Training Service (Port 8150)
+  training-service:
+    build:
+      context: ./services/education-training
+      dockerfile: Dockerfile
+    container_name: sommelier_training
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8150:8150"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # Wine Archive Service (Port 8160)
+  archive-service:
+    build:
+      context: ./services/echovinum-archive
+      dockerfile: Dockerfile
+    container_name: sommelier_archive
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://sommelier:${DB_PASSWORD:-sommelier_password}@postgres:5432/sommelier_ai
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8160:8160"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+  # Frontend (served by backend or use Vite in development)
+  frontend:
+    image: node:18-alpine
+    container_name: sommelier_frontend
+    working_dir: /app
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      REACT_APP_API_URL: http://localhost:8080
+      REACT_APP_PAIRING_URL: http://localhost:8090
+      REACT_APP_COSTING_URL: http://localhost:8100
+      REACT_APP_ANALYTICS_URL: http://localhost:8120
+      REACT_APP_IOT_URL: http://localhost:8140
+      REACT_APP_TRAINING_URL: http://localhost:8150
+      REACT_APP_ARCHIVE_URL: http://localhost:8160
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - sommelier
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mosquitto_data:
+
+networks:
+  sommelier:
+    driver: bridge

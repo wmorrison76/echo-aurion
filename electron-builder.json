@@ -1,0 +1,39 @@
+{
+  "appId": "com.luccca.ecw-desktop",
+  "productName": "LUCCCA ECW",
+  "directories": {
+    "output": "electron-dist",
+    "buildResources": "electron/assets"
+  },
+  "files": [
+    "dist/client/**/*",
+    "electron/main.js",
+    "electron/preload.js",
+    "electron/brand.json"
+  ],
+  "extraResources": [
+    { "from": "electron/brand.json", "to": "brand.json" }
+  ],
+  "mac": {
+    "target": [
+      { "target": "dmg", "arch": ["x64", "arm64"] }
+    ],
+    "category": "public.app-category.business",
+    "darkModeSupport": true,
+    "hardenedRuntime": true
+  },
+  "win": {
+    "target": [
+      { "target": "nsis", "arch": ["x64"] }
+    ]
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "category": "Office"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  },
+  "publish": null
+}

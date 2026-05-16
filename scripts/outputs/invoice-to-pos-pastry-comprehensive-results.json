@@ -1,0 +1,6244 @@
+{
+  "module": "pastry",
+  "invoices": [
+    {
+      "invoiceId": "inv-1769651453257-0",
+      "vendorId": "vendor-sysco",
+      "vendorName": "Sysco Corporation",
+      "invoiceNumber": "INV-000001",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1634.9673851102168,
+      "lineItems": [
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 9,
+          "unit": "lb",
+          "unitPrice": 14.898964740089074,
+          "totalPrice": 134.09068266080166,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 7.527129254973531,
+          "totalPrice": 45.162775529841184,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 9,
+          "unit": "lb",
+          "unitPrice": 6.747820629118169,
+          "totalPrice": 60.73038566206352,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 21,
+          "unit": "lb",
+          "unitPrice": 15.745575555660432,
+          "totalPrice": 330.65708666886906,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 12,
+          "unit": "lb",
+          "unitPrice": 8.056546047266323,
+          "totalPrice": 96.67855256719588,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 7,
+          "unit": "lb",
+          "unitPrice": 3.9030291590666826,
+          "totalPrice": 27.321204113466777,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 16,
+          "unit": "lb",
+          "unitPrice": 7.088939198364564,
+          "totalPrice": 113.42302717383302,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 14,
+          "unit": "btl",
+          "unitPrice": 19.459649850347812,
+          "totalPrice": 272.4350979048694,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 16,
+          "unit": "lb",
+          "unitPrice": 18.416312481497208,
+          "totalPrice": 294.6609997039553,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 11.809435142060043,
+          "totalPrice": 259.8075731253209,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-1",
+      "vendorId": "vendor-usfoods",
+      "vendorName": "US Foods",
+      "invoiceNumber": "INV-000002",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1554.3799808989052,
+      "lineItems": [
+        {
+          "productName": "All-Purpose Flour",
+          "quantity": 23,
+          "unit": "lb",
+          "unitPrice": 7.100166319753199,
+          "totalPrice": 163.30382535432358,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Sugar",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 7.202281638658159,
+          "totalPrice": 43.213689831948955,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Eggs",
+          "quantity": 12,
+          "unit": "lb",
+          "unitPrice": 8.550639771879435,
+          "totalPrice": 102.60767726255322,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Vanilla Extract",
+          "quantity": 11,
+          "unit": "lb",
+          "unitPrice": 9.834459483316332,
+          "totalPrice": 108.17905431647965,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Chocolate Chips",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 9.819362918336674,
+          "totalPrice": 147.2904437750501,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 10,
+          "unit": "lb",
+          "unitPrice": 4.101374220205825,
+          "totalPrice": 41.01374220205825,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 11.804751825237691,
+          "totalPrice": 200.68078102904076,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 18.76430513220403,
+          "totalPrice": 318.9931872474685,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 16.629758558825255,
+          "totalPrice": 99.77855135295152,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 20,
+          "unit": "lb",
+          "unitPrice": 16.46595142635154,
+          "totalPrice": 329.3190285270308,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-2",
+      "vendorId": "vendor-gfs",
+      "vendorName": "Gordon Food Service",
+      "invoiceNumber": "INV-000003",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1628.887936703306,
+      "lineItems": [
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 12,
+          "unit": "lb",
+          "unitPrice": 10.185970042724273,
+          "totalPrice": 122.23164051269129,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 21,
+          "unit": "lb",
+          "unitPrice": 2.5140105133511375,
+          "totalPrice": 52.794220780373884,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 13,
+          "unit": "btl",
+          "unitPrice": 2.055328385205451,
+          "totalPrice": 26.71926900767086,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 13,
+          "unit": "lb",
+          "unitPrice": 15.067516890970396,
+          "totalPrice": 195.87771958261516,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 16,
+          "unit": "lb",
+          "unitPrice": 21.56444460007392,
+          "totalPrice": 345.0311136011827,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "All-Purpose Flour",
+          "quantity": 8,
+          "unit": "lb",
+          "unitPrice": 3.302716160313584,
+          "totalPrice": 26.42172928250867,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Sugar",
+          "quantity": 14,
+          "unit": "lb",
+          "unitPrice": 14.502097599329222,
+          "totalPrice": 203.0293663906091,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Eggs",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 18.34803696531508,
+          "totalPrice": 403.6568132369318,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Vanilla Extract",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 10.76416209101638,
+          "totalPrice": 182.99075554727847,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Chocolate Chips",
+          "quantity": 13,
+          "unit": "lb",
+          "unitPrice": 5.395023750880317,
+          "totalPrice": 70.13530876144412,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-3",
+      "vendorId": "vendor-sysco",
+      "vendorName": "Sysco Corporation",
+      "invoiceNumber": "INV-000004",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1743.7533102766324,
+      "lineItems": [
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 10,
+          "unit": "lb",
+          "unitPrice": 2.6160555565431736,
+          "totalPrice": 26.160555565431736,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 19.840185854417342,
+          "totalPrice": 357.12334537951216,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 6.776757600845367,
+          "totalPrice": 101.6513640126805,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 5,
+          "unit": "lb",
+          "unitPrice": 8.867079475026028,
+          "totalPrice": 44.33539737513014,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 20,
+          "unit": "lb",
+          "unitPrice": 16.509215719988873,
+          "totalPrice": 330.18431439977746,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 14,
+          "unit": "lb",
+          "unitPrice": 7.316552022278813,
+          "totalPrice": 102.43172831190338,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 3.3193620488739866,
+          "totalPrice": 73.0259650752277,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 13,
+          "unit": "btl",
+          "unitPrice": 21.54647666242201,
+          "totalPrice": 280.10419661148615,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 21.185561371185116,
+          "totalPrice": 360.154543310147,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 11,
+          "unit": "lb",
+          "unitPrice": 6.234718203212409,
+          "totalPrice": 68.58190023533649,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-4",
+      "vendorId": "vendor-usfoods",
+      "vendorName": "US Foods",
+      "invoiceNumber": "INV-000005",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1562.6577331861026,
+      "lineItems": [
+        {
+          "productName": "All-Purpose Flour",
+          "quantity": 20,
+          "unit": "lb",
+          "unitPrice": 17.997622471107157,
+          "totalPrice": 359.9524494221431,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Sugar",
+          "quantity": 14,
+          "unit": "lb",
+          "unitPrice": 12.978818456508609,
+          "totalPrice": 181.70345839112053,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Eggs",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 9.491544124301765,
+          "totalPrice": 142.37316186452648,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Vanilla Extract",
+          "quantity": 21,
+          "unit": "lb",
+          "unitPrice": 3.005612631102921,
+          "totalPrice": 63.11786525316135,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Chocolate Chips",
+          "quantity": 19,
+          "unit": "lb",
+          "unitPrice": 19.076498050752246,
+          "totalPrice": 362.45346296429267,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 7,
+          "unit": "lb",
+          "unitPrice": 19.773680957751758,
+          "totalPrice": 138.4157667042623,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 10,
+          "unit": "lb",
+          "unitPrice": 16.406752856521,
+          "totalPrice": 164.06752856520998,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 8,
+          "unit": "lb",
+          "unitPrice": 10.56860153598641,
+          "totalPrice": 84.54881228789128,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 11,
+          "unit": "lb",
+          "unitPrice": 3.8260363973579707,
+          "totalPrice": 42.08640037093768,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 8,
+          "unit": "lb",
+          "unitPrice": 2.992353420319625,
+          "totalPrice": 23.938827362557,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-5",
+      "vendorId": "vendor-gfs",
+      "vendorName": "Gordon Food Service",
+      "invoiceNumber": "INV-000006",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1547.665374913563,
+      "lineItems": [
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 7.644683642711237,
+          "totalPrice": 137.60430556880226,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 8,
+          "unit": "lb",
+          "unitPrice": 21.078511120437017,
+          "totalPrice": 168.62808896349614,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 8,
+          "unit": "btl",
+          "unitPrice": 10.701912679368565,
+          "totalPrice": 85.61530143494852,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 3.1925788469679244,
+          "totalPrice": 57.46641924542264,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 13.118932608694898,
+          "totalPrice": 288.61651739128774,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "All-Purpose Flour",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 10.303965055948703,
+          "totalPrice": 154.55947583923054,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Sugar",
+          "quantity": 9,
+          "unit": "lb",
+          "unitPrice": 6.453695861554197,
+          "totalPrice": 58.08326275398777,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Eggs",
+          "quantity": 7,
+          "unit": "lb",
+          "unitPrice": 16.24559037724793,
+          "totalPrice": 113.7191326407355,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Vanilla Extract",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 21.054172804537764,
+          "totalPrice": 126.32503682722658,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Chocolate Chips",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 16.229447011292056,
+          "totalPrice": 357.0478342484252,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-6",
+      "vendorId": "vendor-sysco",
+      "vendorName": "Sysco Corporation",
+      "invoiceNumber": "INV-000007",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1548.1269941655282,
+      "lineItems": [
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 16,
+          "unit": "lb",
+          "unitPrice": 20.357223914931705,
+          "totalPrice": 325.7155826389073,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 5,
+          "unit": "lb",
+          "unitPrice": 2.1397631359208695,
+          "totalPrice": 10.698815679604348,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 16,
+          "unit": "lb",
+          "unitPrice": 11.73190764613095,
+          "totalPrice": 187.7105223380952,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 14,
+          "unit": "lb",
+          "unitPrice": 7.539899583413499,
+          "totalPrice": 105.55859416778898,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 9.425264738360834,
+          "totalPrice": 207.35582424393834,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 15.131658166536644,
+          "totalPrice": 226.97487249804965,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 11.886208683706585,
+          "totalPrice": 202.06554762301192,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 24,
+          "unit": "btl",
+          "unitPrice": 5.010593978219713,
+          "totalPrice": 120.25425547727312,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 5,
+          "unit": "lb",
+          "unitPrice": 5.610787513917071,
+          "totalPrice": 28.053937569585354,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 14,
+          "unit": "lb",
+          "unitPrice": 9.552788709233855,
+          "totalPrice": 133.73904192927398,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-7",
+      "vendorId": "vendor-usfoods",
+      "vendorName": "US Foods",
+      "invoiceNumber": "INV-000008",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1724.285778394386,
+      "lineItems": [
+        {
+          "productName": "All-Purpose Flour",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 2.057084109282237,
+          "totalPrice": 37.02751396708027,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Sugar",
+          "quantity": 19,
+          "unit": "lb",
+          "unitPrice": 12.199816806156958,
+          "totalPrice": 231.7965193169822,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Eggs",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 19.613137838270777,
+          "totalPrice": 117.67882702962467,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Vanilla Extract",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 3.6614231121298317,
+          "totalPrice": 65.90561601833697,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Chocolate Chips",
+          "quantity": 19,
+          "unit": "lb",
+          "unitPrice": 15.037824762452729,
+          "totalPrice": 285.71867048660187,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 24,
+          "unit": "lb",
+          "unitPrice": 5.371142073584594,
+          "totalPrice": 128.90740976603027,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 21,
+          "unit": "lb",
+          "unitPrice": 14.235365844730897,
+          "totalPrice": 298.9426827393488,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 14.50350605735349,
+          "totalPrice": 261.06310903236283,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 10,
+          "unit": "lb",
+          "unitPrice": 18.4041333966123,
+          "totalPrice": 184.04133396612298,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 18.867349345315876,
+          "totalPrice": 113.20409607189526,
+          "vendorId": "vendor-usfoods",
+          "vendorName": "US Foods"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-8",
+      "vendorId": "vendor-gfs",
+      "vendorName": "Gordon Food Service",
+      "invoiceNumber": "INV-000009",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 2060.9307191876837,
+      "lineItems": [
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 16,
+          "unit": "lb",
+          "unitPrice": 21.9909940870007,
+          "totalPrice": 351.8559053920112,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 18.794904597991327,
+          "totalPrice": 319.51337816585254,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 24,
+          "unit": "btl",
+          "unitPrice": 18.053642994162484,
+          "totalPrice": 433.2874318598996,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 3.961946007377362,
+          "totalPrice": 23.771676044264172,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 9.785577662032122,
+          "totalPrice": 146.78366493048182,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "All-Purpose Flour",
+          "quantity": 14,
+          "unit": "lb",
+          "unitPrice": 11.682687347723986,
+          "totalPrice": 163.5576228681358,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Sugar",
+          "quantity": 10,
+          "unit": "lb",
+          "unitPrice": 13.738316258647451,
+          "totalPrice": 137.3831625864745,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Eggs",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 6.88405403403799,
+          "totalPrice": 41.30432420422794,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Vanilla Extract",
+          "quantity": 13,
+          "unit": "lb",
+          "unitPrice": 19.618836666021682,
+          "totalPrice": 255.04487665828188,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        },
+        {
+          "productName": "Chocolate Chips",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 12.561911765203593,
+          "totalPrice": 188.4286764780539,
+          "vendorId": "vendor-gfs",
+          "vendorName": "Gordon Food Service"
+        }
+      ],
+      "status": "approved"
+    },
+    {
+      "invoiceId": "inv-1769651453257-9",
+      "vendorId": "vendor-sysco",
+      "vendorName": "Sysco Corporation",
+      "invoiceNumber": "INV-000010",
+      "invoiceDate": "2026-01-29",
+      "totalAmount": 1655.7185318357756,
+      "lineItems": [
+        {
+          "productName": "Organic Heirloom Carrots",
+          "quantity": 15,
+          "unit": "lb",
+          "unitPrice": 8.274195590615722,
+          "totalPrice": 124.11293385923584,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Free Range Chicken Breast",
+          "quantity": 12,
+          "unit": "lb",
+          "unitPrice": 2.3520493327078134,
+          "totalPrice": 28.22459199249376,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Extra Virgin Olive Oil",
+          "quantity": 9,
+          "unit": "lb",
+          "unitPrice": 9.427369110504195,
+          "totalPrice": 84.84632199453776,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Fresh Salmon Fillet",
+          "quantity": 17,
+          "unit": "lb",
+          "unitPrice": 12.499520922471103,
+          "totalPrice": 212.49185568200875,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Baby Arugula",
+          "quantity": 18,
+          "unit": "lb",
+          "unitPrice": 19.32907045213281,
+          "totalPrice": 347.9232681383906,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Parmesan Cheese",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 15.116940061242893,
+          "totalPrice": 90.70164036745736,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Arborio Rice",
+          "quantity": 12,
+          "unit": "lb",
+          "unitPrice": 16.991365632466444,
+          "totalPrice": 203.89638758959734,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "White Wine",
+          "quantity": 5,
+          "unit": "btl",
+          "unitPrice": 3.702007881195593,
+          "totalPrice": 18.510039405977963,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Butter",
+          "quantity": 6,
+          "unit": "lb",
+          "unitPrice": 20.511829190519805,
+          "totalPrice": 123.07097514311883,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        },
+        {
+          "productName": "Garlic Cloves",
+          "quantity": 22,
+          "unit": "lb",
+          "unitPrice": 19.179114439225337,
+          "totalPrice": 421.9405176629574,
+          "vendorId": "vendor-sysco",
+          "vendorName": "Sysco Corporation"
+        }
+      ],
+      "status": "approved"
+    }
+  ],
+  "inventory": {
+    "items": [
+      {
+        "productId": "prod-1769651453257-f7sp10",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 9,
+        "unit": "lb",
+        "unitCost": 14.898964740089074,
+        "totalCost": 134.09068266080166,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.257Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453257-8g0j5j",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 7.527129254973531,
+        "totalCost": 45.162775529841184,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.257Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-r54n7n",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 9,
+        "unit": "lb",
+        "unitCost": 6.747820629118169,
+        "totalCost": 60.73038566206352,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-7dx1yt",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 21,
+        "unit": "lb",
+        "unitCost": 15.745575555660432,
+        "totalCost": 330.65708666886906,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-jdwiwj",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 12,
+        "unit": "lb",
+        "unitCost": 8.056546047266323,
+        "totalCost": 96.67855256719588,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-yve2ze",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 7,
+        "unit": "lb",
+        "unitCost": 3.9030291590666826,
+        "totalCost": 27.321204113466777,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-ghyi4g",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 16,
+        "unit": "lb",
+        "unitCost": 7.088939198364564,
+        "totalCost": 113.42302717383302,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-9jmkgv",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 14,
+        "unit": "btl",
+        "unitCost": 19.459649850347812,
+        "totalCost": 272.4350979048694,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-n6ngd9",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 16,
+        "unit": "lb",
+        "unitCost": 18.416312481497208,
+        "totalCost": 294.6609997039553,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-pvuzye",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 11.809435142060043,
+        "totalCost": 259.8075731253209,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453258-fm9svl",
+        "name": "All-Purpose Flour",
+        "category": "Dry Goods",
+        "quantity": 23,
+        "unit": "lb",
+        "unitCost": 7.100166319753199,
+        "totalCost": 163.30382535432358,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-dkgeqp",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 7.202281638658159,
+        "totalCost": 43.213689831948955,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-0j612u",
+        "name": "Eggs",
+        "category": "Dairy",
+        "quantity": 12,
+        "unit": "lb",
+        "unitCost": 8.550639771879435,
+        "totalCost": 102.60767726255322,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-ueezin",
+        "name": "Vanilla Extract",
+        "category": "Dry Goods",
+        "quantity": 11,
+        "unit": "lb",
+        "unitCost": 9.834459483316332,
+        "totalCost": 108.17905431647965,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-oaplib",
+        "name": "Chocolate Chips",
+        "category": "Dry Goods",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 9.819362918336674,
+        "totalCost": 147.2904437750501,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-qfqgas",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 10,
+        "unit": "lb",
+        "unitCost": 4.101374220205825,
+        "totalCost": 41.01374220205825,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-9wh69p",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 11.804751825237691,
+        "totalCost": 200.68078102904076,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-dfnybt",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 18.76430513220403,
+        "totalCost": 318.9931872474685,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453258-5ej0dq",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 16.629758558825255,
+        "totalCost": 99.77855135295152,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.258Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453259-lufzj4",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 20,
+        "unit": "lb",
+        "unitCost": 16.46595142635154,
+        "totalCost": 329.3190285270308,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453259-4wfzlz",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 12,
+        "unit": "lb",
+        "unitCost": 10.185970042724273,
+        "totalCost": 122.23164051269129,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-wjcn7q",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 21,
+        "unit": "lb",
+        "unitCost": 2.5140105133511375,
+        "totalCost": 52.794220780373884,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-f825ek",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 13,
+        "unit": "btl",
+        "unitCost": 2.055328385205451,
+        "totalCost": 26.71926900767086,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-flu2cc",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 13,
+        "unit": "lb",
+        "unitCost": 15.067516890970396,
+        "totalCost": 195.87771958261516,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-9nq35s",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 16,
+        "unit": "lb",
+        "unitCost": 21.56444460007392,
+        "totalCost": 345.0311136011827,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-pyf5ju",
+        "name": "All-Purpose Flour",
+        "category": "Dry Goods",
+        "quantity": 8,
+        "unit": "lb",
+        "unitCost": 3.302716160313584,
+        "totalCost": 26.42172928250867,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-ojbzvt",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "quantity": 14,
+        "unit": "lb",
+        "unitCost": 14.502097599329222,
+        "totalCost": 203.0293663906091,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-3i0pat",
+        "name": "Eggs",
+        "category": "Dairy",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 18.34803696531508,
+        "totalCost": 403.6568132369318,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-qzc94i",
+        "name": "Vanilla Extract",
+        "category": "Dry Goods",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 10.76416209101638,
+        "totalCost": 182.99075554727847,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-zr7rci",
+        "name": "Chocolate Chips",
+        "category": "Dry Goods",
+        "quantity": 13,
+        "unit": "lb",
+        "unitCost": 5.395023750880317,
+        "totalCost": 70.13530876144412,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453259-ekd48i",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 10,
+        "unit": "lb",
+        "unitCost": 2.6160555565431736,
+        "totalCost": 26.160555565431736,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-juuh7w",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 19.840185854417342,
+        "totalCost": 357.12334537951216,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-s9cmc7",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 6.776757600845367,
+        "totalCost": 101.6513640126805,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-1u1akm",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 5,
+        "unit": "lb",
+        "unitCost": 8.867079475026028,
+        "totalCost": 44.33539737513014,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-xt6dyv",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 20,
+        "unit": "lb",
+        "unitCost": 16.509215719988873,
+        "totalCost": 330.18431439977746,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-nsqgqg",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 14,
+        "unit": "lb",
+        "unitCost": 7.316552022278813,
+        "totalCost": 102.43172831190338,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-5byhtg",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 3.3193620488739866,
+        "totalCost": 73.0259650752277,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-a0kypd",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 13,
+        "unit": "btl",
+        "unitCost": 21.54647666242201,
+        "totalCost": 280.10419661148615,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-swyisq",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 21.185561371185116,
+        "totalCost": 360.154543310147,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-so36bl",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 11,
+        "unit": "lb",
+        "unitCost": 6.234718203212409,
+        "totalCost": 68.58190023533649,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453259-7ymecx",
+        "name": "All-Purpose Flour",
+        "category": "Dry Goods",
+        "quantity": 20,
+        "unit": "lb",
+        "unitCost": 17.997622471107157,
+        "totalCost": 359.9524494221431,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453259-sqocrd",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "quantity": 14,
+        "unit": "lb",
+        "unitCost": 12.978818456508609,
+        "totalCost": 181.70345839112053,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.259Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-0to7cb",
+        "name": "Eggs",
+        "category": "Dairy",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 9.491544124301765,
+        "totalCost": 142.37316186452648,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-f0az5h",
+        "name": "Vanilla Extract",
+        "category": "Dry Goods",
+        "quantity": 21,
+        "unit": "lb",
+        "unitCost": 3.005612631102921,
+        "totalCost": 63.11786525316135,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-8h1zv3",
+        "name": "Chocolate Chips",
+        "category": "Dry Goods",
+        "quantity": 19,
+        "unit": "lb",
+        "unitCost": 19.076498050752246,
+        "totalCost": 362.45346296429267,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-hcs5ki",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 7,
+        "unit": "lb",
+        "unitCost": 19.773680957751758,
+        "totalCost": 138.4157667042623,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-8kbvir",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 10,
+        "unit": "lb",
+        "unitCost": 16.406752856521,
+        "totalCost": 164.06752856520998,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-7295gs",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 8,
+        "unit": "lb",
+        "unitCost": 10.56860153598641,
+        "totalCost": 84.54881228789128,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-jrhk6z",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 11,
+        "unit": "lb",
+        "unitCost": 3.8260363973579707,
+        "totalCost": 42.08640037093768,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-khedz9",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 8,
+        "unit": "lb",
+        "unitCost": 2.992353420319625,
+        "totalCost": 23.938827362557,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-ir3lmb",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 7.644683642711237,
+        "totalCost": 137.60430556880226,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-2om7zv",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 8,
+        "unit": "lb",
+        "unitCost": 21.078511120437017,
+        "totalCost": 168.62808896349614,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-4l6lpk",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 8,
+        "unit": "btl",
+        "unitCost": 10.701912679368565,
+        "totalCost": 85.61530143494852,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-2i3auw",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 3.1925788469679244,
+        "totalCost": 57.46641924542264,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-a84vpy",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 13.118932608694898,
+        "totalCost": 288.61651739128774,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-0pqmi9",
+        "name": "All-Purpose Flour",
+        "category": "Dry Goods",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 10.303965055948703,
+        "totalCost": 154.55947583923054,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-ut6srh",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "quantity": 9,
+        "unit": "lb",
+        "unitCost": 6.453695861554197,
+        "totalCost": 58.08326275398777,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-v4sh0j",
+        "name": "Eggs",
+        "category": "Dairy",
+        "quantity": 7,
+        "unit": "lb",
+        "unitCost": 16.24559037724793,
+        "totalCost": 113.7191326407355,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-njhtxl",
+        "name": "Vanilla Extract",
+        "category": "Dry Goods",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 21.054172804537764,
+        "totalCost": 126.32503682722658,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-o2q2k0",
+        "name": "Chocolate Chips",
+        "category": "Dry Goods",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 16.229447011292056,
+        "totalCost": 357.0478342484252,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-jx2ioq",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 16,
+        "unit": "lb",
+        "unitCost": 20.357223914931705,
+        "totalCost": 325.7155826389073,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-542tnn",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 5,
+        "unit": "lb",
+        "unitCost": 2.1397631359208695,
+        "totalCost": 10.698815679604348,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-q1meas",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 16,
+        "unit": "lb",
+        "unitCost": 11.73190764613095,
+        "totalCost": 187.7105223380952,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-9i7kl0",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 14,
+        "unit": "lb",
+        "unitCost": 7.539899583413499,
+        "totalCost": 105.55859416778898,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-uwh7wz",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 9.425264738360834,
+        "totalCost": 207.35582424393834,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-ey1dne",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 15.131658166536644,
+        "totalCost": 226.97487249804965,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-77087a",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 11.886208683706585,
+        "totalCost": 202.06554762301192,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-ty3ymz",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 24,
+        "unit": "btl",
+        "unitCost": 5.010593978219713,
+        "totalCost": 120.25425547727312,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-10kyyz",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 5,
+        "unit": "lb",
+        "unitCost": 5.610787513917071,
+        "totalCost": 28.053937569585354,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-yxfo5f",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 14,
+        "unit": "lb",
+        "unitCost": 9.552788709233855,
+        "totalCost": 133.73904192927398,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-7v52ld",
+        "name": "All-Purpose Flour",
+        "category": "Dry Goods",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 2.057084109282237,
+        "totalCost": 37.02751396708027,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-hzff22",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "quantity": 19,
+        "unit": "lb",
+        "unitCost": 12.199816806156958,
+        "totalCost": 231.7965193169822,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-6xjx91",
+        "name": "Eggs",
+        "category": "Dairy",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 19.613137838270777,
+        "totalCost": 117.67882702962467,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-ecpwab",
+        "name": "Vanilla Extract",
+        "category": "Dry Goods",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 3.6614231121298317,
+        "totalCost": 65.90561601833697,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-z6rhpf",
+        "name": "Chocolate Chips",
+        "category": "Dry Goods",
+        "quantity": 19,
+        "unit": "lb",
+        "unitCost": 15.037824762452729,
+        "totalCost": 285.71867048660187,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-4bz6vl",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 24,
+        "unit": "lb",
+        "unitCost": 5.371142073584594,
+        "totalCost": 128.90740976603027,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-5yer5y",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 21,
+        "unit": "lb",
+        "unitCost": 14.235365844730897,
+        "totalCost": 298.9426827393488,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-5cloek",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 14.50350605735349,
+        "totalCost": 261.06310903236283,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-27122r",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 10,
+        "unit": "lb",
+        "unitCost": 18.4041333966123,
+        "totalCost": 184.04133396612298,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-fgg6x1",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 18.867349345315876,
+        "totalCost": 113.20409607189526,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-usfoods",
+        "vendorName": "US Foods"
+      },
+      {
+        "productId": "prod-1769651453260-lwlv4z",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 16,
+        "unit": "lb",
+        "unitCost": 21.9909940870007,
+        "totalCost": 351.8559053920112,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-ab32hu",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 18.794904597991327,
+        "totalCost": 319.51337816585254,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-ry4qj7",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 24,
+        "unit": "btl",
+        "unitCost": 18.053642994162484,
+        "totalCost": 433.2874318598996,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-av9alu",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 3.961946007377362,
+        "totalCost": 23.771676044264172,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-vrez1s",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 9.785577662032122,
+        "totalCost": 146.78366493048182,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-0m69cp",
+        "name": "All-Purpose Flour",
+        "category": "Dry Goods",
+        "quantity": 14,
+        "unit": "lb",
+        "unitCost": 11.682687347723986,
+        "totalCost": 163.5576228681358,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-ervrfe",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "quantity": 10,
+        "unit": "lb",
+        "unitCost": 13.738316258647451,
+        "totalCost": 137.3831625864745,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-7sqw60",
+        "name": "Eggs",
+        "category": "Dairy",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 6.88405403403799,
+        "totalCost": 41.30432420422794,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-1s9cw4",
+        "name": "Vanilla Extract",
+        "category": "Dry Goods",
+        "quantity": 13,
+        "unit": "lb",
+        "unitCost": 19.618836666021682,
+        "totalCost": 255.04487665828188,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-3ol2cs",
+        "name": "Chocolate Chips",
+        "category": "Dry Goods",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 12.561911765203593,
+        "totalCost": 188.4286764780539,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-gfs",
+        "vendorName": "Gordon Food Service"
+      },
+      {
+        "productId": "prod-1769651453260-lxzlnc",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 15,
+        "unit": "lb",
+        "unitCost": 8.274195590615722,
+        "totalCost": 124.11293385923584,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-yyz8ry",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 12,
+        "unit": "lb",
+        "unitCost": 2.3520493327078134,
+        "totalCost": 28.22459199249376,
+        "glCode": "5030",
+        "glLabel": "Food Cost - Proteins",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-0kdfj9",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 9,
+        "unit": "lb",
+        "unitCost": 9.427369110504195,
+        "totalCost": 84.84632199453776,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-jc9u10",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "quantity": 17,
+        "unit": "lb",
+        "unitCost": 12.499520922471103,
+        "totalCost": 212.49185568200875,
+        "glCode": "5050",
+        "glLabel": "Food Cost - Seafood",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-a4uoy9",
+        "name": "Arugula",
+        "category": "Produce",
+        "quantity": 18,
+        "unit": "lb",
+        "unitCost": 19.32907045213281,
+        "totalCost": 347.9232681383906,
+        "glCode": "5010",
+        "glLabel": "Food Cost - Produce",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-9gvfta",
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 15.116940061242893,
+        "totalCost": 90.70164036745736,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-6im1mh",
+        "name": "Arborio Rice",
+        "category": "Dry Goods",
+        "quantity": 12,
+        "unit": "lb",
+        "unitCost": 16.991365632466444,
+        "totalCost": 203.89638758959734,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-fxeoxm",
+        "name": "White Wine",
+        "category": "Beverage",
+        "quantity": 5,
+        "unit": "btl",
+        "unitCost": 3.702007881195593,
+        "totalCost": 18.510039405977963,
+        "glCode": "5100",
+        "glLabel": "Food Cost - Beverages",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-jluosv",
+        "name": "Butter",
+        "category": "Dairy",
+        "quantity": 6,
+        "unit": "lb",
+        "unitCost": 20.511829190519805,
+        "totalCost": 123.07097514311883,
+        "glCode": "5060",
+        "glLabel": "Food Cost - Dairy",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      },
+      {
+        "productId": "prod-1769651453260-5y4zge",
+        "name": "Garlic Cloves",
+        "category": "Dry Goods",
+        "quantity": 22,
+        "unit": "lb",
+        "unitCost": 19.179114439225337,
+        "totalCost": 421.9405176629574,
+        "glCode": "5070",
+        "glLabel": "Food Cost - Dry Goods",
+        "receivedAt": "2026-01-29T01:50:53.260Z",
+        "vendorId": "vendor-sysco",
+        "vendorName": "Sysco Corporation"
+      }
+    ]
+  },
+  "storage": {
+    "placements": [
+      {
+        "productId": "prod-1769651453257-f7sp10",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453257-8g0j5j",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-r54n7n",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-7dx1yt",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-jdwiwj",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-yve2ze",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-ghyi4g",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-9jmkgv",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-n6ngd9",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-pvuzye",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-fm9svl",
+        "productName": "All-Purpose Flour",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-dkgeqp",
+        "productName": "Sugar",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-0j612u",
+        "productName": "Eggs",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-ueezin",
+        "productName": "Vanilla Extract",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-oaplib",
+        "productName": "Chocolate Chips",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-qfqgas",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-9wh69p",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-dfnybt",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453258-5ej0dq",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-lufzj4",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-4wfzlz",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-wjcn7q",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-f825ek",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-flu2cc",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-9nq35s",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-pyf5ju",
+        "productName": "All-Purpose Flour",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-ojbzvt",
+        "productName": "Sugar",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-3i0pat",
+        "productName": "Eggs",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-qzc94i",
+        "productName": "Vanilla Extract",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-zr7rci",
+        "productName": "Chocolate Chips",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-ekd48i",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-juuh7w",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-s9cmc7",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-1u1akm",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-xt6dyv",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-nsqgqg",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-5byhtg",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-a0kypd",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-swyisq",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-so36bl",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-7ymecx",
+        "productName": "All-Purpose Flour",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453259-sqocrd",
+        "productName": "Sugar",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-0to7cb",
+        "productName": "Eggs",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-f0az5h",
+        "productName": "Vanilla Extract",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-8h1zv3",
+        "productName": "Chocolate Chips",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-hcs5ki",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-8kbvir",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-7295gs",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-jrhk6z",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-khedz9",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ir3lmb",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-2om7zv",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-4l6lpk",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-2i3auw",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-a84vpy",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-0pqmi9",
+        "productName": "All-Purpose Flour",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ut6srh",
+        "productName": "Sugar",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-v4sh0j",
+        "productName": "Eggs",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-njhtxl",
+        "productName": "Vanilla Extract",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-o2q2k0",
+        "productName": "Chocolate Chips",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-jx2ioq",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-542tnn",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-q1meas",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-9i7kl0",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-uwh7wz",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ey1dne",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-77087a",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ty3ymz",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-10kyyz",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-yxfo5f",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-7v52ld",
+        "productName": "All-Purpose Flour",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-hzff22",
+        "productName": "Sugar",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-6xjx91",
+        "productName": "Eggs",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ecpwab",
+        "productName": "Vanilla Extract",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-z6rhpf",
+        "productName": "Chocolate Chips",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-4bz6vl",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-5yer5y",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-5cloek",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-27122r",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-fgg6x1",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-lwlv4z",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ab32hu",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ry4qj7",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-av9alu",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-vrez1s",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-0m69cp",
+        "productName": "All-Purpose Flour",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-ervrfe",
+        "productName": "Sugar",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-7sqw60",
+        "productName": "Eggs",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-1s9cw4",
+        "productName": "Vanilla Extract",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-3ol2cs",
+        "productName": "Chocolate Chips",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-lxzlnc",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-yyz8ry",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-0kdfj9",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-jc9u10",
+        "productName": "Salmon Fillet",
+        "location": {
+          "locationId": "W1-S1-P3",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 3",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 3
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-a4uoy9",
+        "productName": "Arugula",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-9gvfta",
+        "productName": "Parmesan Cheese",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-6im1mh",
+        "productName": "Arborio Rice",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-fxeoxm",
+        "productName": "White Wine",
+        "location": {
+          "locationId": "DS-S3-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 3",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 3,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-jluosv",
+        "productName": "Butter",
+        "location": {
+          "locationId": "W1-S2-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 2",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 2,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651453260-5y4zge",
+        "productName": "Garlic Cloves",
+        "location": {
+          "locationId": "DS-S1-P1",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 2,
+            "y": 1,
+            "z": 1
+          }
+        }
+      }
+    ]
+  },
+  "notifications": [
+    {
+      "id": "notif-1769651453257-skdyet",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (9 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.257Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453257-lmiyp6",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (6 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.257Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-llgwxp",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (9 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-az4iw3",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (21 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-scri68",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (12 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-ws3axh",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (7 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-nzi1md",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (16 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-y521wu",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (14 btl) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-axfgqu",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (16 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-crendl",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (22 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-j0mzbu",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "All-Purpose Flour (23 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-armbjz",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Sugar (6 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-fo7h5j",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Eggs (12 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-8dcrqx",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Vanilla Extract (11 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-o32hej",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Chocolate Chips (15 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-bb9k7z",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (10 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-wkm3n7",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (17 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-woq6e2",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (17 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-iif3sh",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (6 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453258-pbuf35",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (20 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.258Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-3grne2",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (12 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-vd0vox",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (21 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-ler0f6",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (13 btl) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-3dbh0x",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (13 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-s42k84",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (16 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-cj7woc",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "All-Purpose Flour (8 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-eylvz7",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Sugar (14 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-qoks2c",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Eggs (22 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-3tcrxx",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Vanilla Extract (17 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-at4347",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Chocolate Chips (13 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-v47wxh",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (10 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-ns62rf",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (18 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-47vtpj",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (15 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-icpe65",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (5 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-f9fqjg",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (20 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-qlcs1n",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (14 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-7tg5je",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (22 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-0dwmkx",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (13 btl) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-0vp3tn",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (17 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-7r5fj7",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (11 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-2vm1f2",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "All-Purpose Flour (20 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453259-o6ynrq",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Sugar (14 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.259Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-g8l1pt",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Eggs (15 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-g7vn0e",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Vanilla Extract (21 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-efd8vz",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Chocolate Chips (19 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-g4r7va",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (7 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-i7gxss",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (10 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-y7d4qp",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (8 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-m8nx7l",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (11 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-vydmv3",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (8 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-kwrrev",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (18 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-rxsbfr",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (8 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-cjlo7r",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (8 btl) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-y74cqt",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (18 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-6a2hbb",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (22 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-aj0ina",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "All-Purpose Flour (15 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-p0i331",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Sugar (9 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-dfqkey",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Eggs (7 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-xofft9",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Vanilla Extract (6 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-34ual5",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Chocolate Chips (22 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-42m6ce",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (16 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-1wmjkf",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (5 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-yg1co5",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (16 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-mbihju",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (14 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-9yjw00",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (22 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-neh756",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (15 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-n49kmb",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (17 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-jcmdxj",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (24 btl) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-4bbh64",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (5 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-d5725t",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (14 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-olijw0",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "All-Purpose Flour (18 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-7z97xu",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Sugar (19 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-xw9rpx",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Eggs (6 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-z985eu",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Vanilla Extract (18 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-fxv5yu",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Chocolate Chips (19 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-27sqjn",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (24 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-7r0cfm",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (21 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-rsacet",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (18 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-lx7tli",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (10 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-lr6e5l",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (6 lb) received from US Foods",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-re9eqa",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (16 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-427otw",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (17 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-v1tvwp",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (24 btl) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-onzhzp",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (6 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-ibg0a3",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (15 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-rt2xz6",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "All-Purpose Flour (14 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-0pg2py",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Sugar (10 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-81ntjf",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Eggs (6 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-naee3r",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Vanilla Extract (13 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-0tc8us",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Chocolate Chips (15 lb) received from Gordon Food Service",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-hpwv3z",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Organic Heirloom Carrots (15 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-x26tqx",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Free Range Chicken Breast (12 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-tlptu2",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Extra Virgin Olive Oil (9 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-otw6ee",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Fresh Salmon Fillet (17 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-lmxodn",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Baby Arugula (18 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-d7xmtt",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Parmesan Cheese (6 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-9aarnl",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Arborio Rice (12 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-c9ljt0",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "White Wine (5 btl) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-n2itys",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Butter (6 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    },
+    {
+      "id": "notif-1769651453260-rhf7l1",
+      "type": "inventory:product_received",
+      "title": "Product Received",
+      "message": "Garlic Cloves (22 lb) received from Sysco Corporation",
+      "timestamp": "2026-01-29T01:50:53.260Z",
+      "priority": "medium"
+    }
+  ],
+  "pnl": {
+    "outletId": "outlet-pastry",
+    "period": "2026-01",
+    "revenue": 0,
+    "cogs": 16661.3737446721,
+    "laborCost": 0,
+    "overheadCost": 0,
+    "netProfit": -16661.3737446721,
+    "lastUpdated": "2026-01-29T01:50:53.260Z"
+  },
+  "glPostings": [
+    {
+      "id": "gl-1769651453257-ga98ii",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 134.09068266080166,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.257Z"
+    },
+    {
+      "id": "gl-1769651453258-sk8wwl",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 45.162775529841184,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-6nl2i2",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 60.73038566206352,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-jhymv5",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 330.65708666886906,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-npbswy",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 96.67855256719588,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-a7heff",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 27.321204113466777,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-bwz2r3",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 113.42302717383302,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-9ql697",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 272.4350979048694,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-r9yw7c",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 294.6609997039553,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-96g8yh",
+      "invoiceId": "inv-1769651453257-0",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 259.8075731253209,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-xpv55a",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 163.30382535432358,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-4s5m99",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 43.213689831948955,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-111htu",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 102.60767726255322,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-mdq3g4",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 108.17905431647965,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-frufbu",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 147.2904437750501,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-d6a0lw",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 41.01374220205825,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-0hbeu8",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 200.68078102904076,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-je6clc",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 318.9931872474685,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453258-jnqfy9",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 99.77855135295152,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "gl-1769651453259-b5e67b",
+      "invoiceId": "inv-1769651453257-1",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 329.3190285270308,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-6hsoyo",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 122.23164051269129,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-izngv2",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 52.794220780373884,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-28yw5g",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 26.71926900767086,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-wxx07b",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 195.87771958261516,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-jdshl8",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 345.0311136011827,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-ptitks",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 26.42172928250867,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-uzb7au",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 203.0293663906091,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-u3zbz5",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 403.6568132369318,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-9bequw",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 182.99075554727847,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-xshofj",
+      "invoiceId": "inv-1769651453257-2",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 70.13530876144412,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-oj1usp",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 26.160555565431736,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-wmuxvu",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 357.12334537951216,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-pi41pi",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 101.6513640126805,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-fwbszi",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 44.33539737513014,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-22307c",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 330.18431439977746,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-6xej6t",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 102.43172831190338,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-dtjnd4",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 73.0259650752277,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-7i9yk4",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 280.10419661148615,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-k3i1ez",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 360.154543310147,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-2lxnrl",
+      "invoiceId": "inv-1769651453257-3",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 68.58190023533649,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453259-udyegg",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 359.9524494221431,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "gl-1769651453260-opd4rs",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 181.70345839112053,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-s3i2oh",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 142.37316186452648,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-m5q3re",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 63.11786525316135,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-i0x5x1",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 362.45346296429267,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-lylir8",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 138.4157667042623,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-u04ij5",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 164.06752856520998,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-w67lti",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 84.54881228789128,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-y775ur",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 42.08640037093768,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-ukn7z8",
+      "invoiceId": "inv-1769651453257-4",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 23.938827362557,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-0at7th",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 137.60430556880226,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-6yevtc",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 168.62808896349614,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-7hh35p",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 85.61530143494852,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-fcimcb",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 57.46641924542264,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-5blsq5",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 288.61651739128774,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-aw87bz",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 154.55947583923054,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-4f51pm",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 58.08326275398777,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-wqpvne",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 113.7191326407355,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-ja3zjv",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 126.32503682722658,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-d5vn23",
+      "invoiceId": "inv-1769651453257-5",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 357.0478342484252,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-rscu46",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 325.7155826389073,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-jq26n8",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 10.698815679604348,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-21ah6n",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 187.7105223380952,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-hlxp61",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 105.55859416778898,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-5l8835",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 207.35582424393834,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-kb1vve",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 226.97487249804965,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-yq6hwf",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 202.06554762301192,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-e3b9zy",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 120.25425547727312,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-82fzry",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 28.053937569585354,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-5qj7lu",
+      "invoiceId": "inv-1769651453257-6",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 133.73904192927398,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-6vivcg",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 37.02751396708027,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-lxxvnf",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 231.7965193169822,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-glrnim",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 117.67882702962467,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-qqyumh",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 65.90561601833697,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-gohvcz",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 285.71867048660187,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-tzc6ni",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 128.90740976603027,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-qtvtsd",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 298.9426827393488,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-d0p196",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 261.06310903236283,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-9r9j0l",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 184.04133396612298,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-z8umix",
+      "invoiceId": "inv-1769651453257-7",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 113.20409607189526,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-1pbsou",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 351.8559053920112,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-6aitlx",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 319.51337816585254,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-l17bjd",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 433.2874318598996,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-1v1edn",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 23.771676044264172,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-g1fyh8",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 146.78366493048182,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-mnyrlg",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 163.5576228681358,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-z965i1",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 137.3831625864745,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-em8c38",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 41.30432420422794,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-v8byk7",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 255.04487665828188,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-n8yhy9",
+      "invoiceId": "inv-1769651453257-8",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 188.4286764780539,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-eh73jw",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 124.11293385923584,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-2csaqi",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5030",
+      "glLabel": "Food Cost - Proteins",
+      "amount": 28.22459199249376,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-ffzk8z",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 84.84632199453776,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-zxubsu",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5050",
+      "glLabel": "Food Cost - Seafood",
+      "amount": 212.49185568200875,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-mzr38l",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5010",
+      "glLabel": "Food Cost - Produce",
+      "amount": 347.9232681383906,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-04ccyz",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 90.70164036745736,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-y93xzu",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 203.89638758959734,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-04axx6",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5100",
+      "glLabel": "Food Cost - Beverages",
+      "amount": 18.510039405977963,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-v9kev0",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5060",
+      "glLabel": "Food Cost - Dairy",
+      "amount": 123.07097514311883,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "gl-1769651453260-d3mnc1",
+      "invoiceId": "inv-1769651453257-9",
+      "glCode": "5070",
+      "glLabel": "Food Cost - Dry Goods",
+      "amount": 421.9405176629574,
+      "debitCredit": "debit",
+      "period": "2026-01",
+      "postedAt": "2026-01-29T01:50:53.260Z"
+    }
+  ],
+  "apRecords": [
+    {
+      "id": "ap-1769651453258-3i0iz4",
+      "invoiceId": "inv-1769651453257-0",
+      "vendorId": "vendor-sysco",
+      "amount": 1634.9673851102168,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.258Z"
+    },
+    {
+      "id": "ap-1769651453259-9uv4tv",
+      "invoiceId": "inv-1769651453257-1",
+      "vendorId": "vendor-usfoods",
+      "amount": 1554.3799808989052,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "ap-1769651453259-fumq08",
+      "invoiceId": "inv-1769651453257-2",
+      "vendorId": "vendor-gfs",
+      "amount": 1628.887936703306,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "ap-1769651453259-tzdlmn",
+      "invoiceId": "inv-1769651453257-3",
+      "vendorId": "vendor-sysco",
+      "amount": 1743.7533102766324,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.259Z"
+    },
+    {
+      "id": "ap-1769651453260-3j3w9f",
+      "invoiceId": "inv-1769651453257-4",
+      "vendorId": "vendor-usfoods",
+      "amount": 1562.6577331861026,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "ap-1769651453260-zsnsvn",
+      "invoiceId": "inv-1769651453257-5",
+      "vendorId": "vendor-gfs",
+      "amount": 1547.665374913563,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "ap-1769651453260-226alh",
+      "invoiceId": "inv-1769651453257-6",
+      "vendorId": "vendor-sysco",
+      "amount": 1548.1269941655282,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "ap-1769651453260-bs99i3",
+      "invoiceId": "inv-1769651453257-7",
+      "vendorId": "vendor-usfoods",
+      "amount": 1724.285778394386,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "ap-1769651453260-m5luwu",
+      "invoiceId": "inv-1769651453257-8",
+      "vendorId": "vendor-gfs",
+      "amount": 2060.9307191876837,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.260Z"
+    },
+    {
+      "id": "ap-1769651453260-nmb2vr",
+      "invoiceId": "inv-1769651453257-9",
+      "vendorId": "vendor-sysco",
+      "amount": 1655.7185318357756,
+      "dueDate": "2026-02-28",
+      "status": "pending",
+      "createdAt": "2026-01-29T01:50:53.260Z"
+    }
+  ],
+  "recipes": [
+    {
+      "name": "Chocolate Chip Cookies",
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "totalCost": 24.121810876748032,
+      "costPerPortion": 3.015226359593504
+    },
+    {
+      "name": "Vanilla Cake",
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "totalCost": 24.121810876748032,
+      "costPerPortion": 3.015226359593504
+    },
+    {
+      "name": "Buttercream Frosting",
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "totalCost": 24.121810876748032,
+      "costPerPortion": 3.015226359593504
+    },
+    {
+      "name": "Sugar Cookies",
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "totalCost": 24.121810876748032,
+      "costPerPortion": 3.015226359593504
+    },
+    {
+      "name": "Brownies",
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "totalCost": 24.121810876748032,
+      "costPerPortion": 3.015226359593504
+    }
+  ],
+  "menuItems": [
+    {
+      "id": "menu-1769651453263-0",
+      "name": "Chocolate Chip Cookies",
+      "description": "Pastry recipe with 3 ingredients",
+      "category": "Dessert",
+      "price": 10.553292258577263,
+      "cost": 3.015226359593504,
+      "portionSize": "8 oz",
+      "nutrition": {
+        "calories": 931,
+        "protein": 11.399999999999999,
+        "carbs": 180.7,
+        "fat": 23.5
+      },
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "recipeId": "recipe-1769651453263-0",
+      "posSyncStatus": "ready"
+    },
+    {
+      "id": "menu-1769651453264-1",
+      "name": "Vanilla Cake",
+      "description": "Pastry recipe with 3 ingredients",
+      "category": "Dessert",
+      "price": 10.553292258577263,
+      "cost": 3.015226359593504,
+      "portionSize": "8 oz",
+      "nutrition": {
+        "calories": 931,
+        "protein": 11.399999999999999,
+        "carbs": 180.7,
+        "fat": 23.5
+      },
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "recipeId": "recipe-1769651453264-1",
+      "posSyncStatus": "ready"
+    },
+    {
+      "id": "menu-1769651453265-2",
+      "name": "Buttercream Frosting",
+      "description": "Pastry recipe with 3 ingredients",
+      "category": "Dessert",
+      "price": 10.553292258577263,
+      "cost": 3.015226359593504,
+      "portionSize": "8 oz",
+      "nutrition": {
+        "calories": 931,
+        "protein": 11.399999999999999,
+        "carbs": 180.7,
+        "fat": 23.5
+      },
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "recipeId": "recipe-1769651453265-2",
+      "posSyncStatus": "ready"
+    },
+    {
+      "id": "menu-1769651453266-3",
+      "name": "Sugar Cookies",
+      "description": "Pastry recipe with 3 ingredients",
+      "category": "Dessert",
+      "price": 10.553292258577263,
+      "cost": 3.015226359593504,
+      "portionSize": "8 oz",
+      "nutrition": {
+        "calories": 931,
+        "protein": 11.399999999999999,
+        "carbs": 180.7,
+        "fat": 23.5
+      },
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "recipeId": "recipe-1769651453266-3",
+      "posSyncStatus": "ready"
+    },
+    {
+      "id": "menu-1769651453267-4",
+      "name": "Brownies",
+      "description": "Pastry recipe with 3 ingredients",
+      "category": "Dessert",
+      "price": 10.553292258577263,
+      "cost": 3.015226359593504,
+      "portionSize": "8 oz",
+      "nutrition": {
+        "calories": 931,
+        "protein": 11.399999999999999,
+        "carbs": 180.7,
+        "fat": 23.5
+      },
+      "ingredients": [
+        {
+          "query": "chocolate chips",
+          "matched": "Chocolate Chips",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-oaplib",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "flour",
+          "matched": "All-Purpose Flour",
+          "confidence": 0.8625,
+          "inventoryId": "prod-1769651453258-fm9svl",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        },
+        {
+          "query": "sugar",
+          "matched": "Sugar",
+          "confidence": 1,
+          "inventoryId": "prod-1769651453258-dkgeqp",
+          "quantity": 1,
+          "unit": "lb",
+          "yieldPercent": 100
+        }
+      ],
+      "recipeId": "recipe-1769651453267-4",
+      "posSyncStatus": "ready"
+    }
+  ],
+  "dashboardPnL": {
+    "revenue": 0,
+    "cogs": 16661.3737446721,
+    "grossProfit": -16661.3737446721,
+    "grossMargin": 0,
+    "laborCost": 0,
+    "overheadCost": 0,
+    "netProfit": -16661.3737446721,
+    "netMargin": 0,
+    "lastUpdated": "2026-01-29T01:50:53.260Z"
+  }
+}

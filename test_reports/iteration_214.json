@@ -1,0 +1,88 @@
+{
+  "summary": "iter214 EchoWaste v1.2 Phase 2 + Notification Preferences testing complete. Backend: 14/14 tests passed (100%). Frontend: Mobile WasteTab 6-mode selector working, draft-recipe modal functional. Desktop EchoWaste panel with Par Sheet tab working. Notification prefs panel is auth-gated (requires Google sign-in).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter214_echowaste_v12_phase2.py",
+    "/app/test_reports/pytest/pytest_results_iter214.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter214_echowaste_v12_phase2.py"
+  ],
+  "success_rate": {
+    "backend": "100% (14/14 tests passed)",
+    "frontend": "100% (all tested features working)"
+  },
+  "test_credentials": "X-User-Id: chef-william, Test phone: 561-779-6872 → E.164: +15617796872",
+  "seed_data_creation": "Created test chef prefs, buffet sessions, menu uploads, draft recipes during testing",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter214 v1.2 Phase 2 features all working: (1) Chef notification prefs - save/get/chefs-to-notify/test-sms all working, phone normalized to E.164; (2) F4 Refill tracking - POST /buffet/{id}/refill and GET /buffet/{id}/refills working; (3) F5 Menu pre-load - POST /events/{id}/menu/upload with mode=text working, GET /events/{id}/menu returns stored menu; (4) F6 Draft recipes - create/promote/reject all working, draft_id starts with 'drec-'; (5) Par Sheet - GET /par-sheet returns par_rows with all required fields; (6) Waste Digest - buffet close includes digest in response, manual trigger works. Twilio SMS correctly queued with reason='no_credentials'. Frontend: Mobile WasteTab has 6 modes (still, buffet_set, buffet_refill, buffet_close, ground_truth, draft_recipe), flash messages work for refill/close without session, draft-recipe modal opens with hint+text inputs. Desktop EchoWaste panel accessible via Events & Catering sidebar, Par Sheet tab shows KPIs and table. Notification prefs panel requires Google auth - component exists at /app/client/components/site/NotificationPrefsRow.tsx and is mounted in GoogleAuthPill avatar menu.",
+  "features_tested": {
+    "backend_chef_prefs_save": {
+      "status": "PASS",
+      "details": "POST /api/chef-prefs/prefs saves phone '561-779-6872' normalized to '+15617796872', accepts channels/alerts/quiet_hours"
+    },
+    "backend_chef_prefs_get": {
+      "status": "PASS",
+      "details": "GET /api/chef-prefs/prefs returns saved prefs with defaults merged, user_id scoped by X-User-Id header"
+    },
+    "backend_chefs_to_notify": {
+      "status": "PASS",
+      "details": "GET /api/chef-prefs/chefs-to-notify returns list of chefs with sms enabled for specified alert"
+    },
+    "backend_test_sms_queued": {
+      "status": "PASS",
+      "details": "POST /api/chef-prefs/test-sms returns {ok:false, twilio:{queued:true, reason:'no_credentials'}} as expected"
+    },
+    "backend_refill_tracking": {
+      "status": "PASS",
+      "details": "POST /api/waste/buffet/{id}/refill adds refill_cost and increments refill_count. GET /buffet/{id}/refills lists refill entries."
+    },
+    "backend_menu_preload": {
+      "status": "PASS",
+      "details": "POST /api/waste/events/{id}/menu/upload with mode=text extracts menu items. GET /events/{id}/menu returns stored menu."
+    },
+    "backend_draft_recipes": {
+      "status": "PASS",
+      "details": "POST /api/waste/draft-recipes creates draft with ingredients/steps, draft_id starts with 'drec-'. Promote creates approved recipe. Reject sets status=rejected."
+    },
+    "backend_par_sheet": {
+      "status": "PASS",
+      "details": "GET /api/waste/par-sheet returns par_rows with recipe_id, avg_consumed, std_dev, recommended_par, est_par_cost, plus total_par_cost_usd and category_par_cost"
+    },
+    "backend_waste_digest": {
+      "status": "PASS",
+      "details": "POST /api/waste/buffet/close includes digest:{ok:true, sent_to:N, message:...} in response. Manual trigger via POST /buffet/{id}/digest works."
+    },
+    "frontend_mobile_6_mode_selector": {
+      "status": "PASS",
+      "details": "Navigate to /m/waste - 6 mode tiles present: mode-still, mode-buffet-set, mode-buffet-refill, mode-buffet-close, mode-ground-truth, mode-draft-recipe"
+    },
+    "frontend_refill_close_flash": {
+      "status": "PASS",
+      "details": "Tap mode-buffet-refill or mode-buffet-close without session shows flash 'Start a buffet set first'"
+    },
+    "frontend_draft_recipe_modal": {
+      "status": "PASS",
+      "details": "Tap mode-draft-recipe changes CTA to 'Draft new dish (text)', tap CTA opens draft-recipe-modal with hint+text inputs, save enabled after >20 chars"
+    },
+    "frontend_desktop_parsheet": {
+      "status": "PASS",
+      "details": "Desktop PanelHost → Events & Catering → EchoWaste → Par Sheet tab shows parsheet-kpis and parsheet-table with par_rows"
+    },
+    "frontend_notification_prefs": {
+      "status": "SKIPPED - AUTH-GATED",
+      "details": "Notification prefs panel requires Google sign-in. Component exists at NotificationPrefsRow.tsx and is mounted in GoogleAuthPill avatar menu. Button data-testid='notif-prefs-open' would be visible when authenticated."
+    }
+  }
+}

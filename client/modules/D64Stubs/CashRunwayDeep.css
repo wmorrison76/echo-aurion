@@ -1,0 +1,188 @@
+/* Cash Runway Deep-Dive — extends PaceMtd.css with runway-specific cards. */
+
+.cash-root {
+  /* Warning banner colors */
+  --warn-up: #7fb084;
+  --warn-amber: #d9a85a;
+  --warn-down: #c87065;
+}
+
+/* ---------- Warning banner ---------- */
+.cash-warning {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 14px 0 22px;
+  font-family: "Inter", sans-serif;
+  background: rgba(200, 169, 126, 0.05);
+  border: 1px solid var(--line);
+}
+.cash-warning-up { border-left: 3px solid var(--warn-up); }
+.cash-warning-amber { border-left: 3px solid var(--warn-amber); }
+.cash-warning-down { border-left: 3px solid var(--warn-down); background: rgba(200, 112, 101, 0.08); }
+
+.cash-warning-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px currentColor;
+}
+.cash-warning-up .cash-warning-dot { background: var(--warn-up); color: var(--warn-up); }
+.cash-warning-amber .cash-warning-dot { background: var(--warn-amber); color: var(--warn-amber); }
+.cash-warning-down .cash-warning-dot { background: var(--warn-down); color: var(--warn-down); }
+
+.cash-warning-label {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--cream);
+}
+.cash-warning-up .cash-warning-label { color: var(--warn-up); }
+.cash-warning-amber .cash-warning-label { color: var(--warn-amber); }
+.cash-warning-down .cash-warning-label { color: var(--warn-down); }
+
+.cash-warning-meta {
+  margin-left: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--dim);
+}
+
+/* ---------- Runway scenario card ---------- */
+.cash-runway-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px 22px 22px;
+  margin: 20px 0;
+}
+.cash-card-head {
+  margin-bottom: 16px;
+}
+.cash-card-title {
+  font-family: "Fraunces", serif;
+  font-size: 16px;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.cash-card-sub {
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.cash-runway-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+.cash-runway-cell {
+  background: var(--bg-card-hi);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 14px 16px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.cash-runway-cell:hover { transform: translateY(-1px); border-color: rgba(200, 169, 126, 0.35); }
+.cash-runway-cell.emphasized {
+  background: linear-gradient(180deg, rgba(200, 169, 126, 0.07), var(--bg-card-hi));
+  border-color: rgba(200, 169, 126, 0.5);
+}
+.cash-cell-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+.cash-runway-cell.emphasized .cash-cell-label { color: var(--gold); }
+.cash-cell-value {
+  font-family: "Fraunces", serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+.cash-cell-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--dim);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ---------- Largest outflows list ---------- */
+.cash-outflows-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cash-outflow-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 110px 160px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: var(--bg-card-hi);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.cash-outflow-row:hover {
+  background: rgba(200, 112, 101, 0.06);
+  border-color: rgba(200, 112, 101, 0.3);
+}
+.cash-outflow-date {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--cream);
+}
+.cash-outflow-bar-track {
+  height: 6px;
+  background: rgba(200, 169, 126, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+.cash-outflow-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--warn-down), rgba(200, 112, 101, 0.4));
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.cash-outflow-delta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--warn-down);
+  text-align: right;
+}
+.cash-outflow-bal {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  text-align: right;
+}
+
+/* Amber tone variant for kpi cards */
+.pace-kpi.tone-amber {
+  border-color: rgba(217, 168, 90, 0.35);
+}
+.pace-kpi.tone-amber .pace-kpi-value { color: var(--warn-amber); }
+
+/* Mobile */
+@media (max-width: 720px) {
+  .cash-outflow-row {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 6px;
+  }
+  .cash-outflow-bar-track { display: none; }
+  .cash-outflow-bal { text-align: left; }
+  .cash-warning { flex-wrap: wrap; }
+  .cash-warning-meta { margin-left: 0; flex-basis: 100%; }
+}

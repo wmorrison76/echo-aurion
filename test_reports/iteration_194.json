@@ -1,0 +1,97 @@
+{
+  "summary": "iter194 FM-Upgrade 1 (TimelineEvent primitive) comprehensive testing complete. All 21 backend tests passed (100%). Frontend Activity Timeline panel fully verified with live feed, category chips, FSMA 204 mock-recall (1ms performance), and all event types displaying correctly.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter194_timeline.py",
+    "/app/test_reports/pytest/pytest_results_iter194.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "All iter194 Timeline features implemented correctly and working",
+    "Timeline emit is admin-gated and fail-soft (exceptions swallowed)",
+    "Idempotency via idempotency_key works correctly (duplicate returns event_id=None)",
+    "CTE events validate KDEs and add _kde_warning if missing but still emit",
+    "Recall performance is excellent: 1-2ms (well under 2000ms target)",
+    "All 6 hot routes wired correctly: IRD order.placed, PO drafted/approved, lot.received, standup.sent, feature_flag.toggled",
+    "Auto-minted TLCs in lot.received events for FSMA 204 traceability",
+    "Frontend Activity Timeline panel has live 8s refresh, category chips, recall input with mode select"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter194_timeline.py",
+    "/app/backend/routes/guest_concierge_ext.py"
+  ],
+  "success_rate": {
+    "backend": "100% (21/21 tests passed)",
+    "frontend": "100% (all flows verified)"
+  },
+  "test_credentials": {
+    "admin_token": "TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o",
+    "guest_auth": "POST /api/guest-concierge/authenticate {room: '1208', last_name: 'Reed'}"
+  },
+  "seed_data_creation": "Created test timeline events during testing (po.drafted, po.approved, lot.received, order.placed, standup.sent, feature_flag.toggled)",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter194 fully tested. FM-Upgrade 1 TimelineEvent primitive is complete. Key features: (1) Timeline emit at POST /api/timeline/emit (admin-gated, fail-soft, idempotent). (2) Timeline query at POST /api/timeline/query with entity_id/event_types/actor_id filters. (3) Timeline recent at GET /api/timeline/recent?limit=N&kind=. (4) FSMA 204 mock-recall at GET /api/timeline/recall?tlc=|lot_id=|pack_id=|batch_id= - returns forward+backward trace in <2ms. (5) Cycle-time at GET /api/timeline/cycle-time?entity_id=&from_type=&to_type=. (6) Hot routes wired: IRD order.placed (FIXED - was missing), PO drafted/approved, lot.received (with auto-minted TLC), standup.sent, feature_flag.toggled. (7) Frontend Activity Timeline panel at sidebar → Admin & System → 'Activity Timeline · Recall' with testids: activity-timeline-root, recall-run, recall-result, recall-error, category-chips, chip-{all|lot|po|batch|pack|order|label|echo}, activity-feed, event-{type}, auto-refresh-toggle. MOCKED: FCM/APNs push, Twilio SMS, Resend emails (all queued until keys arrive).",
+  "features_tested": {
+    "timeline_emit": {
+      "admin_gated": "PASS - 401 without admin token",
+      "success": "PASS - returns event_id",
+      "idempotency": "PASS - duplicate returns event_id=None",
+      "kde_warning": "PASS - CTE without KDEs adds _kde_warning but still emits"
+    },
+    "timeline_query": {
+      "basic": "PASS - returns events with total count",
+      "entity_id_filter": "PASS - filters to events touching entity"
+    },
+    "timeline_recent": {
+      "basic": "PASS - returns compact feed",
+      "kind_filter": "PASS - filters by entity kind"
+    },
+    "timeline_recall": {
+      "bad_input": "PASS - 400 without anchor params",
+      "with_tlc": "PASS - returns valid recall bundle",
+      "performance": "PASS - 1-2ms (target <2000ms)"
+    },
+    "timeline_cycle_time": {
+      "basic": "PASS - returns duration structure"
+    },
+    "end_to_end_wiring": {
+      "ird_order_placed": "PASS - order.placed emitted with commodity=in_room_dining",
+      "po_drafted": "PASS - po.drafted emitted on requisition create",
+      "po_approved": "PASS - po.approved emitted on requisition approve",
+      "lot_received": "PASS - lot.received emitted per line with auto-minted TLC",
+      "po_received_full": "PASS - po.received_full rollup emitted",
+      "standup_sent": "PASS - standup.sent emitted on send",
+      "feature_flag_toggled": "PASS - feature_flag.toggled emitted on flag update"
+    },
+    "frontend_activity_timeline": {
+      "panel_loads": "PASS - Activity Timeline panel loads from sidebar",
+      "category_chips": "PASS - 8 chips (All, Lots, POs, Production, Packs, Orders, Labels, Echo/Ops)",
+      "live_refresh": "PASS - Live · 8s toggle visible",
+      "recall_input": "PASS - TLC/lot_id/pack_id/batch_id mode select + input",
+      "recall_trace": "PASS - Trace button triggers recall",
+      "recall_result": "PASS - Shows elapsed_ms and counters",
+      "activity_feed": "PASS - Shows 21+ events with type badges"
+    },
+    "regressions": {
+      "health_endpoint": "PASS",
+      "timeline_endpoints_accessible": "PASS"
+    }
+  },
+  "fixes_applied": {
+    "order_placed_emit": "Added order.placed TimelineEvent emit to POST /api/guest-concierge/in-room-dining/order endpoint (was missing)"
+  },
+  "mocked_apis": {
+    "fcm_apns": "MOCKED - no FCM_SERVER_KEY or APNS_* keys set",
+    "twilio_sms": "MOCKED - keys not set",
+    "resend_email": "MOCKED - keys not set"
+  }
+}

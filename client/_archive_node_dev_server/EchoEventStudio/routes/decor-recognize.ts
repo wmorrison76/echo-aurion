@@ -1,0 +1,4 @@
+import { Router, Request, Response } from"express"; export const decorRecognize = Router(); interface DecorRequest { session?: string;
+} interface DecorResponse { palette: string[]; materials: string[];
+} decorRecognize.post("/decor/recognize", async (req: Request<unknown, unknown, DecorRequest>, res: Response) => { try { const { session ="default" } = req.body || {}; // TODO: Integrate with SAM (Segment Anything Model) or Mask2Former // for real texture segmentation and material recognition // For now, return placeholder palette and materials const mockPalette = ["#cbb8a0","#2f2a26","#8a6f52","#f5f5f1"]; const mockMaterials = ["wall","wood","fabric","metal"]; const response: DecorResponse = { palette: mockPalette, materials: mockMaterials, }; res.json(response); } catch (err) { console.error("Decor recognition error:", err); res.status(500).json({ error:"Recognition failed" }); } }
+);

@@ -1,0 +1,4 @@
+import React, { useEffect, useState } from"react"
+import { Html } from"@react-three/drei" interface EnvData { temperature: number light: number sound: number
+} export function EchoEnvOverlay() { const [env, setEnv] = useState<EnvData>({ temperature: 22, light: 0.8, sound: 0.2 }) useEffect(() => { const id = setInterval(() => { setEnv((prev) => ({ temperature: prev.temperature + (Math.random() - 0.5) * 0.2, light: Math.min(1, Math.max(0, prev.light + (Math.random() - 0.5) * 0.05)), sound: Math.min(1, Math.max(0, prev.sound + (Math.random() - 0.5) * 0.05)), })) }, 2000) return () => clearInterval(id) }, []) return ( <Html position={[0, 2.5, 0]} className="pointer-events-none"> <div className="rounded-lg bg-black/60 px-3 py-2 text-xs text-white shadow-lg backdrop-blur-sm"> 🌡 {env.temperature.toFixed(1)}°C &nbsp;💡 {(env.light * 100).toFixed(0)}% &nbsp;🎧{""} {(env.sound * 100).toFixed(0)} dB </div> </Html> )
+}

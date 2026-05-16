@@ -1,0 +1,12 @@
+# Collapsed JSX – unparseable by Prettier until expanded (see audit/collapsed-jsx-next-steps.md)
+# RoomManagerPanel.tsx is expanded + formatted; use scripts/expand-jsx-line.cjs for others.
+client/modules/VideoConference/VideoConferencePanel.tsx
+
+# Dependencies and build output
+node_modules
+dist
+build
+.next
+coverage
+*.min.js
+*.min.css

@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "language": "English",
+    "code": "en",
+    "version": "1.0.0"
+  },
+
+  "errors.tenant_required": "Tenant ID required.",
+  "errors.audience_required": "Audience register required for this endpoint.",
+  "errors.not_found": "Not found.",
+  "errors.forbidden": "Not permitted on this audience.",
+  "errors.rate_limited": "Too many requests; please slow down.",
+
+  "payroll.runs_locked": "Payroll run {run_id} is locked.",
+  "payroll.ach_submitted": "ACH batch submitted to bank ({lines} lines, ${total}).",
+  "payroll.w2_ready": "Your {tax_year} W-2 is ready in MyEcho.",
+  "payroll.shift_swap_offered": "Shift offered to coworkers.",
+  "payroll.shift_swap_claimed": "{employee} claimed your shift on {date}.",
+
+  "concierge.allergen_alert": "Allergen alert for guest in {context}.",
+  "concierge.arrival_at_risk": "Room not yet ready for arrival in {hours}h.",
+  "concierge.spend_trajectory_declining": "Guest spend trajectory is declining.",
+
+  "schedule.borrow_pending": "Cross-dept borrow request pending {manager}.",
+  "schedule.borrow_approved": "Borrow approved for {employee} on {date}.",
+  "schedule.popup_drafted": "Popup schedule drafted: {cooks}c + {servers}s.",
+
+  "pms.checked_in": "Welcome — checked in to room {room}.",
+  "pms.checked_out": "Checked out. Final balance: ${balance}.",
+  "pms.reservation_confirmed": "Reservation confirmed: {confirmation}.",
+
+  "pos.failover_active": "POS failover active. Orders queue locally.",
+  "pos.reconcile_complete": "{count} orders synced to POS.",
+
+  "auditor.finding_critical": "Critical finding requires review.",
+  "auditor.finding_resolved": "Finding resolved by {actor}.",
+
+  "general.welcome": "Welcome to {property_name}.",
+  "general.thank_you": "Thank you."
+}

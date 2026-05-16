@@ -1,0 +1,14 @@
+{
+  "ingredient-romaine": { "qtyBase": 60, "unit": "each" },
+  "ingredient-tomato-roma": { "qtyBase": 80, "unit": "lb" },
+  "ingredient-basil": { "qtyBase": 12, "unit": "lb" },
+  "ingredient-avocado": { "qtyBase": 30, "unit": "each" },
+  "ingredient-sourdough": { "qtyBase": 20, "unit": "each" },
+  "ingredient-cheddar": { "qtyBase": 15, "unit": "lb" },
+  "ingredient-butter": { "qtyBase": 25, "unit": "lb" },
+  "ingredient-mozzarella": { "qtyBase": 10, "unit": "lb" },
+  "ingredient-parmesan": { "qtyBase": 8, "unit": "lb" },
+  "ingredient-linguine": { "qtyBase": 40, "unit": "lb" },
+  "ingredient-salmon": { "qtyBase": 18, "unit": "lb" },
+  "ingredient-shrimp": { "qtyBase": 22, "unit": "lb" }
+}

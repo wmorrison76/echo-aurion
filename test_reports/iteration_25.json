@@ -1,0 +1,142 @@
+{
+  "summary": "Iteration 25 - BQT Food Cost & Portion Sizing Enhancement Testing Complete. All 10 backend tests passed (100%). Frontend verified: MaestroBQT BEO Operations tab renders correctly with Food Cost Analysis card, portion sizes (oz), DUO badges, and duo protein split display. New endpoints tested: GET /api/event-workflow/bqt-portion-standards (14-18% target, 6-8oz entree, 8oz duo), POST /api/event-workflow/food-cost-analysis (returns status, recommendations, item_analysis with portion validation), POST /api/event-workflow/attach-menu with portion_size_oz, is_duo, duo_proteins, duo_split_oz. BEO documents include food_cost_target_min_pct=14 and food_cost_target_max_pct=18. Post-financials includes bqt_target_range and food_cost_status in COGS.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration25_bqt_food_cost.py",
+    "/app/test_reports/pytest/pytest_results_iter25.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "BQT_PORTION_STANDARDS constant correctly defines 14-18% food cost target and portion sizes",
+    "Entree portion standard: 6-8oz for single, 8oz total for duo - correctly implemented",
+    "Duo entree support: is_duo, duo_proteins, duo_split_oz fields properly saved and retrieved",
+    "Food cost analysis validates portions against BQT standards with ok/under/over status",
+    "FoodCostCard component renders correctly with visual bar, metrics, and recommendations",
+    "Menu items display portion sizes (oz) and DUO badges with protein split details",
+    "Post-financials COGS section includes bqt_target_range and food_cost_status",
+    "Changelog tracks food_cost_analyzed action with percentage and status"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration25_bqt_food_cost.py"
+  ],
+  "success_rate": {
+    "backend": "100% (10/10 passed)",
+    "frontend": "100% (all features verified)"
+  },
+  "seed_data_creation": "Created TEST_ prefixed events: TEST_BQT_Portion_Event (100 guests, duo entree with 5oz+3oz split), TEST_FoodCost_Analysis (50 guests), TEST_Financials_BQT (75 guests)",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Iteration 25 verified BQT food cost and portion sizing enhancement. Key endpoints: GET /api/event-workflow/bqt-portion-standards returns BQT_PORTION_STANDARDS with food_cost_target_min=14, food_cost_target_max=18, portions for appetizer (3-5oz), entree (6-8oz), entree_duo (8oz), dessert (4-6oz). POST /api/event-workflow/attach-menu accepts portion_size_oz, is_duo, duo_proteins, duo_split_oz. POST /api/event-workflow/food-cost-analysis returns status (below_target/on_target/above_target), recommendations, item_analysis with portion_status validation. Frontend BEOWorkflow.tsx FoodCostCard component renders in MaestroBQT BEO Operations tab. Food cost is $0 since recipes don't have ingredient costs yet - that's expected per main agent note.",
+  "test_results": {
+    "bqt_portion_standards_tests": {
+      "endpoint_returns_200": "PASS",
+      "food_cost_target_min_14": "PASS",
+      "food_cost_target_max_18": "PASS",
+      "entree_portion_6_8oz": "PASS",
+      "duo_entree_8oz_total": "PASS",
+      "appetizer_3_5oz": "PASS",
+      "dessert_4_6oz": "PASS"
+    },
+    "attach_menu_tests": {
+      "creates_beo_with_portions": "PASS",
+      "saves_portion_size_oz": "PASS",
+      "saves_is_duo_flag": "PASS",
+      "saves_duo_proteins": "PASS",
+      "saves_duo_split_oz": "PASS",
+      "includes_portion_standard": "PASS",
+      "beo_has_food_cost_target_min_pct_14": "PASS",
+      "beo_has_food_cost_target_max_pct_18": "PASS"
+    },
+    "food_cost_analysis_tests": {
+      "returns_status_field": "PASS",
+      "returns_recommendations_list": "PASS",
+      "returns_item_analysis_list": "PASS",
+      "returns_target_range_14_18": "PASS",
+      "item_analysis_has_portion_status": "PASS",
+      "item_analysis_has_portion_standard": "PASS",
+      "validates_duo_against_8oz_standard": "PASS",
+      "preserves_duo_proteins_and_split": "PASS"
+    },
+    "post_financials_tests": {
+      "cogs_has_bqt_target_range": "PASS",
+      "cogs_has_food_cost_status": "PASS",
+      "cogs_has_food_cost_pct": "PASS"
+    },
+    "frontend_tests": {
+      "maestro_bqt_navigation": "PASS",
+      "beo_operations_tab": "PASS",
+      "beo_list_view": "PASS - 9 BEO cards",
+      "beo_detail_view": "PASS",
+      "food_cost_analysis_card": "PASS - Shows 0%, Target: 14-18%, BELOW TARGET badge",
+      "menu_section": "PASS",
+      "portion_sizes_oz": "PASS - 10 portion indicators found",
+      "duo_badges": "PASS - 3 DUO badges found",
+      "duo_protein_split_display": "PASS - Shows Filet Mignon (5oz), Lobster Tail (3oz)",
+      "changelog_toggle": "PASS",
+      "changelog_timeline": "PASS"
+    },
+    "error_handling_tests": {
+      "food_cost_analysis_invalid_event_404": "PASS",
+      "beo_not_found_404": "PASS"
+    }
+  },
+  "endpoints_tested": [
+    "GET /api/health",
+    "GET /api/event-workflow/bqt-portion-standards",
+    "GET /api/event-workflow/beos",
+    "GET /api/event-workflow/beo/{event_id}",
+    "POST /api/event-workflow/prospect-to-booking",
+    "POST /api/event-workflow/attach-menu",
+    "POST /api/event-workflow/food-cost-analysis",
+    "POST /api/event-workflow/post-financials"
+  ],
+  "mocked_apis": {
+    "has_mocked_apis": true,
+    "mocked_apis_list": [
+      "POS/GL integrations are mocked",
+      "AI recipe generation uses real Emergent LLM Key but not tested in this iteration",
+      "Food cost is $0 since recipes don't have ingredient costs - expected behavior"
+    ]
+  },
+  "verified_features": {
+    "bqt_portion_standards": {
+      "food_cost_target": "14-18% range",
+      "appetizer": "3-5oz",
+      "entree_single": "6-8oz",
+      "entree_duo": "8oz total",
+      "dessert": "4-6oz"
+    },
+    "attach_menu_with_portions": {
+      "portion_size_oz": "Saved and retrieved correctly",
+      "is_duo": "Boolean flag for duo entrees",
+      "duo_proteins": "Array of protein names",
+      "duo_split_oz": "Array of portion splits (e.g., [5.0, 3.0])",
+      "portion_standard": "Included with min_oz, max_oz, notes"
+    },
+    "food_cost_analysis": {
+      "status": "below_target/on_target/above_target",
+      "recommendations": "List of actionable suggestions",
+      "item_analysis": "Per-item breakdown with portion validation",
+      "portion_status": "ok/under/over based on BQT standards"
+    },
+    "post_financials_cogs": {
+      "bqt_target_range": "{min: 14.0, max: 18.0}",
+      "food_cost_status": "below_target/on_target/above_target",
+      "food_cost_pct": "Calculated percentage"
+    },
+    "frontend_beo_workflow": {
+      "food_cost_card": "Visual bar with 0%, 14%, 18%, 30% markers",
+      "portion_display": "Shows oz values for each menu item",
+      "duo_badges": "DUO badge with protein split details",
+      "dietary_badges": "vegetarian-option, gluten-free-option"
+    }
+  }
+}

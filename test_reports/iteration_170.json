@@ -1,0 +1,85 @@
+{
+  "summary": "Iter169 EchoConcierge Phase 2 + EchoCommand SolveBar - ALL TESTS PASSED. Backend: 24/24 tests passed covering outlets, dining reservations, room upgrades, IRD amenities, transport options, celebration cascade, service recovery, guest folio, and LLM SolveBar. Frontend: SolveBar launcher present, overlay opens, guest auto-detection works (Katherine Mansfield · room 1201), LLM resolution renders with recommended action + execute button + guest line + alternatives. Keyboard shortcut Ctrl+J works. Regression: iter168 Echo Concierge Hub, iter167 FOH panels, iter166 Seed Plant Studio all working.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter169_concierge_v2_phase2.py",
+    "/app/test_reports/pytest/pytest_results_iter170.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter169_concierge_v2_phase2.py"
+  ],
+  "success_rate": {
+    "backend": "100% (24/24 tests passed)",
+    "frontend": "100% - SolveBar fully functional with LLM integration"
+  },
+  "test_credentials": "See /app/memory/test_credentials.md",
+  "seed_data_creation": "Test data created with TEST_ prefix during backend tests (outlets, transport requests, celebrations, recovery cases)",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iter169 EchoConcierge Phase 2 fully tested. New endpoints: /api/concierge-v2/outlets (5 seeded), /api/concierge-v2/dining/availability (24 tables), /api/concierge-v2/dining/reserve, /api/concierge-v2/rooms (8 rooms), /api/concierge-v2/rooms/upgrades, /api/concierge-v2/ird/amenities (10 amenities), /api/concierge-v2/transport/options (9 options), /api/concierge-v2/transport/request, /api/concierge-v2/celebration/compose (creates 4 cascade children), /api/concierge-v2/celebration/cascade, /api/concierge-v2/recovery/open, /api/concierge-v2/recovery/cases, /api/guest/folio, /api/concierge-v2/solve (LLM). SolveBar UI at bottom-left with ⌘J/Ctrl+J hotkey. LLM may return 502 if budget exhausted - this is expected.",
+  "mocked_apis": {
+    "has_mocked_apis": true,
+    "mocked_apis_list": [
+      "/api/concierge-v2/outlets - seeded DEFAULT_OUTLETS list (5 outlets)",
+      "/api/concierge-v2/rooms - seeded DEFAULT_ROOMS list (8 rooms)",
+      "/api/concierge-v2/ird/amenities - seeded IRD_AMENITIES list (10 amenities)",
+      "/api/concierge-v2/transport/options - seeded TRANSPORT_OPTIONS list (9 options)",
+      "/api/concierge-v2/dining/availability - deterministic pseudo-table map (24 tables)"
+    ]
+  },
+  "features_tested": {
+    "backend_passed": [
+      "GET /api/concierge-v2/outlets - returns 5+ seeded outlets with hours",
+      "POST /api/concierge-v2/outlets/upsert - creates new outlet without id",
+      "POST /api/concierge-v2/outlets/upsert - updates existing outlet with id",
+      "GET /api/concierge-v2/dining/availability - returns 24 tables (window/booth/main/bar kinds)",
+      "POST /api/concierge-v2/dining/reserve - creates reservation with table assignment",
+      "GET /api/concierge-v2/rooms - returns 8 rooms",
+      "GET /api/concierge-v2/rooms/upgrades?current_room=0808 - returns 5 upgrade candidates tier-sorted",
+      "GET /api/concierge-v2/ird/amenities - returns 10 amenities",
+      "GET /api/concierge-v2/ird/amenities?tag=celebration - returns 3 celebration amenities",
+      "GET /api/concierge-v2/ird/amenities?category=beverage - filters by category",
+      "GET /api/concierge-v2/transport/options - returns 9 options (uber-x, uber-black, lyft-standard, lyft-lux, luxury-sedan, luxury-suv, golf-cart, boat, helicopter)",
+      "POST /api/concierge-v2/transport/request - creates dispatched record",
+      "POST /api/concierge-v2/celebration/compose - creates parent + 4 cascade children (pastry:1, housekeeping:1, florist:1, amenity:1)",
+      "GET /api/concierge-v2/celebration/cascade - returns parent + children with _collection field",
+      "POST /api/concierge-v2/recovery/open - creates case with id and status='open'",
+      "GET /api/concierge-v2/recovery/cases - returns list of cases",
+      "GET /api/guest/folio?guest_id=g-101 - returns folio with dining_reservations, requests, recovery_cases, spend_actual, spend_estimated, counts",
+      "POST /api/concierge-v2/solve - returns LLM resolution (or 502 if budget exhausted)",
+      "Regression: GET /api/guest/profile - returns 5+ seeded guests",
+      "Regression: GET /api/concierge-v2/requests - returns list",
+      "Regression: GET /api/foh-concierge/local-places - returns 200",
+      "Regression: GET /api/global-calendar/day-detail - returns 200",
+      "Regression: GET /api/seed/pillars - returns 200",
+      "GET /api/health - returns healthy"
+    ],
+    "frontend_passed": [
+      "SolveBar launcher (data-testid='solve-bar-launcher') present at bottom-left",
+      "Clicking launcher opens SolveBar overlay (data-testid='solve-bar')",
+      "SolveBar input field (data-testid='solve-bar-input') accepts text",
+      "Guest auto-detection works - typing 'mansfield room 1201' shows guest chip 'Katherine Mansfield · room 1201'",
+      "Guest chip (data-testid='solve-guest-g-101') clickable to select guest",
+      "Solve button (data-testid='solve-bar-go') triggers LLM call",
+      "Solve result (data-testid='solve-result') renders with headline, root_cause, confidence",
+      "Recommended action card shows title, api_hint, and Execute button (data-testid='solve-execute')",
+      "Guest line (data-testid='solve-guest-line') shows polished phrase to say to guest",
+      "Alternatives section shows backup options",
+      "Escape key closes SolveBar",
+      "Ctrl+J keyboard shortcut opens SolveBar globally",
+      "Regression: Echo Concierge Hub panel loads with department cards and NEW REQUEST form",
+      "Regression: /seed/plant Co-Build Studio loads with PLANT SEED button and Record build reel"
+    ],
+    "frontend_failed": []
+  }
+}

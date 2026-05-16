@@ -1,0 +1,96 @@
+.panel-shell {
+  background: linear-gradient(180deg, var(--surface), rgba(18, 24, 33, 0.82));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-2);
+  backdrop-filter: blur(16px);
+  color: var(--text);
+  font-family: var(--font-sans);
+  /* Optimize rendering performance */
+  contain: layout style paint;
+}
+
+.panel-header {
+  height: var(--panel-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--panel-glow);
+  /* Prevent content shift during drag */
+  flex-shrink: 0;
+}
+
+.panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.panel-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.panel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.panel-dot.red {
+  background: #ff5f56;
+}
+
+.panel-dot.yellow {
+  background: #ffbd2e;
+}
+
+.panel-dot.green {
+  background: #27c93f;
+}
+
+.panel-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+.panel-subtitle {
+  font-size: 0.75rem;
+  opacity: 0.66;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+.panel-header-right {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.panel-body {
+  padding: 20px;
+  /* Ensure content doesn't affect panel layout during scroll */
+  contain: layout style;
+  /* Allow panel content to shrink and scroll when inside flex column (e.g. ForecastHub) */
+  flex: 1 1 0%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}

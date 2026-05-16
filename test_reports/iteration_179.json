@@ -1,0 +1,71 @@
+{
+  "summary": "iter179 testing complete - EchoConciergeMobile + Outlook Sync Scaffolding fully working. Backend: 24/24 tests passed. Frontend: Mobile companion page renders correctly with all UI elements (tier pill, celebration banner, quick chips, freeform input). Outlook sync returns 503 gracefully when not configured. Regressions: iter178 sign-in pill visible, iter177 Job Profiles tab works, iter175 MySchedule panel loads.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter179_concierge_mobile_outlook.py",
+    "/app/test_reports/pytest/pytest_results_iter179.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter179_concierge_mobile_outlook.py"
+  ],
+  "success_rate": {
+    "backend": "100% (24/24 passed)",
+    "frontend": "100%"
+  },
+  "test_credentials": "Admin token: kDLVaJJVmtxX_EPKYGpU2ZunwTT1j0TU4Z_ezSximgc. Mobile token for g_williams_r1208: UjX-zNHaXm3etwWv_xNlVCougJx9YE1L (stored in /app/memory/.last_mobile_token). Seeded guests: g_williams_r1208 (anniversary/diamond), g_santos_r714 (birthday/gold), g_okafor_r902 (platinum).",
+  "seed_data_creation": "Created TEST_iter179 and TEST_playwright_iter179 prefixed requests during testing via mobile companion.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "iter179 adds EchoConciergeMobile (guest-facing mobile companion at /m/concierge/:token) and Outlook Sync scaffolding. Mobile endpoints: POST /api/concierge-mobile/mint (admin-gated), GET /api/concierge-mobile/resolve/{token}, POST /api/concierge-mobile/request, POST /api/concierge-mobile/preference. Outlook endpoints return 503 when AZURE_CLIENT_ID/SECRET not set. Frontend uses 420px mobile viewport. All data-testid attributes present: concierge-mobile-root, mobile-tier-pill, mobile-celebration-banner, mobile-quick-{kind}, mobile-freeform-input, mobile-freeform-submit.",
+  "mocked_apis": {
+    "has_mocked_apis": false,
+    "mocked_apis_list": [],
+    "note": "Microsoft Graph endpoints are NOT mocked - the scaffold's 503 handling is being validated. Emergent OAuth unchanged."
+  },
+  "features_tested": {
+    "mint_requires_admin_token": "PASS - POST /api/concierge-mobile/mint returns 401 without X-Admin-Token",
+    "mint_404_unknown_guest": "PASS - Returns 404 for nonexistent guest_id",
+    "mint_success": "PASS - Creates token for valid guest with url_hint and expires_at",
+    "resolve_404_bad_token": "PASS - Returns 404 for invalid token",
+    "resolve_success_bundle": "PASS - Returns full bundle with guest, celebration, dining_reservations, spa_bookings, open_requests, activations_today",
+    "resolve_celebration_flag": "PASS - Williams shows anniversary, Santos shows birthday",
+    "request_401_invalid_token": "PASS - Returns 401 for invalid token",
+    "request_success": "PASS - Creates concierge_requests record with source='mobile-companion'",
+    "request_appears_in_resolve": "PASS - Submitted requests appear in open_requests list",
+    "preference_401_invalid_token": "PASS - Returns 401 for invalid token",
+    "preference_success": "PASS - Persists to concierge_guest_preferences collection",
+    "outlook_status_not_configured": "PASS - GET /api/outlook/status returns configured:false when AZURE_CLIENT_ID not set",
+    "outlook_authorize_503": "PASS - GET /api/outlook/authorize returns 503 when not configured",
+    "outlook_sync_pull_503": "PASS - POST /api/outlook/sync/pull returns 503 when not configured",
+    "frontend_mobile_root": "PASS - data-testid='concierge-mobile-root' present",
+    "frontend_tier_pill": "PASS - data-testid='mobile-tier-pill' shows 'DIAMOND · RETURNING GUEST'",
+    "frontend_celebration_banner": "PASS - data-testid='mobile-celebration-banner' shows anniversary celebration",
+    "frontend_quick_chips": "PASS - All 8 quick chips present (towels, housekeeping, ice, transport, dining, spa, kids, other)",
+    "frontend_freeform_input": "PASS - data-testid='mobile-freeform-input' present",
+    "frontend_freeform_submit": "PASS - data-testid='mobile-freeform-submit' present",
+    "frontend_quick_chip_click": "PASS - Clicking ice chip submits request and shows success toast",
+    "frontend_freeform_submit_flow": "PASS - Freeform submission works and shows success toast",
+    "frontend_invalid_token_error": "PASS - Invalid token shows friendly error 'Not quite right' instead of crash"
+  },
+  "regressions_tested": {
+    "health_endpoint": "PASS - /api/health returns healthy",
+    "iter178_auth_sign_in_pill": "PASS - GoogleAuthPill (data-testid='auth-sign-in-btn') visible in top-right",
+    "iter178_auth_me_401": "PASS - GET /api/auth/me returns 401 without auth",
+    "iter178_auth_logout": "PASS - POST /api/auth/logout returns 200 idempotently",
+    "iter177_job_profiles_admin_gate": "PASS - GET /api/job-profiles/list returns 401 without admin token",
+    "iter177_job_profiles_list": "PASS - Returns 21+ profiles with admin token",
+    "iter177_frontend_job_profiles_tab": "PASS - Job Profiles tab visible in People Admin panel",
+    "iter175_my_schedule_endpoint": "PASS - GET /api/my-schedule/employee/{id} returns schedule data",
+    "iter175_frontend_my_schedule_panel": "PASS - MySchedule panel loads"
+  }
+}

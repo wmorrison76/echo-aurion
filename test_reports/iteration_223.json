@@ -1,0 +1,73 @@
+{
+  "summary": "iter223 multi-item benchmark testing complete. All 17 backend tests passed. Frontend Benchmark tab shows mixed samples with complexity pills (MIXED-2/3/4+), item counts, and Fingerprint buttons. Mobile /m/waste regression passed with single ECW header and capture buttons.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_benchmark_iter223.py",
+    "/app/test_reports/pytest/pytest_results_iter223.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_benchmark_iter223.py"
+  ],
+  "success_rate": {
+    "backend": "100% (17/17 tests passed)",
+    "frontend": "100% (all key elements verified)"
+  },
+  "test_credentials": "No auth needed - devAuth=1 bypass used",
+  "seed_data_creation": "11 pre-seeded mixed samples (bs-mix-t2-*, bs-mix-t3-*, bs-mix-t4-*) + 23 legacy single-item samples exist",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter223 multi-item benchmark features fully tested. Backend endpoints: POST /samples with expected_items, POST /compose-mixed, PATCH /samples/{id} with trust_fingerprint, POST /run with multi-item scoring, POST /runs/{id}/trust-all-matched, GET /runs/{id} with multi-item per_sample shape. Frontend: Benchmark tab shows complexity pills, item counts, Fingerprint buttons. Mobile /m/waste has single ECW header with capture buttons. Best accuracy 88% (B grade) achieved.",
+  "tests_executed": {
+    "backend": [
+      "TestMultiItemSamples::test_create_sample_with_expected_items - PASS",
+      "TestMultiItemSamples::test_get_sample_roundtrips_expected_items - PASS",
+      "TestMultiItemSamples::test_cleanup_test_sample - PASS",
+      "TestComposeMixed::test_compose_mixed_valid_urls - PASS",
+      "TestComposeMixed::test_compose_mixed_invalid_url - PASS (400 returned)",
+      "TestComposeMixed::test_compose_mixed_non_image_url - PASS (415 returned)",
+      "TestComposeMixed::test_cleanup_composed_sample - PASS",
+      "TestPatchSampleWithTrustFingerprint::test_patch_sample_with_expected_items - PASS",
+      "TestPatchSampleWithTrustFingerprint::test_patch_sample_with_trust_fingerprint - PASS",
+      "TestMultiItemBenchmarkRun::test_run_with_mixed_samples_returns_multi_item_fields - PASS",
+      "TestMultiItemBenchmarkRun::test_get_run_includes_multi_item_per_sample_shape - PASS",
+      "TestTrustAllMatched::test_trust_all_matched_returns_updates_and_fingerprints - PASS",
+      "TestTrustAllMatched::test_trust_all_matched_on_incomplete_run_returns_409 - PASS",
+      "TestRegressionSingleItemScoring::test_single_item_sample_scores_with_legacy_fields - PASS",
+      "TestRegressionCaptureStill::test_capture_still_works - PASS",
+      "TestByComplexityBreakdown::test_run_has_by_complexity_breakdown - PASS",
+      "TestBenchmarkStatus::test_status_endpoint - PASS"
+    ],
+    "frontend": [
+      "EchoWaste panel opens via Events & Catering > ECW · Waste - PASS",
+      "Benchmark tab shows 35 samples, 24 runs, 88% best accuracy, B grade - PASS",
+      "Mixed samples show MIXED-2/3/4+ complexity pills - PASS",
+      "Mixed samples show item counts (2 items, 3 items, 4 items) - PASS",
+      "Fingerprint button visible - PASS",
+      "F1 score field visible - PASS",
+      "Mobile /m/waste has single ECW header - PASS",
+      "Mobile /m/waste has Video (MOT) and Still capture buttons - PASS"
+    ]
+  },
+  "verified_features": {
+    "POST /api/waste/benchmark/samples with expected_items": "PASS - creates multi-item sample with complexity auto-calculated",
+    "POST /api/waste/benchmark/compose-mixed": "PASS - tiles images, creates multi-item sample, returns 400 for invalid URL, 415 for non-image",
+    "PATCH /api/waste/benchmark/samples/{id} with expected_items": "PASS - updates ground truth",
+    "PATCH /api/waste/benchmark/samples/{id} with trust_fingerprint:true": "PASS - writes fingerprints, returns fingerprints_written count",
+    "POST /api/waste/benchmark/run with multi-item samples": "PASS - returns multi_item:true, f1_avg, cost_accuracy_avg, by_complexity",
+    "POST /api/waste/benchmark/runs/{id}/trust-all-matched": "PASS - returns ok, updates, fingerprints_written",
+    "GET /api/waste/benchmark/runs/{id} multi-item per_sample shape": "PASS - includes per_item, missing_items, extra_items, expected_total_cost, predicted_total_cost",
+    "Regression: single-item samples legacy scoring": "PASS - returns item_match, count_accuracy, portion_accuracy, overall",
+    "Regression: /api/waste/capture/still": "PASS - works for single image ingest",
+    "Regression: mobile /m/waste": "PASS - single ECW header + capture buttons"
+  }
+}

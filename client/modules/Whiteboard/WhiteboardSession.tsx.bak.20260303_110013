@@ -1,0 +1,927 @@
+import React, { useState, useEffect, useCallback } from"react";
+import { CanvasSelectable, CanvasState, DrawingStroke, DrawingTool, PanelEmbed, ParticipantInfo, ShapeElement, StickyNote, TextElement, WhiteboardMessage, WhiteboardToolState, PDFElement, ImageElement, DocumentElement,
+} from"./types";
+import { Presentation, Slide, PresentationExportOptions,
+} from"./types/PresentationTypes";
+import { DrawingCanvas } from"./DrawingCanvas";
+import { WhiteboardToolbar } from"./Toolbar";
+import { EnhancedWhiteboardToolbar } from"./EnhancedToolbar";
+import { WhiteboardMinimap } from"./Minimap";
+import { KeyboardShortcutsModal } from"./KeyboardShortcutsModal";
+import { AutoSaveIndicator } from"./AutoSaveIndicator";
+import { TextPropertiesPanel } from"./TextPropertiesPanel";
+import { PropertiesPanel } from"./PropertiesPanel";
+import { LayersPanel } from"./LayersPanel";
+import { PageTabs } from"./PageTabs";
+import { RulerComponent } from"./RulerComponent";
+import { AlignmentGuidesComponent } from"./AlignmentGuidesComponent";
+import { ResizeTooltip } from"./ResizeTooltip";
+import { ConnectionPointsComponent } from"./ConnectionPointsComponent";
+import { useConnectorRenderer } from"./ConnectorRenderer";
+import { RealTimeCursorsComponent } from"./RealTimeCursorsComponent";
+import { CommentsPanel } from"./CommentsPanel";
+import { PresenceIndicator } from"./PresenceIndicator";
+import type { ObjectComment, CommentReply } from"./types";
+import { ParticipantsPanel } from"./ParticipantsPanel";
+import { Templates } from"./Templates";
+import { SmartConnectors } from"./SmartConnectors";
+import { DashboardDragIntegration } from"./DashboardDragIntegration";
+import { PanelEmbedWidget } from"./PanelEmbed";
+import { PresentationBuilder } from"./PresentationBuilder";
+import { RecordingControls } from"./RecordingControls";
+import { TranslationControls } from"./TranslationControls";
+import { InterviewMode } from"./InterviewMode";
+import { PDFViewerComponent } from"./PDFViewerComponent";
+import { ImageViewerComponent } from"./ImageViewerComponent";
+import { FigmaEmbedComponent } from"./FigmaEmbedComponent";
+import { JiraEmbedComponent } from"./JiraEmbedComponent";
+import { DataSourceEmbedComponent } from"./DataSourceEmbedComponent";
+import { IntegrationsPanel } from"./IntegrationsPanel";
+import { PresenterMode } from"./PresenterMode";
+import { RecordingPlayer } from"./RecordingPlayer";
+import { Phase10RecordingControls } from"./Phase10RecordingControls";
+import { Phase10PresentationControls } from"./Phase10PresentationControls";
+import { PresentationDeck, RecordingSession } from"./types";
+import { Phase13Integration } from"./Phase13Integration";
+import { usePhase13Collaboration } from"./hooks/usePhase13Collaboration";
+import ScreenRecordingManager from"./ScreenRecordingManager";
+import { handleDocumentDrop, createPDFElement, createImageElement,
+} from"./DocumentImportHandler";
+import { exportSessionAsBackup, exportCanvasAsSVG, exportCanvasAsPDF,
+} from"./DocumentExportManager";
+import { storage, storageKeys } from"@/lib/storage";
+import { realtimeManager } from"@/lib/supabase";
+import { v4 as uuidv4 } from"uuid";
+import { cn } from"@/lib/glass";
+import { Download, Save, Presentation as PresentationIcon, Video, FileUp,
+} from"lucide-react";
+import { Button } from"@/components/ui/button"; interface WhiteboardSessionProps { sessionId?: string; userId?: string; userName?: string; userRole?:"viewer" |"editor" |"presenter" |"organizer"; readOnly?: boolean; isPresenter?: boolean; onSessionUpdate?: (session: { id: string; title: string; canvasState: CanvasState; }) => void;
+} const DEFAULT_CANVAS_STATE: CanvasState = { strokes: [],
+    texts: [],
+    shapes: [],
+    stickyNotes: [],
+    panelEmbeds: [],
+    connectors: [],
+    comments: [],
+    documents: [],
+    images: [],
+    pdfs: [],
+    figmaEmbeds: [],
+    jiraEmbeds: [],
+    dataSourceEmbeds: [],
+    googleSheetsEmbeds: [],
+    crmEmbeds: [],
+    viewportX: 0,
+    viewportY: 0,
+    zoomLevel: 1,
+    backgroundColor:"#ffffff",
+    gridSize: 20,
+    showGrid: false,
+    showRulers: false,
+}; const DEFAULT_TOOL_STATE: WhiteboardToolState = { selectedTool:"pen", selectedColor:"#000000", lineWidth: 2, opacity: 1,
+}; const COLORS = ["#3B82F6","#EF4444","#10B981","#F59E0B","#8B5CF6","#EC4899",
+]; /** * Safely persist data to storage without crashing * Returns true if successful, false if failed */
+function persistToStorage<T>( key: string, value: T, context: string ="",
+): boolean { try { const result = storage.set(key, value); if (!result.success) { /* Silent failure for storage issues - don't crash or flood console */ return false; } return true; } catch (error) { /* Silent failure - storage errors should never crash the UI */ return false; }
+} export const WhiteboardSessionComponent: React.FC<WhiteboardSessionProps> = ({ sessionId = uuidv4(), userId ="current-user", userName ="You", userRole ="editor", readOnly = false, isPresenter = false, onSessionUpdate,
+}) => {
+    const canvasRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const [canvasState, setCanvasState] = useState<CanvasState>( () => storage.get<CanvasState>( storageKeys.moduleState(`whiteboard-canvas-${sessionId}`), DEFAULT_CANVAS_STATE, ) || DEFAULT_CANVAS_STATE, );
+  const [toolState, setToolState] = useState<WhiteboardToolState>( () => storage.get<WhiteboardToolState>( storageKeys.moduleState(`whiteboard-tools-${sessionId}`), DEFAULT_TOOL_STATE, ) || DEFAULT_TOOL_STATE, );
+  const [selectedTargets, setSelectedTargets] = useState<CanvasSelectable[]>( [], );
+  const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
+  const [participants, setParticipants] = useState<ParticipantInfo[]>(() => {
+    const current: ParticipantInfo = { userId, userName, userRole, isActive: true, joinedAt: Date.now(), color: COLORS[Math.floor(Math.random() * COLORS.length)], selectedTool:"pen", };
+  return [current]; });
+  const [showGrid, setShowGrid] = useState(false);
+  const [showRulers, setShowRulers] = useState(false);
+  const [snappingEnabled, setSnappingEnabled] = useState(true);
+  const [showParticipants, setShowParticipants] = useState(true);
+  const [showMarketplace, setShowMarketplace] = useState(false);
+  const [showLayers, setShowLayers] = useState(false);
+  const [showProperties, setShowProperties] = useState(true);
+  const [resizeTooltipVisible, setResizeTooltipVisible] = useState(false);
+  const [resizeTooltipData, setResizeTooltipData] = useState({ x: 0, y: 0, width: 0, height: 0, mouseX: 0, mouseY: 0, });
+  const [showConnectionPoints, setShowConnectionPoints] = useState(false);
+  const [hoveredConnectionTargets, setHoveredConnectionTargets] = useState< CanvasSelectable[] >([]);
+  const [showComments, setShowComments] = useState(false);
+  const [hoveredParticipant, setHoveredParticipant] = useState<ParticipantInfo | null>(null); /* Document handling state */
+  const [showDocumentImport, setShowDocumentImport] = useState(false);
+  const fileInputRef = React.useRef<HTMLInputElement>(null); /* Phase 9 Integrations state */
+  const [showIntegrationsPanel, setShowIntegrationsPanel] = useState(false);
+  const [connectedIntegrations, setConnectedIntegrations] = useState<string[]>( () => storage.get<string[]>( storageKeys.moduleState(`whiteboard-integrations-${sessionId}`), [], ) || [], ); /* Phase 10 Presentations & Recording state */
+  const [presentations, setPresentations] = useState<PresentationDeck[]>( () => storage.get<PresentationDeck[]>( storageKeys.moduleState(`whiteboard-presentations-${sessionId}`), [], ) || [], );
+  const [currentPresentation, setCurrentPresentation] = useState<PresentationDeck | null>(null);
+  const [isPresenting, setIsPresenting] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingSession, setRecordingSession] = useState<RecordingSession | null>(null);
+  const [showRecordingPlayer, setShowRecordingPlayer] = useState(false);
+  const [recordingSessions, setRecordingSessions] = useState< RecordingSession[] >( () => storage.get<RecordingSession[]>( storageKeys.moduleState(`whiteboard-recordings-${sessionId}`), [], ) || [], ); /* Phase 13: Real-Time Collaboration */
+  const [showCollaboration, setShowCollaboration] = useState(true);
+  const collaboration = usePhase13Collaboration({ sessionId, userId, userName, userColor: COLORS[Math.floor(Math.random() * COLORS.length)], enabled: showCollaboration, });
+  const handleRemoteChange = useCallback((change: any) => {
+    /* Apply remote changes to canvas state */
+    if (change.type === "update") { setCanvasState((prev) => {
+    /* Update the affected element based on change.elementType */
+    switch (change.elementType) { case"shape": return { ...prev,
+    shapes: prev.shapes.map((s) => s.id === change.elementId ? { ...s, ...change.newValue } : s), }; case"text": return { ...prev,
+    texts: prev.texts.map((t) => t.id === change.elementId ? { ...t, ...change.newValue } : t), }; case"sticky": return { ...prev,
+    stickyNotes: prev.stickyNotes.map((n) => n.id === change.elementId ? { ...n, ...change.newValue } : n), }; case"stroke": return { ...prev,
+    strokes: prev.strokes.map((s) => s.id === change.elementId ? { ...s, ...change.newValue } : s), }; default: return prev; } }); } }, []); /* Connector renderer hook */
+  const { drawConnector } = useConnectorRenderer();
+  /* Mouse move tracking for cursor updates */
+  const cursorUpdateIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      /* Broadcast cursor position periodically (every 100ms to avoid spam) */
+      if (canvasRef.current && !cursorUpdateIntervalRef.current) {
+        const rect = canvasRef.current.getBoundingClientRect();
+        const localX = e.clientX - rect.left;
+        const localY = e.clientY - rect.top;
+        /* Only send if within canvas */
+        if (
+          localX >= 0 &&
+          localX <= rect.width &&
+          localY >= 0 &&
+          localY <= rect.height
+        ) {
+          realtimeManager.sendEvent("cursor-move", {
+            userId,
+            x: localX,
+            y: localY,
+            timestamp: Date.now(),
+          });
+        }
+        cursorUpdateIntervalRef.current = setTimeout(() => {
+          cursorUpdateIntervalRef.current = null;
+        }, 100);
+      }
+    }; window.addEventListener("mousemove", handleMouseMove);
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+  if (cursorUpdateIntervalRef.current) { clearTimeout(cursorUpdateIntervalRef.current); } }; }, [userId]);
+  const [whiteboardMode, setWhiteboardMode] = useState<"drawing" |"presentation" |"interview" >("drawing");
+  const [undoStack, setUndoStack] = useState<CanvasState[]>([]);
+  const [redoStack, setRedoStack] = useState<CanvasState[]>([]);
+  const [history, setHistory] = useState< Array<{ action: string; timestamp: number }> >([]); /* Memory optimization: limit undo/redo/history to prevent unbounded growth */
+  const MAX_UNDO_STACK_SIZE = 50;
+  const MAX_HISTORY_SIZE = 500;
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const [draggedPanel, setDraggedPanel] = useState<string | null>(null);
+  const [resizingPanel, setResizingPanel] = useState<{ id: string; edge: string; } | null>(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0, });
+  const [fullscreenPanel, setFullscreenPanel] = useState<string | null>(null);
+  const [currentLanguage, setCurrentLanguage] = useState("en");
+  const [showShortcutsModal, setShowShortcutsModal] = useState(false);
+  const [autoSaveState, setAutoSaveState] = useState<"idle" |"syncing" |"saved" |"error" >("idle");
+  const [lastSavedTime, setLastSavedTime] = useState<number>(Date.now());
+  const [autoSaveError, setAutoSaveError] = useState<string>(""); /* Multi-page board management */
+  const [pages, setPages] = useState< Array<{ id: string; name: string; canvasState: CanvasState }> >(() => {
+    const stored = storage.get< Array<{ id: string; name: string; canvasState: CanvasState }> >(storageKeys.moduleState(`whiteboard-pages-${sessionId}`), null);
+  if (stored && stored.length > 0) return stored;
+  /* Create default page if none exist (use DEFAULT_CANVAS_STATE, not canvasState which is not yet defined) */
+  return [ { id: uuidv4(), name:"Page 1", canvasState: DEFAULT_CANVAS_STATE, }, ]; });
+  const [currentPageId, setCurrentPageId] = useState<string>( pages[0]?.id || uuidv4(), );
+  /* Track tool state in ref for persistence handlers */
+  const toolStateRef = React.useRef(toolState);
+  React.useEffect(() => {
+    toolStateRef.current = toolState; }, [toolState]);
+  /* Auto-save disabled: persistence happens via explicit page handlers */ useEffect(() => {
+    const el = canvasRef.current;
+  if (!el) return;
+  const update = () => {
+    const rect = el.getBoundingClientRect(); setViewportSize({ width: rect.width, height: rect.height }); }; update();
+  const ro = new ResizeObserver(() => update()); ro.observe(el);
+  return () => ro.disconnect(); }, []); // Handle drag and drop for documents useEffect(() => {
+    const canvas = canvasRef.current;
+  if (!canvas) return;
+  const handleDragOver = (e: DragEvent) => {
+    e.preventDefault(); canvas.style.opacity ="0.8"; };
+  const handleDragLeave = () => {
+    canvas.style.opacity ="1"; };
+  const handleDrop = async (e: DragEvent) => {
+    e.preventDefault(); canvas.style.opacity ="1";
+  const { pdfs, images } = await handleDocumentDrop( e, canvasRef, (pdf) => {
+    setCanvasState((prev) => ({ ...prev, pdfs: [...(prev.pdfs || []), pdf], })); realtimeManager.sendEvent("pdf", { userId, pdf, timestamp: Date.now(), }); }, (image) => {
+    setCanvasState((prev) => ({ ...prev, images: [...(prev.images || []), image], })); realtimeManager.sendEvent("image", { userId, image, timestamp: Date.now(), }); }, userId, );
+  if (pdfs.length > 0 || images.length > 0) { // Show feedback console.log(`Imported ${pdfs.length} PDFs and ${images.length} images`); } };
+  canvas.;
+  canvas.addEventListener("dragover", handleDragOver);
+  canvas.addEventListener("dragleave", handleDragLeave);
+  canvas.addEventListener("drop", handleDrop);
+  
+  return () => {
+    canvas.removeEventListener("dragover", handleDragOver);
+    canvas.;
+    canvas.removeEventListener("dragleave", handleDragLeave);
+    canvas.;
+    canvas.removeEventListener("drop", handleDrop); }; }, [userId]);
+  /* Track mouse movement to show resize tooltip */ useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+    if (selectedTargets.length === 0) { setResizeTooltipVisible(false); return; }
+      const isMouseDown = e.buttons === 1; /* Left button pressed */ if (!isMouseDown) { setResizeTooltipVisible(false); return; } /* Calculate bounds of selected objects using ref */
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  for (const target of selectedTargets) { if (target.kind === "shape") { const shape = canvasStateRef.current.shapes.find( (s) => s.id === target.id, );
+  if (shape) { minX = Math.min(minX, shape.x); maxX = Math.max(maxX, shape.x + shape.width); minY = Math.min(minY, shape.y); maxY = Math.max(maxY, shape.y + shape.height); } } else if (target.kind === "text") { const text = canvasStateRef.current.texts.find( (t) => t.id === target.id, );
+  if (text) { const width = Math.max( 12, text.text.length * (text.fontSize * 0.6), ); minX = Math.min(minX, text.x); maxX = Math.max(maxX, text.x + width); minY = Math.min(minY, text.y); maxY = Math.max(maxY, text.y + text.fontSize * 1.2); } } }
+  if (minX !== Infinity) { setResizeTooltipVisible(true); setResizeTooltipData({ x: minX,
+    y: minY,
+    width: Math.max(1, maxX - minX),
+    height: Math.max(1, maxY - minY),
+    mouseX: e.clientX,
+    mouseY: e.clientY, }); } }; window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove); }, [selectedTargets]); // Subscribe to real-time events useEffect(() => {
+    const unsubscribeStroke = realtimeManager.subscribe( sessionId,"stroke", (stroke: DrawingStroke) => {
+    if (stroke.userId === userId) return; setCanvasState((prev) => {
+    if (prev.strokes.some((s) => s.id === stroke.id)) return prev;
+  return { ...prev, strokes: [...prev.strokes, stroke], }; }); }, );
+  const unsubscribeShape = realtimeManager.subscribe( sessionId,"shape", (shape: ShapeElement) => {
+    if (shape.userId === userId) return; setCanvasState((prev) => {
+    const idx = prev.shapes.findIndex((s) => s.id === shape.id);
+  if (idx === -1) { return { ...prev, shapes: [...prev.shapes, shape] }; } const existing = prev.shapes[idx];
+  if ((shape.timestamp ?? 0) < (existing?.timestamp ?? 0)) return prev;
+  const next = prev.shapes.slice(); next[idx] = shape;
+  return { ...prev, shapes: next }; }); }, );
+  const unsubscribeText = realtimeManager.subscribe( sessionId,"text", (text: TextElement) => {
+    if (text.userId === userId) return; setCanvasState((prev) => {
+    const idx = prev.texts.findIndex((t) => t.id === text.id);
+  if (idx === -1) { return { ...prev, texts: [...prev.texts, text] }; } const existing = prev.texts[idx];
+  if ((text.timestamp ?? 0) < (existing?.timestamp ?? 0)) return prev;
+  const next = prev.texts.slice(); next[idx] = text;
+  return { ...prev, texts: next }; }); }, );
+  const unsubscribeSticky = realtimeManager.subscribe( sessionId,"sticky", (note: StickyNote) => {
+    if (note.userId === userId) return; setCanvasState((prev) => {
+    const idx = prev.stickyNotes.findIndex((n) => n.id === note.id);
+  if (idx === -1) { return { ...prev, stickyNotes: [...prev.stickyNotes, note] }; } const existing = prev.stickyNotes[idx];
+  if ((note.timestamp ?? 0) < (existing?.timestamp ?? 0)) return prev;
+  const next = prev.stickyNotes.slice(); next[idx] = note;
+  return { ...prev, stickyNotes: next }; }); }, );
+  const unsubscribeEmbed = realtimeManager.subscribe( sessionId,"embed", (embed: PanelEmbed) => {
+    if (embed.userId === userId) return; setCanvasState((prev) => {
+    const idx = prev.panelEmbeds.findIndex((e) => e.id === embed.id);
+  if (idx === -1) { return { ...prev, panelEmbeds: [...prev.panelEmbeds, embed] }; } const existing = prev.panelEmbeds[idx];
+  if ((embed.timestamp ?? 0) < (existing?.timestamp ?? 0)) return prev;
+  const next = prev.panelEmbeds.slice(); next[idx] = embed;
+  return { ...prev, panelEmbeds: next }; }); }, );
+  const unsubscribeDelete = realtimeManager.subscribe( sessionId,"delete", (payload: { userId?: string; targets?: CanvasSelectable[] }) => {
+    if (payload?.userId === userId) return;
+  const targets = Array.isArray(payload?.targets) ? payload.targets : [];
+  if (targets.length === 0) return; setCanvasState((prev) => {
+    const toDelete = new Set(targets.map((t) => `${t.kind}:${t.id}`));
+  return { ...prev,
+    shapes: prev.shapes.filter((s) => !toDelete.has(`shape:${s.id}`)),
+    stickyNotes: prev.stickyNotes.filter( (n) => !toDelete.has(`sticky:${n.id}`), ),
+    texts: prev.texts.filter((t) => !toDelete.has(`text:${t.id}`)),
+    panelEmbeds: prev.panelEmbeds.filter( (e) => !toDelete.has(`embed:${e.id}`), ), }; }); setSelectedTargets((prev) => prev.filter( (t) => !targets.some((d) => d.kind === t.kind && d.id === t.id), ), ); }, );
+  const unsubscribeCursor = realtimeManager.subscribe( sessionId,"cursor", (payload: { userId: string; x: number; y: number }) => {
+    setParticipants((prev) => prev.map((p) => p.userId === payload.userId ? { ...p, cursorX: payload.x, cursorY: payload.y, } : p, ), ); }, );
+  return () => {
+    unsubscribeStroke(); unsubscribeShape(); unsubscribeText(); unsubscribeSticky(); unsubscribeEmbed(); unsubscribeDelete(); unsubscribeCursor(); }; }, [sessionId, userId]);
+  /* Listen for panel embed requests (when panels are dropped on whiteboard icon) */
+  useEffect(() => {
+    const handlePanelEmbedRequested = (e: Event) => {
+    const detail = (e as CustomEvent).detail;
+  if (!detail || !detail.panelId) return;
+  const panelEmbed: PanelEmbed = { id: detail.id || `embed-${uuidv4()}`,
+    panelId: detail.panelId,
+    x: detail.x || 100,
+    y: detail.y || 100,
+    width: detail.width || 600,
+    height: detail.height || 400,
+    zoomLevel: detail.zoomLevel || 1,
+    drillDownLevel: detail.drillDownLevel || 1,
+    timestamp: Date.now(),
+    userId: userId, }; handlePanelDropped(panelEmbed); }; window.addEventListener("panel-embed-requested", handlePanelEmbedRequested);
+  return () => {
+    window.removeEventListener("panel-embed-requested", handlePanelEmbedRequested, ); }; }, [userId]);
+    type CanvasUpdateOptions = { pushUndo?: boolean; undoBase?: CanvasState; broadcast?: Array<{ type:"shape" |"text" |"sticky" |"embed" |"delete"; data: any; }> | null; };
+
+    /* Track current canvas state in ref to avoid callback recreation on every draw */
+    const canvasStateRef = React.useRef(canvasState); React.useEffect(() => {
+    canvasStateRef.current = canvasState; }, [canvasState]);
+  const handleCanvasStateChange = useCallback( (newState: CanvasState, options?: CanvasUpdateOptions) => {
+    const pushUndo = options?.pushUndo !== false;
+  if (pushUndo) { const base = options?.undoBase ?? canvasStateRef.current; setUndoStack((prev) => {
+    const updated = [...prev, base];
+  if (updated.length > MAX_UNDO_STACK_SIZE) { updated.shift(); } return updated; }); setRedoStack([]); } setCanvasState(newState);
+  if (options?.broadcast?.length) { for (const evt of options.broadcast) { realtimeManager.broadcastEvent(sessionId, { type: evt.type, userId, sessionId,
+    timestamp: Date.now(),
+    data: evt.data, }); } } if (onSessionUpdate) { onSessionUpdate({ id: sessionId,
+    title: `Session ${sessionId.slice(0, 8)}`,
+    canvasState: newState, }); } }, [onSessionUpdate, sessionId, userId], );
+  const handleToolChange = (tool: DrawingTool) => {
+    setToolState((prev) => ({ ...prev, selectedTool: tool })); realtimeManager.sendEvent("tool-change", { userId, tool, timestamp: Date.now(), }); };
+  const handleColorChange = (color: string) => {
+    setToolState((prev) => ({ ...prev, selectedColor: color })); };
+  const handleLineWidthChange = (width: number) => {
+    setToolState((prev) => ({ ...prev, lineWidth: width })); };
+  const handleOpacityChange = (opacity: number) => {
+    setToolState((prev) => ({ ...prev, opacity })); };
+  const handleUndo = () => {
+    if (undoStack.length === 0) return;
+  const newState = undoStack[undoStack.length - 1]; setRedoStack((prev) => {
+    const updated = [...prev, canvasState]; /* Limit redo stack to prevent memory leak */ if (updated.length > MAX_UNDO_STACK_SIZE) { updated.shift(); }
+    return updated; }); setUndoStack((prev) => prev.slice(0, -1)); setCanvasState(newState); setHistory((prev) => {
+    const updated = [...prev, { action:"undo", timestamp: Date.now() }]; /* Limit history to prevent memory leak */ if (updated.length > MAX_HISTORY_SIZE) { updated.shift(); } return updated; }); setHistoryIndex((prev) => Math.max(-1, prev - 1)); };
+  const handleRedo = () => {
+    if (redoStack.length === 0) return;
+  const newState = redoStack[redoStack.length - 1]; setUndoStack((prev) => {
+    const updated = [...prev, canvasState]; /* Limit undo stack to prevent memory leak */ if (updated.length > MAX_UNDO_STACK_SIZE) { updated.shift(); }
+    return updated; }); setRedoStack((prev) => prev.slice(0, -1)); setCanvasState(newState); setHistory((prev) => {
+    const updated = [...prev, { action:"redo", timestamp: Date.now() }]; /* Limit history to prevent memory leak */ if (updated.length > MAX_HISTORY_SIZE) { updated.shift(); } return updated; }); setHistoryIndex((prev) => prev + 1); };
+  const handleShareDesktop = () => {
+    realtimeManager.sendEvent("share-desktop", { userId, userName, timestamp: Date.now(), action:"screen-share-requested", }); };
+  const handleShareWithGroup = () => {
+    window.dispatchEvent( new CustomEvent("whiteboard-share-group", { detail: { sessionId, userId, userName, canvasState, }, }), ); };
+  const handleApplyTemplate = (templateId: string) => {
+    const templates: Record<string, Partial<CanvasState>> = { wireframe: { shapes: [ { id:"wireframe-1",
+    type:"rectangle",
+    x: 50,
+    y: 50,
+    width: 300,
+    height: 200,
+    strokeColor:"#000000",
+    fillColor:"transparent",
+    lineWidth: 2, }, ], },
+    flowchart: { shapes: [], },
+    mindmap: { shapes: [], },
+    whiteboard: { strokes: [],
+    shapes: [], }, };
+  const template = templates[templateId];
+  if (template) { setUndoStack((prev) => {
+    const updated = [...prev, canvasState]; /* Limit undo stack to prevent memory leak */ if (updated.length > MAX_UNDO_STACK_SIZE) { updated.shift(); } return updated; }); setCanvasState((prev) => ({ ...prev, ...template })); setHistory((prev) => {
+    const updated = [ ...prev, { action: `applied-${templateId}-template`, timestamp: Date.now() }, ]; /* Limit history to prevent memory leak */ if (updated.length > MAX_HISTORY_SIZE) { updated.shift(); } return updated; }); } };
+  const handleExport = async (format:"png" |"pdf" |"svg" |"json") => {
+    try { const timestamp = Date.now();
+  const fileName = `whiteboard-${timestamp}`; switch (format) { case"json": { const json = exportSessionAsBackup( canvasState,"Whiteboard Session", `${fileName}.json`, ); break; } case"svg": { exportCanvasAsSVG(canvasState, 1920, 1080, `${fileName}.svg`); break; } case"pdf": { await exportCanvasAsPDF(canvasState, 1920, 1080, `${fileName}.pdf`, { format:"pdf",
+    quality:"high",
+    includeDocuments: true, }); break; } case"png": { if (canvasRef.current) { const canvas = canvasRef.current.querySelector("canvas", ) as HTMLCanvasElement;
+  if (canvas) { const link = document.createElement("a"); link.href = canvas.toDataURL("image/png"); link.download = `${fileName}.png`; link.click(); } } break; } } } catch (error) { console.error("Export failed:", error); } };
+  const handleDocumentImport = async () => {
+    fileInputRef.current?.click(); };
+  const handleFileInputChange = async ( e: React.ChangeEvent<HTMLInputElement>, ) => {
+    const files = e.target.files;
+  if (!files) return;
+  const { pdfs, images } = await handleDocumentDrop( { dataTransfer: { files } as any, preventDefault: () => {}, clientX: 0, clientY: 0, } as any, canvasRef, (pdf) => {
+    setCanvasState((prev) => ({ ...prev, pdfs: [...(prev.pdfs || []), pdf], })); }, (image) => {
+    setCanvasState((prev) => ({ ...prev, images: [...(prev.images || []), image], })); }, userId, ); /* Reset input */ if (fileInputRef.current) { fileInputRef.current.value =""; } };
+  const handleLockToggle = (target: CanvasSelectable) => {
+    const nextState = { ...canvasState };
+  if (target.kind === "shape") { nextState.shapes = canvasState.shapes.map((s) => {
+    if (s.id === target.id) { return { ...s, isLocked: !s.isLocked }; } return s; }); } else if (target.kind === "text") { nextState.texts = canvasState.texts.map((t) => {
+    if (t.id === target.id) { return { ...t, isLocked: !t.isLocked }; } return t; }); } else if (target.kind === "sticky") { nextState.stickyNotes = canvasState.stickyNotes.map((n) => {
+    if (n.id === target.id) { return { ...n, isLocked: !n.isLocked }; } return n; }); } handleCanvasStateChange(nextState, { pushUndo: true, undoBase: canvasState, }); };
+  const handleConnectorCreate = ( connector: (typeof canvasState.connectors)[0], ) => {
+    const nextState = { ...canvasState, connectors: [...canvasState.connectors, connector], }; handleCanvasStateChange(nextState, { pushUndo: true, undoBase: canvasState, broadcast: [{ type:"connector", data: connector }], }); };
+  const handleCommentAdd = (comment: ObjectComment) => {
+    const nextState = { ...canvasState, comments: [...canvasState.comments, comment], }; handleCanvasStateChange(nextState, { pushUndo: false, broadcast: [{ type:"comment", data: comment }], }); };
+  const handleCommentReply = (commentId: string, reply: CommentReply) => {
+    const nextState = { ...canvasState, comments: canvasState.comments.map((c) => {
+    if (c.id === commentId) { return { ...c, replies: [...(c.replies || []), reply], }; } return c; }), }; handleCanvasStateChange(nextState, { pushUndo: false, }); };
+  const handleCommentResolve = (commentId: string, isResolved: boolean) => {
+    const nextState = { ...canvasState, comments: canvasState.comments.map((c) => {
+    if (c.id === commentId) { return { ...c, isResolved }; } return c; }), }; handleCanvasStateChange(nextState, { pushUndo: false, }); };
+  const handleCommentDelete = (commentId: string) => {
+    const nextState = { ...canvasState, comments: canvasState.comments.filter((c) => c.id !== commentId), }; handleCanvasStateChange(nextState, { pushUndo: false, }); };
+  const handleAlignObjects = ( alignment:"left" |"right" |"center" |"top" |"bottom" |"middle", ) => {
+    if (readOnly) return;
+  if (selectedTargets.length < 2) return;
+  const boundsFor = (target: CanvasSelectable) => {
+    if (target.kind === "shape") { const s = canvasState.shapes.find((x) => x.id === target.id);
+  if (!s) return null;
+  return { x: s.x, y: s.y, width: s.width, height: s.height }; } if (target.kind === "sticky") { const n = canvasState.stickyNotes.find((x) => x.id === target.id);
+  if (!n) return null;
+  return { x: n.x, y: n.y, width: n.width, height: n.height }; } const t = canvasState.texts.find((x) => x.id === target.id);
+  if (!t) return null;
+  const width = Math.max(12, t.text.length * (t.fontSize * 0.6));
+  return { x: t.x, y: t.y, width, height: t.fontSize * 1.2 }; };
+  const items = selectedTargets .map((t) => ({ target: t, b: boundsFor(t) })) .filter( ( x, ): x is { target: CanvasSelectable; b: { x: number; y: number; width: number; height: number }; } => !!x.b, );
+  if (items.length < 2) return;
+  const minX = Math.min(...items.map((i) => i.b.x));
+  const maxX = Math.max(...items.map((i) => i.b.x + i.b.width));
+  const minY = Math.min(...items.map((i) => i.b.y));
+  const maxY = Math.max(...items.map((i) => i.b.y + i.b.height));
+  const centerX = (minX + maxX) / 2;
+  const centerY = (minY + maxY) / 2;
+  const updates: Array<{ type:"shape" |"text" |"sticky"; data: any }> = [];
+  const nextShapes = canvasState.shapes.map((s) => {
+    const sel = items.find( (i) => i.target.kind === "shape" && i.target.id === s.id, );
+  if (!sel) return s;
+  const b = sel.b;
+  let x = s.x;
+  let y = s.y;
+  if (alignment === "left") x = minX;
+  if (alignment === "right") x = maxX - b.width;
+  if (alignment === "center") x = centerX - b.width / 2;
+  if (alignment === "top") y = minY;
+  if (alignment === "bottom") y = maxY - b.height;
+  if (alignment === "middle") y = centerY - b.height / 2;
+  const next = { ...s, x, y, userId, timestamp: Date.now() }; updates.push({ type:"shape", data: next });
+  return next; });
+  const nextSticky = canvasState.stickyNotes.map((n) => {
+    const sel = items.find( (i) => i.target.kind === "sticky" && i.target.id === n.id, );
+  if (!sel) return n;
+  const b = sel.b;
+  let x = n.x;
+  let y = n.y;
+  if (alignment === "left") x = minX;
+  if (alignment === "right") x = maxX - b.width;
+  if (alignment === "center") x = centerX - b.width / 2;
+  if (alignment === "top") y = minY;
+  if (alignment === "bottom") y = maxY - b.height;
+  if (alignment === "middle") y = centerY - b.height / 2;
+  const next = { ...n, x, y, userId, timestamp: Date.now() }; updates.push({ type:"sticky", data: next });
+  return next; });
+  const nextTexts = canvasState.texts.map((t) => {
+    const sel = items.find( (i) => i.target.kind === "text" && i.target.id === t.id, );
+  if (!sel) return t;
+  const b = sel.b;
+  let x = t.x;
+  let y = t.y;
+  if (alignment === "left") x = minX;
+  if (alignment === "right") x = maxX - b.width;
+  if (alignment === "center") x = centerX - b.width / 2;
+  if (alignment === "top") y = minY;
+  if (alignment === "bottom") y = maxY - b.height;
+  if (alignment === "middle") y = centerY - b.height / 2;
+  const next = { ...t, x, y, userId, timestamp: Date.now() }; updates.push({ type:"text", data: next });
+  return next; }); handleCanvasStateChange( { ...canvasState, shapes: nextShapes, stickyNotes: nextSticky, texts: nextTexts, }, { pushUndo: true, undoBase: canvasState, broadcast: updates }, ); };
+  type Bounds = { x: number; y: number; width: number; height: number };
+  const unionBounds = (a: Bounds | null, b: Bounds | null): Bounds | null => { if (!a) return b;
+  if (!b) return a;
+  const minX = Math.min(a.x, b.x);
+  const minY = Math.min(a.y, b.y);
+  const maxX = Math.max(a.x + a.width, b.x + b.width);
+  const maxY = Math.max(a.y + a.height, b.y + b.height);
+  return { x: minX, y: minY, width: maxX - minX, height: maxY - minY }; };
+  const getTextBoundsApprox = (t: TextElement): Bounds => { const width = Math.max(12, (t.text?.length ?? 0) * (t.fontSize * 0.6));
+  return { x: t.x, y: t.y, width, height: t.fontSize * 1.2 }; };
+  const getStrokeBounds = (s: DrawingStroke): Bounds | null => { if (!Array.isArray(s.points) || s.points.length === 0) return null;
+  let minX = s.points[0]!.x;
+  let maxX = s.points[0]!.x;
+  let minY = s.points[0]!.y;
+  let maxY = s.points[0]!.y;
+  for (const p of s.points) { minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x); minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y); }
+      const pad = Math.max(1, (s.lineWidth ?? 2) / 2);
+  return { x: minX - pad, y: minY - pad, width: maxX - minX + pad * 2, height: maxY - minY + pad * 2, }; };
+  const getSelectableBounds = ( target: CanvasSelectable, state: CanvasState, ): Bounds | null => { if (target.kind === "shape") { const s = state.shapes.find((x) => x.id === target.id);
+  return s ? { x: s.x, y: s.y, width: s.width, height: s.height } : null; } if (target.kind === "sticky") { const n = state.stickyNotes.find((x) => x.id === target.id);
+  return n ? { x: n.x, y: n.y, width: n.width, height: n.height } : null; } if (target.kind === "embed") { const e = state.panelEmbeds.find((x) => x.id === target.id);
+  return e ? { x: e.x, y: e.y, width: e.width, height: e.height } : null; } const t = state.texts.find((x) => x.id === target.id);
+  return t ? getTextBoundsApprox(t) : null; };
+  const getAllContentBounds = (state: CanvasState): Bounds | null => { let b: Bounds | null = null;
+  for (const s of state.shapes) { b = unionBounds(b, { x: s.x,
+    y: s.y,
+    width: s.width,
+    height: s.height }); } for (const n of state.stickyNotes) { b = unionBounds(b, { x: n.x,
+    y: n.y,
+    width: n.width,
+    height: n.height }); } for (const t of state.texts) { b = unionBounds(b, getTextBoundsApprox(t)); } for (const e of state.panelEmbeds) { b = unionBounds(b, { x: e.x,
+    y: e.y,
+    width: e.width,
+    height: e.height }); } for (const s of state.strokes) { b = unionBounds(b, getStrokeBounds(s)); } return b; };
+  const zoomToBounds = useCallback( (bounds: Bounds) => {
+    const padding = 48;
+  const viewW = viewportSize.width;
+  const viewH = viewportSize.height;
+  if (viewW <= 0 || viewH <= 0) return;
+  const safeW = Math.max(1, bounds.width);
+  const safeH = Math.max(1, bounds.height);
+  const scaleX = (viewW - padding * 2) / safeW;
+  const scaleY = (viewH - padding * 2) / safeH;
+  const zoom = Math.max(0.1, Math.min(5, Math.min(scaleX, scaleY)));
+  const centerX = bounds.x + bounds.width / 2;
+  const centerY = bounds.y + bounds.height / 2;
+  const viewportX = viewW / 2 - centerX * zoom;
+  const viewportY = viewH / 2 - centerY * zoom; handleCanvasStateChange( { ...canvasState, zoomLevel: zoom, viewportX, viewportY, }, { pushUndo: false }, ); }, [ canvasState, handleCanvasStateChange, viewportSize.height, viewportSize.width, ], );
+  const handleZoomToFit = useCallback(() => {
+    const b = getAllContentBounds(canvasState);
+  if (!b) return; zoomToBounds(b); }, [canvasState, zoomToBounds]);
+  const handleZoomToSelection = useCallback(() => {
+    if (selectedTargets.length === 0) return;
+  let b: Bounds | null = null;
+  for (const t of selectedTargets) { b = unionBounds(b, getSelectableBounds(t, canvasState)); } if (!b) return; zoomToBounds(b); }, [canvasState, selectedTargets, zoomToBounds]);
+  const getGroupIdForTarget = useCallback( (target: CanvasSelectable,
+    state: CanvasState): string | null => { if (target.kind === "shape") { return state.shapes.find((s) => s.id === target.id)?.groupId ?? null; }
+    if (target.kind === "sticky") { return ( state.stickyNotes.find((n) => n.id === target.id)?.groupId ?? null ); }
+    if (target.kind === "embed") { return ( state.panelEmbeds.find((e) => e.id === target.id)?.groupId ?? null ); }
+    return state.texts.find((t) => t.id === target.id)?.groupId ?? null; }, [], );
+  const getTargetsForGroupId = useCallback( (groupId: string, state: CanvasState): CanvasSelectable[] => { const targets: CanvasSelectable[] = [];
+  for (const s of state.shapes) { if (s.groupId === groupId) targets.push({ kind:"shape",
+    id: s.id }); } for (const n of state.stickyNotes) { if (n.groupId === groupId) targets.push({ kind:"sticky",
+    id: n.id }); } for (const t of state.texts) { if (t.groupId === groupId) targets.push({ kind:"text",
+    id: t.id }); } for (const e of state.panelEmbeds) { if (e.groupId === groupId) targets.push({ kind:"embed",
+    id: e.id }); } return targets; }, [], );
+  const handleGroupSelection = useCallback(() => {
+    if (readOnly || userRole === "viewer") return;
+  if (selectedTargets.length < 2) return;
+  const selectedSet = new Set( selectedTargets.map((t) => `${t.kind}:${t.id}`), );
+  const groupId = uuidv4();
+  const now = Date.now();
+  const updates: Array<{ type:"shape" |"text" |"sticky" |"embed"; data: any; }> = [];
+  const nextShapes = canvasState.shapes.map((s) => {
+    if (!selectedSet.has(`shape:${s.id}`)) return s;
+  const next = { ...s, groupId, userId, timestamp: now }; updates.push({ type:"shape", data: next });
+  return next; });
+  const nextSticky = canvasState.stickyNotes.map((n) => {
+    if (!selectedSet.has(`sticky:${n.id}`)) return n;
+  const next = { ...n, groupId, userId, timestamp: now }; updates.push({ type:"sticky", data: next });
+  return next; });
+  const nextTexts = canvasState.texts.map((t) => {
+    if (!selectedSet.has(`text:${t.id}`)) return t;
+  const next = { ...t, groupId, userId, timestamp: now }; updates.push({ type:"text", data: next });
+  return next; });
+  const nextEmbeds = canvasState.panelEmbeds.map((e) => {
+    if (!selectedSet.has(`embed:${e.id}`)) return e;
+  const next = { ...e, groupId, userId, timestamp: now }; updates.push({ type:"embed", data: next });
+  return next; }); handleCanvasStateChange( { ...canvasState,
+    shapes: nextShapes,
+    stickyNotes: nextSticky,
+    texts: nextTexts,
+    panelEmbeds: nextEmbeds, }, { pushUndo: true,
+    undoBase: canvasState,
+    broadcast: updates }, ); }, [ canvasState, handleCanvasStateChange, readOnly, selectedTargets, userId, userRole, ]);
+  const handleUngroupSelection = useCallback(() => {
+    if (readOnly || userRole === "viewer") return;
+  if (selectedTargets.length === 0) return;
+  const groupIds = new Set<string>();
+  for (const t of selectedTargets) { const gid = getGroupIdForTarget(t, canvasState);
+  if (gid) groupIds.add(gid); } if (groupIds.size === 0) return;
+  const now = Date.now();
+  const updates: Array<{ type:"shape" |"text" |"sticky" |"embed"; data: any; }> = [];
+  const nextShapes = canvasState.shapes.map((s) => {
+    if (!s.groupId || !groupIds.has(s.groupId)) return s;
+  const next = { ...s, groupId: undefined, userId, timestamp: now }; updates.push({ type:"shape", data: next });
+  return next; });
+  const nextSticky = canvasState.stickyNotes.map((n) => {
+    if (!n.groupId || !groupIds.has(n.groupId)) return n;
+  const next = { ...n, groupId: undefined, userId, timestamp: now }; updates.push({ type:"sticky", data: next });
+  return next; });
+  const nextTexts = canvasState.texts.map((t) => {
+    if (!t.groupId || !groupIds.has(t.groupId)) return t;
+  const next = { ...t, groupId: undefined, userId, timestamp: now }; updates.push({ type:"text", data: next });
+  return next; });
+  const nextEmbeds = canvasState.panelEmbeds.map((e) => {
+    if (!e.groupId || !groupIds.has(e.groupId)) return e;
+  const next = { ...e, groupId: undefined, userId, timestamp: now }; updates.push({ type:"embed", data: next });
+  return next; }); handleCanvasStateChange( { ...canvasState, shapes: nextShapes, stickyNotes: nextSticky, texts: nextTexts, panelEmbeds: nextEmbeds, }, { pushUndo: true, undoBase: canvasState, broadcast: updates }, );
+  if (selectedTargets.length === 1) { const gid = getGroupIdForTarget(selectedTargets[0]!, canvasState);
+  if (gid) { setSelectedTargets(getTargetsForGroupId(gid, canvasState)); } } }, [ canvasState, getGroupIdForTarget, getTargetsForGroupId, handleCanvasStateChange, readOnly, selectedTargets, userId, userRole, ]);
+  const applyDistribute = useCallback( (axis:"x" |"y") => {
+    if (readOnly || userRole === "viewer") return;
+  if (selectedTargets.length < 3) return;
+  const items = selectedTargets .map((t) => ({ t, b: getSelectableBounds(t, canvasState) })) .filter((x): x is { t: CanvasSelectable; b: Bounds } => x.b != null);
+  if (items.length < 3) return;
+  const sorted = items .slice() .sort((a, b) => (axis === "x" ? a.b.x - b.b.x : a.b.y - b.b.y));
+  const startEdge = axis === "x" ? sorted[0]!.b.x : sorted[0]!.b.y;
+  const endEdge = axis === "x" ? Math.max(...sorted.map((i) => i.b.x + i.b.width)) : Math.max(...sorted.map((i) => i.b.y + i.b.height));
+  const totalSize = axis === "x" ? sorted.reduce((sum, i) => sum + i.b.width, 0) : sorted.reduce((sum, i) => sum + i.b.height, 0);
+  const span = endEdge - startEdge;
+  const gap = Math.max(0, (span - totalSize) / (sorted.length - 1));
+  const now = Date.now();
+  const updates: Array<{ type:"shape" |"text" |"sticky" |"embed"; data: any; }> = [];
+  const nextByKey = new Map<string, { x: number; y: number }>();
+  let cursor = startEdge;
+  for (const { t, b } of sorted) { const x = axis === "x" ? cursor : b.x;
+  const y = axis === "y" ? cursor : b.y; nextByKey.set(`${t.kind}:${t.id}`, { x, y }); cursor += (axis === "x" ? b.width : b.height) + gap; }
+      const nextShapes = canvasState.shapes.map((s) => {
+    const pos = nextByKey.get(`shape:${s.id}`);
+  if (!pos) return s;
+  const next = { ...s, x: pos.x, y: pos.y, userId, timestamp: now }; updates.push({ type:"shape", data: next });
+  return next; });
+  const nextSticky = canvasState.stickyNotes.map((n) => {
+    const pos = nextByKey.get(`sticky:${n.id}`);
+  if (!pos) return n;
+  const next = { ...n, x: pos.x, y: pos.y, userId, timestamp: now }; updates.push({ type:"sticky", data: next });
+  return next; });
+  const nextTexts = canvasState.texts.map((t) => {
+    const pos = nextByKey.get(`text:${t.id}`);
+  if (!pos) return t;
+  const next = { ...t, x: pos.x, y: pos.y, userId, timestamp: now }; updates.push({ type:"text", data: next });
+  return next; });
+  const nextEmbeds = canvasState.panelEmbeds.map((e) => {
+    const pos = nextByKey.get(`embed:${e.id}`);
+  if (!pos) return e;
+  const next = { ...e, x: pos.x, y: pos.y, userId, timestamp: now }; updates.push({ type:"embed", data: next });
+  return next; }); handleCanvasStateChange( { ...canvasState,
+    shapes: nextShapes,
+    stickyNotes: nextSticky,
+    texts: nextTexts,
+    panelEmbeds: nextEmbeds, }, { pushUndo: true,
+    undoBase: canvasState,
+    broadcast: updates }, ); }, [ canvasState, getSelectableBounds, handleCanvasStateChange, readOnly, selectedTargets, userId, userRole, ], );
+  const handleDistributeHorizontal = useCallback( () => applyDistribute("x"), [applyDistribute], );
+  const handleDistributeVertical = useCallback( () => applyDistribute("y"), [applyDistribute], );
+  const isEditableTarget = useCallback( (target: EventTarget | null): boolean => { const el = target as HTMLElement | null;
+  if (!el) return false;
+  const tag = el.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
+  const anyEl = el as any;
+  if (anyEl.isContentEditable) return true;
+  return !!el.closest?.("[contenteditable='true']"); }, [], );
+  const handleDeleteSelection = useCallback(() => {
+    if (readOnly) return;
+  if (userRole === "viewer") return;
+  if (selectedTargets.length === 0) return;
+  const targets = selectedTargets;
+  const toDelete = new Set(targets.map((t) => `${t.kind}:${t.id}`));
+  const nextState: CanvasState = { ...canvasState,
+    shapes: canvasState.shapes.filter((s) => !toDelete.has(`shape:${s.id}`)),
+    stickyNotes: canvasState.stickyNotes.filter( (n) => !toDelete.has(`sticky:${n.id}`), ),
+    texts: canvasState.texts.filter((t) => !toDelete.has(`text:${t.id}`)),
+    panelEmbeds: canvasState.panelEmbeds.filter( (e) => !toDelete.has(`embed:${e.id}`), ), }; setSelectedTargets([]); handleCanvasStateChange(nextState, { pushUndo: true,
+    undoBase: canvasState,
+    broadcast: [{ type:"delete",
+    data: { targets } }], }); }, [ canvasState, handleCanvasStateChange, readOnly, selectedTargets, userRole, ]); /* Text formatting handlers */
+  const updateSelectedTextFormatting = useCallback( (updates: Partial<TextElement>) => {
+    if (readOnly || userRole === "viewer") return;
+  if (selectedTargets.length !== 1) return;
+  const target = selectedTargets[0];
+  if (target.kind !== "text") return;
+  const text = canvasState.texts.find((t) => t.id === target.id);
+  if (!text) return;
+  const updated = { ...text, ...updates, userId,
+    timestamp: Date.now() }; handleCanvasStateChange( { ...canvasState,
+    texts: canvasState.texts.map((t) => t.id === target.id ? updated : t, ), }, { pushUndo: true,
+    undoBase: canvasState,
+    broadcast: [{ type:"text",
+    data: updated }], }, ); }, [ canvasState, handleCanvasStateChange, readOnly, selectedTargets, userId, userRole, ], );
+  const handleTextFontFamilyChange = useCallback( (family: string) => updateSelectedTextFormatting({ fontFamily: family }), [updateSelectedTextFormatting], );
+  const handleTextFontSizeChange = useCallback( (size: number) => updateSelectedTextFormatting({ fontSize: size }), [updateSelectedTextFormatting], );
+  const handleTextColorChange = useCallback( (color: string) => updateSelectedTextFormatting({ color }), [updateSelectedTextFormatting], );
+  const handleTextFontWeightChange = useCallback( (weight:"normal" |"bold") => updateSelectedTextFormatting({ fontWeight: weight }), [updateSelectedTextFormatting], );
+  const handleTextItalicChange = useCallback( (isItalic: boolean) => updateSelectedTextFormatting({ isItalic }), [updateSelectedTextFormatting], );
+  const handleTextUnderlineChange = useCallback( (isUnderline: boolean) => updateSelectedTextFormatting({ isUnderline }), [updateSelectedTextFormatting], );
+  const handleTextAlignChange = useCallback( (align:"left" |"center" |"right") => updateSelectedTextFormatting({ textAlign: align }), [updateSelectedTextFormatting], ); /* Multi-page handlers */
+  const handlePageChange = useCallback( (pageId: string) => {
+    const page = pages.find((p) => p.id === pageId);
+  if (!page) return; setCurrentPageId(pageId); setCanvasState(page.canvasState); setSelectedTargets([]); }, [pages], );
+  const handlePageCreate = useCallback(() => {
+    const newPageId = uuidv4();
+  const newPage = { id: newPageId, name: `Page ${pages.length + 1}`, canvasState: DEFAULT_CANVAS_STATE, };
+  const updatedPages = [...pages, newPage]; setPages(updatedPages); persistToStorage( storageKeys.moduleState(`whiteboard-pages-${sessionId}`), updatedPages,"page creation", ); handlePageChange(newPageId); }, [pages, sessionId, handlePageChange]);
+  const handlePageDelete = useCallback( (pageId: string) => {
+    if (pages.length <= 1) return; /* Can't delete last page */
+  const updatedPages = pages.filter((p) => p.id !== pageId); setPages(updatedPages); persistToStorage( storageKeys.moduleState(`whiteboard-pages-${sessionId}`), updatedPages,"page deletion", );
+  if (currentPageId === pageId) { handlePageChange(updatedPages[0]?.id ||""); } }, [pages, currentPageId, sessionId, handlePageChange], );
+  const handlePageRename = useCallback( (pageId: string, newName: string) => {
+    const updatedPages = pages.map((p) => p.id === pageId ? { ...p,
+    name: newName } : p, ); setPages(updatedPages); persistToStorage( storageKeys.moduleState(`whiteboard-pages-${sessionId}`), updatedPages,"page rename", ); }, [pages, sessionId], ); /* Sync pages to storage only when pages explicitly change (create/delete/rename) */
+  const pagesRef = React.useRef(pages); React.useEffect(() => {
+    pagesRef.current = pages; }, [pages]); // Keyboard shortcuts useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+    if (isEditableTarget(e.target)) return;
+  if (e.shiftKey && e.code === "Digit1") { e.preventDefault(); handleZoomToFit(); return; }
+  if (e.shiftKey && e.code === "Digit2") { e.preventDefault(); handleZoomToSelection(); return; }
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "g") { e.preventDefault();
+  if (e.shiftKey) { handleUngroupSelection(); } else { handleGroupSelection(); } return; }
+  if (e.key === "Delete" || e.key === "Backspace") { if (!readOnly && userRole !== "viewer" && selectedTargets.length > 0) { e.preventDefault(); handleDeleteSelection(); } return; } /* Ctrl+S: Save session */ if ((e.ctrlKey || e.metaKey) && e.key === "s") { e.preventDefault(); SessionManager.saveSession( sessionId, `Session ${sessionId.slice(0, 8)}`, canvasState, userId, userRole, ); } /* Ctrl+E: Export */ if ((e.ctrlKey || e.metaKey) && e.key === "e") { e.preventDefault(); ExportManager.exportSession(canvasState, sessionId, { format:"svg",
+    includeBranding: true, }); } /* Ctrl+P: Presentation mode */ if ((e.ctrlKey || e.metaKey) && e.key === "p") { e.preventDefault(); setWhiteboardMode( whiteboardMode === "presentation" ?"drawing" :"presentation", ); } /* Ctrl+Z: Undo */ if ((e.ctrlKey || e.metaKey) && e.key === "z" && !e.shiftKey) { e.preventDefault(); handleUndo(); } /* Ctrl+Y or Ctrl+Shift+Z: Redo */ if ( (e.ctrlKey || e.metaKey) && (e.key === "y" || (e.key === "z" && e.shiftKey)) ) { e.preventDefault(); handleRedo(); } /* ?: Show keyboard shortcuts */ if (e.key === "?" || ((e.ctrlKey || e.metaKey) && e.key === "?")) { e.preventDefault(); setShowShortcutsModal(true); } };
+    window.;
+    window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown); }, [ canvasState, handleDeleteSelection, handleZoomToFit, handleZoomToSelection, handleGroupSelection, handleUngroupSelection, isEditableTarget, readOnly, selectedTargets, sessionId, userId, userRole, whiteboardMode, handleUndo, handleRedo, ]);
+  const handleClear = () => {
+    if (window.confirm("Clear all content? This action cannot be undone.")) { handleCanvasStateChange(DEFAULT_CANVAS_STATE); } };
+  const handleZoom = (delta: number) => {
+    const newZoom = Math.max(0.1, Math.min(5, canvasState.zoomLevel + delta)); handleCanvasStateChange({ ...canvasState, zoomLevel: newZoom, }); };
+  const handleMessage = (message: WhiteboardMessage) => {
+    realtimeManager.sendEvent("message", { ...message, timestamp: Date.now(), }); };
+  const handleEndCall = () => {
+    setParticipants((prev) => prev.map((p) => (p.userId === userId ? { ...p, isActive: false } : p)), ); };
+  const handleStrokeComplete = useCallback( (stroke: DrawingStroke) => {
+    realtimeManager.broadcastEvent(sessionId, { type:"stroke", userId, sessionId, timestamp: Date.now(), data: stroke, }); }, [sessionId, userId], );
+  const handleShapeComplete = useCallback( (shape: ShapeElement) => {
+    realtimeManager.broadcastEvent(sessionId, { type:"shape", userId, sessionId, timestamp: Date.now(), data: shape, }); }, [sessionId, userId], );
+  const handlePanelDropped = useCallback( (panelEmbed: PanelEmbed) => {
+    const embed: PanelEmbed = { ...panelEmbed, userId: panelEmbed.userId ?? userId, }; setCanvasState((prev) => {
+    if (prev.panelEmbeds.some((e) => e.id === embed.id)) return prev;
+  return { ...prev, panelEmbeds: [...prev.panelEmbeds, embed], }; });
+  const broadcastEmbed: PanelEmbed = embed.widgetType === "file" && embed.widgetData?.shared === false ? { ...embed,
+    widgetData: { ...embed.widgetData,
+    url: null,
+    localUrl: null, }, } : embed; realtimeManager.broadcastEvent(sessionId, { type:"embed", userId, sessionId,
+    timestamp: Date.now(),
+    data: broadcastEmbed, }); }, [sessionId, userId], );
+  const handlePanelDragStart = (embedId: string, e: React.MouseEvent) => {
+    if (readOnly) return; setDraggedPanel(embedId);
+  const embed = canvasState.panelEmbeds.find((p) => p.id === embedId);
+  if (embed) { setDragOffset({ x: e.clientX - embed.x, y: e.clientY - embed.y, }); } };
+  const handlePanelResizeStart = ( embedId: string, edge: string, e: React.MouseEvent, ) => {
+    if (readOnly) return; e.stopPropagation(); setResizingPanel({ id: embedId, edge });
+  const embed = canvasState.panelEmbeds.find((p) => p.id === embedId);
+  if (embed) { setResizeStart({ x: e.clientX, y: e.clientY, width: embed.width, height: embed.height, }); } };
+  /* Handle mouse move for dragging/resizing */
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+    if (draggedPanel) { setCanvasState((prev) => ({ ...prev,
+    panelEmbeds: prev.panelEmbeds.map((p) => p.id === draggedPanel ? { ...p,
+    x: Math.max(0, e.clientX - dragOffset.x),
+    y: Math.max(0, e.clientY - dragOffset.y), } : p, ), })); } else if (resizingPanel) { const deltaX = e.clientX - resizeStart.x;
+  const deltaY = e.clientY - resizeStart.y;
+  const { edge } = resizingPanel; setCanvasState((prev) => ({ ...prev, panelEmbeds: prev.panelEmbeds.map((p) => {
+    if (p.id !== resizingPanel.id) return p;
+  let newWidth = resizeStart.width;
+  let newHeight = resizeStart.height;
+  if (edge.includes("e")) { newWidth = Math.max(300, resizeStart.width + deltaX); } if (edge.includes("s")) { newHeight = Math.max(200, resizeStart.height + deltaY); } return { ...p, width: newWidth, height: newHeight, }; }), })); } };
+  const handleMouseUp = () => {
+    setDraggedPanel(null); setResizingPanel(null); };
+  if (draggedPanel || resizingPanel) { document.addEventListener("mousemove", handleMouseMove); document.addEventListener("mouseup", handleMouseUp);
+  return () => {
+    document.removeEventListener("mousemove", handleMouseMove); document.removeEventListener("mouseup", handleMouseUp); }; } }, [draggedPanel, resizingPanel, dragOffset, resizeStart]);
+
+    /* Phase 10 Handlers */ const handleCreatePresentation = (deck: PresentationDeck) => {
+    setPresentations((prev) => {
+    const updated = [...prev, deck]; persistToStorage( storageKeys.moduleState(`whiteboard-presentations-${sessionId}`), updated,"presentation creation", );
+  return updated; }); };
+  const handleStartPresentation = (deck: PresentationDeck) => {
+    setCurrentPresentation(deck); setIsPresenting(true); };
+  const handleStartRecording = async ( sessionIdForRec: string, title: string, ) => {
+    if (!canvasRef.current) return;
+  try { const session = await ScreenRecordingManager.startRecording( canvasRef.current, sessionIdForRec, userId, title, ); setIsRecording(true); setRecordingSession(session); } catch (error) { console.error("Failed to start recording:", error); } };
+  const handleStopRecording = async (): Promise<RecordingSession | null> => { const session = await ScreenRecordingManager.stopRecording();
+  if (session) { setIsRecording(false); setRecordingSession(session); setRecordingSessions((prev) => {
+    const updated = [...prev, session]; persistToStorage( storageKeys.moduleState(`whiteboard-recordings-${sessionId}`), updated,"recording session", );
+  return updated; }); } return session; };
+  const handlePlayRecording = (recording: RecordingSession) => {
+    setRecordingSession(recording); setShowRecordingPlayer(true); };
+  return (
+    <div className="w-full h-full bg-background flex flex-col">
+      {/* Header */} <div className="border-b border-primary/20 bg-gradient-to-r from-background via-background to-primary/5 backdrop-blur-md px-3 md:px-6 py-2 md:py-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-4">
+      <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto flex-wrap">
+      {/* Mode Selector */} <div className="flex gap-1 bg-secondary/40 border border-border/30 rounded-lg p-1">
+      <button
+        onClick={() => setWhiteboardMode("drawing")} className={cn("px-3 md:px-4 py-1.5 rounded text-xs md:text-sm font-medium transition-all duration-200", whiteboardMode === "drawing" ?"bg-primary text-primary-foreground shadow-lg" :"text-foreground/70 hover:text-foreground hover:bg-secondary/50", )} > ✏️ Drawing </button>
+      <button
+        onClick={() => setWhiteboardMode("presentation")} className={cn("px-3 md:px-4 py-1.5 rounded text-xs md:text-sm font-medium transition-all duration-200 flex gap-1 items-center", whiteboardMode === "presentation" ?"bg-amber-600 text-white shadow-lg" :"text-foreground/70 hover:text-foreground hover:bg-secondary/50", )} >
+      <PresentationIcon size={14} />
+      Slides </button>
+      <button
+        onClick={() => setWhiteboardMode("interview")} className={cn("px-3 md:px-4 py-1.5 rounded text-xs md:text-sm font-medium transition-all duration-200 flex gap-1 items-center", whiteboardMode === "interview" ?"bg-green-600 text-white shadow-lg" :"text-foreground/70 hover:text-foreground hover:bg-secondary/50", )} >
+      <Video size={14} />
+      Interview </button> </div>
+      <div className="hidden lg:flex gap-2 text-xs items-center">
+      <span className="px-3 py-1.5 rounded-lg bg-primary/15 text-primary font-medium border border-primary/20"> 👥 {participants.length} online </span>
+      <span className="px-3 py-1.5 rounded-lg bg-secondary/50 text-foreground/70 border border-border/20"> 📊 {canvasState.strokes.length + canvasState.shapes.length}{""} elements </span>
+      {collaboration.isInitialized && ( <span
+        className="px-3 py-1.5 rounded-lg bg-green-100 text-green-700 border border-green-300 dark:bg-green-900 dark:text-green-100"> 🔄 Collaboration Active </span> )} <AutoSaveIndicator
+        state={autoSaveState} lastSavedTime={lastSavedTime} errorMessage={autoSaveError} />
+      </div>
+      <button
+        onClick={() => setShowParticipants(!showParticipants)} className={cn("px-3 md:px-4 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 flex-1 md:flex-none border", showParticipants ?"bg-primary text-primary-foreground border-primary/50 shadow-md" :"bg-secondary/40 text-foreground/70 border-border/30 hover:bg-secondary/60", )} >
+      {showParticipants ?"👥 Hide Panel" :"👥 Show Panel"}
+      </button>
+      {/* Translation Controls */} <TranslationControls onLanguageChange={setCurrentLanguage} />
+      {/* Phase 10: Presentation Controls */} <Phase10PresentationControls
+        canvasState={canvasState} sessionId={sessionId} userId={userId} presentations={presentations} onCreatePresentation={handleCreatePresentation} onStartPresentation={handleStartPresentation} onEditPresentation={(deck) => console.log("Edit:", deck)} onDeletePresentation={(id) => setPresentations((prev) => prev.filter((p) => p.id !== id)) } />
+      {/* Phase 10: Recording Controls */} <Phase10RecordingControls
+        isRecording={isRecording} recordingSession={recordingSession} onStartRecording={handleStartRecording} onStopRecording={handleStopRecording} onSaveRecording={() => console.log("Save recording")} onPlayRecording={handlePlayRecording} onDeleteRecording={(id) => setRecordingSessions((prev) => prev.filter((r) => r.id !== id)) } />
+      {/* Recording Controls (Presenter Only) */} {isPresenter && ( <RecordingControls sessionId={sessionId} presenter={userName} isPresenter={isPresenter} canvasRef={canvasRef} />
+      )}
+      </div> </div>
+      {/* Main Content */} <div className="flex-1 flex gap-3 md:gap-4 overflow-hidden px-2 md:px-3 py-2 md:py-3">
+      {/* Content Area - Mode Based */} <div ref={contentRef} className="flex-1 relative bg-background rounded-lg shadow-sm border border-border/20 flex flex-col min-w-0 overflow-hidden" >
+      <DashboardDragIntegration sessionId={sessionId} canvasRef={contentRef} onPanelDropped={handlePanelDropped} />
+      {/* Drawing Mode */} {whiteboardMode === "drawing" && ( <div className="whiteboard-drawing-root">
+      {/* Phase 13: Real-Time Collaboration Integration */} {showCollaboration && collaboration.isInitialized && ( <Phase13Integration
+        sessionId={sessionId} userId={userId} userName={userName} userColor={COLORS[Math.floor(Math.random() * COLORS.length)]} canvasState={canvasState} canvasRef={contentRef} onRemoteChange={handleRemoteChange} />
+      )} {/* Page Tabs */} <PageTabs
+        pages={pages.map((p) => ({ id: p.id,
+    name: p.name,
+    createdAt: Date.now(), }))} currentPageId={currentPageId} onPageChange={handlePageChange} onPageCreate={handlePageCreate} onPageDelete={handlePageDelete} onPageRename={handlePageRename} readOnly={readOnly || userRole === "viewer"} />
+      <div ref={canvasRef} className="flex-1 relative bg-background flex flex-col min-w-0 overflow-hidden" >
+      {/* Rulers Container */} <div className="relative flex-1 overflow-hidden">
+      <RulerComponent viewportX={canvasState.viewportX} viewportY={canvasState.viewportY} zoomLevel={canvasState.zoomLevel} width={viewportSize.width} height={viewportSize.height} showRulers={showRulers} />
+      <DrawingCanvas
+        sessionId={sessionId} userId={userId} canvasState={canvasState} selectedTool={toolState.selectedTool} selectedColor={toolState.selectedColor} selectedFillColor={toolState.selectedFillColor} lineWidth={toolState.lineWidth} opacity={toolState.opacity} selectedTargets={selectedTargets} onSelectionChange={setSelectedTargets} onStateChange={handleCanvasStateChange} onStrokeComplete={handleStrokeComplete} onShapeComplete={handleShapeComplete} readOnly={readOnly || userRole === "viewer"} showGrid={showGrid} showRulers={showRulers} snappingEnabled={snappingEnabled} />
+      {/* Connection Points Overlay */} <ConnectionPointsComponent
+        canvasState={canvasState} viewportX={canvasState.viewportX} viewportY={canvasState.viewportY} zoomLevel={canvasState.zoomLevel} visible={ showConnectionPoints || toolState.selectedTool === "connector" } hoveredTargets={hoveredConnectionTargets} onConnectionPointHover={(target) => { setShowConnectionPoints(true); setHoveredConnectionTargets([target]); }} onConnectionPointLeave={() => { if (toolState.selectedTool !== "connector") { setShowConnectionPoints(false); } setHoveredConnectionTargets([]); }} />
+      {/* Real-time Cursors */} <RealTimeCursorsComponent participants={participants} currentUserId={userId} viewportX={canvasState.viewportX} viewportY={canvasState.viewportY} zoomLevel={canvasState.zoomLevel} canvasWidth={viewportSize.width} canvasHeight={viewportSize.height} />
+      </div>
+      <WhiteboardMinimap canvasState={canvasState} viewportSize={viewportSize} selectedTargets={selectedTargets} onNavigate={({ viewportX, viewportY }) => { handleCanvasStateChange( { ...canvasState, viewportX, viewportY, }, { pushUndo: false }, ); }} />
+      {/* Render Embedded Panels */} {canvasState.panelEmbeds.map((embed) => ( <div
+        key={embed.id} className={cn("absolute pointer-events-auto transition-all", fullscreenPanel === embed.id &&"inset-0", selectedTargets.some( (t) => t.kind === "embed" && t.id === embed.id, ) &&"ring-2 ring-emerald-500 ring-offset-2", )} style={{ left: fullscreenPanel === embed.id ? 0 : `${embed.x}px`,
+    top: fullscreenPanel === embed.id ? 0 : `${embed.y}px`,
+    width: fullscreenPanel === embed.id ?"100%" : `${embed.width}px`,
+    height: fullscreenPanel === embed.id ?"100%" : `${embed.height}px`,
+    zIndex: fullscreenPanel === embed.id ? 100 : 20, }} onMouseDown={(e) => { if ( toolState.selectedTool === "select" && !fullscreenPanel ) { const groupId = embed.groupId; if (groupId) { setSelectedTargets( getTargetsForGroupId(groupId, canvasState), ); } else { setSelectedTargets([{ kind:"embed",
+    id: embed.id }]); } } if (!fullscreenPanel) handlePanelDragStart(embed.id, e); }} >
+      <PanelEmbedWidget
+        embed={embed} isFullscreen={fullscreenPanel === embed.id} onFullscreen={(isFullscreen) => { setFullscreenPanel(isFullscreen ? embed.id : null); }} onResizeStart={(edge, e) => handlePanelResizeStart(embed.id, edge, e) } onUpdate={(updated) => { if (readOnly || userRole === "viewer") return; const next: PanelEmbed = { ...updated, userId,
+    timestamp: Date.now(), }; handleCanvasStateChange( { ...canvasState,
+    panelEmbeds: canvasState.panelEmbeds.map((p) => p.id === next.id ? next : p, ), }, { pushUndo: true,
+    undoBase: canvasState,
+    broadcast: [{ type:"embed",
+    data: next }], }, ); }} onRemove={(id) => { if (readOnly || userRole === "viewer") return; const targets: CanvasSelectable[] = [ { kind:"embed", id, }, ]; setSelectedTargets((prev) => prev.filter( (t) => !(t.kind === "embed" && t.id === id), ), ); handleCanvasStateChange( { ...canvasState,
+    panelEmbeds: canvasState.panelEmbeds.filter( (p) => p.id !== id, ), }, { pushUndo: true,
+    undoBase: canvasState,
+    broadcast: [{ type:"delete",
+    data: { targets } }], }, ); }} onShareDesktop={(embedId) => { realtimeManager.sendEvent("embed-share-desktop", { userId, embedId,
+    panelId: embed.panelId,
+    timestamp: Date.now(), }); }} onShareWithGroup={(embedId) => { realtimeManager.sendEvent("embed-share-group", { userId, userName, embedId,
+    panelId: embed.panelId, sessionId,
+    timestamp: Date.now(), }); }} />
+      </div> ))} {/* PDF Viewers */} {canvasState.pdfs?.map((pdf) => ( <PDFViewerComponent
+        key={pdf.id} pdf={pdf} isSelected={selectedTargets.some( (t) => t.kind === "pdf" && t.id === pdf.id, )} zoomLevel={canvasState.zoomLevel} onRemove={(id) => { setCanvasState((prev) => ({ ...prev,
+    pdfs: (prev.pdfs || []).filter((p) => p.id !== id), })); setSelectedTargets((prev) => prev.filter((t) => !(t.kind === "pdf" && t.id === id)), ); }} onUpdate={(updated) => { setCanvasState((prev) => ({ ...prev,
+    pdfs: (prev.pdfs || []).map((p) => p.id === updated.id ? updated : p, ), })); }} />
+      ))} {/* Image Viewers */} {canvasState.images?.map((image) => ( <ImageViewerComponent
+        key={image.id} image={image} isSelected={selectedTargets.some( (t) => t.kind === "image" && t.id === image.id, )} zoomLevel={canvasState.zoomLevel} onRemove={(id) => { setCanvasState((prev) => ({ ...prev,
+    images: (prev.images || []).filter((i) => i.id !== id), })); setSelectedTargets((prev) => prev.filter( (t) => !(t.kind === "image" && t.id === id), ), ); }} onUpdate={(updated) => { setCanvasState((prev) => ({ ...prev,
+    images: (prev.images || []).map((i) => i.id === updated.id ? updated : i, ), })); }} />
+      ))} {/* Phase 9: Figma Embeds */} {canvasState.figmaEmbeds?.map((embed) => ( <div
+        key={embed.id} style={{ position:"absolute",
+    left: `${embed.x}px`,
+    top: `${embed.y}px`,
+    transform: `scale(${canvasState.zoomLevel})`,
+    transformOrigin:"top left",
+    zIndex: selectedTargets.some( (t) => t.kind === "figma" && t.id === embed.id, ) ? 1000 : 100, }} >
+      <FigmaEmbedComponent
+        embed={embed} isSelected={selectedTargets.some( (t) => t.kind === "figma" && t.id === embed.id, )} onDelete={(id) => { setCanvasState((prev) => ({ ...prev,
+    figmaEmbeds: (prev.figmaEmbeds || []).filter( (e) => e.id !== id, ), })); setSelectedTargets((prev) => prev.filter( (t) => !(t.kind === "figma" && t.id === id), ), ); }} onUpdate={(updated) => { setCanvasState((prev) => ({ ...prev,
+    figmaEmbeds: (prev.figmaEmbeds || []).map((e) => e.id === updated.id ? { ...e, ...updated } : e, ), })); }} onOpenInFigma={(url) => window.open(url,"_blank")} />
+      </div> ))} {/* Phase 9: Jira Embeds */} {canvasState.jiraEmbeds?.map((embed) => ( <div
+        key={embed.id} style={{ position:"absolute",
+    left: `${embed.x}px`,
+    top: `${embed.y}px`,
+    transform: `scale(${canvasState.zoomLevel})`,
+    transformOrigin:"top left",
+    zIndex: selectedTargets.some( (t) => t.kind === "jira" && t.id === embed.id, ) ? 1000 : 100, }} >
+      <JiraEmbedComponent
+        embed={embed} isSelected={selectedTargets.some( (t) => t.kind === "jira" && t.id === embed.id, )} onDelete={(id) => { setCanvasState((prev) => ({ ...prev,
+    jiraEmbeds: (prev.jiraEmbeds || []).filter( (e) => e.id !== id, ), })); setSelectedTargets((prev) => prev.filter( (t) => !(t.kind === "jira" && t.id === id), ), ); }} onUpdate={(updated) => { setCanvasState((prev) => ({ ...prev,
+    jiraEmbeds: (prev.jiraEmbeds || []).map((e) => e.id === updated.id ? { ...e, ...updated } : e, ), })); }} onOpenInJira={(url) => window.open(url,"_blank")} />
+      </div> ))} {/* Phase 9: Data Source Embeds */} {canvasState.dataSourceEmbeds?.map((embed) => ( <div
+        key={embed.id} style={{ position:"absolute",
+    left: `${embed.x}px`,
+    top: `${embed.y}px`,
+    transform: `scale(${canvasState.zoomLevel})`,
+    transformOrigin:"top left",
+    zIndex: selectedTargets.some( (t) => t.kind === "datasource" && t.id === embed.id, ) ? 1000 : 100, }} >
+      <DataSourceEmbedComponent
+        embed={embed} isSelected={selectedTargets.some( (t) => t.kind === "datasource" && t.id === embed.id, )} onDelete={(id) => { setCanvasState((prev) => ({ ...prev,
+    dataSourceEmbeds: ( prev.dataSourceEmbeds || [] ).filter((e) => e.id !== id), })); setSelectedTargets((prev) => prev.filter( (t) => !(t.kind === "datasource" && t.id === id), ), ); }} onUpdate={(updated) => { setCanvasState((prev) => ({ ...prev,
+    dataSourceEmbeds: (prev.dataSourceEmbeds || []).map( (e) => e.id === updated.id ? { ...e, ...updated } : e, ), })); }} />
+      </div> ))} {/* Smart Connectors */} {canvasState.shapes.length > 0 && ( <div className="absolute bottom-2 md:bottom-4 left-2 md:left-4 bg-background/80 backdrop-blur-sm border border-border/30 rounded-lg p-1 md:p-2 z-40">
+      <SmartConnectors shapes={canvasState.shapes} canvasState={canvasState} selectedTool={toolState.selectedTool} onAddStroke={(stroke) => handleCanvasStateChange({ ...canvasState, strokes: [...canvasState.strokes, stroke], }) } onStateChange={handleCanvasStateChange} userId={userId} />
+      </div> )} {/* Empty State */} {canvasState.strokes.length === 0 && canvasState.shapes.length === 0 && !readOnly && ( <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="text-center">
+      <p className="text-lg font-semibold text-foreground/40 mb-2"> Start Drawing </p>
+      <p className="text-sm text-foreground/30"> Select a tool and begin sketching </p> </div> </div> )}
+      </div>
+      {/* Enhanced Toolbar */} {(() => { /* Get selected text element */ if any const selectedText = selectedTargets.length === 1 && selectedTargets[0].kind === "text" ? canvasState.texts.find( (t) => t.id === selectedTargets[0].id, ) : null; return ( <EnhancedWhiteboardToolbar
+        toolState={toolState} onToolChange={handleToolChange} onColorChange={handleColorChange} onLineWidthChange={handleLineWidthChange} onOpacityChange={handleOpacityChange} onGridToggle={setShowGrid} onRulersToggle={setShowRulers} onUndo={handleUndo} onRedo={handleRedo} onClear={handleClear} onZoom={handleZoom} onShareDesktop={handleShareDesktop} onShareWithGroup={handleShareWithGroup} onToggleLayers={setShowLayers} onApplyTemplate={handleApplyTemplate} onExport={handleExport} onAlignObjects={handleAlignObjects} onDeleteSelection={handleDeleteSelection} canDeleteSelection={selectedTargets.length > 0} onZoomToFit={handleZoomToFit} onZoomToSelection={handleZoomToSelection} onGroupSelection={handleGroupSelection} onUngroupSelection={handleUngroupSelection} onDistributeHorizontal={handleDistributeHorizontal} onDistributeVertical={handleDistributeVertical} canGroupSelection={selectedTargets.length >= 2} canUngroupSelection={selectedTargets.some( (t) => !!getGroupIdForTarget(t, canvasState), )} canDistributeSelection={selectedTargets.length >= 3} snappingEnabled={snappingEnabled} onToggleSnapping={setSnappingEnabled} showGrid={showGrid} showRulers={showRulers} showLayers={showLayers} zoomLevel={canvasState.zoomLevel} readOnly={readOnly || userRole === "viewer"} history={history} historyIndex={historyIndex} selectedTextElement={selectedText} onTextFontFamilyChange={handleTextFontFamilyChange} onTextFontSizeChange={handleTextFontSizeChange} onTextColorChange={handleTextColorChange} onTextFontWeightChange={handleTextFontWeightChange} onTextItalicChange={handleTextItalicChange} onTextUnderlineChange={handleTextUnderlineChange} onTextAlignChange={handleTextAlignChange} /> ); })()} {/* Resize Tooltip */} <ResizeTooltip
+        x={resizeTooltipData.x} y={resizeTooltipData.y} width={resizeTooltipData.width} height={resizeTooltipData.height} mouseX={resizeTooltipData.mouseX} mouseY={resizeTooltipData.mouseY} visible={resizeTooltipVisible} />
+      {/* Quick Info Cards */} <div className="absolute top-20 left-4 md:top-4 flex flex-col gap-2 z-30 pointer-events-none">
+      {canvasState.showGrid && (
+        <div className="bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 text-xs text-primary font-medium backdrop-blur-sm">
+          ⊞ Grid: {canvasState.gridSize}px
+        </div>
+      )}
+      {canvasState.zoomLevel !== 1 && (
+        <div className="bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 text-xs text-primary font-medium backdrop-blur-sm">
+          🔍 Zoom: {Math.round(canvasState.zoomLevel * 100)}%
+        </div>
+      )}
+      </div>
+      </div>
+      )}
+      {/* Presentation Mode */} {whiteboardMode === "presentation" && ( <div className="flex-1 flex items-center justify-center bg-gradient-to-b from-slate-900 to-slate-800 p-4">
+      <div className="max-w-4xl w-full">
+      <PresentationBuilder onPresentationChange={(presentation) => { persistToStorage( storageKeys.moduleState( `whiteboard-presentation-${sessionId}`, ), presentation,"presentation update", ); }} onModeChange={(mode) => { if (mode === "edit") { setWhiteboardMode("drawing"); } }} />
+      </div> </div> )} {/* Interview Mode */} {whiteboardMode === "interview" && ( <div className="flex-1 flex flex-col bg-gradient-to-b from-slate-900 to-slate-800 p-4 overflow-auto">
+      <InterviewMode candidateName="Candidate" />
+      </div> )}
+      </div>
+      {/* Right Sidebar - Layers, Properties, or Comments */} {(showLayers || (showProperties && selectedTargets.length > 0) || showComments) && ( <div className="hidden md:flex border-l border-border/30 flex-col min-h-0 overflow-hidden">
+      {showComments ? ( <CommentsPanel
+        comments={canvasState.comments} selectedTarget={ selectedTargets.length > 0 ? selectedTargets[0] : null } userId={userId} userName={userName} onCommentAdd={handleCommentAdd} onCommentReply={handleCommentReply} onCommentResolve={handleCommentResolve} onCommentDelete={handleCommentDelete} />
+      ) : selectedTargets.length > 0 && showProperties ? ( <PropertiesPanel canvasState={canvasState} selectedTargets={selectedTargets} onUpdate={handleCanvasStateChange} onLockToggle={handleLockToggle} />
+      ) : showLayers ? ( <div className="w-72 flex flex-col min-h-0">
+      <LayersPanel canvasState={canvasState} selectedTargets={selectedTargets} onSelectionChange={setSelectedTargets} onDelete={handleDeleteSelection} readOnly={readOnly || userRole === "viewer"} />
+      </div> ) : null}
+      </div> )} {/* Participants Panel */} {showParticipants && ( <div className="hidden md:flex border-l border-border/30 flex-col min-h-0 w-80">
+      <div className="p-4 border-b border-border/20">
+      <PresenceIndicator participants={participants} currentUserId={userId} onParticipantHover={setHoveredParticipant} />
+      </div>
+      <div className="flex-1 overflow-y-auto">
+      <ParticipantsPanel participants={participants} currentUserId={userId} currentUserName={userName} sessionId={sessionId} onMessage={handleMessage} onEndCall={handleEndCall} isPresenter={isPresenter} />
+      </div> </div> )} {/* Marketplace Modal */} {showMarketplace && ( <div className="fixed inset-0 bg-black/50 z-[9999] flex items-center justify-center">
+      <div className="bg-background border border-border rounded-lg w-[90vw] h-[90vh] flex flex-col p-4">
+      <div className="flex items-center justify-between mb-4">
+      <h2 className="text-2xl font-bold">Templates & Shapes</h2>
+      <Button onClick={() => setShowMarketplace(false)} variant="ghost" size="sm" > ✕ </Button> </div>
+      <div className="text-center text-foreground/60">
+      <p>Templates & Shapes library coming soon</p> </div> </div> </div> )} {/* Phase 9: Integrations Panel */} <IntegrationsPanel
+        isOpen={showIntegrationsPanel} onClose={() => setShowIntegrationsPanel(false)} onSelectIntegration={(integration) => { setConnectedIntegrations((prev) => [...prev, integration.id]); persistToStorage( storageKeys.moduleState(`whiteboard-integrations-${sessionId}`), [...connectedIntegrations, integration.id],"integration connection", ); }} connectedIntegrations={connectedIntegrations} onConfigureIntegration={(integrationId) => { console.log("[Whiteboard] Configure integration:", integrationId); // Integration-specific configuration would be handled here }} />
+      {/* Phase 10: Presenter Mode */} {isPresenting && currentPresentation && ( <PresenterMode
+        deck={currentPresentation} canvasState={canvasState} onSlideChange={(idx) => console.log("Slide changed:", idx)} onExitPresenter={() => { setIsPresenting(false); setCurrentPresentation(null); }} onStartPresentation={() => console.log("Start presentation")} />
+      )} {/* Phase 10: Recording Player */} <RecordingPlayer recording={recordingSession || ({} as RecordingSession)} isOpen={showRecordingPlayer} onClose={() => setShowRecordingPlayer(false)} onDownload={(recording) => ScreenRecordingManager.saveRecording(recording) } />
+      {/* Keyboard Shortcuts Modal */} <KeyboardShortcutsModal isOpen={showShortcutsModal} onClose={() => setShowShortcutsModal(false)} />
+      {/* Hidden File Input for Document Import */} <input ref={fileInputRef} type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.gif,.svg,.webp" onChange={handleFileInputChange} style={{ display:"none" }} />
+      </div>
+   </div>
+  );
+};
+export default WhiteboardSessionComponent;

@@ -1,0 +1,16 @@
+{
+  "cake_boxes": {
+    "round": [6, 8, 10, 12, 14, 16],
+    "square": [6, 8, 10, 12, 14],
+    "height_options": [4, 6, 8]
+  },
+  "cake_circles": {
+    "round": [6, 8, 10, 12, 14],
+    "material": ["cardboard", "plastic", "foam core"]
+  },
+  "cake_rectangles": {
+    "quarter_sheet": { "size": "9x13 inches" },
+    "half_sheet": { "size": "12x18 inches" },
+    "full_sheet": { "size": "18x24 inches" }
+  }
+}

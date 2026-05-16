@@ -1,0 +1,51 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "search": "搜索",
+    "filter": "筛选",
+    "export": "导出",
+    "import": "导入",
+    "refresh": "刷新",
+    "close": "关闭",
+    "confirm": "确认",
+    "yes": "是",
+    "no": "否"
+  },
+  "navigation": {
+    "dashboard": "仪表板",
+    "inventory": "库存",
+    "schedule": "排班",
+    "purchasing": "采购",
+    "culinary": "Culinary",
+    "echoaurum": "EchoAurum",
+    "echostratus": "EchoStratus",
+    "settings": "设置"
+  },
+  "inventory": {
+    "title": "库存管理",
+    "currentStock": "当前库存",
+    "parLevel": "标准库存",
+    "reorderPoint": "补货点",
+    "addItem": "添加项目",
+    "updateStock": "更新库存"
+  },
+  "schedule": {
+    "title": "员工排班",
+    "shifts": "班次",
+    "assignStaff": "分配员工",
+    "createShift": "创建班次"
+  },
+  "purchasing": {
+    "title": "采购和收货",
+    "createPO": "创建采购订单",
+    "receiveOrder": "接收订单",
+    "approvePO": "批准采购订单"
+  }
+}

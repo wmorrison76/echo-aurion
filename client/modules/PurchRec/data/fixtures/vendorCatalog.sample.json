@@ -1,0 +1,188 @@
+[
+  {
+    "id": "vendor-pacific",
+    "name": "Pacific Produce",
+    "items": [
+      {
+        "id": "item-romaine-pacific",
+        "ingredientId": "ingredient-romaine",
+        "sku": "ROM-PLT-24",
+        "description": "Romaine Hearts 24 ct",
+        "packSizeQty": 24,
+        "packSizeUom": "each",
+        "pricePerPack": 32.4,
+        "convToBase": 24,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-tomato-pacific",
+        "ingredientId": "ingredient-tomato-roma",
+        "sku": "TOM-ROM-25LB",
+        "description": "Roma Tomatoes 25 lb",
+        "packSizeQty": 25,
+        "packSizeUom": "lb",
+        "pricePerPack": 28.5,
+        "convToBase": 25,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-basil-pacific",
+        "ingredientId": "ingredient-basil",
+        "sku": "BAS-CLM-1LB",
+        "description": "Fresh Basil Clamshell 1 lb",
+        "packSizeQty": 1,
+        "packSizeUom": "lb",
+        "pricePerPack": 16.75,
+        "convToBase": 1,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-avocado-pacific",
+        "ingredientId": "ingredient-avocado",
+        "sku": "AVO-HASS-48",
+        "description": "Hass Avocados 48 ct",
+        "packSizeQty": 48,
+        "packSizeUom": "each",
+        "pricePerPack": 54.0,
+        "convToBase": 48,
+        "leadTimeDays": 3,
+        "active": true
+      },
+      {
+        "id": "item-sourdough-pacific",
+        "ingredientId": "ingredient-sourdough",
+        "sku": "SD-LOAF-12",
+        "description": "Artisan Sourdough Loaves 12 ct",
+        "packSizeQty": 12,
+        "packSizeUom": "each",
+        "pricePerPack": 44.4,
+        "convToBase": 12,
+        "leadTimeDays": 2,
+        "active": true
+      }
+    ]
+  },
+  {
+    "id": "vendor-harvest",
+    "name": "Harvest Dairy",
+    "items": [
+      {
+        "id": "item-cheddar-harvest",
+        "ingredientId": "ingredient-cheddar",
+        "sku": "CHED-LOAF-5LB",
+        "description": "Sharp Cheddar Loaf 5 lb",
+        "packSizeQty": 5,
+        "packSizeUom": "lb",
+        "pricePerPack": 21.25,
+        "convToBase": 5,
+        "leadTimeDays": 1,
+        "active": true
+      },
+      {
+        "id": "item-butter-harvest",
+        "ingredientId": "ingredient-butter",
+        "sku": "BUTT-1LB-CASE",
+        "description": "Butter 1 lb quarters (case of 18)",
+        "packSizeQty": 18,
+        "packSizeUom": "lb",
+        "pricePerPack": 64.8,
+        "convToBase": 18,
+        "leadTimeDays": 1,
+        "active": true
+      },
+      {
+        "id": "item-milk-harvest",
+        "ingredientId": "ingredient-milk",
+        "sku": "MILK-WHOLE-6GAL",
+        "description": "Whole Milk 6 gal case",
+        "packSizeQty": 6,
+        "packSizeUom": "gal",
+        "pricePerPack": 19.5,
+        "convToBase": 6,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-mozzarella-harvest",
+        "ingredientId": "ingredient-mozzarella",
+        "sku": "MOZZ-BALL-3LB",
+        "description": "Fresh Mozzarella Balls 3 lb",
+        "packSizeQty": 3,
+        "packSizeUom": "lb",
+        "pricePerPack": 18.9,
+        "convToBase": 3,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-parmesan-harvest",
+        "ingredientId": "ingredient-parmesan",
+        "sku": "PARM-SHRED-5LB",
+        "description": "Parmesan Shredded 5 lb",
+        "packSizeQty": 5,
+        "packSizeUom": "lb",
+        "pricePerPack": 34.5,
+        "convToBase": 5,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-linguine-harvest",
+        "ingredientId": "ingredient-linguine",
+        "sku": "LING-DRY-20LB",
+        "description": "Dry Linguine 20 lb case",
+        "packSizeQty": 20,
+        "packSizeUom": "lb",
+        "pricePerPack": 27.0,
+        "convToBase": 20,
+        "leadTimeDays": 3,
+        "active": true
+      }
+    ]
+  },
+  {
+    "id": "vendor-freshseas",
+    "name": "Fresh Seas Seafood",
+    "items": [
+      {
+        "id": "item-salmon-freshseas",
+        "ingredientId": "ingredient-salmon",
+        "sku": "SAL-FLT-10LB",
+        "description": "Atlantic Salmon Fillet 10 lb",
+        "packSizeQty": 10,
+        "packSizeUom": "lb",
+        "pricePerPack": 98.0,
+        "convToBase": 10,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-shrimp-freshseas",
+        "ingredientId": "ingredient-shrimp",
+        "sku": "SHR-1620-5LB",
+        "description": "Shrimp 16/20 5 lb",
+        "packSizeQty": 5,
+        "packSizeUom": "lb",
+        "pricePerPack": 74.5,
+        "convToBase": 5,
+        "leadTimeDays": 2,
+        "active": true
+      },
+      {
+        "id": "item-lobster-freshseas",
+        "ingredientId": "ingredient-lobster",
+        "sku": "LOB-TAIL-10CT",
+        "description": "Lobster Tails 10 ct",
+        "packSizeQty": 10,
+        "packSizeUom": "each",
+        "pricePerPack": 210.0,
+        "convToBase": 10,
+        "leadTimeDays": 4,
+        "active": true
+      }
+    ]
+  }
+]

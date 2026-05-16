@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mobile Scheduler Shift",
+  "type": "object",
+  "required": [
+    "id",
+    "empId",
+    "start",
+    "end"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "empId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "epoch ms"
+    },
+    "end": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "epoch ms"
+    },
+    "location": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

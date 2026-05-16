@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+echo "🔍 lint-staged → eslint+prettier"
+npx --no-install lint-staged || { echo "lint-staged failed"; exit 1; }
+echo "🧪 unit tests"
+if [ -f "scripts/run_unit_tests.sh" ]; then
+  bash scripts/run_unit_tests.sh || exit 1
+else
+  echo "tests script not found; skipping"
+fi

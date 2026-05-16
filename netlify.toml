@@ -1,0 +1,18 @@
+[build]
+  command = "pnpm build"
+  functions = "netlify/functions"
+  publish = "dist/spa"
+
+[context.deploy-preview]
+  command = "pnpm build"
+
+
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
+  
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"

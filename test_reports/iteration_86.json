@@ -1,0 +1,115 @@
+{
+  "summary": "Iteration 86: Verified daily reports now pull from REAL MongoDB data instead of hardcoded values. All 41 backend tests passed (100%). GM Flash shows real hk_rooms occupancy (31/65=47.7%), real spa_appointments revenue ($1,310), real guest_intelligence VIPs (James Smith, Michael Chen with allergens). Chef Daily shows real ird_orders revenue ($316) and covers (14), real allergen alerts from guest_intelligence (2 guests). NEW Labor Forecast endpoint working with 6 outlets and position-level staffing. Frontend panels display real data correctly. Guest ordering flow working end-to-end.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration86_daily_reports_live_mongodb.py",
+    "/app/test_reports/pytest/pytest_results_iter86.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iteration86_daily_reports_live_mongodb.py"
+  ],
+  "success_rate": {
+    "backend": "100% (41/41 tests passed)",
+    "frontend": "100% (GM Flash, Chef Daily, Guest Ordering all working)"
+  },
+  "test_credentials": {
+    "guest_ordering": "Room 412, Last name: Smith"
+  },
+  "seed_data_creation": "None - uses existing seeded MongoDB data",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 86 verified daily reports now use REAL MongoDB data. Key collections: hk_rooms (65 total, 31 occupied), ird_orders (14 orders, $316 revenue), minibar_charges ($6), spa_appointments (8 appts, $1,310), guest_intelligence (3 profiles, 2 VIP with allergens: James Smith - shellfish/tree nuts/peanuts, Michael Chen - dairy/eggs), concierge_tickets (9 total, 6 open), eng_work_tickets (8 total, 6 open), guest_menu (31 items). GM Flash panel shows: 47.7% occupancy, $289.50 ADR, $1,310 spa revenue, VIP list with allergen notes, 6 open concierge + 6 open engineering tickets. Chef Daily shows: 14 IRD covers, $316 IRD revenue, 2 allergen guests with badges, 86'd items. NEW Labor Forecast at /api/daily-reports/labor/forecast shows 6 outlets (restaurant, ird, banquet, bar, spa, housekeeping) with position-level staffing needs based on occupancy.",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/daily-reports/gm-flash - returns 200, data_source='live_mongodb'",
+      "GM Flash yesterday.rooms_sold = 31 (matches real hk_rooms occupied)",
+      "GM Flash yesterday.rooms_total = 65 (matches real hk_rooms count)",
+      "GM Flash fb_revenue >= $322 (includes real ird_orders + minibar)",
+      "GM Flash spa_revenue = $1,310 (from real spa_appointments)",
+      "GM Flash operations.vip_in_house includes James Smith and Michael Chen",
+      "GM Flash VIP notes include allergen info from guest_intelligence",
+      "GM Flash open_issues.concierge = 6, engineering = 6 (from real tickets)",
+      "GM Flash variance calculations present (occupancy, adr, revpar)",
+      "GM Flash comp_set penetration_index > 100 for all metrics",
+      "GM Flash departments include real revenue from collections",
+      "GET /api/daily-reports/chef-daily - returns 200, data_source='live_mongodb'",
+      "Chef Daily costs.ird_revenue_actual = $316 (from real ird_orders)",
+      "Chef Daily covers.ird.actual = 14 (from real ird_orders count)",
+      "Chef Daily allergen_summary.total_guests_with_allergens = 2",
+      "Chef Daily allergen guests have correct names and allergens",
+      "Chef Daily critical_allergens includes shellfish, tree nuts, peanuts, dairy, eggs",
+      "Chef Daily eighty_sixed includes Branzino and Lobster Tail",
+      "Chef Daily cost_per_cover and revenue_per_cover calculated from real data",
+      "GET /api/daily-reports/labor/forecast - returns 200, data_source='live_mongodb'",
+      "Labor forecast occupancy_rooms = 31, total_rooms = 65",
+      "Labor forecast has 6 outlets (restaurant, ird, banquet, bar, spa, housekeeping)",
+      "Labor forecast shows position-level staffing (required, scheduled, gap, status)",
+      "Labor forecast gap analysis identifies understaffed outlets",
+      "Labor forecast housekeeping based on total rooms (65)",
+      "GET /api/daily-reports/labor/ratios - returns 200 with all 6 outlets",
+      "Regression: /api/health, /api/guest-intel/dashboard, /api/housekeeping/dashboard, /api/ird/orders, /api/spa/appointments, /api/concierge/dashboard all working",
+      "No ALICE or ProfitSword competitor references in any response"
+    ],
+    "frontend_tests": [
+      "GM Daily Flash panel opens from sidebar",
+      "GM Flash shows real occupancy 47.7% (calculated from 31/65 rooms)",
+      "GM Flash shows real spa revenue $1,310",
+      "GM Flash shows VIP guests James Smith (Rm 412) and Michael Chen (Rm 501)",
+      "GM Flash shows competitive set index with penetration > 100",
+      "Chef Daily Report panel opens from sidebar",
+      "Chef Daily shows IRD 14/35 actual covers",
+      "Chef Daily shows cost/cover $6.41, rev/cover $22.57 from real data",
+      "Chef Daily shows 2 allergen guests with allergen badges",
+      "Chef Daily shows 86'd items (Branzino, Lobster Tail)",
+      "Guest ordering at /guest-order works end-to-end (Room 412, Smith)",
+      "Desktop taskbar visible"
+    ]
+  },
+  "features_verified": {
+    "gm_flash_live_mongodb": {
+      "status": "WORKING",
+      "details": "GM Flash now pulls from real MongoDB: hk_rooms for occupancy (31/65=47.7%), spa_appointments for spa revenue ($1,310), guest_intelligence for VIP list with allergens, concierge_tickets + eng_work_tickets for open issues (6+6)"
+    },
+    "chef_daily_live_mongodb": {
+      "status": "WORKING",
+      "details": "Chef Daily now pulls from real MongoDB: ird_orders for revenue ($316) and covers (14), guest_intelligence for allergen alerts (2 guests), guest_menu for sold-out items"
+    },
+    "labor_forecast_new": {
+      "status": "WORKING",
+      "details": "NEW endpoint at /api/daily-reports/labor/forecast calculates staffing needs per outlet based on occupancy. Shows 6 outlets with position-level staffing (required, scheduled, gap, status)"
+    },
+    "no_competitor_references": {
+      "status": "VERIFIED",
+      "details": "No ALICE or ProfitSword references found in any API response"
+    },
+    "guest_ordering": {
+      "status": "WORKING",
+      "details": "Guest ordering at /guest-order works end-to-end with Room 412, Smith"
+    }
+  },
+  "mocked_apis": {
+    "beo_events": "BEO events use demo data (Tech Summit Lunch, Wedding Rehearsal Dinner)",
+    "prep_counts": "Prep counts use demo data with random variations",
+    "sendgrid_email": "SendGrid in demo mode (demo_logged)"
+  },
+  "real_mongodb_data_verified": {
+    "hk_rooms": "65 total, 31 occupied, 9 dirty, 10 clean, 0 OOO",
+    "ird_orders": "14 orders, $316 total revenue",
+    "minibar_charges": "1 charge, $6 revenue",
+    "spa_appointments": "8 appointments, $1,310 revenue",
+    "guest_intelligence": "3 profiles, 2 VIP, 2 with allergens (James Smith: shellfish/tree nuts/peanuts, Michael Chen: dairy/eggs)",
+    "concierge_tickets": "9 total, 6 open/in_progress",
+    "eng_work_tickets": "8 total, 6 open/in_progress",
+    "guest_menu": "31 items, all active"
+  }
+}

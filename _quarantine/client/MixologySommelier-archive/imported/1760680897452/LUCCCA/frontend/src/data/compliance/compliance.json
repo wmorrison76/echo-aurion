@@ -1,0 +1,7 @@
+// File: data/compliance/auditSchedule.json
+[
+  { "type": "Protein", "frequency": "3x/year", "days": 3 },
+  { "type": "Produce", "frequency": "3x/year", "days": 3 },
+  { "type": "Dairy", "frequency": "3x/year", "days": 3 },
+  { "type": "Monthly Inventory", "frequency": "monthly", "days": 1 }
+]

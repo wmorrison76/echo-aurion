@@ -1,0 +1,112 @@
+{
+  "name": "echoai3-golden-seed",
+  "version": "1.0.0",
+  "description": "The Luccca/EchoAi³ architecture packaged as a platform-building toolkit.",
+  "extracted_from": "luccca-enterprise/iter164",
+  "pillars": [
+    "brain",
+    "spine",
+    "sidebar",
+    "stripe-standalone",
+    "auth",
+    "observability",
+    "cognition"
+  ],
+  "templates": [
+    {
+      "id": "stripe-standalone",
+      "label": "Stripe Standalone SaaS",
+      "description": "Public landing + Stripe checkout + admin dashboard with MRR tracking",
+      "proven_in": ["Pastry ($49/mo)", "BEO ($79/mo)"],
+      "files": [
+        "backend/routes/STANDALONE_stripe.py",
+        "backend/routes/STANDALONE_share.py",
+        "client/modules/STANDALONE/Landing.tsx",
+        "client/modules/STANDALONE/Success.tsx",
+        "client/modules/STANDALONE/Admin.tsx"
+      ],
+      "placeholders": ["STANDALONE", "PRICE_SETUP", "PRICE_MONTHLY", "PRODUCT_NAME", "PACKAGE_ID"]
+    },
+    {
+      "id": "ai-studio",
+      "label": "AI Creator Studio",
+      "description": "Photo/text/video AI generation with gallery + favorites + share",
+      "proven_in": ["CakeViewer photoreal renders", "EchoCanvas"],
+      "files": [
+        "backend/routes/AI_services.py",
+        "client/modules/AI_STUDIO/Studio.tsx",
+        "client/modules/AI_STUDIO/Gallery.tsx"
+      ],
+      "integrations": ["fal.ai", "Emergent LLM Key (Claude/Gemini/OpenAI)"]
+    },
+    {
+      "id": "admin-dashboard",
+      "label": "Admin Dashboard",
+      "description": "KPI tiles + data table + filters + billing controls",
+      "proven_in": ["Pastry admin", "BEO admin", "Eng Ops"],
+      "files": ["client/modules/ADMIN/Dashboard.tsx"]
+    },
+    {
+      "id": "public-share-link",
+      "label": "Public Share + Client Approval",
+      "description": "Unauthenticated share tokens + approve/changes-requested CTA + inbox",
+      "proven_in": ["Pastry /pastry/look/{token}"],
+      "files": [
+        "backend/routes/SHARE_links.py",
+        "client/modules/PUBLIC/LookView.tsx",
+        "client/modules/ADMIN/ApprovalsInbox.tsx"
+      ]
+    },
+    {
+      "id": "notifications-panel",
+      "label": "Notifications + Dismissal Audit + SLA",
+      "description": "Assigned inbox, dismiss-with-reason, audit log, SLA escalation chain",
+      "proven_in": ["Eng Ops /eng-ops/*"],
+      "files": [
+        "backend/routes/notifications.py",
+        "client/modules/OPS/Notifications.tsx",
+        "client/modules/OPS/DismissalAudit.tsx",
+        "client/modules/OPS/SLAPlans.tsx"
+      ]
+    },
+    {
+      "id": "cake-viewer-3d",
+      "label": "3D Designer Shell",
+      "description": "React Three Fiber + PBR materials + HDRI + AI photoreal upgrade",
+      "proven_in": ["CakeViewer"],
+      "stack": ["@react-three/fiber@8.17", "@react-three/drei@9.121", "three@0.180"]
+    }
+  ],
+  "brain": {
+    "file": "brain/echo_brain.py",
+    "description": "Multi-LLM orchestration via Emergent Universal Key",
+    "supports": ["claude-sonnet-4.5", "gemini-3", "gpt-5.2", "fal-flux-pro", "whisper", "sora-2"]
+  },
+  "spine": {
+    "file": "spine/echo-bus.ts",
+    "api": ["openPanel", "insertBlock", "highlight", "action", "focus", "close", "emit", "subscribe", "subscribeTape"],
+    "description": "Pub/sub + event tape so AI can operate any panel in the platform"
+  },
+  "sidebar": {
+    "file": "sidebar/NavRegistry.tsx",
+    "template_groups": ["primary", "quick_daily", "intelligence", "events", "financial", "operations", "guest", "admin"],
+    "roles": ["owner", "admin", "gm", "chef", "controller", "events", "purchasing"]
+  },
+  "auth": {
+    "file": "auth/admin_token.py",
+    "description": "Constant-time hmac.compare_digest gate, fails-closed when unconfigured",
+    "client_helper": "auth/admin-auth.ts"
+  },
+  "observability": {
+    "sentry": "observability/sentry_init.py",
+    "rate_limit": "observability/rate_limit.py",
+    "email_outbox": "observability/email_service.py",
+    "scheduler": "observability/scheduler.py"
+  },
+  "scripts": [
+    "scripts/spawn-platform.sh",
+    "scripts/add-module.sh",
+    "scripts/publish.sh"
+  ],
+  "license": "Proprietary — internal use only (Jay / Emergent)"
+}

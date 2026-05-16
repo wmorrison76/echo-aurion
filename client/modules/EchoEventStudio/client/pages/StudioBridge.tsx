@@ -1,0 +1,4 @@
+import Layout from '@/components/Layout'
+import { StudioRenderer, usePlannerScene, DiagnosticsPanel } from '@/core/layout' const plannerJson = { version: '1.0', room: { name: 'Ballroom A', w: 20, d: 14, h: 4 }, items: [ { id:'RT-1', kind:'roundTable', x:-2, y:-2, r:0.76 }, { id:'RT-2', kind:'roundTable', x: 2, y:-2, r:0.76 }, { id:'BAR-1', kind:'bar', x: 0, y: 4, w:2.4, d:0.8, h:1.1 }, { id:'BUFF-1',kind:'buffet', x:-4, y: 0, w:1.8, d:0.8, h:0.9 }, ],
+} as const export default function StudioBridge(){ const { status, error, build } = usePlannerScene(plannerJson as any) return ( <Layout> <div className="p-4"> <h1 className="text-xl font-semibold mb-3">Studio Bridge Demo</h1> <StudioRenderer onReady={(scene) => build(scene as any, plannerJson as any)} /> <DiagnosticsPanel status={status} error={error} /> </div> </Layout> )
+}

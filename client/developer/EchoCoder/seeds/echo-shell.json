@@ -1,0 +1,9 @@
+{
+  "id": "echo-shell-default",
+  "name": "EchoCoder Shell",
+  "models": {
+    "panel": "0cde43e2f0624354b5a501dea1bcda8f",
+    "layout": "03411c15d942471dbc599ae8e1ef7436"
+  },
+  "notes": "Maps Builder panel content into the slot-aware layout for quick app bootstrapping."
+}

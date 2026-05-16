@@ -1,0 +1,74 @@
+{
+  "summary": "iter223 second-half testing complete: Video mode endpoint, expanded mixed library (tier-5/6), UI button + VIDEO badge all verified. 8/8 backend tests passed, frontend UI tests passed.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_benchmark_iter223_video_mode.py",
+    "/app/test_reports/pytest/pytest_iter223_video.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_benchmark_iter223_video_mode.py"
+  ],
+  "success_rate": {
+    "backend": "100% (8/8 tests passed)",
+    "frontend": "100% (all UI elements verified)"
+  },
+  "test_credentials": "devAuth=1 bypass for frontend",
+  "seed_data_creation": "None - used existing benchmark samples",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter223 second-half features fully tested: (1) POST /api/waste/benchmark/run with video_mode:true returns mode='video', video_frames=4, frames_analysed=4 per sample. (2) POST /run with video_mode:false returns mode='still', frames_analysed=1. (3) Video mode preserves multi_item shape (per_item, missing_items, extra_items, F1). (4) GET /samples returns 43 samples with ≥18 bs-mix-* including tier-5 and tier-6. (5) GET /status returns sample_count=43. (6) PATCH trust_fingerprint and POST trust-all-matched regression paths work. (7) Frontend: '🎥 Video mode' button visible with data-testid='bench-run-all-video'. (8) Frontend: VIDEO badge '🎥 VIDEO · 4f' visible in run detail drawer for video-mode runs.",
+  "features_tested": {
+    "video_mode_endpoint": {
+      "status": "PASS",
+      "details": "POST /run with video_mode:true returns run with mode='video', video_frames=4. Per-sample frames_analysed=4."
+    },
+    "still_mode_regression": {
+      "status": "PASS",
+      "details": "POST /run with video_mode:false returns mode='still', frames_analysed=1 (regression verified)"
+    },
+    "video_mode_multi_item_shape": {
+      "status": "PASS",
+      "details": "Video mode preserves per_item, missing_items, extra_items, F1 fields in per_sample"
+    },
+    "expanded_mixed_library": {
+      "status": "PASS",
+      "details": "43 samples total, ≥18 bs-mix-* samples including tier-5 (bs-mix-t5-*) and tier-6 (bs-mix-t6-*)"
+    },
+    "benchmark_status": {
+      "status": "PASS",
+      "details": "GET /status returns sample_count=43, best_overall=93.57%, best_grade=A"
+    },
+    "trust_fingerprint_regression": {
+      "status": "PASS",
+      "details": "PATCH /samples/{id} with trust_fingerprint:true writes fingerprints"
+    },
+    "trust_all_matched_regression": {
+      "status": "PASS",
+      "details": "POST /runs/{id}/trust-all-matched returns updates and fingerprints_written"
+    },
+    "frontend_video_mode_button": {
+      "status": "PASS",
+      "details": "'🎥 Video mode' button visible with data-testid='bench-run-all-video'"
+    },
+    "frontend_video_badge": {
+      "status": "PASS",
+      "details": "'🎥 VIDEO · 4f' badge visible in run detail drawer for video-mode runs"
+    }
+  },
+  "accuracy_trajectory": {
+    "note": "From main agent context - not re-tested",
+    "11_sample_mixed": "66.6% D → 88.3% B → 90.5% A plateau after 2 trust cycles",
+    "19_sample_expanded": "77.9% C → 85.0% B → 85.6% B plateau",
+    "video_mode_3_samples": "93.0% A (stable vs 91.7% A still)"
+  }
+}

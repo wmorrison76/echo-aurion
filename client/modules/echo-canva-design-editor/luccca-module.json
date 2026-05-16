@@ -1,0 +1,35 @@
+{
+  "name": "echo-canva-design-editor",
+  "label": "Design Editor",
+  "description": "Professional image editing with 50+ tools, AI generative capabilities, layers, filters, and real-time collaboration",
+  "version": "1.0.0",
+  "icon": "🎨",
+  "defaultWidth": 1400,
+  "defaultHeight": 900,
+  "features": [
+    "50+ professional editing tools",
+    "Advanced layer management",
+    "AI-powered generative fill and expand",
+    "Object removal with AI",
+    "30+ professional filters",
+    "Real-time team collaboration",
+    "Multiple export formats",
+    "Professional color grading",
+    "Batch processing",
+    "Smart selections and masking"
+  ],
+  "dependencies": [],
+  "optionalDependencies": [],
+  "integrations": {
+    "imageExport": {
+      "description": "Callback for exporting edited images to parent application",
+      "optional": true,
+      "type": "callback"
+    }
+  },
+  "supportedThemes": ["light", "dark"],
+  "minBrowserVersion": "Chrome 90+",
+  "exportDate": "2025-01-23",
+  "author": "LUCCCA Framework",
+  "license": "MIT"
+}

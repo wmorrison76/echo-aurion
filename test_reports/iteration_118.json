@@ -1,0 +1,124 @@
+{
+  "summary": "Iteration 118: Production Yield Database (89 ingredients) with fuzzy search, yield calculation by cut type, and automatic cost calculation. All 19 backend tests PASSED (100%). Frontend 21-Day Ops Forecast panel verified with all 6 view tabs working.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Forecast21Day (sidebar 21-Day Forecast)",
+        "issue": "Module fails to load dynamically - Error: Failed to fetch dynamically imported module",
+        "selector": "text=21-Day Forecast",
+        "priority": "MEDIUM",
+        "note": "This is a different panel from 21-Day Ops Forecast. The Forecast21Day module at /client/modules/Forecast21Day/index.tsx fails to load. The 21-Day Ops Forecast under Financial & Purchasing works correctly."
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter118_yield_database.py",
+    "/app/test_reports/pytest/pytest_results_iter118.xml"
+  ],
+  "action_items": [
+    "Investigate Forecast21Day module loading issue (different from OpsForecast)"
+  ],
+  "critical_code_review_comments": [
+    "Yield database has 89 ingredients across 7 categories (protein, seafood, vegetable, fruit, dairy, herb, grain)",
+    "Fuzzy search scoring: exact=100, starts-with=90, contains=70+, word-match=40+, subsequence=20+",
+    "Calculate endpoint returns EP weight, trim weight, AP cost, EP cost per unit, total EP cost",
+    "Special yields: Rice Jasmine 250% (cooked vs dry), Asparagus 56%, Lobster whole 25%",
+    "21-Day Ops Forecast text sizes improved: main data at text-[10px], labels at text-[9px]",
+    "All 6 view tabs working: Excel Grid, Charts, Room States, Outlet Forecast, Group Blocks, AI Trends"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter118_yield_database.py"
+  ],
+  "success_rate": {
+    "backend": "100% (19/19 tests passed)",
+    "frontend": "95% (21-Day Ops Forecast working, Forecast21Day module has loading issue)"
+  },
+  "test_credentials": {
+    "auth": "No auth required - dev mode"
+  },
+  "seed_data_creation": "Yield database uses in-memory YIELD_DB list with 89 ingredients",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 118 added Production Yield Database with 89 ingredients. Backend APIs all working: /api/yields/search (fuzzy), /api/yields/calculate (yield by cut), /api/yields/categories (7 categories), /api/yields/all (89 items). Frontend 21-Day Ops Forecast panel (Financial & Purchasing > 21-Day Ops Forecast) working with all 6 tabs. Note: There's a separate Forecast21Day module in sidebar that has a loading issue - this is different from OpsForecast.",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/yields/search?q=milk - returns Milk Whole, Milk 2%, Milk Oat with fuzzy scores - PASSED",
+      "GET /api/yields/search?q=chick - returns chicken items - PASSED",
+      "GET /api/yields/search?q=salmon - returns salmon items - PASSED",
+      "GET /api/yields/search?q=onion - returns onion items with cut yields - PASSED",
+      "GET /api/yields/search?q=lob - returns lobster items - PASSED",
+      "GET /api/yields/search?q=basil&category=herb - returns herb items only - PASSED",
+      "GET /api/yields/calculate?ingredient=onion+yellow&quantity=1&unit=lb&cut=1/4+dice - yield 87%, EP 0.87lb - PASSED",
+      "GET /api/yields/calculate?ingredient=short+rib&quantity=2&unit=lb&cut=braised - yield 50%, EP 1.0lb - PASSED",
+      "GET /api/yields/calculate?ingredient=lobster+whole&quantity=3&unit=lb - yield 25%, EP 0.75lb - PASSED",
+      "GET /api/yields/calculate?ingredient=asparagus&quantity=1&unit=lb&cut=trimmed+spears - yield 56% - PASSED",
+      "GET /api/yields/calculate returns cost info (ap_cost, ep_cost_per_unit, total_ep_cost) - PASSED",
+      "GET /api/yields/categories - returns 7 categories totaling 89 ingredients - PASSED",
+      "GET /api/yields/all - returns all 89 yield records - PASSED",
+      "GET /api/yields/all?category=seafood - returns only seafood items - PASSED",
+      "GET /api/purchasing/prep-list?date=2026-04-13 - still returns 34 ingredients - PASSED",
+      "GET /api/ops-forecast/21-day - returns 21 days data - PASSED",
+      "GET /api/health - PASSED",
+      "Rice Jasmine has 250% yield (cooked vs dry) - PASSED",
+      "All 89 items have required fields (name, category, yield_pct, ap_cost_lb, ep_cost_lb) - PASSED"
+    ],
+    "frontend_ui_tests": [
+      "21-Day Ops Forecast panel opens via Financial & Purchasing > 21-Day Ops Forecast - PASSED",
+      "Panel has data-testid='ops-forecast-panel' - PASSED",
+      "All 6 view tabs present: Excel Grid, Charts, Room States, Outlet Forecast, Group Blocks, AI Trends - PASSED",
+      "Excel Grid tab clickable and renders grid-view - PASSED",
+      "Charts tab clickable - PASSED",
+      "Room States tab clickable - PASSED",
+      "Outlet Forecast tab clickable - PASSED",
+      "Group Blocks tab clickable - PASSED",
+      "AI Trends tab clickable - PASSED",
+      "Grid view shows 21 days of data with readable text (text-[10px]) - PASSED",
+      "Quick stats visible: Avg Occ, Avg ADR, 21d Rev, Group %, Guests - PASSED"
+    ]
+  },
+  "verified_features": {
+    "yield_database": {
+      "status": "Working",
+      "endpoints": [
+        "GET /api/yields/search - fuzzy search with scores",
+        "GET /api/yields/calculate - yield calculation by cut type",
+        "GET /api/yields/categories - 7 categories",
+        "GET /api/yields/all - 89 ingredients"
+      ],
+      "data": {
+        "total_ingredients": 89,
+        "categories": ["protein", "seafood", "vegetable", "fruit", "dairy", "herb", "grain"],
+        "special_yields": {
+          "rice_jasmine": "250% (cooked vs dry)",
+          "asparagus": "56%",
+          "lobster_whole": "25%"
+        }
+      }
+    },
+    "ops_forecast_21day": {
+      "status": "Working",
+      "panel_location": "Financial & Purchasing > 21-Day Ops Forecast",
+      "view_tabs": ["Excel Grid", "Charts", "Room States", "Outlet Forecast", "Group Blocks", "AI Trends"],
+      "text_sizes": "Main data at text-[10px], labels at text-[9px]"
+    }
+  },
+  "known_issues": {
+    "forecast_21day_module": {
+      "issue": "Forecast21Day module (sidebar 21-Day Forecast) fails to load dynamically",
+      "error": "Failed to fetch dynamically imported module: /client/modules/Forecast21Day/index.tsx",
+      "note": "This is a DIFFERENT panel from 21-Day Ops Forecast. The OpsForecast module works correctly.",
+      "priority": "MEDIUM"
+    }
+  },
+  "mocked_apis": {
+    "has_mocked_apis": false,
+    "mocked_apis_list": [],
+    "note": "All APIs are real implementations. Yield database uses in-memory YIELD_DB list."
+  }
+}

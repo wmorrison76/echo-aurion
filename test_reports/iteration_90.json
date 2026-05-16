@@ -1,0 +1,94 @@
+{
+  "summary": "Iteration 90: Weekly BI Email Digest enhancement fully tested. All 5 new digest endpoints working (21/21 pytest tests passed - 100%). Frontend Digest tab fully functional with email preview, settings management, send now, toggle, and history display.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration90_bi_digest.py",
+    "/app/test_reports/pytest/pytest_results_iter90.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iteration90_bi_digest.py"
+  ],
+  "success_rate": {
+    "backend": "100% (21/21 tests passed)",
+    "frontend": "100% (all Digest tab features working)"
+  },
+  "test_credentials": {
+    "auth": "No auth required - dev mode"
+  },
+  "seed_data_creation": "Digest settings already had 2 recipients (gm@resort.com, owner@resort.com). Multiple manual sends created history entries.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 90 verified Weekly BI Email Digest enhancement. 5 new endpoints at /api/enterprise-bi/digest/*: preview (returns data snapshot + HTML), settings (GET/PUT recipients, schedule, enabled), send (POST manual trigger), history (past sends). Frontend DigestTab component has email preview (left panel), settings panel (right side with recipients list, add/remove, toggle), send now button, and send history with trigger type badges. Emails are demo-logged to MongoDB 'email_log' collection (no SENDGRID_API_KEY set). Scheduler has cron job for Monday 7 AM. All 7 original Enterprise BI endpoints still working (regression verified).",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/enterprise-bi/digest/preview - returns 200, has data snapshot (occupancy, adr, revpar, mpi, ari, rgi, total_revenue, gop, gop_margin, otb_next_7d, market_position) and HTML email content",
+      "GET /api/enterprise-bi/digest/settings - returns 200, has recipients array, schedule_day, schedule_hour, enabled boolean",
+      "PUT /api/enterprise-bi/digest/settings - updates recipients list, toggle enabled, returns status 'updated'",
+      "POST /api/enterprise-bi/digest/send - with recipients returns 'sent' status with digest record (id, sent_at, recipients, data_snapshot, trigger='manual')",
+      "POST /api/enterprise-bi/digest/send - without recipients returns 'skipped' with reason",
+      "GET /api/enterprise-bi/digest/history - returns total count and history array with id, sent_at, recipients, data_snapshot, trigger",
+      "GET /api/enterprise-bi/digest/history?limit=5 - respects limit parameter",
+      "GET /api/email/log?category=bi_digest - shows demo-logged emails",
+      "REGRESSION: GET /api/enterprise-bi/str/dashboard - returns 200 with indices, comp_set, trend_12m",
+      "REGRESSION: GET /api/enterprise-bi/pnl/waterfall - returns 200 with waterfall, summary",
+      "REGRESSION: GET /api/enterprise-bi/portfolio/dashboard - returns 200 with properties, portfolio_summary",
+      "REGRESSION: GET /api/enterprise-bi/pms/arrivals - returns 200 with arrivals",
+      "REGRESSION: GET /api/enterprise-bi/pms/departures - returns 200 with departures",
+      "REGRESSION: GET /api/enterprise-bi/pms/otb-pace - returns 200 with pace",
+      "REGRESSION: GET /api/enterprise-bi/pms/guest-mix - returns 200 with by_source"
+    ],
+    "frontend_tests": [
+      "Enterprise BI Suite panel opens from sidebar with data-testid='enterprise-bi-panel'",
+      "Digest tab accessible via data-testid='bi-tab-digest' (5th tab labeled 'Weekly Digest')",
+      "Email Preview panel shows styled HTML with Weekly BI Digest title, STR Index Scores (MPI 106.0, ARI 111.6, RGI 118.3), P&L Snapshot, Key Metrics",
+      "Settings panel shows ENABLED toggle (green), Recipients list (gm@resort.com, owner@resort.com)",
+      "Email input (data-testid='digest-email-input') accepts email addresses",
+      "Add button (data-testid='digest-add-recipient') adds recipient to list",
+      "Remove button removes recipient from list",
+      "Toggle button (data-testid='digest-toggle') switches between ENABLED (green) and DISABLED (red)",
+      "Send Now button (data-testid='digest-send-now') triggers manual send, shows 'Sent to 2 recipients' success message",
+      "Send History shows past digests with timestamp, recipient count, RGI, GOP, and MANUAL trigger badge (amber color)",
+      "Tab switching works between Comp Set (STR), P&L Waterfall, Portfolio, PMS Bridge, Weekly Digest"
+    ]
+  },
+  "features_verified": {
+    "digest_preview": {
+      "status": "WORKING",
+      "details": "Returns data snapshot with all BI metrics (occupancy, ADR, RevPAR, MPI, ARI, RGI, revenue, GOP) and styled HTML email content"
+    },
+    "digest_settings": {
+      "status": "WORKING",
+      "details": "GET/PUT for recipients list, schedule_day (monday), schedule_hour (7), enabled flag. Persists to MongoDB bi_digest_settings collection"
+    },
+    "digest_send": {
+      "status": "WORKING",
+      "details": "Manual trigger sends to all configured recipients, logs to bi_digest_history with trigger='manual'. Returns 'skipped' when no recipients"
+    },
+    "digest_history": {
+      "status": "WORKING",
+      "details": "Returns past digest sends with id, sent_at, recipients, data_snapshot, trigger type. Supports limit parameter"
+    },
+    "email_demo_logging": {
+      "status": "WORKING",
+      "details": "Emails demo-logged to MongoDB 'email_log' collection with status='demo_logged' (no SENDGRID_API_KEY set)"
+    },
+    "scheduler_cron": {
+      "status": "CONFIGURED",
+      "details": "APScheduler cron job configured for Monday 7 AM (day_of_week='mon', hour=7, minute=0)"
+    }
+  },
+  "mocked_apis": {
+    "sendgrid_emails": "Emails are demo-logged to MongoDB 'email_log' collection (no SENDGRID_API_KEY set). Ready to go live when key is provided.",
+    "digest_data": "Uses live MongoDB data for occupancy/revenue from hk_rooms, ird_orders, guest_orders, spa_appointments collections"
+  }
+}

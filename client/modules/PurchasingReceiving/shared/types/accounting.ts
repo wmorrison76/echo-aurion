@@ -1,0 +1,31 @@
+/** * EchoArurum Accounting & Accounts Payable Types * Complete accounting system for resort/hospitality operations */ // ============================================================================
+// PAGINATION
+// ============================================================================ export interface PaginationMeta { offset: number; limit: number; total: number; hasNext: boolean; hasPrev: boolean; totalPages: number;
+} export interface PaginatedResponse<T> { data: T[]; pagination: PaginationMeta;
+} // ============================================================================
+// ACCOUNTS PAYABLE
+// ============================================================================ export type PaymentStatus = |"pending" |"scheduled" |"processing" |"completed" |"failed" |"cancelled"; export type PaymentTerm = |"NET_10" |"NET_15" |"NET_30" |"NET_60" |"NET_90" |"COD" |"PREPAID" |"CUSTOM"; export interface VendorPaymentTerms { id: string; vendor_id: string; organization_id: string; term_code: PaymentTerm; days: number; early_discount_percent?: number; // e.g., 2% for payment within 10 days early_discount_days?: number; notes?: string; active: boolean; created_at: string; updated_at: string;
+} export interface InvoicePayment { id: string; invoice_id: string; organization_id: string; outlet_id: string; vendor_id: string; amount: number; currency: string; payment_method:"check" |"ach" |"wire" |"card" |"cash"; payment_date: string; status: PaymentStatus; scheduled_date?: string; due_date: string; early_pay_discount?: number; reference_number?: string; notes?: string; created_at: string; updated_at: string;
+} export interface PaymentSchedule { id: string; organization_id: string; outlet_id?: string; vendor_id?: string; name: string; description?: string; rules: { due_days: number; early_pay_discount_percent?: number; early_pay_days?: number; payment_method: string; priority: number; }[]; enabled: boolean; created_at: string; updated_at: string;
+} export interface PaymentRun { id: string; organization_id: string; run_date: string; total_amount: number; invoice_count: number; status:"pending" |"processed" |"failed"; payments: string[]; // payment IDs created_at: string; completed_at?: string;
+} // ============================================================================
+// ACCOUNTS & GENERAL LEDGER
+// ============================================================================ export type AccountType = |"asset" |"liability" |"equity" |"revenue" |"expense" |"contra_asset" |"contra_revenue"; export interface GLAccount { id: string; organization_id: string; account_number: string; account_name: string; account_type: AccountType; parent_account_id?: string; description?: string; is_active: boolean; normal_balance:"debit" |"credit"; created_at: string; updated_at: string;
+} export interface GLEntry { id: string; organization_id: string; outlet_id: string; transaction_type: |"invoice" |"payment" |"adjustment" |"transfer" |"accrual"; debit_account_id: string; credit_account_id: string; amount: number; currency: string; transaction_date: string; description?: string; reference_id?: string; // invoice_id, payment_id, etc. created_at: string; posted_at?: string;
+} export interface GLAccountBalance { account_id: string; account_number: string; account_name: string; debit_total: number; credit_total: number; balance: number; period: string; // YYYY-MM
+} // ============================================================================
+// FINANCIAL REPORTING
+// ============================================================================ export interface PandLStatement { id: string; organization_id: string; outlet_id?: string; period_start: string; period_end: string; revenue: { gross_revenue: number; deductions: number; net_revenue: number; }; expenses: { [category: string]: number; }; gross_profit: number; operating_expenses: number; operating_income: number; other_income: number; net_income: number; generated_at: string;
+} export interface CostCategory { id: string; organization_id: string; name: string; code: string; gl_account_id: string; parent_category_id?: string; description?: string; budget?: number; created_at: string;
+} export interface DepartmentBudget { id: string; organization_id: string; outlet_id: string; department: string; period: string; // YYYY-MM budgeted_amount: number; actual_amount: number; variance: number; variance_percent: number; created_at: string; updated_at: string;
+} // ============================================================================
+// FINANCIAL METRICS
+// ============================================================================ export interface FinancialMetrics { organization_id: string; outlet_id?: string; period: string; total_payables: number; total_receivables: number; average_payment_days: number; early_payment_discounts_earned: number; cash_flow_status:"positive" |"negative" |"neutral"; liquidity_ratio: number; debt_to_equity: number; operating_margin: number;
+} // ============================================================================
+// VENDOR ANALYSIS
+// ============================================================================ export interface VendorAnalysis { vendor_id: string; vendor_name: string; total_invoices: number; total_spent: number; average_invoice: number; on_time_payment_rate: number; early_payment_discount_earned: number; payment_trend:"increasing" |"decreasing" |"stable"; cost_per_unit_trend:"up" |"down" |"stable"; quality_score?: number; // 1-100
+} // ============================================================================
+// RECONCILIATION
+// ============================================================================ export interface BankReconciliation { id: string; organization_id: string; bank_account_id: string; reconciliation_date: string; bank_balance: number; book_balance: number; reconciled: boolean; discrepancies: string[]; created_at: string; completed_at?: string;
+} export interface InvoiceReconciliation { id: string; organization_id: string; outlet_id: string; invoice_id: string; po_number?: string; invoice_amount: number; received_amount: number; variance: number; status:"matched" |"unmatched" |"partial"; three_way_match: boolean; // PO, Invoice, Receipt match created_at: string;
+}

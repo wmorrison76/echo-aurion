@@ -1,0 +1,53 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .echoeventstudio-scope {
+    font-family: var(--font-sans);
+    color: var(--foreground);
+  }
+
+  .echoeventstudio-scope h1,
+  .echoeventstudio-scope h2,
+  .echoeventstudio-scope h3,
+  .echoeventstudio-scope h4,
+  .echoeventstudio-scope h5,
+  .echoeventstudio-scope h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  .echoeventstudio-scope.dark h1,
+  .echoeventstudio-scope.dark h2,
+  .echoeventstudio-scope.dark h3 {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+
+  /* High-contrast mode should prioritize readability over decorative effects */
+  .high-contrast .echoeventstudio-scope h1,
+  .high-contrast .echoeventstudio-scope h2,
+  .high-contrast .echoeventstudio-scope h3,
+  .high-contrast .echoeventstudio-scope h4,
+  .high-contrast .echoeventstudio-scope h5,
+  .high-contrast .echoeventstudio-scope h6 {
+    text-shadow: none;
+  }
+
+  .echoeventstudio-scope .whiteboard {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--muted) 35%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+  }
+
+  .high-contrast .echoeventstudio-scope .whiteboard {
+    background-image: none;
+  }
+
+  .echoeventstudio-scope.dark .whiteboard {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--primary) 18%, transparent) 1px,
+      transparent 1px
+    );
+  }
+}

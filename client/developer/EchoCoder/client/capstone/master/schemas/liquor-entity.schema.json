@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Liquor Entity",
+  "type": "object",
+  "required": [
+    "name",
+    "category"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "size_ml": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "abv": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "gin",
+        "vodka",
+        "whisky",
+        "rum",
+        "tequila",
+        "mezcal",
+        "vermouth",
+        "liqueur",
+        "unknown"
+      ]
+    },
+    "vendor_sku": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brand": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expression": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

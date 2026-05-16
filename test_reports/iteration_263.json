@@ -1,0 +1,91 @@
+{
+  "summary": "iter264.1 Phase 1 Testing - Permissions Matrix, Time-Window Filtering, New Role Profiles. Backend: 25/25 tests PASSED (100%). Frontend: IRD Builder works correctly. ISSUE: Admin Onboarding Permissions tab not accessible via sidebar (sidebar points to wrong panel).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Admin Onboarding Permissions Tab",
+        "issue": "Sidebar entry 'Admin & Onboarding' has panelId='admin-command' instead of 'admin-onboarding'. The Permissions tab in AdminOnboarding module is not accessible via sidebar navigation.",
+        "affected_selectors": ["[data-testid='admin-tab-permissions']", "[data-testid='permissions-tab']"],
+        "priority": "HIGH",
+        "fix_location": "/app/client/components/site/Sidebar.tsx - change panelId from 'admin-command' to 'admin-onboarding'"
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter264_permissions.py",
+    "/app/test_reports/pytest/pytest_results_iter264.xml"
+  ],
+  "action_items": [
+    "Fix sidebar entry: Change 'Admin & Onboarding' panelId from 'admin-command' to 'admin-onboarding' in /app/client/components/site/Sidebar.tsx"
+  ],
+  "critical_code_review_comments": [
+    "Permissions Matrix backend implementation is correct - CDC cannot publish (ird.publish=false)",
+    "Time-window filtering works correctly - sections/items outside their window are hidden",
+    "All 7 new role profiles (execchefbqts, cdc, bqtsales, sales, artmedia, opscontrol, accounting) login successfully with Welcome2026!",
+    "IRD Builder UI has proper input visibility with CSS hardening in aurion-theme-bridge.css",
+    "Preview tab correctly shows iframe of public guest page"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter264_permissions.py"
+  ],
+  "success_rate": {
+    "backend": "100% (25/25 passed)",
+    "frontend": "90% (IRD Builder works, Permissions tab not accessible via sidebar)"
+  },
+  "test_credentials": {
+    "admin": "admin@luccca.com / LuccaaAdmin2026!",
+    "new_profiles": "execchefbqts@luccca.com, cdc@luccca.com, bqtsales@luccca.com, sales@luccca.com, artmedia@luccca.com, opscontrol@luccca.com, accounting@luccca.com - all use Welcome2026!"
+  },
+  "seed_data_creation": "Test permission overrides created and restored during testing",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "iter264.1 Phase 1 backend fully tested. Permissions Matrix API works correctly. Frontend IRD Builder works. CRITICAL: Fix sidebar to point to admin-onboarding panel to enable Permissions tab access. After fix, verify: (1) Navigate to Admin & Onboarding, (2) Click Permissions tab, (3) Verify CDC row shows ird.publish=false, (4) Test toggle functionality.",
+  "verified_features": {
+    "permissions_matrix": {
+      "GET /api/permissions/matrix": "PASS - returns 10 permissions, 20+ roles",
+      "chef-de-cuisine permissions": "PASS - ird.view=true, ird.edit=true, ird.publish=false (CRITICAL)",
+      "accounting permissions": "PASS - inventory_audits.start_stop=true, ird.publish=false",
+      "exec-chef-banquets permissions": "PASS - ird.edit=true, ird.publish=false",
+      "operation-controller permissions": "PASS - ird.view=true, spa.view=true, inventory_audits.start_stop=true",
+      "admin permissions": "PASS - ALL permissions=true",
+      "sales/marketing roles": "PASS - ALL ird/spa perms=false (No Access)",
+      "PUT /api/permissions/role/{role}": "PASS - overrides persist",
+      "GET /api/permissions/me (no auth)": "PASS - returns role=null, all perms=false"
+    },
+    "new_role_profiles": {
+      "execchefbqts@luccca.com": "PASS - role=exec-chef-banquets",
+      "cdc@luccca.com": "PASS - role=chef-de-cuisine",
+      "bqtsales@luccca.com": "PASS - role=bqt-sales-marketing",
+      "sales@luccca.com": "PASS - role=sales",
+      "artmedia@luccca.com": "PASS - role=senior-art-media-director",
+      "opscontrol@luccca.com": "PASS - role=operation-controller",
+      "accounting@luccca.com": "PASS - role=accounting"
+    },
+    "ird_time_window_filtering": {
+      "GET /api/ird-public/menu": "PASS - returns time-filtered sections",
+      "GET /api/ird-public/menu?preview=true": "PASS - returns ALL sections (preview override)",
+      "items with count_remaining=0": "PASS - hidden from public menu",
+      "PUT /api/ird-builder/menu new fields": "PASS - available_from, available_until, count_remaining, lead_time_hours accepted"
+    },
+    "regression": {
+      "GET /api/ops-daily/snapshot": "PASS",
+      "GET /api/ird-builder/qr": "PASS - returns real PNG QR",
+      "GET /api/spa-public/menu": "PASS",
+      "GET /api/health": "PASS"
+    },
+    "frontend": {
+      "IRD Builder panel": "PASS - data-testid='ird-builder' found",
+      "IRD Builder tabs": "PASS - all 6 tabs present (builder, amenities, import, preview, qr, orders)",
+      "IRD input visibility": "PASS - text clearly visible in inputs",
+      "IRD time inputs": "PASS - section time pickers render (06:00 AM - 11:00 AM for Breakfast)",
+      "IRD Preview iframe": "PASS - shows mobile-shaped guest view",
+      "Admin Onboarding Permissions tab": "FAIL - not accessible via sidebar (wrong panelId)"
+    }
+  }
+}

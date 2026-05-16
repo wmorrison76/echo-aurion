@@ -1,0 +1,29 @@
+{
+  "name": "BanquetMenuBuilder",
+  "version": "0.1.0-package-1",
+  "description": "AI-assisted banquet menu composition canvas — pricing, dietary, operational load, and network percentile signals in one workspace.",
+  "parent": "MaestroBQT",
+  "routes": [
+    "/api/banquet-menus",
+    "/api/banquet-menus/drafts",
+    "/api/banquet-menus/items"
+  ],
+  "events": [
+    "MENU_DRAFT_CREATED",
+    "MENU_DRAFT_UPDATED",
+    "MENU_DRAFT_PUBLISHED",
+    "MENU_ITEM_ADDED",
+    "MENU_ITEM_REMOVED",
+    "PRICING_RECALCULATED",
+    "DIETARY_PROFILE_UPDATED",
+    "NETWORK_PERCENTILE_FETCHED",
+    "MODULE_LOADED",
+    "MODULE_ERROR"
+  ],
+  "ui": [
+    "/maestro-bqt/banquet-menus"
+  ],
+  "dependencies": [
+    "MaestroBQT"
+  ]
+}

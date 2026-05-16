@@ -1,0 +1,259 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import "./lib/cake-generation-animations.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme - TRON/Apple Design System
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 210 30% 12%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 210 30% 15%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 180 95% 50%;
+    --primary-foreground: 210 40% 7%;
+
+    --secondary: 270 100% 50%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 210 20% 35%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 180 100% 45%;
+    --accent-foreground: 210 40% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 25% 22%;
+    --input: 210 30% 15%;
+    --ring: 180 95% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 40% 7%;
+
+    --sidebar-foreground: 210 40% 95%;
+
+    --sidebar-primary: 180 95% 50%;
+
+    --sidebar-primary-foreground: 210 40% 7%;
+
+    --sidebar-accent: 270 100% 50%;
+
+    --sidebar-accent-foreground: 210 40% 95%;
+
+    --sidebar-border: 210 25% 22%;
+
+    --sidebar-ring: 180 95% 50%;
+  }
+
+  .dark {
+    --background: 210 40% 7%;
+    --foreground: 210 40% 95%;
+
+    --card: 210 30% 12%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 210 30% 15%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 180 95% 50%;
+    --primary-foreground: 210 40% 7%;
+
+    --secondary: 270 100% 50%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 210 20% 35%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 180 100% 45%;
+    --accent-foreground: 210 40% 7%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 25% 22%;
+    --input: 210 30% 15%;
+    --ring: 180 95% 50%;
+
+    --sidebar-background: 210 40% 7%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 180 95% 50%;
+    --sidebar-primary-foreground: 210 40% 7%;
+    --sidebar-accent: 270 100% 50%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 210 25% 22%;
+    --sidebar-ring: 180 95% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-md bg-black/40 border border-white/5;
+  }
+
+  .glass-accent {
+    @apply backdrop-blur-md bg-cyan-500/5 border border-cyan-500/30;
+  }
+
+  .glow-cyan {
+    @apply shadow-lg shadow-cyan-500/20;
+  }
+
+  .glow-magenta {
+    @apply shadow-lg shadow-magenta-500/20;
+  }
+
+  .glow-primary {
+    @apply shadow-lg shadow-cyan-500/30;
+  }
+
+  .border-cyan {
+    @apply border border-cyan-500/50;
+  }
+
+  .border-magenta {
+    @apply border border-magenta-500/50;
+  }
+
+  .text-cyan {
+    @apply text-cyan-400;
+  }
+
+  .text-magenta {
+    @apply text-magenta-400;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/40;
+  }
+
+  /* Mobile Responsive Design System */
+  @media (max-width: 1024px) {
+    .layout-desktop {
+      display: none;
+    }
+
+    .layout-tablet {
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .layout-tablet {
+      display: none;
+    }
+
+    .layout-mobile {
+      display: block;
+    }
+
+    .hide-on-mobile {
+      display: none !important;
+    }
+
+    .show-on-mobile {
+      display: block !important;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .compact-spacing {
+      padding: 8px !important;
+      gap: 4px !important;
+    }
+
+    .full-width-mobile {
+      width: 100% !important;
+    }
+  }
+
+  /* Touch-friendly UI adjustments */
+  @media (hover: none) {
+    button:active {
+      transform: scale(0.98);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 2px solid #00f0ff;
+      outline-offset: 2px;
+    }
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #333 #0a0a0a;
+}

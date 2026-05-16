@@ -1,0 +1,66 @@
+{
+  "summary": "iter217 Photo Intake Pipeline + Atelier Recognition - Backend: 14/14 tests passed (100%). Frontend Mobile: 8/8 mode tiles including live_camera working. Desktop EchoWaste panel not accessible via sidebar (pre-existing navigation issue, not iter217 related).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Desktop EchoWaste panel navigation",
+        "issue": "EchoWaste/EchoYield panel not accessible from sidebar - panel is registered but not visible in sidebar menu. This is a pre-existing sidebar configuration issue, not related to iter217 changes.",
+        "affected_selectors": ["[data-testid='echowaste-panel']", "[data-testid='echowaste-tab-atelier']"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter217_photo_intake.py",
+    "/app/test_reports/pytest/pytest_results_iter217.xml"
+  ],
+  "action_items": [
+    "Desktop sidebar: EchoYield/EchoWaste panel not visible in sidebar menu - may need to add to sidebar configuration or expand Intelligence & Forecasting section to show it"
+  ],
+  "critical_code_review_comments": [
+    "photo_intake.py: Well-structured 6-stage pipeline (intake → quality → face blur → consent → label OCR → fingerprint → recipe suggest)",
+    "AtelierView component: Properly implements dignified recognition (no XP/streaks) with 4 KPIs and 5 milestones",
+    "LiveCameraOverlay: Graceful degradation for getUserMedia unavailability, IMU pan guidance via DeviceMotionEvent"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter217_photo_intake.py"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100% (mobile), N/A (desktop panel not accessible)"
+  },
+  "test_credentials": "No auth required for /api/waste/* endpoints",
+  "seed_data_creation": "Test fingerprints created during test execution with unique HSV histograms",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter217 photo-intake pipeline fully tested. All endpoints working: POST /api/waste/photo-intake (valid + validation errors), GET /api/waste/photo-intake/{id}, GET /api/waste/photo-intake (list), GET /api/waste/photo-intake/atelier/stats. Fingerprint integration via photo_intake works. Regression tests for iter216 fingerprint endpoints pass. Mobile WasteTab shows 8 mode tiles including live_camera. Desktop EchoWaste panel exists but is not accessible via sidebar navigation - this is a pre-existing configuration issue.",
+  "tests_executed": {
+    "backend": [
+      "test_photo_intake_success - PASS (id starts with 'pi-', quality_score > 0.3, duration_ms > 0)",
+      "test_photo_intake_invalid_source_module - PASS (HTTP 400)",
+      "test_photo_intake_invalid_upload_method - PASS (HTTP 400)",
+      "test_photo_intake_empty_media_base64 - PASS (HTTP 422)",
+      "test_get_photo_intake_by_id - PASS",
+      "test_get_photo_intake_not_found - PASS (HTTP 404)",
+      "test_list_photo_intakes - PASS (ok=true, rows array, descending by created_at)",
+      "test_atelier_stats_structure - PASS (5 milestones, hit_rate 0..1, all required fields)",
+      "test_fingerprint_match_via_photo_intake - PASS",
+      "test_post_fingerprints - PASS (regression)",
+      "test_query_fingerprints - PASS (regression)",
+      "test_fingerprints_stats - PASS (regression)",
+      "test_capture_still_stub_path - PASS (regression)",
+      "test_capture_video_mot_stub_path - PASS (regression)"
+    ],
+    "frontend": [
+      "Mobile WasteTab - PASS (8/8 mode tiles: video, still, buffet_set, buffet_refill, buffet_close, ground_truth, draft_recipe, live_camera)",
+      "Mobile live_camera mode activation - PASS (CTA text changes to 'Open live camera')",
+      "Desktop EchoWaste panel - NOT ACCESSIBLE (sidebar navigation issue)"
+    ]
+  },
+  "known_blockers": "Desktop EchoWaste panel not accessible via sidebar - panel is registered in panel-registry.ts but not visible in sidebar menu. Mobile testing confirms all iter217 features work correctly."
+}

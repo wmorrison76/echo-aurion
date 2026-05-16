@@ -1,0 +1,51 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar",
+    "refresh": "Atualizar",
+    "close": "Fechar",
+    "confirm": "Confirmar",
+    "yes": "Sim",
+    "no": "Não"
+  },
+  "navigation": {
+    "dashboard": "Painel",
+    "inventory": "Inventário",
+    "schedule": "Cronograma",
+    "purchasing": "Compras",
+    "culinary": "Culinary",
+    "echoaurum": "EchoAurum",
+    "echostratus": "EchoStratus",
+    "settings": "Configurações"
+  },
+  "inventory": {
+    "title": "Gestão de Inventário",
+    "currentStock": "Estoque Atual",
+    "parLevel": "Nível Par",
+    "reorderPoint": "Ponto de Reabastecimento",
+    "addItem": "Adicionar Item",
+    "updateStock": "Atualizar Estoque"
+  },
+  "schedule": {
+    "title": "Cronograma de Funcionários",
+    "shifts": "Turnos",
+    "assignStaff": "Atribuir Funcionário",
+    "createShift": "Criar Turno"
+  },
+  "purchasing": {
+    "title": "Compras e Recebimento",
+    "createPO": "Criar Ordem de Compra",
+    "receiveOrder": "Receber Ordem",
+    "approvePO": "Aprovar Ordem"
+  }
+}

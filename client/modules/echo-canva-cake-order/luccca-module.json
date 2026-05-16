@@ -1,0 +1,40 @@
+{
+  "name": "echo-canva-cake-order",
+  "label": "Cake Order & Builder",
+  "description": "AI-powered cake design, customization, and order workflow with 3D preview and smart pricing",
+  "version": "1.0.0",
+  "icon": "🎂",
+  "defaultWidth": 1200,
+  "defaultHeight": 800,
+  "features": [
+    "3D cake preview with customization",
+    "AI-powered design suggestions",
+    "Allergen and dietary management",
+    "Smart pricing calculation",
+    "Order intake and queueing",
+    "Flavor and frosting selection",
+    "Advanced order management",
+    "Delivery scheduling"
+  ],
+  "dependencies": [],
+  "optionalDependencies": [
+    "echo-recipe-pro"
+  ],
+  "integrations": {
+    "recipeData": {
+      "description": "Can consume recipe data from Echo Recipe Pro for ingredient and pricing information",
+      "optional": true,
+      "type": "context"
+    },
+    "orderCallback": {
+      "description": "Optional callback when orders are submitted, allowing parent module to handle persistence",
+      "optional": true,
+      "type": "callback"
+    }
+  },
+  "supportedThemes": ["light", "dark"],
+  "minBrowserVersion": "Chrome 90+",
+  "exportDate": "2025-01-23",
+  "author": "LUCCCA Framework",
+  "license": "MIT"
+}

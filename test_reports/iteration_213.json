@@ -1,0 +1,122 @@
+{
+  "summary": "iter213 EchoWaste v1.2 Phase 1 testing complete. All 16 backend tests passed (100%). Frontend UI renders correctly with all required elements. One minor frontend issue: buffet-close button is disabled when no session, preventing the flash message from appearing (onClick never fires on disabled button).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "WasteTab mode-buffet-close",
+        "issue": "Button is disabled when no session, so onClick handler never fires and flash message 'Start a buffet set first' never appears. The disabled attribute prevents the click event entirely.",
+        "selector": "[data-testid='mode-buffet-close']",
+        "priority": "LOW",
+        "suggested_fix": "Either remove disabled attribute and handle the no-session case in onClick, OR show the message via a different mechanism (e.g., tooltip on hover)"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter213_echowaste_v12_phase1.py",
+    "/app/test_reports/pytest/pytest_results_iter213.xml"
+  ],
+  "action_items": [
+    "Fix mode-buffet-close button to show flash message when clicked without session (currently disabled prevents onClick)"
+  ],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter213_echowaste_v12_phase1.py"
+  ],
+  "success_rate": {
+    "backend": "100% (16/16 tests passed)",
+    "frontend": "95% (all core features work, minor buffet-close flash issue)"
+  },
+  "test_credentials": "ADMIN_API_TOKEN: TsjvVFDCvoa4sG4wcVY7ZKF0D7LmA25lTer4edByo5o",
+  "seed_data_creation": "Created test captures, entries, buffet sessions, zones, and ground-truth records during testing",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "iter213 v1.2 Phase 1 features all working: (1) Feature flags - all 5 new flags present and enabled; (2) Multi-zone capture - zones array with auto-generated names working; (3) Buffet set/close - session creation, forecast from calendar_events, cost rollup working; (4) Cost-per-cover - guest count updates cost_per_cover fields; (5) Zone CRUD - append/list zones working; (6) Recipe suggestions - list/approve/reject endpoints working; (7) Review pending - returns entries with needs_review; (8) Ground-truth labelled - stores and lists records; (9) Idempotency - same client_id returns idempotent_replay:true. Frontend: waste-standalone-root, waste-tab-root, mode selector (4 tiles), primary CTA, online pill, zone input all render correctly. Ground-truth mode hides zone input as expected.",
+  "features_tested": {
+    "backend_feature_flags": {
+      "status": "PASS",
+      "details": "GET /api/waste/feature-flags returns all 5 iter213 flags (buffet_pre_cost, cost_per_cover, multi_zone_capture, collect_ground_truth, recipe_suggestions) = True"
+    },
+    "backend_capture_still_cost_breakdown": {
+      "status": "PASS",
+      "details": "POST /api/waste/capture/still returns entry with cost_breakdown keyed by {protein,pastry,produce,beverages,dairy,sundries}, items have category and needs_review fields"
+    },
+    "backend_multi_zone_capture": {
+      "status": "PASS",
+      "details": "POST /api/waste/capture/still with zones returns zone_count=3, zones array with user-named and auto-generated names matching pattern UNK-UNK-YYYYMMDD-HHMM-03"
+    },
+    "backend_buffet_set": {
+      "status": "PASS",
+      "details": "POST /api/waste/buffet/set creates session with forecast from calendar_events (group_block_covers=0 when no events), set_cost_usd, set_cost_breakdown, estimated_covers_at_setup"
+    },
+    "backend_buffet_guest_count": {
+      "status": "PASS",
+      "details": "POST /api/waste/buffet/{session_id}/guest-count updates session with guest_count, recomputes cost_per_cover_consumed_usd, cost_per_cover_wasted_usd, cost_per_cover_total_usd, waste_pct"
+    },
+    "backend_buffet_cost_breakdown": {
+      "status": "PASS",
+      "details": "GET /api/waste/buffet/{session_id}/cost-breakdown returns waterfall (set/refill/close/consumed/per-cover) with historical_comparison"
+    },
+    "backend_buffet_close": {
+      "status": "PASS",
+      "details": "POST /api/waste/buffet/close sets status='closed', rolls up close_cost_usd + waste_pct"
+    },
+    "backend_zone_crud": {
+      "status": "PASS",
+      "details": "POST /api/waste/entries/{entry_id}/zones appends zone, runs vision stub, updates parent entry total_cost + zone_count. GET lists zones."
+    },
+    "backend_recipe_suggestions": {
+      "status": "PASS",
+      "details": "GET /api/waste/recipes/suggested returns suggestions array. POST approve/reject returns 404 on unknown recipe_id."
+    },
+    "backend_review_pending": {
+      "status": "PASS",
+      "details": "GET /api/waste/review/pending returns entries with needs_review or pending suggestions, plus pending_suggestions count"
+    },
+    "backend_ground_truth_labelled": {
+      "status": "PASS",
+      "details": "POST /api/waste/training/labelled stores ground_truth record and returns ground_truth_id. GET lists records. Works without requiring image media."
+    },
+    "backend_idempotency": {
+      "status": "PASS",
+      "details": "Same client_id on /capture/still returns idempotent_replay:true with same entry_id"
+    },
+    "frontend_waste_standalone": {
+      "status": "PASS",
+      "details": "Navigate to /m/waste - waste-standalone-root and waste-tab-root both render"
+    },
+    "frontend_mode_selector": {
+      "status": "PASS",
+      "details": "Mode selector has 4 tiles (mode-still, mode-buffet-set, mode-buffet-close, mode-ground-truth)"
+    },
+    "frontend_primary_cta": {
+      "status": "PASS",
+      "details": "waste-capture-primary CTA visible, label changes to 'Upload labelled sample' in ground_truth mode"
+    },
+    "frontend_buffet_close_flash": {
+      "status": "FAIL",
+      "details": "Clicking mode-buffet-close when no session does NOT show flash message because button is disabled (disabled attribute prevents onClick)"
+    },
+    "frontend_zone_input": {
+      "status": "PASS",
+      "details": "waste-zone-name-input accepts text, waste-add-zone-btn renders. Both hidden in ground_truth mode as expected."
+    },
+    "frontend_online_pill": {
+      "status": "PASS",
+      "details": "waste-online-pill shows '● ONLINE' in normal network. Queue count not shown when queue is 0."
+    },
+    "frontend_suggestions_banner": {
+      "status": "PASS",
+      "details": "waste-suggestions-banner not rendered when no pending suggestions (correct behavior)"
+    },
+    "frontend_review_pill": {
+      "status": "PASS",
+      "details": "waste-review-pill not rendered when no pending-review items (correct behavior)"
+    }
+  }
+}

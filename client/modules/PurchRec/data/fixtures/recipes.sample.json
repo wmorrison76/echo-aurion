@@ -1,0 +1,68 @@
+[
+  {
+    "id": "recipe-caesar",
+    "name": "Classic Caesar Salad",
+    "yieldQty": 8,
+    "yieldUom": "portion",
+    "components": [
+      { "ingredientId": "ingredient-romaine", "qty": 8, "uom": "each", "wastePct": 0.06 },
+      { "ingredientId": "ingredient-parmesan", "qty": 1.5, "uom": "lb", "wastePct": 0.02 },
+      { "ingredientId": "ingredient-butter", "qty": 0.5, "uom": "lb", "wastePct": 0.01 }
+    ]
+  },
+  {
+    "id": "recipe-caprese",
+    "name": "Heirloom Caprese",
+    "yieldQty": 6,
+    "yieldUom": "plate",
+    "components": [
+      { "ingredientId": "ingredient-tomato-roma", "qty": 10, "uom": "lb", "wastePct": 0.05 },
+      { "ingredientId": "ingredient-mozzarella", "qty": 3, "uom": "lb", "wastePct": 0.03 },
+      { "ingredientId": "ingredient-basil", "qty": 0.4, "uom": "lb", "wastePct": 0.1 }
+    ]
+  },
+  {
+    "id": "recipe-salmon-bowl",
+    "name": "Seared Salmon Bowl",
+    "yieldQty": 10,
+    "yieldUom": "bowl",
+    "components": [
+      { "ingredientId": "ingredient-salmon", "qty": 15, "uom": "lb", "wastePct": 0.08 },
+      { "ingredientId": "ingredient-romaine", "qty": 12, "uom": "each", "wastePct": 0.1 },
+      { "ingredientId": "ingredient-avocado", "qty": 20, "uom": "each", "wastePct": 0.1 }
+    ]
+  },
+  {
+    "id": "recipe-shrimp-linguine",
+    "name": "Shrimp Linguine",
+    "yieldQty": 12,
+    "yieldUom": "plate",
+    "components": [
+      { "ingredientId": "ingredient-shrimp", "qty": 12, "uom": "lb", "wastePct": 0.12 },
+      { "ingredientId": "ingredient-linguine", "qty": 18, "uom": "lb", "wastePct": 0.02 },
+      { "ingredientId": "ingredient-butter", "qty": 2, "uom": "lb", "wastePct": 0.02 }
+    ]
+  },
+  {
+    "id": "recipe-avocado-toast",
+    "name": "Avocado Toast Deluxe",
+    "yieldQty": 10,
+    "yieldUom": "portion",
+    "components": [
+      { "ingredientId": "ingredient-sourdough", "qty": 10, "uom": "each", "wastePct": 0.05 },
+      { "ingredientId": "ingredient-avocado", "qty": 15, "uom": "each", "wastePct": 0.08 },
+      { "ingredientId": "ingredient-parmesan", "qty": 0.8, "uom": "lb", "wastePct": 0.03 }
+    ]
+  },
+  {
+    "id": "recipe-grilled-cheese",
+    "name": "Sourdough Grilled Cheese",
+    "yieldQty": 12,
+    "yieldUom": "sandwich",
+    "components": [
+      { "ingredientId": "ingredient-sourdough", "qty": 12, "uom": "each", "wastePct": 0.05 },
+      { "ingredientId": "ingredient-cheddar", "qty": 6, "uom": "lb", "wastePct": 0.03 },
+      { "ingredientId": "ingredient-butter", "qty": 2, "uom": "lb", "wastePct": 0.01 }
+    ]
+  }
+]

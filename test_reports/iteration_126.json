@@ -1,0 +1,56 @@
+{
+  "summary": "Iteration 126: Recipe System Smoke Test - Backend 18/18 passed, Frontend Recipe Builder working with fuzzy search and cost calculations. 21-Day Forecast has module loading error.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "21-Day Forecast Panel",
+        "issue": "Error loading forecast-21day: Failed to fetch dynamically imported module OpsForecast/index.tsx",
+        "selector": "21-Day Forecast panel",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter126_recipe_system.py",
+    "/app/test_reports/pytest/pytest_results_iter126.xml"
+  ],
+  "action_items": [
+    "Fix 21-Day Forecast module dynamic import error - OpsForecast/index.tsx failing to load"
+  ],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iter126_recipe_system.py"
+  ],
+  "success_rate": {
+    "backend": "100% (18/18 passed)",
+    "frontend": "90% (Recipe Builder working, 21-Day Forecast has module error)"
+  },
+  "verified_features": {
+    "GET_api_yields_recipes": "✓ Returns recipes with total_cost, cost_per_portion, food_cost_pct",
+    "POST_api_yields_recipes": "✓ Creates recipe with server-side cost calculation",
+    "GET_api_yields_recipes_id": "✓ Returns individual recipe with full data",
+    "GET_api_yields_search": "✓ Fuzzy search returns yield_pct, ap_cost_lb, ep_cost_lb",
+    "GET_api_ordering_search_ingredients": "✓ Returns inventory items for fuzzy matching",
+    "CulinaryRecipeBuilder_panel": "✓ Opens and shows saved recipes in sidebar",
+    "Recipe_sidebar_AI_badge": "✓ AI badge visible on echoai3_generated recipes with 'Pending' status",
+    "IngredientsGrid_fuzzy_search": "✓ Dropdown appears with yield % badge and AP cost",
+    "Recipe_cost_calculations": "✓ Total cost, cost per portion, food cost % calculated correctly",
+    "21_Day_Forecast_weather_rows": "⚠ Module failed to load - dynamic import error"
+  },
+  "test_data_created": {
+    "recipes": [
+      "TEST_Smoke_Recipe_126",
+      "TEST_Cost_Calc_Recipe_126"
+    ]
+  },
+  "seed_data_creation": "2 test recipes created during backend testing",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Recipe system fully functional. CulinaryRecipeBuilder panel at 'culinary-recipe-builder' key works with fuzzy search, yield DB integration, and cost calculations. 21-Day Forecast panel has dynamic import error for OpsForecast module. Backend APIs all passing. Total recipes in system: 20+ (including 10 created in previous iteration + test recipes)."
+}

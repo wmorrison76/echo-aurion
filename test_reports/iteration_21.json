@@ -1,0 +1,129 @@
+{
+  "summary": "Iteration 21 - LUCCCA Culinary Module Smoke Test Complete. Full cycle verified: invoice → recipe → cost → menu → AI notes → translate to Spanish. Dashboard KPI links navigation working (Revenue→POS, Labor→Schedule, Inventory→Inventory, Events→Echo Events, Forecast→ForecastHub). Culinary module loads ECHO RECIPE PRO interface. Pastry module loads with dark teal sidebar design. Purchasing & Receiving module loads with Dashboard view. Backend: 15/15 tests passed (100%). Frontend: All modules and KPI navigation verified.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Pastry module",
+        "issues": ["Dark teal sidebar design in light mode - this is the module's internal design as noted in context, not a bug"]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration21_culinary_smoke.py",
+    "/app/test_reports/pytest/pytest_results_iter21.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Dashboard loads on startup with 6 KPI cards visible (Revenue, Labor Cost, Inventory, Events, Workflows, Forecast)",
+    "Revenue KPI ($777.15) click opens POS Connector panel - verified via console logs",
+    "Labor Cost KPI (36.4%) click opens Schedule panel - verified",
+    "Inventory KPI ($2,606) click opens Inventory panel - verified",
+    "Events KPI (8 events) click opens Echo Events panel - verified",
+    "Forecast KPI (94.2%) click opens ForecastHub panel - verified",
+    "Culinary module loads ECHO RECIPE PRO - Research & Development Suite with internal sidebar navigation",
+    "Pastry module loads with RECIPES, ADD RECIPE, MENU STUDIO, GALLERY, DISH ASSEMBLY, PASTRY STUDIO sections",
+    "Purchasing & Receiving module loads with Dashboard showing Open Orders, Receiving Queue, Monthly Spend, Budget Variance",
+    "Backend POST /api/operations/invoice/process processes invoice items correctly",
+    "Backend POST /api/operations/recipe creates recipe with ID",
+    "Backend GET /api/operations/recipe/{id}/cost returns cost breakdown",
+    "Backend POST /api/culinary/notes/generate creates AI server/cook notes (uses Emergent LLM Key)",
+    "Backend POST /api/culinary/translate translates notes to Spanish (uses Emergent LLM Key)",
+    "Backend POST /api/culinary/menus creates menu with recipe items",
+    "Panel navigation bug fixed - no overlay stacking observed",
+    "Sidebar collapses after clicking module item (expected behavior)"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration21_culinary_smoke.py"
+  ],
+  "success_rate": {
+    "backend": "100% (15/15 passed)",
+    "frontend": "100% (All modules and KPI navigation verified)"
+  },
+  "seed_data_creation": "Created TEST_ prefixed ingredients, recipes, and menus for testing",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Iteration 21 verified full Culinary module smoke test: 1) Invoice processing creates/updates ingredients, 2) Recipe creation with ingredients, 3) Recipe cost calculation, 4) AI notes generation (server and cook notes), 5) Translation to Spanish, 6) Menu creation with recipes. Dashboard KPI navigation verified: Revenue→pos-connector, Labor→schedule, Inventory→inventory, Events→echo-events, Forecast→forecast-hub. All three modules load correctly: Culinary (ECHO RECIPE PRO), Pastry (dark teal sidebar design), Purchasing & Receiving (Dashboard with order metrics). Panel navigation bug was fixed by clearing stale Vite cache. Sidebar collapses after clicking module item.",
+  "test_results": {
+    "backend_tests": {
+      "health_endpoint": "PASS - Platform: LUCCCA Enterprise, 10 engines active",
+      "command_center_returns_200": "PASS - All KPI data present",
+      "invoice_processing": "PASS - Processes invoice items and creates/updates ingredients",
+      "recipe_creation": "PASS - Creates recipe with ID",
+      "recipe_cost_calculation": "PASS - Returns cost breakdown",
+      "server_notes_generation": "PASS - AI generates server notes",
+      "cook_notes_generation": "PASS - AI generates cook notes",
+      "translation_to_spanish": "PASS - Translates text to Spanish",
+      "menu_creation": "PASS - Creates menu with recipe items",
+      "list_menus": "PASS - Lists all menus",
+      "pastry_recipes_endpoint": "PASS - Recipes accessible",
+      "purchasing_ingredients_endpoint": "PASS - Ingredients accessible",
+      "purchasing_low_stock_endpoint": "PASS - Low stock check works",
+      "purchasing_po_suggestions": "PASS - PO suggestions generated",
+      "cleanup_test_data": "PASS - Test data noted for cleanup"
+    },
+    "frontend_tests": {
+      "dashboard_loads": "PASS - Enterprise Command Center loaded with data-testid='enterprise-command-center'",
+      "kpi_cards_visible": "PASS - 6 KPI cards visible (Revenue, Labor Cost, Inventory, Events, Workflows, Forecast)",
+      "revenue_kpi_click": "PASS - Opens POS Connector panel",
+      "labor_kpi_click": "PASS - Opens Schedule panel",
+      "inventory_kpi_click": "PASS - Opens Inventory panel",
+      "events_kpi_click": "PASS - Opens Echo Events panel",
+      "forecast_kpi_click": "PASS - Opens ForecastHub panel",
+      "culinary_module_loads": "PASS - ECHO RECIPE PRO interface with internal sidebar",
+      "pastry_module_loads": "PASS - Dark teal sidebar design with RECIPES, PASTRY STUDIO sections",
+      "purchasing_module_loads": "PASS - Dashboard with Open Orders, Receiving Queue, Monthly Spend"
+    }
+  },
+  "endpoints_tested": [
+    "GET /api/health",
+    "GET /api/enterprise/command-center",
+    "POST /api/operations/invoice/process",
+    "POST /api/operations/ingredient",
+    "POST /api/operations/recipe",
+    "GET /api/operations/recipe/{id}/cost",
+    "POST /api/culinary/notes/generate",
+    "POST /api/culinary/translate",
+    "POST /api/culinary/menus",
+    "GET /api/culinary/menus",
+    "GET /api/operations/recipes",
+    "GET /api/operations/ingredients",
+    "GET /api/operations/low-stock",
+    "GET /api/operations/po-suggestions"
+  ],
+  "mocked_apis": {
+    "has_mocked_apis": true,
+    "mocked_apis_list": [
+      "POS Connector (mock Toast/Aloha) - no real POS keys",
+      "GL Sync (mock QuickBooks/Sage/Xero) - no real accounting keys",
+      "AI notes and translation use real Gemini via Emergent LLM Key"
+    ]
+  },
+  "verified_features": {
+    "culinary_full_cycle": {
+      "invoice_processing": "Creates/updates ingredients from invoice items",
+      "recipe_creation": "Creates recipe with ingredients, instructions, pricing",
+      "cost_calculation": "Calculates total cost, cost per portion, food cost %",
+      "ai_notes": "Generates server notes (description, allergens, wine pairings) and cook notes (mise en place, steps)",
+      "translation": "Translates culinary text to Spanish",
+      "menu_creation": "Creates menu with recipe items and cost analysis"
+    },
+    "dashboard_kpi_navigation": {
+      "revenue": "Opens pos-connector panel",
+      "labor_cost": "Opens schedule panel",
+      "inventory": "Opens inventory panel",
+      "events": "Opens echo-events panel",
+      "forecast": "Opens forecast-hub panel"
+    },
+    "module_loading": {
+      "culinary": "ECHO RECIPE PRO - Research & Development Suite",
+      "pastry": "Dark teal sidebar with RECIPES, PASTRY STUDIO, OPERATIONS sections",
+      "purchasing_receiving": "Dashboard with order metrics and vendor tracking"
+    }
+  }
+}

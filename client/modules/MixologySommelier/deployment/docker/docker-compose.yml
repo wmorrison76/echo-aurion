@@ -1,0 +1,191 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: luccca_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sommelier_db}
+      POSTGRES_USER: ${POSTGRES_USER:-luccca}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-luccca123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./db/seed_wines.sql:/docker-entrypoint-initdb.d/02-seed-wines.sql
+      - ./db/seed_recipes.sql:/docker-entrypoint-initdb.d/03-seed-recipes.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U luccca"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - luccca_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.backend
+    container_name: luccca_backend
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+      - ./db:/app/db
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  pairing-engine:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.services
+      args:
+        SERVICE: pairing-engine
+    container_name: luccca_pairing
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ECHO_OPENAI_API_KEY: ${ECHO_OPENAI_API_KEY}
+      PORT: 8090
+    ports:
+      - "8090:8090"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  inventory-costing:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.services
+      args:
+        SERVICE: inventory-costing
+    container_name: luccca_costing
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      PORT: 8100
+    ports:
+      - "8100:8100"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  sales-analytics:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.services
+      args:
+        SERVICE: sales-analytics
+    container_name: luccca_analytics
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      PORT: 8120
+    ports:
+      - "8120:8120"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  iot-monitor:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.services
+      args:
+        SERVICE: iot-monitor
+    container_name: luccca_iot
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      MQTT_BROKER_URL: ${MQTT_BROKER_URL:-mqtt://mosquitto:1883}
+      PORT: 8140
+    ports:
+      - "8140:8140"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  education-training:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.services
+      args:
+        SERVICE: education-training
+    container_name: luccca_training
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ECHO_OPENAI_API_KEY: ${ECHO_OPENAI_API_KEY}
+      PORT: 8150
+    ports:
+      - "8150:8150"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  echovinum-archive:
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile.services
+      args:
+        SERVICE: echovinum-archive
+    container_name: luccca_archive
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-luccca}:${POSTGRES_PASSWORD:-luccca123}@postgres:5432/${POSTGRES_DB:-sommelier_db}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ECHO_OPENAI_API_KEY: ${ECHO_OPENAI_API_KEY}
+      PORT: 8160
+    ports:
+      - "8160:8160"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: luccca_mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./deployment/docker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_logs:/mosquitto/log
+    networks:
+      - luccca_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mosquitto_data:
+  mosquitto_logs:
+
+networks:
+  luccca_network:
+    driver: bridge

@@ -1,0 +1,35 @@
+{
+  "summary": "iter266.11 Labor Brain Advisory Rail backend testing — all 8 pytest cases PASS against the public preview URL. Covered: envelope shape + max-5 ranked-by-severity-weight ordering, outlet & department scoping, accept->PAF write, idempotency on (rec_id, day), decisions audit feed, Pydantic validation on accept, plus regression on /dashboard (incl. labor_pct_of_sales) and /shifts.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iter266_11_labor_brain.py",
+    "/app/test_reports/pytest/iter266_11_labor_brain.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "echo_schedule.py is approaching 813 lines; consider splitting schedule_dashboard, _generate_labor_brain_recs, and accept handlers into separate modules (e.g., routes/echo_schedule/dashboard.py, /labor_brain.py).",
+    "labor_brain endpoint internally calls schedule_dashboard(...) directly as a Python function — works because both share the router; if /dashboard ever gets request-bound deps (auth, headers), this in-process call will silently bypass them. Acceptable today, but document it.",
+    "DB writes in /labor-brain/accept swallow all exceptions with bare `except Exception: pass`. If the insert truly fails, the API still returns ok=true with a paf that was never persisted. Recommend logging the exception (logger.exception) at minimum.",
+    "Idempotency key is `labor-brain::{rec_id}::{YYYY-MM-DD}` in UTC. Cross-midnight UTC retries will mint a new PAF for the same rec; acceptable per spec but worth a UI hint."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iter266_11_labor_brain.py"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "not-tested (per request)"
+  },
+  "test_credentials": "N/A — endpoints are public under /api/echo-schedule/*",
+  "seed_data_creation": "Inserts TEST_-prefixed rec_ids into borrow_pafs + labor_brain_decisions for idempotency verification. Natural keys are date-scoped so they expire/rotate naturally; not destructive.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Run `pytest /app/backend/tests/test_iter266_11_labor_brain.py -v` for a fast smoke. Test inserts use uuid-based TEST_ rec_ids so reruns on the same day are still net-new. /api/echo-schedule/labor-brain depends on /dashboard tile aggregation — if /dashboard regresses, every labor-brain test will cascade. Frontend (LaborBrainRail in /app/client/modules/Schedule/index.tsx) was NOT exercised per request."
+}

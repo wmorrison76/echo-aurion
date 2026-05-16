@@ -1,0 +1,24 @@
+{
+  "Ingredient": [
+    {"sku":"ING-CHOC-70","name":"Dark Chocolate 70%","category":"Chocolate","units":"g","costPerBaseUnit":0.012,"lotTracked":true},
+    {"sku":"ING-FLOUR-AP","name":"Flour, AP","category":"Flour","units":"g","costPerBaseUnit":0.0012,"lotTracked":true},
+    {"sku":"ING-BUTTER-UNS","name":"Butter, Unsalted","category":"Dairy","units":"g","costPerBaseUnit":0.009,"lotTracked":true}
+  ],
+  "SubRecipe": [
+    {"code":"SUB-GAN-STD","name":"Ganache (Standard)","version":"1.0.0","yieldAmount":1000,"yieldUnit":"g","ingredients":[
+      {"ingredient":{"ref":"Ingredient","where":{"sku":"ING-CHOC-70"}},"qty":600,"unit":"g"},
+      {"ingredient":{"ref":"Ingredient","where":{"sku":"ING-BUTTER-UNS"}},"qty":100,"unit":"g"},
+      {"ingredient":{"ref":"Ingredient","where":{"sku":"ING-FLOUR-AP"}},"qty":300,"unit":"g","lossPercent":0}
+    ]}
+  ],
+  "ProductItem": [
+    {"sku":"PROD-ECLAIR-STD","name":"Éclair (Chocolate)","category":"PetitsFours","sizeOrPortion":"1 each","standardBatchYield":50,"standardBatchUnit":"each","subRecipes":[{"subRecipe":{"ref":"SubRecipe","where":{"code":"SUB-GAN-STD"}},"multiplier":1}],"storage":"Chill","shelfLifeHours":48}
+  ],
+  "Shift": [ {"name":"Main AM","date":"2025-09-13","type":"AM"} ],
+  "StaffMember": [ {"employeeId":"EMP-1001","name":"Patissier A","roles":[{"name":"Pastry Chef"}],"stations":[{"name":"Finishing"}]} ],
+  "ProductionOrder": [
+    {"date":"2025-09-13","shift":{"ref":"Shift","where":{"name":"Main AM","date":"2025-09-13"}},"manager":{"ref":"StaffMember","where":{"employeeId":"EMP-1001"}},"outlets":[{"name":"Bakery Retail"},{"name":"Banquets"}],"notes":"Auto-generated demo order","items":[
+      {"product":{"ref":"ProductItem","where":{"sku":"PROD-ECLAIR-STD"}},"requestedQty":120,"unit":"each","computedBatches":3,"assignedTo":{"ref":"StaffMember","where":{"employeeId":"EMP-1001"}},"startTime":"05:30","deadline":"09:30","storage":"Chill","status":"Planned"}
+    ]}
+  ]
+}

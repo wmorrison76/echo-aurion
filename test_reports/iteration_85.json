@@ -1,0 +1,109 @@
+{
+  "summary": "Iteration 85: Tested GM Daily Flash Report and Chef Daily Report APIs and UI panels. All 25 backend tests passed (100%). Both frontend panels fully functional with all required sections, KPIs, and data displayed correctly. No competitor name references (ALICE/ProfitSword) found in API responses.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration85_daily_reports.py",
+    "/app/test_reports/pytest/pytest_results_iter85.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_iteration85_daily_reports.py"
+  ],
+  "success_rate": {
+    "backend": "100% (25/25 tests passed)",
+    "frontend": "100% (GM Flash and Chef Daily panels working with all sections)"
+  },
+  "test_credentials": {
+    "no_auth_required": true
+  },
+  "seed_data_creation": "None - uses simulated demo data",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 85 tested 2 new executive daily reports. GM Daily Flash accessible via sidebar 'Dashboard & Overview > GM Daily Flash'. Chef Daily Report accessible via sidebar 'Dashboard & Overview > Chef Daily Report'. Both panels have data-testid attributes: 'gm-flash-panel' and 'chef-daily-panel'. GM Flash shows: Yesterday's Performance (5 KPIs: Occupancy 84.7%, ADR $289.50, RevPAR $245.25, TRevPAR $412.80, GOPPAR $168.40), Revenue Summary (4 cards), MTD table with Budget/LY comparison, Competitive Set Index with penetration scores (106.9, 108, 115.5), Today's Operations (arrivals 42, departures 38, etc.), VIP In-House (3 VIPs), Departmental Revenue (8 departments with variance), Pace Report (OTB vs LY), 7-Day Trend. Chef Daily shows: 6 Cost KPIs (Food 28.4%, Labor 31.2%, Prime 59.6%, Cost/Cover $18.45, Rev/Cover $64.8, Waste 42 lbs), Cover Forecast by meal period with progress bars, 86'd Items (3: Branzino, Lobster Tail, Chocolate Lava Cake), Allergen Alerts from guest_intelligence (2 VIP guests), BEO Events (2: Tech Summit Lunch, Wedding Rehearsal Dinner), Prep Counts by Station (93.6% complete, 4 behind), Staffing (26/28 present, 2 callouts). Daily report data is MOCKED (simulated demo data).",
+  "tests_performed": {
+    "backend_api_tests": [
+      "GET /api/daily-reports/gm-flash - returns 200",
+      "GM Flash has report_date and report_time",
+      "GM Flash yesterday has occupancy 84.7%, ADR $289.50, variance calculations",
+      "GM Flash MTD has actual vs budget vs LY comparison",
+      "GM Flash comp_set has penetration_index (occ 106.9, revpar 115.5)",
+      "GM Flash operations has arrivals (42), vip_in_house (3 VIPs)",
+      "GM Flash departments has 8 departments with variance",
+      "GM Flash pace has current_month_otb vs same_time_ly with variance",
+      "GM Flash has 7-day trend data",
+      "GET /api/daily-reports/chef-daily - returns 200",
+      "Chef Daily has report_date and report_time",
+      "Chef Daily costs has food_cost_pct 28.4% with target 30.0%",
+      "Chef Daily eighty_sixed has 3 items (Branzino, Lobster Tail, Chocolate Lava Cake)",
+      "Chef Daily allergen_summary pulls from guest_intelligence collection",
+      "Chef Daily beo_events has 2 events with dietary notes",
+      "Chef Daily prep shows 93.6% completion with 4 behind items",
+      "Chef Daily staffing shows 26/28 present with 2 callouts",
+      "Chef Daily covers has forecast by meal period",
+      "GM Flash has no ALICE references",
+      "GM Flash has no ProfitSword references",
+      "Chef Daily has no ALICE references",
+      "Chef Daily has no ProfitSword references",
+      "GET /api/health - returns healthy",
+      "GET /api/concierge/dashboard - regression test passed",
+      "GET /api/housekeeping/dashboard - regression test passed"
+    ],
+    "frontend_gm_flash_tests": [
+      "GM Daily Flash panel opens from sidebar (Dashboard & Overview > GM Daily Flash)",
+      "GM Flash panel has data-testid='gm-flash-panel'",
+      "Yesterday's Performance section with 5 KPI cards (Occupancy, ADR, RevPAR, TRevPAR, GOPPAR)",
+      "Variance badges (green +/red -) on KPI cards",
+      "Revenue Summary (Room Revenue, F&B Revenue, Spa Revenue, Total Revenue)",
+      "Month-to-Date table with Budget and LY comparison columns",
+      "Competitive Set Index table with penetration scores (106.9, 108, 115.5)",
+      "Today's Operations (arrivals 42, departures 38, stayovers 89, no-shows 2)",
+      "VIP In-House section with 3 guests (Michael Chen, James Smith, Ambassador Wilson)",
+      "Departmental Revenue with 8 departments and variance badges",
+      "Pace Report (OTB 2840 rooms vs LY 2680 rooms, +160 variance)",
+      "7-Day Performance Trend with visual bars"
+    ],
+    "frontend_chef_daily_tests": [
+      "Chef Daily Report panel opens from sidebar",
+      "Chef panel has data-testid='chef-daily-panel'",
+      "6 Cost KPIs (Food Cost 28.4%, Labor Cost 31.2%, Prime Cost 59.6%, Cost/Cover $18.45, Rev/Cover $64.8, Waste 42 lbs)",
+      "Cover Forecast with progress bars per meal period (Breakfast, Lunch, Dinner, IRD, Banquet)",
+      "86'd Items (3) with red alert styling (Branzino, Lobster Tail, Chocolate Lava Cake)",
+      "Allergen Alerts from Guest Intelligence (2 VIP guests with allergen badges)",
+      "BEO Events (2) with dietary notes and chef notes (Tech Summit Lunch, Wedding Rehearsal Dinner)",
+      "Prep Counts by Station with progress bars and BEHIND indicators (93.6% complete)",
+      "Staffing section (Scheduled 28, Present 26, Callouts 2, OT Hours 4.5, Agency Staff 1)",
+      "Header badges showing '3 86'D', '4 BEHIND', '2 CALLOUTS'"
+    ]
+  },
+  "features_verified": {
+    "gm_daily_flash_report": {
+      "status": "WORKING",
+      "details": "One-page executive briefing with all required sections: Yesterday's Performance (5 KPIs + 4 revenue), MTD vs Budget vs LY, Comp Set penetration index, Operations, VIP In-House, Departmental Revenue, Pace Report, 7-Day Trend"
+    },
+    "chef_daily_report": {
+      "status": "WORKING",
+      "details": "Kitchen briefing with all required sections: 6 Cost KPIs, Cover Forecast, 86'd Items, Allergen Alerts from guest_intelligence, BEO Events with dietary notes, Prep Counts by Station, Staffing with callout names"
+    },
+    "no_competitor_references": {
+      "status": "VERIFIED",
+      "details": "No ALICE or ProfitSword references found in API responses"
+    },
+    "sidebar_navigation": {
+      "status": "WORKING",
+      "details": "Both reports accessible under 'Dashboard & Overview' group in sidebar"
+    }
+  },
+  "mocked_apis": {
+    "daily_report_data": "Daily report KPIs and data are MOCKED (simulated demo data)",
+    "allergen_data": "Allergen alerts pull from guest_intelligence collection (seeded data)"
+  }
+}

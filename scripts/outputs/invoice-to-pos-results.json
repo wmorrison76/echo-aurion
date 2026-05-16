@@ -1,0 +1,194 @@
+{
+  "invoice": {
+    "items": [
+      {
+        "originalName": "Organic Heirloom Carrots",
+        "standardizedName": "Carrots",
+        "category": {
+          "tier1": "Produce",
+          "tier2": "Vegetables",
+          "tier3": "Root Vegetables"
+        },
+        "quantity": 10,
+        "unit": "lb",
+        "price": 35
+      },
+      {
+        "originalName": "Free Range Chicken Breast",
+        "standardizedName": "Chicken Breast",
+        "category": {
+          "tier1": "Protein",
+          "tier2": "Poultry",
+          "tier3": "Chicken"
+        },
+        "quantity": 5,
+        "unit": "lb",
+        "price": 44.95
+      },
+      {
+        "originalName": "Extra Virgin Olive Oil",
+        "standardizedName": "Olive Oil",
+        "category": {
+          "tier1": "Non-Food"
+        },
+        "quantity": 2,
+        "unit": "qt",
+        "price": 24
+      }
+    ]
+  },
+  "inventory": {
+    "items": [
+      {
+        "productId": "prod-1769651455734-hiflks",
+        "name": "Carrots",
+        "category": "Produce",
+        "quantity": 10,
+        "unit": "lb",
+        "unitCost": 3.5,
+        "totalCost": 35,
+        "receivedAt": "2026-01-29T01:50:55.734Z"
+      },
+      {
+        "productId": "prod-1769651455735-apn8pf",
+        "name": "Chicken Breast",
+        "category": "Protein",
+        "quantity": 5,
+        "unit": "lb",
+        "unitCost": 8.99,
+        "totalCost": 44.95,
+        "receivedAt": "2026-01-29T01:50:55.735Z"
+      },
+      {
+        "productId": "prod-1769651455735-32q9hh",
+        "name": "Olive Oil",
+        "category": "Non-Food",
+        "quantity": 2,
+        "unit": "qt",
+        "unitCost": 12,
+        "totalCost": 24,
+        "receivedAt": "2026-01-29T01:50:55.735Z"
+      }
+    ]
+  },
+  "storage": {
+    "placements": [
+      {
+        "productId": "prod-1769651455734-hiflks",
+        "productName": "Carrots",
+        "location": {
+          "locationId": "W1-S3-P2",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 3",
+          "position": "Position 2",
+          "coordinates": {
+            "x": 1,
+            "y": 3,
+            "z": 2
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651455735-apn8pf",
+        "productName": "Chicken Breast",
+        "location": {
+          "locationId": "W1-S1-P1",
+          "zone": "Walk-in 1",
+          "shelf": "Shelf 1",
+          "position": "Position 1",
+          "coordinates": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "productId": "prod-1769651455735-32q9hh",
+        "productName": "Olive Oil",
+        "location": {
+          "locationId": "DS-S2-P5",
+          "zone": "Dry Storage",
+          "shelf": "Shelf 2",
+          "position": "Position 5",
+          "coordinates": {
+            "x": 2,
+            "y": 2,
+            "z": 5
+          }
+        }
+      }
+    ]
+  },
+  "recipe": {
+    "name": "Herb-Crusted Chicken with Roasted Carrots",
+    "ingredients": [
+      {
+        "query": "heirloom carots",
+        "matched": "Carrots",
+        "confidence": 0.4,
+        "inventoryId": "prod-1769651455734-hiflks",
+        "quantity": 1,
+        "unit": "lb",
+        "yieldPercent": 85
+      },
+      {
+        "query": "chicken breast",
+        "matched": "Chicken Breast",
+        "confidence": 1,
+        "inventoryId": "prod-1769651455735-apn8pf",
+        "quantity": 1,
+        "unit": "lb",
+        "yieldPercent": 75
+      },
+      {
+        "query": "olive oil",
+        "matched": "Olive Oil",
+        "confidence": 1,
+        "inventoryId": "prod-1769651455735-32q9hh",
+        "quantity": 1,
+        "unit": "lb",
+        "yieldPercent": 100
+      }
+    ],
+    "totalCost": 21.7175,
+    "costPerPortion": 2.7146875
+  },
+  "menuItem": {
+    "id": "menu-1769651455738",
+    "name": "Herb-Crusted Chicken with Roasted Carrots",
+    "description": "Free-range chicken breast with herb crust, served with roasted heirloom carrots",
+    "category": "Main Course",
+    "price": 9.50140625,
+    "cost": 2.7146875,
+    "portionSize": "8 oz",
+    "nutrition": {
+      "calories": 824,
+      "protein": 24.099999999999998,
+      "carbs": 7.6,
+      "fat": 78.5
+    },
+    "ingredients": [
+      {
+        "name": "Carrots",
+        "inventoryId": "prod-1769651455734-hiflks",
+        "quantity": 1,
+        "unit": "lb"
+      },
+      {
+        "name": "Chicken Breast",
+        "inventoryId": "prod-1769651455735-apn8pf",
+        "quantity": 1,
+        "unit": "lb"
+      },
+      {
+        "name": "Olive Oil",
+        "inventoryId": "prod-1769651455735-32q9hh",
+        "quantity": 1,
+        "unit": "lb"
+      }
+    ],
+    "recipeId": "recipe-1769651455738",
+    "posSyncStatus": "ready"
+  }
+}

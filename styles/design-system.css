@@ -1,0 +1,753 @@
+/* ============================================================================
+   LUCCCA UNIFIED DESIGN SYSTEM
+   Consistent UI/UX across all modules (Culinary, Schedule, Inventory, HR, etc)
+   Light and Dark variants for all 5 themes
+   ============================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800&display=swap");
+
+/* ============================================================================
+   FONT FAMILY SYSTEM
+   Root defines default, can be overridden via theme selector
+   ============================================================================ */
+:root {
+  --font-family-default: "Inter", sans-serif;
+  --font-family-poppins: "Poppins", sans-serif;
+  --font-family-playfair: "Playfair Display", serif;
+  --font-family-montserrat: "Montserrat", sans-serif;
+  --font-family-lato: "Lato", sans-serif;
+
+  /* Current font (user preference) */
+  --font-family: var(--font-family-default);
+
+  /* Font size scale - small, medium (default), large */
+  --font-size-scale: 1;
+  --text-xs: calc(0.75rem * var(--font-size-scale));
+  --text-sm: calc(0.875rem * var(--font-size-scale));
+  --text-base: calc(1rem * var(--font-size-scale));
+  --text-lg: calc(1.125rem * var(--font-size-scale));
+  --text-xl: calc(1.25rem * var(--font-size-scale));
+  --text-2xl: calc(1.5rem * var(--font-size-scale));
+  --text-3xl: calc(1.875rem * var(--font-size-scale));
+}
+
+/* Font size presets */
+:root.font-size-small {
+  --font-size-scale: 0.875;
+}
+
+:root.font-size-large {
+  --font-size-scale: 1.125;
+}
+
+/* Font family presets */
+:root.font-family-poppins {
+  --font-family: var(--font-family-poppins);
+}
+
+:root.font-family-playfair {
+  --font-family: var(--font-family-playfair);
+}
+
+:root.font-family-montserrat {
+  --font-family: var(--font-family-montserrat);
+}
+
+:root.font-family-lato {
+  --font-family: var(--font-family-lato);
+}
+
+/* ============================================================================
+   THEME COLOR DEFINITIONS
+   5 themes × 2 (light/dark) = 10 variants
+   ============================================================================ */
+
+/* LUCCCA (Cyan) - Primary Theme */
+:root,
+.theme-luccca {
+  --hue-primary: 185;
+  --saturation-primary: 100%;
+  --lightness-primary: 50%;
+
+  /* Light mode */
+  --color-primary: hsl(
+    var(--hue-primary),
+    var(--saturation-primary),
+    var(--lightness-primary)
+  );
+  --color-primary-light: hsl(var(--hue-primary), 100%, 65%);
+  --color-primary-dark: hsl(var(--hue-primary), 100%, 35%);
+  --color-primary-bg: hsl(var(--hue-primary), 100%, 95%);
+  --color-primary-border: hsl(var(--hue-primary), 100%, 75%);
+
+  /* Theme-specific text */
+  --color-text-primary: #0b1020;
+  --color-text-secondary: #555a63;
+  --color-text-muted: #8b92a0;
+  --color-bg-light: #f8fafc;
+  --color-bg-default: #ffffff;
+  --color-bg-surface: #f0f6f9;
+  --color-border-light: #e0ebf0;
+}
+
+.dark.theme-luccca {
+  --color-primary: hsl(var(--hue-primary), 100%, 60%);
+  --color-primary-light: hsl(var(--hue-primary), 100%, 75%);
+  --color-primary-dark: hsl(var(--hue-primary), 100%, 45%);
+  --color-primary-bg: hsl(var(--hue-primary), 50%, 15%);
+  --color-primary-border: hsl(var(--hue-primary), 70%, 35%);
+
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #a8b2bb;
+  --color-text-muted: #6e7580;
+  --color-bg-light: #0b0f14;
+  --color-bg-default: #161b22;
+  --color-bg-surface: #0d1117;
+  --color-border-light: #30363d;
+}
+
+/* Corporate Professional (Blue) */
+.theme-corporate {
+  --hue-primary: 210;
+  --saturation-primary: 100%;
+  --lightness-primary: 45%;
+
+  --color-primary: hsl(210, 100%, 45%);
+  --color-primary-light: hsl(210, 100%, 60%);
+  --color-primary-dark: hsl(210, 100%, 30%);
+  --color-primary-bg: hsl(210, 100%, 94%);
+  --color-primary-border: hsl(210, 100%, 74%);
+
+  --color-text-primary: #0d1b2a;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #8d99af;
+  --color-bg-light: #f5f7fa;
+  --color-bg-default: #ffffff;
+  --color-bg-surface: #e8eef5;
+  --color-border-light: #d1dce8;
+}
+
+.dark.theme-corporate {
+  --color-primary: hsl(210, 100%, 55%);
+  --color-primary-light: hsl(210, 100%, 70%);
+  --color-primary-dark: hsl(210, 100%, 40%);
+  --color-primary-bg: hsl(210, 50%, 12%);
+  --color-primary-border: hsl(210, 60%, 32%);
+
+  --color-text-primary: #e8f0f7;
+  --color-text-secondary: #9ba7b1;
+  --color-text-muted: #6b7684;
+  --color-bg-light: #0c1420;
+  --color-bg-default: #151d2a;
+  --color-bg-surface: #0f1622;
+  --color-border-light: #2d3748;
+}
+
+/* Vibrant Energy (Gold/Electric) */
+.theme-vibrant {
+  --hue-primary: 45;
+  --saturation-primary: 100%;
+  --lightness-primary: 50%;
+
+  --color-primary: hsl(45, 100%, 50%);
+  --color-primary-light: hsl(45, 100%, 65%);
+  --color-primary-dark: hsl(45, 100%, 35%);
+  --color-primary-bg: hsl(45, 100%, 95%);
+  --color-primary-border: hsl(45, 100%, 75%);
+
+  --color-text-primary: #3d2817;
+  --color-text-secondary: #6b5a42;
+  --color-text-muted: #a89f91;
+  --color-bg-light: #fffbf5;
+  --color-bg-default: #ffffff;
+  --color-bg-surface: #fef8f0;
+  --color-border-light: #ffe8c8;
+}
+
+.dark.theme-vibrant {
+  --color-primary: hsl(45, 100%, 55%);
+  --color-primary-light: hsl(45, 100%, 70%);
+  --color-primary-dark: hsl(45, 100%, 40%);
+  --color-primary-bg: hsl(45, 70%, 15%);
+  --color-primary-border: hsl(45, 80%, 35%);
+
+  --color-text-primary: #fef8f0;
+  --color-text-secondary: #dcc9aa;
+  --color-text-muted: #9e8b6f;
+  --color-bg-light: #1a140a;
+  --color-bg-default: #2a2317;
+  --color-bg-surface: #211a0f;
+  --color-border-light: #4a3f2f;
+}
+
+/* Minimal Clean (Grayscale) */
+.theme-minimal {
+  --hue-primary: 0;
+  --saturation-primary: 0%;
+  --lightness-primary: 30%;
+
+  --color-primary: hsl(0, 0%, 30%);
+  --color-primary-light: hsl(0, 0%, 50%);
+  --color-primary-dark: hsl(0, 0%, 15%);
+  --color-primary-bg: hsl(0, 0%, 95%);
+  --color-primary-border: hsl(0, 0%, 80%);
+
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted: #999999;
+  --color-bg-light: #fafafa;
+  --color-bg-default: #ffffff;
+  --color-bg-surface: #f5f5f5;
+  --color-border-light: #e0e0e0;
+}
+
+.dark.theme-minimal {
+  --color-primary: hsl(0, 0%, 70%);
+  --color-primary-light: hsl(0, 0%, 85%);
+  --color-primary-dark: hsl(0, 0%, 55%);
+  --color-primary-bg: hsl(0, 0%, 15%);
+  --color-primary-border: hsl(0, 0%, 35%);
+
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #707070;
+  --color-bg-light: #0f0f0f;
+  --color-bg-default: #1a1a1a;
+  --color-bg-surface: #252525;
+  --color-border-light: #3a3a3a;
+}
+
+/* Warm Hospitality (Warm Gold/Amber) */
+.theme-warm {
+  --hue-primary: 30;
+  --saturation-primary: 90%;
+  --lightness-primary: 48%;
+
+  --color-primary: hsl(30, 90%, 48%);
+  --color-primary-light: hsl(30, 100%, 63%);
+  --color-primary-dark: hsl(30, 90%, 33%);
+  --color-primary-bg: hsl(30, 100%, 94%);
+  --color-primary-border: hsl(30, 95%, 74%);
+
+  --color-text-primary: #5a3818;
+  --color-text-secondary: #8b6f47;
+  --color-text-muted: #b8a487;
+  --color-bg-light: #fef9f3;
+  --color-bg-default: #ffffff;
+  --color-bg-surface: #fef5ed;
+  --color-border-light: #ffe4b5;
+}
+
+.dark.theme-warm {
+  --color-primary: hsl(30, 100%, 55%);
+  --color-primary-light: hsl(30, 100%, 70%);
+  --color-primary-dark: hsl(30, 90%, 40%);
+  --color-primary-bg: hsl(30, 80%, 15%);
+  --color-primary-border: hsl(30, 85%, 35%);
+
+  --color-text-primary: #fef5ed;
+  --color-text-secondary: #e0c9aa;
+  --color-text-muted: #b09f7f;
+  --color-bg-light: #1f1410;
+  --color-bg-default: #2f2317;
+  --color-bg-surface: #261a0f;
+  --color-border-light: #5a4a35;
+}
+
+/* ============================================================================
+   TYPOGRAPHY SYSTEM
+   Consistent heading, body, and label styles across all modules
+   ============================================================================ */
+
+@layer components {
+  /* Headings */
+  .heading-1 {
+    @apply text-3xl font-bold leading-tight tracking-tight;
+    font-size: var(--text-3xl);
+    font-family: var(--font-family);
+  }
+
+  .heading-2 {
+    @apply text-2xl font-bold leading-tight tracking-tight;
+    font-size: var(--text-2xl);
+    font-family: var(--font-family);
+  }
+
+  .heading-3 {
+    @apply text-xl font-semibold leading-snug tracking-tight;
+    font-size: var(--text-xl);
+    font-family: var(--font-family);
+  }
+
+  .heading-4 {
+    @apply text-lg font-semibold leading-snug;
+    font-size: var(--text-lg);
+    font-family: var(--font-family);
+  }
+
+  .heading-5 {
+    @apply text-base font-semibold leading-snug;
+    font-size: var(--text-base);
+    font-family: var(--font-family);
+  }
+
+  .heading-6 {
+    @apply text-sm font-semibold leading-tight;
+    font-size: var(--text-sm);
+    font-family: var(--font-family);
+  }
+
+  /* Body text */
+  .body-lg {
+    @apply leading-relaxed;
+    font-size: var(--text-lg);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
+  }
+
+  .body-base {
+    @apply leading-relaxed;
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
+  }
+
+  .body-sm {
+    @apply leading-relaxed;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    font-family: var(--font-family);
+  }
+
+  .body-xs {
+    @apply leading-relaxed;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-family: var(--font-family);
+  }
+
+  /* Labels */
+  .label-lg {
+    @apply font-semibold uppercase tracking-wider;
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
+  }
+
+  .label-sm {
+    @apply font-semibold uppercase tracking-wide;
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    font-family: var(--font-family);
+  }
+
+  /* ============================================================================
+     BUTTON SYSTEM
+     Unified button styles across all modules
+     ============================================================================ */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md
+           font-medium transition-all duration-200 cursor-pointer
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90
+           focus:ring-primary;
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:opacity-90
+           focus:ring-secondary;
+    background-color: var(--color-primary-light);
+    color: #ffffff;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-primary);
+  }
+
+  .btn-outline {
+    @apply border-2 hover:bg-opacity-10 focus:ring-primary;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-primary-bg);
+  }
+
+  .btn-ghost {
+    @apply hover:bg-opacity-10 focus:ring-primary;
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-primary-bg);
+  }
+
+  .btn-sm {
+    @apply px-3 py-1;
+    font-size: var(--text-xs);
+  }
+
+  .btn-lg {
+    @apply px-6 py-3;
+    font-size: var(--text-base);
+  }
+
+  .btn-icon {
+    @apply w-10 h-10 p-0 flex items-center justify-center;
+  }
+
+  /* ============================================================================
+     INPUT & FORM SYSTEM
+     Unified input, select, and textarea across all modules
+     ============================================================================ */
+
+  .input,
+  .select,
+  .textarea {
+    @apply w-full px-3 py-2 rounded-md border-2 
+           transition-all duration-200 font-medium
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    font-family: var(--font-family);
+    font-size: var(--text-sm);
+    border-color: var(--color-border-light);
+    background-color: var(--color-bg-default);
+    color: var(--color-text-primary);
+  }
+
+  .input::placeholder,
+  .select::placeholder,
+  .textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .input:focus,
+  .select:focus,
+  .textarea:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-bg);
+  }
+
+  .textarea {
+    @apply min-h-24 resize-none;
+  }
+
+  .input-sm {
+    @apply px-2 py-1;
+    font-size: var(--text-xs);
+  }
+
+  .input-lg {
+    @apply px-4 py-3;
+    font-size: var(--text-base);
+  }
+
+  /* ============================================================================
+     CARD & PANEL SYSTEM
+     Unified cards, panels, and containers across all modules
+     ============================================================================ */
+
+  .card {
+    @apply rounded-lg border-2 p-4 transition-all duration-200;
+    border-color: var(--color-border-light);
+    background-color: var(--color-bg-default);
+    color: var(--color-text-primary);
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary);
+  }
+
+  .card-sm {
+    @apply p-3;
+  }
+
+  .card-lg {
+    @apply p-6;
+  }
+
+  .card-header {
+    @apply font-semibold mb-3 text-lg;
+    font-size: var(--text-lg);
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
+  }
+
+  .card-body {
+    @apply space-y-3;
+  }
+
+  .card-footer {
+    @apply mt-4 pt-4 border-t flex gap-2 justify-end;
+    border-color: var(--color-border-light);
+  }
+
+  .panel {
+    @apply rounded-xl border-2 overflow-hidden transition-all duration-200;
+    border-color: var(--color-border-light);
+    background-color: var(--color-bg-surface);
+  }
+
+  .panel-header {
+    @apply px-4 py-3 border-b-2 font-semibold;
+    border-color: var(--color-border-light);
+    color: var(--color-text-primary);
+    background-color: var(--color-primary-bg);
+    font-size: var(--text-lg);
+  }
+
+  .panel-body {
+    @apply p-4 space-y-3;
+  }
+
+  .panel-footer {
+    @apply px-4 py-3 border-t-2 bg-opacity-50 flex gap-2 justify-end;
+    border-color: var(--color-border-light);
+  }
+
+  /* ============================================================================
+     MINI PANEL SYSTEM
+     Compact panels for dashboards and sidebars
+     ============================================================================ */
+
+  .mini-panel {
+    @apply rounded-lg border p-3 transition-all duration-200;
+    border-color: var(--color-border-light);
+    background-color: var(--color-bg-default);
+  }
+
+  .mini-panel-compact {
+    @apply rounded-md border p-2;
+    border-color: var(--color-border-light);
+    background-color: var(--color-bg-surface);
+  }
+
+  .mini-cell {
+    @apply rounded px-2 py-1 text-xs font-medium;
+    font-size: var(--text-xs);
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary);
+    font-family: var(--font-family);
+  }
+
+  /* ============================================================================
+     BADGE & CHIP SYSTEM
+     Status indicators, tags, and chips
+     ============================================================================ */
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-full
+           text-xs font-semibold;
+    font-family: var(--font-family);
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary);
+  }
+
+  .badge-primary {
+    @apply bg-primary text-primary-foreground;
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .badge-sm {
+    @apply px-1.5 py-0.5 text-[10px];
+  }
+
+  .badge-lg {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  /* ============================================================================
+     UTILITY CLASSES
+     Common patterns, spacing, shadows, etc.
+     ============================================================================ */
+
+  .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .shadow-xl {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .divider {
+    @apply border-t-2;
+    border-color: var(--color-border-light);
+  }
+
+  .gap-xs {
+    @apply gap-1;
+  }
+
+  .gap-sm {
+    @apply gap-2;
+  }
+
+  .gap-md {
+    @apply gap-3;
+  }
+
+  .gap-lg {
+    @apply gap-4;
+  }
+
+  .gap-xl {
+    @apply gap-6;
+  }
+
+  .grid-cols-auto {
+    @apply grid gap-3 auto-cols-max;
+  }
+
+  .grid-cols-equal {
+    @apply grid gap-3;
+    grid-auto-columns: 1fr;
+  }
+
+  .transition-all {
+    transition: all 200ms ease-out;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    focus-ring-color: var(--color-primary);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   Breakpoints for mobile, tablet, and desktop
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .heading-1,
+  .heading-2 {
+    font-size: var(--text-2xl);
+  }
+
+  .heading-3 {
+    font-size: var(--text-lg);
+  }
+
+  .panel {
+    @apply rounded-lg;
+  }
+
+  .panel-header {
+    @apply px-3 py-2;
+  }
+
+  .panel-body {
+    @apply p-3;
+  }
+
+  .card {
+    @apply p-3;
+  }
+
+  .btn {
+    @apply px-3 py-2 text-xs;
+    font-size: var(--text-xs);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .heading-1 {
+    font-size: var(--text-2xl);
+  }
+
+  .panel-header {
+    @apply px-4 py-2.5;
+  }
+}
+
+/* ============================================================================
+   DARK MODE OVERRIDES
+   Ensure proper contrast and visibility in dark mode
+   ============================================================================ */
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark .btn-outline {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
+}
+
+.dark .btn-ghost {
+  color: var(--color-primary-light);
+}
+
+.dark .input,
+.dark .select,
+.dark .textarea {
+  background-color: var(--color-bg-default);
+  border-color: var(--color-border-light);
+}
+
+.dark .input:focus,
+.dark .select:focus,
+.dark .textarea:focus {
+  border-color: var(--color-primary-light);
+  background-color: var(--color-primary-bg);
+}
+
+.dark .card:hover {
+  border-color: var(--color-primary-light);
+}
+
+.dark .panel {
+  border-color: var(--color-border-light);
+}
+
+.dark .panel-header {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-light);
+}
+
+.dark .badge {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-light);
+}

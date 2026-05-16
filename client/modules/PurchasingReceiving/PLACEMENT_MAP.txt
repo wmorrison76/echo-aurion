@@ -1,0 +1,14 @@
+shared/openapi/luccca-invoice-importer.yaml  -> shared/openapi/
+sql/invoice_schema.sql                       -> sql/
+sql/invoice_policies.sql                     -> sql/
+sql/rpc_get_invoice_full.sql                 -> sql/
+functions/_shared/adapters.ts                -> functions/_shared/
+functions/invoices-upload.ts                 -> functions/
+functions/invoices-normalize.ts              -> functions/
+functions/invoices-export.ts                 -> functions/
+functions/invoices-pay.ts                    -> functions/
+client/panels/UploadPanel.tsx                -> client/panels/
+docs/integrations.md                         -> docs/
+docs/erp_mapping.md                          -> docs/
+README.txt                                   -> repo root
+PLACEMENT_MAP.txt                            -> repo root

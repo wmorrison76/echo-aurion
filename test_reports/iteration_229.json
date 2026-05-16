@@ -1,0 +1,98 @@
+{
+  "summary": "iter229 ECW Operations Phase 4 testing complete. 25/26 backend tests passed (1 skipped). All new features verified: Recipe publish (draft→menu_items+menu_components+menu_recipes), Order reconciliation (PO vs Invoice tracking with overdue flags), Predictive invoice mis-code detector (heuristic + Claude), Curated order guides (desktop→mobile), Vendor Reliability Scorecard, Punch-out cXML stub. Frontend mobile ECW verified: Orders drawer has Reconciliation and Vendor Scorecard entries, Reconciliation view shows PO cards with invoice_matched/days_overdue/needs_attention, Scorecards view shows vendor reliability metrics, Order Guide view has curated guide chips, Recipes Drafts view has Publish button for unpublished drafts.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile ECW", "issues": ["Echo command palette overlay appears on page load - dismisses with Escape key (same as iter228)"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ecw_ops_iter229_phase4.py",
+    "/app/test_reports/pytest/pytest_results_iter229.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_ecw_ops_iter229_phase4.py"
+  ],
+  "success_rate": {
+    "backend": "96% (25/26 tests passed, 1 skipped)",
+    "frontend": "100% (all iter229 mobile features verified)"
+  },
+  "test_credentials": "X-User-Id: chef-william for backend writes. devAuth=1 query param for frontend auth bypass.",
+  "seed_data_creation": "Created TEST_ prefixed order guides for testing (TEST_Weekly Seafood, TEST_Update Guide, TEST_Delete Guide). Punchout configs created for testing (vnd-test-*, vnd-enabled-*). inv-miscoded-test was pre-seeded by main agent for scan-coding testing.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter229 Phase 4 ECW Ops fully tested. Backend: All 14 new endpoints working. POST /echo-chef/drafts/{id}/publish promotes draft to menu_items+menu_components+menu_recipes with item_id+recipe_id returned. GET /reconciliation/open-orders returns POs with invoice_matched/days_overdue/needs_attention flags. GET /reconciliation/missing-by-invoice returns gap items. POST /reconciliation/eom-sweep supports dry_run mode. POST /invoices/{id}/scan-coding detects mis-coded invoices via heuristic (parchment paper on food invoice). POST /invoices/scan-all batch scans unflagged invoices. GET/POST/DELETE /order-guides for curated guides. GET /vendor-scorecards returns reliability metrics. GET/POST /punchout/config for cXML configs (shared_secret REDACTED). POST /punchout/init returns cxml+session_id for enabled vendors. POST /punchout/return accepts arbitrary payload. Frontend: Mobile /m/ecw Orders drawer has Reconciliation and Vendor Scorecard entries. Reconciliation view shows PO cards with vendor, ETA, invoice status, days-late badge, All open/Overdue only toggle. Scorecards view shows vendor cards with reliability score (0-100, color-coded), order_count, total_spend, on_time_rate. Order Guide view has curated guide chips at top. Recipes Drafts view has Publish button for unpublished drafts, published drafts show 'published ✓' status.",
+  "tests_executed": {
+    "backend": [
+      "TestRecipePublish::test_publish_draft_creates_menu_item_and_recipe - PASS",
+      "TestRecipePublish::test_publish_draft_not_found - PASS",
+      "TestReconciliation::test_open_orders_returns_200 - PASS",
+      "TestReconciliation::test_open_orders_overdue_only_filter - PASS",
+      "TestReconciliation::test_missing_by_invoice_returns_200 - PASS",
+      "TestReconciliation::test_eom_sweep_dry_run - PASS",
+      "TestReconciliation::test_eom_sweep_actual_run - PASS",
+      "TestInvoiceScanCoding::test_scan_coding_miscoded_invoice - PASS",
+      "TestInvoiceScanCoding::test_scan_coding_clean_invoice - SKIPPED (no clean invoices)",
+      "TestInvoiceScanCoding::test_scan_all_unflagged - PASS",
+      "TestOrderGuides::test_list_order_guides - PASS",
+      "TestOrderGuides::test_upsert_order_guide_create - PASS",
+      "TestOrderGuides::test_upsert_order_guide_update - PASS",
+      "TestOrderGuides::test_delete_order_guide - PASS",
+      "TestVendorScorecards::test_vendor_scorecards_returns_200 - PASS",
+      "TestPunchout::test_list_punchout_configs - PASS",
+      "TestPunchout::test_upsert_punchout_config - PASS",
+      "TestPunchout::test_punchout_init_disabled_vendor - PASS",
+      "TestPunchout::test_punchout_init_enabled_vendor - PASS",
+      "TestPunchout::test_punchout_return - PASS",
+      "TestRegressionPhase3::test_activity_endpoint - PASS",
+      "TestRegressionPhase3::test_pnl_snapshot_endpoint - PASS",
+      "TestRegressionPhase3::test_dashboard_endpoint - PASS",
+      "TestRegressionPhase3::test_invoices_endpoint - PASS",
+      "TestRegressionPhase3::test_commissary_outlets_endpoint - PASS",
+      "TestRegressionPhase3::test_echo_chef_drafts_endpoint - PASS"
+    ],
+    "frontend": [
+      "Mobile /m/ecw ECW Ops root loads - PASS",
+      "Mobile Tab bar with 6 tabs (Waste/Line/Inventory/Orders/Recipes/Photos) - PASS",
+      "Mobile Orders tab with search and status pills - PASS",
+      "Mobile Orders Hub drawer with 7 entries including Reconciliation and Vendor Scorecard - PASS",
+      "Mobile Reconciliation view with PO cards and All open/Overdue only toggle - PASS",
+      "Mobile Vendor Scorecard view with reliability metrics - PASS",
+      "Mobile Order Guide view with curated guide chips - PASS",
+      "Mobile Recipes tab with From URL/Echo Chef/Drafts buttons - PASS",
+      "Mobile Drafts view with Publish button for unpublished drafts - PASS"
+    ]
+  },
+  "verified_features": {
+    "POST /api/ecw-ops/echo-chef/drafts/{id}/publish": "PASS - promotes draft to menu_items+menu_components+menu_recipes, returns item_id+recipe_id, draft.status flips to 'published'",
+    "GET /api/ecw-ops/reconciliation/open-orders": "PASS - returns POs with invoice_matched, days_overdue, needs_attention flags",
+    "GET /api/ecw-ops/reconciliation/open-orders?overdue_only=true": "PASS - filters to overdue POs only",
+    "GET /api/ecw-ops/reconciliation/missing-by-invoice": "PASS - returns PO items not found on any matched invoice",
+    "POST /api/ecw-ops/reconciliation/eom-sweep (dry_run:true)": "PASS - returns period + outlets_alerted without writing",
+    "POST /api/ecw-ops/reconciliation/eom-sweep (dry_run:false)": "PASS - writes to eom_alerts + emits activity event",
+    "POST /api/ecw-ops/invoices/{id}/scan-coding": "PASS - for inv-miscoded-test returns suspicion=true (heuristic catches parchment paper on food invoice)",
+    "POST /api/ecw-ops/invoices/scan-all": "PASS - batch scans unflagged invoices, returns scanned count",
+    "GET /api/ecw-ops/order-guides": "PASS - returns curated guides",
+    "POST /api/ecw-ops/order-guides": "PASS - upsert (create then update)",
+    "DELETE /api/ecw-ops/order-guides/{id}": "PASS - soft-deletes (active=false)",
+    "GET /api/ecw-ops/vendor-scorecards": "PASS - returns per-vendor metrics (order_count, total_spend, on_time_rate, variance_rate, reliability_score)",
+    "GET /api/ecw-ops/punchout/config": "PASS - lists configs (shared_secret NOT exposed)",
+    "POST /api/ecw-ops/punchout/config": "PASS - upserts config",
+    "POST /api/ecw-ops/punchout/init (disabled vendor)": "PASS - returns ok=false detail='not configured/enabled'",
+    "POST /api/ecw-ops/punchout/init (enabled vendor)": "PASS - returns cxml payload + session_id, shared_secret is ***REDACTED*** in cXML",
+    "POST /api/ecw-ops/punchout/return": "PASS - accepts arbitrary payload body, writes to punchout_returns",
+    "Mobile Orders drawer Reconciliation entry": "PASS - visible and clickable",
+    "Mobile Orders drawer Vendor Scorecard entry": "PASS - visible and clickable",
+    "Mobile Reconciliation view": "PASS - shows PO cards with vendor, ETA, invoice_matched status, days-late badge, All open/Overdue only toggle",
+    "Mobile Scorecards view": "PASS - shows vendor cards with score (0-100, color-coded), order_count, total_spend, on_time_rate",
+    "Mobile Order Guide curated chips": "PASS - curated guide chips appear at top, From history chip toggles back to aggregate",
+    "Mobile Recipes Drafts Publish button": "PASS - unpublished drafts have 'Publish to shared system' button, published drafts show 'published ✓' status"
+  }
+}

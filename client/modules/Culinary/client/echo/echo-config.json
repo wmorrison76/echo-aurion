@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "description": "EchoAi³ /echo folder for Builder.io LUCCCA platform. Three-layer architecture: Core, Cognition, Interaction.",
+  "defaults": {
+    "enableMemory": true,
+    "enableGuardrails": true,
+    "uiHooks": true,
+    "enableTron": true,
+    "enableSandbox": true
+  },
+  "structure": {
+    "core": {
+      "description": "NLP engine, memory, safety, bootstrap",
+      "files": ["echo-core.js", "echo-memory.js", "echo-safety.js"]
+    },
+    "cognition": {
+      "description": "Recipe knowledge, cross-module awareness, culinary reasoning",
+      "files": ["echo-cognition-engine.js", "echo-knowledge-loader.js", "echo-crossmodule.js"]
+    },
+    "interaction": {
+      "description": "UI hooks, toolbar bindings, module context",
+      "files": ["echo-ui-hooks.js", "echo-toolbar-bindings.js", "echo-module-context.js"]
+    },
+    "expansions": {
+      "description": "TRON, sandbox, security, resilience, CI checks",
+      "files": ["tron-expansion.js", "sandbox-restore.js", "security-wiring.js", "resilience-suite.js", "ci-guardrails.js"]
+    }
+  },
+  "integration": {
+    "phase1": "Core layer (foundation) → Wire NLP backend when ready",
+    "phase2": "Cognition layer → Register culinary knowledge from KitchenLibrary",
+    "phase3": "Interaction layer → Wire UI hooks into R&D Labs panels",
+    "phase4": "Expansions → Enable TRON visualization, security, monitoring"
+  },
+  "rdLabs": {
+    "priority": [
+      "Ingredient reasoning (hydration, emulsification, spherification)",
+      "Experiment guidance (what if questions)",
+      "Cross-module recommendations (inventory, costing, labor)",
+      "Predictive culinary forecasting"
+    ]
+  },
+  "notes": [
+    "Keep all files as .js (ES6 modules) — NO TypeScript conversion needed.",
+    "Bootstrap calls all three layers internally — no manual wiring required.",
+    "Use stubs for now. Wire OpenAI + hybrid knowledge base AFTER Echo UI works.",
+    "For R&D: prioritize ingredient reasoning → experiment guidance → cross-module → predictions.",
+    "TRON visualization implemented by frontend renderer (React Canvas).",
+    "Sandbox snapshots enable A/B testing of recipe modifications."
+  ]
+}

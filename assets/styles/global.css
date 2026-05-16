@@ -1,0 +1,19 @@
+.sidebar {
+  width: 200px;
+  min-height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+.dashboard {
+  padding: 1rem;
+}

@@ -1,0 +1,9 @@
+import { defineConfig, Plugin } from"vite";
+import react from"@vitejs/plugin-react-swc";
+import path from"path";
+import { createServer } from"./server"; // https://vitejs.dev/config/
+// Exclude memory-intensive directories from Vite processing
+const excludeGlobs = ["client/imported/**","client/capstone/**","cognition/**","echo-monorepo/**",
+]; export default defineConfig(({ mode }) => ({ server: { host:"::", port: 8080, hmr: false, fs: { allow: [ path.resolve(__dirname,"./client"), path.resolve(__dirname,"./shared"), path.resolve(__dirname,"./lib"), ], deny: [".env",".env.*","*.{crt,pem}","**/.git/**","server/**","client/imported/**","client/capstone/**","cognition/**","echo-monorepo/**", ], strict: false, }, middlewareMode: false, }, build: { outDir:"dist/spa", sourcemap: false, minify: false, rollupOptions: { output: { manualChunks: (id) => { if (id.includes("node_modules/react")) { return"react"; } }, }, }, }, optimizeDeps: { include: ["react","react-dom","react-router-dom","@tanstack/react-query"], }, plugins: [react()], envPrefix: ["VITE_","REACT_APP_","NEXT_PUBLIC_"], resolve: { alias: {"@": path.resolve(__dirname,"./client"),"@shared": path.resolve(__dirname,"./shared"),"@cognition": path.resolve(__dirname,"./cognition"), }, }, test: { environment:"jsdom", setupFiles: [path.resolve(__dirname,"./tests/setup.ts")], exclude: ["client/capstone/**","client/imported/**","client/**/tests/**","dist/**","node_modules/**", ], globals: false, css: false, },
+})); function expressPlugin(): Plugin { return { name:"express-plugin", apply:"serve", // Only apply during development (serve mode) configureServer(server) { const app = createServer(); // Only proxy API and upload routes through Express; let Vite serve assets/modules server.middlewares.use((req, res, next) => { const url = req.url ||""; if (url.startsWith("/api") || url.startsWith("/uploads")) { return app(req as any, res as any, next as any); } return next(); }); }, };
+}

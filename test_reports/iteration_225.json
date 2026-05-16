@@ -1,0 +1,103 @@
+{
+  "summary": "iter224 ECW Ops testing complete. 21/21 backend tests passed. Mobile /m/ecw 4-tab shell working with all tabs (Waste, Line Check, Recipes, Photos). Line Check shows 5 stations with EchoAi par suggestions. Desktop ECW Waste panel loads correctly (regression pass). /m/waste regression pass.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Desktop Menu Builder panel",
+        "issue": "Panel click in sidebar doesn't open the panel - may be a panel host issue or lazy loading delay",
+        "affected_selectors": ["[data-testid='menu-builder-root']"],
+        "priority": "LOW",
+        "note": "Panel is registered in panel-registry.ts and sidebar entry exists. Backend APIs all working. Mobile /m/ecw works perfectly."
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ecw_ops_iter224.py",
+    "/app/test_reports/pytest/pytest_results_iter225.xml"
+  ],
+  "action_items": [
+    "Investigate why desktop ECW Menu Builder panel doesn't open when clicked in sidebar (low priority - mobile /m/ecw works)"
+  ],
+  "critical_code_review_comments": [
+    "Fixed syntax error in /app/client/modules/IRD/IRDHubPanel.tsx line 42 (duplicate code on same line)"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_ecw_ops_iter224.py",
+    "/app/client/modules/IRD/IRDHubPanel.tsx"
+  ],
+  "success_rate": {
+    "backend": "100% (21/21 tests passed)",
+    "frontend": "95% (mobile ECW Ops fully working, desktop panel click issue)"
+  },
+  "test_credentials": "X-User-Id: chef-william for outlet-scoped endpoints. devAuth=1 bypass for frontend.",
+  "seed_data_creation": "Used existing seed data: 5 stations, 17 items, 21 components, 5 recipes, 2 outlets (main + beachside), chef-william access",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "iter224 ECW Ops features tested. Backend: All 14 ECW Ops endpoints working (stations, items, components, recipes, outlets/mine, summary, published, par-suggest, line-check/start/record/complete, photos, publish, outlets/switch). Line Check flow with temp excursion flagging works. Par suggestions include all 6 drivers (sales, occupancy, reservations, weather, dow, events). Recipe SMS queues when Twilio creds missing. Photo upload with auto-name works. Menu publish increments version. Averaged-trust benchmark endpoint works. Frontend: Mobile /m/ecw has 4 tabs working (Waste, Line Check, Recipes, Photos). Line Check shows 5 stations with EchoAi par suggestions per item. Outlet switcher shows 'Main Kitchen'. Desktop ECW Waste panel loads (regression pass). /m/waste regression pass.",
+  "tests_executed": {
+    "backend": [
+      "TestEcwOpsStations::test_list_stations - PASS (5 stations)",
+      "TestEcwOpsItems::test_list_items - PASS (17+ items)",
+      "TestEcwOpsItems::test_list_items_by_station - PASS",
+      "TestEcwOpsComponents::test_list_components - PASS",
+      "TestEcwOpsRecipes::test_list_recipes - PASS (5+ recipes)",
+      "TestEcwOpsRecipes::test_search_recipes - PASS",
+      "TestEcwOpsOutlets::test_outlets_mine - PASS (2 outlets for chef-william)",
+      "TestEcwOpsOutlets::test_outlet_switch_success - PASS",
+      "TestEcwOpsOutlets::test_outlet_switch_forbidden - PASS (403)",
+      "TestEcwOpsSummary::test_summary - PASS",
+      "TestEcwOpsPublished::test_published - PASS",
+      "TestEcwOpsParSuggest::test_par_suggest - PASS (all 6 drivers present)",
+      "TestLineCheckFlow::test_line_check_full_flow - PASS (start, record, temp excursion, complete)",
+      "TestMenuCRUD::test_create_and_patch_item - PASS (margin computed)",
+      "TestMenuCRUD::test_create_and_delete_component - PASS",
+      "TestRecipesSMS::test_recipe_sms_queued - PASS (mode=queued)",
+      "TestPhotos::test_photo_upload_and_patch - PASS",
+      "TestMenuPublish::test_publish_increments_version - PASS",
+      "TestBenchmarkAveragedTrust::test_averaged_trust_endpoint - PASS",
+      "TestBenchmarkStatusRegression::test_benchmark_status - PASS (42+ samples)",
+      "TestWasteRegressionMobileRoute::test_waste_capture_init - PASS"
+    ],
+    "frontend": [
+      "Mobile /m/ecw root loads - PASS",
+      "Mobile /m/ecw 4 tabs visible (waste, linecheck, recipes, photos) - PASS",
+      "Mobile /m/ecw Line Check shows 5 stations - PASS",
+      "Mobile /m/ecw Line Check session shows items with EchoAi par suggestions - PASS",
+      "Mobile /m/ecw Recipes tab shows searchable list - PASS",
+      "Mobile /m/ecw outlet switcher shows 'Main Kitchen' - PASS",
+      "Desktop ECW Waste panel loads - PASS (regression)",
+      "Mobile /m/waste loads with capture options - PASS (regression)"
+    ]
+  },
+  "verified_features": {
+    "GET /api/ecw-ops/stations": "PASS - returns 5 stations",
+    "GET /api/ecw-ops/items": "PASS - returns 17+ items with component_count",
+    "GET /api/ecw-ops/components?item_id=": "PASS",
+    "GET /api/ecw-ops/recipes": "PASS - searchable with q= param",
+    "GET /api/ecw-ops/outlets/mine": "PASS - chef-william has 2 outlets (main + beachside)",
+    "POST /api/ecw-ops/outlets/switch": "PASS - success for accessible, 403 for non-accessible",
+    "GET /api/ecw-ops/summary": "PASS - stations, items, menu_version",
+    "GET /api/ecw-ops/published": "PASS - returns latest snapshot",
+    "GET /api/ecw-ops/par-suggest/{item_id}": "PASS - returns suggested, baseline, drivers (sales/occ/reservations/weather/dow/events)",
+    "POST /api/ecw-ops/line-check/start": "PASS - returns session + items with par_suggested",
+    "POST /api/ecw-ops/line-check/record": "PASS - flags temp excursion for perishable items",
+    "POST /api/ecw-ops/line-check/complete": "PASS - sets status=complete",
+    "POST /api/ecw-ops/items": "PASS - creates item with margin computed",
+    "PATCH /api/ecw-ops/items/{id}": "PASS - updates and recomputes margin",
+    "POST /api/ecw-ops/components": "PASS",
+    "DELETE /api/ecw-ops/components/{id}": "PASS",
+    "POST /api/ecw-ops/recipes/sms": "PASS - mode=queued when Twilio creds missing",
+    "POST /api/ecw-ops/photos": "PASS - upload with label",
+    "PATCH /api/ecw-ops/photos/{id}": "PASS",
+    "GET /api/ecw-ops/photos": "PASS - filters by outlet/station/item",
+    "POST /api/ecw-ops/publish": "PASS - increments version, snapshots stations+items",
+    "POST /api/waste/benchmark/averaged-trust": "PASS - runs N times, returns median",
+    "GET /api/waste/benchmark/status": "PASS - sample_count >= 42 (regression)"
+  }
+}

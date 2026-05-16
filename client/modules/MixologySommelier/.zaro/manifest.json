@@ -1,0 +1,1595 @@
+{
+  "createdAt": "2025-10-10T20:33:42.369Z",
+  "files": [
+    {
+      "path": "client/App.tsx",
+      "size": 3625,
+      "sha256": "d23e6914e04235e9324ebe3fc51ae0e9ccd32fb16772efbe9701e5fe42c919de"
+    },
+    {
+      "path": "client/capstone/batch13/docs/FEATURE_TOGGLES.md",
+      "size": 664,
+      "sha256": "941b830ad8d5cc88c2116141c9575eb80e05312666fcc215ca6bf23148028c5d"
+    },
+    {
+      "path": "client/capstone/batch13/scripts/install_feature_panel.sh",
+      "size": 392,
+      "sha256": "3bf69881006b795d06006fea2db6f168ed0a5bfce795da4c05301f5950bba2e7"
+    },
+    {
+      "path": "client/capstone/batch13/src/admin/AppShellExample.jsx",
+      "size": 841,
+      "sha256": "25918a6b3cd9799a73e179b0bc805ba4f0c11088058a626cf6516f62ce423ead"
+    },
+    {
+      "path": "client/capstone/batch13/src/admin/feature-control.css",
+      "size": 85,
+      "sha256": "a1efe67cd518bf7f1d424f237a8e4a36b417c389eee143d77cf85de8eeda36ed"
+    },
+    {
+      "path": "client/capstone/batch13/src/admin/FeatureControlPanel.jsx",
+      "size": 2141,
+      "sha256": "8e7313b0803c048889b7464662a767e224364f0ca33f9b7f1efb2c0befb2d6ff"
+    },
+    {
+      "path": "client/capstone/batch13/src/admin/index.js",
+      "size": 76,
+      "sha256": "d43c1318733a07d08147e01fafabe64d947e1ca453a1542cf61ba19c366bb71e"
+    },
+    {
+      "path": "client/capstone/batch13/src/feature-flags/FeatureFlags.js",
+      "size": 970,
+      "sha256": "efb34c589a460505bc788c357480ddccdff071b45f203fe10fbf6f69066bc181"
+    },
+    {
+      "path": "client/capstone/batch13/src/feature-flags/flags.json",
+      "size": 280,
+      "sha256": "9b24d0174adad88971f9dcce400062b3fdb7b8abc3b3a60692f97521e6b42b8f"
+    },
+    {
+      "path": "client/capstone/batch13/src/feature-flags/withFeature.jsx",
+      "size": 342,
+      "sha256": "121d0bd7a06df32f639c8c5dc25302690aea5124f1561af63cfa8bdd54b55a32"
+    },
+    {
+      "path": "client/capstone/batch13/src/hooks/useFeature.js",
+      "size": 729,
+      "sha256": "f4228fc8c14a0802cfc6eda760bb312bcb0eaa155c00146597ad87bd620e44ad"
+    },
+    {
+      "path": "client/capstone/master/.commitlintrc.cjs",
+      "size": 281,
+      "sha256": "bbe6288d2edf9dfecf4187b0307f31e34da152e545e613c3adb3845d42441c3d"
+    },
+    {
+      "path": "client/capstone/master/.dockerignore",
+      "size": 52,
+      "sha256": "49bc8ca69ec23065c6a9453737e25d642f0c60e8bc2f36a7ac2e5aae8619ced5"
+    },
+    {
+      "path": "client/capstone/master/.editorconfig",
+      "size": 210,
+      "sha256": "6f2d07422c7a06a955849f70ee58602d98813722073036b4cfa297d1b6585c8d"
+    },
+    {
+      "path": "client/capstone/master/.env.example",
+      "size": 202,
+      "sha256": "3f7dbc2ade3ce5849af5d0539b74b81ff438fd76981d90fae03091c75b724b03"
+    },
+    {
+      "path": "client/capstone/master/.env.template",
+      "size": 144,
+      "sha256": "04a41209569890a136092a65f342ccbc9514a3773e776fd9c559417d358ca6bc"
+    },
+    {
+      "path": "client/capstone/master/.eslintrc.cjs",
+      "size": 723,
+      "sha256": "1bda9a17b22670b4f50cadcfcfe9c2db83448809704d983ae4cb0b60d4b52d2f"
+    },
+    {
+      "path": "client/capstone/master/.github/workflows/ci.yml",
+      "size": 793,
+      "sha256": "6b044b77b8d84a71142d6f6618038300c627ebf2f2219683832f46973ba018ae"
+    },
+    {
+      "path": "client/capstone/master/.github/workflows/e2e.yml",
+      "size": 561,
+      "sha256": "bcfbba633e73a403fa0bb07f4a7413cf1cf62d3921fd05425412e13bc5bd31ce"
+    },
+    {
+      "path": "client/capstone/master/.github/workflows/helm_release.yml",
+      "size": 832,
+      "sha256": "5e258d1609e84b258b15eff585d9f66c36f2eb6076e37921690586e1122397ef"
+    },
+    {
+      "path": "client/capstone/master/.github/workflows/helm-release.yml",
+      "size": 651,
+      "sha256": "aa5ae457fbc3b33ee93be3eb3cc0d0c665df6972ed7253d447ff3d03738b2e68"
+    },
+    {
+      "path": "client/capstone/master/.github/workflows/release.yml",
+      "size": 583,
+      "sha256": "019e6ab497d18d3b07eb899647defa46ed31ee1bcf84a66f34cd011e3c33e974"
+    },
+    {
+      "path": "client/capstone/master/.husky/commit-msg",
+      "size": 89,
+      "sha256": "15d6465b5165da352877f29ccaff973a16135c9f34f0c3682aacc239eca81184"
+    },
+    {
+      "path": "client/capstone/master/.husky/pre-commit",
+      "size": 324,
+      "sha256": "96748c56306ab7c06e5d6c2d79e100c99c977cff2458607729e9008181c755c3"
+    },
+    {
+      "path": "client/capstone/master/.lintstagedrc.json",
+      "size": 116,
+      "sha256": "458285cce87aeee4cb38f8c5accbee79a70d4adb69f2ce4eecc74009c35f597b"
+    },
+    {
+      "path": "client/capstone/master/.prettierrc.json",
+      "size": 106,
+      "sha256": "7afe5be89f08e76057f46c144e441c954d89e555b09eac81d649b033bfbeade0"
+    },
+    {
+      "path": "client/capstone/master/deploy/kubernetes-deployment.yaml",
+      "size": 414,
+      "sha256": "1b212e90a9f163354e0dcdca5b1a4431d5e9362e4a0ccdfd52c0fb3ea4323aed"
+    },
+    {
+      "path": "client/capstone/master/deploy/kubernetes-service.yaml",
+      "size": 164,
+      "sha256": "6ec598f1cb69a97119d969e5e6e3fcf3bd12ebcf52692f1f8a8a2c7d35d67b74"
+    },
+    {
+      "path": "client/capstone/master/docker-compose.override.yml",
+      "size": 159,
+      "sha256": "36c2726d37083c67a04f747c9fcde26346719de7fa7b9370311569544e22f841"
+    },
+    {
+      "path": "client/capstone/master/docker-compose.yml",
+      "size": 378,
+      "sha256": "efbc26b223d2199fe5b8dfab4121065983f5514c4fd8c83d19132ee807a1eca1"
+    },
+    {
+      "path": "client/capstone/master/docker/nginx-spa.conf",
+      "size": 313,
+      "sha256": "8b8985046378f53f4f2bf4e546d4abed225c8694f5fd4188a99b0a79712811c6"
+    },
+    {
+      "path": "client/capstone/master/Dockerfile",
+      "size": 813,
+      "sha256": "88d0844705b93da9469a3a8a4651a5d7f2c1415d8f838e31ff84d7254e9d75b0"
+    },
+    {
+      "path": "client/capstone/master/docs/ACCESSIBILITY_CHECKLIST.md",
+      "size": 558,
+      "sha256": "a4375947eb7beae8fa331e91c4fb71b197598fa63b86e63cbfc4e872058be53a"
+    },
+    {
+      "path": "client/capstone/master/docs/CI_CD_OVERVIEW.md",
+      "size": 582,
+      "sha256": "0eb0e81745970e263fbfa4c4e8a578605350006e787de366606121d4a4bcf3d5"
+    },
+    {
+      "path": "client/capstone/master/docs/DEPLOY_CHECKLIST.md",
+      "size": 682,
+      "sha256": "8e244eecced87f701036b6d877899a82e6631cebac4c6bb3e77dc7a5596a2c2e"
+    },
+    {
+      "path": "client/capstone/master/docs/DEPLOY_OVERVIEW.md",
+      "size": 716,
+      "sha256": "f970785454dfb5bd8d3fee1b01df67bc47d2a5e2f2e1b0afc46e346b8350e991"
+    },
+    {
+      "path": "client/capstone/master/docs/HEALTH_CHECKS.md",
+      "size": 449,
+      "sha256": "ce4b15c26f05434797106a2a3e0488bb41e19c1b0baec67aba3a3cfdf414b8f0"
+    },
+    {
+      "path": "client/capstone/master/docs/HELM_DEPLOY_GUIDE.md",
+      "size": 594,
+      "sha256": "a9b6303d3275b197d7f1848df13eb52cb8f18be4c8d271b3543918e4dceab6c3"
+    },
+    {
+      "path": "client/capstone/master/docs/HELM_GUIDE.md",
+      "size": 490,
+      "sha256": "bcf13c60e52105d7e9abf44e37ace86cfe234a06a2b589ee3b66d0e5dd9ff18e"
+    },
+    {
+      "path": "client/capstone/master/docs/K8S_DEPLOY_GUIDE.md",
+      "size": 640,
+      "sha256": "2e2d0c95352a5799a736b2d943ff2c43d71f4bbc27b848efb32f642990cb2f12"
+    },
+    {
+      "path": "client/capstone/master/docs/lighthouserc.json",
+      "size": 409,
+      "sha256": "3f11bb2c8807140ab0c7cab194456956ec1bea8ee16b6e6f54983966a19df1b5"
+    },
+    {
+      "path": "client/capstone/master/docs/MONITORING_RUNBOOK.md",
+      "size": 518,
+      "sha256": "99507ac436f827298570c8c6db2d71c3490abaf2c72bc2ac23bda3d92cbd375e"
+    },
+    {
+      "path": "client/capstone/master/docs/PERFORMANCE_BUDGETS.json",
+      "size": 149,
+      "sha256": "5d28274e95e7a118b6aeba23b6ca06201fa788d5fc51d0220098630aec185bed"
+    },
+    {
+      "path": "client/capstone/master/docs/PROD_DEPLOY_CHECKLIST.md",
+      "size": 1225,
+      "sha256": "56209f2d74e7aab69791927767abd6f958f60164c773a9e1e2eada9273d14e8a"
+    },
+    {
+      "path": "client/capstone/master/docs/QA_SMOKE_TEST_PLAYBOOK.md",
+      "size": 1431,
+      "sha256": "74a7236a7f4c6705ad3f4c09e14b4cac164d0af4b2aa966651f7ea9722f47d54"
+    },
+    {
+      "path": "client/capstone/master/docs/SECURITY_BASELINE.md",
+      "size": 539,
+      "sha256": "be7225099cf75c5dfe30f394c2e4cbd1498c27ed3a937ef35b9cd093a2555815"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/Chart.yaml",
+      "size": 163,
+      "sha256": "7948f717c43088ac1d65edd5ccde20f080f97457a1248c79dca08004f59d02a9"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/templates/_helpers.tpl",
+      "size": 969,
+      "sha256": "d01bde48a3343e786347bb244a4d86c9bd7f9b91c973ae0df57b7fe9d74a5384"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/templates/configmap.yaml",
+      "size": 270,
+      "sha256": "5064ae6ceb00ad074ef91900c741083526e5806850c2bf602c03fc0294d32322"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/templates/deployment.yaml",
+      "size": 1356,
+      "sha256": "a90a338848a38bd972a97a0c84f41e8ae84524728080647043a9156295f7b508"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/templates/ingress.yaml",
+      "size": 838,
+      "sha256": "73d89f16c6fb60780b28aaf0b3bdc42ea90ccfff2110b1985385c46252ccfa4a"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/templates/NOTES.txt",
+      "size": 317,
+      "sha256": "5e67ba13bfff82183dc12b401f9b7233faa70673824fdeb3461c178af202f20a"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/templates/service.yaml",
+      "size": 369,
+      "sha256": "1ea053f18fb4008c686452402bdd4cefe33398904aad8789f6338c644a1eb466"
+    },
+    {
+      "path": "client/capstone/master/helm/echo-capstone/values.yaml",
+      "size": 495,
+      "sha256": "baba51d97679720e39e7adb9e5fd16aaac56dd96a6c848470975297102f95739"
+    },
+    {
+      "path": "client/capstone/master/k8s/configmap.yaml",
+      "size": 158,
+      "sha256": "6c1cb6001daa23896b39f0cfea32d330ef4ae5a00a5479187bc28e02174d5f71"
+    },
+    {
+      "path": "client/capstone/master/k8s/deployment.yaml",
+      "size": 780,
+      "sha256": "01cdef792f1855a08d8f0c5aa276594c377c4bee459087578c73c4652e059b92"
+    },
+    {
+      "path": "client/capstone/master/k8s/ingress.yaml",
+      "size": 387,
+      "sha256": "90049b86d35e11828296cddff1fc74c66d64531f7d48adf47299759d6e4ba6c3"
+    },
+    {
+      "path": "client/capstone/master/k8s/namespace.yaml",
+      "size": 63,
+      "sha256": "6b086b2600017c83a80c8cbdccb5074db03987c315fb8bd32f63c051559b5778"
+    },
+    {
+      "path": "client/capstone/master/k8s/service.yaml",
+      "size": 185,
+      "sha256": "0dce0f059258097eeb8e6e82f12e14815717fba821a29c00078508ad4610abb5"
+    },
+    {
+      "path": "client/capstone/master/k8s/values.yaml",
+      "size": 370,
+      "sha256": "e6dfde6726026e43cf564e610d1b039df2e9985bce9203e248d956fabf0e6482"
+    },
+    {
+      "path": "client/capstone/master/MASTER_MANIFEST.md",
+      "size": 9703,
+      "sha256": "fa310273395c80c7bff961c895de1cdae135f79ebb1787ef0ba45e03b82f72ac"
+    },
+    {
+      "path": "client/capstone/master/README_Batch06.md",
+      "size": 268,
+      "sha256": "7ad41c6a2e6db06415bcf8215c2a46af946d2542734523dddce40938983764da"
+    },
+    {
+      "path": "client/capstone/master/README_MASTER.md",
+      "size": 609,
+      "sha256": "eca700c823d4e3c9bbdd82c315b6766e1ba541212b1987b860708d9c4023edfd"
+    },
+    {
+      "path": "client/capstone/master/schemas/liquor-entity.schema.json",
+      "size": 978,
+      "sha256": "d05cf6774c4f283564ab13b566133f620de124c577f2e84c6d21369ba6afe6fe"
+    },
+    {
+      "path": "client/capstone/master/schemas/scheduler-shift.schema.json",
+      "size": 617,
+      "sha256": "3edbc28495b2adc6a63387fc928c09bcc01252f12966e5680c783c12d631ae53"
+    },
+    {
+      "path": "client/capstone/master/schemas/shift.schema.json",
+      "size": 362,
+      "sha256": "0064b2ea378104a5190c80c86436cf225714bdb6ca29105d9e7ad1098c6467a0"
+    },
+    {
+      "path": "client/capstone/master/schemas/wine.schema.json",
+      "size": 762,
+      "sha256": "4b32b0f76f0d55a370b48cefe3d063d5176b7b92a90ed69019e5a34cfd754ccf"
+    },
+    {
+      "path": "client/capstone/master/scripts/build_prod.mjs",
+      "size": 1260,
+      "sha256": "bb51f93e4505c8f7c083a6d514c612d23a04c9c17456c4a661bbbbc8f56f66a5"
+    },
+    {
+      "path": "client/capstone/master/scripts/deploy_blue_green.sh",
+      "size": 577,
+      "sha256": "6030e6e5f77fd317bb2a437235dd79ea9b0a989a3141efd897b64c3b05ed5bd3"
+    },
+    {
+      "path": "client/capstone/master/scripts/deploy_checklist.sh",
+      "size": 500,
+      "sha256": "b8f555a442daf4d85fa37e5c53f5ba77e46f84d3c3d374e0fc651882c4a2a07c"
+    },
+    {
+      "path": "client/capstone/master/scripts/env_check.mjs",
+      "size": 370,
+      "sha256": "b657bea907bf6f6834b77380c019829bdcc3751997a03ac0939d8cd461e62cdc"
+    },
+    {
+      "path": "client/capstone/master/scripts/env_render.mjs",
+      "size": 679,
+      "sha256": "25219d46ea9af818d47fdf7fdf02a76587efc1e48d74d12b8b3bba0c636bd036"
+    },
+    {
+      "path": "client/capstone/master/scripts/gen_release_notes.mjs",
+      "size": 1208,
+      "sha256": "2742384a54b3634b4624b69d34a3dea6cbc6d0f7036a12ec033009e15f30120a"
+    },
+    {
+      "path": "client/capstone/master/scripts/generate_release_notes.sh",
+      "size": 378,
+      "sha256": "b58df104fe82562ceef867967a413d3d9cebe263d691c7dba5552973032231ee"
+    },
+    {
+      "path": "client/capstone/master/scripts/health_check.sh",
+      "size": 279,
+      "sha256": "afe891523c6c7059125730f40875e11db0523bbbd306928b6dd4e380ebc7502e"
+    },
+    {
+      "path": "client/capstone/master/scripts/helm_install.sh",
+      "size": 374,
+      "sha256": "1331e479af8a5a2141f89c0d3c021ee07ef5bf67fccfd1774d0d9a5b73f53674"
+    },
+    {
+      "path": "client/capstone/master/scripts/helm_render.sh",
+      "size": 190,
+      "sha256": "7dc78382c6b510bcab534b282a8a63b71df665602eec28eb87d80660fb1df63f"
+    },
+    {
+      "path": "client/capstone/master/scripts/install_all_capstone.sh",
+      "size": 1485,
+      "sha256": "bc78b23bc2445202e8849484aa23b5aa16e7fd0ae171a7b6b6559efdf864a820"
+    },
+    {
+      "path": "client/capstone/master/scripts/install_capstone_unified.sh",
+      "size": 809,
+      "sha256": "79cda54bbf6b167b9e007d48bd2dded163f245ab30b7e4ec949edade11d38253"
+    },
+    {
+      "path": "client/capstone/master/scripts/install_echo_seed.sh",
+      "size": 956,
+      "sha256": "7e05247a7904190fce5ad664e1abb85ab5b41f68a26c902d459a4ab97cc50432"
+    },
+    {
+      "path": "client/capstone/master/scripts/install_manifest.json",
+      "size": 242,
+      "sha256": "c00f2ca5265f2e9facd85d874da71dbcb94b9474c1cbb1bbaaa1c8684fa41fe7"
+    },
+    {
+      "path": "client/capstone/master/scripts/install_mixology_wheel_merge.sh",
+      "size": 899,
+      "sha256": "db07625ca356d5d82f7aa859a0980eaf8db1a41507f6bf88566e620768fc8fdd"
+    },
+    {
+      "path": "client/capstone/master/scripts/install_utils.sh",
+      "size": 276,
+      "sha256": "f22e00c60601bc73e8b1fc92f8dcf41c11f8fdceec1ede8dd5e3267c20e0f9aa"
+    },
+    {
+      "path": "client/capstone/master/scripts/README.md",
+      "size": 106,
+      "sha256": "3917e6e0d630303de06704123bd994c42d5a425417c6e5851abab5c8be018bee"
+    },
+    {
+      "path": "client/capstone/master/scripts/run_e2e.sh",
+      "size": 313,
+      "sha256": "646a8f5729e1398bec718b0eb5c74abb6df5fbab09bf5d025a4cf6546e80fcaf"
+    },
+    {
+      "path": "client/capstone/master/scripts/run_unit_tests.sh",
+      "size": 365,
+      "sha256": "75c4feeb63e8a7bb76f154b2a008a9227b0464b5fac6937b4971555c31733054"
+    },
+    {
+      "path": "client/capstone/master/scripts/setup_ci.sh",
+      "size": 811,
+      "sha256": "3f5cbdf786253bf3df2221c9a63d6a4f8a467f58de9d47e25e701e7a422270aa"
+    },
+    {
+      "path": "client/capstone/master/src/final/install-orchestrator/index.js",
+      "size": 410,
+      "sha256": "dcc272e56f8789aa94d5ec9078173eb2ec205d6e2368c5f859976ee3a3e843e8"
+    },
+    {
+      "path": "client/capstone/master/src/final/install-orchestrator/manifest.json",
+      "size": 316,
+      "sha256": "44d3c2135443635043f2d7998bc1070462dd51a8cb7176f90bd68a0132bac3fd"
+    },
+    {
+      "path": "client/capstone/master/src/final/install-orchestrator/README.md",
+      "size": 454,
+      "sha256": "39a6edd40187222918f7a83e1eeadba3d295af8e82d3335817c0c8932a4c8dd3"
+    },
+    {
+      "path": "client/capstone/master/src/mobile/scheduler/components/MobileScheduler.jsx",
+      "size": 3716,
+      "sha256": "76bbc987a32364671791d03c1df9322eb14693cadfe942853022c9529e366803"
+    },
+    {
+      "path": "client/capstone/master/src/mobile/scheduler/hooks/useScheduleStore.js",
+      "size": 1837,
+      "sha256": "e271fd9516f148e1928641b804a03123db93f18af6a77ef8e14ec8354aa4d4fd"
+    },
+    {
+      "path": "client/capstone/master/src/mobile/scheduler/index.js",
+      "size": 308,
+      "sha256": "2c7566a621295a5ae90c6d9ef226bceacdc3a89febd416f3619e2787f4004b9a"
+    },
+    {
+      "path": "client/capstone/master/src/mobile/scheduler/styles/mobile-scheduler.css",
+      "size": 235,
+      "sha256": "b254caf4017a44119317a0acbe78244b752c5e805ef7e6b9548c40fe867e7517"
+    },
+    {
+      "path": "client/capstone/master/src/mobile/scheduler/utils/time.js",
+      "size": 509,
+      "sha256": "47c25a6cdba947e0b0febcb286399103825bf528be52fed11c56fca2019673fa"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelier/components/SommelierPanel.jsx",
+      "size": 1694,
+      "sha256": "9b066b0d3b0c9898df98795879a086de713b9783d1281810671331973201e8ac"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelier/index.js",
+      "size": 121,
+      "sha256": "35f0ccbfe810bb67bf5d1ba3b65a5867c89732fe4ab1490a5df57d38626a0ea6"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelier/lib/food-flavor-map.json",
+      "size": 566,
+      "sha256": "a0ff9c929459a1efae5f5fd7e69d50320f290e798f7af8ef355f4ed74808e5b9"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelier/lib/grape-db.json",
+      "size": 840,
+      "sha256": "d8e046b5347376133dd44467480948eb8c6c3859740fc92507107dca2d1e1765"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelier/lib/pairing.js",
+      "size": 1259,
+      "sha256": "baf2e88663ae9547e29ebb683a848b41dc45e9251bac0a785172ca214e2e3047"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelierMixologyBridge/index.js",
+      "size": 166,
+      "sha256": "7f292a9d726471696aa5651ffa40e93a80947a6ff6fe01d826247e515d95a5f1"
+    },
+    {
+      "path": "client/capstone/master/src/modules/EchoSommelierMixologyBridge/pairing-bridge.js",
+      "size": 1057,
+      "sha256": "0a58f889f2e50a23fa732fa94dddc7ba0b6485fca04b795510efa73b325e902f"
+    },
+    {
+      "path": "client/capstone/master/src/modules/LiquorAI/index.js",
+      "size": 298,
+      "sha256": "da8fe3c4ce53c347a73d3d999aa17eba490a01f61b7448891ce3eea36009a8c0"
+    },
+    {
+      "path": "client/capstone/master/src/modules/LiquorAI/label-ocr.js",
+      "size": 1870,
+      "sha256": "738e154646724a50d3e49c17acc874ad9f76aafd74309dbc3e61b8352c34bbd5"
+    },
+    {
+      "path": "client/capstone/master/src/modules/LiquorAI/liquor-entities.js",
+      "size": 831,
+      "sha256": "9f9cefce6efb201dbfc18a72c244dd406acb4e252de4f124e7601e46fb437f0b"
+    },
+    {
+      "path": "client/capstone/master/src/modules/LiquorAI/price-intel.js",
+      "size": 1911,
+      "sha256": "94cf751acb309fe364c9985ee4bc3e4d90ab7a8a286edaf547cc181282b22b19"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyLiquorAI/components/LiquorAIPanel.jsx",
+      "size": 854,
+      "sha256": "4b6f39820aa8b99b52530cc02c42ac3b123006feb79f08f6906fb2b9e27c6087"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyLiquorAI/index.js",
+      "size": 129,
+      "sha256": "f4fae59a26343578972f9024d87b6b76afdee3e3c5cca2e06c4bc1389c0d2851"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyLiquorAI/lib/liquor-db.json",
+      "size": 410,
+      "sha256": "a2446a10154a5e9c380c32886c4b5e1390ce984e27c2486dfae4dabdc40a9dcb"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyLiquorAI/lib/liquor-rules.js",
+      "size": 737,
+      "sha256": "ee63b599f4ac77d21d3655f92ff9df4c273049bbf9eb1a8ca5aadce8814b7545"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyLiquorAI/lib/validators.js",
+      "size": 313,
+      "sha256": "156d2cc1cb41b44f978fe9fd1a34b0d048068541f348ee8a3522d7972acb568d"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyWheel/components/MixologyWheel.jsx",
+      "size": 2902,
+      "sha256": "e6a7d0aec0c45ba44f1c4995bf0b5ef783723a4fdb4df38a69584d07eda122e8"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyWheel/data/wheel-data.json",
+      "size": 260,
+      "sha256": "b68f7926cd50edb719bd203ccfd646800eadc0a09f0446836c74649dd72279dc"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyWheel/index.js",
+      "size": 209,
+      "sha256": "97030342b32022e3e4ba42fec835d827bed71d4e4cb12eeac229833adf4bca2d"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyWheel/lib/flavor-taxonomy.json",
+      "size": 1216,
+      "sha256": "9068ab752d9cd04e1978f834a2ddccaad8c1395f41a54fb6ff7ff9d167c8da10"
+    },
+    {
+      "path": "client/capstone/master/src/modules/MixologyWheel/lib/wheel-utils.js",
+      "size": 215,
+      "sha256": "290d26d8cc1a67de7dd12176fbe8732ac2173f79972d4135194d5b4d4e3256aa"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SchedulerMobile/index.js",
+      "size": 231,
+      "sha256": "de22417a53f24b2fe3fe85f5b427e1fd9db9fc9f2d40cb7c538c3c7360b9d2ae"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SchedulerMobile/SchedulerMobileApp.jsx",
+      "size": 551,
+      "sha256": "c9389feaf0449a82682f9da7d404ee26a95956551b12d37205249654ed30fc48"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SchedulerMobile/useScheduleStore.js",
+      "size": 551,
+      "sha256": "5eed4cf37ec2dd390e5508f36c9527b0822c3214a7ea4d1cb9a7dad8f220023d"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SchedulerMobile/views/DayView.jsx",
+      "size": 408,
+      "sha256": "5ea34e4d09a585f69c990056cc85dd2bae232d6d5aff5c3c06c1dfc31eb390be"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SchedulerMobile/views/WeekView.jsx",
+      "size": 308,
+      "sha256": "a1b88b5afc0de4bdf53a81fa01aa35353c9fee843ab58e41ef4f6cd2b1150eff"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SommelierMerge/components/SommelierMixologyConsole.jsx",
+      "size": 2706,
+      "sha256": "dfdd61f98b1677de4f6b6ef955d3d2ad241901aa3c3df7ecfc7490732e086fc7"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SommelierMerge/hooks/usePairingSession.js",
+      "size": 882,
+      "sha256": "c80581a4761d5d85fe71fd47eac7dd1707789cf1e45fba9ef98e9a77880d52f8"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SommelierMerge/index.js",
+      "size": 288,
+      "sha256": "1d5aa4dad199d7a65219a2d630b4e7c78753661174dd609f7440efee1073e914"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SommelierUIBridge/index.js",
+      "size": 164,
+      "sha256": "a0f4bb2fa71e06804e54452837a352534d7226f946a54757de57823f09855777"
+    },
+    {
+      "path": "client/capstone/master/src/modules/SommelierUIBridge/panel.jsx",
+      "size": 814,
+      "sha256": "2bcf5e99fa95c576822a9a8dafdc92adb4646f28dfd6abbe44bc18c929789e09"
+    },
+    {
+      "path": "client/capstone/master/src/modules/VisualSyncLiveControl/adapters/ColorPulseAdapter.js",
+      "size": 476,
+      "sha256": "64924f324fa7bf34f9529e46f723d0101ff0168c928713e3718d7c7f7f2e74db"
+    },
+    {
+      "path": "client/capstone/master/src/modules/VisualSyncLiveControl/adapters/MotionAdapter.js",
+      "size": 439,
+      "sha256": "a7b349620b833ce310efaa822eb631c15ee304e6ce53875268ed667a19707384"
+    },
+    {
+      "path": "client/capstone/master/src/modules/VisualSyncLiveControl/adapters/SceneAdapter.js",
+      "size": 567,
+      "sha256": "913c6f98367f842721410ce29ecc71495f9318e651e87b23ce82509465c5bc3a"
+    },
+    {
+      "path": "client/capstone/master/src/modules/VisualSyncLiveControl/components/LiveControlPanel.jsx",
+      "size": 605,
+      "sha256": "c40dc94302e12f868e21ebfdd49c3e39343df302f21228645ace41b92d897e1e"
+    },
+    {
+      "path": "client/capstone/master/src/modules/VisualSyncLiveControl/hooks/useVisualSync.js",
+      "size": 636,
+      "sha256": "95a74c90411da8e90839fdcad60a018f9c9d949c7f574eaad998031ec93b92cb"
+    },
+    {
+      "path": "client/capstone/master/src/modules/VisualSyncLiveControl/index.js",
+      "size": 138,
+      "sha256": "fc7d2ae150078b5523b40baab326cc5f2a039fec8992e9f8a64aebb302fef399"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/ChecksumVault.js",
+      "size": 1576,
+      "sha256": "9e5b011093aaebb137175490a1750e0d90021f99fa12854086fc2fc1bc2f6857"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/cli/commands/bulk.js",
+      "size": 1967,
+      "sha256": "102321ce2cbde565601a080bd51aba739aff926b529698e4ce9c907a90ae1c6a"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/cli/index.js",
+      "size": 656,
+      "sha256": "985fc5747a9b5083ca8ea14be6753db34ba9e99778c971f52f6838e1c2e65f1f"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/cli/patch.js",
+      "size": 650,
+      "sha256": "e50f0167641547697b9215e0e09964ebd2bae73acda13f9ce8eb1ebefa32339a"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/cli/README.md",
+      "size": 193,
+      "sha256": "6cae7f25e8b88e580fced60cc6933f4d6f3a0687aeff8995816e70c0e746ac26"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/cli/utils.js",
+      "size": 158,
+      "sha256": "037d0b48086e72b8fe6342097543e7c803d5ecb223057e6a0d90bc8ab846051d"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/extras/heartbeat.js",
+      "size": 365,
+      "sha256": "0d3d16b591b8fcd4d3e5816524d8ed1e9ae5cd2e06d260d0386058fe1fb19de2"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/extras/logger.js",
+      "size": 204,
+      "sha256": "8ba9209a046d5ecf0943b845f58e2fddbc12c6b3540df397811ccca3128fd9ce"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/extras/reporter.js",
+      "size": 348,
+      "sha256": "811df6f03675645da627167005e649f406ba2bbef5f4f9028328f71b02c2157f"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/guards/withRecovery.jsx",
+      "size": 235,
+      "sha256": "2950f828af2275b0351f4b1304ad19c8dbbebcb368e60e2559026d47c8fdc524"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/RecoveryGuard.js",
+      "size": 740,
+      "sha256": "105a0e791d14129cce9f3fc2e4649bfd93df91f3e880273b6715e4afaa665b5a"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/SafePatch.js",
+      "size": 501,
+      "sha256": "9833bb50cab5a02bbb42db2b9242a45075184ce92873005d24e3b22ea26de407"
+    },
+    {
+      "path": "client/capstone/master/src/safety/RedPhoenix/telemetry/phoenix-telemetry.js",
+      "size": 1325,
+      "sha256": "2d45041a995f33e60237d6cfc89c6dbc92c9746c7f560dfb3b338b43bec5a107"
+    },
+    {
+      "path": "client/capstone/master/tests/abv.test.js",
+      "size": 1038,
+      "sha256": "897f64c7f505f92286b2a2b812712a0337701f3d8ae3048d420da4d57550326e"
+    },
+    {
+      "path": "client/capstone/master/tests/e2e/playwright.config.mjs",
+      "size": 321,
+      "sha256": "3a61200a235f54adddfdfcc78ed8b7a33c0f92cf892594634631117d046d25a1"
+    },
+    {
+      "path": "client/capstone/master/tests/e2e/smoke.spec.mjs",
+      "size": 560,
+      "sha256": "e370809589c87a71a507076a100dc1006cd1f54bbfa3bb978356491674711e51"
+    },
+    {
+      "path": "client/capstone/master/tests/liquor-inventory.test.js",
+      "size": 1454,
+      "sha256": "4b014abb25374912a2407bfba64e50727722423aea9dfd02675667a103114925"
+    },
+    {
+      "path": "client/capstone/master/tests/pairing.test.js",
+      "size": 1125,
+      "sha256": "8840256366d3ab79ac74ae76974d9c1c9a771632d7e8f69e52addeffc75dc727"
+    },
+    {
+      "path": "client/capstone/master/tests/price-intel.test.js",
+      "size": 384,
+      "sha256": "04e0ed6242a3df19b1d43e5c7436a2d1ff1b276a39c59d1d0d8650f609dd0ec3"
+    },
+    {
+      "path": "client/capstone/master/tests/schedule-store.test.js",
+      "size": 509,
+      "sha256": "2988671a7804bee8e3d7d11f7955a306101c54e2a16d62bd1d3f84b518d80047"
+    },
+    {
+      "path": "client/components/echo/DefconOverlay.tsx",
+      "size": 9218,
+      "sha256": "e9b5a006103e7029bd991b2eef28df2f1d3cf1bdd4dce78fe828d03880785537"
+    },
+    {
+      "path": "client/components/echo/EchoOrb.tsx",
+      "size": 17802,
+      "sha256": "2c1ea83f0810027c25bd14cb0404c17c9bfc4dfa3283f6ee040f857ab26f6596"
+    },
+    {
+      "path": "client/components/echo/EmbedSnippet.tsx",
+      "size": 1288,
+      "sha256": "388851a9aef22a8eed0659f67a09517197c5e24464ae6d43605f81d12517bda1"
+    },
+    {
+      "path": "client/components/echo/GuideOverlay.tsx",
+      "size": 3497,
+      "sha256": "d98e0b9fbb4d573af696370a5cbeb8a60937212f7efe6d3f6ffa4d121d4f2b0e"
+    },
+    {
+      "path": "client/components/echo/orb-config.ts",
+      "size": 4498,
+      "sha256": "a1d08ee8307cbbb2527d3fedb268665fc55446edfc96ebc0030eaa7422e86502"
+    },
+    {
+      "path": "client/components/echo/orb-palette.ts",
+      "size": 2573,
+      "sha256": "2f816cd6f9e58bdd622bc251dc0f78868fc2100e524925935a5613afd45e39ff"
+    },
+    {
+      "path": "client/components/echo/PanelFrame.tsx",
+      "size": 1351,
+      "sha256": "93d379fc465bfd7d83d59643473b20e6de37084c779f4da80038ac8df85c2e8c"
+    },
+    {
+      "path": "client/components/echo/SlotLayout.tsx",
+      "size": 2236,
+      "sha256": "69937804b5712b188aed91265943822e7e9a0ddec0854ec91b386734c6ea8d32"
+    },
+    {
+      "path": "client/components/site/EchoAiLauncher.tsx",
+      "size": 82981,
+      "sha256": "4d7f44063f2d3c816d835d6d8a587813263b1aa65607ec0f89b2b7eace6d2ae7"
+    },
+    {
+      "path": "client/components/site/Footer.tsx",
+      "size": 623,
+      "sha256": "1fd3bd5f984f9e32b0ec2543e6f8f1282483b86b2892d36abd8a171f965283d3"
+    },
+    {
+      "path": "client/components/site/Header.tsx",
+      "size": 2779,
+      "sha256": "dea56f31ab389b3d341f632662d47d98fa960a2a05662aa960caea5df76185ee"
+    },
+    {
+      "path": "client/components/site/HelpDesk.tsx",
+      "size": 5259,
+      "sha256": "a04223e842e50e822bf22587934e4bdcbf6c3118ae6fba938a724b3b333cb9d7"
+    },
+    {
+      "path": "client/components/site/LanguageSelect.tsx",
+      "size": 869,
+      "sha256": "16bab1b2d8ea27c939100764a4a7d1cf49bd92f02a7848a82a85de88ed66c084"
+    },
+    {
+      "path": "client/components/site/MenuBar.tsx",
+      "size": 13265,
+      "sha256": "3616160422f098ccdc446256bb097f6c34ca950dcd431cdc1cacbc3092d2ec0f"
+    },
+    {
+      "path": "client/components/site/PanelHost.tsx",
+      "size": 2998,
+      "sha256": "a3c7421f109339bc500fad1058f7c89451a0981dedbfc92443935c58e8c3abe3"
+    },
+    {
+      "path": "client/components/site/Sidebar.tsx",
+      "size": 4241,
+      "sha256": "30af259ab1ab898f1454721e3af943a4e3ec8e35ab074f86af66c7d7c238f793"
+    },
+    {
+      "path": "client/components/site/ThemeToggle.tsx",
+      "size": 807,
+      "sha256": "e5e73d284b07393ca452f671ebeea84f81392a858ca0866a0aeb22e80b21b2ec"
+    },
+    {
+      "path": "client/components/studio/CodeExplorer.tsx",
+      "size": 66410,
+      "sha256": "231d1b07158df00053beb9026bba2f627ee9b3b380fbb269f36c783f8bdb1e84"
+    },
+    {
+      "path": "client/components/studio/design/AddonToolbar.tsx",
+      "size": 6150,
+      "sha256": "bb71664585cd7e88ebc46c9ebbca40b25c2bdf795b279c147022a5f9bdb38dbd"
+    },
+    {
+      "path": "client/components/studio/design/DesignInspector.tsx",
+      "size": 9391,
+      "sha256": "c9c1e454f9e39842095632e07dc110eafac3473dd4edb8d2890e94c5bacc4ece"
+    },
+    {
+      "path": "client/components/studio/design/DesignMenuBar.tsx",
+      "size": 6434,
+      "sha256": "ed26f74ce51aa118db7aaaa9c55513eddbded5659baa94c7ac33390bd5453dfb"
+    },
+    {
+      "path": "client/components/studio/design/editable-content.ts",
+      "size": 922,
+      "sha256": "54f160c3b7c92006184d631f1395e638e397c400a6e10eb5f91d535b77845c00"
+    },
+    {
+      "path": "client/components/studio/design/FigmaToolkit.tsx",
+      "size": 4628,
+      "sha256": "338423aa2165c65eea7f6ff9eb672a135c3ab40a134ffbe4295441c6a3bcfe22"
+    },
+    {
+      "path": "client/components/studio/design/library.ts",
+      "size": 5732,
+      "sha256": "5df29339bef4cb880ef69d073842b2051c9c275f7efd0778f20a09685e914b54"
+    },
+    {
+      "path": "client/components/studio/ImageGeneratorPanel.tsx",
+      "size": 23507,
+      "sha256": "a58f20b8206d8e0d3bd1baae60b345a80eba791e85f906072c0d575d1f4f3d42"
+    },
+    {
+      "path": "client/components/studio/MonacoCodeEditor.tsx",
+      "size": 8965,
+      "sha256": "d403e62656cd8fd4fc1da23d781f8c583ac4ff1eb516ebe96d01c655921504ae"
+    },
+    {
+      "path": "client/components/studio/PlanList.tsx",
+      "size": 918,
+      "sha256": "17f757cfe3f31340f388e6c7953830d78231c6eed310b45e57d0bba3f8d34e01"
+    },
+    {
+      "path": "client/components/studio/PlannerProjectSetup.tsx",
+      "size": 3219,
+      "sha256": "3f875c398bfd974ff0b6dde8692b650b27739d1afe14e550dcd04d9f27c78c6f"
+    },
+    {
+      "path": "client/components/studio/PlannerScaffoldPreview.tsx",
+      "size": 4014,
+      "sha256": "9e7750496f415c0185e16a6c4d4f78aaac9391fcb612c762ecac4e6430d96bf6"
+    },
+    {
+      "path": "client/components/studio/PlannerScriptPanel.tsx",
+      "size": 8394,
+      "sha256": "dfd0097a146b6a905c27d1c7cb433caa7fb28b35c1b97de0eed8e7ee1cc6833d"
+    },
+    {
+      "path": "client/components/studio/PlannerStageTracker.tsx",
+      "size": 2604,
+      "sha256": "a380ac31debefcb1e08512e3cb65661d322ab429e993008601e18d409c9f743a"
+    },
+    {
+      "path": "client/components/studio/ScorecardPanel.tsx",
+      "size": 5303,
+      "sha256": "9673935a1d5aa017530b7b20b538d4e0b1c4135c2baef23de236566a11163e91"
+    },
+    {
+      "path": "client/components/ui/accordion.tsx",
+      "size": 1990,
+      "sha256": "b728b30af5d9f770a34d5b4ae85ea720c90664fa55d83ad3d9835f48f20f5846"
+    },
+    {
+      "path": "client/components/ui/alert-dialog.tsx",
+      "size": 4449,
+      "sha256": "6f5d2b743e097cc0f38a8201fc9472bbcffa7ef80653eb09ac1733f470dd675c"
+    },
+    {
+      "path": "client/components/ui/alert.tsx",
+      "size": 1596,
+      "sha256": "050c08a3ec850a8fae8579b2bdbb4c9b8aa64744b580f07e2b26f7e6fc17dac0"
+    },
+    {
+      "path": "client/components/ui/aspect-ratio.tsx",
+      "size": 143,
+      "sha256": "d72c73d629e37995a0a71647d851d68d6fdcd7ec120797f36ab83a8ee89f2cab"
+    },
+    {
+      "path": "client/components/ui/avatar.tsx",
+      "size": 1417,
+      "sha256": "3f1e0c4584f57768a80e3d37bc45046f8773bb87bb8cecd5994007bbe6dfdc8b"
+    },
+    {
+      "path": "client/components/ui/badge.tsx",
+      "size": 1135,
+      "sha256": "108023710ad568bd6275889eee268c096e77e74ace173cfec1b5f231b792df06"
+    },
+    {
+      "path": "client/components/ui/breadcrumb.tsx",
+      "size": 2725,
+      "sha256": "ab1107eca1e4a95589f67b96ac5c58ed72f4e90789bdd796da4789e05756cadc"
+    },
+    {
+      "path": "client/components/ui/button.tsx",
+      "size": 2088,
+      "sha256": "cd71fb8d1edf09ff4b576b0731d6f742d50ba6daadc26eac9034a1982bf3d856"
+    },
+    {
+      "path": "client/components/ui/calendar.tsx",
+      "size": 2682,
+      "sha256": "9f85c03063c0872db3042e6a4e6d7e211e0e52381696e92aa2826c79e7c13e04"
+    },
+    {
+      "path": "client/components/ui/card.tsx",
+      "size": 2054,
+      "sha256": "fbb32af492e05b9bc033dd930edbda9a10e5d7648e8864251c700a90703d10a9"
+    },
+    {
+      "path": "client/components/ui/carousel.tsx",
+      "size": 6289,
+      "sha256": "668007dd3c85202cd10bdd5f54882c9d69f5037a1e0d9fe67d03be7a2bd3a387"
+    },
+    {
+      "path": "client/components/ui/chart.tsx",
+      "size": 10550,
+      "sha256": "c1a545f9616ac3127a9877a9b6709e2c9ca756785d2cd2e138d2e77947877512"
+    },
+    {
+      "path": "client/components/ui/checkbox.tsx",
+      "size": 1064,
+      "sha256": "2b80d1d1f7871c1321a58d8846675f4183cd499ccb7b45d343c83362c0ca6551"
+    },
+    {
+      "path": "client/components/ui/collapsible.tsx",
+      "size": 320,
+      "sha256": "fbe07841b794e0d7d08e87ddaaafadf1dc0c63ecc8389cd2c5b4a0a3f5500df1"
+    },
+    {
+      "path": "client/components/ui/command.tsx",
+      "size": 4910,
+      "sha256": "b814e47a1544dc997f25e8417505492f8cea039fb30517503a62794528b4d0de"
+    },
+    {
+      "path": "client/components/ui/context-menu.tsx",
+      "size": 7287,
+      "sha256": "3f4ebfd3c4b9529ef88edc6ae95de3b247f9f7d7ce5b3e9878dc6b313cadc7f1"
+    },
+    {
+      "path": "client/components/ui/control-styles.ts",
+      "size": 633,
+      "sha256": "ea5ddf7ec6df2679f91a0f8c98e0bfec8ee92ac6f0ade7adf2424be1036c74a6"
+    },
+    {
+      "path": "client/components/ui/dialog.tsx",
+      "size": 3861,
+      "sha256": "8644fc7b6b073ff879e5243a2c68ef7b76ada387cdd643708b1abfc111dbbfeb"
+    },
+    {
+      "path": "client/components/ui/drawer.tsx",
+      "size": 3030,
+      "sha256": "4aa0c46d31a16691240ff23b412219b7834bd95ccc8ffa918d9a00f36847b3fc"
+    },
+    {
+      "path": "client/components/ui/dropdown-menu.tsx",
+      "size": 7335,
+      "sha256": "74db29dbb246dd23d22f9b93c36f49e14ff41f5e1616ebb761033590139c99e6"
+    },
+    {
+      "path": "client/components/ui/ErrorBoundary.tsx",
+      "size": 1399,
+      "sha256": "07acb546fc6ff4d3dcfb119513207c58887873d4607b436b775574882a455eb4"
+    },
+    {
+      "path": "client/components/ui/form.tsx",
+      "size": 4139,
+      "sha256": "349eada8b53e7444ae6d6cd19b4edff45f4f87fc7489572ac97844cbd9fd0616"
+    },
+    {
+      "path": "client/components/ui/hover-card.tsx",
+      "size": 1193,
+      "sha256": "8d606e166ef5f9bc4fc3efb1f6ce2f4bb376177a2c6fef16f67f87ad2d13d005"
+    },
+    {
+      "path": "client/components/ui/input-otp.tsx",
+      "size": 2172,
+      "sha256": "2afd0fb58ed8ca796dbaaa4a7f2a4c50602df01e5f74e0ace3a3201ff09adc91"
+    },
+    {
+      "path": "client/components/ui/input.tsx",
+      "size": 767,
+      "sha256": "a7e5ec128645cec528dec5b78bfc6e4fbf4ac8ee70072824d6509bdee1dcf27a"
+    },
+    {
+      "path": "client/components/ui/label.tsx",
+      "size": 719,
+      "sha256": "4d790d260bf73221b05e3918a7fe5f86cb36b10d70955df7fdfcea23a2f10a44"
+    },
+    {
+      "path": "client/components/ui/menubar.tsx",
+      "size": 8022,
+      "sha256": "7d9931a721eae883364ff5892f3e9bbdb686f04a11d72dc22abf635ed47e00bd"
+    },
+    {
+      "path": "client/components/ui/navigation-menu.tsx",
+      "size": 5073,
+      "sha256": "b3f93b46642320fcaefbf70a478e3441229a3bd2c364d4e2e4c8352d497faf3c"
+    },
+    {
+      "path": "client/components/ui/pagination.tsx",
+      "size": 2773,
+      "sha256": "aefb79477d56ec4f36a3b5503d11766503dd5148b365bb93d972f1c869df9868"
+    },
+    {
+      "path": "client/components/ui/popover.tsx",
+      "size": 1239,
+      "sha256": "ee5f78ece57c9e8eb5f9b4186e2bb9ebe46b69b52f03f1edd9a601883bc64772"
+    },
+    {
+      "path": "client/components/ui/progress.tsx",
+      "size": 784,
+      "sha256": "d1eed76fb201e43490fc7809f8ce64016a80954c20491f941a10751873d933d5"
+    },
+    {
+      "path": "client/components/ui/radio-group.tsx",
+      "size": 1479,
+      "sha256": "d8a176b5ef21def2ab06a7724445f58ee17350b2178eea6b302bc3079a009c5c"
+    },
+    {
+      "path": "client/components/ui/resizable.tsx",
+      "size": 1719,
+      "sha256": "18f6398bf83de5bd5d109abd7fa5e02d68f4daec30d9f8772be75f5aa7aa189b"
+    },
+    {
+      "path": "client/components/ui/scroll-area.tsx",
+      "size": 1651,
+      "sha256": "55190fb3d0243c6108ff57b5235c29e86ffb1a0879a74c872a91d568ee441671"
+    },
+    {
+      "path": "client/components/ui/select.tsx",
+      "size": 5715,
+      "sha256": "079729b0020915c8e6bd7456f6c7f20fb2f7f717fd4f43487df1f780dc462f7e"
+    },
+    {
+      "path": "client/components/ui/separator.tsx",
+      "size": 765,
+      "sha256": "687c8b7e2f53672eb3aca4389916a03bbe2c95441719e6c46e7c5143713fc41d"
+    },
+    {
+      "path": "client/components/ui/sheet.tsx",
+      "size": 4294,
+      "sha256": "42293ffdb0d5160a11332d763002f83cce49b67a4ff61704b147f9b01aeca65c"
+    },
+    {
+      "path": "client/components/ui/skeleton.tsx",
+      "size": 264,
+      "sha256": "8913724bc2d578e429c2adf993f24bd132696e2c561d80d352706a947bc551d2"
+    },
+    {
+      "path": "client/components/ui/slider.tsx",
+      "size": 1084,
+      "sha256": "b93ed37b5a78b2d7628abe8e738521a8ed1d19d2a670eb674e11a03069cf4766"
+    },
+    {
+      "path": "client/components/ui/sonner.tsx",
+      "size": 887,
+      "sha256": "dd6d83b7a084015b0f673ff9fc4b63071a40ef62bffd56bc261bdf5f58654d89"
+    },
+    {
+      "path": "client/components/ui/switch.tsx",
+      "size": 1147,
+      "sha256": "45f67ad2d40d1c43f78d96589b08336a05fa1f1a7f0f36b80d7d5c42d922f567"
+    },
+    {
+      "path": "client/components/ui/table.tsx",
+      "size": 2787,
+      "sha256": "f45be6aaffb5c73ad55d7e80e65167028a1ceedf9cafd181ad57f135180edbc2"
+    },
+    {
+      "path": "client/components/ui/tabs.tsx",
+      "size": 2059,
+      "sha256": "7f5d5b56c80cfef7cba3a0fcc0e93570b1192c9687458f82f552512dc437fc60"
+    },
+    {
+      "path": "client/components/ui/textarea.tsx",
+      "size": 748,
+      "sha256": "3b8e96fe5cd8176f6f21855b83db20bbd74c2dc2c4d7937a8313e495e08ceea9"
+    },
+    {
+      "path": "client/components/ui/toast.tsx",
+      "size": 4872,
+      "sha256": "020edff7e045a127e6f2f5cc18fb27fd08bbbf4d5d7958aa5825a601f80463b0"
+    },
+    {
+      "path": "client/components/ui/toaster.tsx",
+      "size": 777,
+      "sha256": "a6df21d77b586ca1468e38052bd58e44c056721a40a48c8a0cc8fb5edbd39f65"
+    },
+    {
+      "path": "client/components/ui/toggle-group.tsx",
+      "size": 1753,
+      "sha256": "33d4f795fd736c599fcdb18acd29a7c954520e2e1773d5e3daf298dad5906aaa"
+    },
+    {
+      "path": "client/components/ui/toggle.tsx",
+      "size": 1444,
+      "sha256": "62aa0dc621e296e3904cbc025d596b6d95321ffeac6c7aec244eba6598860445"
+    },
+    {
+      "path": "client/components/ui/tooltip.tsx",
+      "size": 1155,
+      "sha256": "bd9361649477cf9496f4b48415a2eafb9ae1ebca81af58a29b61b1516adc88c1"
+    },
+    {
+      "path": "client/components/ui/use-toast.ts",
+      "size": 82,
+      "sha256": "d48c4c490e5101aa42ceed9b8ca49642d66152ba11daf7ee6c29bee0f5172c37"
+    },
+    {
+      "path": "client/core/ai3/EchoAi3Core.ts",
+      "size": 3389,
+      "sha256": "ad26609a352c97bd1a5fba1f3eaaba367d13d6f0db7c05dcd9e0f02c5fd76d19"
+    },
+    {
+      "path": "client/core/ai3/EchoContextCluster.ts",
+      "size": 1726,
+      "sha256": "fb15977a9bcb9f762ba28bd6ae300f3a8444d0175e4263bce6a12b65e0bfb72d"
+    },
+    {
+      "path": "client/core/ai3/EchoDialogueBus.ts",
+      "size": 1427,
+      "sha256": "788cfc78dfff416e6a22fbeaa2f8142c7d883fe4fbf3ddc7e3fb694bce96aacc"
+    },
+    {
+      "path": "client/core/ai3/EchoHarmonyLayer.ts",
+      "size": 2094,
+      "sha256": "3841b2331b34f8a231278bfbdf545d0a2ef700d7fe92b30a6f942782f06e13b1"
+    },
+    {
+      "path": "client/core/ai3/EchoMemoryVault.ts",
+      "size": 2030,
+      "sha256": "909bdb52c41921a2e0a0fec610a07f5ad49ca202353a0f885104bd96e6a3f3c3"
+    },
+    {
+      "path": "client/core/ai3/EchoPersonas.ts",
+      "size": 3034,
+      "sha256": "f98b546aedd6fc9594290bba8a6828f3ce839c36256624bac04c6afd61dca0d4"
+    },
+    {
+      "path": "client/core/ai3/EchoReasonGraph.ts",
+      "size": 1731,
+      "sha256": "6bc466c2dfe296535007eedcd3f922f1f2256c3aac664b2800641028c1f6b511"
+    },
+    {
+      "path": "client/core/ai3/EchoTelemetry.ts",
+      "size": 1736,
+      "sha256": "ae6ed36ba06b3e2fc14a38fe5aba83661f9ca3417ab875029087e04aeb9f0c48"
+    },
+    {
+      "path": "client/core/ai3/index.ts",
+      "size": 1655,
+      "sha256": "04a25bc46de4b4a091ce40238bdb2986b29091644689650f27e599870ca1c1ee"
+    },
+    {
+      "path": "client/core/ai3/useEchoAi3.ts",
+      "size": 734,
+      "sha256": "c5e420f4d5fe00a3a7e0fb9ddccd0de1425d185f7d4b8cfb6a2f8563d44d4e61"
+    },
+    {
+      "path": "client/echo-dev-core/ZaroPanel.tsx",
+      "size": 7109,
+      "sha256": "64a227322401b7985147c8232729d4ccc5c31cd5582fb7277d1743a38dd7895e"
+    },
+    {
+      "path": "client/echo/intent-manifest.json",
+      "size": 777,
+      "sha256": "f18a47f05170485e5e7c5cad137921efad6c4b18a6468468de22a0f109804848"
+    },
+    {
+      "path": "client/global.css",
+      "size": 3806,
+      "sha256": "e458815ed9abc2512214892727daea2d197202225dac770fc5553949071e4d00"
+    },
+    {
+      "path": "client/hooks/use-mobile.tsx",
+      "size": 585,
+      "sha256": "738d8e4520edeca7caa2ca56a4923839e30be14a00fc32b5a770f5d5b451a63e"
+    },
+    {
+      "path": "client/hooks/use-toast.ts",
+      "size": 3952,
+      "sha256": "0faad58c183e373637ee4cbd86e1bbc5540fb1baaef131404833a0c2f3e3649d"
+    },
+    {
+      "path": "client/i18n.tsx",
+      "size": 3128,
+      "sha256": "5597236d573e468ae327749d0bcb009d909d63ff921d8018dcaa119fee8e7042"
+    },
+    {
+      "path": "client/lib/base64.ts",
+      "size": 863,
+      "sha256": "cba8dae0477eadf316b2bf314f39f544225d7ae147424bb3165bd459da643c85"
+    },
+    {
+      "path": "client/lib/builder.ts",
+      "size": 1731,
+      "sha256": "d11ab1e5d2022d17de1614fd239bf970104228ea6fb8fb81c4e9a4454d38d32a"
+    },
+    {
+      "path": "client/lib/echo-script.ts",
+      "size": 24108,
+      "sha256": "5a7ab0781d8dc88e81cba97271ff5b8a163e8f27ef57e3f1c4f246ecdc3cde95"
+    },
+    {
+      "path": "client/lib/guard-client.ts",
+      "size": 5717,
+      "sha256": "d26d6cf37c6594be9650aec3e0209bb866a9247b2b2406fc4306d55358ba1c9f"
+    },
+    {
+      "path": "client/lib/planner-scaffold.ts",
+      "size": 3539,
+      "sha256": "fc77e628e8bfd318acd01c64c50d118341841799d05537ee17b48b909097fd30"
+    },
+    {
+      "path": "client/lib/tar.ts",
+      "size": 1379,
+      "sha256": "ecb30e5a5a4aa0b8c0f31f1892e31c386d422df012272d6ea8c3a024ddaf1ce6"
+    },
+    {
+      "path": "client/lib/utils.spec.ts",
+      "size": 902,
+      "sha256": "e3a88b7e7b531c21fc8af9767f0f7a3dd7d9a37324e38d29a0852341edf8dcff"
+    },
+    {
+      "path": "client/lib/utils.ts",
+      "size": 169,
+      "sha256": "d1f1e0d62cb8d8d1e04c26e14de842d8a151f75812d81b046c65b5d1fe8e4b27"
+    },
+    {
+      "path": "client/pages/Board.tsx",
+      "size": 22068,
+      "sha256": "9ab84ad78ea59e8a1270af43d5632168ae4190a7acdca5ecaad3d1fabe08106f"
+    },
+    {
+      "path": "client/pages/CreateAResponsiveHospitalityConciergeSpaWithDashboardReservationCalendarStaffRosterAiTi",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/pages/CreateAResponsiveHospitalityConciergeSpaWithDashboardReservationCalendarStaffRosterAiTipsSidebarAndSampleJsonBackedDataMethodsFollowUpTweakAdjustTheCalendarToColorCodeVipBookingsAndExposeADownloadCsvAction.tsx",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/pages/EchoControls.tsx",
+      "size": 31846,
+      "sha256": "ab38d2dd7a2b02f7dc83a3f62d39bc85b6b99a5ab2a10b4694d283e345a81e59"
+    },
+    {
+      "path": "client/pages/EmbedEcho.tsx",
+      "size": 1005,
+      "sha256": "308d65e53eeef8cc847baf794a09c5efd478f5addd924ed277d04c6482b3fa36"
+    },
+    {
+      "path": "client/pages/Generated.tsx",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/pages/Index.tsx",
+      "size": 9223,
+      "sha256": "f1286e627a4471c0dce29559361a23e96ba83dd99e584270b886afa36ba14d8b"
+    },
+    {
+      "path": "client/pages/NotFound.tsx",
+      "size": 740,
+      "sha256": "940578bf01ac3dbdcb16f52528bd59903b2cce7698c8b39064f2791022567b0e"
+    },
+    {
+      "path": "client/pages/Sandbox.tsx",
+      "size": 298,
+      "sha256": "042ece89f4c63fadee8e8111cc467da72e1f451a970f3eb8d04e523cafa9c49f"
+    },
+    {
+      "path": "client/pages/Studio.tsx",
+      "size": 252715,
+      "sha256": "0a40063798f1a96841377e97e769fe69ac6ccb9a1c595597a0c142341eb120fd"
+    },
+    {
+      "path": "client/pages/StudioControlsDialog.tsx",
+      "size": 386,
+      "sha256": "79f1395424b29e87e5b14e7273a39c5693168dc68e6eb8da900649e9859fbe14"
+    },
+    {
+      "path": "client/pages/StudioHospitalityOverview.tsx",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/projects/Playground.tsx",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/projects/playground/index.tsx",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/projects/project/index.tsx",
+      "size": 555,
+      "sha256": "46b1eb4d3e70a96bbb82ea1748e479a079d666cdb3a24ba24ca85800047ee533"
+    },
+    {
+      "path": "client/sidebar.tsx",
+      "size": 23602,
+      "sha256": "0e3ba43b0359700f247903ab9c455aa0c2792abbd81e7447066d32530c4abfbe"
+    },
+    {
+      "path": "client/templates/catalog.ts",
+      "size": 2007,
+      "sha256": "87fc4dcf1c0a82544e6c2439967f87bb6e54aaefbda837a7b60ed152043102ed"
+    },
+    {
+      "path": "client/vite-env.d.ts",
+      "size": 38,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "path": "client/workers/formatterWorker.ts",
+      "size": 1692,
+      "sha256": "1f7d37932eb4c46059921946110fccaa1b5b76dd46bc6e9630efd8b3dc410f96"
+    },
+    {
+      "path": "netlify/functions/api.ts",
+      "size": 140,
+      "sha256": "30bdcd4c6c17265c667b235a0d6d44d5605c5c8d9a408b713cb59624314c4750"
+    },
+    {
+      "path": "package.json",
+      "size": 3598,
+      "sha256": "c48d93ae5c9e1ea7fea959d517aa087a05d6cae4abd66346388619e6e940dc89"
+    },
+    {
+      "path": "public/favicon.ico",
+      "size": 9544,
+      "sha256": "f648cf89a6470699487dcd7fd3c07bee2cca5595883053f613da933d2f08c394"
+    },
+    {
+      "path": "public/generated-assets/echo-asset-1759645585322-d28247ef.png",
+      "size": 2486457,
+      "sha256": "b5225dc3f851b0fe2e01089987367cd694456fc8bdc80128d50b68899b10ee04"
+    },
+    {
+      "path": "public/generated-assets/echo-asset-1759646441674-aae09288.png",
+      "size": 1655969,
+      "sha256": "028accf6ae784be6966ed14019fa9e765c4f8dd929e7172c4530b8048fa06e92"
+    },
+    {
+      "path": "public/generated-assets/echo-asset-1759646613593-56c6259a.png",
+      "size": 1786377,
+      "sha256": "fb1eae0ac7bf9abbfdd08fe9c4190686d2ed0a66fffeb5b2d316e9924d358ebc"
+    },
+    {
+      "path": "public/generated-assets/echo-asset-1759646704054-854d7149.png",
+      "size": 1279688,
+      "sha256": "26adc9afb505ebbba574d2fab500ed7a810dbfce22df5c72066c069fe672381a"
+    },
+    {
+      "path": "public/generated-assets/echo-asset-1759647529991-fe1577e0.png",
+      "size": 1629000,
+      "sha256": "275b96e0d632e20c0c7dae0da0e3d55e11386236e2c7010b9df4983afebd04b5"
+    },
+    {
+      "path": "public/placeholder.svg",
+      "size": 3253,
+      "sha256": "64badf7aabda0b9630b87020ffb6095cb858ccbcf66b355c2aa08b1063954d3b"
+    },
+    {
+      "path": "public/robots.txt",
+      "size": 160,
+      "sha256": "a3d27b3ca5ce32341fa9f96f01169b521b1657c05d1860c45d1e53a6258e9e8b"
+    },
+    {
+      "path": "server/.backups/1759189303694/manifest.json",
+      "size": 210,
+      "sha256": "a6600692f7f6c4bc68d61621df52c6a76440c549610591b4d9d888b4aa6fa8e0"
+    },
+    {
+      "path": "server/historian/storage.ts",
+      "size": 4163,
+      "sha256": "faacf4ddff13aab7b22135a2da429277255580de8210ac6ec07cf0d1c25ec93d"
+    },
+    {
+      "path": "server/index.ts",
+      "size": 4896,
+      "sha256": "6d03ffd56deeacd4f9bab9d35a511f43496a6c71cd9bcaa2a903a748ad4d426d"
+    },
+    {
+      "path": "server/logs/access.log",
+      "size": 205,
+      "sha256": "176bd197160ed54700441904cf90d9c68ac24ba472557b03e4ab0fd1aaa230d2"
+    },
+    {
+      "path": "server/logs/app.log",
+      "size": 327813,
+      "sha256": "0bac62661238b914dd1580662e5134bbe541b1ffc6ab2fafe7eeab1c930c5310"
+    },
+    {
+      "path": "server/node-build.ts",
+      "size": 1173,
+      "sha256": "a2685b71e92d28b0069e9af693cae84278a8d672d7cea521b7b04cb9c68363fd"
+    },
+    {
+      "path": "server/routes/apply.ts",
+      "size": 9787,
+      "sha256": "7685b9fd9fc349f238b4436c533817b77ccdbaef180af27fde2c8fdf50cc78e9"
+    },
+    {
+      "path": "server/routes/builder.ts",
+      "size": 2168,
+      "sha256": "0e01b5215cb9001bccf8ecf49893ea384ecaf1b1a62665cc1928220a8ce994db"
+    },
+    {
+      "path": "server/routes/demo.ts",
+      "size": 264,
+      "sha256": "256b4f75e3b4ab9cc58ba9e512f77b72bce486bbfd6ec28915ba1c8be403c15f"
+    },
+    {
+      "path": "server/routes/echo.ts",
+      "size": 2954,
+      "sha256": "0d566588f7ab04a4ae75474d0a6fb1dd0cbd94135b43d93b6d5c64feb405865c"
+    },
+    {
+      "path": "server/routes/guard.ts",
+      "size": 1461,
+      "sha256": "1012c730ff10bc08bb291b2322873091883a1dffde607462d1beb44805607403"
+    },
+    {
+      "path": "server/routes/historian.ts",
+      "size": 1119,
+      "sha256": "f0227142975252c1dfa69700b662f1b289280e6adce6933f843d2c8c2890823b"
+    },
+    {
+      "path": "server/routes/images.ts",
+      "size": 12634,
+      "sha256": "8aca6c37892705f224ba411cdc806eb4d147d224277d81afc71be24650921470"
+    },
+    {
+      "path": "server/routes/logs.ts",
+      "size": 1454,
+      "sha256": "34ea7834b4f324b55348e90252fdc9fa5a0f0337a9978cad3169eaf5207a80fb"
+    },
+    {
+      "path": "server/routes/move-file.ts",
+      "size": 2088,
+      "sha256": "0e2a2fdd48ec1bf2789efe440897b63ebd4478957f27d3bc16ad7b5b57574f83"
+    },
+    {
+      "path": "server/routes/plan.ts",
+      "size": 1602,
+      "sha256": "ad04a4978733c8aa88767ab7e610878d13365244e974cdc46c96596e6a2cf769"
+    },
+    {
+      "path": "server/routes/search.ts",
+      "size": 2277,
+      "sha256": "a6657d2c899baa8ccdba4ce1ecb25d8b8fe5159d6a240a2b18e177dc238354b2"
+    },
+    {
+      "path": "server/routes/secrets.ts",
+      "size": 2674,
+      "sha256": "2b41b35d99cd46ccd17635fbeb54355816c2ffde6f5a36a539b05b5440944cd1"
+    },
+    {
+      "path": "server/routes/seed-package.ts",
+      "size": 2334,
+      "sha256": "ab4f47defe2c8f3e14a153068413be392387a58712a98a90224ce0d8adde488b"
+    },
+    {
+      "path": "server/routes/simulate.ts",
+      "size": 837,
+      "sha256": "9e1340bd7522085cc7c5eb8d2f7932a874872db0c41e2cd2d0fc215a0ae618a9"
+    },
+    {
+      "path": "server/routes/tar.ts",
+      "size": 1550,
+      "sha256": "eeff11483726721a7e3107ae7c6a6e861e077d6dfb08860cc3c16cd4048d2c6c"
+    },
+    {
+      "path": "server/routes/tts.ts",
+      "size": 2619,
+      "sha256": "fadd2ef5918caf1c9412da2851426ac8b322be5b4afb6a04da9a0751ebdb669d"
+    },
+    {
+      "path": "server/routes/upload.ts",
+      "size": 1378,
+      "sha256": "d87e3aef936ae20af746d2b0723cd966984b52bc8a4e15ff64e5c94580e7e32a"
+    },
+    {
+      "path": "server/routes/write-file.ts",
+      "size": 1661,
+      "sha256": "bf0713f08daeadbf4240189528b4d62f2dee5d1797bb4e343c24839f589e2fdc"
+    },
+    {
+      "path": "server/routes/zaro.ts",
+      "size": 2032,
+      "sha256": "3e8733a6ff5232bdbc199a47c76018140bc90838fec9e883381e148e6b8bab31"
+    },
+    {
+      "path": "server/zaro-lib.ts",
+      "size": 9141,
+      "sha256": "3062f74c2e5713d619ff01c575b0483fdab1e391b4a9ff45a72ddfdf41aaeaae"
+    },
+    {
+      "path": "shared/api.ts",
+      "size": 278,
+      "sha256": "c3e687c9d46a9c28b6192c183bc08d379ad21a9070ed47926151682dc9dcc009"
+    },
+    {
+      "path": "shared/historian.ts",
+      "size": 937,
+      "sha256": "89a118dfb3c9b6ac21cf7c2ace5ee592771bb18e8c20325acdf911975459e440"
+    },
+    {
+      "path": "tailwind.config.ts",
+      "size": 2899,
+      "sha256": "2e277cdcd4eeb62099a69eea7f546da523d48466e56bfd02852404a06dc82833"
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 1005,
+      "sha256": "c6212aa4ca1a791807f34e4cf01297b80ebb813aa325b54e81a48cf297fdb869"
+    },
+    {
+      "path": "vite.config.ts",
+      "size": 1423,
+      "sha256": "4484f9eb4bbf91e0a830fa765d6a575f90ffa63d0f31f3a687f456796e7f3a0a"
+    }
+  ]
+}

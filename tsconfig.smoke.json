@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./client/*"],
+      "@shared/*": ["./shared/*"],
+      "@cognition/*": ["./cognition/*"],
+      "@purchasing-data/*": ["./client/modules/PurchasingReceiving/data/*"],
+      "@purchasing-modules/*": ["./client/modules/PurchasingReceiving/data/src/modules/*"]
+    }
+  },
+  "files": [
+    "tests/hr-sync-integration.test.ts",
+    "client/lib/enhanced-module-loader.ts",
+    "client/lib/i18n-helpers.ts",
+    "client/lib/performance-helpers.ts",
+    "client/hooks/_stubs/useTranslate.ts",
+    "client/hooks/_stubs/useLocalization.ts",
+    "client/modules/AuditTimelinePanel.tsx",
+    "client/modules/EchoEventStudio/client/pages/ResortForecast.tsx",
+    "client/modules/EchoEventStudio/server/routes/beo-export.ts",
+    "client/modules/_stubs/CulinaryEngine.tsx",
+    "server/routes/resort-forecast.ts",
+    "server/routes/schedule-forecasting.ts",
+    "server/jobs/payrollSyncJob.ts",
+    "server/services/EnterpriseNotesService.ts"
+  ]
+}

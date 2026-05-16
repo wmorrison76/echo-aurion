@@ -1,0 +1,131 @@
+{
+  "name": "luccca-enterprise-calendar",
+  "version": 2,
+  "framework": "vite",
+  "public": true,
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "env": {
+    "VITE_SUPABASE_URL": {
+      "description": "Supabase project URL"
+    },
+    "VITE_SUPABASE_ANON_KEY": {
+      "description": "Supabase anonymous key"
+    },
+    "DATABASE_URL": {
+      "description": "Neon PostgreSQL connection string"
+    },
+    "REDIS_URL": {
+      "description": "Redis connection URL for caching"
+    },
+    "NODE_ENV": {
+      "description": "Node environment (production/development)"
+    },
+    "SENTRY_DSN": {
+      "description": "Sentry error tracking DSN"
+    },
+    "JWT_SECRET": {
+      "description": "JWT signing secret"
+    },
+    "OPENAI_API_KEY": {
+      "description": "OpenAI API key for AI features"
+    },
+    "CACHE_ENABLED": {
+      "description": "Enable caching layer (true/false)"
+    },
+    "CACHE_PROVIDER": {
+      "description": "Cache provider (redis/memory)"
+    },
+    "CACHE_MAX_SIZE": {
+      "description": "Max cache entries (default: 10000)"
+    },
+    "CORS_ORIGINS": {
+      "description": "Comma-separated browser origins allowed to call the API"
+    }
+  },
+  "builds": [
+    {
+      "src": "vite.config.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "server/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "destination": "/api/$1",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "destination": "/socket.io/$1"
+    },
+    {
+      "src": "/(.*)",
+      "destination": "/index.html",
+      "status": 200
+    }
+  ],
+  "functions": {
+    "api/**.ts": {
+      "maxDuration": 30,
+      "memory": 3008,
+      "includeFiles": "server/**"
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/.*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/calendar",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "regions": ["sfo1", "iad1", "lhr1", "syd1"],
+  "crons": [
+    {
+      "path": "/api/health",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/calendar/cleanup",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cache/refresh-stats",
+      "schedule": "*/15 * * * *"
+    }
+  ]
+}

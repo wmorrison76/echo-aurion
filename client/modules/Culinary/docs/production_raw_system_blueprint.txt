@@ -1,0 +1,129 @@
+Perfect — let’s stitch everything into a single, comprehensive system design that covers the full lifecycle: from shelf organization → digital sheets → production/prepped integration → forecasting → ordering. This will combine your phased plan + industry best practices + LUCCCA’s architecture (modular, scalable, TRON/Apple style).
+
+# 🌐 Comprehensive Production & Raw Ingredient System (End-to-End Blueprint for LUCCCA / Echo)
+
+## 1. Foundation Layer – Physical & Digital Standardization
+
+### 1.1 Physical Storage
+- Logical Flow (Shelf-to-Sheet)
+  - Organize walk-ins, freezers, dry storage like a book (top → bottom, left → right).
+  - Label each shelf/zone with a Location Code (W1-S3 = Walk-in 1, Shelf 3).
+  - Group items by category (Proteins, Produce, Dairy, Dry Goods).
+- FIFO / FEFO
+  - Physical placement: older stock in front, new deliveries behind.
+  - Labels include: Item Name, Received Date, Expiration/Prep Date, Lot ID.
+- Par Visibility
+  - Place laminated “Par Tags” on shelves for quick visual check (e.g., “Par: 3 cases”).
+
+### 1.2 Digital Setup
+- Item Master Database
+  - Raw Ingredients (purchase units, vendor packs, conversions, allergens).
+  - Prepped/Finished Goods (recipes, yields, shelf life).
+  - Storage Locations (zones + walk order sequence).
+  - Vendors (lead times, pack rules).
+- Consistent Counting Unit
+  - Each item locked to a Primary UOM (lb, oz, each, qt).
+  - Conversions handle cases/packs → primary UOM.
+- JSON Schema & Builder Integration
+  - Already prototyped in your starter kit (items, prepped, pars, forecasts, orders).
+  - Builder.io can consume the schemas for UI-driven forms and dashboards.
+
+## 2. Inventory Operations – Shelf-to-Sheet & Daily Counts
+
+### 2.1 Shelf-to-Sheet Workflow
+1. Staff walks storage in sequence order (from Locations table).
+2. Count entry via tablet/phone UI (mirrors shelf order).
+3. Counts auto-convert into primary UOM.
+4. For lot-tracked items → capture lot_id, received_date, expires_at.
+
+### 2.2 Digital Sheets
+- Count Sheet Columns: Item, Storage Code, Count Qty/UOM, Unit Price, Total Value.
+- Separation by Area: Walk-in, Freezer, Dry Goods, Production Cooler.
+- Auto-Valuation: Multiply by most recent vendor cost.
+- Variance Checks: Compare theoretical (expected) vs actual usage → highlight discrepancies.
+
+## 3. Production & Prepped Item Integration
+
+### 3.1 Prepped Items (Recipes)
+- Each prepped item = recipe card:
+  - Raw ingredient lines (qty, uom, yield%, loss%).
+  - Output (default_batch_output, shelf_life_days).
+  - Linked HACCP critical control notes.
+
+### 3.2 Production Planning
+- Input Sources:
+  - Forecasts (guest counts, BEOs, sales history, seasonality).
+  - Pars (minimum stock requirement).
+- Workflow:
+  1. Forecast says: 18 qt Demi needed.
+  2. System checks On-Hand Prepped: 4 qt.
+  3. Shortfall = 14 qt → 3 Batches (5 qt each).
+  4. Recipe expands to raw ingredients (bones, onions, tomato paste).
+  5. Raw needs deducted from stock; residual shortages flagged for ordering.
+
+### 3.3 Live Prepped Inventory
+- Production Sheet (daily use):
+  - Kitchen logs batches made.
+  - System auto-depletes raw items, adds to prepped stock.
+- Sales Integration:
+  - POS sales → deduct finished/prepped inventory.
+  - Variances logged (expected vs actual usage).
+
+## 4. Ordering & Purchasing Integration
+
+### 4.1 Ordering Logic
+For each raw item:
+1. Par Shortfall = Par − On-Hand (with safety stock).
+2. Production Need = Residual from recipe expansion.
+3. Total Need = Par Shortfall + Production Need.
+4. Pack Conversion: Convert to vendor pack size.
+5. Order Rounding: Apply order_multiple.
+6. PO Draft: Group by vendor, reasons tagged (PAR, PRODUCTION).
+
+### 4.2 Purchase Workflow
+- Suggested Order Guide auto-generated nightly.
+- Chef/Manager Approval step before submission.
+- Vendor Integration: Export via email, API, or EDI.
+
+## 5. Forecasting & Analytics Layer
+
+### 5.1 Forecast Drivers
+- Guest counts (reservations, occupancy, events).
+- Historical POS data (item-level sales trends).
+- Seasonality (holidays, summer, etc.).
+- External: weather, lunar phase (if you want Echo’s predictive flair).
+
+### 5.2 Dynamic Pars
+- Auto-adjust par levels based on average usage × days of cover + safety buffer.
+- Seasonal adjustments flagged by forecast.
+
+### 5.3 Analytics Dashboards
+- Theoretical vs Actual Usage (variance).
+- Waste/Spoilage Logs.
+- COGS % and Item Cost Trends.
+- Vendor Performance: lead time, cost variance.
+
+## 6. Advanced Features & Echo Integration
+- Mobile-first counts → Echo guides staff through shelf walk (“Next: W1-S3, 10 lb onions”).
+- AI-driven alerts → “Chef, you’ll be short on bones for next week’s demi unless you order 80 lb today.”
+- Self-learning yields → Echo refines trim yield % by comparing prep logs vs actual variance.
+- Multi-site transfers → Commissary → Outlet tracked as internal POs.
+- Time Machine Mode (Zelda/Odin tie-in): full audit rollback of counts, orders, and production runs.
+
+# ✅ End-to-End Example Workflow
+1. Shelf-to-Sheet Count
+   - Staff counts 20 lb onions (par 40 lb).
+2. System detects shortfall
+   - Onion shortfall = 20 lb.
+3. Production Plan triggered
+   - Forecast requires 3 pans prepped onions.
+   - Conversion: 1 pan = 15 lb raw onions (yield 0.89).
+   - Need 45 lb raw → system subtracts current 20 lb → 25 lb deficit.
+4. Auto Order Draft
+   - Vendor pack = 50 lb bag → Suggest 1 bag from Sysco.
+5. Daily Prep Log
+   - Staff logs “3 pans onions sliced.”
+   - System reduces onions by 45 lb, increases prepped onions by 3 pans.
+6. POS Sales
+   - 60 salads sold, each uses 0.25 pan sliced onions → deducts 15 pans.
+   - Prepped onion stock falls below par → auto-alert.

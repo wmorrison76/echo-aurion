@@ -1,0 +1,57 @@
+{
+  "cabernet_sauvignon": {
+    "tannin": 3,
+    "acidity": 2,
+    "sugar": 0,
+    "alcohol": 3,
+    "aromas": [
+      "blackcurrant",
+      "cedar",
+      "graphite"
+    ]
+  },
+  "pinot_noir": {
+    "tannin": 1,
+    "acidity": 2,
+    "sugar": 0,
+    "alcohol": 2,
+    "aromas": [
+      "cherry",
+      "strawberry",
+      "mushroom"
+    ]
+  },
+  "riesling_dry": {
+    "tannin": 0,
+    "acidity": 3,
+    "sugar": 1,
+    "alcohol": 1,
+    "aromas": [
+      "lime",
+      "petrol",
+      "apple"
+    ]
+  },
+  "sauvignon_blanc": {
+    "tannin": 0,
+    "acidity": 3,
+    "sugar": 0,
+    "alcohol": 1,
+    "aromas": [
+      "gooseberry",
+      "grass",
+      "citrus"
+    ]
+  },
+  "syrah_shiraz": {
+    "tannin": 3,
+    "acidity": 2,
+    "sugar": 0,
+    "alcohol": 3,
+    "aromas": [
+      "blackberry",
+      "pepper",
+      "smoke"
+    ]
+  }
+}

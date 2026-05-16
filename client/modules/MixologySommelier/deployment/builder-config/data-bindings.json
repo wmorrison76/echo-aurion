@@ -1,0 +1,154 @@
+{
+  "Supabase": {
+    "projectId": "${SUPABASE_PROJECT_ID}",
+    "apiUrl": "${SUPABASE_URL}",
+    "anonKey": "${SUPABASE_ANON_KEY}",
+    "serviceRoleKey": "${SUPABASE_SERVICE_ROLE_KEY}",
+    "tables": [
+      "wines",
+      "inventory_lots",
+      "recipes",
+      "pairing_evidence",
+      "vintages",
+      "producers",
+      "training_exams",
+      "sales",
+      "sensor_logs",
+      "alerts"
+    ],
+    "realtime": {
+      "enabled": true,
+      "tables": ["inventory_lots", "sales", "alerts", "sensor_logs"]
+    },
+    "sync": "15m",
+    "auth": "service_role"
+  },
+  "APIs": {
+    "base": "${API_BASE_URL}",
+    "timeout": "30s",
+    "retryPolicy": {
+      "maxRetries": 3,
+      "backoffMultiplier": 2
+    },
+    "modules": [
+      {
+        "name": "Core Backend",
+        "url": "${API_BASE_URL}/api",
+        "endpoints": [
+          { "path": "/wines", "method": "GET", "cache": "1h" },
+          { "path": "/wines/:id", "method": "GET", "cache": "1h" },
+          { "path": "/inventory", "method": "GET", "cache": "15m" }
+        ]
+      },
+      {
+        "name": "Pairing Engine",
+        "url": "${API_BASE_URL}",
+        "endpoints": [
+          {
+            "path": "/pairings/compute/:recipeId",
+            "method": "POST",
+            "cache": "24h"
+          }
+        ]
+      },
+      {
+        "name": "Costing Service",
+        "url": "${API_BASE_URL}",
+        "endpoints": [
+          {
+            "path": "/reports/month-end/:venueId/:month",
+            "method": "GET",
+            "cache": "1h"
+          }
+        ]
+      },
+      {
+        "name": "Sales Analytics",
+        "url": "${API_BASE_URL}",
+        "endpoints": [
+          { "path": "/analytics/mix/:venueId", "method": "GET", "cache": "1h" },
+          { "path": "/analytics/top/:venueId", "method": "GET", "cache": "6h" }
+        ]
+      },
+      {
+        "name": "IoT Monitor",
+        "url": "${API_BASE_URL}",
+        "endpoints": [
+          { "path": "/alerts/:venueId", "method": "GET", "cache": "5m" },
+          { "path": "/alerts/:venueId/avg", "method": "GET", "cache": "1h" }
+        ]
+      },
+      {
+        "name": "Education Training",
+        "url": "${API_BASE_URL}",
+        "endpoints": [
+          {
+            "path": "/training/flashcards/:topic",
+            "method": "GET",
+            "cache": "24h"
+          },
+          { "path": "/training/exam/blind", "method": "GET", "cache": "none" }
+        ]
+      },
+      {
+        "name": "EchoVinum Archive",
+        "url": "${API_BASE_URL}",
+        "endpoints": [
+          {
+            "path": "/archive/vintage/:region/:year",
+            "method": "GET",
+            "cache": "7d"
+          },
+          { "path": "/archive/producer/:name", "method": "GET", "cache": "7d" }
+        ]
+      }
+    ]
+  },
+  "Authentication": {
+    "provider": "supabase",
+    "sessionStorage": "browser_local_storage",
+    "tokenRefresh": "1h",
+    "redirectUrl": "${APP_URL}/auth/callback"
+  },
+  "Environment": {
+    "development": {
+      "apiBase": "http://localhost:8080",
+      "pairing": "http://localhost:8090",
+      "costing": "http://localhost:8100",
+      "analytics": "http://localhost:8120",
+      "iot": "http://localhost:8140",
+      "training": "http://localhost:8150",
+      "archive": "http://localhost:8160",
+      "logLevel": "debug"
+    },
+    "staging": {
+      "apiBase": "https://staging-api.luccca.io",
+      "logLevel": "info"
+    },
+    "production": {
+      "apiBase": "https://api.luccca.io",
+      "logLevel": "warn",
+      "performanceMonitoring": true,
+      "errorReporting": true
+    }
+  },
+  "CachingStrategy": {
+    "wines": { "ttl": "1h", "invalidateOn": ["wine_updated"] },
+    "inventory": {
+      "ttl": "15m",
+      "invalidateOn": ["quantity_changed", "lot_transferred"]
+    },
+    "pairings": {
+      "ttl": "24h",
+      "invalidateOn": ["wine_added", "recipe_updated"]
+    },
+    "reports": {
+      "ttl": "1h",
+      "invalidateOn": ["sales_recorded", "purchase_recorded"]
+    },
+    "archive": {
+      "ttl": "7d",
+      "invalidateOn": ["vintage_updated", "producer_updated"]
+    }
+  }
+}

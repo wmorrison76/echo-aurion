@@ -1,0 +1,136 @@
+=== 50bcbbbd5 ===
+feat: Network Intelligence Engine (MVP)
+The Bloomberg Terminal for Hospitality:
+
+✅ Data Aggregator
+   - Anonymizes restaurant data
+--- files touched ---
+ all_files_scan.txt                                 |   1 +
+ build_network_intelligence.sh                      | 563 +++++++++++++++++++++
+ client/lib/panel-registry.ts                       |   2 +-
+ client/schedule-panel.tsx                          |   6 +
+ optimization.pid                                   |   2 +-
+ .../aggregator/data-aggregator.ts                  | 127 +++++
+ .../benchmarking/benchmark-engine.ts               | 157 ++++++
+ shared/types/network-intelligence.ts               | 184 +++++++
+ unused_files_found.txt                             | 168 ++++++
+ vite.config.ts                                     |   2 +
+ 10 files changed, 1210 insertions(+), 2 deletions(-)
+
+=== 2537dceac ===
+feat: restore real module implementations
+Restored actual implementations for:
+✅ Culinary (558 files) → ./client/App
+✅ Pastry (45 files) → ./client/App
+✅ Schedule (197 files) → ./client/App
+--- files touched ---
+ client/modules/Culinary/index.tsx            |   25 +-
+ client/modules/EchoAurum/index.tsx           |   53 +-
+ client/modules/MaestroBQT/index.tsx          | 2129 ++++----------------------
+ client/modules/MixologySommelier/index.tsx   |   31 +-
+ client/modules/Pastry/index.tsx              |   25 +-
+ client/modules/Purchasing/index.tsx          |   27 +-
+ client/modules/PurchasingReceiving/index.tsx |  345 +----
+ client/modules/Schedule/index.tsx            |   25 +-
+ client/modules/VideoConference/index.tsx     |   25 +-
+ client/modules/Whiteboard/index.tsx          |   25 +-
+ 10 files changed, 302 insertions(+), 2408 deletions(-)
+
+=== 7e07a2a56 ===
+feat: one-command EchoCoder open (unlock + dev)
+
+--- files touched ---
+ package.json              |  8 ++++++--
+ scripts/echocoder/open.ts | 39 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 2 deletions(-)
+
+=== 603f681ac ===
+feat(devtools): add EchoCoder and remove generated artifacts
+
+--- files touched ---
+ cleanup-echocoder.sh                               |     53 +
+ client/developer/EchoCoder/AGENTS.md               |    164 +
+ .../EchoCoder/AI3_PHASES_1_8_COMPLETE_BUILD.md     |    547 +
+ .../developer/EchoCoder/BEST_IN_CLASS_ANALYSIS.md  |    577 +
+ .../EchoCoder/BUILDER_ENTERPRISE_GAP_ANALYSIS.md   |    352 +
+ .../BUILDER_IO_CMS_ECHOCODER_INTEGRATION.md        |    634 +
+ .../EchoCoder/BUILDER_IO_GOLDEN_SEED_README.md     |    542 +
+ .../EchoCoder/COMPLETE_IMPLEMENTATION_STRATEGY.md  |    421 +
+ .../EchoCoder/COMPREHENSIVE_UI_UX_AUDIT_PLAN.md    |    247 +
+ .../EchoCoder/CONCURRENT_PDF_UPLOAD_QUICK_START.md |    301 +
+ .../CONCURRENT_PROCESSING_TECHNICAL_CHANGES.md     |    458 +
+ .../EchoCoder/DELIVERY_SUMMARY_PRODUCTION_READY.md |    431 +
+ .../developer/EchoCoder/DOWNLOAD_INSTRUCTIONS.txt  |    486 +
+ client/developer/EchoCoder/Dockerfile              |     58 +
+ .../ECHOCODER_AUTOMATION_ROADMAP_STATUS.md         |    805 +
+ .../EchoCoder/ECHOCODER_IMPLEMENTATION.md          |    344 +
+ .../developer/EchoCoder/ECHOCODER_MODULE_SPEC.md   |   1107 +
+ .../EchoCoder/ECHOCODER_MODULE_TEMPLATE_GUIDE.md   |    529 +
+ .../EchoCoder/ECHOCODER_VS_BUILDER_ANALYSIS.md     |    470 +
+ .../ECHOCODER_VS_BUILDER_IO_COMPLETE_COMPARISON.md |    793 +
+
+=== 9a41f1422 ===
+Update Culinary module with latest EchoRecipePro version
+
+--- files touched ---
+ client/modules/Culinary/client/App.tsx             |   84 +
+ .../modules/Culinary/client/add-recipe.styles.css  |   44 +
+ .../Culinary/client/components/CornerBrand.tsx     |   18 +
+ .../Culinary/client/components/Dropzone.tsx        |   83 +
+ .../Culinary/client/components/FlipBook.tsx        |  257 ++
+ .../Culinary/client/components/GalleryLightbox.tsx |  101 +
+ .../client/components/SubtleBottomGlow.tsx         |  106 +
+ .../Culinary/client/components/TaxonomyPicker.tsx  |  115 +
+ .../Culinary/client/components/ThemeToggle.tsx     |   57 +
+ .../modules/Culinary/client/components/TopTabs.tsx |  231 ++
+ .../Culinary/client/components/TronBackdrop.tsx    |    8 +
+ .../Culinary/client/components/ZipAppRunner.tsx    |  103 +
+ .../client/components/panels/BEOEditor.tsx         |   21 +
+ .../components/panels/EchoIntegrationPanel.tsx     |   20 +
+ .../client/components/panels/GlobalCalendar.tsx    |  134 +
+ .../Culinary/client/components/ui/accordion.tsx    |   56 +
+ .../Culinary/client/components/ui/alert-dialog.tsx |  139 +
+ .../Culinary/client/components/ui/alert.tsx        |   59 +
+ .../Culinary/client/components/ui/aspect-ratio.tsx |    5 +
+ .../Culinary/client/components/ui/avatar.tsx       |   48 +
+
+=== 987f7d8b2 ===
+components files of EchoEvents
+
+--- files touched ---
+ .../EchoEvents/components/ai/CommandCenter.tsx     | 378 +++++++++++++++
+ .../components/ai/RecommendationPanel.tsx          | 316 +++++++++++++
+ .../components/billing/InvoiceViewer.tsx           | 263 +++++++++++
+ .../EchoEvents/components/billing/PricingTiers.tsx | 281 +++++++++++
+ .../components/billing/SubscriptionManager.tsx     | 256 ++++++++++
+ .../components/contacts/ProspectClaimPanel.tsx     | 294 ++++++++++++
+ .../components/dashboard/DashboardWorkspace.tsx    | 519 +++++++++++++++++++++
+ .../dashboard/EventProfitDrilldownPanel.tsx        | 254 ++++++++++
+ .../components/dashboard/EventProfitExplorer.tsx   | 213 +++++++++
+ .../dashboard/EventProfitExplorerWithLinks.tsx     | 108 +++++
+ .../EchoEvents/components/dashboard/MiniPanel.tsx  | 152 ++++++
+ .../components/dashboard/MyPerformancePanel.tsx    | 228 +++++++++
+ .../EchoEvents/components/dashboard/OpsBoard.tsx   |  35 ++
+ .../components/dashboard/ProfitHeatmapPanel.tsx    | 221 +++++++++
+ .../components/dashboard/SalesLeaderboard.tsx      |  59 +++
+ .../components/dashboard/SegmentTrendPanel.tsx     | 134 ++++++
+ .../dashboard/UnderperformingSpacesPanel.tsx       | 154 ++++++
+ .../components/dashboard/panels/ActionsPanel.tsx   | 141 ++++++
+ .../components/dashboard/panels/AssistantPanel.tsx | 107 +++++
+ .../components/dashboard/panels/CalendarPanel.tsx  | 132 ++++++
+
+=== a394273b7 ===
+docs: Week 10 component splitting analysis
+Created comprehensive splitting plan:
+✅ Identified 0 files >500 lines
+✅ Total lines to optimize: 0
+✅ Estimated savings: 0 lines
+--- files touched ---
+ .DS_Store                            | Bin 10244 -> 14340 bytes
+ COMPONENT_SPLITTING_PLAN.md          | 104 +++++++
+ large_components.txt                 | 518 +++++++++++++++++++++++++++++++++++
+ scripts/splitting/split_component.sh |  23 ++
+ week10_analysis_20260205_223402.txt  |  29 ++
+ week10_component_splitting.sh        | 258 +++++++++++++++++
+ 6 files changed, 932 insertions(+)
+

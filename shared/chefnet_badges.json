@@ -1,0 +1,210 @@
+{
+  "version": "1.0.0",
+  "categories": [
+    {
+      "id": "gratitude",
+      "label": "Gratitude & Recognition",
+      "description": "Celebrating moments where team members lift each other up.",
+      "icon": "heart-hands",
+      "levels": [
+        {
+          "id": "spark",
+          "label": "Spark of Gratitude",
+          "threshold": 3
+        },
+        {
+          "id": "glow",
+          "label": "Glow of Appreciation",
+          "threshold": 15
+        },
+        {
+          "id": "beacon",
+          "label": "Beacon of Recognition",
+          "threshold": 60
+        }
+      ],
+      "triggers": [
+        {
+          "id": "peer_shoutout",
+          "event": "shoutout.created",
+          "points": 3
+        },
+        {
+          "id": "shoutout_trending",
+          "event": "shoutout.reactions.10",
+          "points": 6
+        },
+        {
+          "id": "weekly_top",
+          "event": "gratitude.top_weekly",
+          "points": 12
+        }
+      ]
+    },
+    {
+      "id": "calm_under_fire",
+      "label": "Calm Under Fire",
+      "description": "Staying composed and solution-focused in high-pressure services.",
+      "icon": "fire-extinguisher",
+      "levels": [
+        {
+          "id": "steady",
+          "label": "Steady Hands",
+          "threshold": 5
+        },
+        {
+          "id": "anchor",
+          "label": "Kitchen Anchor",
+          "threshold": 20
+        },
+        {
+          "id": "guardian",
+          "label": "Guardian of the Pass",
+          "threshold": 50
+        }
+      ],
+      "triggers": [
+        {
+          "id": "stress_service_saved",
+          "event": "service.rescued",
+          "points": 5
+        },
+        {
+          "id": "double_shift",
+          "event": "shift.double_completed",
+          "points": 2
+        },
+        {
+          "id": "guest_recovery",
+          "event": "guest.recovery_success",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "mentor",
+      "label": "Mentor & Teacher",
+      "description": "Investing time to train, coach, and grow the brigade.",
+      "icon": "graduation-cap",
+      "levels": [
+        {
+          "id": "guide",
+          "label": "Line Guide",
+          "threshold": 4
+        },
+        {
+          "id": "coach",
+          "label": "Station Coach",
+          "threshold": 16
+        },
+        {
+          "id": "sensei",
+          "label": "Kitchen Sensei",
+          "threshold": 40
+        }
+      ],
+      "triggers": [
+        {
+          "id": "training_session",
+          "event": "training.session_recorded",
+          "points": 4
+        },
+        {
+          "id": "recipe_teachback",
+          "event": "training.teachback",
+          "points": 3
+        },
+        {
+          "id": "skill_certified",
+          "event": "training.skill_certified",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "hospitality_hero",
+      "label": "Hospitality Hero",
+      "description": "Going above and beyond for guests and teammates.",
+      "icon": "star",
+      "levels": [
+        {
+          "id": "spark",
+          "label": "Spark of Service",
+          "threshold": 3
+        },
+        {
+          "id": "flame",
+          "label": "Flame of Hospitality",
+          "threshold": 12
+        },
+        {
+          "id": "constellation",
+          "label": "Constellation of Care",
+          "threshold": 36
+        }
+      ],
+      "triggers": [
+        {
+          "id": "guest_comment",
+          "event": "guest_comment.positive",
+          "points": 3
+        },
+        {
+          "id": "wow_moment",
+          "event": "wow_moment.logged",
+          "points": 5
+        },
+        {
+          "id": "shift_saver",
+          "event": "shift.covered_last_minute",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "wellbeing_ally",
+      "label": "Wellbeing Ally",
+      "description": "Protecting rest, mental health, and sustainable careers.",
+      "icon": "leaf-heart",
+      "levels": [
+        {
+          "id": "aware",
+          "label": "Aware Ally",
+          "threshold": 2
+        },
+        {
+          "id": "advocate",
+          "label": "Wellbeing Advocate",
+          "threshold": 8
+        },
+        {
+          "id": "guardian",
+          "label": "Guardian of Balance",
+          "threshold": 20
+        }
+      ],
+      "triggers": [
+        {
+          "id": "wellbeing_checkin",
+          "event": "wellbeing.checkin_logged",
+          "points": 2
+        },
+        {
+          "id": "pto_protected",
+          "event": "schedule.pto_protected",
+          "points": 2
+        },
+        {
+          "id": "peer_support",
+          "event": "wellbeing.peer_support",
+          "points": 3
+        }
+      ]
+    }
+  ],
+  "progression": {
+    "spark": 3,
+    "glow": 15,
+    "beacon": 60
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "brand": "LUCCCA",
+  "productName": "LUCCCA ECW",
+  "tagline": "Echo Cognitive Waste Systems",
+  "primaryColor": "#c8a97e",
+  "backgroundColor": "#050812",
+  "logoPath": "electron/assets/logo.png",
+  "iconPath": "electron/assets/icon.png",
+  "splashPath": "electron/assets/splash.png",
+  "supportEmail": "support@luccca.com",
+  "aboutUrl": "https://luccca.com",
+  "updateChannel": "stable",
+  "note": "Swap this file at build time (`--config electron/brand-{partner}.json`) to re-brand Electron wrapper per customer. Also rewrite electron-builder.json's productName + appId to match."
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "groupId": "intelligence",
+    "entryId": "property-pulse",
+    "label": "Property Pulse · Live",
+    "status": "ok",
+    "contentLen": 1325,
+    "bodyTextHead": "📦Property Pulse · Live Dashboard−×↻ Replay tourProperty PulsePier Sixty-Six · Live Dashboard liveschema · —release · v—§2.4 · The Doctrine of the WalkbackEven on a hit, the walkba",
+    "screenshot": "/test_reports/screenshots/retest/ok-property-pulse.png",
+    "err": null
+  },
+  {
+    "groupId": "intelligence",
+    "entryId": "cross-property-benchmark",
+    "label": "Cross-Property Benchmark",
+    "status": "ok",
+    "contentLen": 1037,
+    "bodyTextHead": "📦Cross-Property Benchmark−×Outlet-type cohort comparison · capture rate · revenue per coverCross-Property Benchmarkingpart of · Intelligence & Forecasting§1.1 · This module's UI i",
+    "screenshot": "/test_reports/screenshots/retest/ok-cross-property-benchmark.png",
+    "err": null
+  },
+  {
+    "groupId": "intelligence",
+    "entryId": "forecast-21day",
+    "label": "21-Day Forecast",
+    "status": "ok",
+    "contentLen": 43,
+    "bodyTextHead": "📦21-Day Forecast−×Loading forecast data...",
+    "screenshot": "/test_reports/screenshots/retest/ok-forecast-21day.png",
+    "err": null
+  },
+  {
+    "groupId": "intelligence",
+    "entryId": "stratus-forecast",
+    "label": "Stratus Forecast",
+    "status": "ok",
+    "contentLen": 170,
+    "bodyTextHead": "📦EchoStratus Forecast−×EchoStratusDirector Forecast · 6 weeksRevenue · Covers · Labor · CapEx · Linen demand · Walk-in surges2 weeks4 weeks6 weeks8 weeks12 weeks Refresh",
+    "screenshot": "/test_reports/screenshots/retest/ok-stratus-forecast.png",
+    "err": null
+  },
+  {
+    "groupId": "intelligence",
+    "entryId": "pattern-intelligence",
+    "label": "Pattern Intelligence",
+    "status": "ok",
+    "contentLen": 410,
+    "bodyTextHead": "📦Pattern Intelligence−×EchoStratus · PatternsRecurring-Issue IntelligenceMines concierge · engineering · hskp · FOH for cross-module patterns + remediation plans14 days30 days60 d",
+    "screenshot": "/test_reports/screenshots/retest/ok-pattern-intelligence.png",
+    "err": null
+  },
+  {
+    "groupId": "daily",
+    "entryId": "exception-review-daily",
+    "label": "Exception Review · Daily",
+    "status": "ok",
+    "contentLen": 995,
+    "bodyTextHead": "📦Exception Review · Daily−×Red / amber / green severity · auto-cleared by morning standupException Review · Daily Anomaly Screeningpart of · Quick Daily§1.1 · This module's UI is ",
+    "screenshot": "/test_reports/screenshots/retest/ok-exception-review-daily.png",
+    "err": null
+  },
+  {
+    "groupId": "daily",
+    "entryId": "chronos",
+    "label": "Chronos",
+    "status": "ok",
+    "contentLen": 113,
+    "bodyTextHead": "📦Echo Chronos−×LIVEECHO CHRONOSPortfolio REFRESHMay 11, 12:49 AMDirectorCommand Center· operational time machine",
+    "screenshot": "/test_reports/screenshots/retest/ok-chronos.png",
+    "err": null
+  },
+  {
+    "groupId": "daily",
+    "entryId": "maestro-dashboard",
+    "label": "LUCCCA Dashboard",
+    "status": "ok",
+    "contentLen": 87,
+    "bodyTextHead": "👨‍🍳Maestro Dashboard−× Error: Unexpected token '<', \"<!doctype \"... is not valid JSON",
+    "screenshot": "/test_reports/screenshots/retest/ok-maestro-dashboard.png",
+    "err": null
+  },
+  {
+    "groupId": "daily",
+    "entryId": "schedule",
+    "label": "Schedule",
+    "status": "ok",
+    "contentLen": 653,
+    "bodyTextHead": "📦Schedule (Manager)−×LIVEHR · WORKFORCESchedule v2Weekly plan · compliance · ratings · acknowledgementsEcho Aurion · Schedule v2Workforce CommandEMPLOYEES0SHIFTS0COMPLIANCE FLAGS0",
+    "screenshot": "/test_reports/screenshots/retest/ok-schedule.png",
+    "err": null
+  },
+  {
+    "groupId": "menu_engineering_grp",
+    "entryId": "menu-engineering",
+    "label": "Menu Engineering",
+    "status": "partial",
+    "contentLen": 39,
+    "bodyTextHead": "bar-chart-3Menu Engineering−×Loading...",
+    "screenshot": "/test_reports/screenshots/retest/partial-menu-engineering.png",
+    "err": null
+  },
+  {
+    "groupId": "menu_engineering_grp",
+    "entryId": "menu-design-studio",
+    "label": "Menu Design Studio",
+    "status": "ok",
+    "contentLen": 266,
+    "bodyTextHead": "📦Menu Design Studio−×Menu Design StudioShared across all outlets — full designer with Culinary contextPer-Outlet ModuleMenu Design StudioCouldn’t load the studio: useKeyboardShort",
+    "screenshot": "/test_reports/screenshots/retest/ok-menu-design-studio.png",
+    "err": null
+  },
+  {
+    "groupId": "financial",
+    "entryId": "pace-mtd",
+    "label": "Pace · MTD Deep-Dive",
+    "status": "ok",
+    "contentLen": 972,
+    "bodyTextHead": "📦Pace · MTD Deep-Dive−×MTD revenue · vs budget · P10 / P50 / P90 finish projectionPace · Month-to-Date Deep-Divepart of · Office of the CFO · Financial & Procurement§1.1 · This mo",
+    "screenshot": "/test_reports/screenshots/retest/ok-pace-mtd.png",
+    "err": null
+  },
+  {
+    "groupId": "financial",
+    "entryId": "cash-runway-deep",
+    "label": "Cash Runway · Deep-Dive",
+    "status": "ok",
+    "contentLen": 995,
+    "bodyTextHead": "📦Cash Runway · Deep-Dive−×P75 worst-quartile burn · 7d / 30d trend · accelerationCash Runway Deep-Divepart of · Office of the CFO · Financial & Procurement§1.1 · This module's UI ",
+    "screenshot": "/test_reports/screenshots/retest/ok-cash-runway-deep.png",
+    "err": null
+  },
+  {
+    "groupId": "financial",
+    "entryId": "tip-audit-panel",
+    "label": "Tip Audit",
+    "status": "ok",
+    "contentLen": 1036,
+    "bodyTextHead": "📦Tip Audit−×Tip-share configuration audit · pool integrity · distribution validationTip Audit · Reconciliation & Compliancepart of · Office of the CFO · Financial & Procurement§1.",
+    "screenshot": "/test_reports/screenshots/retest/ok-tip-audit-panel.png",
+    "err": null
+  },
+  {
+    "groupId": "financial",
+    "entryId": "vendor-pareto",
+    "label": "Vendor Pareto",
+    "status": "ok",
+    "contentLen": 1013,
+    "bodyTextHead": "📦Vendor Pareto−×Vendor concentration risk · spend ranking · diversification opportunitiesVendor Pareto · 80/20 Spend Concentrationpart of · Purchasing & Receiving§1.1 · This modul",
+    "screenshot": "/test_reports/screenshots/retest/ok-vendor-pareto.png",
+    "err": null
+  }
+]

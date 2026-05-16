@@ -1,0 +1,15 @@
+import express from"express";
+import { OnboardingService } from"../services/onboarding.service.js";
+import { OnboardingConfiguration } from"../types/onboarding.js"; const router = express.Router(); /** * GET /api/onboarding/state-regulations * Get all state regulations for onboarding wizard */
+router.get("/state-regulations", async (_, res) => { try { const regulations = await OnboardingService.getAllStateRegulations(); res.json(regulations); } catch (error) { res.status(500).json({ error: error instanceof Error ? error.message :"Failed to fetch regulations", }); }
+}); /** * GET /api/onboarding/state-regulations/:state * Get state-specific regulations */
+router.get("/state-regulations/:state", async (req, res) => { try { const regulation = await OnboardingService.getStateRegulation(req.params.state.toUpperCase()); if (!regulation) { return res.status(404).json({ error:"State regulations not found" }); } res.json(regulation); } catch (error) { res.status(500).json({ error: error instanceof Error ? error.message :"Failed to fetch regulation", }); }
+}); /** * POST /api/onboarding/validate * Validate onboarding configuration before completion */
+router.post("/validate", async (req, res) => { try { const config: OnboardingConfiguration = req.body; const { valid, errors } = await OnboardingService.validateOnboarding(config); res.json({ valid, errors }); } catch (error) { res.status(500).json({ error: error instanceof Error ? error.message :"Validation failed", }); }
+}); /** * POST /api/onboarding/initialize * Initialize entire system with onboarding configuration * This is the main completion endpoint */
+router.post("/initialize", async (req, res) => { try { const config: OnboardingConfiguration = req.body; // Validate first const { valid, errors } = await OnboardingService.validateOnboarding(config); if (!valid) { return res.status(400).json({ valid: false, errors }); } // Initialize system const result = await OnboardingService.initializeSystem(config); res.json({ success: true, orgId: result.orgId, message:"System initialized successfully", }); } catch (error) { console.error("Onboarding initialization error:", error); res.status(500).json({ error: error instanceof Error ? error.message :"Initialization failed", }); }
+}); /** * GET /api/onboarding/status/:orgId * Get onboarding completion status */
+router.get("/status/:orgId", async (req, res) => { try { const status = await OnboardingService.getOnboardingStatus(req.params.orgId); if (!status) { return res.status(404).json({ error:"Organization not found" }); } res.json(status); } catch (error) { res.status(500).json({ error: error instanceof Error ? error.message :"Failed to fetch status", }); }
+}); /** * POST /api/onboarding/seed-regulations * Seed default US state regulations (admin only) */
+router.post("/seed-regulations", async (_, res) => { try { await OnboardingService.loadDefaultStateRegulations(); res.json({ success: true, message:"State regulations seeded successfully" }); } catch (error) { res.status(500).json({ error: error instanceof Error ? error.message :"Failed to seed regulations", }); }
+}); export default router;
