@@ -40,7 +40,7 @@ fal_client==0.13.2
 fastapi==0.136.0
 fastuuid==0.14.0
 filelock==3.25.2
-firebase-admin==6.5.0
+firebase-admin==7.4.0
 flake8==7.3.0
 fonttools==4.62.1
 fpdf2==2.8.7
