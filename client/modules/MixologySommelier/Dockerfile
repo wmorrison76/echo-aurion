@@ -1,7 +1,7 @@
 # Multi-stage build for SommelierAI Frontend
 
 # Build stage
-FROM node:18-alpine as builder
+FROM node:26-alpine as builder
 
 WORKDIR /app
 
@@ -25,7 +25,7 @@ RUN npm run build:client
 RUN npm run build:server
 
 # Production stage
-FROM node:18-alpine
+FROM node:26-alpine
 
 WORKDIR /app
 
